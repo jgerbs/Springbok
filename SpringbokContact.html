@@ -14,12 +14,14 @@
 
     <!-- keep your existing stack -->
     <link rel="stylesheet" href="style/base.css" />
-    <link rel="stylesheet" href="style/footer.css"/>
+    <link rel="stylesheet" href="style/footer.css" />
     <link rel="stylesheet" href="style/header.css" />
     <link rel="stylesheet" href="style/home.css" />
 
-    <!-- new: contact-only layout -->
+    <!-- contact-only layout -->
     <link rel="stylesheet" href="style/contact.css" />
+    <link rel="stylesheet" href="style/contactModal.css" />
+
   </head>
 
   <body>
@@ -36,7 +38,13 @@
         </nav>
 
         <div class="header-actions">
-          <a class="btn btn-accent book-cta" href="https://jane.app/"  target="_blank">Book Now</a>
+          <a
+            class="btn btn-accent book-cta"
+            href="https://jane.app/"
+            target="_blank"
+            rel="noopener"
+            >Book Now</a
+          >
 
           <button
             class="icon-btn mobile-only"
@@ -73,10 +81,7 @@
             playsinline
             poster="resources/building.jpg"
           >
-            <source
-              src="resources/"
-              type="video/mp4"
-            />
+            <source src="resources/" type="video/mp4" />
           </video>
           <div class="hero-overlay"></div>
         </div>
@@ -86,17 +91,26 @@
           <h1>Contact us easily — online, by phone, or by dropping in.</h1>
 
           <p>
-            Questions, bookings, or referrals — reach out and we’ll point you in the right direction.
+            Questions, bookings, or referrals — reach out and we’ll point you in
+            the right direction.
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-accent" href="#">Book Online</a>
-            <a class="btn btn-outline" href="tel:7787466460">Call 778-746-6460</a>
+            <a
+              class="btn btn-accent book-cta"
+              href="https://jane.app/"
+              target="_blank"
+              rel="noopener"
+              >Book Online</a
+            >
+            <a class="btn btn-outline" href="tel:7787466460"
+              >Call 778-746-6460</a
+            >
           </div>
         </div>
       </section>
 
-      <!-- CONTACT SECTION (two-column like your reference) -->
+      <!-- CONTACT SECTION -->
       <section class="contact-block" aria-label="Contact Information">
         <div class="container contact-grid">
           <!-- Left card -->
@@ -104,8 +118,8 @@
             <div class="contact-head">
               <h2>Contact Information</h2>
               <p>
-                Learn more about our clinic and doctors, and why we’re trusted by so many families
-                in our community.
+                Learn more about our clinic and doctors, and why we’re trusted
+                by so many families in our community.
               </p>
             </div>
 
@@ -113,9 +127,9 @@
               <div class="contact-item">
                 <div class="contact-label">Address</div>
                 <div class="contact-value">
-                  147 16th St West, Suite #300<br />
-                  North Vancouver, BC<br />
-                  V7M 1T3
+                  590 McKay Ave #200<br />
+                  Kelowna, BC<br />
+                  V1Y 5A8
                 </div>
               </div>
 
@@ -136,28 +150,41 @@
               <div class="contact-item">
                 <div class="contact-label">Hours</div>
                 <div class="contact-value hours">
-                  <div><span>Monday – Friday</span><span>9:00 – 19:30</span></div>
-                  <div><span>Saturday</span><span>9:30 – 16:30</span></div>
+                  <div><span>Monday</span><span>9 a.m. – 4:30 p.m.</span></div>
+                  <div><span>Tuesday</span><span>9 a.m. – 4:30 p.m.</span></div>
+                  <div>
+                    <span>Wednesday</span><span>9 a.m. – 4:30 p.m.</span>
+                  </div>
+                  <div><span>Thursday</span><span>9 a.m. – 4 a.m.</span></div>
+                  <div><span>Friday</span><span>9 a.m. – 2 p.m.</span></div>
+                  <div><span>Saturday</span><span>Closed</span></div>
                   <div><span>Sunday</span><span>Closed</span></div>
                 </div>
               </div>
             </div>
 
             <div class="contact-actions">
-              <a class="btn btn-accent" href="#">Book Appointment</a>
-              <a class="btn btn-outline" href="#">Send a Message</a>
+              <a
+                class="btn btn-accent"
+                href="https://jane.app/"
+                target="_blank"
+                rel="noopener"
+                >Book Appointment</a
+              >
+              <a class="btn btn-outline" href="#" id="sendMessageBtn"
+                >Send a Message</a
+              >
             </div>
           </div>
 
           <!-- Right: Map -->
           <div class="map-card" aria-label="Map">
             <div class="map-shell">
-              <!-- Drop in your real embed later -->
               <iframe
                 title="Springbok Medical Clinic Map"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=147%2016th%20St%20W%20Suite%20300%20North%20Vancouver%20BC%20V7M%201T3&output=embed"
+                src="https://www.google.com/maps?q=590%20McKay%20Ave%20%23200%20Kelowna%20BC%20V1Y%205A8&output=embed"
               ></iframe>
             </div>
           </div>
@@ -165,15 +192,12 @@
       </section>
     </main>
 
-        <footer class="site-footer" aria-label="Site footer">
+    <!-- FOOTER -->
+    <footer class="site-footer" aria-label="Site footer">
       <div class="container footer-inner">
         <!-- Left: Brand -->
         <div class="footer-brand">
-          <a
-            class="footer-brand-stack"
-            href="index.html"
-            aria-label="Springbok Home"
-          >
+          <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
             <img
               class="footer-brand-logo"
               src="resources/logo1.png"
@@ -222,24 +246,20 @@
           <div class="footer-contact-block">
             <p class="footer-contact-title">Springbok Medical Clinic</p>
             <p>
-              147 16th St West, Suite #300<br />
-              North Vancouver, BC<br />
-              V7M 1T3
+              590 McKay Ave #200<br />
+              Kelowna, BC<br />
+              V1Y 5A8
             </p>
-            <a class="footer-link" href="#" target="_blank" rel="noopener"
-              >View Directions</a
-            >
+            <a class="footer-link" href="#" target="_blank" rel="noopener">View Directions</a>
           </div>
 
           <div class="footer-contact-block">
             <p>
-              <a class="footer-link" href="tel:+17780000000"
-                >+1 (778) 000-0000</a
-              >
+              <a class="footer-link" href="tel:7787466460">778-746-6460</a>
             </p>
             <p>
-              <a class="footer-link" href="mailto:info@springbokclinic.ca"
-                >info@springbokclinic.ca</a
+              <a class="footer-link" href="mailto:hello@springbok.ca"
+                >hello@springbok.ca</a
               >
             </p>
           </div>
@@ -252,26 +272,211 @@
           Reserved
         </p>
 
-        <button
-          class="to-top"
-          type="button"
-          aria-label="Back to top"
-          id="toTopBtn"
-        >
+        <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">
           ↑
         </button>
       </div>
     </footer>
 
+    <!-- SEND A MESSAGE MODAL -->
+    <div class="modal" id="contactModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close="true"></div>
+
+      <div
+        class="modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="contactModalTitle"
+      >
+        <button class="modal-x" type="button" aria-label="Close" data-close="true">
+          ✕
+        </button>
+
+        <div class="modal-head">
+          <div class="modal-eyebrow">Contact</div>
+          <h2 class="modal-title" id="contactModalTitle">Send us a message</h2>
+          <p class="modal-sub">
+            Fill this out and our team will get back to you as soon as possible.
+          </p>
+        </div>
+
+        <form class="modal-form" id="contactForm">
+          <div class="modal-grid">
+            <label class="field">
+              <span class="field-label">Full Name</span>
+              <input
+                class="field-input"
+                type="text"
+                name="name"
+                placeholder="Your name"
+                autocomplete="name"
+                required
+              />
+            </label>
+
+            <label class="field">
+              <span class="field-label">Phone Number</span>
+              <input
+                class="field-input"
+                type="tel"
+                name="phone"
+                placeholder="(778) 000-0000"
+                autocomplete="tel"
+              />
+            </label>
+
+            <label class="field field-span">
+              <span class="field-label">Email</span>
+              <input
+                class="field-input"
+                type="email"
+                name="email"
+                placeholder="you@email.com"
+                autocomplete="email"
+                required
+              />
+            </label>
+
+            <label class="field field-span">
+              <span class="field-label">Subject</span>
+              <input
+                class="field-input"
+                type="text"
+                name="subject"
+                placeholder="How can we help?"
+                required
+              />
+            </label>
+
+            <label class="field field-span">
+              <span class="field-label">Message</span>
+              <textarea
+                class="field-input field-textarea"
+                name="message"
+                placeholder="Write your message..."
+                rows="5"
+                required
+              ></textarea>
+            </label>
+          </div>
+
+          <div class="modal-actions">
+            <button class="btn btn-outline" type="button" data-close="true">Cancel</button>
+            <button class="btn btn-accent" type="submit">Send</button>
+          </div>
+
+          <p class="modal-note">
+            By sending, you agree we may contact you about your request.
+          </p>
+        </form>
+      </div>
+    </div>
+
     <script>
       // footer helpers
-      document.getElementById("footerYear").textContent =
-        new Date().getFullYear();
-
+      document.getElementById("footerYear").textContent = new Date().getFullYear();
       const toTopBtn = document.getElementById("toTopBtn");
-      toTopBtn?.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
+      toTopBtn?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+      // Send Message modal
+      (() => {
+        const openBtn = document.getElementById("sendMessageBtn");
+        const modal = document.getElementById("contactModal");
+        const form = document.getElementById("contactForm");
+        if (!openBtn || !modal) return;
+
+        const dialog = modal.querySelector(".modal-dialog");
+        const focusablesSel =
+          'button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])';
+
+        let lastFocus = null;
+        let autoCloseTimer = null;
+
+        function openModal() {
+          lastFocus = document.activeElement;
+          modal.classList.add("is-open");
+          modal.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+
+          const firstInput = modal.querySelector("input, textarea, select, button");
+          firstInput?.focus();
+
+          clearTimeout(autoCloseTimer);
+          autoCloseTimer = setTimeout(() => {
+            const dirty =
+              form &&
+              Array.from(form.querySelectorAll("input, textarea")).some(
+                (el) => el.value && el.value.trim().length > 0
+              );
+            if (!dirty) closeModal();
+          }, 14000);
+        }
+
+        function closeModal() {
+          clearTimeout(autoCloseTimer);
+          modal.classList.remove("is-open");
+          modal.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+          if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+        }
+
+        openBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          openModal();
+        });
+
+        modal.addEventListener("click", (e) => {
+          const t = e.target;
+          if (t?.dataset?.close === "true") closeModal();
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (!modal.classList.contains("is-open")) return;
+
+          if (e.key === "Escape") {
+            e.preventDefault();
+            closeModal();
+            return;
+          }
+
+          if (e.key === "Tab") {
+            const focusables = Array.from(dialog.querySelectorAll(focusablesSel));
+            if (!focusables.length) return;
+
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+
+            if (e.shiftKey && document.activeElement === first) {
+              e.preventDefault();
+              last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+              e.preventDefault();
+              first.focus();
+            }
+          }
+        });
+
+        form?.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const sendBtn = form.querySelector('button[type="submit"]');
+          if (sendBtn) {
+            const prev = sendBtn.textContent;
+            sendBtn.textContent = "Sent ✓";
+            sendBtn.disabled = true;
+
+            setTimeout(() => {
+              closeModal();
+              sendBtn.textContent = prev;
+              sendBtn.disabled = false;
+              form.reset();
+            }, 1200);
+          } else {
+            closeModal();
+            form.reset();
+          }
+        });
+      })();
     </script>
 
     <script src="main.js"></script>
