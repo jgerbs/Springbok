@@ -112,3 +112,47 @@ img{ display:block; max-width:100%; }
   }
 }
 
+/* =========================
+   Scroll Reveal Animations
+   ========================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 1.5s ease,
+    transform 1.5s cubic-bezier(.22,.61,.36,1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Optional: stagger children */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.reveal-stagger.is-visible > * {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-stagger.is-visible > * {
+  transition:
+    opacity 1.5s ease,
+    transform 1.5s cubic-bezier(.22,.61,.36,1);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

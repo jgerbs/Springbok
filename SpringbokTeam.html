@@ -59,7 +59,7 @@
       <section class="hero">
         <!-- LOGO: part of HERO visually, but fixed top-left -->
         <a
-          class="hero-brand"
+          class="hero-brand reveal"
           href="index.html"
           aria-label="Springbok Home"
         >
@@ -84,8 +84,8 @@
           <div class="hero-overlay"></div>
         </div>
 
-        <div class="container hero-content">
-          <h1>Empowering you to look, feel, and live your absolute best.</h1>
+        <div class="container hero-content reveal">
+          <h1>Dedicated experts, working together for you.</h1>
           <p>
             Premium, modern care with clear next steps. Explore our clinics, or
             book directly in seconds.
@@ -98,7 +98,7 @@
       </section>
 
       <section class="mission">
-        <div class="container mission-grid">
+        <div class="container mission-grid reveal-stagger">
           <!-- Left: Statement -->
           <div class="mission-content">
             <span class="mission-eyebrow">Our Mission</span>
@@ -145,7 +145,7 @@
       <!-- TEAM (Vertical tiles) -->
       <section class="team-tiles" id="team">
         <div class="container">
-          <div class="section-head">
+          <div class="section-head reveal">
             <span class="section-eyebrow">Our Team</span>
             <h2 class="section-title">Four doctors. One standard of care.</h2>
             <div class="section-divider"></div>
@@ -155,7 +155,7 @@
             </p>
           </div>
 
-          <div class="tiles-grid grid-2">
+          <div class="tiles-grid grid-2 reveal-stagger">
             <!-- Doctor 1 -->
             <a
               class="team-tile"
@@ -286,7 +286,7 @@
       <section class="services-tiles">
         <div class="container">
           <!-- NEW: Services header -->
-          <div class="section-head">
+          <div class="section-head reveal">
             <span class="section-eyebrow">Our Team</span>
             <h2 class="section-title">Everyone who keeps the show going.</h2>
             <div class="section-divider"></div>
@@ -296,7 +296,7 @@
             </p>
           </div>
 
-          <div class="tiles-grid grid-3">
+          <div class="tiles-grid grid-3 reveal-stagger">
         <!-- Staff 1 -->
         <a
           class="service-tile"
@@ -487,7 +487,7 @@
     </main>
 
     <footer class="site-footer" aria-label="Site footer">
-      <div class="container footer-inner">
+      <div class="container footer-inner reveal">
         <!-- Left: Brand -->
         <div class="footer-brand">
           <a
@@ -584,17 +584,11 @@
       </div>
     </footer>
 
-    <script>
-      // footer helpers
-      document.getElementById("footerYear").textContent =
-        new Date().getFullYear();
+    <script src="js/mobileMenu.js"></script>
+    <script src="js/footer.js"></script>
 
-      const toTopBtn = document.getElementById("toTopBtn");
-      toTopBtn?.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    </script>
+    <script src="js/contactModal.js"></script>
+    <script src="js/scrollReveal.js"></script>
 
-    <script src="main.js"></script>
   </body>
 </html>

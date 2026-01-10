@@ -64,7 +64,7 @@
     <main>
       <!-- HERO (same structure as home; content changed for Contact) -->
       <section class="hero hero--contact">
-        <a class="hero-brand" href="index.html" aria-label="Springbok Home">
+        <a class="hero-brand reveal" href="index.html" aria-label="Springbok Home">
           <img
             src="resources/logo1.png"
             alt="Springbok Medical Clinic"
@@ -86,7 +86,7 @@
           <div class="hero-overlay"></div>
         </div>
 
-        <div class="container hero-content">
+        <div class="container hero-content reveal">
           <span class="contact-kicker">CONTACT US</span>
           <h1>Contact us easily — online, by phone, or by dropping in.</h1>
 
@@ -112,7 +112,7 @@
 
       <!-- CONTACT SECTION -->
       <section class="contact-block" aria-label="Contact Information">
-        <div class="container contact-grid">
+        <div class="container contact-grid reveal-stagger">
           <!-- Left card -->
           <div class="contact-card">
             <div class="contact-head">
@@ -194,7 +194,7 @@
 
     <!-- FOOTER -->
     <footer class="site-footer" aria-label="Site footer">
-      <div class="container footer-inner">
+      <div class="container footer-inner reveal">
         <!-- Left: Brand -->
         <div class="footer-brand">
           <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
@@ -372,113 +372,10 @@
       </div>
     </div>
 
-    <script>
-      // footer helpers
-      document.getElementById("footerYear").textContent = new Date().getFullYear();
-      const toTopBtn = document.getElementById("toTopBtn");
-      toTopBtn?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    <script src="js/mobileMenu.js"></script>
+    <script src="js/footer.js"></script>
 
-      // Send Message modal
-      (() => {
-        const openBtn = document.getElementById("sendMessageBtn");
-        const modal = document.getElementById("contactModal");
-        const form = document.getElementById("contactForm");
-        if (!openBtn || !modal) return;
-
-        const dialog = modal.querySelector(".modal-dialog");
-        const focusablesSel =
-          'button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])';
-
-        let lastFocus = null;
-        let autoCloseTimer = null;
-
-        function openModal() {
-          lastFocus = document.activeElement;
-          modal.classList.add("is-open");
-          modal.setAttribute("aria-hidden", "false");
-          document.body.style.overflow = "hidden";
-
-          const firstInput = modal.querySelector("input, textarea, select, button");
-          firstInput?.focus();
-
-          clearTimeout(autoCloseTimer);
-          autoCloseTimer = setTimeout(() => {
-            const dirty =
-              form &&
-              Array.from(form.querySelectorAll("input, textarea")).some(
-                (el) => el.value && el.value.trim().length > 0
-              );
-            if (!dirty) closeModal();
-          }, 14000);
-        }
-
-        function closeModal() {
-          clearTimeout(autoCloseTimer);
-          modal.classList.remove("is-open");
-          modal.setAttribute("aria-hidden", "true");
-          document.body.style.overflow = "";
-          if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
-        }
-
-        openBtn.addEventListener("click", (e) => {
-          e.preventDefault();
-          openModal();
-        });
-
-        modal.addEventListener("click", (e) => {
-          const t = e.target;
-          if (t?.dataset?.close === "true") closeModal();
-        });
-
-        document.addEventListener("keydown", (e) => {
-          if (!modal.classList.contains("is-open")) return;
-
-          if (e.key === "Escape") {
-            e.preventDefault();
-            closeModal();
-            return;
-          }
-
-          if (e.key === "Tab") {
-            const focusables = Array.from(dialog.querySelectorAll(focusablesSel));
-            if (!focusables.length) return;
-
-            const first = focusables[0];
-            const last = focusables[focusables.length - 1];
-
-            if (e.shiftKey && document.activeElement === first) {
-              e.preventDefault();
-              last.focus();
-            } else if (!e.shiftKey && document.activeElement === last) {
-              e.preventDefault();
-              first.focus();
-            }
-          }
-        });
-
-        form?.addEventListener("submit", (e) => {
-          e.preventDefault();
-
-          const sendBtn = form.querySelector('button[type="submit"]');
-          if (sendBtn) {
-            const prev = sendBtn.textContent;
-            sendBtn.textContent = "Sent ✓";
-            sendBtn.disabled = true;
-
-            setTimeout(() => {
-              closeModal();
-              sendBtn.textContent = prev;
-              sendBtn.disabled = false;
-              form.reset();
-            }, 1200);
-          } else {
-            closeModal();
-            form.reset();
-          }
-        });
-      })();
-    </script>
-
-    <script src="main.js"></script>
+    <script src="js/contactModal.js"></script>
+    <script src="js/scrollReveal.js"></script>
   </body>
 </html>

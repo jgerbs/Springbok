@@ -58,7 +58,7 @@
     <main>
       <section class="hero">
         <!-- LOGO: part of HERO visually, but fixed top-left -->
-        <a class="hero-brand" href="index.html" aria-label="Springbok Home">
+        <a class="hero-brand reveal" href="index.html" aria-label="Springbok Home">
           <img
             src="resources/logo1.png"
             alt="Springbok Medical Clinic"
@@ -83,7 +83,7 @@
           <div class="hero-overlay"></div>
         </div>
 
-        <div class="container hero-content">
+        <div class="container hero-content reveal">
           <h1>Empowering you to look, feel, and live your absolute best.</h1>
           <p>
             Premium, modern care with clear next steps. Explore our clinics, or
@@ -99,7 +99,7 @@
       <section class="mission">
         <div class="container mission-grid">
           <!-- Left: Statement -->
-          <div class="mission-content">
+          <div class="mission-content reveal">
             <span class="mission-eyebrow">Our Mission</span>
             <h2>
               Empowering modern healthcare —
@@ -127,7 +127,7 @@
           </div>
 
           <!-- Right: Visual / Video Placeholder -->
-          <div class="mission-media">
+          <div class="mission-media reveal">
             <div class="mission-media-inner">
               <span class="play-btn" aria-hidden="true">▶</span>
             </div>
@@ -138,7 +138,7 @@
       <section class="services-tiles" id="services">
         <div class="container">
           <!-- NEW: Services header -->
-          <div class="section-head">
+          <div class="section-head reveal">
             <span class="section-eyebrow">Our Services</span>
             <h2 class="section-title">Care that meets you where you’re at.</h2>
             <div class="section-divider"></div>
@@ -149,7 +149,7 @@
           </div>
 
           <!-- Your existing tiles -->
-          <div class="tiles-grid grid-2">
+          <div class="tiles-grid grid-2 reveal-stagger">
             <!-- Tile 1 -->
             <a
               class="service-tile"
@@ -212,419 +212,414 @@
       </section>
 
       <section class="services-tiles" id="team-preview">
-  <div class="container">
-    <div class="section-head">
-      <span class="section-eyebrow">Our Team</span>
-      <h2 class="section-title">Everyone who keeps the show going.</h2>
-      <div class="section-divider"></div>
-      <p class="section-sub">
-        Nurses, coordinators, and support staff who keep your care organized,
-        calm, and consistent — from intake to follow-ups.
-      </p>
-    </div>
-
-    <!-- Shell (same pattern as testimonials) -->
-<div class="staff-wheel-shell">
-  <button class="staff-nav staff-prev" type="button" aria-label="Previous staff">‹</button>
-
-  <div class="staff-wheel" id="staffWheel" aria-label="Staff carousel (looping)">
-    <!-- Keep your EXACT same .service-tile anchors inside here -->
-    <!-- Staff 1 -->
-    <a class="service-tile" href="SpringbokTeam.html" aria-label="Emma Lawson — Registered Nurse">
-      <div class="tile-bg" style="background-image: url('resources/staff1.jpg')"></div>
-      <div class="tile-shade"></div>
-      <div class="tile-inner">
-        <div class="tile-top">
-          <span class="tile-dot"></span>
-          <span class="tile-tag">Registered Nurse</span>
-        </div>
-        <div class="tile-bottom">
-          <h3>Emma Lawson, RN</h3>
-          <p class="tile-desc">
-            Clinical support across visits and follow-ups — focused on comfort,
-            education, and continuity of care.
-          </p>
-          <span class="tile-cta">Meet the team <span class="tile-arrow">→</span></span>
-        </div>
-      </div>
-    </a>
-
-    <!-- Staff 2 -->
-    <a class="service-tile" href="SpringbokTeam.html" aria-label="Sophie Nguyen — Front Desk">
-      <div class="tile-bg" style="background-image: url('resources/doc1.jpg')"></div>
-      <div class="tile-shade"></div>
-      <div class="tile-inner">
-        <div class="tile-top">
-          <span class="tile-dot"></span>
-          <span class="tile-tag">Front Desk</span>
-        </div>
-        <div class="tile-bottom">
-          <h3>Sophie Nguyen</h3>
-          <p class="tile-desc">
-            First point of contact — bookings, intake support, and making every
-            visit start smoothly.
-          </p>
-          <span class="tile-cta">Meet the team <span class="tile-arrow">→</span></span>
-        </div>
-      </div>
-    </a>
-
-    <!-- Staff 3 -->
-    <a class="service-tile" href="SpringbokTeam.html" aria-label="Daniel Brooks — Clinic Coordinator">
-      <div class="tile-bg" style="background-image: url('resources/staff2.jpg')"></div>
-      <div class="tile-shade"></div>
-      <div class="tile-inner">
-        <div class="tile-top">
-          <span class="tile-dot"></span>
-          <span class="tile-tag">Clinic Operations</span>
-        </div>
-        <div class="tile-bottom">
-          <h3>Daniel Brooks</h3>
-          <p class="tile-desc">
-            Oversees daily clinic flow — coordinating schedules, providers,
-            and patient next steps.
-          </p>
-          <span class="tile-cta">Meet the team <span class="tile-arrow">→</span></span>
-        </div>
-      </div>
-    </a>
-
-        <!-- Staff 4 -->
-    <a class="service-tile" href="SpringbokTeam.html" aria-label="Emma Lawson — Registered Nurse">
-      <div class="tile-bg" style="background-image: url('resources/staff6.jpg')"></div>
-      <div class="tile-shade"></div>
-      <div class="tile-inner">
-        <div class="tile-top">
-          <span class="tile-dot"></span>
-          <span class="tile-tag">Registered Nurse</span>
-        </div>
-        <div class="tile-bottom">
-          <h3>Emma Lawson, RN</h3>
-          <p class="tile-desc">
-            Clinical support across visits and follow-ups — focused on comfort,
-            education, and continuity of care.
-          </p>
-          <span class="tile-cta">Meet the team <span class="tile-arrow">→</span></span>
-        </div>
-      </div>
-    </a>
-
-    <!-- Staff 2 -->
-    <a class="service-tile" href="SpringbokTeam.html" aria-label="Sophie Nguyen — Front Desk">
-      <div class="tile-bg" style="background-image: url('resources/doc4.jpg')"></div>
-      <div class="tile-shade"></div>
-      <div class="tile-inner">
-        <div class="tile-top">
-          <span class="tile-dot"></span>
-          <span class="tile-tag">Front Desk</span>
-        </div>
-        <div class="tile-bottom">
-          <h3>Sophie Nguyen</h3>
-          <p class="tile-desc">
-            First point of contact — bookings, intake support, and making every
-            visit start smoothly.
-          </p>
-          <span class="tile-cta">Meet the team <span class="tile-arrow">→</span></span>
-        </div>
-      </div>
-    </a>
-
-    <!-- Staff 3 -->
-    <a class="service-tile" href="SpringbokTeam.html" aria-label="Daniel Brooks — Clinic Coordinator">
-      <div class="tile-bg" style="background-image: url('resources/doc3.jpg')"></div>
-      <div class="tile-shade"></div>
-      <div class="tile-inner">
-        <div class="tile-top">
-          <span class="tile-dot"></span>
-          <span class="tile-tag">Clinic Operations</span>
-        </div>
-        <div class="tile-bottom">
-          <h3>Daniel Brooks</h3>
-          <p class="tile-desc">
-            Oversees daily clinic flow — coordinating schedules, providers,
-            and patient next steps.
-          </p>
-          <span class="tile-cta">Meet the team <span class="tile-arrow">→</span></span>
-        </div>
-      </div>
-    </a>
-
-    <!-- Add more staff cards anytime -->
-  </div>
-
-  <button class="staff-nav staff-next" type="button" aria-label="Next staff">›</button>
-</div>
-
-
-    <div class="staff-dots" id="staffDots" aria-label="Staff navigation"></div>
-
-    <div style="margin-top: 22px; display:flex; gap:12px; flex-wrap:wrap;">
-      <a class="btn btn-outline" href="SpringbokTeam.html">View Full Team</a>
-    </div>
-  </div>
-</section>
-
-
-
-      <section class="testimonials" id="testimonials">
-        <div class="container">
-          <div class="testimonials-head">
-            <h2>Client Testimonials</h2>
-          </div>
-
-          <div class="testimonials-shell">
-            <button
-              class="t-nav t-prev"
-              type="button"
-              aria-label="Previous testimonial"
-            >
-              ‹
-            </button>
-
-            <div class="t-track" id="tTrack">
-              <!-- Card 1 (Google style) -->
-              <article class="t-card t-google">
-                <div class="t-top">
-                  <div class="t-avatar">N</div>
-                  <div class="t-meta">
-                    <div class="t-name">Nimfa Amparado</div>
-                    <div class="t-date">5 August 2025</div>
-                    <div class="t-stars" aria-label="5 stars">
-                      ★★★★★ <span class="t-verify">✔</span>
-                    </div>
-                  </div>
-                  <div class="t-gmark" aria-hidden="true">G</div>
-                </div>
-
-                <p class="t-text">
-                  The doctor is really good and very gentle in putting needles.
-                  It’s for blood circulation and for stress. The result is
-                  awesome and I highly recommend.
-                </p>
-
-                <a class="t-more" href="#">Read more</a>
-              </article>
-
-              <!-- Card 2 (Google style) -->
-              <article class="t-card t-google">
-                <div class="t-top">
-                  <img
-                    class="t-photo"
-                    src="https://via.placeholder.com/64"
-                    alt=""
-                  />
-                  <div class="t-meta">
-                    <div class="t-name">Shelly Point</div>
-                    <div class="t-date">24 July 2025</div>
-                    <div class="t-stars" aria-label="5 stars">
-                      ★★★★★ <span class="t-verify">✔</span>
-                    </div>
-                  </div>
-                  <div class="t-gmark" aria-hidden="true">G</div>
-                </div>
-
-                <p class="t-text">
-                  I’ve been here for facials and was greeted with such kindness.
-                  The staff were welcoming, professional, and the experience
-                  felt very relaxing.
-                </p>
-
-                <a class="t-more" href="#">Read more</a>
-              </article>
-
-              <!-- Card 3 (Featured quote style) -->
-              <article class="t-card t-feature">
-                <p class="t-quote">
-                  “I came in with constant neck and shoulder tension from long
-                  hours at the desk. The plan was tailored to my routine, and
-                  improvements were noticeable within a few sessions.”
-                </p>
-
-                <div class="t-person">
-                  <img
-                    class="t-person-img"
-                    src="https://via.placeholder.com/72"
-                    alt="Jason Miller"
-                  />
-                  <div>
-                    <div class="t-person-name">Jason Miller</div>
-                    <div class="t-person-role">Software Engineer</div>
-                  </div>
-                </div>
-              </article>
-
-              <!-- Duplicate set for sliding (add more if you want) -->
-              <article class="t-card t-google">
-                <div class="t-top">
-                  <div
-                    class="t-avatar"
-                    style="background: #12c08a; color: #04140e"
-                  >
-                    A
-                  </div>
-                  <div class="t-meta">
-                    <div class="t-name">Alyssa K.</div>
-                    <div class="t-date">12 June 2025</div>
-                    <div class="t-stars" aria-label="5 stars">
-                      ★★★★★ <span class="t-verify">✔</span>
-                    </div>
-                  </div>
-                  <div class="t-gmark" aria-hidden="true">G</div>
-                </div>
-                <p class="t-text">
-                  Booking was easy, the clinic felt modern and calm, and I
-                  didn’t feel rushed. Clear next steps and great follow-up.
-                </p>
-                <a class="t-more" href="#">Read more</a>
-              </article>
-
-              <article class="t-card t-feature">
-                <p class="t-quote">
-                  “Concussion care was thorough and reassuring. The
-                  return-to-activity plan was super clear, and I felt supported
-                  the whole way.”
-                </p>
-                <div class="t-person">
-                  <img
-                    class="t-person-img"
-                    src="https://via.placeholder.com/72"
-                    alt="Taylor Reed"
-                  />
-                  <div>
-                    <div class="t-person-name">Taylor Reed</div>
-                    <div class="t-person-role">Student Athlete</div>
-                  </div>
-                </div>
-              </article>
-            </div>
-
-            <button
-              class="t-nav t-next"
-              type="button"
-              aria-label="Next testimonial"
-            >
-              ›
-            </button>
-          </div>
-
-          <div
-            class="t-dots"
-            id="tDots"
-            aria-label="Testimonial navigation"
-          ></div>
-        </div>
-      </section>
-    </main>
-
-        <footer class="site-footer" aria-label="Site footer">
-      <div class="container footer-inner">
-        <!-- Left: Brand -->
-        <div class="footer-brand">
-          <a
-            class="footer-brand-stack"
-            href="index.html"
-            aria-label="Springbok Home"
-          >
-            <img
-              class="footer-brand-logo"
-              src="resources/logo1.png"
-              alt="Springbok Medical Clinic"
-            />
-            <div class="footer-brand-type">
-              <div class="footer-brand-name">SPRINGBOK</div>
-              <div class="footer-brand-sub">MEDICAL CLINIC</div>
-            </div>
-          </a>
-
-          <div class="footer-social" aria-label="Social links">
-            <a class="social-btn" href="#" aria-label="Instagram">⌁</a>
-            <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
-            <a class="social-btn" href="#" aria-label="Facebook">f</a>
-          </div>
-        </div>
-
-        <!-- Middle: Columns -->
-        <div class="footer-cols">
-          <div class="footer-col">
-            <h3>Pages</h3>
-            <a href="SpringbokHome.html">Home</a>
-            <a href="SpringbokAbout.html">About Us</a>
-            <a href="SpringbokContact.html">Contact</a>
-          </div>
-
-          <div class="footer-col">
-            <h3>Our Services</h3>
-            <a href="SpringbokClinic.html">Clinic</a>
-            <a href="SpringbokSpa.html">Medical Spa</a>
-            <a href="#">Sleep Clinic</a>
-            <a href="#">Concussion Care</a>
-          </div>
-
-          <div class="footer-col">
-            <h3>Our Team</h3>
-            <a href="SpringbokTeam.html">Meet the Team</a>
-            <a href="#">Physicians</a>
-            <a href="#">Nursing / Support</a>
-          </div>
-        </div>
-
-        <!-- Right: Contact -->
-        <div class="footer-contact">
-          <div class="footer-contact-block">
-            <p class="footer-contact-title">Springbok Medical Clinic</p>
-            <p>
-              147 16th St West, Suite #300<br />
-              North Vancouver, BC<br />
-              V7M 1T3
-            </p>
-            <a class="footer-link" href="#" target="_blank" rel="noopener"
-              >View Directions</a
-            >
-          </div>
-
-          <div class="footer-contact-block">
-            <p>
-              <a class="footer-link" href="tel:+17780000000"
-                >+1 (778) 000-0000</a
-              >
-            </p>
-            <p>
-              <a class="footer-link" href="mailto:info@springbokclinic.ca"
-                >info@springbokclinic.ca</a
-              >
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="container footer-bottom">
-        <p>
-          © <span id="footerYear"></span> Springbok Medical Clinic — All Rights
-          Reserved
+    <div class="container reveal">
+      <div class="section-head">
+        <span class="section-eyebrow">Our Team</span>
+        <h2 class="section-title">Everyone who keeps the show going.</h2>
+        <div class="section-divider"></div>
+        <p class="section-sub">
+          Nurses, coordinators, and support staff who keep your care organized,
+          calm, and consistent — from intake to follow-ups.
         </p>
-
-        <button
-          class="to-top"
-          type="button"
-          aria-label="Back to top"
-          id="toTopBtn"
-        >
-          ↑
-        </button>
       </div>
-    </footer>
 
-    <script>
-      // footer helpers
-      document.getElementById("footerYear").textContent =
-        new Date().getFullYear();
+      <!-- Shell (same pattern as testimonials) -->
+  <div class="staff-wheel-shell">
+    <button class="staff-nav staff-prev" type="button" aria-label="Previous staff">‹</button>
 
-      const toTopBtn = document.getElementById("toTopBtn");
-      toTopBtn?.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    </script>
+    <div class="staff-wheel" id="staffWheel" aria-label="Staff carousel (looping)">
+      <!-- Keep your EXACT same .service-tile anchors inside here -->
+      <!-- Staff 1 -->
+      <a class="service-tile" href="SpringbokTeam.html" aria-label="Emma Lawson — Registered Nurse">
+        <div class="tile-bg" style="background-image: url('resources/staff1.jpg')"></div>
+        <div class="tile-shade"></div>
+        <div class="tile-inner">
+          <div class="tile-top">
+            <span class="tile-dot"></span>
+            <span class="tile-tag">Registered Nurse</span>
+          </div>
+          <div class="tile-bottom">
+            <h3>Emma Lawson, RN</h3>
+            <p class="tile-desc">
+              Clinical support across visits and follow-ups — focused on comfort,
+              education, and continuity of care.
+            </p>
+            <span class="tile-cta">Meet the team <span class="tile-arrow">→</span></span>
+          </div>
+        </div>
+      </a>
 
-    <script src="main.js"></script>
-  </body>
-</html>
+      <!-- Staff 2 -->
+      <a class="service-tile" href="SpringbokTeam.html" aria-label="Sophie Nguyen — Front Desk">
+        <div class="tile-bg" style="background-image: url('resources/doc1.jpg')"></div>
+        <div class="tile-shade"></div>
+        <div class="tile-inner">
+          <div class="tile-top">
+            <span class="tile-dot"></span>
+            <span class="tile-tag">Front Desk</span>
+          </div>
+          <div class="tile-bottom">
+            <h3>Sophie Nguyen</h3>
+            <p class="tile-desc">
+              First point of contact — bookings, intake support, and making every
+              visit start smoothly.
+            </p>
+            <span class="tile-cta">Meet the team <span class="tile-arrow">→</span></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Staff 3 -->
+      <a class="service-tile" href="SpringbokTeam.html" aria-label="Daniel Brooks — Clinic Coordinator">
+        <div class="tile-bg" style="background-image: url('resources/staff2.jpg')"></div>
+        <div class="tile-shade"></div>
+        <div class="tile-inner">
+          <div class="tile-top">
+            <span class="tile-dot"></span>
+            <span class="tile-tag">Clinic Operations</span>
+          </div>
+          <div class="tile-bottom">
+            <h3>Daniel Brooks</h3>
+            <p class="tile-desc">
+              Oversees daily clinic flow — coordinating schedules, providers,
+              and patient next steps.
+            </p>
+            <span class="tile-cta">Meet the team <span class="tile-arrow">→</span></span>
+          </div>
+        </div>
+      </a>
+
+          <!-- Staff 4 -->
+      <a class="service-tile" href="SpringbokTeam.html" aria-label="Emma Lawson — Registered Nurse">
+        <div class="tile-bg" style="background-image: url('resources/staff6.jpg')"></div>
+        <div class="tile-shade"></div>
+        <div class="tile-inner">
+          <div class="tile-top">
+            <span class="tile-dot"></span>
+            <span class="tile-tag">Registered Nurse</span>
+          </div>
+          <div class="tile-bottom">
+            <h3>Emma Lawson, RN</h3>
+            <p class="tile-desc">
+              Clinical support across visits and follow-ups — focused on comfort,
+              education, and continuity of care.
+            </p>
+            <span class="tile-cta">Meet the team <span class="tile-arrow">→</span></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Staff 2 -->
+      <a class="service-tile" href="SpringbokTeam.html" aria-label="Sophie Nguyen — Front Desk">
+        <div class="tile-bg" style="background-image: url('resources/doc4.jpg')"></div>
+        <div class="tile-shade"></div>
+        <div class="tile-inner">
+          <div class="tile-top">
+            <span class="tile-dot"></span>
+            <span class="tile-tag">Front Desk</span>
+          </div>
+          <div class="tile-bottom">
+            <h3>Sophie Nguyen</h3>
+            <p class="tile-desc">
+              First point of contact — bookings, intake support, and making every
+              visit start smoothly.
+            </p>
+            <span class="tile-cta">Meet the team <span class="tile-arrow">→</span></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Staff 3 -->
+      <a class="service-tile" href="SpringbokTeam.html" aria-label="Daniel Brooks — Clinic Coordinator">
+        <div class="tile-bg" style="background-image: url('resources/doc3.jpg')"></div>
+        <div class="tile-shade"></div>
+        <div class="tile-inner">
+          <div class="tile-top">
+            <span class="tile-dot"></span>
+            <span class="tile-tag">Clinic Operations</span>
+          </div>
+          <div class="tile-bottom">
+            <h3>Daniel Brooks</h3>
+            <p class="tile-desc">
+              Oversees daily clinic flow — coordinating schedules, providers,
+              and patient next steps.
+            </p>
+            <span class="tile-cta">Meet the team <span class="tile-arrow">→</span></span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Add more staff cards anytime -->
+    </div>
+
+    <button class="staff-nav staff-next" type="button" aria-label="Next staff">›</button>
+  </div>
+
+
+      <div class="staff-dots" id="staffDots" aria-label="Staff navigation"></div>
+
+      <div style="margin-top: 22px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="btn btn-outline" href="SpringbokTeam.html">View Full Team</a>
+      </div>
+    </div>
+  </section>
+
+
+
+        <section class="testimonials" id="testimonials">
+          <div class="container reveal">
+            <div class="testimonials-head">
+              <h2>Client Testimonials</h2>
+            </div>
+
+            <div class="testimonials-shell">
+              <button
+                class="t-nav t-prev"
+                type="button"
+                aria-label="Previous testimonial"
+              >
+                
+              </button>
+
+              <div class="t-track" id="tTrack">
+                <!-- Card 1 (Google style) -->
+                <article class="t-card t-google">
+                  <div class="t-top">
+                    <div class="t-avatar">N</div>
+                    <div class="t-meta">
+                      <div class="t-name">Nimfa Amparado</div>
+                      <div class="t-date">5 August 2025</div>
+                      <div class="t-stars" aria-label="5 stars">
+                        ★★★★★ <span class="t-verify">✔</span>
+                      </div>
+                    </div>
+                    <div class="t-gmark" aria-hidden="true">G</div>
+                  </div>
+
+                  <p class="t-text">
+                    The doctor is really good and very gentle in putting needles.
+                    It’s for blood circulation and for stress. The result is
+                    awesome and I highly recommend.
+                  </p>
+
+                  <a class="t-more" href="#">Read more</a>
+                </article>
+
+                <!-- Card 2 (Google style) -->
+                <article class="t-card t-google">
+                  <div class="t-top">
+                    <img
+                      class="t-photo"
+                      src="https://via.placeholder.com/64"
+                      alt=""
+                    />
+                    <div class="t-meta">
+                      <div class="t-name">Shelly Point</div>
+                      <div class="t-date">24 July 2025</div>
+                      <div class="t-stars" aria-label="5 stars">
+                        ★★★★★ <span class="t-verify">✔</span>
+                      </div>
+                    </div>
+                    <div class="t-gmark" aria-hidden="true">G</div>
+                  </div>
+
+                  <p class="t-text">
+                    I’ve been here for facials and was greeted with such kindness.
+                    The staff were welcoming, professional, and the experience
+                    felt very relaxing.
+                  </p>
+
+                  <a class="t-more" href="#">Read more</a>
+                </article>
+
+                <!-- Card 3 (Featured quote style) -->
+                <article class="t-card t-feature">
+                  <p class="t-quote">
+                    “I came in with constant neck and shoulder tension from long
+                    hours at the desk. The plan was tailored to my routine, and
+                    improvements were noticeable within a few sessions.”
+                  </p>
+
+                  <div class="t-person">
+                    <img
+                      class="t-person-img"
+                      src="https://via.placeholder.com/72"
+                      alt="Jason Miller"
+                    />
+                    <div>
+                      <div class="t-person-name">Jason Miller</div>
+                      <div class="t-person-role">Software Engineer</div>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Duplicate set for sliding (add more if you want) -->
+                <article class="t-card t-google">
+                  <div class="t-top">
+                    <div
+                      class="t-avatar"
+                      style="background: #12c08a; color: #04140e"
+                    >
+                      A
+                    </div>
+                    <div class="t-meta">
+                      <div class="t-name">Alyssa K.</div>
+                      <div class="t-date">12 June 2025</div>
+                      <div class="t-stars" aria-label="5 stars">
+                        ★★★★★ <span class="t-verify">✔</span>
+                      </div>
+                    </div>
+                    <div class="t-gmark" aria-hidden="true">G</div>
+                  </div>
+                  <p class="t-text">
+                    Booking was easy, the clinic felt modern and calm, and I
+                    didn’t feel rushed. Clear next steps and great follow-up.
+                  </p>
+                  <a class="t-more" href="#">Read more</a>
+                </article>
+
+                <article class="t-card t-feature">
+                  <p class="t-quote">
+                    “Concussion care was thorough and reassuring. The
+                    return-to-activity plan was super clear, and I felt supported
+                    the whole way.”
+                  </p>
+                  <div class="t-person">
+                    <img
+                      class="t-person-img"
+                      src="https://via.placeholder.com/72"
+                      alt="Taylor Reed"
+                    />
+                    <div>
+                      <div class="t-person-name">Taylor Reed</div>
+                      <div class="t-person-role">Student Athlete</div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <button
+                class="t-nav t-next"
+                type="button"
+                aria-label="Next testimonial"
+              >
+              
+              </button>
+            </div>
+
+            <div
+              class="t-dots"
+              id="tDots"
+              aria-label="Testimonial navigation"
+            ></div>
+          </div>
+        </section>
+      </main>
+
+          <footer class="site-footer" aria-label="Site footer">
+        <div class="container footer-inner reveal">
+          <!-- Left: Brand -->
+          <div class="footer-brand">
+            <a
+              class="footer-brand-stack"
+              href="index.html"
+              aria-label="Springbok Home"
+            >
+              <img
+                class="footer-brand-logo"
+                src="resources/logo1.png"
+                alt="Springbok Medical Clinic"
+              />
+              <div class="footer-brand-type">
+                <div class="footer-brand-name">SPRINGBOK</div>
+                <div class="footer-brand-sub">MEDICAL CLINIC</div>
+              </div>
+            </a>
+
+            <div class="footer-social" aria-label="Social links">
+              <a class="social-btn" href="#" aria-label="Instagram">⌁</a>
+              <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
+              <a class="social-btn" href="#" aria-label="Facebook">f</a>
+            </div>
+          </div>
+
+          <!-- Middle: Columns -->
+          <div class="footer-cols">
+            <div class="footer-col">
+              <h3>Pages</h3>
+              <a href="SpringbokHome.html">Home</a>
+              <a href="SpringbokAbout.html">About Us</a>
+              <a href="SpringbokContact.html">Contact</a>
+            </div>
+
+            <div class="footer-col">
+              <h3>Our Services</h3>
+              <a href="SpringbokClinic.html">Clinic</a>
+              <a href="SpringbokSpa.html">Medical Spa</a>
+              <a href="#">Sleep Clinic</a>
+              <a href="#">Concussion Care</a>
+            </div>
+
+            <div class="footer-col">
+              <h3>Our Team</h3>
+              <a href="SpringbokTeam.html">Meet the Team</a>
+              <a href="#">Physicians</a>
+              <a href="#">Nursing / Support</a>
+            </div>
+          </div>
+
+          <!-- Right: Contact -->
+          <div class="footer-contact">
+            <div class="footer-contact-block">
+              <p class="footer-contact-title">Springbok Medical Clinic</p>
+              <p>
+                147 16th St West, Suite #300<br />
+                North Vancouver, BC<br />
+                V7M 1T3
+              </p>
+              <a class="footer-link" href="#" target="_blank" rel="noopener"
+                >View Directions</a
+              >
+            </div>
+
+            <div class="footer-contact-block">
+              <p>
+                <a class="footer-link" href="tel:+17780000000"
+                  >+1 (778) 000-0000</a
+                >
+              </p>
+              <p>
+                <a class="footer-link" href="mailto:info@springbokclinic.ca"
+                  >info@springbokclinic.ca</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="container footer-bottom">
+          <p>
+            © <span id="footerYear"></span> Springbok Medical Clinic — All Rights
+            Reserved
+          </p>
+
+          <button
+            class="to-top"
+            type="button"
+            aria-label="Back to top"
+            id="toTopBtn"
+          >
+            ↑
+          </button>
+        </div>
+      </footer>
+
+
+      <script src="js/staffWheel.js"></script>
+      <script src="js/testimonials.js"></script>
+      
+      <script src="js/mobileMenu.js"></script>
+      <script src="js/footer.js"></script>
+      <script src="js/scrollReveal.js"></script>
+    </body>
+  </html>
