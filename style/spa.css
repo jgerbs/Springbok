@@ -886,12 +886,6 @@ html[data-brand="spa"] .spa-team{
   padding: 10px 0 90px;
 }
 
-html[data-brand="spa"] .spa-team-grid{
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-}
-
 /* Tile */
 html[data-brand="spa"] .spa-team-tile{
   position: relative;
@@ -904,9 +898,6 @@ html[data-brand="spa"] .spa-team-tile{
   border: 1px solid rgba(18, 18, 18, 0.10);
   background: rgba(255,255,255,0.75);
   box-shadow: var(--shadow);
-
-  transform: translateZ(0);
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }
 
 html[data-brand="spa"] .spa-team-bg{
@@ -1045,11 +1036,10 @@ html[data-brand="spa"] .spa-team-tile:focus-visible{
   outline-offset: 4px;
 }
 
-/* Responsive */
-@media (max-width: 1050px){
-  html[data-brand="spa"] .spa-team-grid{
-    grid-template-columns: 1fr;
-  }
+/* Mobile behavior:
+   base.css already stacks at <=1100px.
+   Here we only adjust tile sizing + show desc by default. */
+@media (max-width: 1100px){
   html[data-brand="spa"] .spa-team-tile{
     min-height: 560px;
   }
@@ -1059,6 +1049,35 @@ html[data-brand="spa"] .spa-team-tile:focus-visible{
     max-height: 140px;
   }
 }
+
+/* =========================
+   SPA TEAM + REVEAL-STAGGER FIX
+   ========================= */
+
+/* When the grid has reveal-stagger, animate the tiles themselves */
+html[data-brand="spa"] .spa-team-grid.reveal-stagger > .spa-team-tile{
+  /* reveal settings */
+  --reveal-y: 18px;
+  --reveal-dur: 1.5s;
+
+  opacity: 0;
+  transform: translateY(var(--reveal-y)) translateZ(0);
+
+  transition:
+    opacity var(--reveal-dur) ease,
+    transform var(--reveal-dur) cubic-bezier(.22,.61,.36,1),
+    box-shadow .22s ease,
+    border-color .22s ease;
+}
+
+/* When visible: fade/slide in, then switch hover speed back to normal */
+html[data-brand="spa"] .spa-team-grid.reveal-stagger.is-visible > .spa-team-tile{
+  --reveal-y: 0px;
+  --reveal-dur: .22s;
+
+  opacity: 1;
+}
+
 
 /* =========================================================
    SPA — Testimonials “wheel” (slow constant marquee)

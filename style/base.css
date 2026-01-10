@@ -147,6 +147,7 @@ img{ display:block; max-width:100%; }
     transform 1.5s cubic-bezier(.22,.61,.36,1);
 }
 
+
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   .reveal,
