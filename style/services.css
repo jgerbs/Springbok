@@ -348,3 +348,32 @@
     width: min(520px, 92vw);
   }
 }
+
+/* ===== Service tile corner logo + label (responsive) ===== */
+
+/* Corner slot (always stays in the same spot) */
+.service-tile .tile-corner{
+  position: absolute;
+  z-index: 3;
+  top: 22px;
+  right: 22px;
+  pointer-events: none;
+
+  /* this is what you resize */
+  width: clamp(200px, 7vw, 180px);
+  height: clamp(72px, 7vw, 180px);
+
+  display: grid;
+  place-items: center;
+}
+
+/* The image fills the slot */
+.service-tile .tile-corner-logo{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  opacity: .96;
+  filter: drop-shadow(0 12px 28px rgba(0,0,0,.45));
+}
+

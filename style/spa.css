@@ -1059,3 +1059,226 @@ html[data-brand="spa"] .spa-team-tile:focus-visible{
     max-height: 140px;
   }
 }
+
+/* =========================================================
+   SPA — Testimonials “wheel” (slow constant marquee)
+   Drop into style/spa.css
+   Uses your existing .testimonials markup + #tWheelTrack
+   ========================================================= */
+
+/* Section spacing (matches your spa sections) */
+html[data-brand="spa"] .testimonials{
+  position: relative;
+  padding: 70px 0 95px;
+  overflow: hidden;
+}
+
+/* Soft gold glow behind the strip */
+html[data-brand="spa"] .testimonials::before{
+  content:"";
+  position:absolute;
+  inset: -160px -140px auto -140px;
+  height: 520px;
+  background:
+    radial-gradient(900px 520px at 22% 40%, rgba(214,163,107,.20), transparent 62%),
+    radial-gradient(820px 520px at 86% 18%, rgba(214,163,107,.14), transparent 68%);
+  filter: blur(10px);
+  pointer-events:none;
+}
+
+/* The “wheel” viewport */
+html[data-brand="spa"] .t-wheel{
+  position: relative;
+  margin-top: 18px;
+  border-radius: 26px;
+  border: 1px solid rgba(18,18,18,.10);
+  background: rgba(255,255,255,.78);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  overflow: hidden;
+}
+
+/* Fade edges so you see “half” cards on both sides */
+html[data-brand="spa"] .t-wheel::before,
+html[data-brand="spa"] .t-wheel::after{
+  content:"";
+  position:absolute;
+  top: 0;
+  bottom: 0;
+  width: 110px;
+  z-index: 3;
+  pointer-events:none;
+}
+
+html[data-brand="spa"] .t-wheel::before{
+  left: 0;
+  background: linear-gradient(90deg, rgba(251,250,248,1), rgba(251,250,248,0));
+}
+
+html[data-brand="spa"] .t-wheel::after{
+  right: 0;
+  background: linear-gradient(270deg, rgba(251,250,248,1), rgba(251,250,248,0));
+}
+
+/* Track: continuous horizontal strip */
+html[data-brand="spa"] .t-wheel-track{
+  display: flex;
+  gap: 18px;
+  align-items: stretch;
+  will-change: transform;
+  /* animation lives in JS; keep track clean */
+}
+
+/* Card sizing: 3 fully shown, partial on edges */
+html[data-brand="spa"] .t-wheel-track .t-card{
+  flex: 0 0 360px;          /* card width */
+  min-height: 230px;
+  border-radius: 22px;
+  border: 1px solid rgba(18,18,18,.10);
+  background: rgba(255,255,255,.88);
+  box-shadow: var(--shadow-soft);
+  padding: 18px;
+}
+
+/* Typography tweaks to match spa */
+html[data-brand="spa"] .t-wheel-track .t-name{
+  font-weight: 900;
+  color: rgba(18,18,18,.92);
+}
+
+html[data-brand="spa"] .t-wheel-track .t-date{
+  color: rgba(18,18,18,.55);
+  font-size: .9rem;
+  margin-top: 2px;
+}
+
+html[data-brand="spa"] .t-wheel-track .t-text{
+  color: rgba(18,18,18,.72);
+  line-height: 1.65;
+  margin: 10px 0 10px;
+}
+
+html[data-brand="spa"] .t-wheel-track .t-more{
+  color: rgba(185,133,79,.98);
+  font-weight: 850;
+  text-decoration: none;
+}
+html[data-brand="spa"] .t-wheel-track .t-more:hover{
+  text-decoration: underline;
+}
+
+/* Google top row */
+html[data-brand="spa"] .t-wheel-track .t-top{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+html[data-brand="spa"] .t-wheel-track .t-avatar{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  background: rgba(214,163,107,.18);
+  border: 1px solid rgba(214,163,107,.28);
+  color: rgba(28,16,10,.92);
+}
+
+html[data-brand="spa"] .t-wheel-track .t-photo{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 1px solid rgba(18,18,18,.14);
+}
+
+html[data-brand="spa"] .t-wheel-track .t-stars{
+  margin-top: 8px;
+  letter-spacing: .06em;
+  font-weight: 900;
+  color: #d6a36b; /* gold stars */
+}
+
+html[data-brand="spa"] .t-wheel-track .t-verify{
+  margin-left: 6px;
+  color: rgba(185,133,79,.95);
+}
+
+html[data-brand="spa"] .t-wheel-track .t-gmark{
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  border: 1px solid rgba(18,18,18,.10);
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  color: rgba(18,18,18,.55);
+}
+
+/* Featured quote style */
+html[data-brand="spa"] .t-wheel-track .t-feature{
+  background:
+    radial-gradient(900px 650px at 0% 0%, rgba(214,163,107,.14), transparent 55%),
+    rgba(255,255,255,.88);
+}
+
+html[data-brand="spa"] .t-wheel-track .t-quote{
+  margin: 4px 0 16px;
+  color: rgba(18,18,18,.74);
+  font-style: italic;
+  line-height: 1.7;
+  text-align: center;
+}
+
+html[data-brand="spa"] .t-wheel-track .t-person{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: auto;
+}
+
+html[data-brand="spa"] .t-wheel-track .t-person-img{
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 1px solid rgba(18,18,18,.12);
+}
+
+html[data-brand="spa"] .t-wheel-track .t-person-name{
+  font-weight: 900;
+  color: rgba(18,18,18,.92);
+}
+
+html[data-brand="spa"] .t-wheel-track .t-person-role{
+  color: rgba(18,18,18,.56);
+  font-size: .92rem;
+}
+
+/* Pause animation when user hovers (your JS can toggle, but CSS helps too) */
+html[data-brand="spa"] .t-wheel:hover .t-wheel-track{
+  animation-play-state: paused;
+}
+
+/* Responsive: smaller cards */
+@media (max-width: 1050px){
+  html[data-brand="spa"] .t-wheel{
+    padding: 14px;
+    border-radius: 22px;
+  }
+
+  html[data-brand="spa"] .t-wheel::before,
+  html[data-brand="spa"] .t-wheel::after{
+    width: 70px;
+  }
+
+  html[data-brand="spa"] .t-wheel-track .t-card{
+    flex-basis: 78vw; /* big readable cards on mobile */
+  }
+}

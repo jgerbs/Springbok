@@ -1,57 +1,46 @@
-// Testimonials
-
+// js/testimonialsWheel.js
 (() => {
-  const track = document.getElementById("tTrack");
-  const dotsWrap = document.getElementById("tDots");
-  if (!track || !dotsWrap) return;
+  const track = document.getElementById("tWheelTrack");
+  if (!track) return;
 
-  const cards = Array.from(track.querySelectorAll(".t-card"));
-  const prevBtn = document.querySelector(".t-prev");
-  const nextBtn = document.querySelector(".t-next");
+  const cards = Array.from(track.children);
+  if (cards.length < 2) return;
 
-  function cardWidth() {
-    const first = cards[0];
-    const gap = parseFloat(getComputedStyle(track).gap || "0");
-    return first.getBoundingClientRect().width + gap;
+  // Duplicate content once for seamless looping
+  cards.forEach(card => track.appendChild(card.cloneNode(true)));
+
+  let x = 0;
+  let speed = 0.35; // <-- slower = smaller number (try 0.25 if you want slower)
+
+  // total width of original set only
+  const originalWidth = () => {
+    const half = track.children.length / 2;
+    let w = 0;
+    for (let i = 0; i < half; i++) {
+      w += track.children[i].getBoundingClientRect().width;
+      if (i !== half - 1) w += parseFloat(getComputedStyle(track).gap || "0");
+    }
+    return w;
+  };
+
+  let wrapW = 0;
+  const measure = () => (wrapW = originalWidth());
+  measure();
+  window.addEventListener("resize", measure);
+
+  // Pause on hover (also handled by CSS, but we’ll keep JS pause too)
+  let paused = false;
+  track.parentElement?.addEventListener("mouseenter", () => (paused = true));
+  track.parentElement?.addEventListener("mouseleave", () => (paused = false));
+
+  function tick() {
+    if (!paused) {
+      x -= speed;
+      if (Math.abs(x) >= wrapW) x = 0; // wrap seamlessly
+      track.style.transform = `translate3d(${x}px,0,0)`;
+    }
+    requestAnimationFrame(tick);
   }
 
-  // build dots
-  const pageCount = Math.max(1, Math.ceil(cards.length / 3)); // 3 visible desktop
-  dotsWrap.innerHTML = "";
-  const dots = Array.from({ length: pageCount }, (_, i) => {
-    const b = document.createElement("button");
-    b.className = "t-dot" + (i === 0 ? " is-active" : "");
-    b.type = "button";
-    b.setAttribute("aria-label", `Go to testimonials ${i + 1}`);
-    b.addEventListener("click", () => goToPage(i));
-    dotsWrap.appendChild(b);
-    return b;
-  });
-
-  function setActiveDot() {
-    const w = cardWidth();
-    const page = Math.round(track.scrollLeft / (w * 3));
-    dots.forEach((d, i) => d.classList.toggle("is-active", i === page));
-  }
-
-  function goToPage(i) {
-    const w = cardWidth();
-    track.scrollTo({ left: i * (w * 3), behavior: "smooth" });
-  }
-
-  prevBtn?.addEventListener("click", () => {
-    const w = cardWidth();
-    track.scrollBy({ left: -(w * 3), behavior: "smooth" });
-  });
-
-  nextBtn?.addEventListener("click", () => {
-    const w = cardWidth();
-    track.scrollBy({ left: w * 3, behavior: "smooth" });
-  });
-
-  track.addEventListener("scroll", () => {
-    window.requestAnimationFrame(setActiveDot);
-  });
-
-  window.addEventListener("resize", setActiveDot);
+  requestAnimationFrame(tick);
 })();

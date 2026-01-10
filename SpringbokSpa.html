@@ -312,76 +312,127 @@
         </div>
       </section>
 
-      <section class="testimonials" id="testimonials">
-        <div class="container reveal">
-          <div class="testimonials-head">
-            <h2>Client Testimonials</h2>
-          </div>
-
-          <div class="testimonials-shell">
-            <button
-              class="t-nav t-prev"
-              type="button"
-              aria-label="Previous testimonial"
-            >
-              ‹
-            </button>
-
-            <div class="t-track" id="tTrack">
-              <article class="t-card t-google">
-                <div class="t-top">
-                  <div class="t-avatar">N</div>
-                  <div class="t-meta">
-                    <div class="t-name">Nimfa Amparado</div>
-                    <div class="t-date">5 August 2025</div>
-                    <div class="t-stars" aria-label="5 stars">
-                      ★★★★★ <span class="t-verify">✔</span>
-                    </div>
-                  </div>
-                  <div class="t-gmark" aria-hidden="true">G</div>
-                </div>
-                <p class="t-text">
-                  The experience felt calm and professional. Clear next steps
-                  and very welcoming.
+        <!-- TESTIMONIALS (slow rotating wheel) -->
+        <section class="testimonials" id="testimonials">
+            <div class="container reveal">
+            <!-- Match your other section headers -->
+            <div class="section-head">
+                <span class="section-eyebrow">Testimonials</span>
+                <h2 class="section-title">Real experiences. Clear results.</h2>
+                <div class="section-divider"></div>
+                <p class="section-sub">
+                A few words from patients and clients who’ve visited Springbok.
                 </p>
-                <a class="t-more" href="#">Read more</a>
-              </article>
-
-              <article class="t-card t-feature">
-                <p class="t-quote">
-                  “Everything was explained clearly and the results were subtle
-                  and natural — exactly what I wanted.”
-                </p>
-                <div class="t-person">
-                  <img
-                    class="t-person-img"
-                    src="https://via.placeholder.com/72"
-                    alt="Jason Miller"
-                  />
-                  <div>
-                    <div class="t-person-name">Jason Miller</div>
-                    <div class="t-person-role">Software Engineer</div>
-                  </div>
-                </div>
-              </article>
             </div>
 
-            <button
-              class="t-nav t-next"
-              type="button"
-              aria-label="Next testimonial"
-            >
-              ›
-            </button>
-          </div>
+            <!-- Slow, constant wheel -->
+            <div class="t-wheel" aria-label="Testimonials rotating wheel">
+                <div class="t-wheel-track" id="tWheelTrack">
+                <!-- Card 1 (Google style) -->
+                <article class="t-card t-google">
+                    <div class="t-top">
+                    <div class="t-avatar">N</div>
+                    <div class="t-meta">
+                        <div class="t-name">Nimfa Amparado</div>
+                        <div class="t-date">5 August 2025</div>
+                        <div class="t-stars" aria-label="5 stars">
+                        ★★★★★ <span class="t-verify">✔</span>
+                        </div>
+                    </div>
+                    <div class="t-gmark" aria-hidden="true">G</div>
+                    </div>
 
-          <div
-            class="t-dots"
-            id="tDots"
-            aria-label="Testimonial navigation"
-          ></div>
-        </div>
-      </section>
+                    <p class="t-text">
+                    The doctor is really good and very gentle in putting needles. It’s for
+                    blood circulation and for stress. The result is awesome and I highly recommend.
+                    </p>
+
+                    <a class="t-more" href="#">Read more</a>
+                </article>
+
+                <!-- Card 2 (Google style) -->
+                <article class="t-card t-google">
+                    <div class="t-top">
+                    <img class="t-photo" src="https://via.placeholder.com/64" alt="" />
+                    <div class="t-meta">
+                        <div class="t-name">Shelly Point</div>
+                        <div class="t-date">24 July 2025</div>
+                        <div class="t-stars" aria-label="5 stars">
+                        ★★★★★ <span class="t-verify">✔</span>
+                        </div>
+                    </div>
+                    <div class="t-gmark" aria-hidden="true">G</div>
+                    </div>
+
+                    <p class="t-text">
+                    I’ve been here for facials and was greeted with such kindness. The staff were welcoming,
+                    professional, and the experience felt very relaxing.
+                    </p>
+
+                    <a class="t-more" href="#">Read more</a>
+                </article>
+
+                <!-- Card 3 (Featured quote style) -->
+                <article class="t-card t-feature">
+                    <p class="t-quote">
+                    “I came in with constant neck and shoulder tension from long hours at the desk.
+                    The plan was tailored to my routine, and improvements were noticeable within a few sessions.”
+                    </p>
+
+                    <div class="t-person">
+                    <img class="t-person-img" src="https://via.placeholder.com/72" alt="Jason Miller" />
+                    <div>
+                        <div class="t-person-name">Jason Miller</div>
+                        <div class="t-person-role">Software Engineer</div>
+                    </div>
+                    </div>
+                </article>
+
+                <!-- Card 4 (Google style) -->
+                <article class="t-card t-google">
+                    <div class="t-top">
+                    <div class="t-avatar" style="background: rgba(120,208,255,.14); border-color: rgba(120,208,255,.22);">
+                        A
+                    </div>
+                    <div class="t-meta">
+                        <div class="t-name">Alyssa K.</div>
+                        <div class="t-date">12 June 2025</div>
+                        <div class="t-stars" aria-label="5 stars">
+                        ★★★★★ <span class="t-verify">✔</span>
+                        </div>
+                    </div>
+                    <div class="t-gmark" aria-hidden="true">G</div>
+                    </div>
+
+                    <p class="t-text">
+                    Booking was easy, the clinic felt modern and calm, and I didn’t feel rushed.
+                    Clear next steps and great follow-up.
+                    </p>
+
+                    <a class="t-more" href="#">Read more</a>
+                </article>
+
+                <!-- Card 5 (Featured quote style) -->
+                <article class="t-card t-feature">
+                    <p class="t-quote">
+                    “Concussion care was thorough and reassuring. The return-to-activity plan was super clear,
+                    and I felt supported the whole way.”
+                    </p>
+
+                    <div class="t-person">
+                    <img class="t-person-img" src="https://via.placeholder.com/72" alt="Taylor Reed" />
+                    <div>
+                        <div class="t-person-name">Taylor Reed</div>
+                        <div class="t-person-role">Student Athlete</div>
+                    </div>
+                    </div>
+                </article>
+
+                <!-- OPTIONAL: add more .t-card items anytime -->
+                </div>
+            </div>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer" aria-label="Site footer">
@@ -484,6 +535,7 @@
 
     <script src="js/mobileMenu.js"></script>
     <script src="js/footer.js"></script>
+    <script src="js/testimonialsWheel.js"></script>
 
     <script src="js/contactModal.js"></script>
     <script src="js/scrollReveal.js"></script>
