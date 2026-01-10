@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" data-brand="clinic">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Springbok Medical Clinic | Home</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style/base.css" />
+    <link rel="stylesheet" href="style/header.css" />
+    <link rel="stylesheet" href="style/footer.css"/>
+    <link rel="stylesheet" href="style/home.css" />
+    <link rel="stylesheet" href="style/reviews.css" />
+    <link rel="stylesheet" href="style/mission.css" />
+    <link rel="stylesheet" href="style/services.css" />
+  </head>
+
+  <body>
+    <!-- NAV ONLY (always visible, pinned top-right) -->
+    <header class="site-header" aria-label="Site navigation">
+      <div class="header-right">
+        <nav class="nav-pill" aria-label="Main navigation">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link is-active" href="SpringbokAbout.html">About Us</a>
+          <a class="nav-link" href="SpringbokClinic.html">Clinic</a>
+          <a class="nav-link" href="SpringbokSpa.html">Spa</a>
+          <a class="nav-link" href="SpringbokTeam.html">Our Team</a>
+          <a class="nav-link" href="SpringbokContact.html">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="btn btn-accent book-cta" href="#">Book Now</a>
+
+          <!-- TODO (later): show only when mobile view is enabled -->
+          <button
+            class="icon-btn mobile-only"
+            id="mobileMenuBtn"
+            aria-label="Open menu"
+            aria-controls="mobilePanel"
+            aria-expanded="false"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+
+      <!-- TODO (later): mobile panel -->
+      <div class="container mobile-panel" id="mobilePanel">...</div>
+    </header>
+
+    <main>
+  <!-- HERO (About) -->
+  <section class="hero">
+    <a class="hero-brand" href="index.html" aria-label="Springbok Home">
+      <img
+        src="resources/logo1.png"
+        alt="Springbok Medical Clinic"
+        class="hero-logo"
+      />
+    </a>
+
+    <div class="hero-media" aria-hidden="true">
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        poster="resources/filler.jpg"
+      >
+        <source
+          src="resources/drvid2.mp4"
+          type="video/mp4"
+        />
+      </video>
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="container hero-content">
+      <h1>About Springbok</h1>
+      <p>
+        Modern medicine, delivered with clarity and care — built to feel calm,
+        human, and genuinely helpful.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-accent" href="SpringbokTeam.html">Meet the Team</a>
+        <a class="btn btn-outline" href="index.html#services">Explore Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDERS -->
+  <section class="services-tiles" id="founders">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-eyebrow">Founders</span>
+        <h2 class="section-title">Care built by people who practice it.</h2>
+        <div class="section-divider"></div>
+        <p class="section-sub">
+          Springbok was founded to raise the standard for everyday healthcare —
+          by combining evidence-based medicine with a calmer, more supportive patient experience.
+        </p>
+      </div>
+
+      <div class="tiles-grid grid-2">
+        <!-- Founder 1 -->
+        <a class="service-tile" href="#" aria-label="Dr. Ava Patel — Co-Founder">
+          <div class="tile-bg" style="background-image: url('resources/doc1.jpg')"></div>
+          <div class="tile-shade"></div>
+
+          <div class="tile-inner">
+            <div class="tile-top">
+              <span class="tile-dot"></span>
+              <span class="tile-tag">Co-Founder • Family Medicine</span>
+            </div>
+
+            <div class="tile-bottom">
+              <h3>Dr. Ava Patel</h3>
+              <p class="tile-desc">
+                Leads primary care and preventative care programs with a focus on clarity,
+                continuity, and long-term health planning.
+              </p>
+              <span class="tile-cta">View Bio <span class="tile-arrow">→</span></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Founder 2 -->
+        <a class="service-tile" href="#" aria-label="Dr. Marcus Chen — Co-Founder">
+          <div class="tile-bg" style="background-image: url('resources/doc2.webp')"></div>
+          <div class="tile-shade"></div>
+
+          <div class="tile-inner">
+            <div class="tile-top">
+              <span class="tile-dot"></span>
+              <span class="tile-tag">Co-Founder • Sports & Concussion</span>
+            </div>
+
+            <div class="tile-bottom">
+              <h3>Dr. Marcus Chen</h3>
+              <p class="tile-desc">
+                Built Springbok’s performance + concussion pathway — practical, evidence-based,
+                and centered on safe return-to-life planning.
+              </p>
+              <span class="tile-cta">View Bio <span class="tile-arrow">→</span></span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GOAL / MISSION -->
+  <section class="mission" id="mission">
+    <div class="container mission-grid">
+      <div class="mission-content">
+        <span class="mission-eyebrow">Goal & Mission</span>
+        <h2>
+          Clear next steps —
+          <br />without the overwhelm.
+        </h2>
+
+        <div class="mission-divider"></div>
+
+        <p>
+          Our goal is simple: make high-quality care easier to access, easier to understand,
+          and easier to follow through on. We’ve built a clinic experience that’s modern, organized,
+          and designed around what patients actually need — time, clarity, and support.
+        </p>
+
+        <p>
+          Whether you’re navigating sleep concerns, concussion recovery, or wellness goals,
+          we focus on evidence-based recommendations and a plan that feels realistic to your life.
+        </p>
+
+        <div class="hero-actions" style="margin-top:18px;">
+          <a class="btn btn-accent" href="SpringbokContact.html">Contact Us</a>
+          <a class="btn btn-outline" href="index.html#testimonials">Read Reviews</a>
+        </div>
+      </div>
+
+      <!-- Image on right -->
+      <div class="mission-media">
+        <div
+          class="mission-media-inner"
+          style="background-image: url('resources/filler.jpg');"
+          role="img"
+          aria-label="Springbok clinic interior"
+        ></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="services-tiles" id="why">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-eyebrow">Why Choose Us?</span>
+        <h2 class="section-title">A higher standard, without the hassle.</h2>
+        <div class="section-divider"></div>
+        <p class="section-sub">
+          We’re built for people who want premium care — with practical next steps and a calm, modern experience.
+        </p>
+      </div>
+
+      <div class="tiles-grid grid-3">
+        <!-- Reason 1 -->
+        <div class="service-tile" role="group" aria-label="Physician-led care">
+          <div class="tile-bg" style="background-image: url('resources/filler.jpg')"></div>
+          <div class="tile-shade"></div>
+          <div class="tile-inner">
+            <div class="tile-top">
+              <span class="tile-dot"></span>
+              <span class="tile-tag">Physician-led</span>
+            </div>
+            <div class="tile-bottom">
+              <h3>Clinically rigorous, human delivery.</h3>
+              <p class="tile-desc">
+                Evidence-based plans, clear education, and a team that takes the time to explain your options.
+              </p>
+              <span class="tile-cta">What that means <span class="tile-arrow">→</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reason 2 -->
+        <div class="service-tile" role="group" aria-label="Clear next steps">
+          <div class="tile-bg" style="background-image: url('resources/filler.jpg')"></div>
+          <div class="tile-shade"></div>
+          <div class="tile-inner">
+            <div class="tile-top">
+              <span class="tile-dot"></span>
+              <span class="tile-tag">Clarity First</span>
+            </div>
+            <div class="tile-bottom">
+              <h3>Plans you can actually follow.</h3>
+              <p class="tile-desc">
+                No vague advice. You leave with a structured plan, timelines, and follow-up so you stay on track.
+              </p>
+              <span class="tile-cta">Our approach <span class="tile-arrow">→</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reason 3 -->
+        <div class="service-tile" role="group" aria-label="Modern experience">
+          <div class="tile-bg" style="background-image: url('resources/filler.jpg')"></div>
+          <div class="tile-shade"></div>
+          <div class="tile-inner">
+            <div class="tile-top">
+              <span class="tile-dot"></span>
+              <span class="tile-tag">Modern Experience</span>
+            </div>
+            <div class="tile-bottom">
+              <h3>Organized, calm, and efficient.</h3>
+              <p class="tile-desc">
+                Streamlined booking, thoughtful intake, and a clinic environment that feels premium — not stressful.
+              </p>
+              <span class="tile-cta">See how <span class="tile-arrow">→</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:26px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="btn btn-accent" href="index.html#services">Browse Services</a>
+        <a class="btn btn-outline" href="SpringbokContact.html">Ask a Question</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+        <footer class="site-footer" aria-label="Site footer">
+      <div class="container footer-inner">
+        <!-- Left: Brand -->
+        <div class="footer-brand">
+          <a
+            class="footer-brand-stack"
+            href="index.html"
+            aria-label="Springbok Home"
+          >
+            <img
+              class="footer-brand-logo"
+              src="resources/logo1.png"
+              alt="Springbok Medical Clinic"
+            />
+            <div class="footer-brand-type">
+              <div class="footer-brand-name">SPRINGBOK</div>
+              <div class="footer-brand-sub">MEDICAL CLINIC</div>
+            </div>
+          </a>
+
+          <div class="footer-social" aria-label="Social links">
+            <a class="social-btn" href="#" aria-label="Instagram">⌁</a>
+            <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
+            <a class="social-btn" href="#" aria-label="Facebook">f</a>
+          </div>
+        </div>
+
+        <!-- Middle: Columns -->
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h3>Pages</h3>
+            <a href="index.html">Home</a>
+            <a href="SpringbokAbout.html">About Us</a>
+            <a href="SpringbokContact.html">Contact</a>
+          </div>
+
+          <div class="footer-col">
+            <h3>Our Services</h3>
+            <a href="SpringbokClinic.html">Clinic</a>
+            <a href="SpringbokSpa.html">Medical Spa</a>
+            <a href="#">Sleep Clinic</a>
+            <a href="#">Concussion Care</a>
+          </div>
+
+          <div class="footer-col">
+            <h3>Our Team</h3>
+            <a href="SpringbokTeam.html">Meet the Team</a>
+            <a href="#">Physicians</a>
+            <a href="#">Nursing / Support</a>
+          </div>
+        </div>
+
+        <!-- Right: Contact -->
+        <div class="footer-contact">
+          <div class="footer-contact-block">
+            <p class="footer-contact-title">Springbok Medical Clinic</p>
+            <p>
+              147 16th St West, Suite #300<br />
+              North Vancouver, BC<br />
+              V7M 1T3
+            </p>
+            <a class="footer-link" href="#" target="_blank" rel="noopener"
+              >View Directions</a
+            >
+          </div>
+
+          <div class="footer-contact-block">
+            <p>
+              <a class="footer-link" href="tel:+17780000000"
+                >+1 (778) 000-0000</a
+              >
+            </p>
+            <p>
+              <a class="footer-link" href="mailto:info@springbokclinic.ca"
+                >info@springbokclinic.ca</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <p>
+          © <span id="footerYear"></span> Springbok Medical Clinic — All Rights
+          Reserved
+        </p>
+
+        <button
+          class="to-top"
+          type="button"
+          aria-label="Back to top"
+          id="toTopBtn"
+        >
+          ↑
+        </button>
+      </div>
+    </footer>
+
+    <script>
+      // footer helpers
+      document.getElementById("footerYear").textContent =
+        new Date().getFullYear();
+
+      const toTopBtn = document.getElementById("toTopBtn");
+      toTopBtn?.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    </script>
+
+    <script src="main.js"></script>
+  </body>
+</html>

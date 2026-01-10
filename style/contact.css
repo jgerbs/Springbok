@@ -1,0 +1,165 @@
+/* =========================================================
+   CONTACT PAGE LAYOUT (Clinic theme)
+   Uses your existing base/header/home hero styling.
+   Only adds contact-specific layout + small hero tweaks.
+   ========================================================= */
+
+.hero--contact .contact-kicker{
+  display: inline-block;
+  margin-bottom: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: .78rem;
+  color: rgba(255,255,255,.78);
+}
+
+/* Make hero text area feel more “contact page” like the reference */
+.hero--contact .hero-content h1{
+  max-width: 22ch;
+}
+
+.hero--contact .hero-content p{
+  max-width: 64ch;
+}
+
+/* =========================
+   CONTACT SECTION (2-col)
+   ========================= */
+.contact-block{
+  padding: 70px 0 100px;
+}
+
+/* Two columns like the reference: info left, map right */
+.contact-grid{
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 26px;
+  align-items: stretch;
+}
+
+.contact-card{
+  border-radius: 26px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(12, 14, 16, .55);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 60px rgba(0,0,0,.35);
+  padding: 28px;
+  color: rgba(255,255,255,.92);
+}
+
+.contact-head h2{
+  margin: 0 0 10px;
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  letter-spacing: -.02em;
+}
+
+.contact-head p{
+  margin: 0 0 18px;
+  color: rgba(255,255,255,.72);
+  line-height: 1.7;
+  max-width: 62ch;
+}
+
+.contact-list{
+  display: grid;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.contact-item{
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 14px;
+  padding: 14px 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
+}
+
+.contact-label{
+  font-weight: 800;
+  color: rgba(255,255,255,.70);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: .72rem;
+  padding-top: 2px;
+}
+
+.contact-value{
+  color: rgba(255,255,255,.90);
+  line-height: 1.6;
+}
+
+.contact-value a{
+  color: rgba(255,255,255,.92);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(18,192,138,.35);
+}
+.contact-value a:hover{
+  border-bottom-color: rgba(18,192,138,.70);
+}
+
+/* hours table-ish look */
+.hours{
+  display: grid;
+  gap: 8px;
+}
+.hours > div{
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: rgba(255,255,255,.84);
+}
+.hours span:first-child{
+  color: rgba(255,255,255,.72);
+}
+
+.contact-actions{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+/* =========================
+   MAP CARD
+   ========================= */
+.map-card{
+  border-radius: 26px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(12, 14, 16, .55);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 60px rgba(0,0,0,.35);
+}
+
+.map-shell{
+  height: 100%;
+  min-height: 520px;
+}
+
+.map-shell iframe{
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  filter: saturate(1.05) contrast(1.03);
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 1050px){
+  .contact-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .map-shell{
+    min-height: 420px;
+  }
+
+  .contact-item{
+    grid-template-columns: 1fr;
+  }
+}

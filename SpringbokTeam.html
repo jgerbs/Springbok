@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en" data-brand="clinic">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Springbok Medical Clinic | Home</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style/base.css" />
+    <link rel="stylesheet" href="style/footer.css" />
+    <link rel="stylesheet" href="style/header.css" />
+    <link rel="stylesheet" href="style/home.css" />
+    <link rel="stylesheet" href="style/reviews.css" />
+    <link rel="stylesheet" href="style/mission.css" />
+    <link rel="stylesheet" href="style/services.css" />
+    <link rel="stylesheet" href="style/team.css" />
+  </head>
+
+  <body>
+    <!-- NAV ONLY (always visible, pinned top-right) -->
+    <header class="site-header" aria-label="Site navigation">
+      <div class="header-right">
+        <nav class="nav-pill" aria-label="Main navigation">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="SpringbokAbout.html">About Us</a>
+          <a class="nav-link" href="SpringbokClinic.html">Clinic</a>
+          <a class="nav-link" href="SpringbokSpa.html">Spa</a>
+          <a class="nav-link is-active" href="SpringbokTeam.html">Our Team</a>
+          <a class="nav-link" href="SpringbokContact.html">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="btn btn-accent book-cta" href="#">Book Now</a>
+
+          <!-- TODO (later): show only when mobile view is enabled -->
+          <button
+            class="icon-btn mobile-only"
+            id="mobileMenuBtn"
+            aria-label="Open menu"
+            aria-controls="mobilePanel"
+            aria-expanded="false"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+
+      <!-- TODO (later): mobile panel -->
+      <div class="container mobile-panel" id="mobilePanel">...</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <!-- LOGO: part of HERO visually, but fixed top-left -->
+        <a
+          class="hero-brand"
+          href="SpringbokHome.html"
+          aria-label="Springbok Home"
+        >
+          <img
+            src="resources/logo1.png"
+            alt="Springbok Medical Clinic"
+            class="hero-logo"
+          />
+        </a>
+
+        <div class="hero-media" aria-hidden="true">
+          <video
+            class="hero-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="resources/team.jpg"
+          >
+            <source src="resources/" type="video/mp4" />
+          </video>
+          <div class="hero-overlay"></div>
+        </div>
+
+        <div class="container hero-content">
+          <h1>Empowering you to look, feel, and live your absolute best.</h1>
+          <p>
+            Premium, modern care with clear next steps. Explore our clinics, or
+            book directly in seconds.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-accent" href="#">Book Now</a>
+            <a class="btn btn-outline" href="#">Explore Services</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="mission">
+        <div class="container mission-grid">
+          <!-- Left: Statement -->
+          <div class="mission-content">
+            <span class="mission-eyebrow">Our Mission</span>
+            <h2>
+              Empowering modern healthcare —
+              <br />with clarity, compassion, and confidence.
+            </h2>
+
+            <div class="mission-divider"></div>
+
+            <p>
+              Springbok Medical Clinic blends evidence-based medicine with
+              personalized care to support your health at every stage of life.
+              From specialized clinics to wellness and aesthetics, our approach
+              removes barriers, prioritizes prevention, and delivers clear next
+              steps — without overwhelm.
+            </p>
+
+            <p>
+              We believe healthcare should feel human, informed, and empowering
+              — never rushed or confusing.
+            </p>
+
+            <a href="SpringbokAbout.html" class="btn btn-outline mission-cta">
+              Learn More About Our Approach
+            </a>
+          </div>
+
+          <!-- Right: Visual / Video Placeholder -->
+          <div class="mission-media">
+            <div
+              class="mission-media-inner"
+              style="background-image: url('resources/amor.jpg')"
+              role="img"
+              aria-label="Clinic mission imagery"
+            >
+              <!-- Optional: keep play button for future video -->
+              <!-- <span class="play-btn" aria-hidden="true">▶</span> -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TEAM (Vertical tiles) -->
+      <section class="team-tiles" id="team">
+        <div class="container">
+          <div class="section-head">
+            <span class="section-eyebrow">Our Team</span>
+            <h2 class="section-title">Four doctors. One standard of care.</h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">
+              Physician-led care with clear next steps — designed around your
+              goals.
+            </p>
+          </div>
+
+          <div class="tiles-grid grid-2">
+            <!-- Doctor 1 -->
+            <a
+              class="team-tile"
+              href="#"
+              aria-label="Dr. Ava Patel — Family Medicine"
+            >
+              <div
+                class="tile-bg"
+                style="background-image: url('resources/doc1.jpg')"
+              ></div>
+              <div class="tile-shade"></div>
+
+              <div class="tile-inner">
+                <div class="tile-top">
+                  <span class="tile-dot"></span>
+                  <span class="tile-tag">Family Medicine</span>
+                </div>
+
+                <div class="tile-bottom">
+                  <h3>Dr. Ava Patel</h3>
+                  <p class="tile-desc">
+                    Preventative care, primary care visits, and long-term health
+                    planning — focused on clarity and continuity.
+                  </p>
+                  <span class="tile-cta"
+                    >View Profile <span class="tile-arrow">→</span></span
+                  >
+                </div>
+              </div>
+            </a>
+
+            <!-- Doctor 2 -->
+            <a
+              class="team-tile"
+              href="#"
+              aria-label="Dr. Marcus Chen — Sports & Concussion"
+            >
+              <div
+                class="tile-bg"
+                style="background-image: url('resources/doc2.webp')"
+              ></div>
+              <div class="tile-shade"></div>
+
+              <div class="tile-inner">
+                <div class="tile-top">
+                  <span class="tile-dot"></span>
+                  <span class="tile-tag">Sports &amp; Concussion</span>
+                </div>
+
+                <div class="tile-bottom">
+                  <h3>Dr. Marcus Chen</h3>
+                  <p class="tile-desc">
+                    Evidence-based concussion assessment, symptom tracking, and
+                    return-to-activity plans that feel confident and realistic.
+                  </p>
+                  <span class="tile-cta"
+                    >View Profile <span class="tile-arrow">→</span></span
+                  >
+                </div>
+              </div>
+            </a>
+
+            <!-- Doctor 3 -->
+            <a
+              class="team-tile"
+              href="#"
+              aria-label="Dr. Sofia Reynolds — Wellness & Aesthetics"
+            >
+              <div
+                class="tile-bg"
+                style="background-image: url('resources/doc3.jpg')"
+              ></div>
+              <div class="tile-shade"></div>
+
+              <div class="tile-inner">
+                <div class="tile-top">
+                  <span class="tile-dot"></span>
+                  <span class="tile-tag">Wellness &amp; Aesthetics</span>
+                </div>
+
+                <div class="tile-bottom">
+                  <h3>Dr. Sofia Reynolds</h3>
+                  <p class="tile-desc">
+                    Physician-led wellness and aesthetic care built around
+                    natural results, safety, and a plan you understand.
+                  </p>
+                  <span class="tile-cta"
+                    >View Profile <span class="tile-arrow">→</span></span
+                  >
+                </div>
+              </div>
+            </a>
+
+            <!-- Doctor 4 -->
+            <a
+              class="team-tile"
+              href="#"
+              aria-label="Dr. Sofia Reynolds — Wellness & Aesthetics"
+            >
+              <div
+                class="tile-bg"
+                style="background-image: url('resources/doc4.jpg')"
+              ></div>
+              <div class="tile-shade"></div>
+
+              <div class="tile-inner">
+                <div class="tile-top">
+                  <span class="tile-dot"></span>
+                  <span class="tile-tag">Wellness &amp; Aesthetics</span>
+                </div>
+
+                <div class="tile-bottom">
+                  <h3>Dr. Sofia Reynolds</h3>
+                  <p class="tile-desc">
+                    Physician-led wellness and aesthetic care built around
+                    natural results, safety, and a plan you understand.
+                  </p>
+                  <span class="tile-cta"
+                    >View Profile <span class="tile-arrow">→</span></span
+                  >
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="services-tiles">
+        <div class="container">
+          <!-- NEW: Services header -->
+          <div class="section-head">
+            <span class="section-eyebrow">Our Team</span>
+            <h2 class="section-title">Everyone who keeps the show going.</h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">
+              Explore specialized clinics and physician-led wellness options —
+              built around clear next steps.
+            </p>
+          </div>
+
+          <div class="tiles-grid grid-3">
+        <!-- Staff 1 -->
+        <a
+          class="service-tile"
+          href="#"
+          aria-label="Emma Lawson — Registered Nurse"
+        >
+          <div
+            class="tile-bg"
+            style="background-image: url('resources/staff1.jpg')"
+          ></div>
+          <div class="tile-shade"></div>
+
+          <div class="tile-inner">
+            <div class="tile-top">
+              <span class="tile-dot"></span>
+              <span class="tile-tag">Registered Nurse</span>
+            </div>
+
+            <div class="tile-bottom">
+              <h3>Emma Lawson, RN</h3>
+              <p class="tile-desc">
+                Clinical support across sleep and concussion services, focused
+                on patient comfort, education, and follow-up care.
+              </p>
+              <span class="tile-cta"
+                >View Profile <span class="tile-arrow">→</span></span
+              >
+            </div>
+          </div>
+        </a>
+
+        <!-- Staff 2 -->
+        <a
+          class="service-tile"
+          href="#"
+          aria-label="Daniel Brooks — Clinic Coordinator"
+        >
+          <div
+            class="tile-bg"
+            style="background-image: url('resources/staff2.jpg')"
+          ></div>
+          <div class="tile-shade"></div>
+
+          <div class="tile-inner">
+            <div class="tile-top">
+              <span class="tile-dot"></span>
+              <span class="tile-tag">Clinic Operations</span>
+            </div>
+
+            <div class="tile-bottom">
+              <h3>Daniel Brooks</h3>
+              <p class="tile-desc">
+                Oversees daily clinic operations, scheduling flow, and
+                coordination between patients, providers, and diagnostics.
+              </p>
+              <span class="tile-cta"
+                >View Profile <span class="tile-arrow">→</span></span
+              >
+            </div>
+          </div>
+        </a>
+
+        <!-- Staff 3 -->
+        <a
+          class="service-tile"
+          href="#"
+          aria-label="Sophie Nguyen — Medical Office Assistant"
+        >
+          <div
+            class="tile-bg"
+            style="background-image: url('resources/staff3.jpg')"
+          ></div>
+          <div class="tile-shade"></div>
+
+          <div class="tile-inner">
+            <div class="tile-top">
+              <span class="tile-dot"></span>
+              <span class="tile-tag">Front Desk</span>
+            </div>
+
+            <div class="tile-bottom">
+              <h3>Sophie Nguyen</h3>
+              <p class="tile-desc">
+                First point of contact for patients — managing bookings, intake,
+                and ensuring every visit starts smoothly.
+              </p>
+              <span class="tile-cta"
+                >View Profile <span class="tile-arrow">→</span></span
+              >
+            </div>
+          </div>
+        </a>
+
+        <!-- Staff 4 -->
+        <a
+          class="service-tile"
+          href="#"
+          aria-label="Michael Carter — Licensed Practical Nurse"
+        >
+          <div
+            class="tile-bg"
+            style="background-image: url('resources/staff4.jpg')"
+          ></div>
+          <div class="tile-shade"></div>
+
+          <div class="tile-inner">
+            <div class="tile-top">
+              <span class="tile-dot"></span>
+              <span class="tile-tag">Licensed Practical Nurse</span>
+            </div>
+
+            <div class="tile-bottom">
+              <h3>Michael Carter, LPN</h3>
+              <p class="tile-desc">
+                Supports patient assessments, vitals, and treatment prep with a
+                focus on efficiency and clear communication.
+              </p>
+              <span class="tile-cta"
+                >View Profile <span class="tile-arrow">→</span></span
+              >
+            </div>
+          </div>
+        </a>
+
+        <!-- Staff 5 -->
+        <a
+          class="service-tile"
+          href="#"
+          aria-label="Rachel Moore — Patient Care Coordinator"
+        >
+          <div
+            class="tile-bg"
+            style="background-image: url('resources/staff5.webp')"
+          ></div>
+          <div class="tile-shade"></div>
+
+          <div class="tile-inner">
+            <div class="tile-top">
+              <span class="tile-dot"></span>
+              <span class="tile-tag">Patient Care</span>
+            </div>
+
+            <div class="tile-bottom">
+              <h3>Rachel Moore</h3>
+              <p class="tile-desc">
+                Guides patients through next steps, follow-ups, and care plans —
+                ensuring nothing falls through the cracks.
+              </p>
+              <span class="tile-cta"
+                >View Profile <span class="tile-arrow">→</span></span
+              >
+            </div>
+          </div>
+        </a>
+
+        <!-- Staff 6 -->
+        <a
+          class="service-tile"
+          href="#"
+          aria-label="Alex Turner — Medical Aesthetics Assistant"
+        >
+          <div
+            class="tile-bg"
+            style="background-image: url('resources/staff6.jpg')"
+          ></div>
+          <div class="tile-shade"></div>
+
+          <div class="tile-inner">
+            <div class="tile-top">
+              <span class="tile-dot"></span>
+              <span class="tile-tag">Aesthetics Support</span>
+            </div>
+
+            <div class="tile-bottom">
+              <h3>Alex Turner</h3>
+              <p class="tile-desc">
+                Assists with medical spa treatments, patient prep, and
+                post-procedure care with a calm, detail-oriented approach.
+              </p>
+              <span class="tile-cta"
+                >View Profile <span class="tile-arrow">→</span></span
+              >
+            </div>
+          </div>
+        </a>
+      </div>
+      
+    </main>
+
+    <footer class="site-footer" aria-label="Site footer">
+      <div class="container footer-inner">
+        <!-- Left: Brand -->
+        <div class="footer-brand">
+          <a
+            class="footer-brand-stack"
+            href="index.html"
+            aria-label="Springbok Home"
+          >
+            <img
+              class="footer-brand-logo"
+              src="resources/logo1.png"
+              alt="Springbok Medical Clinic"
+            />
+            <div class="footer-brand-type">
+              <div class="footer-brand-name">SPRINGBOK</div>
+              <div class="footer-brand-sub">MEDICAL CLINIC</div>
+            </div>
+          </a>
+
+          <div class="footer-social" aria-label="Social links">
+            <a class="social-btn" href="#" aria-label="Instagram">⌁</a>
+            <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
+            <a class="social-btn" href="#" aria-label="Facebook">f</a>
+          </div>
+        </div>
+
+        <!-- Middle: Columns -->
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h3>Pages</h3>
+            <a href="index.html">Home</a>
+            <a href="SpringbokAbout.html">About Us</a>
+            <a href="SpringbokContact.html">Contact</a>
+          </div>
+
+          <div class="footer-col">
+            <h3>Our Services</h3>
+            <a href="SpringbokClinic.html">Clinic</a>
+            <a href="SpringbokSpa.html">Medical Spa</a>
+            <a href="#">Sleep Clinic</a>
+            <a href="#">Concussion Care</a>
+          </div>
+
+          <div class="footer-col">
+            <h3>Our Team</h3>
+            <a href="SpringbokTeam.html">Meet the Team</a>
+            <a href="#">Physicians</a>
+            <a href="#">Nursing / Support</a>
+          </div>
+        </div>
+
+        <!-- Right: Contact -->
+        <div class="footer-contact">
+          <div class="footer-contact-block">
+            <p class="footer-contact-title">Springbok Medical Clinic</p>
+            <p>
+              147 16th St West, Suite #300<br />
+              North Vancouver, BC<br />
+              V7M 1T3
+            </p>
+            <a class="footer-link" href="#" target="_blank" rel="noopener"
+              >View Directions</a
+            >
+          </div>
+
+          <div class="footer-contact-block">
+            <p>
+              <a class="footer-link" href="tel:+17780000000"
+                >+1 (778) 000-0000</a
+              >
+            </p>
+            <p>
+              <a class="footer-link" href="mailto:info@springbokclinic.ca"
+                >info@springbokclinic.ca</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <p>
+          © <span id="footerYear"></span> Springbok Medical Clinic — All Rights
+          Reserved
+        </p>
+
+        <button
+          class="to-top"
+          type="button"
+          aria-label="Back to top"
+          id="toTopBtn"
+        >
+          ↑
+        </button>
+      </div>
+    </footer>
+
+    <script>
+      // footer helpers
+      document.getElementById("footerYear").textContent =
+        new Date().getFullYear();
+
+      const toTopBtn = document.getElementById("toTopBtn");
+      toTopBtn?.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    </script>
+
+    <script src="main.js"></script>
+  </body>
+</html>

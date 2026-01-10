@@ -1,0 +1,149 @@
+/* =========================
+   Mission Statement
+   ========================= */
+.mission{
+  position: relative;
+  padding: 110px 0;
+  overflow: hidden;
+}
+
+/* subtle background glow */
+.mission::before{
+  content:"";
+  position:absolute;
+  inset: -120px -120px auto -120px;
+  height: 420px;
+  background:
+    radial-gradient(700px 400px at 20% 40%, rgba(18,192,138,.16), transparent 60%),
+    radial-gradient(700px 400px at 80% 10%, rgba(197,138,99,.10), transparent 65%);
+  pointer-events:none;
+}
+
+/* layout */
+.mission-grid{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: clamp(40px, 6vw, 90px);
+  align-items:center;
+}
+
+/* text */
+.mission-eyebrow{
+  display:inline-block;
+  margin-bottom: 14px;
+  font-size: .85rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.mission h2{
+  margin: 0 0 18px;
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  max-width: 22ch;
+}
+
+.mission-divider{
+  width: 64px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  margin: 18px 0 22px;
+  border-radius: 2px;
+}
+
+.mission p{
+  color: rgba(255,255,255,.76);
+  line-height: 1.75;
+  max-width: 58ch;
+  margin: 0 0 18px;
+}
+
+.mission-cta{
+  margin-top: 10px;
+}
+
+/* media block */
+.mission-media{
+  position: relative;
+}
+
+.mission-media-inner{
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.65)),
+    url("resources/filler.jpg") center / cover no-repeat;
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 24px 70px rgba(0,0,0,.55);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* play button (optional video later) */
+.play-btn{
+  width: 78px;
+  height: 78px;
+  border-radius: 999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size: 22px;
+  color: #04140e;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  box-shadow: 0 18px 45px rgba(0,0,0,.45);
+}
+
+/* responsive */
+@media (max-width: 900px){
+  .mission-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .mission-media{
+    order: -1;
+  }
+
+  .mission-media-inner{
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+.mission-media{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.mission-media-inner{
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 4 / 5;
+  border-radius: 26px;
+  overflow: hidden;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  box-shadow: var(--shadow-soft);
+  position: relative;
+}
+
+/* Optional dark gradient for text contrast if needed later */
+.mission-media-inner::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,.15),
+    rgba(0,0,0,.35)
+  );
+  pointer-events:none;
+}

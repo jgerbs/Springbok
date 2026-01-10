@@ -1,0 +1,87 @@
+/* =========================
+   TEAM (Vertical tiles)
+   Uses same tile classes (tile-bg, tile-shade, tile-inner...) so it matches services
+   ========================= */
+
+.team-tiles{
+  padding: 56px 0 90px;
+}
+
+/* Vertical stack */
+.team-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+/* A “service-tile” clone, but tuned for team */
+.team-tile{
+  position: relative;
+  display: block;
+  border-radius: 22px;
+  overflow: hidden;
+  min-height: 260px;         /* smaller than services tiles */
+  isolation: isolate;
+
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: var(--shadow);
+  transform: translateZ(0);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+/* Reuse your existing .tile-bg / .tile-shade / .tile-inner styles from services.css */
+.team-tile .tile-bg{
+  transform: scale(1.02);
+  transition: transform .35s ease, filter .35s ease;
+}
+
+.team-tile:hover{
+  transform: translateY(-6px);
+  border-color: rgba(18,192,138,.35);
+  box-shadow: 0 26px 90px rgba(0,0,0,.28);
+  z-index: 5;
+}
+
+.team-tile:hover .tile-bg{
+  transform: scale(1.06);
+  filter: saturate(1.03) contrast(1.03);
+}
+
+/* Make the reveal feel like Services tiles */
+.team-tile:hover .tile-bottom h3{
+  transform: translateY(-6px);
+}
+
+.team-tile:hover .tile-desc{
+  max-height: 120px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.team-tile:hover .tile-arrow{
+  transform: translateX(3px);
+  background: rgba(18,192,138,.18);
+  border-color: rgba(18,192,138,.28);
+}
+
+/* Always show the name/tag; only reveal description on hover (desktop) */
+.team-tile .tile-desc{
+  margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: max-height .28s ease, opacity .22s ease, transform .22s ease;
+}
+
+/* Mobile: show description by default (no hover) */
+@media (max-width: 900px){
+  .team-tile{
+    min-height: 320px;
+  }
+  .team-tile .tile-desc{
+    max-height: 140px;
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" data-brand="clinic">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Springbok Medical Clinic | Contact</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- keep your existing stack -->
+    <link rel="stylesheet" href="style/base.css" />
+    <link rel="stylesheet" href="style/footer.css"/>
+    <link rel="stylesheet" href="style/header.css" />
+    <link rel="stylesheet" href="style/home.css" />
+
+    <!-- new: contact-only layout -->
+    <link rel="stylesheet" href="style/contact.css" />
+  </head>
+
+  <body>
+    <!-- NAV ONLY (always visible, pinned top-right) -->
+    <header class="site-header" aria-label="Site navigation">
+      <div class="header-right">
+        <nav class="nav-pill" aria-label="Main navigation">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="SpringbokAbout.html">About Us</a>
+          <a class="nav-link" href="SpringbokClinic.html">Clinic</a>
+          <a class="nav-link" href="SpringbokSpa.html">Spa</a>
+          <a class="nav-link" href="SpringbokTeam.html">Our Team</a>
+          <a class="nav-link is-active" href="SpringbokContact.html">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="btn btn-accent book-cta" href="#">Book Now</a>
+
+          <button
+            class="icon-btn mobile-only"
+            id="mobileMenuBtn"
+            aria-label="Open menu"
+            aria-controls="mobilePanel"
+            aria-expanded="false"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+
+      <div class="container mobile-panel" id="mobilePanel">...</div>
+    </header>
+
+    <main>
+      <!-- HERO (same structure as home; content changed for Contact) -->
+      <section class="hero hero--contact">
+        <a class="hero-brand" href="SpringbokHome.html" aria-label="Springbok Home">
+          <img
+            src="resources/logo1.png"
+            alt="Springbok Medical Clinic"
+            class="hero-logo"
+          />
+        </a>
+
+        <div class="hero-media" aria-hidden="true">
+          <video
+            class="hero-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="resources/building.jpg"
+          >
+            <source
+              src="resources/"
+              type="video/mp4"
+            />
+          </video>
+          <div class="hero-overlay"></div>
+        </div>
+
+        <div class="container hero-content">
+          <span class="contact-kicker">CONTACT US</span>
+          <h1>Contact us easily — online, by phone, or by dropping in.</h1>
+
+          <p>
+            Questions, bookings, or referrals — reach out and we’ll point you in the right direction.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-accent" href="#">Book Online</a>
+            <a class="btn btn-outline" href="tel:7787466460">Call 778-746-6460</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT SECTION (two-column like your reference) -->
+      <section class="contact-block" aria-label="Contact Information">
+        <div class="container contact-grid">
+          <!-- Left card -->
+          <div class="contact-card">
+            <div class="contact-head">
+              <h2>Contact Information</h2>
+              <p>
+                Learn more about our clinic and doctors, and why we’re trusted by so many families
+                in our community.
+              </p>
+            </div>
+
+            <div class="contact-list">
+              <div class="contact-item">
+                <div class="contact-label">Address</div>
+                <div class="contact-value">
+                  147 16th St West, Suite #300<br />
+                  North Vancouver, BC<br />
+                  V7M 1T3
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-label">Phone</div>
+                <div class="contact-value">
+                  <a href="tel:7787466460">778-746-6460</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-label">Email</div>
+                <div class="contact-value">
+                  <a href="mailto:hello@springbok.ca">hello@springbok.ca</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-label">Hours</div>
+                <div class="contact-value hours">
+                  <div><span>Monday – Friday</span><span>9:00 – 19:30</span></div>
+                  <div><span>Saturday</span><span>9:30 – 16:30</span></div>
+                  <div><span>Sunday</span><span>Closed</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-actions">
+              <a class="btn btn-accent" href="#">Book Appointment</a>
+              <a class="btn btn-outline" href="#">Send a Message</a>
+            </div>
+          </div>
+
+          <!-- Right: Map -->
+          <div class="map-card" aria-label="Map">
+            <div class="map-shell">
+              <!-- Drop in your real embed later -->
+              <iframe
+                title="Springbok Medical Clinic Map"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=147%2016th%20St%20W%20Suite%20300%20North%20Vancouver%20BC%20V7M%201T3&output=embed"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+        <footer class="site-footer" aria-label="Site footer">
+      <div class="container footer-inner">
+        <!-- Left: Brand -->
+        <div class="footer-brand">
+          <a
+            class="footer-brand-stack"
+            href="index.html"
+            aria-label="Springbok Home"
+          >
+            <img
+              class="footer-brand-logo"
+              src="resources/logo1.png"
+              alt="Springbok Medical Clinic"
+            />
+            <div class="footer-brand-type">
+              <div class="footer-brand-name">SPRINGBOK</div>
+              <div class="footer-brand-sub">MEDICAL CLINIC</div>
+            </div>
+          </a>
+
+          <div class="footer-social" aria-label="Social links">
+            <a class="social-btn" href="#" aria-label="Instagram">⌁</a>
+            <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
+            <a class="social-btn" href="#" aria-label="Facebook">f</a>
+          </div>
+        </div>
+
+        <!-- Middle: Columns -->
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h3>Pages</h3>
+            <a href="index.html">Home</a>
+            <a href="SpringbokAbout.html">About Us</a>
+            <a href="SpringbokContact.html">Contact</a>
+          </div>
+
+          <div class="footer-col">
+            <h3>Our Services</h3>
+            <a href="SpringbokClinic.html">Clinic</a>
+            <a href="SpringbokSpa.html">Medical Spa</a>
+            <a href="#">Sleep Clinic</a>
+            <a href="#">Concussion Care</a>
+          </div>
+
+          <div class="footer-col">
+            <h3>Our Team</h3>
+            <a href="SpringbokTeam.html">Meet the Team</a>
+            <a href="#">Physicians</a>
+            <a href="#">Nursing / Support</a>
+          </div>
+        </div>
+
+        <!-- Right: Contact -->
+        <div class="footer-contact">
+          <div class="footer-contact-block">
+            <p class="footer-contact-title">Springbok Medical Clinic</p>
+            <p>
+              147 16th St West, Suite #300<br />
+              North Vancouver, BC<br />
+              V7M 1T3
+            </p>
+            <a class="footer-link" href="#" target="_blank" rel="noopener"
+              >View Directions</a
+            >
+          </div>
+
+          <div class="footer-contact-block">
+            <p>
+              <a class="footer-link" href="tel:+17780000000"
+                >+1 (778) 000-0000</a
+              >
+            </p>
+            <p>
+              <a class="footer-link" href="mailto:info@springbokclinic.ca"
+                >info@springbokclinic.ca</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <p>
+          © <span id="footerYear"></span> Springbok Medical Clinic — All Rights
+          Reserved
+        </p>
+
+        <button
+          class="to-top"
+          type="button"
+          aria-label="Back to top"
+          id="toTopBtn"
+        >
+          ↑
+        </button>
+      </div>
+    </footer>
+
+    <script>
+      // footer helpers
+      document.getElementById("footerYear").textContent =
+        new Date().getFullYear();
+
+      const toTopBtn = document.getElementById("toTopBtn");
+      toTopBtn?.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    </script>
+
+    <script src="main.js"></script>
+  </body>
+</html>
