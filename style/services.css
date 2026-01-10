@@ -349,25 +349,30 @@
   }
 }
 
-/* ===== Service tile corner logo + label (responsive) ===== */
+/* ===== Service tile corner logo (responsive + stable) ===== */
 
-/* Corner slot (always stays in the same spot) */
+.service-tile{ position: relative; } /* ensure positioning context */
+
 .service-tile .tile-corner{
   position: absolute;
   z-index: 3;
-  top: 22px;
-  right: 22px;
   pointer-events: none;
 
-  /* this is what you resize */
-  width: clamp(200px, 7vw, 180px);
-  height: clamp(72px, 7vw, 180px);
+  /* stable corner anchor */
+  top: clamp(16px, 2vw, 28px);
+  right: clamp(16px, 2vw, 28px);
 
+  /* logo box size (this is what you tweak) */
+  width: clamp(180px, 7vw, 200px);
+  height: clamp(72px, 7vw, 180px);
+  
   display: grid;
   place-items: center;
+
+  /* optional: nudge it slightly inward/down to match your screenshot */
+  transform: translate(50px, -20px);
 }
 
-/* The image fills the slot */
 .service-tile .tile-corner-logo{
   width: 100%;
   height: 100%;
@@ -377,3 +382,8 @@
   filter: drop-shadow(0 12px 28px rgba(0,0,0,.45));
 }
 
+/* Spa logo: scale up inside the same box (keeps position identical) */
+.service-tile.tile--spa .tile-corner-logo{
+  transform: scale(1.12);
+  transform-origin: center;
+}
