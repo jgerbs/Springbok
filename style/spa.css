@@ -385,7 +385,7 @@ html[data-brand="spa"] .mission-media{
 
   background:
     radial-gradient(1100px 700px at 30% 20%, rgba(214,163,107,.14), transparent 55%),
-    url("../resources/kacey.jpg") center / cover no-repeat;
+    url("/resources/kacey.jpg") center / cover no-repeat;
 }
 
 html[data-brand="spa"] .mission-media-inner{
