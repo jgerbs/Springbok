@@ -162,8 +162,7 @@
 }
 
 /* hide mobile until later */
-.mobile-only{ display:none; }
-.mobile-panel{ display:none; }
+
 
 /* TODO (later):
    When nav can’t fit: hide .nav-pill and show .mobile-only + mobile panel.

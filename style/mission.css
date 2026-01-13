@@ -147,3 +147,92 @@
   );
   pointer-events:none;
 }
+
+/* =========================================================
+   Mobile Mission Overrides
+   ========================================================= */
+
+@media (max-width: 860px){
+
+  .mission{
+    padding: 78px 0; /* was 110 */
+  }
+
+  /* keep glow but reduce how far it spills */
+  .mission::before{
+    inset: -90px -90px auto -90px;
+    height: 340px;
+  }
+
+  .mission-grid{
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+    align-items: start;
+  }
+
+  /* media first on mobile */
+  .mission-media{
+    order: -1;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* make media not too tall, centered */
+  .mission-media-inner{
+    width: 100%;
+    max-width: 420px !important;
+    aspect-ratio: 16 / 11;   /* less “tower”, more cinematic */
+    border-radius: 20px;
+    margin: 0 auto;
+  }
+
+  /* tighten typography */
+  .mission-eyebrow{
+    margin-bottom: 10px;
+    font-size: .8rem;
+  }
+
+  .mission h2{
+    font-size: clamp(1.65rem, 6vw, 2.25rem);
+    line-height: 1.12;
+    max-width: 26ch;
+    margin-bottom: 14px;
+  }
+
+  .mission-divider{
+    width: 56px;
+    margin: 14px 0 16px;
+  }
+
+  .mission p{
+    max-width: 60ch;
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+
+  /* CTA full width looks better on phones */
+  .mission-cta{
+    margin-top: 8px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* play button slightly smaller */
+  .play-btn{
+    width: 64px;
+    height: 64px;
+    font-size: 20px;
+  }
+}
+
+/* Extra small */
+@media (max-width: 420px){
+  .mission{
+    padding: 70px 0;
+  }
+
+  .mission-media-inner{
+    aspect-ratio: 16 / 12;
+    border-radius: 18px;
+  }
+}

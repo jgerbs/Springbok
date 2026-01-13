@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="style/spa/spaMission.css" />
   <link rel="stylesheet" href="style/spa/spaTeam.css" />
   <link rel="stylesheet" href="style/spa/spaTestimonials.css" />
+  <link rel="stylesheet" href="style/responsive.css" />
 
 </head>
 
@@ -35,15 +36,34 @@
       <div class="header-actions">
         <a class="btn btn-accent book-cta" href="https://jane.app/" target="_blank">Book Now</a>
 
+        <!--show only when mobile view is enabled -->
         <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open menu" aria-controls="mobilePanel"
           aria-expanded="false">
-          ☰
+          <span class="burger" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
         </button>
-      </div>
-    </div>
-
-    <div class="container mobile-panel" id="mobilePanel">...</div>
-  </header>
+        
+        </div>
+        </div>
+        
+        <!-- mobile panel -->
+        <div class="container mobile-panel" id="mobilePanel" aria-hidden="true">
+          <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
+        
+            <nav class="mobile-menu-links" aria-label="Mobile navigation">
+              <a class="mobile-link" href="index.html">Home</a>
+              <a class="mobile-link" href="SpringbokAbout.html">About Us</a>
+              <a class="mobile-link" href="SpringbokClinic.html">Clinic</a>
+              <a class="mobile-link is-active" href="SpringbokSpa.html">Spa</a>
+              <a class="mobile-link" href="SpringbokTeam.html">Our Team</a>
+              <a class="mobile-link" href="SpringbokContact.html">Contact</a>
+            </nav>
+        
+          </div>
+        </div>
+        
+        </header>
 
   <main>
     <section class="hero">

@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="style/reviews.css" />
   <link rel="stylesheet" href="style/mission.css" />
   <link rel="stylesheet" href="style/services.css" />
+  <link rel="stylesheet" href="style/responsive.css" />
+
 </head>
 
 <body>
@@ -36,16 +38,33 @@
         <div class="header-actions">
           <a class="btn btn-accent book-cta" href="https://jane.app/" target="_blank">Book Now</a>
 
-          <!-- TODO (later): show only when mobile view is enabled -->
+          <!--show only when mobile view is enabled -->
           <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open menu" aria-controls="mobilePanel"
             aria-expanded="false">
-            ☰
+            <span class="burger" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
           </button>
+
         </div>
       </div>
 
-      <!-- TODO (later): mobile panel -->
-      <div class="container mobile-panel" id="mobilePanel">...</div>
+      <!-- mobile panel -->
+      <div class="container mobile-panel" id="mobilePanel" aria-hidden="true">
+        <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
+
+          <nav class="mobile-menu-links" aria-label="Mobile navigation">
+            <a class="mobile-link is-active" href="indexAlt.html">Home</a>
+            <a class="mobile-link" href="SpringbokAbout.html">About Us</a>
+            <a class="mobile-link" href="SpringbokClinic.html">Clinic</a>
+            <a class="mobile-link" href="SpringbokSpa.html">Spa</a>
+            <a class="mobile-link" href="SpringbokTeam.html">Our Team</a>
+            <a class="mobile-link" href="SpringbokContact.html">Contact</a>
+          </nav>
+
+        </div>
+      </div>
+
     </header>
 
     <main>
@@ -129,7 +148,7 @@
           </div>
 
           <!-- Your existing tiles -->
-          <div class="tiles-grid grid-2">
+          <div class="tiles-grid grid-2 reveal-stagger">
             <!-- Tile 1 -->
             <a class="service-tile tile--clinic" href="SpringbokClinic.html" aria-label="Medical Clinic">
               <div class="tile-bg" style="background-image: url('resources/clinic.jpg')"></div>
@@ -491,8 +510,6 @@
             <h3>Our Services</h3>
             <a href="SpringbokClinic.html">Clinic</a>
             <a href="SpringbokSpa.html">Medical Spa</a>
-            <a href="#">Sleep Clinic</a>
-            <a href="#">Concussion Care</a>
           </div>
 
           <div class="footer-col">

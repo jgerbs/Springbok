@@ -15,13 +15,16 @@
   <link rel="stylesheet" href="style/alt/mission.css" />
   <link rel="stylesheet" href="style/services.css" />
 
-    <link rel="stylesheet" href="style/alt/tokens.css" />
-    <link rel="stylesheet" href="style/alt/base.css" />
-    <link rel="stylesheet" href="style/alt/header.css" />
-    <link rel="stylesheet" href="style/alt/hero.css" />
-    <link rel="stylesheet" href="style/alt/sections.css" />
-    <link rel="stylesheet" href="style/alt/tiles.css" />
-    <link rel="stylesheet" href="style/alt/footer.css" />
+  <link rel="stylesheet" href="style/alt/tokens.css" />
+  <link rel="stylesheet" href="style/alt/base.css" />
+  <link rel="stylesheet" href="style/alt/header.css" />
+  <link rel="stylesheet" href="style/alt/hero.css" />
+  <link rel="stylesheet" href="style/alt/sections.css" />
+  <link rel="stylesheet" href="style/alt/tiles.css" />
+  <link rel="stylesheet" href="style/alt/footer.css" />
+
+  <link rel="stylesheet" href="style/responsive.css" />
+
 </head>
 
 <body>
@@ -41,16 +44,33 @@
         <div class="header-actions">
           <a class="btn btn-accent book-cta" href="https://jane.app/" target="_blank">Book Now</a>
 
-          <!-- TODO (later): show only when mobile view is enabled -->
+          <!--show only when mobile view is enabled -->
           <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open menu" aria-controls="mobilePanel"
             aria-expanded="false">
-            ☰
+            <span class="burger" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
           </button>
+
         </div>
       </div>
 
-      <!-- TODO (later): mobile panel -->
-      <div class="container mobile-panel" id="mobilePanel">...</div>
+      <!-- mobile panel -->
+      <div class="container mobile-panel" id="mobilePanel" aria-hidden="true">
+        <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
+
+          <nav class="mobile-menu-links" aria-label="Mobile navigation">
+            <a class="mobile-link is-active" href="index.html">Home</a>
+            <a class="mobile-link" href="SpringbokAbout.html">About Us</a>
+            <a class="mobile-link" href="SpringbokClinic.html">Clinic</a>
+            <a class="mobile-link" href="SpringbokSpa.html">Spa</a>
+            <a class="mobile-link" href="SpringbokTeam.html">Our Team</a>
+            <a class="mobile-link" href="SpringbokContact.html">Contact</a>
+          </nav>
+
+        </div>
+      </div>
+
     </header>
 
     <main>
@@ -114,7 +134,7 @@
           <!-- Right: Visual / Video Placeholder -->
           <div class="mission-media reveal">
             <div class="mission-media-inner">
-              
+
             </div>
           </div>
         </div>
