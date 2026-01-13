@@ -29,16 +29,32 @@ html[data-brand="spa"]{
 }
 
 *{ box-sizing:border-box; }
-html,body{ height:100%; }
+html, body { height: 100%; }
+
 body{
   margin:0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--text);
-  background:
-    radial-gradient(1200px 800px at 20% 0%, rgba(18,192,138,.12), transparent 55%),
-    radial-gradient(900px 700px at 90% 10%, rgba(197,138,99,.12), transparent 60%),
-    linear-gradient(180deg, var(--bg), var(--bg2) 70%);
+  background: linear-gradient(180deg, var(--bg), var(--bg2) 70%);
   overflow-x:hidden;
+  position: relative; /* needed for pseudo layers */
+}
+
+/* global ambient glow layer (no seams between sections) */
+body::before{
+  content:"";
+  position: fixed;
+  inset: -20vh -20vw;
+  pointer-events: none;
+  z-index: -1;
+
+  background:
+    radial-gradient(900px 520px at 12% 18%, var(--accentSoft), transparent 60%),
+    radial-gradient(900px 560px at 88% 22%, rgba(197,138,99,.10), transparent 62%),
+    radial-gradient(1100px 700px at 30% 85%, rgba(255,255,255,.04), transparent 65%);
+
+  filter: blur(2px);
+  opacity: 1;
 }
 
 a{ color: inherit; text-decoration:none; }

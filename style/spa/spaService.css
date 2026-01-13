@@ -1,0 +1,506 @@
+/* =========================================================
+   spaService.css — Individual service page (light spa theme)
+   Matches: spaMission.css / spaTestimonials.css / spaTeam.css
+   ========================================================= */
+
+html[data-brand="spa"] .svc-section { padding: 72px 0; }
+
+/* soft warm background wash like testimonials */
+html[data-brand="spa"] .svc-section--alt{
+  position: relative;
+  padding: 72px 0;
+  overflow: hidden;
+}
+html[data-brand="spa"] .svc-section--alt::before{
+  content:"";
+  position:absolute;
+  inset: -160px -140px auto -140px;
+  height: 520px;
+  background:
+    radial-gradient(900px 520px at 22% 40%, rgba(214,163,107,.18), transparent 62%),
+    radial-gradient(820px 520px at 86% 18%, rgba(214,163,107,.12), transparent 68%);
+  filter: blur(10px);
+  pointer-events:none;
+}
+
+/* =========================
+   HERO add-ons (service)
+   ========================= */
+
+/* If you swap video -> image for service hero */
+html[data-brand="spa"] .hero--service .hero-image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* label chip under h1 */
+html[data-brand="spa"] .svc-kicker{
+  display: inline-block;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 850;
+  font-size: 0.82rem;
+  color: rgba(185, 133, 79, 0.92);
+  margin-bottom: 14px;
+}
+
+/* Quick detail row below hero buttons */
+html[data-brand="spa"] .svc-quick{
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* “light card” chips */
+html[data-brand="spa"] .svc-chip{
+  border-radius: 18px;
+  padding: 14px 14px;
+  background:
+    radial-gradient(900px 650px at 0% 0%, rgba(214,163,107,.10), transparent 55%),
+    rgba(255,255,255,.82);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+}
+
+html[data-brand="spa"] .svc-chip-label{
+  display:block;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 850;
+  color: rgba(18,18,18,.58);
+  margin-bottom: 6px;
+}
+
+html[data-brand="spa"] .svc-chip-val{
+  display:block;
+  font-weight: 900;
+  color: rgba(18,18,18,.92);
+}
+
+/* =========================
+   ABOUT split cards
+   ========================= */
+
+html[data-brand="spa"] .svc-split{
+  display:grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 26px;
+  align-items: stretch;
+  margin-top: 26px;
+}
+
+html[data-brand="spa"] .svc-card{
+  border-radius: 26px;
+  padding: 28px;
+  background:
+    radial-gradient(900px 650px at 0% 0%, rgba(214,163,107,.14), transparent 55%),
+    rgba(255,255,255,.82);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+html[data-brand="spa"] .svc-card h3{
+  margin: 0 0 12px;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  color: rgba(18,18,18,.94);
+}
+
+html[data-brand="spa"] .svc-card p{
+  margin: 0;
+  color: rgba(18,18,18,.70);
+  line-height: 1.75;
+}
+
+html[data-brand="spa"] .svc-mini-cta{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* List bullets match spa vibe */
+html[data-brand="spa"] .svc-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:grid;
+  gap: 10px;
+}
+html[data-brand="spa"] .svc-list li{
+  position: relative;
+  padding-left: 18px;
+  color: rgba(18,18,18,.74);
+  line-height: 1.65;
+}
+html[data-brand="spa"] .svc-list li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(185,133,79,.85);
+  box-shadow: 0 0 0 4px rgba(214,163,107,.18);
+}
+
+/* =========================
+   DETAILS grid (light cards)
+   ========================= */
+
+html[data-brand="spa"] .svc-details-grid{
+  margin-top: 22px;
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+html[data-brand="spa"] .svc-detail{
+  border-radius: 22px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.82);
+  box-shadow: var(--shadow-soft);
+}
+
+html[data-brand="spa"] .svc-detail h3{
+  margin: 0 0 8px;
+  color: rgba(18,18,18,.92);
+  font-weight: 900;
+}
+
+html[data-brand="spa"] .svc-detail p{
+  margin: 0;
+  color: rgba(18,18,18,.70);
+  line-height: 1.65;
+}
+
+/* =========================
+   IDEAL FOR pills
+   ========================= */
+
+html[data-brand="spa"] .svc-pill-grid{
+  margin-top: 22px;
+  display:flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+html[data-brand="spa"] .svc-pill{
+  display:inline-flex;
+  align-items:center;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.82);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+  color: rgba(18,18,18,.76);
+  font-weight: 750;
+  font-size: .95rem;
+}
+
+html[data-brand="spa"] .svc-note{
+  margin-top: 18px;
+  border-radius: 22px;
+  padding: 16px 18px;
+  background:
+    radial-gradient(900px 650px at 0% 0%, rgba(214,163,107,.16), transparent 55%),
+    rgba(255,255,255,.86);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  color: rgba(18,18,18,.72);
+}
+
+/* =========================
+   WHAT TO EXPECT timeline
+   ========================= */
+
+html[data-brand="spa"] .svc-timeline{
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+html[data-brand="spa"] .svc-step{
+  display:grid;
+  grid-template-columns: 54px 1fr;
+  gap: 16px;
+  align-items: start;
+  border-radius: 26px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.82);
+  box-shadow: var(--shadow);
+}
+
+html[data-brand="spa"] .svc-step-num{
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  display:grid;
+  place-items:center;
+  font-weight: 900;
+  color: rgba(28,16,10,.92);
+  background: rgba(214,163,107,.18);
+  border: 1px solid rgba(214,163,107,.28);
+}
+
+html[data-brand="spa"] .svc-step-body h3{
+  margin: 0 0 6px;
+  font-size: 1.08rem;
+  color: rgba(18,18,18,.94);
+  font-weight: 900;
+}
+
+html[data-brand="spa"] .svc-step-body p{
+  margin: 0;
+  color: rgba(18,18,18,.70);
+  line-height: 1.7;
+}
+
+/* =========================
+   BEFORE / AFTER grid
+   ========================= */
+
+html[data-brand="spa"] .ba-grid{
+  margin-top: 22px;
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* card shell matches mission/testimonials */
+html[data-brand="spa"] .ba-card{
+  border-radius: 26px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.82);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+
+/* side-by-side compare */
+html[data-brand="spa"] .ba-compare{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 260px;
+}
+
+html[data-brand="spa"] .ba-img{
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+html[data-brand="spa"] .ba-tag{
+  position:absolute;
+  top: 12px;
+  left: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,.80);
+  border: 1px solid var(--line);
+  color: rgba(18,18,18,.78);
+}
+
+html[data-brand="spa"] .ba-cap{
+  padding: 12px 14px 16px;
+  color: rgba(18,18,18,.68);
+  line-height: 1.6;
+}
+
+/* =========================
+   Service testimonials (mini grid)
+   ========================= */
+
+html[data-brand="spa"] .svc-quote-grid{
+  margin-top: 18px;
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+html[data-brand="spa"] .svc-quote{
+  border-radius: 26px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.82);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+html[data-brand="spa"] .svc-quote p{
+  margin: 0;
+  color: rgba(18,18,18,.72);
+  line-height: 1.7;
+  font-style: italic;
+}
+
+html[data-brand="spa"] .svc-quote-by{
+  display:inline-block;
+  margin-top: 10px;
+  color: rgba(18,18,18,.58);
+  font-size: .92rem;
+  font-weight: 800;
+}
+
+/* =========================
+   Providers grid (light)
+   ========================= */
+
+html[data-brand="spa"] .svc-provider-grid{
+  margin-top: 18px;
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+html[data-brand="spa"] .svc-provider{
+  border-radius: 26px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.82);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+  display:grid;
+  grid-template-columns: 150px 1fr;
+}
+
+html[data-brand="spa"] .svc-provider-img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  display:block;
+}
+
+html[data-brand="spa"] .svc-provider-body{
+  padding: 18px;
+}
+
+html[data-brand="spa"] .svc-provider-body h3{
+  margin: 0 0 8px;
+  color: rgba(18,18,18,.94);
+  font-weight: 900;
+}
+
+html[data-brand="spa"] .svc-provider-body p{
+  margin: 0 0 14px;
+  color: rgba(18,18,18,.68);
+  line-height: 1.65;
+}
+
+html[data-brand="spa"] .svc-provider-actions{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Bottom CTA (like a “feature” card) */
+html[data-brand="spa"] .svc-bottom-cta{
+  margin-top: 18px;
+  border-radius: 26px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(900px 650px at 0% 0%, rgba(214,163,107,.16), transparent 55%),
+    rgba(255,255,255,.86);
+  box-shadow: var(--shadow);
+}
+
+html[data-brand="spa"] .svc-bottom-cta-inner{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+html[data-brand="spa"] .svc-bottom-cta-inner h3{
+  margin: 0 0 6px;
+  color: rgba(18,18,18,.94);
+  font-weight: 900;
+}
+
+html[data-brand="spa"] .svc-bottom-cta-inner p{
+  margin: 0;
+  color: rgba(18,18,18,.68);
+  line-height: 1.65;
+}
+
+/* =========================
+   FAQ (details/summary)
+   ========================= */
+
+html[data-brand="spa"] .svc-faq{
+  margin-top: 18px;
+  display:grid;
+  gap: 12px;
+}
+
+html[data-brand="spa"] .svc-faq-item{
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.82);
+  box-shadow: var(--shadow-soft);
+  overflow:hidden;
+}
+
+html[data-brand="spa"] .svc-faq-item summary{
+  cursor:pointer;
+  padding: 16px 18px;
+  list-style:none;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 14px;
+
+  font-weight: 900;
+  color: rgba(18,18,18,.92);
+}
+
+html[data-brand="spa"] .svc-faq-item summary::-webkit-details-marker{ display:none; }
+
+html[data-brand="spa"] .svc-faq-item summary::after{
+  content:"＋";
+  font-size: 1.1rem;
+  opacity: .65;
+}
+
+html[data-brand="spa"] .svc-faq-item[open] summary::after{
+  content:"—";
+  opacity: .70;
+}
+
+html[data-brand="spa"] .svc-faq-body{
+  padding: 0 18px 16px;
+  color: rgba(18,18,18,.70);
+  line-height: 1.75;
+}
+
+/* =========================
+   Responsive
+   ========================= */
+
+@media (max-width: 1050px){
+  html[data-brand="spa"] .svc-split{ grid-template-columns: 1fr; }
+  html[data-brand="spa"] .svc-quick{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  html[data-brand="spa"] .svc-details-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  html[data-brand="spa"] .svc-quote-grid{ grid-template-columns: 1fr; }
+  html[data-brand="spa"] .ba-grid{ grid-template-columns: 1fr; }
+  html[data-brand="spa"] .svc-provider-grid{ grid-template-columns: 1fr; }
+
+  html[data-brand="spa"] .svc-provider{ grid-template-columns: 130px 1fr; }
+  html[data-brand="spa"] .svc-bottom-cta-inner{ flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 560px){
+  html[data-brand="spa"] .svc-provider{ grid-template-columns: 1fr; }
+  html[data-brand="spa"] .svc-provider-img{ height: 220px; }
+}

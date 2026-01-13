@@ -1,0 +1,151 @@
+/* =========================================================
+   spaGrid.css — Services header + tiles grid
+   ========================================================= */
+
+html[data-brand="spa"] .services-tiles { padding: 56px 0 90px; }
+
+html[data-brand="spa"] .tiles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+html[data-brand="spa"] .service-tile {
+  position: relative;
+  display: block;
+  border-radius: 22px;
+  overflow: hidden;
+  min-height: 520px;
+  isolation: isolate;
+
+  border: 1px solid rgba(18, 18, 18, 0.10);
+  box-shadow: var(--shadow);
+
+  transform: translateZ(0);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+html[data-brand="spa"] .tile-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+  transition: transform 0.35s ease, filter 0.35s ease;
+  z-index: 0;
+}
+
+html[data-brand="spa"] .tile-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(900px 700px at 10% 10%, rgba(214, 163, 107, 0.14), transparent 55%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.40) 55%, rgba(0, 0, 0, 0.62) 100%);
+  z-index: 1;
+  opacity: 1;
+}
+
+html[data-brand="spa"] .tile-inner {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+html[data-brand="spa"] .tile-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 650;
+  font-size: 0.95rem;
+}
+
+html[data-brand="spa"] .tile-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  opacity: 0.85;
+}
+
+html[data-brand="spa"] .tile-bottom {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 10px;
+}
+
+html[data-brand="spa"] .tile-bottom h3 {
+  margin: 0;
+  font-size: 1.35rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  transform: translateY(0);
+  transition: transform 0.22s ease;
+}
+
+html[data-brand="spa"] .tile-desc {
+  margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: max-height 0.28s ease, opacity 0.22s ease, transform 0.22s ease;
+  color: rgba(255, 255, 255, 0.80);
+  line-height: 1.55;
+}
+
+html[data-brand="spa"] .tile-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 750;
+}
+
+html[data-brand="spa"] .tile-arrow {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+}
+
+/* Hover */
+html[data-brand="spa"] .service-tile:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(214, 163, 107, 0.35);
+  box-shadow: 0 26px 90px rgba(17, 12, 8, 0.22);
+  z-index: 5;
+}
+html[data-brand="spa"] .service-tile:hover .tile-bg {
+  transform: scale(1.08);
+  filter: saturate(1.03) contrast(1.03);
+}
+html[data-brand="spa"] .service-tile:hover .tile-bottom h3 { transform: translateY(-6px); }
+html[data-brand="spa"] .service-tile:hover .tile-desc { max-height: 120px; opacity: 1; transform: translateY(0); }
+html[data-brand="spa"] .service-tile:hover .tile-arrow {
+  transform: translateX(3px);
+  background: rgba(214, 163, 107, 0.18);
+  border-color: rgba(214, 163, 107, 0.28);
+}
+
+html[data-brand="spa"] .service-tile:focus-visible {
+  outline: 2px solid rgba(214, 163, 107, 0.72);
+  outline-offset: 4px;
+}
+
+/* Responsive */
+@media (max-width: 1050px) {
+  html[data-brand="spa"] .tiles-grid { grid-template-columns: 1fr; }
+  html[data-brand="spa"] .service-tile { min-height: 560px; }
+  html[data-brand="spa"] .tile-desc { opacity: 1; transform: none; max-height: 140px; }
+}

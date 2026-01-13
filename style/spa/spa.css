@@ -1,0 +1,565 @@
+/* =========================================================
+   spa.css — SPA base theme + global components
+   Keep base.css loaded for resets/buttons/container
+   Includes: tokens, body bg, button tweaks, header/nav, hero, footer,
+             shared section head helpers
+   ========================================================= */
+
+/* =========================
+   THEME TOKENS (SPA)
+   ========================= */
+html[data-brand="spa"] {
+  /* Brand */
+  --accent: #d6a36b;
+  --accent2: #b9854f;
+  --accentSoft: rgba(214, 163, 107, 0.22);
+
+  /* Light UI tokens */
+  --bg: #fbfaf8;
+  --bg2: #f2eee8;
+  --surface: rgba(255, 255, 255, 0.86);
+  --surface2: rgba(255, 255, 255, 0.72);
+
+  --text: rgba(18, 18, 18, 0.92);
+  --muted: rgba(18, 18, 18, 0.62);
+  --line: rgba(18, 18, 18, 0.12);
+
+  --shadow: 0 18px 60px rgba(17, 12, 8, 0.12);
+  --shadow-soft: 0 12px 40px rgba(17, 12, 8, 0.10);
+
+  --edge-pad: 48px;
+  --top-pad: 18px;
+
+  /* Make SPA logo *visually* match clinic logo size */
+  --spa-logo-min: 170px;
+  --spa-logo-ideal: 12vw;
+  --spa-logo-max: 220px;
+}
+
+/* Kill base.css’s green-ish background by overriding body entirely */
+html[data-brand="spa"] body {
+  color: var(--text);
+  background:
+    radial-gradient(1200px 800px at 18% 0%, rgba(214, 163, 107, 0.22), transparent 58%),
+    radial-gradient(900px 700px at 92% 12%, rgba(214, 163, 107, 0.14), transparent 62%),
+    linear-gradient(180deg, var(--bg), var(--bg2) 70%);
+}
+
+/* =========================
+   BASE BUTTON TWEAKS (LIGHT)
+   ========================= */
+html[data-brand="spa"] .btn-outline {
+  background: rgba(255, 255, 255, 0.55);
+  border-color: var(--line);
+  color: rgba(18, 18, 18, 0.86);
+}
+html[data-brand="spa"] .btn-outline:hover {
+  background: rgba(255, 255, 255, 0.78);
+}
+html[data-brand="spa"] .btn-accent {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: rgba(28, 16, 10, 0.92);
+}
+
+/* =========================
+   HEADER (sticky nav cluster)
+   ========================= */
+html[data-brand="spa"] .site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 10000;
+  padding: var(--top-pad) 0;
+  pointer-events: none;
+
+  background: linear-gradient(
+    180deg,
+    rgba(251, 250, 248, 0.92) 0%,
+    rgba(251, 250, 248, 0.55) 55%,
+    rgba(251, 250, 248, 0) 100%
+  );
+}
+
+html[data-brand="spa"] .header-right {
+  position: fixed;
+  top: var(--top-pad);
+  right: var(--edge-pad);
+  z-index: 10020;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  pointer-events: auto;
+}
+
+/* Nav pill (light glass) */
+html[data-brand="spa"] .nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(6px, 0.6vw, 12px);
+  padding: clamp(6px, 0.6vw, 12px) clamp(10px, 1vw, 16px);
+
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-soft);
+  white-space: nowrap;
+}
+
+html[data-brand="spa"] .nav-link {
+  color: rgba(18, 18, 18, 0.78);
+  font-weight: 750;
+
+  font-size: clamp(0.84rem, 0.85vw, 1.02rem);
+  padding: clamp(7px, 0.7vw, 12px) clamp(10px, 0.9vw, 16px);
+
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+html[data-brand="spa"] .nav-link:hover {
+  background: rgba(17, 12, 8, 0.06);
+  color: rgba(18, 18, 18, 0.92);
+}
+
+html[data-brand="spa"] .nav-link.is-active {
+  border-color: rgba(214, 163, 107, 0.38);
+  background: rgba(214, 163, 107, 0.14);
+}
+
+html[data-brand="spa"] .nav-btn {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  padding: 0;
+}
+
+html[data-brand="spa"] .chev {
+  opacity: 0.7;
+  transform: translateY(-1px);
+}
+
+/* Dropdown */
+html[data-brand="spa"] .dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+html[data-brand="spa"] .dropdown-menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+
+  min-width: 290px;
+  padding: 10px;
+  border-radius: 18px;
+
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+
+  opacity: 0;
+  pointer-events: none;
+  translate: 0 -6px;
+  transition: opacity 0.14s ease, translate 0.14s ease;
+}
+
+html[data-brand="spa"] .dropdown-menu a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 12px 12px;
+  border-radius: 14px;
+  color: rgba(18, 18, 18, 0.82);
+  font-weight: 760;
+  border: 1px solid transparent;
+}
+
+html[data-brand="spa"] .dropdown-menu a:hover {
+  background: rgba(214, 163, 107, 0.14);
+  border-color: rgba(214, 163, 107, 0.22);
+  color: rgba(18, 18, 18, 0.92);
+}
+
+@media (hover: hover) {
+  html[data-brand="spa"] .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    pointer-events: auto;
+    translate: 0 0;
+  }
+}
+
+html[data-brand="spa"] .dropdown:focus-within .dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  translate: 0 0;
+}
+
+/* Header actions */
+html[data-brand="spa"] .header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+html[data-brand="spa"] .book-cta {
+  border-radius: 999px;
+  padding: clamp(10px, 0.8vw, 13px) clamp(14px, 1.1vw, 18px);
+  font-size: clamp(0.9rem, 0.85vw, 1.02rem);
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: var(--shadow-soft);
+}
+
+html[data-brand="spa"] .mobile-only { display: none; }
+html[data-brand="spa"] .mobile-panel { display: none; }
+
+/* =========================
+   HERO (single clean version)
+   ========================= */
+html[data-brand="spa"] .hero {
+  position: relative;
+  min-height: 92vh;
+  display: grid;
+  align-items: end;
+  padding: 170px 0 60px;
+  overflow: hidden;
+}
+
+/* Logo anchored to hero (scrolls away naturally) */
+html[data-brand="spa"] .hero-brand {
+  position: absolute;
+  top: var(--top-pad);
+  left: var(--edge-pad);
+  z-index: 10050;
+  pointer-events: auto;
+}
+
+/* Clearer backdrop (the one you liked) */
+html[data-brand="spa"] .hero-brand::before {
+  content: "";
+  position: absolute;
+  inset: -36px;
+  border-radius: 999px;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 45% 35%,
+      rgba(0, 0, 0, 0.18) 0%,
+      rgba(0, 0, 0, 0.06) 45%,
+      rgba(0, 0, 0, 0) 72%),
+    radial-gradient(circle at 50% 55%,
+      rgba(0, 0, 0, 0.10) 0%,
+      rgba(0, 0, 0, 0) 65%);
+  filter: blur(10px);
+  opacity: 0.9;
+  transform: translateZ(0);
+}
+
+/* Slightly larger than clinic so it *looks* same size */
+html[data-brand="spa"] .hero-logo {
+  height: clamp(var(--spa-logo-min), var(--spa-logo-ideal), var(--spa-logo-max));
+  width: auto;
+  opacity: 0.98;
+  filter: drop-shadow(0 14px 32px rgba(0, 0, 0, 0.22));
+  transform: translateX(-16px);
+}
+
+/* Media layer */
+html[data-brand="spa"] .hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+html[data-brand="spa"] .hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.02) contrast(1.02);
+}
+
+/* Keep your lighter overlay */
+html[data-brand="spa"] .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(900px 700px at 18% 12%, rgba(214, 163, 107, 0.18), transparent 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(0, 0, 0, 0.38) 68%, rgba(0, 0, 0, 0.50) 100%);
+}
+
+/* Content */
+html[data-brand="spa"] .hero-content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 18px;
+}
+
+html[data-brand="spa"] .hero h1 {
+  margin: 0 0 14px;
+  font-size: clamp(2.2rem, 4.2vw, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  max-width: 18ch;
+  font-weight: 650;
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+}
+
+html[data-brand="spa"] .hero p {
+  margin: 0 0 22px;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.75;
+  font-size: 1.05rem;
+  max-width: 62ch;
+  text-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+html[data-brand="spa"] .hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* =========================
+   SHARED SECTION HEAD (reusable)
+   Used by services/testimonials/team etc.
+   ========================= */
+html[data-brand="spa"] .section-head { margin-bottom: 22px; max-width: 860px; }
+
+html[data-brand="spa"] .section-eyebrow {
+  display: inline-block;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 0.82rem;
+  color: rgba(185, 133, 79, 0.92);
+  margin-bottom: 10px;
+}
+
+html[data-brand="spa"] .section-title {
+  margin: 0 0 12px;
+  font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+  letter-spacing: -0.03em;
+  color: rgba(18, 18, 18, 0.94);
+}
+
+html[data-brand="spa"] .section-divider {
+  width: 58px;
+  height: 2px;
+  background: rgba(185, 133, 79, 0.78);
+  border-radius: 999px;
+  margin: 14px 0 14px;
+}
+
+html[data-brand="spa"] .section-sub {
+  margin: 0;
+  color: rgba(18, 18, 18, 0.68);
+  line-height: 1.75;
+}
+
+/* =========================
+   FOOTER (Zone4-inspired) — SPA
+   ========================= */
+html[data-brand="spa"] .site-footer{
+  margin-top: 80px;
+  padding: 56px 0 22px;
+  color: rgba(18,18,18,.72);
+
+  background:
+    radial-gradient(1200px 800px at 20% 0%, rgba(214,163,107,.22), transparent 55%),
+    radial-gradient(900px 700px at 90% 15%, rgba(214,163,107,.14), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.96));
+  border-top: 1px solid rgba(18,18,18,.10);
+}
+
+html[data-brand="spa"] .footer-inner{
+  display: grid;
+  grid-template-columns: 1.1fr 1.6fr 1.1fr;
+  gap: 34px;
+  align-items: start;
+}
+
+/* Brand */
+html[data-brand="spa"] .footer-brand{ display:flex; flex-direction: column; gap: 18px; }
+
+html[data-brand="spa"] .footer-logo{
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: inherit;
+}
+
+html[data-brand="spa"] .footer-logo img{
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 26px rgba(17,12,8,.18));
+}
+
+html[data-brand="spa"] .footer-logo-text strong{
+  display:block;
+  letter-spacing: .08em;
+  font-weight: 850;
+  font-size: 1.05rem;
+  color: rgba(18,18,18,.92);
+}
+html[data-brand="spa"] .footer-logo-text em{
+  display:block;
+  letter-spacing: .24em;
+  font-style: normal;
+  font-weight: 800;
+  font-size: .78rem;
+  color: rgba(18,18,18,.56);
+  margin-top: 2px;
+}
+
+/* Social */
+html[data-brand="spa"] .footer-social{
+  display:flex;
+  gap: 10px;
+  align-items:center;
+}
+
+html[data-brand="spa"] .social-btn{
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+
+  border: 1px solid rgba(18,18,18,.14);
+  background: rgba(255,255,255,.60);
+  backdrop-filter: blur(14px);
+  color: rgba(18,18,18,.86);
+  font-weight: 900;
+
+  transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+}
+
+html[data-brand="spa"] .social-btn:hover{
+  transform: translateY(-2px);
+  background: rgba(214,163,107,.14);
+  border-color: rgba(214,163,107,.34);
+  color: rgba(28,16,10,.92);
+}
+
+/* Columns */
+html[data-brand="spa"] .footer-cols{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+html[data-brand="spa"] .footer-col h3{
+  margin: 0 0 12px;
+  font-size: .92rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(18,18,18,.92);
+}
+
+html[data-brand="spa"] .footer-col a{
+  display: block;
+  padding: 8px 0;
+  text-decoration: none;
+  color: rgba(18,18,18,.62);
+  font-weight: 650;
+  transition: color .16s ease;
+}
+
+html[data-brand="spa"] .footer-col a:hover{
+  color: rgba(185,133,79,.98);
+}
+
+/* Contact */
+html[data-brand="spa"] .footer-contact{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  justify-self: end;
+  text-align: left;
+}
+
+html[data-brand="spa"] .footer-contact-title{
+  margin: 0 0 10px;
+  font-weight: 850;
+  color: rgba(18,18,18,.92);
+}
+
+html[data-brand="spa"] .footer-contact p{
+  margin: 0;
+  color: rgba(18,18,18,.64);
+  line-height: 1.65;
+}
+
+html[data-brand="spa"] .footer-link{
+  color: rgba(18,18,18,.78);
+  text-decoration: none;
+  font-weight: 750;
+  transition: color .16s ease;
+}
+
+html[data-brand="spa"] .footer-link:hover{
+  color: rgba(185,133,79,.98);
+}
+
+/* Bottom bar */
+html[data-brand="spa"] .footer-bottom{
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(18,18,18,.10);
+
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 16px;
+
+  color: rgba(18,18,18,.50);
+  font-weight: 650;
+}
+
+html[data-brand="spa"] .footer-bottom p{ margin: 0; }
+
+/* Back to top button */
+html[data-brand="spa"] .to-top{
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+
+  border: 1px solid rgba(18,18,18,.14);
+  background: rgba(255,255,255,.60);
+  color: rgba(18,18,18,.86);
+  font-weight: 900;
+
+  cursor: pointer;
+  backdrop-filter: blur(14px);
+  transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+}
+
+html[data-brand="spa"] .to-top:hover{
+  transform: translateY(-2px);
+  background: rgba(214,163,107,.14);
+  border-color: rgba(214,163,107,.34);
+  color: rgba(28,16,10,.92);
+}
+
+/* Footer responsive */
+@media (max-width: 1050px){
+  html[data-brand="spa"] .footer-inner{ grid-template-columns: 1fr; }
+  html[data-brand="spa"] .footer-contact{ justify-self: start; }
+  html[data-brand="spa"] .footer-cols{ grid-template-columns: 1fr; }
+  html[data-brand="spa"] .footer-bottom{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

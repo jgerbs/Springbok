@@ -1,0 +1,297 @@
+/* =========================================================
+   spaTestimonials.css — Testimonials (both variants)
+   Includes:
+   A) Scroll-snap carousel version (.testimonials-shell / .t-track)
+   B) Wheel marquee version (.t-wheel / .t-wheel-track)
+   Use whichever markup you render; both can coexist.
+   ========================================================= */
+
+/* =========================
+   A) TESTIMONIALS (scroll-snap embed)
+   ========================= */
+html[data-brand="spa"] .testimonials { padding: 60px 0 95px; }
+
+html[data-brand="spa"] .testimonials-head h2 {
+  margin: 0 0 18px;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  letter-spacing: -0.02em;
+  color: rgba(18, 18, 18, 0.94);
+}
+
+html[data-brand="spa"] .testimonials-shell {
+  border-radius: 26px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  overflow: hidden;
+}
+
+html[data-brand="spa"] .t-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(320px, 1fr);
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 8px;
+}
+
+html[data-brand="spa"] .t-card {
+  scroll-snap-align: start;
+  border-radius: 22px;
+  border: 1px solid rgba(18, 18, 18, 0.10);
+  background: rgba(255, 255, 255, 0.88);
+  padding: 18px;
+  min-height: 220px;
+}
+
+html[data-brand="spa"] .t-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+html[data-brand="spa"] .t-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 850;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: rgba(28, 16, 10, 0.92);
+}
+
+html[data-brand="spa"] .t-name { font-weight: 850; color: rgba(18, 18, 18, 0.92); }
+html[data-brand="spa"] .t-date { color: rgba(18, 18, 18, 0.56); font-size: 0.9rem; margin-top: 2px; }
+html[data-brand="spa"] .t-stars { margin-top: 6px; color: rgba(18, 18, 18, 0.82); font-weight: 900; }
+html[data-brand="spa"] .t-verify { color: rgba(185, 133, 79, 0.95); margin-left: 6px; }
+html[data-brand="spa"] .t-gmark { opacity: 0.45; font-weight: 900; color: rgba(18, 18, 18, 0.70); }
+
+html[data-brand="spa"] .t-text { margin: 0 0 10px; color: rgba(18, 18, 18, 0.72); line-height: 1.65; }
+html[data-brand="spa"] .t-more { color: rgba(185, 133, 79, 0.95); font-weight: 800; }
+
+html[data-brand="spa"] .t-feature { display: flex; flex-direction: column; justify-content: space-between; }
+html[data-brand="spa"] .t-quote { margin: 0 0 12px; color: rgba(18, 18, 18, 0.74); line-height: 1.7; font-style: italic; }
+
+html[data-brand="spa"] .t-person { display: flex; align-items: center; gap: 12px; margin-top: 6px; }
+html[data-brand="spa"] .t-person-img { width: 52px; height: 52px; border-radius: 18px; object-fit: cover; }
+html[data-brand="spa"] .t-person-name { font-weight: 900; color: rgba(18, 18, 18, 0.92); }
+html[data-brand="spa"] .t-person-role { color: rgba(18, 18, 18, 0.58); font-size: 0.92rem; }
+
+html[data-brand="spa"] .t-nav { display: none; }
+html[data-brand="spa"] .t-dots { display: none; }
+
+/* =========================
+   B) TESTIMONIALS “wheel” marquee
+   ========================= */
+html[data-brand="spa"] .testimonials{
+  position: relative;
+  padding: 70px 0 95px;
+  overflow: hidden;
+}
+
+html[data-brand="spa"] .testimonials::before{
+  content:"";
+  position:absolute;
+  inset: -160px -140px auto -140px;
+  height: 520px;
+  background:
+    radial-gradient(900px 520px at 22% 40%, rgba(214,163,107,.20), transparent 62%),
+    radial-gradient(820px 520px at 86% 18%, rgba(214,163,107,.14), transparent 68%);
+  filter: blur(10px);
+  pointer-events:none;
+}
+
+html[data-brand="spa"] .t-wheel{
+  position: relative;
+  margin-top: 18px;
+  border-radius: 26px;
+  border: 1px solid rgba(18,18,18,.10);
+  background: rgba(255,255,255,.78);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  overflow: hidden;
+}
+
+html[data-brand="spa"] .t-wheel::before,
+html[data-brand="spa"] .t-wheel::after{
+  content:"";
+  position:absolute;
+  top: 0;
+  bottom: 0;
+  width: 110px;
+  z-index: 3;
+  pointer-events:none;
+}
+
+html[data-brand="spa"] .t-wheel::before{
+  left: 0;
+  background: linear-gradient(90deg, rgba(251,250,248,1), rgba(251,250,248,0));
+}
+
+html[data-brand="spa"] .t-wheel::after{
+  right: 0;
+  background: linear-gradient(270deg, rgba(251,250,248,1), rgba(251,250,248,0));
+}
+
+html[data-brand="spa"] .t-wheel-track{
+  display: flex;
+  gap: 18px;
+  align-items: stretch;
+  will-change: transform;
+}
+
+/* Card sizing */
+html[data-brand="spa"] .t-wheel-track .t-card{
+  flex: 0 0 360px;
+  min-height: 230px;
+  border-radius: 22px;
+  border: 1px solid rgba(18,18,18,.10);
+  background: rgba(255,255,255,.88);
+  box-shadow: var(--shadow-soft);
+  padding: 18px;
+}
+
+/* Typography tweaks */
+html[data-brand="spa"] .t-wheel-track .t-name{
+  font-weight: 900;
+  color: rgba(18,18,18,.92);
+}
+
+html[data-brand="spa"] .t-wheel-track .t-date{
+  color: rgba(18,18,18,.55);
+  font-size: .9rem;
+  margin-top: 2px;
+}
+
+html[data-brand="spa"] .t-wheel-track .t-text{
+  color: rgba(18,18,18,.72);
+  line-height: 1.65;
+  margin: 10px 0 10px;
+}
+
+html[data-brand="spa"] .t-wheel-track .t-more{
+  color: rgba(185,133,79,.98);
+  font-weight: 850;
+  text-decoration: none;
+}
+html[data-brand="spa"] .t-wheel-track .t-more:hover{
+  text-decoration: underline;
+}
+
+html[data-brand="spa"] .t-wheel-track .t-top{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+html[data-brand="spa"] .t-wheel-track .t-avatar{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  background: rgba(214,163,107,.18);
+  border: 1px solid rgba(214,163,107,.28);
+  color: rgba(28,16,10,.92);
+}
+
+html[data-brand="spa"] .t-wheel-track .t-photo{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 1px solid rgba(18,18,18,.14);
+}
+
+html[data-brand="spa"] .t-wheel-track .t-stars{
+  margin-top: 8px;
+  letter-spacing: .06em;
+  font-weight: 900;
+  color: #d6a36b;
+}
+
+html[data-brand="spa"] .t-wheel-track .t-verify{
+  margin-left: 6px;
+  color: rgba(185,133,79,.95);
+}
+
+html[data-brand="spa"] .t-wheel-track .t-gmark{
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  border: 1px solid rgba(18,18,18,.10);
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  color: rgba(18,18,18,.55);
+}
+
+html[data-brand="spa"] .t-wheel-track .t-feature{
+  background:
+    radial-gradient(900px 650px at 0% 0%, rgba(214,163,107,.14), transparent 55%),
+    rgba(255,255,255,.88);
+}
+
+html[data-brand="spa"] .t-wheel-track .t-quote{
+  margin: 4px 0 16px;
+  color: rgba(18,18,18,.74);
+  font-style: italic;
+  line-height: 1.7;
+  text-align: center;
+}
+
+html[data-brand="spa"] .t-wheel-track .t-person{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: auto;
+}
+
+html[data-brand="spa"] .t-wheel-track .t-person-img{
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 1px solid rgba(18,18,18,.12);
+}
+
+html[data-brand="spa"] .t-wheel-track .t-person-name{
+  font-weight: 900;
+  color: rgba(18,18,18,.92);
+}
+
+html[data-brand="spa"] .t-wheel-track .t-person-role{
+  color: rgba(18,18,18,.56);
+  font-size: .92rem;
+}
+
+/* Pause animation on hover */
+html[data-brand="spa"] .t-wheel:hover .t-wheel-track{
+  animation-play-state: paused;
+}
+
+/* Responsive */
+@media (max-width: 1050px){
+  html[data-brand="spa"] .t-wheel{
+    padding: 14px;
+    border-radius: 22px;
+  }
+
+  html[data-brand="spa"] .t-wheel::before,
+  html[data-brand="spa"] .t-wheel::after{
+    width: 70px;
+  }
+
+  html[data-brand="spa"] .t-wheel-track .t-card{
+    flex-basis: 78vw;
+  }
+}

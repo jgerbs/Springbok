@@ -12,8 +12,7 @@
   position:absolute;
   inset: -140px -120px auto -120px;
   height: 360px;
-  background:
-    radial-gradient(800px 420px at 15% 20%, rgba(18,192,138,.12), transparent 62%);
+
   pointer-events:none;
 }
 
