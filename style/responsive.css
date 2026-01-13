@@ -3,161 +3,164 @@
    Drop into responsive.css
    ========================================================= */
 
-@media (max-width: 860px){
+@media (max-width: 860px) {
 
-  /* tighter edge + top spacing on mobile */
-  :root{
-    --edge-pad: 16px;
-    --top-pad: 10px;
-  }
+    /* tighter edge + top spacing on mobile */
+    :root {
+        --edge-pad: 16px;
+        --top-pad: 10px;
+    }
 
-  /* keep your overlay, but ensure safe-area padding */
-  .site-header{
-    padding-top: calc(var(--top-pad) + env(safe-area-inset-top));
-    padding-bottom: 10px;
-  }
+    /* keep your overlay, but ensure safe-area padding */
+    .site-header {
+        padding-top: calc(var(--top-pad) + env(safe-area-inset-top));
+        padding-bottom: 10px;
+    }
 
-  /* pin cluster with safe-area */
-  .header-right{
-    top: calc(var(--top-pad) + env(safe-area-inset-top));
-    right: calc(var(--edge-pad) + env(safe-area-inset-right));
-    left: calc(var(--edge-pad) + env(safe-area-inset-left));
+    /* pin cluster with safe-area */
+    .header-right {
+        top: calc(var(--top-pad) + env(safe-area-inset-top));
+        right: calc(var(--edge-pad) + env(safe-area-inset-right));
+        left: calc(var(--edge-pad) + env(safe-area-inset-left));
 
-    /* instead of “inline size”, make it stretch */
-    width: auto;
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-  }
+        /* instead of “inline size”, make it stretch */
+        width: auto;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+    }
 
-  /* hide pill nav */
-  .nav-pill{
-    display: none;
-  }
+    /* hide pill nav */
+    .nav-pill {
+        display: none;
+    }
 
-  /* keep actions aligned */
-  .header-actions{
-    gap: 10px;
-  }
+    /* keep actions aligned */
+    .header-actions {
+        gap: 10px;
+    }
 
-  /* Book CTA shrinks nicely */
-  .book-cta{
-    padding: 10px 14px;
-    font-size: .95rem;
-    font-weight: 800;
-    box-shadow: 0 18px 45px rgba(0,0,0,.45);
-  }
+    /* Book CTA shrinks nicely */
+    .book-cta {
+        padding: 10px 14px;
+        font-size: .95rem;
+        font-weight: 800;
+        box-shadow: 0 18px 45px rgba(0, 0, 0, .45);
+    }
 
-  /* show the hamburger */
-  .mobile-only{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 999px;
-    border: 1px solid rgba(255,255,255,.14);
-    background: rgba(10,10,10,.42);
-    backdrop-filter: blur(16px);
-    box-shadow: 0 14px 45px rgba(0,0,0,.35);
-    color: rgba(255,255,255,.92);
-    font-size: 1.1rem;
-    line-height: 1;
-  }
+    /* show the hamburger */
+    .mobile-only {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, .14);
+        background: rgba(10, 10, 10, .42);
+        backdrop-filter: blur(16px);
+        box-shadow: 0 14px 45px rgba(0, 0, 0, .35);
+        color: rgba(255, 255, 255, .92);
+        font-size: 1.1rem;
+        line-height: 1;
+    }
 
-  /* in case your .icon-btn has weird defaults elsewhere */
-  .icon-btn.mobile-only{
-    padding: 0;
-  }
+    /* in case your .icon-btn has weird defaults elsewhere */
+    .icon-btn.mobile-only {
+        padding: 0;
+    }
 }
 
 /* Extra-small phones */
-@media (max-width: 420px){
-  .book-cta{
-    padding: 10px 12px;
-    font-size: .9rem;
-  }
+@media (max-width: 420px) {
+    .book-cta {
+        padding: 10px 12px;
+        font-size: .9rem;
+    }
 }
 
 /* =========================================================
    Mobile Hero Overrides (works for clinic + staff + spa heroes)
    ========================================================= */
 
-@media (max-width: 860px){
+@media (max-width: 860px) {
 
-  /* give hero less top padding since header is tighter on mobile */
-  .hero{
-    min-height: 78vh;
-    padding: 128px 0 44px; /* was 170/60 */
-    position: relative;
-    isolation: isolate;
-  }
+    /* give hero less top padding since header is tighter on mobile */
+    .hero {
+        min-height: 78vh;
+        padding: 128px 0 44px;
+        /* was 170/60 */
+        position: relative;
+        isolation: isolate;
+    }
 
-  /* logo follows your safe-area + mobile edge pad */
-  .hero-brand{
-    top: calc(var(--top-pad) + env(safe-area-inset-top));
-    left: calc(var(--edge-pad) + env(safe-area-inset-left));
-  }
+    /* logo follows your safe-area + mobile edge pad */
+    .hero-brand {
+        top: calc(var(--top-pad) + env(safe-area-inset-top));
+        left: calc(var(--edge-pad) + env(safe-area-inset-left));
+    }
 
-  /* smaller logo so it doesn't dominate */
-  .hero-logo{
-    height: clamp(96px, 22vw, 132px);
-  }
+    /* smaller logo so it doesn't dominate */
+    .hero-logo {
+        height: clamp(96px, 22vw, 132px);
+    }
 
-  /* tighten content block */
-  .hero-content{
-    padding-bottom: 10px;
-  }
+    /* tighten content block */
+    .hero-content {
+        padding-bottom: 10px;
+    }
 
-  .hero h1{
-    font-size: clamp(2.0rem, 7vw, 3.0rem);
-    line-height: 1.08;
-    letter-spacing: -0.03em;
-    max-width: 22ch; /* slightly wider so lines break nicer */
-  }
+    .hero h1 {
+        font-size: clamp(2.0rem, 7vw, 3.0rem);
+        line-height: 1.08;
+        letter-spacing: -0.03em;
+        max-width: 22ch;
+        /* slightly wider so lines break nicer */
+    }
 
-  .hero p{
-    font-size: 1.02rem;
-    line-height: 1.6;
-    max-width: 56ch;
-    margin-bottom: 18px;
-  }
+    .hero p {
+        font-size: 1.02rem;
+        line-height: 1.6;
+        max-width: 56ch;
+        margin-bottom: 18px;
+    }
 
-  /* stack buttons full width */
-  .hero-actions{
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-  .hero-actions .btn{
-    width: 100%;
-    justify-content: center;
-    min-height: 44px;
-  }
+    /* stack buttons full width */
+    .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
 
-  /* slightly stronger overlay on mobile for readability */
-  .hero-overlay{
-    background:
-      radial-gradient(700px 520px at 18% 10%, rgba(18,192,138,.16), transparent 60%),
-      linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.86) 70%, rgba(0,0,0,.94));
-  }
+    .hero-actions .btn {
+        width: 100%;
+        justify-content: center;
+        min-height: 44px;
+    }
+
+    /* slightly stronger overlay on mobile for readability */
+    .hero-overlay {
+        background:
+            radial-gradient(700px 520px at 18% 10%, rgba(18, 192, 138, .16), transparent 60%),
+            linear-gradient(180deg, rgba(0, 0, 0, .20), rgba(0, 0, 0, .86) 70%, rgba(0, 0, 0, .94));
+    }
 }
 
 /* Extra small phones */
-@media (max-width: 420px){
-  .hero{
-    min-height: 74vh;
-    padding: 118px 0 38px;
-  }
+@media (max-width: 420px) {
+    .hero {
+        min-height: 74vh;
+        padding: 118px 0 38px;
+    }
 
-  .hero h1{
-    font-size: 2.0rem;
-    max-width: 24ch;
-  }
+    .hero h1 {
+        font-size: 2.0rem;
+        max-width: 24ch;
+    }
 
-  .hero-logo{
-    height: 92px;
-  }
+    .hero-logo {
+        height: 92px;
+    }
 }
 
 
@@ -165,371 +168,430 @@
    Mobile Services + Staff Wheel Overrides
    ========================================================= */
 
-@media (max-width: 860px){
+@media (max-width: 860px) {
 
-  /* --- Services section spacing --- */
-  .services-tiles{
-    padding: 70px 0 84px; /* was 90 / 120 */
-  }
+    /* --- Services section spacing --- */
+    .services-tiles {
+        padding: 70px 0 84px;
+        /* was 90 / 120 */
+    }
 
-  .services-tiles::before{
-    inset: -110px -90px auto -90px;
-    height: 300px;
-  }
+    .services-tiles::before {
+        inset: -110px -90px auto -90px;
+        height: 300px;
+    }
 
-  .section-head{
-    margin-bottom: 20px;
-  }
+    .section-head {
+        margin-bottom: 20px;
+    }
 
-  /* --- Tiles grid: tighter gap on mobile --- */
-  .tiles-grid{
-    gap: 14px;
-  }
+    /* --- Tiles grid: tighter gap on mobile --- */
+    .tiles-grid {
+        gap: 14px;
+    }
 
-  /* --- Tile sizing + padding --- */
-  .service-tile{
-    height: 360px;        /* was 520 (too tall on mobile) */
-    border-radius: 22px;
-  }
+    /* --- Tile sizing + padding --- */
+    .service-tile {
+        height: 360px;
+        /* was 520 (too tall on mobile) */
+        border-radius: 22px;
+    }
 
-  .tile-inner{
-    padding: 18px;        /* was 22 */
-  }
+    .tile-inner {
+        padding: 18px;
+        /* was 22 */
+    }
 
-  /* --- Mobile has no hover: keep content visible --- */
-  .tile-bottom{
-    transform: none;      /* remove slide-up dependency */
-  }
+    /* --- Mobile has no hover: keep content visible --- */
+    .tile-bottom {
+        transform: none;
+        /* remove slide-up dependency */
+    }
 
-  .tile-desc{
-    max-height: none;     /* show it */
-    opacity: 1;
-    margin-top: 6px;
-  }
+    .tile-desc {
+        max-height: none;
+        /* show it */
+        opacity: 1;
+        margin-top: 6px;
+    }
 
-  /* keep hover styles from causing odd jumps on tap */
-  .service-tile:hover{
-    transform: none;
-  }
+    /* keep hover styles from causing odd jumps on tap */
+    .service-tile:hover {
+        transform: none;
+    }
 
-  .service-tile:hover .tile-bg{
-    transform: scale(1.05); /* basically static */
-  }
+    .service-tile:hover .tile-bg {
+        transform: scale(1.05);
+        /* basically static */
+    }
 
-  .service-tile:hover .tile-arrow{
-    transform: none;
-  }
+    .service-tile:hover .tile-arrow {
+        transform: none;
+    }
 
-  /* --- Corner logo: stop pushing it off screen --- */
-  .service-tile .tile-corner{
-    top: 14px;
-    right: 14px;
+    /* --- Corner logo: stop pushing it off screen --- */
+    .service-tile .tile-corner {
+        top: 14px;
+        right: 14px;
 
-    width: 120px;
-    height: 56px;
+        width: 120px;
+        height: 56px;
 
-    transform: none; /* IMPORTANT: remove your translate(50px,-20px) */
-    opacity: .95;
-  }
+        transform: none;
+        /* IMPORTANT: remove your translate(50px,-20px) */
+        opacity: .95;
+    }
 
-  .service-tile .tile-corner-logo{
-    filter: drop-shadow(0 10px 22px rgba(0,0,0,.45));
-  }
+    .service-tile .tile-corner-logo {
+        filter: drop-shadow(0 10px 22px rgba(0, 0, 0, .45));
+    }
 
-  /* =======================================================
+    /* =======================================================
      Staff wheel shell: make it “mobile friendly”
      Option A: keep your JS states but show only center
      ======================================================= */
 
-  .staff-wheel-shell{
-    padding: 14px;
-    border-radius: 22px;
-  }
+    .staff-wheel-shell {
+        padding: 14px;
+        border-radius: 22px;
+    }
 
-  .staff-wheel{
-    height: 420px; /* instead of 560/620 */
-  }
+    .staff-wheel {
+        height: 420px;
+        /* instead of 560/620 */
+    }
 
-  /* Show only center card on mobile */
-  .staff-wheel .service-tile{
-    width: min(520px, 92vw);
-  }
+    /* Show only center card on mobile */
+    .staff-wheel .service-tile {
+        width: min(520px, 92vw);
+    }
 
-  .staff-wheel .service-tile.is-left,
-  .staff-wheel .service-tile.is-right{
-    opacity: 0 !important;
-    pointer-events: none !important;
-    transform: translateX(-50%) scale(.98) !important;
-  }
+    .staff-wheel .service-tile.is-left,
+    .staff-wheel .service-tile.is-right {
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transform: translateX(-50%) scale(.98) !important;
+    }
 
-  /* Arrows: either keep or hide.
+    /* Arrows: either keep or hide.
      If you want swipe later, hide them now. */
-  .staff-nav{
-    display: none;
-  }
+    .staff-nav {
+        display: none;
+    }
 }
 
 /* Extra small phones */
-@media (max-width: 420px){
+@media (max-width: 420px) {
 
-  .services-tiles{
-    padding: 64px 0 76px;
-  }
+    .services-tiles {
+        padding: 64px 0 76px;
+    }
 
-  .service-tile{
-    height: 330px;
-    border-radius: 20px;
-  }
+    .service-tile {
+        height: 330px;
+        border-radius: 20px;
+    }
 
-  .tile-inner{
-    padding: 16px;
-  }
+    .tile-inner {
+        padding: 16px;
+    }
 
-  .service-tile .tile-corner{
-    width: 108px;
-    height: 52px;
-  }
+    .service-tile .tile-corner {
+        width: 108px;
+        height: 52px;
+    }
 }
 
 /* =========================================================
    Footer Mobile Layout (keep "desktop-style" columns)
    ========================================================= */
 
-@media (max-width: 860px){
+@media (max-width: 860px) {
 
-  /* 1) Use grid areas so we can place chunks like desktop */
-  .footer-inner{
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    grid-template-areas:
-      "brand brand"
-      "cols  contact";
-    gap: 18px !important;
-    align-items: start;
-  }
+    /* 1) Use grid areas so we can place chunks like desktop */
+    .footer-inner {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-areas:
+            "brand brand"
+            "cols  contact";
+        gap: 18px !important;
+        align-items: start;
+    }
 
-  .footer-brand{ grid-area: brand; }
-  .footer-cols{ grid-area: cols; }
-  .footer-contact{ grid-area: contact; }
+    .footer-brand {
+        grid-area: brand;
+    }
 
-  /* 2) Brand block: compact horizontal header feel */
-  .footer-brand-stack{
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+    .footer-cols {
+        grid-area: cols;
+    }
 
-  .footer-brand-logo{
-    width: 54px;
-    height: 54px;
-  }
+    .footer-contact {
+        grid-area: contact;
+    }
 
-  /* keep socials in-row like desktop */
-  .footer-social{
-    margin-top: 10px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
+    /* 2) Brand block: compact horizontal header feel */
+    .footer-brand-stack {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
 
-  /* 3) Link columns:
+    .footer-brand-logo {
+        width: 54px;
+        height: 54px;
+    }
+
+    /* keep socials in-row like desktop */
+    .footer-social {
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    /* 3) Link columns:
         On desktop you have 3 columns; on mobile we compress to 2 columns
         but KEEP that “multi-column” feel.
   */
-  .footer-cols{
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px !important;
-  }
+    .footer-cols {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 16px !important;
+    }
 
-  /* make headings smaller + tighter */
-  .footer-col h3{
-    margin: 0 0 10px;
-    font-size: .86rem;
-    letter-spacing: .12em;
-  }
+    /* make headings smaller + tighter */
+    .footer-col h3 {
+        margin: 0 0 10px;
+        font-size: .86rem;
+        letter-spacing: .12em;
+    }
 
-  .footer-col a{
-    padding: 7px 0;
-  }
+    .footer-col a {
+        padding: 7px 0;
+    }
 
-  /* 4) Contact block: tighten spacing so it fits like a column */
-  .footer-contact{
-    justify-self: stretch !important;
-    text-align: left;
-    gap: 12px;
-  }
+    /* 4) Contact block: tighten spacing so it fits like a column */
+    .footer-contact {
+        justify-self: stretch !important;
+        text-align: left;
+        gap: 12px;
+    }
 
-  .footer-contact-block p{
-    line-height: 1.55;
-  }
+    .footer-contact-block p {
+        line-height: 1.55;
+    }
 
-  /* 5) Bottom bar stays readable on mobile */
-  .footer-bottom{
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-  
+    /* 5) Bottom bar stays readable on mobile */
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
 }
 
 /* Extra-small phones: still keep 2-column feel as long as possible */
-@media (max-width: 420px){
+@media (max-width: 420px) {
 
-  /* keep two columns, but reduce internal gaps */
-  .footer-cols{
-    gap: 12px !important;
-  }
+    /* keep two columns, but reduce internal gaps */
+    .footer-cols {
+        gap: 12px !important;
+    }
 
-  .footer-inner{
-    gap: 14px !important;
-  }
+    .footer-inner {
+        gap: 14px !important;
+    }
 }
 
 /* =========================================================
    Mobile Menu: slide-down + hamburger -> red X
    ========================================================= */
-@media (max-width: 860px){
+@media (max-width: 860px) {
 
-  /* overlay */
-  .mobile-panel{
-    position: fixed;
-    inset: 0;
-    z-index: 9998;
+    /* overlay */
+    .mobile-panel {
+        position: fixed;
+        inset: 0;
+        z-index: 9998;
 
-    /* hidden state */
-    opacity: 0;
-    pointer-events: none;
+        /* hidden state */
+        opacity: 0;
+        pointer-events: none;
 
-    background: rgba(0,0,0,.55);
-    backdrop-filter: blur(10px);
+        background: rgba(0, 0, 0, .55);
+        backdrop-filter: blur(10px);
 
-    transition: opacity 220ms ease;
-  }
+        transition: opacity 220ms ease;
+    }
 
-  /* open state */
-  .mobile-panel.is-open{
-    opacity: 1;
-    pointer-events: auto;
-  }
+    /* open state */
+    .mobile-panel.is-open {
+        opacity: 1;
+        pointer-events: auto;
+    }
 
-  /* menu card slides down */
-  .mobile-menu{
-    width: min(560px, calc(100% - (var(--edge-pad) * 2)));
-    margin: calc(var(--top-pad) + env(safe-area-inset-top) + 70px) auto 0;
-    border-radius: 22px;
+    /* menu card slides down */
+    .mobile-menu {
+        width: min(560px, calc(100% - (var(--edge-pad) * 2)));
+        margin: calc(var(--top-pad) + env(safe-area-inset-top) + 70px) auto 0;
+        border-radius: 22px;
 
-    border: 1px solid rgba(255,255,255,.12);
-    background: rgba(10,10,10,.78);
-    box-shadow: 0 24px 80px rgba(0,0,0,.55);
-    padding: 14px;
+        border: 1px solid rgba(255, 255, 255, .12);
+        background: rgba(10, 10, 10, .78);
+        box-shadow: 0 24px 80px rgba(0, 0, 0, .55);
+        padding: 14px;
 
-    transform: translateY(-14px);
-    opacity: 0;
-    transition:
-      transform 260ms cubic-bezier(.2,.9,.2,1),
-      opacity 220ms ease;
-  }
+        transform: translateY(-14px);
+        opacity: 0;
+        transition:
+            transform 260ms cubic-bezier(.2, .9, .2, 1),
+            opacity 220ms ease;
+    }
 
-  .mobile-panel.is-open .mobile-menu{
-    transform: translateY(0);
-    opacity: 1;
-  }
+    .mobile-panel.is-open .mobile-menu {
+        transform: translateY(0);
+        opacity: 1;
+    }
 
-  .mobile-menu-links{
-    display: grid;
-    gap: 10px;
-  }
+    .mobile-menu-links {
+        display: grid;
+        gap: 10px;
+    }
 
-  .mobile-link{
-    display: flex;
-    align-items: center;
-    min-height: 48px;
-    padding: 12px 14px;
-    border-radius: 14px;
+    .mobile-link {
+        display: flex;
+        align-items: center;
+        min-height: 48px;
+        padding: 12px 14px;
+        border-radius: 14px;
 
-    border: 1px solid rgba(255,255,255,.10);
-    background: rgba(255,255,255,.03);
-    color: rgba(255,255,255,.88);
-    font-weight: 760;
-  }
+        border: 1px solid rgba(255, 255, 255, .10);
+        background: rgba(255, 255, 255, .03);
+        color: rgba(255, 255, 255, .88);
+        font-weight: 760;
+    }
 
-  .mobile-link.is-active{
-    border-color: rgba(18,192,138,.32);
-    background: rgba(18,192,138,.10);
-  }
+    .mobile-link.is-active {
+        border-color: color-mix(in srgb, var(--accent) 42%, transparent);
+        background: color-mix(in srgb, var(--accent) 14%, transparent);
+    }
 
-  /* lock scroll when open */
-  body.menu-open{
-    overflow: hidden;
-  }
 
-  /* ===== hamburger icon (3 lines) ===== */
-  #mobileMenuBtn{
-    position: relative;
-  }
+    /* lock scroll when open */
+    body.menu-open {
+        overflow: hidden;
+    }
 
-  .burger{
-    width: 18px;
-    height: 14px;
-    display: inline-block;
-    position: relative;
-  }
+    /* ===== hamburger icon (3 lines) ===== */
+    #mobileMenuBtn {
+        position: relative;
+    }
 
-  .burger span{
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 2px;
-    border-radius: 999px;
-    background: rgba(255,255,255,.9);
-    transition:
-      transform 260ms cubic-bezier(.2,.9,.2,1),
-      opacity 200ms ease,
-      background 220ms ease,
-      top 260ms cubic-bezier(.2,.9,.2,1);
-  }
+    .burger {
+        width: 18px;
+        height: 14px;
+        display: inline-block;
+        position: relative;
+    }
 
-  .burger span:nth-child(1){ top: 0; }
-  .burger span:nth-child(2){ top: 6px; }
-  .burger span:nth-child(3){ top: 12px; }
+    .burger span {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 2px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, .9);
+        transition:
+            transform 260ms cubic-bezier(.2, .9, .2, 1),
+            opacity 200ms ease,
+            background 220ms ease,
+            top 260ms cubic-bezier(.2, .9, .2, 1);
+    }
 
-  /* open -> X (red) */
-  #mobileMenuBtn.is-open .burger span{
-    background: #ff4d4d;
-  }
+    .burger span:nth-child(1) {
+        top: 0;
+    }
 
-  #mobileMenuBtn.is-open .burger span:nth-child(1){
-    top: 6px;
-    transform: rotate(45deg);
-  }
+    .burger span:nth-child(2) {
+        top: 6px;
+    }
 
-  #mobileMenuBtn.is-open .burger span:nth-child(2){
-    opacity: 0;
-    transform: scaleX(.4);
-  }
+    .burger span:nth-child(3) {
+        top: 12px;
+    }
 
-  #mobileMenuBtn.is-open .burger span:nth-child(3){
-    top: 6px;
-    transform: rotate(-45deg);
-  }
+    /* open -> X (red) */
+    #mobileMenuBtn.is-open .burger span {
+        background: #ff4d4d;
+    }
+
+    #mobileMenuBtn.is-open .burger span:nth-child(1) {
+        top: 6px;
+        transform: rotate(45deg);
+    }
+
+    #mobileMenuBtn.is-open .burger span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(.4);
+    }
+
+    #mobileMenuBtn.is-open .burger span:nth-child(3) {
+        top: 6px;
+        transform: rotate(-45deg);
+    }
 }
 
 /* =========================================================
-   Header: desktop vs mobile controls (single source of truth)
+   Mobile nav enablement (override header defaults)
    ========================================================= */
 
-/* Desktop default */
-.mobile-only{ display: none !important; }
-.nav-pill{ display: inline-flex !important; }
+/* Desktop default: hamburger + panel OFF */
+.mobile-only {
+    display: none !important;
+}
 
-/* Mobile breakpoint */
+.mobile-panel {
+    display: none !important;
+}
+
+/* Mobile: hamburger ON, desktop nav OFF, panel available */
+@media (max-width: 860px) {
+    .nav-pill {
+        display: none !important;
+    }
+
+    .mobile-only {
+        display: inline-flex !important;
+    }
+
+    /* IMPORTANT: allow panel to exist so opacity/transform can animate */
+    .mobile-panel {
+        display: block !important;
+    }
+}
+
+/* =========================================
+   SPA MOBILE MENU – light surface
+   ========================================= */
 @media (max-width: 860px){
-  .nav-pill{ display: none !important; }          /* hide full nav */
-  .mobile-only{ display: inline-flex !important; }/* show hamburger */
+  html[data-brand="spa"] .mobile-menu{
+    background: rgba(255,255,255,.88);
+    border-color: rgba(0,0,0,.10);
+    box-shadow: 0 24px 70px rgba(0,0,0,.25);
+  }
+
+  html[data-brand="spa"] .mobile-link{
+    background: rgba(0,0,0,.04);
+    border-color: rgba(0,0,0,.08);
+    color: rgba(0,0,0,.78);
+  }
+
+  html[data-brand="spa"] .mobile-link.is-active{
+    background: rgba(214,163,107,.20);
+    border-color: rgba(214,163,107,.45);
+    color: rgba(0,0,0,.95);
+  }
 }
 
-/* Extra safety: if someone hardcodes mobile-only somewhere */
-@media (min-width: 861px){
-  .mobile-panel{ display: none !important; }      /* never show overlay on desktop */
-}
