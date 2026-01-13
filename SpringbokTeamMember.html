@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" data-brand="clinic">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Springbok Medical Clinic | Home</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style/base.css" />
+  <link rel="stylesheet" href="style/footer.css" />
+  <link rel="stylesheet" href="style/header.css" />
+  <link rel="stylesheet" href="style/home.css" />
+
+  <link rel="stylesheet" href="style/staff.css" />
+
+</head>
+
+<body>
+  <!-- NAV ONLY (always visible, pinned top-right) -->
+  <header class="site-header" aria-label="Site navigation">
+    <div class="header-right">
+      <nav class="nav-pill" aria-label="Main navigation">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="SpringbokAbout.html">About Us</a>
+        <a class="nav-link" href="SpringbokClinic.html">Clinic</a>
+        <a class="nav-link" href="SpringbokSpa.html">Spa</a>
+        <a class="nav-link is-active" href="SpringbokTeam.html">Our Team</a>
+        <a class="nav-link" href="SpringbokContact.html">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn-accent book-cta" href="https://jane.app/" target="_blank">Book Now</a>
+
+        <!-- TODO (later): show only when mobile view is enabled -->
+        <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open menu" aria-controls="mobilePanel"
+          aria-expanded="false">
+          ☰
+        </button>
+      </div>
+    </div>
+
+    <!-- TODO (later): mobile panel -->
+    <div class="container mobile-panel" id="mobilePanel">...</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <!-- LOGO: part of HERO visually, but fixed top-left -->
+      <a class="hero-brand reveal" href="index.html" aria-label="Springbok Home">
+        <img src="resources/logo1.png" alt="Springbok Medical Clinic" class="hero-logo" />
+      </a>
+
+      <div class="hero-media" aria-hidden="true">
+        <video class="hero-video" autoplay muted loop playsinline poster="resources/team.jpg">
+          <source src="resources/" type="video/mp4" />
+        </video>
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="container hero-content reveal">
+        <h1>Dr. Kacey Kiesman</h1>
+        <p>
+          Premium, modern care with clear next steps. Explore our clinics, or
+          book directly in seconds.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="#">Book Now</a>
+          <a class="btn btn-outline" href="#">Explore Services</a>
+        </div>
+      </div>
+    </section>
+
+      <!-- STAFF PROFILE HEADER -->
+      <section class="staff-profile" id="top">
+        <div class="container">
+          <div class="staff-profile-grid reveal">
+            <div class="staff-card staff-card--profile">
+              <div class="staff-profile-top">
+                <div class="staff-avatar">
+                  <img src="resources/doc1.jpg" alt="Dr. Ava Patel" />
+                </div>
+
+                <div class="staff-ident">
+                  <span class="staff-role">Family Physician • Aesthetic Medicine</span>
+                  <h2 class="staff-name">Dr. Ava Patel</h2>
+                  <p class="staff-tagline">
+                    Physician-led aesthetic consults focused on safe planning, natural results, and long-term skin
+                    confidence.
+                  </p>
+
+                  <div class="staff-actions">
+                    <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Book with Ava</a>
+                    <a class="btn btn-outline" href="#services">View services</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="staff-meta">
+                <div class="staff-meta-item">
+                  <span class="staff-meta-k">Location</span>
+                  <span class="staff-meta-v">North Vancouver</span>
+                </div>
+                <div class="staff-meta-item">
+                  <span class="staff-meta-k">Focus</span>
+                  <span class="staff-meta-v">Aesthetics • Skin health</span>
+                </div>
+                <div class="staff-meta-item">
+                  <span class="staff-meta-k">Languages</span>
+                  <span class="staff-meta-v">English • (add)</span>
+                </div>
+                <div class="staff-meta-item">
+                  <span class="staff-meta-k">New clients</span>
+                  <span class="staff-meta-v">Accepting</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- QUICK BOOK / CONTACT CARD -->
+            <aside class="staff-card staff-card--aside">
+              <h3>Quick booking</h3>
+              <p class="staff-muted">
+                Choose an appointment type in Jane. If you’re unsure, start with a consult.
+              </p>
+
+              <div class="staff-quick-links">
+                <a class="staff-link" href="https://jane.app/" target="_blank" rel="noopener">
+                  Aesthetic Consultation <span>→</span>
+                </a>
+                <a class="staff-link" href="https://jane.app/" target="_blank" rel="noopener">
+                  Morpheus8 <span>→</span>
+                </a>
+                <a class="staff-link" href="https://jane.app/" target="_blank" rel="noopener">
+                  Injectables Follow-up <span>→</span>
+                </a>
+              </div>
+
+              <div class="staff-note" role="note">
+                Prefer phone? <a href="tel:+17780000000">+1 (778) 000-0000</a>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- BIOGRAPHY -->
+      <section class="staff-section" id="bio">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Biography</span>
+            <h2 class="section-title">About Dr. Kacey Kiesman</h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">A brief overview of background, philosophy, and approach.</p>
+          </div>
+
+          <div class="staff-two-col reveal">
+            <div class="staff-card">
+              <p>
+                Dr. Patel’s approach is grounded in thoughtful assessment, conservative planning, and results that look
+                like
+                you —
+                just refreshed. She focuses on skin health, structure, and long-term maintenance.
+              </p>
+              <p>
+                During consults, she prioritizes clarity: what’s happening, what options exist, what’s realistic, and
+                what’s
+                safest.
+              </p>
+            </div>
+
+            <div class="staff-card staff-card--tint">
+              <h3 class="staff-mini-title">Care style</h3>
+              <ul class="staff-bullets">
+                <li>Natural outcomes first</li>
+                <li>Medical-grade safety and technique</li>
+                <li>Clear plan + aftercare</li>
+                <li>Long-term skin strategy</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUALIFICATIONS -->
+      <section class="staff-section staff-section--alt" id="qualifications">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Qualifications</span>
+            <h2 class="section-title">Training & credentials</h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">Highlights — keep it readable and not “resume-y”.</p>
+          </div>
+
+          <div class="staff-quals reveal-stagger">
+            <article class="staff-card staff-qual">
+              <h3>Education</h3>
+              <ul class="staff-bullets">
+                <li>MD — (School)</li>
+                <li>Residency — (Program)</li>
+                <li>Continuing education — (Skin / aesthetics)</li>
+              </ul>
+            </article>
+
+            <article class="staff-card staff-qual">
+              <h3>Certifications</h3>
+              <ul class="staff-bullets">
+                <li>Injector training — (Provider)</li>
+                <li>Laser/RF training — (Provider)</li>
+                <li>Advanced facial anatomy — (Course)</li>
+              </ul>
+            </article>
+
+            <article class="staff-card staff-qual">
+              <h3>Clinical focus</h3>
+              <ul class="staff-bullets">
+                <li>Skin tightening & collagen support</li>
+                <li>Texture/pores/acne scarring</li>
+                <li>Natural facial balancing</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES / SPECIALTIES -->
+      <section class="staff-section" id="services">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Services</span>
+            <h2 class="section-title">Services offered</h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">Book directly with Dr. Patel via Jane.</p>
+          </div>
+
+          <div class="staff-services-grid reveal-stagger">
+            <article class="staff-svc-card">
+              <h3>Morpheus8</h3>
+              <p>RF microneedling for texture, pores, and firming support.</p>
+              <div class="staff-svc-actions">
+                <a class="btn btn-outline" href="SpringbokSpaService_Morpheus8.html">View details</a>
+                <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Book</a>
+              </div>
+            </article>
+
+            <article class="staff-svc-card">
+              <h3>Aesthetic Consultation</h3>
+              <p>Best starting point to build a safe plan with clear steps.</p>
+              <div class="staff-svc-actions">
+                <a class="btn btn-outline" href="SpringbokSpa.html#services">Explore</a>
+                <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Book</a>
+              </div>
+            </article>
+
+            <article class="staff-svc-card">
+              <h3>Injectables</h3>
+              <p>Conservative, natural balancing (case-by-case).</p>
+              <div class="staff-svc-actions">
+                <a class="btn btn-outline" href="SpringbokSpa.html#injectables">Learn</a>
+                <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Book</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- AVAILABILITY (Jane embed OR fallback list) -->
+      <section class="staff-section staff-section--alt" id="availability">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Availability</span>
+            <h2 class="section-title">Upcoming openings</h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">
+              This is a preview of availability. Booking happens in Jane.
+            </p>
+          </div>
+
+          <!-- OPTION A: Embed (if Jane provides embed code for your account) -->
+          <div class="staff-card staff-embed reveal">
+            <div class="staff-embed-head">
+              <h3>Schedule preview</h3>
+              <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Open in Jane</a>
+            </div>
+
+            <!-- Replace src with Jane-provided embed URL if available -->
+            <iframe class="staff-embed-frame" src="https://jane.app/" title="Jane schedule preview" loading="lazy"
+              referrerpolicy="no-referrer"></iframe>
+
+            <p class="staff-embed-note">
+              If the embed isn’t supported, use the “Upcoming slots” list below instead.
+            </p>
+          </div>
+
+          <!-- OPTION B: Fallback list (always works) -->
+          <div class="staff-slots reveal-stagger" aria-label="Upcoming availability">
+            <a class="staff-slot" href="https://jane.app/" target="_blank" rel="noopener">
+              <span class="staff-slot-date">Tue</span>
+              <span class="staff-slot-time">10:30 AM</span>
+              <span class="staff-slot-type">Aesthetic Consult (30m)</span>
+              <span class="staff-slot-cta">Book →</span>
+            </a>
+
+            <a class="staff-slot" href="https://jane.app/" target="_blank" rel="noopener">
+              <span class="staff-slot-date">Thu</span>
+              <span class="staff-slot-time">2:15 PM</span>
+              <span class="staff-slot-type">Morpheus8 (60m)</span>
+              <span class="staff-slot-cta">Book →</span>
+            </a>
+
+            <a class="staff-slot" href="https://jane.app/" target="_blank" rel="noopener">
+              <span class="staff-slot-date">Fri</span>
+              <span class="staff-slot-time">9:00 AM</span>
+              <span class="staff-slot-type">Follow-up (15m)</span>
+              <span class="staff-slot-cta">Book →</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS (staff-specific) -->
+      <section class="staff-section" id="testimonials">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Testimonials</span>
+            <h2 class="section-title">What clients say</h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">A few words about Dr. Patel’s approach and care.</p>
+          </div>
+
+          <div class="staff-quote-grid reveal-stagger">
+            <article class="staff-quote">
+              <p>“I felt listened to and never rushed. The plan was clear and conservative — exactly what I wanted.”</p>
+              <span>— Client</span>
+            </article>
+            <article class="staff-quote">
+              <p>“Professional, warm, and detail-oriented. The aftercare guidance was amazing.”</p>
+              <span>— Client</span>
+            </article>
+            <article class="staff-quote">
+              <p>“Results looked natural. I appreciated how everything was explained before we started.”</p>
+              <span>— Client</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- STICKY BOOK BAR (nice UX on long page) -->
+      <div class="staff-bookbar" aria-label="Book with this provider">
+        <div class="container staff-bookbar-inner">
+          <div class="staff-bookbar-left">
+            <span class="staff-bookbar-name">Dr. Ava Patel</span>
+            <span class="staff-bookbar-sub">Aesthetic Medicine</span>
+          </div>
+          <div class="staff-bookbar-actions">
+            <a class="btn btn-outline" href="#services">Services</a>
+            <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+  </main>
+
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="container footer-inner reveal">
+      <!-- Left: Brand -->
+      <div class="footer-brand">
+        <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
+          <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
+          <div class="footer-brand-type">
+            <div class="footer-brand-name">SPRINGBOK</div>
+            <div class="footer-brand-sub">MEDICAL CLINIC</div>
+          </div>
+        </a>
+
+        <div class="footer-social" aria-label="Social links">
+          <a class="social-btn" href="#" aria-label="Instagram">⌁</a>
+          <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
+          <a class="social-btn" href="#" aria-label="Facebook">f</a>
+        </div>
+      </div>
+
+      <!-- Middle: Columns -->
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h3>Pages</h3>
+          <a href="index.html">Home</a>
+          <a href="SpringbokAbout.html">About Us</a>
+          <a href="SpringbokContact.html">Contact</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Our Services</h3>
+          <a href="SpringbokClinic.html">Clinic</a>
+          <a href="SpringbokSpa.html">Medical Spa</a>
+          <a href="#">Sleep Clinic</a>
+          <a href="#">Concussion Care</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Our Team</h3>
+          <a href="SpringbokTeam.html">Meet the Team</a>
+          <a href="#">Physicians</a>
+          <a href="#">Nursing / Support</a>
+        </div>
+      </div>
+
+      <!-- Right: Contact -->
+      <div class="footer-contact">
+        <div class="footer-contact-block">
+          <p class="footer-contact-title">Springbok Medical Clinic</p>
+          <p>
+            147 16th St West, Suite #300<br />
+            North Vancouver, BC<br />
+            V7M 1T3
+          </p>
+          <a class="footer-link" href="#" target="_blank" rel="noopener">View Directions</a>
+        </div>
+
+        <div class="footer-contact-block">
+          <p>
+            <a class="footer-link" href="tel:+17780000000">+1 (778) 000-0000</a>
+          </p>
+          <p>
+            <a class="footer-link" href="mailto:info@springbokclinic.ca">info@springbokclinic.ca</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>
+        © <span id="footerYear"></span> Springbok Medical Clinic — All Rights
+        Reserved
+      </p>
+
+      <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">
+        ↑
+      </button>
+    </div>
+  </footer>
+
+  <script src="js/mobileMenu.js"></script>
+  <script src="js/footer.js"></script>
+
+  <script src="js/contactModal.js"></script>
+  <script src="js/scrollReveal.js"></script>
+
+</body>
+
+</html>

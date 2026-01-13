@@ -1,0 +1,130 @@
+.hero{
+  position: relative;
+  min-height: 92vh;
+  display: grid;
+  align-items: end;
+
+  padding: 170px 0 60px;
+  overflow: hidden;
+}
+
+/* Smooth blend into the page background */
+.hero::after{
+  content:"";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;              /* hides any 1px seam */
+  height: 140px;             /* adjust: 110-180 */
+  pointer-events: none;
+  z-index: 3;
+
+  /* fades from transparent to your page bg */
+  background: linear-gradient(
+    180deg,
+    rgba(var(--bg-rgb), 0) 0%,
+    rgba(var(--bg-rgb), .75) 55%,
+    rgba(var(--bg-rgb), 1) 78%,
+    rgba(var(--bg2-rgb), 1) 100%
+  );
+}
+
+/* Logo anchored to hero */
+.hero-brand{
+  position: absolute;
+  top: var(--top-pad);
+  left: var(--edge-pad);
+  z-index: 10050;
+  pointer-events: auto;
+}
+
+/* vignette behind logo so it still pops */
+.hero-brand::before{
+  content:"";
+  position:absolute;
+  inset:-36px;
+  border-radius:999px;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 45% 35%, rgba(0,0,0,.62) 0%, rgba(0,0,0,.22) 45%, rgba(0,0,0,0) 72%);
+  filter: blur(10px);
+  opacity: .92;
+}
+
+.hero-logo{
+  height: clamp(150px, 10vw, 180px);
+  width: auto;
+  opacity: .98;
+  filter: drop-shadow(0 14px 32px rgba(0,0,0,.35));
+}
+
+/* video layer */
+.hero-media{ position:absolute; inset:0; z-index:0; }
+.hero-video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.05) contrast(1.05);
+}
+
+/* slightly lighter bottom fade so page feels bright */
+.hero-overlay{
+  position:absolute;
+  inset:0;
+
+  background:
+    /* very subtle brand hint only */
+    radial-gradient(
+      520px 360px at 20% 18%,
+      rgba(18,192,138,.10),
+      transparent 65%
+    ),
+    /* fade hero cleanly into off-white */
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.22),
+      rgba(0,0,0,.48) 58%,
+      rgb(162, 182, 171) 100%
+    );
+}
+
+/* content */
+.hero-content{
+  position: relative;
+  z-index: 4;
+
+  /* visual anchor */
+  padding: 28px 32px 34px;
+  border-radius: 22px;
+
+  backdrop-filter: blur(5px);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.06);
+
+  max-width: 760px;
+}
+
+.hero h1{
+  margin: 0 0 14px;
+  font-size: clamp(2.2rem, 4.2vw, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: -.04em;
+  max-width: 18ch;
+  font-weight: 680;
+  color: rgba(255,255,255,.96);
+}
+
+.hero p{
+  margin: 0 0 22px;
+  color: rgba(255,255,255,.80);
+  line-height: 1.75;
+  font-size: 1.05rem;
+  max-width: 62ch;
+}
+
+.hero-actions{
+  display:flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}

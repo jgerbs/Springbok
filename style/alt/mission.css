@@ -1,0 +1,136 @@
+/* =========================
+   Mission Statement (ALT)
+   ========================= */
+
+.mission{
+  position: relative;
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+/* Soft brand glow (lighter + calmer) */
+.mission::before{
+  content:"";
+  position:absolute;
+  inset: -160px -160px auto -160px;
+  height: 480px;
+  pointer-events:none;
+  filter: blur(14px);
+  opacity: .9;
+}
+
+/* layout */
+.mission-grid{
+  display:grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: clamp(40px, 6vw, 90px);
+  align-items:center;
+}
+
+/* text */
+.mission-eyebrow{
+  display:inline-block;
+  margin-bottom: 14px;
+  font-size: .82rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-weight: 850;
+}
+
+.mission h2{
+  margin: 0 0 18px;
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  max-width: 22ch;
+
+  color: rgba(12,16,16,.95);
+}
+
+.mission-divider{
+  width: 64px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--accent),
+    transparent
+  );
+  margin: 18px 0 22px;
+  border-radius: 2px;
+}
+
+.mission p{
+  color: rgba(12,16,16,.72);
+  line-height: 1.75;
+  max-width: 58ch;
+  margin: 0 0 18px;
+}
+
+.mission-cta{
+  margin-top: 14px;
+}
+
+/* =========================
+   Media block (ALT)
+   ========================= */
+
+.mission-media{
+  display: flex;
+  justify-content: center;
+}
+
+.mission-media-inner{
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 4 / 5;
+  border-radius: 26px;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.08),
+      rgba(255,255,255,.02)
+    ),
+    url("resources/filler.jpg") center / cover no-repeat;
+
+  position: relative;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(10,14,14,.10);
+}
+
+/* very subtle contrast assist (no dark block) */
+.mission-media-inner::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      120% 90% at 50% 85%,
+      rgba(0,0,0,.18),
+      transparent 65%
+    );
+}
+
+
+
+/* =========================
+   Responsive
+   ========================= */
+
+@media (max-width: 900px){
+  .mission-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .mission-media{
+    order: -1;
+  }
+
+  .mission-media-inner{
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
