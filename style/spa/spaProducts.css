@@ -1,6 +1,8 @@
 /* =========================================================
    spaProducts.css — Products preview wheel (Spa home page)
-   MATCHES PACKAGES STYLE:
+   MATCHES PACKAGES BEHAVIOR + CONTROLS:
+   - overlay arrows on desktop/tablet
+   - bottom row arrows + "View all products" on mobile
    - solid cards (no see-through)
    - center clear, edges softened via blur + overlay (not opacity)
    - ultra-wide 5: 3 crisp (no overlap) + 2 ghosted behind
@@ -8,8 +10,16 @@
 
 /* Section wrapper */
 .spa-products {
-    padding: 90px 0 110px;
+    padding: 0px 0 110px;
     position: relative;
+    overflow-x: clip;
+    /* prevent page-level horizontal scroll */
+}
+
+@supports not (overflow: clip) {
+    .spa-products {
+        overflow-x: hidden;
+    }
 }
 
 .spa-products::before {
@@ -30,7 +40,13 @@
     background: transparent;
     box-shadow: none;
     padding: 0;
-    overflow: visible;
+    overflow-x: clip;
+}
+
+@supports not (overflow: clip) {
+    .prod-wheel-shell {
+        overflow-x: hidden;
+    }
 }
 
 /* Stage (wheel mode) */
@@ -53,19 +69,17 @@
 
     border-radius: 22px;
     overflow: hidden;
-
     border: 1px solid rgba(0, 0, 0, .06);
 
-    /* ✅ solid base so you can't see through foreground cards */
     background:
         radial-gradient(1200px 700px at 20% 0%, rgba(214, 163, 107, .14), transparent 55%),
         #fff;
 
     box-shadow: 0 18px 55px rgba(0, 0, 0, .12);
     color: rgba(0, 0, 0, .86);
-
     padding: 22px;
 
+    /* ✅ buttons can pin to bottom */
     display: flex;
     flex-direction: column;
 
@@ -74,7 +88,7 @@
         filter 520ms cubic-bezier(.2, .9, .2, 1);
 }
 
-/* ✅ dim overlay (does NOT create transparency like opacity does) */
+/* dim overlay (does NOT create transparency like opacity does) */
 .prod-card::after {
     content: "";
     position: absolute;
@@ -125,7 +139,6 @@
     z-index: 1;
 }
 
-/* Everything else hidden */
 .prod-card.is-off {
     opacity: 0;
     pointer-events: none;
@@ -191,7 +204,7 @@
     max-width: 70ch;
 }
 
-/* Actions */
+/* Actions (pinned to bottom) */
 .prod-actions {
     margin-top: auto;
     display: flex;
@@ -199,13 +212,10 @@
     flex-wrap: wrap;
 }
 
-/* Nav buttons (overlay) */
+/* -----------------------------
+   NAV BUTTONS (shared style like packages)
+------------------------------ */
 .prod-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 20;
-
     width: 44px;
     height: 44px;
     border-radius: 12px;
@@ -221,43 +231,55 @@
 }
 
 .prod-nav:hover {
-    transform: translateY(-50%) translateY(-2px);
+    transform: translateY(-2px);
     background: rgba(214, 163, 107, .20);
     border-color: rgba(214, 163, 107, .26);
 }
 
-.prod-prev {
+/* Overlay arrows (desktop/tablet) */
+.prod-nav--overlay {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+}
+
+.prod-nav--overlay.prod-prev {
     left: 14px;
 }
 
-.prod-next {
+.prod-nav--overlay.prod-next {
     right: 14px;
 }
 
-/* Footer below wheel */
-.prod-footer {
-    margin-top: 18px;
+/* ✅ CONTROLS UNDER THE WHEEL (ALWAYS VISIBLE)
+   Desktop/tablet: ONLY the button, aligned LEFT
+   Mobile: arrows + button row (pinned under cards)
+*/
+.prod-controls {
     display: flex;
+    align-items: center;
     justify-content: flex-start;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+/* Hide row arrows by default (non-mobile only shows the button) */
+.prod-controls .prod-nav--row {
+    display: none;
+}
+
+/* Non-mobile button sizing + left alignment */
+.prod-controls .btn {
+    width: auto;
+    min-width: 220px;
+    text-align: center;
 }
 
 /* ---------------------------------
    ULTRA-WIDE: 5 cards
-   - 3 fully visible (no overlap)
-   - outer 2 ghosted + blurred behind
 ---------------------------------- */
 @media (min-width: 2150px) {
-
-    /* Center stays clear */
-    .prod-card.is-center {
-        filter: none;
-    }
-
-    .prod-card.is-center::after {
-        opacity: 0;
-    }
-
-    /* ✅ INNER 3 = fully visible + separated so no overlap */
     .prod-card.is-left {
         transform: translateX(calc(-50% - 560px)) scale(.98);
         filter: none;
@@ -276,7 +298,6 @@
         opacity: 0;
     }
 
-    /* ✅ OUTER 2 = ghost peeks behind */
     .prod-card.is-far-left,
     .prod-card.is-far-right {
         opacity: .28;
@@ -295,7 +316,7 @@
 }
 
 /* ---------------------------------
-   MID: tighten spacing a bit
+   MID: tighten spacing slightly
 ---------------------------------- */
 @media (max-width: 1280px) {
     .prod-card.is-left {
@@ -308,8 +329,7 @@
 }
 
 /* ---------------------------------
-   TABLET / SMALL DESKTOP:
-   3-up smaller + tighter (like packages)
+   TABLET / SMALL DESKTOP
 ---------------------------------- */
 @media (max-width: 1050px) {
     .prod-wheel {
@@ -323,21 +343,13 @@
     }
 
     .prod-card.is-left {
+        opacity: .55;
         transform: translateX(calc(-50% - 255px)) scale(.94);
-        filter: blur(.8px) saturate(.92) contrast(.97) brightness(.98);
-    }
-
-    .prod-card.is-left::after {
-        opacity: 1;
     }
 
     .prod-card.is-right {
+        opacity: .55;
         transform: translateX(calc(-50% + 255px)) scale(.94);
-        filter: blur(.8px) saturate(.92) contrast(.97) brightness(.98);
-    }
-
-    .prod-card.is-right::after {
-        opacity: 1;
     }
 
     .prod-title {
@@ -348,61 +360,142 @@
         font-size: .95rem;
     }
 
-    .prod-prev {
+    .prod-nav--overlay.prod-prev {
         left: 10px;
     }
 
-    .prod-next {
+    .prod-nav--overlay.prod-next {
         right: 10px;
     }
 }
 
 /* ---------------------------------
-   MOBILE: wheel mode
+   SMALL VIEW (≤ 900px)
+   - hide overlay arrows
+   - show bottom row arrows + button
+   - KEEP the wheel height breathing room
+   - PIN controls to bottom of shell (like packages)
 ---------------------------------- */
 @media (max-width: 900px) {
+    .spa-products {
+        padding: 70px 0 0;
+    }
+
+    /* scale from top */
+    .prod-card {
+        transform-origin: top center;
+    }
+
+    /* keep your breathing room */
     .prod-wheel {
-        height: 360px;
+        height: 400px;
         touch-action: pan-y;
     }
 
+    /* skinnier */
     .prod-card {
-        width: min(360px, 86vw);
-        padding: 18px;
+        width: min(300px, 78vw);
+        padding: 16px 16px 18px;
         border-radius: 20px;
     }
 
-    .prod-card.is-left {
-        transform: translateX(calc(-50% - 190px)) scale(.92);
-        filter: blur(.95px) saturate(.90) contrast(.96) brightness(.98);
+    .prod-card.is-center {
+        transform: translateX(-50%) scale(.8);
     }
 
-    .prod-card.is-left::after {
-        opacity: 1;
+    .prod-card.is-left {
+        transform: translateX(calc(-50% - 165px)) scale(.75);
+        opacity: .55;
     }
 
     .prod-card.is-right {
-        transform: translateX(calc(-50% + 190px)) scale(.92);
-        filter: blur(.95px) saturate(.90) contrast(.96) brightness(.98);
-    }
-
-    .prod-card.is-right::after {
-        opacity: 1;
+        transform: translateX(calc(-50% + 165px)) scale(.75);
+        opacity: .55;
     }
 
     .prod-title {
-        font-size: 1.2rem;
+        font-size: 1.05rem;
+        margin: 6px 0;
     }
 
     .prod-desc {
-        font-size: .95rem;
+        font-size: .9rem;
+        margin: 0 0 10px;
+        line-height: 1.55;
     }
 
-    .prod-prev {
-        left: 10px;
+    /* hide overlay arrows */
+    .prod-nav--overlay {
+        display: none;
     }
 
-    .prod-next {
-        right: 10px;
+    /* ✅ KEY FIX (same as packages):
+     reserve space + pin controls to bottom of the wheel shell */
+    .prod-wheel-shell {
+        --controls-h: 56px;
+        /* row height */
+        --controls-gap: 16px;
+        /* distance from cards “feel” */
+        padding-bottom: calc(var(--controls-h) + var(--controls-gap));
     }
+
+    .prod-controls {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        margin-top: 0;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .prod-controls .prod-nav--row {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 44px;
+        transform: none;
+    }
+
+    .prod-controls .btn {
+        flex: 1;
+        width: auto;
+        min-width: 0;
+        text-align: center;
+    }
+
+    .spa-team {
+        padding: 70px 0 90px;
+    }
+}
+
+/* =========================================
+   PRODUCTS — very subtle edge soften (almost hard cut)
+   ========================================= */
+.prod-wheel-shell::before,
+.prod-wheel-shell::after {
+    content: "";
+    position: absolute;
+    top: -40px;
+    bottom: -40px;
+    width: clamp(10px, 3vw, 32px);
+    z-index: 12;
+    pointer-events: none;
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, 0.001);
+}
+
+.prod-wheel-shell::before {
+    left: 0;
+    -webkit-mask-image: linear-gradient(to right, #000 0%, #000 30%, transparent 100%);
+    mask-image: linear-gradient(to right, #000 0%, #000 30%, transparent 100%);
+}
+
+.prod-wheel-shell::after {
+    right: 0;
+    -webkit-mask-image: linear-gradient(to left, #000 0%, #000 30%, transparent 100%);
+    mask-image: linear-gradient(to left, #000 0%, #000 30%, transparent 100%);
 }

@@ -1,10 +1,5 @@
 /* =========================
    PACKAGES (preview wheel)
-   Supports:
-   - overlay arrows on desktop/tablet
-   - bottom row arrows + "View all packages" on mobile
-   - "View all packages" stays visible at ALL viewports
-   - Non-mobile: button stays LEFT (like your Products section)
    ========================= */
 
 .spa-packages {
@@ -53,10 +48,8 @@
 
     border-radius: 22px;
     overflow: hidden;
-
     border: 1px solid rgba(0, 0, 0, .06);
 
-    /* ✅ solid base so you can't see through foreground cards */
     background:
         radial-gradient(1200px 700px at 20% 0%, rgba(214, 163, 107, .14), transparent 55%),
         #fff;
@@ -70,7 +63,7 @@
         filter 520ms cubic-bezier(.2, .9, .2, 1);
 }
 
-/* ✅ dim overlay (does NOT create transparency like opacity does) */
+/* Dim overlay (not opacity on the whole card) */
 .pkg-card::after {
     content: "";
     position: absolute;
@@ -81,7 +74,7 @@
     transition: opacity 420ms ease;
 }
 
-/* Default 3-up: center clear, edges softened */
+/* Default 3-up */
 .pkg-card.is-center {
     pointer-events: auto;
     transform: translateX(-50%) scale(1);
@@ -182,9 +175,7 @@
     margin-top: auto;
 }
 
-/* -----------------------------
-   NAV BUTTONS (base styles)
------------------------------- */
+/* NAV BUTTONS (base styles) */
 .pkg-nav {
     width: 44px;
     height: 44px;
@@ -229,41 +220,30 @@
     justify-content: flex-start;
 }
 
-/* ✅ CONTROLS UNDER THE WHEEL (ALWAYS VISIBLE)
-   Desktop/tablet: ONLY the button, aligned LEFT
-   Mobile: arrows + button row
-*/
+/* Controls under the wheel */
 .wheel-controls {
     display: flex;
-    /* was: none */
     align-items: center;
     justify-content: flex-start;
-    /* LEFT on non-mobile */
+    /* left on non-mobile */
     gap: 12px;
     margin-top: 16px;
 }
 
-/* Hide row arrows by default (non-mobile only shows the button) */
+/* Hide row arrows by default (non-mobile only shows button) */
 .wheel-controls .pkg-nav--row {
     display: none;
 }
 
-/* Non-mobile button sizing + left alignment (like Products) */
+/* Non-mobile button sizing */
 .wheel-controls .btn {
     width: auto;
-    /* not centered wide */
     min-width: 220px;
     text-align: center;
 }
 
-/* ---------------------------------
-   ULTRA-WIDE: 5 cards
-   - 3 fully visible (no overlap)
-   - outer 2 ghosted + blurred behind
----------------------------------- */
+/* ULTRA-WIDE */
 @media (min-width: 2150px) {
-
-    /* Center stays clear (already) */
     .pkg-card.is-center {
         filter: none;
     }
@@ -272,7 +252,6 @@
         opacity: 0;
     }
 
-    /* ✅ INNER 3 = fully visible + separated so no overlap */
     .pkg-card.is-left {
         transform: translateX(calc(-50% - 560px)) scale(.98);
         filter: none;
@@ -291,11 +270,9 @@
         opacity: 0;
     }
 
-    /* ✅ OUTER 2 = ghost peeks behind */
     .pkg-card.is-far-left,
     .pkg-card.is-far-right {
         opacity: .28;
-        /* outer can be faded */
         pointer-events: auto;
         z-index: 1;
         filter: blur(1.35px) saturate(.88) contrast(.95) brightness(.97);
@@ -310,9 +287,7 @@
     }
 }
 
-/* ---------------------------------
-   MID: tighten spacing slightly
----------------------------------- */
+/* MID */
 @media (max-width: 1280px) {
     .pkg-card.is-left {
         transform: translateX(calc(-50% - 320px)) scale(.955);
@@ -323,10 +298,7 @@
     }
 }
 
-/* ---------------------------------
-   TABLET / SMALL DESKTOP:
-   3-up smaller + tighter
----------------------------------- */
+/* TABLET / SMALL DESKTOP */
 @media (max-width: 1050px) {
     .pkg-wheel {
         height: 400px;
@@ -369,46 +341,32 @@
     }
 }
 
-
-/* ---------------------------------
-   SMALL VIEW (≤ 900px)
-   - cards smaller + previews still visible
-   - wheel height matches scaled cards (no big empty space)
----------------------------------- */
+/* MOBILE: keep 400px wheel, keep card transforms,
+   BUT pin the controls to bottom of the shell and reserve space */
 @media (max-width: 900px) {
 
-    /* optional: tighten section padding a touch */
     .spa-packages {
         padding: 70px 0 0px;
     }
 
-    /* ✅ IMPORTANT: scale from the TOP so there’s no gap above */
-    .pkg-card {
-        transform-origin: top center;
-    }
-
-    /* ✅ IMPORTANT: wheel height should match scaled height
-     If your desktop wheel is ~420px tall and center scale is .62:
-     420 * .62 ≈ 260px. Add a bit for shadow = ~290px.
-  */
+    /* keep your 400px breathing room */
     .pkg-wheel {
         height: 400px;
         touch-action: pan-y;
     }
 
-    /* make cards skinnier */
+    /* cards unchanged; just ensure scaling origin */
     .pkg-card {
+        transform-origin: top center;
         width: min(300px, 60vw);
         padding: 16px 16px 18px;
         border-radius: 20px;
     }
 
-    /* center card */
     .pkg-card.is-center {
         transform: translateX(-50%) scale(.8);
     }
 
-    /* previews */
     .pkg-card.is-left {
         transform: translateX(calc(-50% - 165px)) scale(.75);
     }
@@ -417,43 +375,33 @@
         transform: translateX(calc(-50% + 165px)) scale(.75);
     }
 
-    /* tighten text stack */
-    .pkg-title {
-        font-size: 1.05rem;
-        margin: 6px 0 6px;
-    }
-
-    .pkg-desc {
-        font-size: .9rem;
-        margin: 0 0 10px;
-        line-height: 1.55;
-    }
-
-    .pkg-list {
-        font-size: .9rem;
-        margin: 0 0 12px;
-    }
-
-    .pkg-actions {
-        margin-top: auto;
-        gap: 8px;
-    }
-
-    .pkg-actions .btn {
-        padding: 9px 14px;
-        font-size: .9rem;
-    }
-
     /* hide overlay arrows */
     .pkg-nav--overlay {
         display: none;
     }
 
-    /* row layout under wheel */
+    /* ✅ KEY FIX:
+     Reserve space inside the shell and absolutely place controls at the bottom.
+     This makes the controls sit "right under the cards" visually,
+     and stops the "random gap" caused by the wheel's fixed height. */
+    .pkg-wheel-shell {
+        --controls-h: 56px;
+        /* height area for arrows/button row */
+        --controls-gap: 16px;
+        /* same spacing feel as desktop */
+        padding-bottom: calc(var(--controls-h) + var(--controls-gap));
+    }
+
     .wheel-controls {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        margin-top: 0;
+        /* don't use flow spacing on mobile */
         justify-content: space-between;
         gap: 10px;
-        margin-top: 14px;
     }
 
     .wheel-controls .pkg-nav--row {
@@ -472,13 +420,11 @@
     }
 }
 
-
 /* =========================================
    PACKAGES — prevent horizontal scroll
    + very subtle edge soften (almost hard cut)
    ========================================= */
 
-/* 1) stop page-level horizontal scroll */
 .spa-packages {
     overflow-x: clip;
 }
@@ -489,7 +435,6 @@
     }
 }
 
-/* 2) clip wheel overflow (previews still visible inside shell) */
 .pkg-wheel-shell {
     position: relative;
     overflow-x: clip;
@@ -501,50 +446,30 @@
     }
 }
 
-/* 3) VERY subtle edge soften (can be removed entirely if desired) */
+/* subtle edge soften */
 .pkg-wheel-shell::before,
 .pkg-wheel-shell::after {
     content: "";
     position: absolute;
     top: -40px;
     bottom: -40px;
-
-    /* much narrower edge zone */
     width: clamp(10px, 3vw, 32px);
-
     z-index: 12;
     pointer-events: none;
 
-    /* extremely light blur */
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
-
-    /* no visible tint */
     background: rgba(255, 255, 255, 0.001);
 }
 
-/* left edge */
 .pkg-wheel-shell::before {
     left: 0;
-    -webkit-mask-image: linear-gradient(to right,
-            #000 0%,
-            #000 30%,
-            transparent 100%);
-    mask-image: linear-gradient(to right,
-            #000 0%,
-            #000 30%,
-            transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, #000 0%, #000 30%, transparent 100%);
+    mask-image: linear-gradient(to right, #000 0%, #000 30%, transparent 100%);
 }
 
-/* right edge */
 .pkg-wheel-shell::after {
     right: 0;
-    -webkit-mask-image: linear-gradient(to left,
-            #000 0%,
-            #000 30%,
-            transparent 100%);
-    mask-image: linear-gradient(to left,
-            #000 0%,
-            #000 30%,
-            transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, #000 0%, #000 30%, transparent 100%);
+    mask-image: linear-gradient(to left, #000 0%, #000 30%, transparent 100%);
 }

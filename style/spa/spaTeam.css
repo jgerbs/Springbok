@@ -2,12 +2,12 @@
    spaTeam.css — Team tiles + reveal-stagger fix
    ========================================================= */
 
-html[data-brand="spa"] .spa-team{
-  padding: 10px 0 90px;
+.spa-team{
+  padding: 0px 0 90px;
 }
 
 /* Tile */
-html[data-brand="spa"] .spa-team-tile{
+.spa-team-tile{
   position: relative;
   display: block;
   border-radius: 22px;
@@ -20,7 +20,7 @@ html[data-brand="spa"] .spa-team-tile{
   box-shadow: var(--shadow);
 }
 
-html[data-brand="spa"] .spa-team-bg{
+.spa-team-bg{
   position: absolute;
   inset: 0;
   background-size: cover;
@@ -31,7 +31,7 @@ html[data-brand="spa"] .spa-team-bg{
 }
 
 /* Gold-tinted “spa” shade */
-html[data-brand="spa"] .spa-team-shade{
+ .spa-team-shade{
   position: absolute;
   inset: 0;
   background:
@@ -44,7 +44,7 @@ html[data-brand="spa"] .spa-team-shade{
 }
 
 /* Content */
-html[data-brand="spa"] .spa-team-inner{
+.spa-team-inner{
   position: relative;
   z-index: 2;
   height: 100%;
@@ -55,7 +55,7 @@ html[data-brand="spa"] .spa-team-inner{
   color: rgba(255, 255, 255, 0.95);
 }
 
-html[data-brand="spa"] .spa-team-top{
+.spa-team-top{
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -63,7 +63,7 @@ html[data-brand="spa"] .spa-team-top{
   font-size: 0.95rem;
 }
 
-html[data-brand="spa"] .spa-team-dot{
+.spa-team-dot{
   width: 7px;
   height: 7px;
   border-radius: 50%;
@@ -71,17 +71,17 @@ html[data-brand="spa"] .spa-team-dot{
   opacity: 0.85;
 }
 
-html[data-brand="spa"] .spa-team-tag{
+.spa-team-tag{
   letter-spacing: 0.02em;
 }
 
-html[data-brand="spa"] .spa-team-bottom{
+.spa-team-bottom{
   display: grid;
   grid-template-rows: auto auto auto;
   gap: 10px;
 }
 
-html[data-brand="spa"] .spa-team-bottom h3{
+.spa-team-bottom h3{
   margin: 0;
   font-size: 1.38rem;
   line-height: 1.15;
@@ -90,7 +90,7 @@ html[data-brand="spa"] .spa-team-bottom h3{
   transition: transform 0.22s ease;
 }
 
-html[data-brand="spa"] .spa-team-desc{
+.spa-team-desc{
   margin: 0;
   max-height: 0;
   overflow: hidden;
@@ -101,7 +101,7 @@ html[data-brand="spa"] .spa-team-desc{
   line-height: 1.55;
 }
 
-html[data-brand="spa"] .spa-team-cta{
+.spa-team-cta{
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -109,7 +109,7 @@ html[data-brand="spa"] .spa-team-cta{
   font-weight: 800;
 }
 
-html[data-brand="spa"] .spa-team-arrow{
+.spa-team-arrow{
   width: 34px;
   height: 34px;
   border-radius: 10px;
@@ -123,49 +123,49 @@ html[data-brand="spa"] .spa-team-arrow{
 }
 
 /* Hover */
-html[data-brand="spa"] .spa-team-tile:hover{
+.spa-team-tile:hover{
   transform: translateY(-8px) scale(1.02);
   border-color: rgba(214,163,107,0.40);
   box-shadow: 0 26px 90px rgba(17,12,8,0.20);
   z-index: 5;
 }
 
-html[data-brand="spa"] .spa-team-tile:hover .spa-team-bg{
+.spa-team-tile:hover .spa-team-bg{
   transform: scale(1.08);
   filter: saturate(1.03) contrast(1.03);
 }
 
-html[data-brand="spa"] .spa-team-tile:hover .spa-team-bottom h3{
+ .spa-team-tile:hover .spa-team-bottom h3{
   transform: translateY(-6px);
 }
 
-html[data-brand="spa"] .spa-team-tile:hover .spa-team-desc{
+ .spa-team-tile:hover .spa-team-desc{
   max-height: 120px;
   opacity: 1;
   transform: translateY(0);
 }
 
-html[data-brand="spa"] .spa-team-tile:hover .spa-team-arrow{
+.spa-team-tile:hover .spa-team-arrow{
   transform: translateX(3px);
   background: rgba(214,163,107,0.18);
   border-color: rgba(214,163,107,0.30);
 }
 
-html[data-brand="spa"] .spa-team-tile:focus-visible{
+.spa-team-tile:focus-visible{
   outline: 2px solid rgba(214,163,107,0.72);
   outline-offset: 4px;
 }
 
 /* Mobile behavior */
 @media (max-width: 1100px){
-  html[data-brand="spa"] .spa-team-tile{ min-height: 560px; }
-  html[data-brand="spa"] .spa-team-desc{ opacity: 1; transform: none; max-height: 140px; }
+  .spa-team-tile{ min-height: 560px; }
+  .spa-team-desc{ opacity: 1; transform: none; max-height: 140px; }
 }
 
 /* =========================
    REVEAL-STAGGER FIX
    ========================= */
-html[data-brand="spa"] .spa-team-grid.reveal-stagger > .spa-team-tile{
+.spa-team-grid.reveal-stagger > .spa-team-tile{
   --reveal-y: 18px;
   --reveal-dur: 1.5s;
 
@@ -179,7 +179,7 @@ html[data-brand="spa"] .spa-team-grid.reveal-stagger > .spa-team-tile{
     border-color .22s ease;
 }
 
-html[data-brand="spa"] .spa-team-grid.reveal-stagger.is-visible > .spa-team-tile{
+.spa-team-grid.reveal-stagger.is-visible > .spa-team-tile{
   --reveal-y: 0px;
   --reveal-dur: .22s;
 
