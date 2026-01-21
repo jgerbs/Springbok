@@ -5,6 +5,7 @@
    - bottom row arrows + "View Full Team" on mobile
    - "View Full Team" stays visible at ALL viewports
    - Non-mobile: button stays LEFT (no arrows beside it)
+   - Side cards: dim + blur (NO color shift / NO see-through)
    ========================= */
 
 .staff-wheel-shell {
@@ -29,38 +30,66 @@
     width: min(520px, 92vw);
     height: 100%;
     transform: translateX(-50%);
-    opacity: 0;
+    opacity: 1;
+    /* ✅ keep solid */
     pointer-events: none;
+
+    /* required for dim overlay */
+    isolation: isolate;
 
     transition:
         transform 520ms cubic-bezier(.2, .9, .2, 1),
-        opacity 420ms ease,
         filter 520ms cubic-bezier(.2, .9, .2, 1);
 }
 
-/* Default 3-up */
-.staff-wheel .service-tile.is-left {
-    opacity: .55;
-    pointer-events: auto;
-    transform: translateX(calc(-50% - 360px)) scale(.95);
-    filter: saturate(.96) contrast(.98);
-    z-index: 2;
+/* ✅ DIM OVERLAY (does NOT create transparency like opacity) */
+.staff-wheel .service-tile::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .38);
+    /* ✅ dim without washing color */
+    opacity: 0;
+    /* only on non-center */
+    pointer-events: none;
+    z-index: 5;
+    /* above image, below text if your tile text is higher */
+    transition: opacity 420ms ease;
 }
 
+/* Default 3-up: center clear, edges dim+blur */
 .staff-wheel .service-tile.is-center {
-    opacity: 1;
     pointer-events: auto;
     transform: translateX(-50%) scale(1);
     filter: none;
     z-index: 3;
 }
 
+.staff-wheel .service-tile.is-center::after {
+    opacity: 0;
+}
+
+.staff-wheel .service-tile.is-left {
+    pointer-events: auto;
+    transform: translateX(calc(-50% - 360px)) scale(.95);
+    filter: blur(.75px);
+    /* ✅ blur only (no desat) */
+    z-index: 2;
+}
+
+.staff-wheel .service-tile.is-left::after {
+    opacity: 1;
+}
+
 .staff-wheel .service-tile.is-right {
-    opacity: .55;
     pointer-events: auto;
     transform: translateX(calc(-50% + 360px)) scale(.95);
-    filter: saturate(.96) contrast(.98);
+    filter: blur(.75px);
     z-index: 2;
+}
+
+.staff-wheel .service-tile.is-right::after {
+    opacity: 1;
 }
 
 /* Far cards OFF by default */
@@ -127,68 +156,71 @@
 }
 
 /* ✅ Controls under the wheel (ALWAYS visible)
-   Desktop/tablet: ONLY the button, aligned LEFT
+   Desktop/tablet: ONLY button, LEFT
    Mobile: arrows + button row
 */
 .staff-wheel-shell .wheel-controls {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    /* LEFT on non-mobile */
     gap: 12px;
     margin-top: 16px;
 }
 
-/* Hide row arrows by default (non-mobile only shows the button) */
 .staff-wheel-shell .wheel-controls .staff-nav--row {
     display: none;
 }
 
-/* Non-mobile button sizing + left alignment */
 .staff-wheel-shell .wheel-controls .btn {
     width: auto;
     min-width: 220px;
     text-align: center;
 }
 
-
 /* ---------------------------------
    ULTRA-WIDE: 5 cards
-   - 3 fully visible (no overlap)
-   - outer 2 faded + blurred + partially behind
+   - INNER 3 fully visible (no overlap)
+   - OUTER 2 ghosted + blurred behind
 ---------------------------------- */
 @media (min-width: 2150px) {
 
-    /* 3-up: fully visible */
-    .staff-wheel .service-tile.is-left,
-    .staff-wheel .service-tile.is-right {
-        opacity: .92;
-        pointer-events: auto;
+    /* center stays clear (already) */
+    .staff-wheel .service-tile.is-center {
         filter: none;
-        z-index: 2;
     }
 
-    /* push them out far enough so they don't overlap center */
+    .staff-wheel .service-tile.is-center::after {
+        opacity: 0;
+    }
+
+    /* ✅ INNER 3 = fully visible, separated */
     .staff-wheel .service-tile.is-left {
         transform: translateX(calc(-50% - 560px)) scale(.98);
+        filter: none;
+    }
+
+    .staff-wheel .service-tile.is-left::after {
+        opacity: 0;
     }
 
     .staff-wheel .service-tile.is-right {
         transform: translateX(calc(-50% + 560px)) scale(.98);
+        filter: none;
     }
 
-    /* outer 2: partially behind + faded + blurred */
+    .staff-wheel .service-tile.is-right::after {
+        opacity: 0;
+    }
+
+    /* ✅ OUTER 2 = ghost peeks behind */
     .staff-wheel .service-tile.is-far-left,
     .staff-wheel .service-tile.is-far-right {
-        opacity: .22;
+        opacity: .28;
+        /* outer can fade */
         pointer-events: auto;
         z-index: 1;
-
-        /* blur + soften */
-        filter: blur(1.2px) saturate(.9) contrast(.95);
-
-        /* slightly smaller, tucked behind */
-        transform: translateX(-50%) scale(.92);
+        filter: blur(1.35px);
+        /* blur only, keep colour */
     }
 
     .staff-wheel .service-tile.is-far-left {
@@ -197,6 +229,13 @@
 
     .staff-wheel .service-tile.is-far-right {
         transform: translateX(calc(-50% + 840px)) scale(.92);
+    }
+
+    /* dim the outer two slightly */
+    .staff-wheel .service-tile.is-far-left::after,
+    .staff-wheel .service-tile.is-far-right::after {
+        opacity: 1;
+        background: rgba(0, 0, 0, .42);
     }
 }
 
@@ -212,6 +251,7 @@
         transform: translateX(calc(-50% + 320px)) scale(.955);
     }
 
+    /* keep far cards hidden */
     .staff-wheel .service-tile.is-far-left,
     .staff-wheel .service-tile.is-far-right {
         opacity: 0;
@@ -235,13 +275,13 @@
     }
 
     .staff-wheel .service-tile.is-left {
-        opacity: .55;
         transform: translateX(calc(-50% - 255px)) scale(.94);
+        filter: blur(.75px);
     }
 
     .staff-wheel .service-tile.is-right {
-        opacity: .55;
         transform: translateX(calc(-50% + 255px)) scale(.94);
+        filter: blur(.75px);
     }
 
     .staff-nav--overlay.staff-prev {
@@ -269,13 +309,13 @@
     }
 
     .staff-wheel .service-tile.is-left {
-        opacity: .55;
         transform: translateX(calc(-50% - 190px)) scale(.92);
+        filter: blur(.75px);
     }
 
     .staff-wheel .service-tile.is-right {
-        opacity: .55;
         transform: translateX(calc(-50% + 190px)) scale(.92);
+        filter: blur(.75px);
     }
 
     /* hide overlay arrows */

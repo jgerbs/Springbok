@@ -369,43 +369,79 @@
     }
 }
 
+
 /* ---------------------------------
-   MOBILE: arrows beside "View all"
-   - hide overlay arrows
-   - show row arrows + full-width button
+   SMALL VIEW (≤ 900px)
+   - cards smaller + previews still visible
+   - wheel height matches scaled cards (no big empty space)
 ---------------------------------- */
 @media (max-width: 900px) {
+
+    /* optional: tighten section padding a touch */
+    .spa-packages {
+        padding: 70px 0 0px;
+    }
+
+    /* ✅ IMPORTANT: scale from the TOP so there’s no gap above */
+    .pkg-card {
+        transform-origin: top center;
+    }
+
+    /* ✅ IMPORTANT: wheel height should match scaled height
+     If your desktop wheel is ~420px tall and center scale is .62:
+     420 * .62 ≈ 260px. Add a bit for shadow = ~290px.
+  */
     .pkg-wheel {
-        height: 360px;
+        height: 290px;
         touch-action: pan-y;
     }
 
+    /* make cards skinnier */
     .pkg-card {
-        width: min(360px, 86vw);
-        padding: 18px;
+        width: min(300px, 80vw);
+        padding: 16px 16px 18px;
         border-radius: 20px;
     }
 
+    /* center card */
+    .pkg-card.is-center {
+        transform: translateX(-50%) scale(.9);
+    }
+
+    /* previews */
     .pkg-card.is-left {
-        opacity: .55;
-        transform: translateX(calc(-50% - 190px)) scale(.92);
+        transform: translateX(calc(-50% - 165px)) scale(.85);
     }
 
     .pkg-card.is-right {
-        opacity: .55;
-        transform: translateX(calc(-50% + 190px)) scale(.92);
+        transform: translateX(calc(-50% + 165px)) scale(.85);
     }
 
+    /* tighten text stack */
     .pkg-title {
-        font-size: 1.2rem;
+        font-size: 1.05rem;
+        margin: 6px 0 6px;
     }
 
     .pkg-desc {
-        font-size: .95rem;
+        font-size: .9rem;
+        margin: 0 0 10px;
+        line-height: 1.55;
     }
 
     .pkg-list {
-        font-size: .95rem;
+        font-size: .9rem;
+        margin: 0 0 12px;
+    }
+
+    .pkg-actions {
+        margin-top: auto;
+        gap: 8px;
+    }
+
+    .pkg-actions .btn {
+        padding: 9px 14px;
+        font-size: .9rem;
     }
 
     /* hide overlay arrows */
@@ -416,11 +452,10 @@
     /* row layout under wheel */
     .wheel-controls {
         justify-content: space-between;
-        /* arrows on sides */
         gap: 10px;
+        margin-top: 14px;
     }
 
-    /* show row arrows on mobile */
     .wheel-controls .pkg-nav--row {
         display: inline-flex;
         align-items: center;
@@ -429,11 +464,76 @@
         transform: none;
     }
 
-    /* button fills the middle */
     .wheel-controls .btn {
         flex: 1;
         width: auto;
         min-width: 0;
         text-align: center;
     }
+}
+
+
+/* =========================================
+   PACKAGES — prevent horizontal scroll + blur overflow edges
+   ========================================= */
+
+/* 1) stop the page from getting horizontal scroll from the peeks */
+.spa-packages {
+    overflow-x: clip;
+    /* modern */
+}
+
+@supports not (overflow: clip) {
+    .spa-packages {
+        overflow-x: hidden;
+    }
+
+    /* fallback */
+}
+
+/* keep wheel peeks visually, but clip scrollable overflow */
+.pkg-wheel-shell {
+    overflow-x: clip;
+    /* key */
+}
+
+@supports not (overflow: clip) {
+    .pkg-wheel-shell {
+        overflow-x: hidden;
+    }
+}
+
+/* 2) Edge blur “guards” so overflow past the container looks intentional */
+.pkg-wheel-shell::before,
+.pkg-wheel-shell::after {
+    content: "";
+    position: absolute;
+    top: -80px;
+    bottom: -80px;
+
+    /* width of the blur zone at the edges */
+    width: clamp(26px, 6vw, 110px);
+
+    z-index: 12;
+    pointer-events: none;
+
+    /* blur whatever is behind without tinting the color */
+    background: rgba(255, 255, 255, .01);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+/* left edge */
+.pkg-wheel-shell::before {
+    left: 0;
+    /* fade the blur inward */
+    -webkit-mask-image: linear-gradient(to right, #000 0%, #000 55%, transparent 100%);
+    mask-image: linear-gradient(to right, #000 0%, #000 55%, transparent 100%);
+}
+
+/* right edge */
+.pkg-wheel-shell::after {
+    right: 0;
+    -webkit-mask-image: linear-gradient(to left, #000 0%, #000 55%, transparent 100%);
+    mask-image: linear-gradient(to left, #000 0%, #000 55%, transparent 100%);
 }
