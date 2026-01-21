@@ -296,42 +296,48 @@
           </p>
         </div>
 
-        <!-- OPTION A: Embed (if Jane provides embed code for your account) -->
-        <div class="staff-card staff-embed reveal">
+        <div class="staff-card staff-embed reveal"
+          data-jane-base="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book" data-staff="1"
+          data-treatment="3">
           <div class="staff-embed-head">
             <h3>Schedule preview</h3>
-            <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Open in Jane</a>
+            <a class="btn btn-accent" id="janeOpenBtn" href="#" target="_blank" rel="noopener">
+              Open this week in Jane
+            </a>
           </div>
 
-          <!-- Replace src with Jane-provided embed URL if available -->
-          <iframe class="staff-embed-frame" src="https://jane.app/" title="Jane schedule preview" loading="lazy"
-            referrerpolicy="no-referrer"></iframe>
+          <div class="staff-preview">
+            <p class="staff-muted">
+              Live availability is shown in Jane (embedding is blocked by the booking system).
+            </p>
 
-          <p class="staff-embed-note">
-            If the embed isn’t supported, use the “Upcoming slots” list below instead.
-          </p>
+            <div class="staff-quick-links">
+              <a class="staff-link" id="janeConsultLink" href="#" target="_blank" rel="noopener">
+                Aesthetic Consultation <span>→</span>
+              </a>
+              <a class="staff-link" id="janeTreatmentLink" href="#" target="_blank" rel="noopener">
+                Selected Treatment <span>→</span>
+              </a>
+              <a class="staff-link" id="janeStaffLink" href="#" target="_blank" rel="noopener">
+                All services with Dr. Kiesman <span>→</span>
+              </a>
+            </div>
+
+            <p class="staff-embed-note">
+              Tip: Jane will automatically show up-to-date slots for the current week.
+            </p>
+          </div>
         </div>
+
 
         <!-- OPTION B: Fallback list (always works) -->
         <div class="staff-slots reveal-stagger" aria-label="Upcoming availability">
-          <a class="staff-slot" href="https://jane.app/" target="_blank" rel="noopener">
-            <span class="staff-slot-date">Tue</span>
-            <span class="staff-slot-time">10:30 AM</span>
-            <span class="staff-slot-type">Aesthetic Consult (30m)</span>
-            <span class="staff-slot-cta">Book →</span>
-          </a>
-
-          <a class="staff-slot" href="https://jane.app/" target="_blank" rel="noopener">
-            <span class="staff-slot-date">Thu</span>
-            <span class="staff-slot-time">2:15 PM</span>
-            <span class="staff-slot-type">Morpheus8 (60m)</span>
-            <span class="staff-slot-cta">Book →</span>
-          </a>
-
-          <a class="staff-slot" href="https://jane.app/" target="_blank" rel="noopener">
-            <span class="staff-slot-date">Fri</span>
-            <span class="staff-slot-time">9:00 AM</span>
-            <span class="staff-slot-type">Follow-up (15m)</span>
+          <a class="staff-slot"
+            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book#staff_member/1"
+            target="_blank" rel="noopener">
+            <span class="staff-slot-date">This Week</span>
+            <span class="staff-slot-time">See live availability</span>
+            <span class="staff-slot-type">Dr. Kacey Kiesman</span>
             <span class="staff-slot-cta">Book →</span>
           </a>
         </div>

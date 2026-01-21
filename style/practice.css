@@ -1,0 +1,311 @@
+/* =========================
+   Clinic content sections only
+   (Hero stays controlled by home.css)
+   ========================= */
+
+/* HERO additions (minimal, safe) */
+.hero-eyebrow {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: .85rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.hero-pills {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 14px 0 0;
+}
+
+.hero-pills .status-pill {
+    cursor: default;
+    user-select: none;
+}
+
+/* Clinic wrapper */
+.clinic {
+    padding: 78px 0 40px;
+}
+
+/* “Independent sections” look */
+.clinic-section {
+    padding: 18px 0 0;
+}
+
+.clinic-divider {
+    height: 1px;
+    margin: 34px 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .10), transparent);
+}
+
+/* section header row */
+.clinic-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.clinic-head-left {
+    max-width: 78ch;
+}
+
+/* green eyebrow + big title pattern */
+.clinic-eyebrow {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: .85rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.clinic-title {
+    margin: 0 0 10px;
+    font-size: clamp(1.55rem, 2.4vw, 2.2rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+}
+
+.clinic-title .status-pill {
+    margin-left: 12px;
+    transform: translateY(-3px);
+}
+
+.clinic-sub {
+    margin: 0;
+    color: var(--muted);
+}
+
+.clinic-head-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* two-panel body */
+.clinic-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+/* panels */
+.clinic-panel {
+    border-radius: var(--radius-xl);
+    padding: 18px 18px 20px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02));
+    box-shadow: var(--shadow-soft);
+}
+
+.clinic-panel--soft {
+    background:
+        radial-gradient(900px 420px at 12% 15%, rgba(18, 192, 138, .10), transparent 58%),
+        linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02));
+}
+
+.clinic-mini-title {
+    margin: 0 0 12px;
+    font-size: 1.02rem;
+}
+
+.clinic-bullets {
+    margin: 0;
+    padding-left: 18px;
+    display: grid;
+    gap: 10px;
+    color: rgba(255, 255, 255, .82);
+}
+
+/* Doctor cards */
+.doc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 12px;
+}
+
+.doc-card {
+    border-radius: 22px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, .14);
+    box-shadow: var(--shadow-soft);
+}
+
+.doc-img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    display: block;
+}
+
+.doc-body {
+    padding: 14px;
+}
+
+.doc-role {
+    margin: 0 0 6px;
+    color: var(--muted);
+    font-size: .92rem;
+}
+
+.doc-name {
+    margin: 0 0 12px;
+    font-size: 1.05rem;
+}
+
+/* Small button helper */
+.btn-sm {
+    padding: 10px 12px;
+    font-size: .92rem;
+    border-radius: 14px;
+}
+
+/* =========================
+   Status pills
+   ========================= */
+
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    font-size: .82rem;
+    line-height: 1;
+    background: rgba(0, 0, 0, .18);
+    color: rgba(255, 255, 255, .82);
+    vertical-align: middle;
+}
+
+.status-pill::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .35);
+}
+
+.status-pill--open {
+    background: rgba(18, 192, 138, .12);
+    color: rgba(255, 255, 255, .92);
+}
+
+.status-pill--open::before {
+    background: var(--accent);
+    box-shadow: 0 0 0 4px rgba(18, 192, 138, .14);
+}
+
+.status-pill--wait {
+    background: rgba(255, 255, 255, .07);
+    color: rgba(255, 255, 255, .75);
+}
+
+.status-pill--wait::before {
+    background: rgba(255, 255, 255, .35);
+}
+
+/* status note bars */
+.status-note {
+    margin: 14px 0 0;
+    padding: 10px 12px;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, .14);
+    color: rgba(255, 255, 255, .78);
+    font-size: .95rem;
+}
+
+.status-note--open {
+    background: rgba(18, 192, 138, .10);
+}
+
+.status-note--wait {
+    background: rgba(255, 255, 255, .06);
+}
+
+.fineprint {
+    margin: 12px 0 0;
+    color: rgba(255, 255, 255, .65);
+    font-size: .92rem;
+}
+
+/* Single provider card layout (used in bottom 3 sections) */
+.doc-grid--single {
+    grid-template-columns: 1fr;
+}
+
+.doc-grid--single .doc-img {
+    height: 320px;
+}
+
+/* CTA strip */
+.clinic-cta {
+    padding: 24px 0 86px;
+}
+
+.clinic-cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 22px;
+    border-radius: var(--radius-xl);
+    background:
+        radial-gradient(900px 420px at 15% 10%, rgba(18, 192, 138, .14), transparent 60%),
+        rgba(18, 192, 138, .08);
+    box-shadow: var(--shadow-soft);
+}
+
+.clinic-cta-inner h2 {
+    margin: 0 0 8px;
+    font-size: 1.4rem;
+}
+
+.clinic-cta-inner p {
+    margin: 0;
+    color: rgba(255, 255, 255, .80);
+    max-width: 70ch;
+}
+
+.clinic-cta-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+    .clinic-head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .clinic-body {
+        grid-template-columns: 1fr;
+    }
+
+    .doc-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .doc-grid--single .doc-img {
+        height: 280px;
+    }
+}
+
+@media (max-width: 620px) {
+    .doc-grid--single .doc-img {
+        height: 240px;
+    }
+
+    .clinic-cta-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

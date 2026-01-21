@@ -234,125 +234,15 @@
   }
 }
 
-/* =========================
-   STAFF LOOPING WHEEL
-   3 visible, fades + slides, infinite loop
-   ========================= */
-
-.staff-wheel-shell{
-  position: relative;
-  border-radius: 26px;
-  border: 1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.02);
-  box-shadow: var(--shadow-soft);
-  padding: 18px;
-  overflow: hidden;
-}
-
-.staff-wheel{
-  position: relative;
-  height: 560px; /* adjust if your tiles are taller/shorter */
-}
-
-/* Cards become “slides” (absolute) */
-.staff-wheel .service-tile{
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: min(420px, 88vw);
-  height: 100%;
-  transform: translateX(-50%);
-  opacity: 0;
-  pointer-events: none;
-
-  transition:
-    transform 520ms cubic-bezier(.2,.9,.2,1),
-    opacity 420ms ease,
-    filter 520ms cubic-bezier(.2,.9,.2,1);
-
-  will-change: transform, opacity;
-}
-
-/* Position states */
-.staff-wheel .service-tile.is-left{
-  opacity: .55;
-  pointer-events: auto;
-  transform: translateX(calc(-50% - 360px)) scale(.94);
-  filter: saturate(.92) contrast(.96);
-}
-
-.staff-wheel .service-tile.is-center{
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateX(-50%) scale(1);
-  filter: none;
-  z-index: 3;
-}
-
-.staff-wheel .service-tile.is-right{
-  opacity: .55;
-  pointer-events: auto;
-  transform: translateX(calc(-50% + 360px)) scale(.94);
-  filter: saturate(.92) contrast(.96);
-}
-
-/* Incoming/outgoing helpers (nicer fades) */
-.staff-wheel .service-tile.is-off{
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Arrows — reuse your existing styles if you already have them */
-.staff-nav{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.06);
-  color: rgba(255,255,255,.86);
-  font-weight: 900;
-  cursor: pointer;
-
-  backdrop-filter: blur(14px);
-  transition: transform .18s ease, background .18s ease, border-color .18s ease;
-}
-
-.staff-nav:hover{
-  transform: translateY(-50%) translateY(-2px);
-  background: rgba(18,192,138,.16);
-  border-color: rgba(18,192,138,.26);
-}
-
-.staff-prev{ left: 14px; }
-.staff-next{ right: 14px; }
-
-/* Responsive: stack look on small screens (1 visible) */
-@media (max-width: 1050px){
-  .staff-wheel{ height: 620px; }
-
-  .staff-wheel .service-tile.is-left,
-  .staff-wheel .service-tile.is-right{
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(-50%) scale(.98);
-  }
-
-  .staff-wheel .service-tile{
-    width: min(520px, 92vw);
-  }
-}
-
 /* ===== Service tile corner logo (responsive + stable) ===== */
 
-.service-tile{ position: relative; } /* ensure positioning context */
+.service-tile {
+  position: relative;
+}
 
-.service-tile .tile-corner{
+/* ensure positioning context */
+
+.service-tile .tile-corner {
   position: absolute;
   z-index: 3;
   pointer-events: none;
@@ -364,7 +254,7 @@
   /* logo box size (this is what you tweak) */
   width: clamp(180px, 7vw, 200px);
   height: clamp(72px, 7vw, 180px);
-  
+
   display: grid;
   place-items: center;
 
@@ -372,17 +262,17 @@
   transform: translate(50px, -20px);
 }
 
-.service-tile .tile-corner-logo{
+.service-tile .tile-corner-logo {
   width: 100%;
   height: 100%;
   object-fit: contain;
   display: block;
   opacity: .96;
-  filter: drop-shadow(0 12px 28px rgba(0,0,0,.45));
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, .45));
 }
 
 /* Spa logo: scale up inside the same box (keeps position identical) */
-.service-tile.tile--spa .tile-corner-logo{
+.service-tile.tile--spa .tile-corner-logo {
   transform: scale(1.12);
   transform-origin: center;
 }

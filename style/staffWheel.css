@@ -1,0 +1,180 @@
+/* =========================
+   STAFF WHEEL (Home)
+   Matches packages/products behavior
+   ========================= */
+
+.staff-wheel-shell {
+    position: relative;
+    overflow: visible;
+    padding: 0;
+}
+
+.staff-wheel {
+    position: relative;
+    height: 440px;
+    touch-action: pan-y;
+}
+
+/* We are reusing .service-tile cards */
+.staff-wheel .service-tile {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: min(520px, 92vw);
+    height: 100%;
+    transform: translateX(-50%);
+    opacity: 0;
+    pointer-events: none;
+
+    transition:
+        transform 520ms cubic-bezier(.2, .9, .2, 1),
+        opacity 420ms ease,
+        filter 520ms cubic-bezier(.2, .9, .2, 1);
+}
+
+/* 3-card desktop state */
+.staff-wheel .service-tile.is-left {
+    opacity: .55;
+    pointer-events: auto;
+    transform: translateX(calc(-50% - 360px)) scale(.95);
+    filter: saturate(.96) contrast(.98);
+    z-index: 2;
+}
+
+.staff-wheel .service-tile.is-center {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) scale(1);
+    filter: none;
+    z-index: 3;
+}
+
+.staff-wheel .service-tile.is-right {
+    opacity: .55;
+    pointer-events: auto;
+    transform: translateX(calc(-50% + 360px)) scale(.95);
+    filter: saturate(.96) contrast(.98);
+    z-index: 2;
+}
+
+.staff-wheel .service-tile.is-off {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Nav buttons (same style pattern) */
+.staff-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+
+    border: 1px solid rgba(255, 255, 255, .14);
+    background: rgba(255, 255, 255, .08);
+    color: rgba(255, 255, 255, .86);
+    font-weight: 900;
+    cursor: pointer;
+
+    backdrop-filter: blur(14px);
+    transition: transform .18s ease, background .18s ease, border-color .18s ease;
+}
+
+.staff-nav:hover {
+    transform: translateY(-50%) translateY(-2px);
+    background: rgba(18, 192, 138, .14);
+    border-color: rgba(18, 192, 138, .24);
+}
+
+.staff-prev {
+    left: 14px;
+}
+
+.staff-next {
+    right: 14px;
+}
+
+/* ===== ULTRA-WIDE: 5 cards with depth fade =====
+   center: 100%
+   inner: 70%
+   outer: 40%
+*/
+@media (min-width: 2150px) {
+
+    .staff-wheel .service-tile.is-left,
+    .staff-wheel .service-tile.is-right {
+        opacity: .70;
+    }
+
+    .staff-wheel .service-tile.is-far-left,
+    .staff-wheel .service-tile.is-far-right {
+        opacity: .40;
+        pointer-events: auto;
+        filter: saturate(.92) contrast(.96) blur(.3px);
+        z-index: 1;
+    }
+
+    .staff-wheel .service-tile.is-far-left {
+        transform: translateX(calc(-50% - 640px)) scale(.90);
+    }
+
+    .staff-wheel .service-tile.is-far-right {
+        transform: translateX(calc(-50% + 640px)) scale(.90);
+    }
+}
+
+/* ===== MEDIUM: hide far cards ===== */
+@media (max-width: 1280px) {
+
+    .staff-wheel .service-tile.is-far-left,
+    .staff-wheel .service-tile.is-far-right {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(-50%) scale(.98);
+    }
+}
+
+/* ===== MOBILE: swipe/scroll + snap, arrows stay outside ===== */
+@media (max-width: 900px) {
+    .staff-wheel {
+        height: auto;
+        display: flex;
+        gap: 14px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 0 56px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x;
+    }
+
+    .staff-wheel::-webkit-scrollbar {
+        display: none;
+    }
+
+    .staff-wheel .service-tile {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+
+        flex: 0 0 86%;
+        height: auto;
+        min-height: 420px;
+        scroll-snap-align: center;
+        filter: none !important;
+    }
+
+    .staff-prev {
+        left: 10px;
+    }
+
+    .staff-next {
+        right: 10px;
+    }
+}

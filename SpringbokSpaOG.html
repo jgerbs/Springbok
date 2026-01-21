@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en" data-brand="spa">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Springbok Medical Spa | Home</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style/base.css" />
+  <link rel="stylesheet" href="style/spa/spa.css" />
+  <link rel="stylesheet" href="style/spa/spaGrid.css" />
+  <link rel="stylesheet" href="style/spa/spaMission.css" />
+  <link rel="stylesheet" href="style/spa/spaTeam.css" />
+  <link rel="stylesheet" href="style/spa/spaTestimonials.css" />
+  <link rel="stylesheet" href="style/responsive.css" />
+
+</head>
+
+<body>
+  <!-- NAV ONLY (always visible, pinned top-right) -->
+  <header class="site-header" aria-label="Site navigation">
+    <div class="header-right">
+      <nav class="nav-pill" aria-label="Main navigation">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="SpringbokAbout.html">About Us</a>
+        <a class="nav-link" href="SpringbokClinic.html">Clinic</a>
+        <a class="nav-link is-active" href="SpringbokSpa.html">Spa</a>
+        <a class="nav-link" href="SpringbokTeam.html">Our Team</a>
+        <a class="nav-link" href="SpringbokContact.html">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn-accent book-cta" href="https://jane.app/" target="_blank">Book Now</a>
+
+        <!--show only when mobile view is enabled -->
+        <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open menu" aria-controls="mobilePanel"
+          aria-expanded="false">
+          <span class="burger" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+        
+        </div>
+        </div>
+        
+        <!-- mobile panel -->
+        <div class="container mobile-panel" id="mobilePanel" aria-hidden="true">
+          <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
+        
+            <nav class="mobile-menu-links" aria-label="Mobile navigation">
+              <a class="mobile-link" href="index.html">Home</a>
+              <a class="mobile-link" href="SpringbokAbout.html">About Us</a>
+              <a class="mobile-link" href="SpringbokClinic.html">Clinic</a>
+              <a class="mobile-link is-active" href="SpringbokSpa.html">Spa</a>
+              <a class="mobile-link" href="SpringbokTeam.html">Our Team</a>
+              <a class="mobile-link" href="SpringbokContact.html">Contact</a>
+            </nav>
+        
+          </div>
+        </div>
+        
+        </header>
+
+  <main>
+    <section class="hero">
+      <!-- SPA LOGO: anchored in hero (scrolls away) -->
+      <a class="hero-brand reveal" href="SpringbokSpa.html" aria-label="Springbok Medical Spa Home">
+        <img src="resources/spalogo.png" alt="Springbok Medical Spa" class="hero-logo hero-logo--spa" />
+      </a>
+
+      <div class="hero-media" aria-hidden="true">
+        <video class="hero-video" autoplay muted loop playsinline poster="resources/filler.jpg">
+          <source src="resources/vecteezy_spa-massage-decoration-and-body-treatment_1790157.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="container hero-content reveal">
+        <h1>Elevating confidence — with modern aesthetics and wellness.</h1>
+        <p>
+          Physician-led treatments with clear plans and natural results.
+          Explore services, or book directly in seconds.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="https://jane.app/" target="_blank">Book Now</a>
+          <a class="btn btn-outline" href="#services">Explore Services</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="mission">
+      <div class="container mission-grid reveal-stagger">
+        <div class="mission-content">
+          <span class="mission-eyebrow">Our Approach</span>
+          <h2>
+            Modern aesthetics —
+            <br />rooted in expertise, comfort, and trust.
+          </h2>
+
+          <div class="mission-divider"></div>
+
+          <p>
+            Springbok Medical Spa combines physician-led care with
+            personalized treatment plans designed to refine, restore, and
+            support long-term confidence. We focus on natural-looking outcomes
+            with clear next steps.
+          </p>
+
+          <p>
+            Every visit should feel calm, guided, and tailored — never rushed.
+          </p>
+
+          <a href="SpringbokAbout.html" class="btn btn-outline mission-cta">
+            Learn More About Our Approach
+          </a>
+        </div>
+
+        <div class="mission-media">
+            <!-- Optional: keep play button for future video -->
+            <!-- <span class="play-btn" aria-hidden="true">▶</span> -->
+        </div>
+      </div>
+    </section>
+
+    <section class="services-tiles" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-eyebrow">Our Services</span>
+          <h2 class="section-title">Treatments designed for real life.</h2>
+          <div class="section-divider"></div>
+          <p class="section-sub">
+            Explore physician-led aesthetics and wellness options — built
+            around safe, natural results.
+          </p>
+        </div>
+
+        <div class="tile-grid grid-3 reveal-stagger">
+          <a class="spa-team-tile" href="SpringbokSpaService1.html" aria-label="Injectables">
+            <div class="spa-team-bg" style="background-image: url('resources/filler.jpg')"></div>
+            <div class="spa-team-shade"></div>
+            <div class="spa-team-inner">
+              <div class="spa-team-top">
+                <span class="spa-team-dot"></span>
+                <span class="spa-team-tag">Injectables</span>
+              </div>
+              <div class="spa-team-bottom">
+                <h3>Refine and refresh — naturally.</h3>
+                <p class="spa-team-desc">
+                  Personalized plans for subtle enhancement and balanced
+                  results.
+                </p>
+                <span class="spa-team-cta">Explore <span class="spa-team-arrow">→</span></span>
+              </div>
+            </div>
+          </a>
+
+          <a class="spa-team-tile" href="SpringbokSpaService1.html" aria-label="Skin Treatments">
+            <div class="spa-team-bg" style="background-image: url('resources/morph.jpg')"></div>
+            <div class="spa-team-shade"></div>
+            <div class="spa-team-inner">
+              <div class="spa-team-top">
+                <span class="spa-team-dot"></span>
+                <span class="spa-team-tag">Skin Treatments</span>
+              </div>
+              <div class="spa-team-bottom">
+                <h3>Healthy skin, modern care.</h3>
+                <p class="spa-team-desc">
+                  Targeted treatments to improve tone, texture, and clarity.
+                </p>
+                <span class="spa-team-cta">Explore <span class="spa-team-arrow">→</span></span>
+              </div>
+            </div>
+          </a>
+
+          <a class="spa-team-tile" href="SpringbokSpaService1.html" aria-label="Wellness">
+            <div class="spa-team-bg" style="background-image: url('resources/iv.jpg')"></div>
+            <div class="spa-team-shade"></div>
+            <div class="spa-team-inner">
+              <div class="spa-team-top">
+                <span class="spa-team-dot"></span>
+                <span class="spa-team-tag">Wellness</span>
+              </div>
+              <div class="spa-team-bottom">
+                <h3>Feel good — inside and out.</h3>
+                <p class="spa-team-desc">
+                  Supportive services designed to complement your lifestyle.
+                </p>
+                <span class="spa-team-cta">Explore <span class="spa-team-arrow">→</span></span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPA TEAM (after services) -->
+    <section class="spa-team" id="team">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-eyebrow">Our Team</span>
+          <h2 class="section-title">Specialist. One standard of care.</h2>
+          <div class="section-divider"></div>
+          <p class="section-sub">
+            Physician-led aesthetic and wellness care — designed around safe,
+            natural results.
+          </p>
+        </div>
+
+        <div class="tile-grid grid-2 reveal-stagger">
+          <!-- Doctor 1 -->
+          <a class="spa-team-tile" href="SpringbokTeam.html" aria-label="Dr. Ava Patel — Family Medicine">
+            <div class="spa-team-bg" style="background-image: url('resources/doc1.jpg')"></div>
+            <div class="spa-team-shade"></div>
+
+            <div class="spa-team-inner">
+              <div class="spa-team-top">
+                <span class="spa-team-dot"></span>
+                <span class="spa-team-tag">Aesthetic Consults</span>
+              </div>
+
+              <div class="spa-team-bottom">
+                <h3>Dr. Ava Patel</h3>
+                <p class="spa-team-desc">
+                  Physician-led consults focused on safe treatment planning,
+                  natural outcomes, and long-term skin confidence.
+                </p>
+                <span class="spa-team-cta">View Profile <span class="spa-team-arrow">→</span></span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Doctor 2 -->
+          <a class="spa-team-tile" href="SpringbokTeam.html" aria-label="Dr. Marcus Chen — Wellness & Performance">
+            <div class="spa-team-bg" style="background-image: url('resources/doc2.webp')"></div>
+            <div class="spa-team-shade"></div>
+
+            <div class="spa-team-inner">
+              <div class="spa-team-top">
+                <span class="spa-team-dot"></span>
+                <span class="spa-team-tag">Wellness</span>
+              </div>
+
+              <div class="spa-team-bottom">
+                <h3>Dr. Marcus Chen</h3>
+                <p class="spa-team-desc">
+                  Wellness support designed around your lifestyle — energy,
+                  recovery, and sustainable routines that make sense.
+                </p>
+                <span class="spa-team-cta">View Profile <span class="spa-team-arrow">→</span></span>
+              </div>
+            </div>
+          </a>
+
+
+        </div>
+
+        <div style="margin-top: 18px">
+          <a class="btn btn-outline reveal" href="SpringbokTeam.html">Meet the full team</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS (slow rotating wheel) -->
+    <section class="testimonials" id="testimonials">
+      <div class="container reveal">
+        <!-- Match your other section headers -->
+        <div class="section-head">
+          <span class="section-eyebrow">Testimonials</span>
+          <h2 class="section-title">Real experiences. Clear results.</h2>
+          <div class="section-divider"></div>
+          <p class="section-sub">
+            A few words from patients and clients who’ve visited Springbok.
+          </p>
+        </div>
+
+        <!-- Slow, constant wheel -->
+        <div class="t-wheel" aria-label="Testimonials rotating wheel">
+          <div class="t-wheel-track" id="tWheelTrack">
+            <!-- Card 1 (Google style) -->
+            <article class="t-card t-google">
+              <div class="t-top">
+                <div class="t-avatar">N</div>
+                <div class="t-meta">
+                  <div class="t-name">Nimfa Amparado</div>
+                  <div class="t-date">5 August 2025</div>
+                  <div class="t-stars" aria-label="5 stars">
+                    ★★★★★ <span class="t-verify">✔</span>
+                  </div>
+                </div>
+                <div class="t-gmark" aria-hidden="true">G</div>
+              </div>
+
+              <p class="t-text">
+                The doctor is really good and very gentle in putting needles. It’s for
+                blood circulation and for stress. The result is awesome and I highly recommend.
+              </p>
+
+              <a class="t-more" href="#">Read more</a>
+            </article>
+
+            <!-- Card 2 (Google style) -->
+            <article class="t-card t-google">
+              <div class="t-top">
+                <img class="t-photo" src="https://via.placeholder.com/64" alt="" />
+                <div class="t-meta">
+                  <div class="t-name">Shelly Point</div>
+                  <div class="t-date">24 July 2025</div>
+                  <div class="t-stars" aria-label="5 stars">
+                    ★★★★★ <span class="t-verify">✔</span>
+                  </div>
+                </div>
+                <div class="t-gmark" aria-hidden="true">G</div>
+              </div>
+
+              <p class="t-text">
+                I’ve been here for facials and was greeted with such kindness. The staff were welcoming,
+                professional, and the experience felt very relaxing.
+              </p>
+
+              <a class="t-more" href="#">Read more</a>
+            </article>
+
+            <!-- Card 3 (Featured quote style) -->
+            <article class="t-card t-feature">
+              <p class="t-quote">
+                “I came in with constant neck and shoulder tension from long hours at the desk.
+                The plan was tailored to my routine, and improvements were noticeable within a few sessions.”
+              </p>
+
+              <div class="t-person">
+                <img class="t-person-img" src="https://via.placeholder.com/72" alt="Jason Miller" />
+                <div>
+                  <div class="t-person-name">Jason Miller</div>
+                  <div class="t-person-role">Software Engineer</div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 4 (Google style) -->
+            <article class="t-card t-google">
+              <div class="t-top">
+                <div class="t-avatar" style="background: rgba(120,208,255,.14); border-color: rgba(120,208,255,.22);">
+                  A
+                </div>
+                <div class="t-meta">
+                  <div class="t-name">Alyssa K.</div>
+                  <div class="t-date">12 June 2025</div>
+                  <div class="t-stars" aria-label="5 stars">
+                    ★★★★★ <span class="t-verify">✔</span>
+                  </div>
+                </div>
+                <div class="t-gmark" aria-hidden="true">G</div>
+              </div>
+
+              <p class="t-text">
+                Booking was easy, the clinic felt modern and calm, and I didn’t feel rushed.
+                Clear next steps and great follow-up.
+              </p>
+
+              <a class="t-more" href="#">Read more</a>
+            </article>
+
+            <!-- Card 5 (Featured quote style) -->
+            <article class="t-card t-feature">
+              <p class="t-quote">
+                “Concussion care was thorough and reassuring. The return-to-activity plan was super clear,
+                and I felt supported the whole way.”
+              </p>
+
+              <div class="t-person">
+                <img class="t-person-img" src="https://via.placeholder.com/72" alt="Taylor Reed" />
+                <div>
+                  <div class="t-person-name">Taylor Reed</div>
+                  <div class="t-person-role">Student Athlete</div>
+                </div>
+              </div>
+            </article>
+
+            <!-- OPTIONAL: add more .t-card items anytime -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="container footer-inner reveal">
+      <!-- Left: Brand -->
+      <div class="footer-brand">
+        <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
+          <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
+          <div class="footer-brand-type">
+            <div class="footer-brand-name">SPRINGBOK</div>
+            <div class="footer-brand-sub">MEDICAL CLINIC</div>
+          </div>
+        </a>
+
+        <div class="footer-social" aria-label="Social links">
+          <a class="social-btn" href="#" aria-label="Instagram">⌁</a>
+          <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
+          <a class="social-btn" href="#" aria-label="Facebook">f</a>
+        </div>
+      </div>
+
+      <!-- Middle: Columns -->
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h3>Pages</h3>
+          <a href="index.html">Home</a>
+          <a href="SpringbokAbout.html">About Us</a>
+          <a href="SpringbokContact.html">Contact</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Our Services</h3>
+          <a href="SpringbokClinic.html">Clinic</a>
+          <a href="SpringbokSpa.html">Medical Spa</a>
+          <a href="#">Sleep Clinic</a>
+          <a href="#">Concussion Care</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Our Team</h3>
+          <a href="SpringbokTeam.html">Meet the Team</a>
+          <a href="#">Physicians</a>
+          <a href="#">Nursing / Support</a>
+        </div>
+      </div>
+
+      <!-- Right: Contact -->
+      <div class="footer-contact">
+        <div class="footer-contact-block">
+          <p class="footer-contact-title">Springbok Medical Clinic</p>
+          <p>
+            147 16th St West, Suite #300<br />
+            North Vancouver, BC<br />
+            V7M 1T3
+          </p>
+          <a class="footer-link" href="#" target="_blank" rel="noopener">View Directions</a>
+        </div>
+
+        <div class="footer-contact-block">
+          <p>
+            <a class="footer-link" href="tel:+17780000000">+1 (778) 000-0000</a>
+          </p>
+          <p>
+            <a class="footer-link" href="mailto:info@springbokclinic.ca">info@springbokclinic.ca</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>
+        © <span id="footerYear"></span> Springbok Medical Clinic — All Rights
+        Reserved
+      </p>
+
+      <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">
+        ↑
+      </button>
+    </div>
+  </footer>
+
+  <script src="js/mobileMenu.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/testimonialsWheel.js"></script>
+
+  <script src="js/contactModal.js"></script>
+  <script src="js/scrollReveal.js"></script>
+</body>
+
+</html>

@@ -563,3 +563,11 @@ html[data-brand="spa"] .to-top:hover{
     align-items: flex-start;
   }
 }
+
+/* Reduce side margins on large screens */
+html[data-brand="spa"] .container {
+  max-width: 80%;
+  /* was likely ~1100–1200 */
+  padding-left: 24px;
+  padding-right: 24px;
+}

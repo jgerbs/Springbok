@@ -180,6 +180,84 @@ html[data-brand="spa"] .svc-detail p{
   line-height: 1.65;
 }
 
+ /* services grid */
+/* Morpheus8 booking dropdowns (reuse FAQ container, add booking cards) */
+html[data-brand="spa"] .svc-book-acc {
+  margin-top: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+html[data-brand="spa"] .svc-book-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+html[data-brand="spa"] .svc-book-item {
+  border-radius: 22px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, .82);
+  box-shadow: var(--shadow-soft);
+}
+
+html[data-brand="spa"] .svc-book-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+html[data-brand="spa"] .svc-book-item h3 {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 900;
+  color: rgba(18, 18, 18, .92);
+}
+
+html[data-brand="spa"] .svc-book-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+html[data-brand="spa"] .svc-book-chip {
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: .82rem;
+  font-weight: 850;
+  background: rgba(214, 163, 107, .16);
+  border: 1px solid rgba(214, 163, 107, .28);
+  color: rgba(18, 18, 18, .78);
+}
+
+html[data-brand="spa"] .svc-book-price {
+  font-weight: 900;
+  color: rgba(18, 18, 18, .88);
+}
+
+html[data-brand="spa"] .svc-book-small {
+  margin: 10px 0 12px;
+  color: rgba(18, 18, 18, .62);
+  font-size: .92rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 1050px) {
+  html[data-brand="spa"] .svc-book-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  html[data-brand="spa"] .svc-book-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 /* =========================
    IDEAL FOR pills
    ========================= */
@@ -319,39 +397,6 @@ html[data-brand="spa"] .ba-cap{
   line-height: 1.6;
 }
 
-/* =========================
-   Service testimonials (mini grid)
-   ========================= */
-
-html[data-brand="spa"] .svc-quote-grid{
-  margin-top: 18px;
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-}
-
-html[data-brand="spa"] .svc-quote{
-  border-radius: 26px;
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,.82);
-  box-shadow: var(--shadow);
-  padding: 18px;
-}
-
-html[data-brand="spa"] .svc-quote p{
-  margin: 0;
-  color: rgba(18,18,18,.72);
-  line-height: 1.7;
-  font-style: italic;
-}
-
-html[data-brand="spa"] .svc-quote-by{
-  display:inline-block;
-  margin-top: 10px;
-  color: rgba(18,18,18,.58);
-  font-size: .92rem;
-  font-weight: 800;
-}
 
 /* =========================
    Providers grid (light)
