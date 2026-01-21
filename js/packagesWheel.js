@@ -1,12 +1,13 @@
 function initWheel(shell) {
-    const wheel = shell.querySelector('.pkg-wheel') || shell.querySelector('.prod-wheel');
+    const wheel = shell.querySelector(".pkg-wheel") || shell.querySelector(".prod-wheel");
     if (!wheel) return;
 
-    const cards = [...wheel.querySelectorAll('.pkg-card, .prod-card')];
+    const cards = [...wheel.querySelectorAll(".pkg-card, .prod-card")];
     if (!cards.length) return;
 
-    const prev = shell.querySelector('.pkg-prev') || shell.querySelector('.prod-prev');
-    const next = shell.querySelector('.pkg-next') || shell.querySelector('.prod-next');
+    // IMPORTANT: there may be TWO sets now (overlay + row). Bind ALL.
+    const prevButtons = shell.querySelectorAll(".pkg-prev, .prod-prev");
+    const nextButtons = shell.querySelectorAll(".pkg-next, .prod-next");
 
     let index = 0;
     let locked = false;
@@ -15,16 +16,16 @@ function initWheel(shell) {
         const n = cards.length;
 
         cards.forEach((card, i) => {
-            card.classList.remove('is-far-left', 'is-left', 'is-center', 'is-right', 'is-far-right', 'is-off');
+            card.classList.remove("is-far-left", "is-left", "is-center", "is-right", "is-far-right", "is-off");
 
             const rel = (i - index + n) % n;
 
-            if (rel === 0) card.classList.add('is-center');
-            else if (rel === 1) card.classList.add('is-right');
-            else if (rel === 2) card.classList.add('is-far-right');
-            else if (rel === n - 1) card.classList.add('is-left');
-            else if (rel === n - 2) card.classList.add('is-far-left');
-            else card.classList.add('is-off');
+            if (rel === 0) card.classList.add("is-center");
+            else if (rel === 1) card.classList.add("is-right");
+            else if (rel === 2) card.classList.add("is-far-right");
+            else if (rel === n - 1) card.classList.add("is-left");
+            else if (rel === n - 2) card.classList.add("is-far-left");
+            else card.classList.add("is-off");
         });
     }
 
@@ -36,16 +37,19 @@ function initWheel(shell) {
         index = (index + dir + n) % n;
         paint();
 
-        // match your CSS transition timing
-        window.setTimeout(() => { locked = false; }, 560);
+        window.setTimeout(() => {
+            locked = false;
+        }, 560);
     }
 
-    prev?.addEventListener('click', () => go(-1));
-    next?.addEventListener('click', () => go(1));
+    // Bind all matching buttons (overlay + row)
+    prevButtons.forEach((btn) => btn.addEventListener("click", () => go(-1)));
+    nextButtons.forEach((btn) => btn.addEventListener("click", () => go(1)));
 
-    wheel.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') go(-1);
-        if (e.key === 'ArrowRight') go(1);
+    // Keyboard
+    wheel.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") go(-1);
+        if (e.key === "ArrowRight") go(1);
     });
 
     // --- Swipe (touch + trackpad friendly) ---
@@ -54,29 +58,31 @@ function initWheel(shell) {
     let tracking = false;
     let horizontalIntent = false;
 
-    wheel.addEventListener('pointerdown', (e) => {
+    wheel.addEventListener("pointerdown", (e) => {
         tracking = true;
         horizontalIntent = false;
         startX = e.clientX;
         startY = e.clientY;
     });
 
-    wheel.addEventListener('pointermove', (e) => {
-        if (!tracking) return;
+    wheel.addEventListener(
+        "pointermove",
+        (e) => {
+            if (!tracking) return;
 
-        const dx = e.clientX - startX;
-        const dy = e.clientY - startY;
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
 
-        // decide intent once
-        if (!horizontalIntent && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
-            horizontalIntent = Math.abs(dx) > Math.abs(dy);
-        }
+            if (!horizontalIntent && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
+                horizontalIntent = Math.abs(dx) > Math.abs(dy);
+            }
 
-        // if horizontal swipe, prevent page scroll while swiping
-        if (horizontalIntent && e.cancelable) e.preventDefault();
-    }, { passive: false });
+            if (horizontalIntent && e.cancelable) e.preventDefault();
+        },
+        { passive: false }
+    );
 
-    wheel.addEventListener('pointerup', (e) => {
+    wheel.addEventListener("pointerup", (e) => {
         if (!tracking) return;
         tracking = false;
 
@@ -84,7 +90,7 @@ function initWheel(shell) {
         if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
     });
 
-    wheel.addEventListener('pointercancel', () => {
+    wheel.addEventListener("pointercancel", () => {
         tracking = false;
     });
 
@@ -92,5 +98,5 @@ function initWheel(shell) {
 }
 
 document
-    .querySelectorAll('.pkg-wheel-shell[data-wheel], .prod-wheel-shell[data-wheel]')
+    .querySelectorAll(".pkg-wheel-shell[data-wheel], .prod-wheel-shell[data-wheel]")
     .forEach(initWheel);

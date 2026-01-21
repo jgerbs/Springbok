@@ -245,39 +245,6 @@
     .service-tile .tile-corner-logo {
         filter: drop-shadow(0 10px 22px rgba(0, 0, 0, .45));
     }
-
-    /* =======================================================
-     Staff wheel shell: make it “mobile friendly”
-     Option A: keep your JS states but show only center
-     ======================================================= */
-
-    .staff-wheel-shell {
-        padding: 14px;
-        border-radius: 22px;
-    }
-
-    .staff-wheel {
-        height: 420px;
-        /* instead of 560/620 */
-    }
-
-    /* Show only center card on mobile */
-    .staff-wheel .service-tile {
-        width: min(520px, 92vw);
-    }
-
-    .staff-wheel .service-tile.is-left,
-    .staff-wheel .service-tile.is-right {
-        opacity: 0 !important;
-        pointer-events: none !important;
-        transform: translateX(-50%) scale(.98) !important;
-    }
-
-    /* Arrows: either keep or hide.
-     If you want swipe later, hide them now. */
-    .staff-nav {
-        display: none;
-    }
 }
 
 /* Extra small phones */

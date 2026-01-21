@@ -1,6 +1,7 @@
 /* =========================
    STAFF WHEEL (Home)
-   Matches packages/products behavior
+   Mirrors PACKAGES behavior:
+   5 (ultra-wide) -> 3 (default) -> 3 compact (tablet) -> 3 compact (mobile wheel)
    ========================= */
 
 .staff-wheel-shell {
@@ -9,13 +10,16 @@
     padding: 0;
 }
 
+/* Stage (wheel mode always) */
 .staff-wheel {
     position: relative;
     height: 440px;
     touch-action: pan-y;
+    /* JS detects horizontal swipe */
+    overflow: visible;
 }
 
-/* We are reusing .service-tile cards */
+/* Card base */
 .staff-wheel .service-tile {
     position: absolute;
     top: 0;
@@ -32,7 +36,7 @@
         filter 520ms cubic-bezier(.2, .9, .2, 1);
 }
 
-/* 3-card desktop state */
+/* Default 3-up (normal size) */
 .staff-wheel .service-tile.is-left {
     opacity: .55;
     pointer-events: auto;
@@ -57,17 +61,30 @@
     z-index: 2;
 }
 
+/* Far cards OFF by default */
+.staff-wheel .service-tile.is-far-left,
+.staff-wheel .service-tile.is-far-right {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) scale(.98);
+    filter: none;
+    z-index: 1;
+}
+
+/* Everything else hidden */
 .staff-wheel .service-tile.is-off {
     opacity: 0;
     pointer-events: none;
 }
 
-/* Nav buttons (same style pattern) */
-.staff-nav {
+/* ---------- NAV (force visible like packages) ---------- */
+.staff-wheel-shell>.staff-nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 10;
+    z-index: 999;
+    display: grid;
+    place-items: center;
 
     width: 44px;
     height: 44px;
@@ -75,40 +92,50 @@
 
     border: 1px solid rgba(255, 255, 255, .14);
     background: rgba(255, 255, 255, .08);
-    color: rgba(255, 255, 255, .86);
+    color: rgba(255, 255, 255, .92);
     font-weight: 900;
     cursor: pointer;
+
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 
     backdrop-filter: blur(14px);
     transition: transform .18s ease, background .18s ease, border-color .18s ease;
 }
 
-.staff-nav:hover {
+.staff-wheel-shell>.staff-nav:hover {
     transform: translateY(-50%) translateY(-2px);
     background: rgba(18, 192, 138, .14);
     border-color: rgba(18, 192, 138, .24);
 }
 
-.staff-prev {
+.staff-wheel-shell>.staff-prev {
     left: 14px;
 }
 
-.staff-next {
+.staff-wheel-shell>.staff-next {
     right: 14px;
 }
 
-/* ===== ULTRA-WIDE: 5 cards with depth fade =====
-   center: 100%
-   inner: 70%
-   outer: 40%
-*/
+/* ---------------------------------
+   ULTRA-WIDE: 5 cards with depth fade
+   center 100%
+   inner 70%
+   outer 40%
+---------------------------------- */
 @media (min-width: 2150px) {
 
+    /* inner */
     .staff-wheel .service-tile.is-left,
     .staff-wheel .service-tile.is-right {
         opacity: .70;
+        pointer-events: auto;
+        filter: saturate(.96) contrast(.98);
+        z-index: 2;
     }
 
+    /* outer */
     .staff-wheel .service-tile.is-far-left,
     .staff-wheel .service-tile.is-far-right {
         opacity: .40;
@@ -126,55 +153,90 @@
     }
 }
 
-/* ===== MEDIUM: hide far cards ===== */
+/* ---------------------------------
+   MID: tighten spacing slightly (still normal size cards)
+---------------------------------- */
 @media (max-width: 1280px) {
+    .staff-wheel .service-tile.is-left {
+        transform: translateX(calc(-50% - 320px)) scale(.955);
+    }
 
+    .staff-wheel .service-tile.is-right {
+        transform: translateX(calc(-50% + 320px)) scale(.955);
+    }
+
+    /* keep far cards hidden */
     .staff-wheel .service-tile.is-far-left,
     .staff-wheel .service-tile.is-far-right {
         opacity: 0;
         pointer-events: none;
         transform: translateX(-50%) scale(.98);
+        filter: none;
     }
 }
 
-/* ===== MOBILE: swipe/scroll + snap, arrows stay outside ===== */
-@media (max-width: 900px) {
+/* ---------------------------------
+   TABLET / SMALL DESKTOP:
+   KEEP 3-UP, but smaller + tighter (like packages @1050px)
+---------------------------------- */
+@media (max-width: 1050px) {
     .staff-wheel {
-        height: auto;
-        display: flex;
-        gap: 14px;
-        overflow-x: auto;
-        overflow-y: hidden;
-        padding: 0 56px;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        touch-action: pan-x;
-    }
-
-    .staff-wheel::-webkit-scrollbar {
-        display: none;
+        height: 400px;
     }
 
     .staff-wheel .service-tile {
-        position: relative;
-        left: auto;
-        top: auto;
-        transform: none !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-
-        flex: 0 0 86%;
-        height: auto;
-        min-height: 420px;
-        scroll-snap-align: center;
-        filter: none !important;
+        width: min(440px, 86vw);
     }
 
-    .staff-prev {
+    .staff-wheel .service-tile.is-left {
+        opacity: .55;
+        transform: translateX(calc(-50% - 255px)) scale(.94);
+    }
+
+    .staff-wheel .service-tile.is-right {
+        opacity: .55;
+        transform: translateX(calc(-50% + 255px)) scale(.94);
+    }
+
+    .staff-wheel-shell>.staff-prev {
         left: 10px;
     }
 
-    .staff-next {
+    .staff-wheel-shell>.staff-next {
         right: 10px;
     }
+}
+
+/* ---------------------------------
+   MOBILE: keep WHEEL (no list mode)
+   Smaller cards + tight offsets (like packages @900px)
+---------------------------------- */
+@media (max-width: 900px) {
+    .staff-wheel {
+        height: 380px;
+        touch-action: pan-y;
+    }
+
+    .staff-wheel .service-tile {
+        width: min(360px, 86vw);
+    }
+
+    .staff-wheel .service-tile.is-left {
+        opacity: .55;
+        transform: translateX(calc(-50% - 190px)) scale(.92);
+    }
+
+    .staff-wheel .service-tile.is-right {
+        opacity: .55;
+        transform: translateX(calc(-50% + 190px)) scale(.92);
+    }
+
+    .staff-wheel-shell>.staff-prev {
+        left: 10px;
+    }
+
+    .staff-wheel-shell>.staff-next {
+        right: 10px;
+    }
+
 }

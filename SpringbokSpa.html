@@ -269,7 +269,8 @@
         </div>
 
         <div class="pkg-wheel-shell reveal" data-wheel="packages">
-          <button class="pkg-nav pkg-prev" type="button" aria-label="Previous package">‹</button>
+          <!-- desktop overlay arrows -->
+          <button class="pkg-nav pkg-prev pkg-nav--overlay" type="button" aria-label="Previous package">‹</button>
 
           <div class="pkg-wheel" id="packagesWheel" tabindex="0" aria-label="Packages carousel (looping)">
             <!-- Package 1 -->
@@ -408,13 +409,15 @@
             </article>
           </div>
 
-          <button class="pkg-nav pkg-next" type="button" aria-label="Next package">›</button>
-        </div>
+          <button class="pkg-nav pkg-next pkg-nav--overlay" type="button" aria-label="Next package">›</button>
 
-        <div class="pkg-footer reveal">
-          <a class="btn btn-outline" href="SpringbokSpaPackages.html">View all packages</a>
+          <!-- mobile row controls -->
+          <div class="wheel-controls">
+            <button class="pkg-nav pkg-prev pkg-nav--row" type="button" aria-label="Previous package">‹</button>
+            <a class="btn btn-outline" href="SpringbokSpaPackages.html">View all packages</a>
+            <button class="pkg-nav pkg-next pkg-nav--row" type="button" aria-label="Next package">›</button>
+          </div>
         </div>
-      </div>
     </section>
 
     <!-- PRODUCTS PREVIEW -->
@@ -429,8 +432,10 @@
           </p>
         </div>
 
-        <div class="prod-wheel-shell reveal" data-wheel="products">
-          <button class="prod-nav prod-prev" type="button" aria-label="Previous product">‹</button>
+        <div class="pkg-wheel-shell reveal" data-wheel="packages">
+          <!-- desktop overlay arrows -->
+          <button class="pkg-nav pkg-prev pkg-nav--overlay" type="button" aria-label="Previous package">‹</button>
+
 
           <div class="prod-wheel" tabindex="0" aria-label="Products carousel (looping)">
             <!-- Product 1 -->
@@ -501,72 +506,74 @@
               <div class="prod-media">
                 <img src="resources/filler.jpg" alt="Barrier Repair Cream" loading="lazy">
               </div>
-            
+
               <div class="prod-card-top">
                 <span class="prod-pill">Aftercare</span>
                 <span class="prod-price">$68</span>
               </div>
-            
+
               <h3 class="prod-title">Barrier Repair Cream</h3>
               <p class="prod-desc">
                 Rich, calming hydration to support your skin barrier after treatment.
               </p>
-            
+
               <div class="prod-actions">
                 <a class="btn btn-outline" href="SpringbokSpaProducts.html#barrier-repair">View details</a>
               </div>
             </article>
-            
+
             <!-- Product 2 -->
             <article class="prod-card">
               <div class="prod-media">
                 <img src="resources/filler.jpg" alt="Hyaluronic Serum" loading="lazy">
               </div>
-            
+
               <div class="prod-card-top">
                 <span class="prod-pill">Hydration</span>
                 <span class="prod-price">$74</span>
               </div>
-            
+
               <h3 class="prod-title">Hyaluronic Serum</h3>
               <p class="prod-desc">
                 Lightweight hydration for smoother-looking texture and bounce.
               </p>
-            
+
               <div class="prod-actions">
                 <a class="btn btn-outline" href="SpringbokSpaProducts.html#hyaluronic-serum">View details</a>
               </div>
             </article>
-            
+
             <!-- Product 3 -->
             <article class="prod-card">
               <div class="prod-media">
                 <img src="resources/filler.jpg" alt="Mineral Sunscreen" loading="lazy">
               </div>
-            
+
               <div class="prod-card-top">
                 <span class="prod-pill">SPF</span>
                 <span class="prod-price">$54</span>
               </div>
-            
+
               <h3 class="prod-title">Mineral Sunscreen</h3>
               <p class="prod-desc">
                 Daily protection that helps preserve results and support healthy recovery.
               </p>
-            
+
               <div class="prod-actions">
                 <a class="btn btn-outline" href="SpringbokSpaProducts.html#mineral-spf">View details</a>
               </div>
             </article>
           </div>
 
-          <button class="prod-nav prod-next" type="button" aria-label="Next product">›</button>
-        </div>
+          <button class="pkg-nav pkg-next pkg-nav--overlay" type="button" aria-label="Next package">›</button>
 
-        <div class="prod-footer reveal">
-          <a class="btn btn-outline" href="SpringbokSpaProducts.html">View all products</a>
+          <!-- mobile row controls -->
+          <div class="wheel-controls">
+            <button class="pkg-nav pkg-prev pkg-nav--row" type="button" aria-label="Previous package">‹</button>
+            <a class="btn btn-outline" href="SpringbokSpaPackages.html">View all products</a>
+            <button class="pkg-nav pkg-next pkg-nav--row" type="button" aria-label="Next package">›</button>
+          </div>
         </div>
-      </div>
     </section>
 
 

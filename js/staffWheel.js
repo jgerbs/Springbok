@@ -1,137 +1,87 @@
-// Staff looping wheel (5 visible on ultra-wide, 3 on desktop, swipe-scroll on mobile)
-(() => {
-  const shell = document.querySelector(".staff-wheel-shell");
-  const wheel = document.getElementById("staffWheel");
-  if (!shell || !wheel) return;
+function initStaffWheel(shell) {
+  const wheel = shell.querySelector('.staff-wheel');
+  if (!wheel) return;
 
-  const cards = Array.from(wheel.querySelectorAll(".service-tile"));
-  if (cards.length === 0) return;
+  const cards = [...wheel.querySelectorAll('.service-tile')];
+  if (!cards.length) return;
 
-  const prevBtn = shell.querySelector(".staff-prev");
-  const nextBtn = shell.querySelector(".staff-next");
+  const prev = shell.querySelector('.staff-prev');
+  const next = shell.querySelector('.staff-next');
 
   let index = 0;
   let locked = false;
 
-  const isMobile = () => window.matchMedia("(max-width: 900px)").matches;
-  const isUltra = () => window.matchMedia("(min-width: 2150px)").matches;
-
-  const mod = (n, m) => ((n % m) + m) % m;
-
-  function clearStates(el) {
-    el.classList.remove(
-      "is-far-left",
-      "is-left",
-      "is-center",
-      "is-right",
-      "is-far-right",
-      "is-off"
-    );
-  }
-
-  function applyDesktopStates() {
+  function paint() {
     const n = cards.length;
 
-    // reset to off
-    cards.forEach(c => {
-      clearStates(c);
-      c.classList.add("is-off");
+    cards.forEach((card, i) => {
+      card.classList.remove('is-far-left', 'is-left', 'is-center', 'is-right', 'is-far-right', 'is-off');
+
+      const rel = (i - index + n) % n;
+
+      if (rel === 0) card.classList.add('is-center');
+      else if (rel === 1) card.classList.add('is-right');
+      else if (rel === 2) card.classList.add('is-far-right');
+      else if (rel === n - 1) card.classList.add('is-left');
+      else if (rel === n - 2) card.classList.add('is-far-left');
+      else card.classList.add('is-off');
     });
-
-    const center = mod(index, n);
-    const left = mod(index - 1, n);
-    const right = mod(index + 1, n);
-
-    // always show center
-    cards[center].classList.remove("is-off");
-    cards[center].classList.add("is-center");
-
-    // show left/right when we have more than 1
-    if (n > 1) {
-      cards[left].classList.remove("is-off");
-      cards[left].classList.add("is-left");
-
-      cards[right].classList.remove("is-off");
-      cards[right].classList.add("is-right");
-    }
-
-    // ultra-wide: also show far-left/far-right
-    if (isUltra() && n > 3) {
-      const farLeft = mod(index - 2, n);
-      const farRight = mod(index + 2, n);
-
-      cards[farLeft].classList.remove("is-off");
-      cards[farLeft].classList.add("is-far-left");
-
-      cards[farRight].classList.remove("is-off");
-      cards[farRight].classList.add("is-far-right");
-    }
   }
 
-  function applyMobileMode() {
-    // mobile is pure scroll/snap, so we don't need staged classes
-    cards.forEach(c => clearStates(c));
-  }
-
-  function paint() {
-    if (isMobile()) applyMobileMode();
-    else applyDesktopStates();
-  }
-
-  function step(dir) {
+  function go(dir) {
     if (locked) return;
-
-    // On mobile, arrows scroll instead of class-rotating
-    if (isMobile()) {
-      const card = wheel.querySelector(".service-tile");
-      const dx = card ? (card.getBoundingClientRect().width + 14) : 320;
-      wheel.scrollBy({ left: dir * dx, behavior: "smooth" });
-      return;
-    }
-
     locked = true;
-    index = index + dir;
+
+    const n = cards.length;
+    index = (index + dir + n) % n;
     paint();
+
     window.setTimeout(() => { locked = false; }, 560);
   }
 
-  prevBtn?.addEventListener("click", () => step(-1));
-  nextBtn?.addEventListener("click", () => step(1));
+  prev?.addEventListener('click', () => go(-1));
+  next?.addEventListener('click', () => go(1));
 
-  // keyboard support
-  wheel.setAttribute("tabindex", "0");
-  wheel.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft") step(-1);
-    if (e.key === "ArrowRight") step(1);
+  wheel.setAttribute('tabindex', '0');
+  wheel.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') go(-1);
+    if (e.key === 'ArrowRight') go(1);
   });
 
-  // pointer swipe (desktop only)
-  let startX = 0;
-  wheel.addEventListener("pointerdown", (e) => {
-    if (isMobile()) return; // native scroll
+  // Swipe (touch + trackpad friendly)
+  let startX = 0, startY = 0, tracking = false, horizontalIntent = false;
+
+  wheel.addEventListener('pointerdown', (e) => {
+    tracking = true;
+    horizontalIntent = false;
     startX = e.clientX;
+    startY = e.clientY;
   });
-  wheel.addEventListener("pointerup", (e) => {
-    if (isMobile()) return;
+
+  wheel.addEventListener('pointermove', (e) => {
+    if (!tracking) return;
+
     const dx = e.clientX - startX;
-    if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1);
+    const dy = e.clientY - startY;
+
+    if (!horizontalIntent && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
+      horizontalIntent = Math.abs(dx) > Math.abs(dy);
+    }
+
+    if (horizontalIntent && e.cancelable) e.preventDefault();
+  }, { passive: false });
+
+  wheel.addEventListener('pointerup', (e) => {
+    if (!tracking) return;
+    tracking = false;
+
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
   });
 
-  // re-apply on resize
-  window.addEventListener("resize", paint);
+  wheel.addEventListener('pointercancel', () => { tracking = false; });
 
-  // Initial paint
   paint();
+}
 
-  // Optional auto-rotate (desktop only, pause on hover)
-  let auto = window.setInterval(() => {
-    if (!isMobile()) step(1);
-  }, 6000);
-
-  shell.addEventListener("mouseenter", () => { clearInterval(auto); });
-  shell.addEventListener("mouseleave", () => {
-    auto = window.setInterval(() => {
-      if (!isMobile()) step(1);
-    }, 6000);
-  });
-})();
+document.querySelectorAll('.staff-wheel-shell[data-wheel]').forEach(initStaffWheel);

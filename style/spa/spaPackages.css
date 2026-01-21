@@ -1,6 +1,10 @@
 /* =========================
    PACKAGES (preview wheel)
-   5 (ultra-wide) -> 3 (default) -> 3 compact (tablet) -> mobile scroll
+   Supports:
+   - overlay arrows on desktop/tablet
+   - bottom row arrows + "View all packages" on mobile
+   - "View all packages" stays visible at ALL viewports
+   - Non-mobile: button stays LEFT (like your Products section)
    ========================= */
 
 .spa-packages {
@@ -29,7 +33,7 @@
     overflow: visible;
 }
 
-/* Stage (desktop/tablet wheel mode) */
+/* Stage (wheel mode) */
 .pkg-wheel {
     position: relative;
     height: 420px;
@@ -161,13 +165,10 @@
     margin-top: auto;
 }
 
-/* Nav buttons */
+/* -----------------------------
+   NAV BUTTONS (base styles)
+------------------------------ */
 .pkg-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 20;
-
     width: 44px;
     height: 44px;
     border-radius: 12px;
@@ -183,43 +184,74 @@
 }
 
 .pkg-nav:hover {
-    transform: translateY(-50%) translateY(-2px);
+    transform: translateY(-2px);
     background: rgba(214, 163, 107, .20);
     border-color: rgba(214, 163, 107, .26);
 }
 
-.pkg-prev {
+/* Overlay arrows (desktop/tablet) */
+.pkg-nav--overlay {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+}
+
+.pkg-nav--overlay.pkg-prev {
     left: 14px;
 }
 
-.pkg-next {
+.pkg-nav--overlay.pkg-next {
     right: 14px;
 }
 
+/* Footer under the wheel (desktop) */
 .pkg-footer {
     margin-top: 18px;
     display: flex;
     justify-content: flex-start;
 }
 
+/* ✅ CONTROLS UNDER THE WHEEL (ALWAYS VISIBLE)
+   Desktop/tablet: ONLY the button, aligned LEFT
+   Mobile: arrows + button row
+*/
+.wheel-controls {
+    display: flex;
+    /* was: none */
+    align-items: center;
+    justify-content: flex-start;
+    /* LEFT on non-mobile */
+    gap: 12px;
+    margin-top: 16px;
+}
+
+/* Hide row arrows by default (non-mobile only shows the button) */
+.wheel-controls .pkg-nav--row {
+    display: none;
+}
+
+/* Non-mobile button sizing + left alignment (like Products) */
+.wheel-controls .btn {
+    width: auto;
+    /* not centered wide */
+    min-width: 220px;
+    text-align: center;
+}
+
 /* ---------------------------------
    ULTRA-WIDE: 5 cards with depth fade
-   center 100%
-   inner 70%
-   outer 40%
 ---------------------------------- */
 @media (min-width: 2150px) {
 
-    /* inner */
     .pkg-card.is-left,
     .pkg-card.is-right {
-        opacity: .70;
+        opacity: .90;
         pointer-events: auto;
         filter: saturate(.96) contrast(.98);
         z-index: 2;
     }
 
-    /* outer */
     .pkg-card.is-far-left,
     .pkg-card.is-far-right {
         opacity: .40;
@@ -238,7 +270,7 @@
 }
 
 /* ---------------------------------
-   MID: tighten spacing slightly (still normal size cards)
+   MID: tighten spacing slightly
 ---------------------------------- */
 @media (max-width: 1280px) {
     .pkg-card.is-left {
@@ -252,8 +284,7 @@
 
 /* ---------------------------------
    TABLET / SMALL DESKTOP:
-   KEEP 3-UP, but make cards smaller + tighter
-   (THIS replaces your old 1050px "single card" state)
+   3-up smaller + tighter
 ---------------------------------- */
 @media (max-width: 1050px) {
     .pkg-wheel {
@@ -266,7 +297,6 @@
         border-radius: 20px;
     }
 
-    /* tighter offsets */
     .pkg-card.is-left {
         opacity: .55;
         transform: translateX(calc(-50% - 255px)) scale(.94);
@@ -289,23 +319,24 @@
         font-size: .95rem;
     }
 
-    .pkg-prev {
+    .pkg-nav--overlay.pkg-prev {
         left: 10px;
     }
 
-    .pkg-next {
+    .pkg-nav--overlay.pkg-next {
         right: 10px;
     }
 }
 
 /* ---------------------------------
-   MOBILE: keep WHEEL (no list mode)
+   MOBILE: arrows beside "View all"
+   - hide overlay arrows
+   - show row arrows + full-width button
 ---------------------------------- */
 @media (max-width: 900px) {
     .pkg-wheel {
         height: 360px;
         touch-action: pan-y;
-        /* we’ll detect horizontal swipe in JS */
     }
 
     .pkg-card {
@@ -314,7 +345,6 @@
         border-radius: 20px;
     }
 
-    /* tighter offsets for small phones */
     .pkg-card.is-left {
         opacity: .55;
         transform: translateX(calc(-50% - 190px)) scale(.92);
@@ -337,11 +367,32 @@
         font-size: .95rem;
     }
 
-    .pkg-prev {
-        left: 10px;
+    /* hide overlay arrows */
+    .pkg-nav--overlay {
+        display: none;
     }
 
-    .pkg-next {
-        right: 10px;
+    /* row layout under wheel */
+    .wheel-controls {
+        justify-content: space-between;
+        /* arrows on sides */
+        gap: 10px;
+    }
+
+    /* show row arrows on mobile */
+    .wheel-controls .pkg-nav--row {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 44px;
+        transform: none;
+    }
+
+    /* button fills the middle */
+    .wheel-controls .btn {
+        flex: 1;
+        width: auto;
+        min-width: 0;
+        text-align: center;
     }
 }
