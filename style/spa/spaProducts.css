@@ -220,39 +220,47 @@
 }
 
 /* ---------------------------------
-   ULTRA-WIDE: 5 cards with depth fade
-   center: 100%
-   inner: 70%
-   outer: 40%
+   ULTRA-WIDE: 5 cards
+   - 3 fully visible (no overlap)
+   - outer 2 faded + blurred + behind
 ---------------------------------- */
 @media (min-width: 2150px) {
 
-    /* center already 100% via .is-center */
-
-    /* inner cards */
+    /* INNER 3 — fully visible */
     .prod-card.is-left,
     .prod-card.is-right {
-        opacity: .90;
+        opacity: .92;
         pointer-events: auto;
-        filter: saturate(.96) contrast(.98);
+        filter: none;
         z-index: 2;
     }
 
-    /* outer cards */
+    /* push inner cards out so they don't overlap center */
+    .prod-card.is-left {
+        transform: translateX(calc(-50% - 560px)) scale(.98);
+    }
+
+    .prod-card.is-right {
+        transform: translateX(calc(-50% + 560px)) scale(.98);
+    }
+
+    /* OUTER 2 — ghosted + blurred + tucked behind */
     .prod-card.is-far-left,
     .prod-card.is-far-right {
-        opacity: .40;
+        opacity: .22;
         pointer-events: auto;
-        filter: saturate(.92) contrast(.96) blur(.3px);
         z-index: 1;
+
+        filter: blur(1.2px) saturate(.9) contrast(.95);
+        transform: translateX(-50%) scale(.92);
     }
 
     .prod-card.is-far-left {
-        transform: translateX(calc(-50% - 640px)) scale(.90);
+        transform: translateX(calc(-50% - 840px)) scale(.92);
     }
 
     .prod-card.is-far-right {
-        transform: translateX(calc(-50% + 640px)) scale(.90);
+        transform: translateX(calc(-50% + 840px)) scale(.92);
     }
 }
 
