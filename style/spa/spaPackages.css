@@ -48,16 +48,18 @@
     width: min(520px, 92vw);
     height: 100%;
     transform: translateX(-50%);
-    opacity: 0;
+    opacity: 1;
     pointer-events: none;
 
     border-radius: 22px;
     overflow: hidden;
 
     border: 1px solid rgba(0, 0, 0, .06);
+
+    /* ✅ solid base so you can't see through foreground cards */
     background:
         radial-gradient(1200px 700px at 20% 0%, rgba(214, 163, 107, .14), transparent 55%),
-        rgba(255, 255, 255, .82);
+        #fff;
 
     box-shadow: 0 18px 55px rgba(0, 0, 0, .12);
     color: rgba(0, 0, 0, .86);
@@ -65,33 +67,48 @@
 
     transition:
         transform 520ms cubic-bezier(.2, .9, .2, 1),
-        opacity 420ms ease,
         filter 520ms cubic-bezier(.2, .9, .2, 1);
 }
 
-/* Default 3-up */
-.pkg-card.is-left {
-    opacity: .55;
-    pointer-events: auto;
-    transform: translateX(calc(-50% - 360px)) scale(.95);
-    filter: saturate(.96) contrast(.98);
-    z-index: 2;
+/* ✅ dim overlay (does NOT create transparency like opacity does) */
+.pkg-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, .22);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 420ms ease;
 }
 
+/* Default 3-up: center clear, edges softened */
 .pkg-card.is-center {
-    opacity: 1;
     pointer-events: auto;
     transform: translateX(-50%) scale(1);
     filter: none;
     z-index: 3;
 }
 
+.pkg-card.is-left {
+    pointer-events: auto;
+    transform: translateX(calc(-50% - 360px)) scale(.95);
+    filter: blur(.7px) saturate(.92) contrast(.97) brightness(.98);
+    z-index: 2;
+}
+
+.pkg-card.is-left::after {
+    opacity: 1;
+}
+
 .pkg-card.is-right {
-    opacity: .55;
     pointer-events: auto;
     transform: translateX(calc(-50% + 360px)) scale(.95);
-    filter: saturate(.96) contrast(.98);
+    filter: blur(.7px) saturate(.92) contrast(.97) brightness(.98);
     z-index: 2;
+}
+
+.pkg-card.is-right::after {
+    opacity: 1;
 }
 
 /* Far cards OFF by default */
@@ -242,37 +259,46 @@
 /* ---------------------------------
    ULTRA-WIDE: 5 cards
    - 3 fully visible (no overlap)
-   - outer 2 faded + blurred + behind
+   - outer 2 ghosted + blurred behind
 ---------------------------------- */
 @media (min-width: 2150px) {
 
-    /* INNER 3 — fully visible */
-    .pkg-card.is-left,
-    .pkg-card.is-right {
-        opacity: .92;
-        pointer-events: auto;
+    /* Center stays clear (already) */
+    .pkg-card.is-center {
         filter: none;
-        z-index: 2;
     }
 
-    /* push inner cards out so they don't overlap center */
+    .pkg-card.is-center::after {
+        opacity: 0;
+    }
+
+    /* ✅ INNER 3 = fully visible + separated so no overlap */
     .pkg-card.is-left {
         transform: translateX(calc(-50% - 560px)) scale(.98);
+        filter: none;
+    }
+
+    .pkg-card.is-left::after {
+        opacity: 0;
     }
 
     .pkg-card.is-right {
         transform: translateX(calc(-50% + 560px)) scale(.98);
+        filter: none;
     }
 
-    /* OUTER 2 — ghosted + blurred + tucked behind */
+    .pkg-card.is-right::after {
+        opacity: 0;
+    }
+
+    /* ✅ OUTER 2 = ghost peeks behind */
     .pkg-card.is-far-left,
     .pkg-card.is-far-right {
-        opacity: .22;
+        opacity: .28;
+        /* outer can be faded */
         pointer-events: auto;
         z-index: 1;
-
-        filter: blur(1.2px) saturate(.9) contrast(.95);
-        transform: translateX(-50%) scale(.92);
+        filter: blur(1.35px) saturate(.88) contrast(.95) brightness(.97);
     }
 
     .pkg-card.is-far-left {

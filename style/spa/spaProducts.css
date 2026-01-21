@@ -1,6 +1,9 @@
 /* =========================================================
    spaProducts.css — Products preview wheel (Spa home page)
-   EXACT same breakpoint logic + state formatting as packages
+   MATCHES PACKAGES STYLE:
+   - solid cards (no see-through)
+   - center clear, edges softened via blur + overlay (not opacity)
+   - ultra-wide 5: 3 crisp (no overlap) + 2 ghosted behind
    ========================================================= */
 
 /* Section wrapper */
@@ -30,14 +33,14 @@
     overflow: visible;
 }
 
-/* Stage (desktop mode) */
+/* Stage (wheel mode) */
 .prod-wheel {
     position: relative;
     height: 440px;
     touch-action: pan-y;
 }
 
-/* Card base (desktop mode) */
+/* Card base (wheel mode) */
 .prod-card {
     position: absolute;
     top: 0;
@@ -45,16 +48,18 @@
     width: min(520px, 92vw);
     height: 100%;
     transform: translateX(-50%);
-    opacity: 0;
+    opacity: 1;
     pointer-events: none;
 
     border-radius: 22px;
     overflow: hidden;
 
     border: 1px solid rgba(0, 0, 0, .06);
+
+    /* ✅ solid base so you can't see through foreground cards */
     background:
         radial-gradient(1200px 700px at 20% 0%, rgba(214, 163, 107, .14), transparent 55%),
-        rgba(255, 255, 255, .82);
+        #fff;
 
     box-shadow: 0 18px 55px rgba(0, 0, 0, .12);
     color: rgba(0, 0, 0, .86);
@@ -66,34 +71,51 @@
 
     transition:
         transform 520ms cubic-bezier(.2, .9, .2, 1),
-        opacity 420ms ease,
         filter 520ms cubic-bezier(.2, .9, .2, 1);
 }
 
-/* Primary 3-up (default desktop/tablet) */
-.prod-card.is-left {
-    opacity: .55;
-    pointer-events: auto;
-    transform: translateX(calc(-50% - 360px)) scale(.95);
-    filter: saturate(.96) contrast(.98);
+/* ✅ dim overlay (does NOT create transparency like opacity does) */
+.prod-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, .22);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 420ms ease;
 }
 
+/* Default 3-up: center clear, edges softened */
 .prod-card.is-center {
-    opacity: 1;
     pointer-events: auto;
     transform: translateX(-50%) scale(1);
     filter: none;
     z-index: 3;
 }
 
-.prod-card.is-right {
-    opacity: .55;
+.prod-card.is-left {
     pointer-events: auto;
-    transform: translateX(calc(-50% + 360px)) scale(.95);
-    filter: saturate(.96) contrast(.98);
+    transform: translateX(calc(-50% - 360px)) scale(.95);
+    filter: blur(.7px) saturate(.92) contrast(.97) brightness(.98);
+    z-index: 2;
 }
 
-/* Far cards OFF by default (enabled only on ultra-wide) */
+.prod-card.is-left::after {
+    opacity: 1;
+}
+
+.prod-card.is-right {
+    pointer-events: auto;
+    transform: translateX(calc(-50% + 360px)) scale(.95);
+    filter: blur(.7px) saturate(.92) contrast(.97) brightness(.98);
+    z-index: 2;
+}
+
+.prod-card.is-right::after {
+    opacity: 1;
+}
+
+/* Far cards OFF by default */
 .prod-card.is-far-left,
 .prod-card.is-far-right {
     opacity: 0;
@@ -177,7 +199,7 @@
     flex-wrap: wrap;
 }
 
-/* Nav buttons (always outside) */
+/* Nav buttons (overlay) */
 .prod-nav {
     position: absolute;
     top: 50%;
@@ -222,37 +244,45 @@
 /* ---------------------------------
    ULTRA-WIDE: 5 cards
    - 3 fully visible (no overlap)
-   - outer 2 faded + blurred + behind
+   - outer 2 ghosted + blurred behind
 ---------------------------------- */
 @media (min-width: 2150px) {
 
-    /* INNER 3 — fully visible */
-    .prod-card.is-left,
-    .prod-card.is-right {
-        opacity: .92;
-        pointer-events: auto;
+    /* Center stays clear */
+    .prod-card.is-center {
         filter: none;
-        z-index: 2;
     }
 
-    /* push inner cards out so they don't overlap center */
+    .prod-card.is-center::after {
+        opacity: 0;
+    }
+
+    /* ✅ INNER 3 = fully visible + separated so no overlap */
     .prod-card.is-left {
         transform: translateX(calc(-50% - 560px)) scale(.98);
+        filter: none;
+    }
+
+    .prod-card.is-left::after {
+        opacity: 0;
     }
 
     .prod-card.is-right {
         transform: translateX(calc(-50% + 560px)) scale(.98);
+        filter: none;
     }
 
-    /* OUTER 2 — ghosted + blurred + tucked behind */
+    .prod-card.is-right::after {
+        opacity: 0;
+    }
+
+    /* ✅ OUTER 2 = ghost peeks behind */
     .prod-card.is-far-left,
     .prod-card.is-far-right {
-        opacity: .22;
+        opacity: .28;
         pointer-events: auto;
         z-index: 1;
-
-        filter: blur(1.2px) saturate(.9) contrast(.95);
-        transform: translateX(-50%) scale(.92);
+        filter: blur(1.35px) saturate(.88) contrast(.95) brightness(.97);
     }
 
     .prod-card.is-far-left {
@@ -266,7 +296,7 @@
 
 /* ---------------------------------
    MID: tighten spacing a bit
-   --------------------------------- */
+---------------------------------- */
 @media (max-width: 1280px) {
     .prod-card.is-left {
         transform: translateX(calc(-50% - 320px)) scale(.955);
@@ -278,9 +308,9 @@
 }
 
 /* ---------------------------------
-   SMALL DESKTOP/TABLET: only center card
-   (prevents overlap / odd clashing)
-   --------------------------------- */
+   TABLET / SMALL DESKTOP:
+   3-up smaller + tighter (like packages)
+---------------------------------- */
 @media (max-width: 1050px) {
     .prod-wheel {
         height: 400px;
@@ -292,15 +322,22 @@
         border-radius: 20px;
     }
 
-    /* tighter offsets */
     .prod-card.is-left {
-        opacity: .55;
         transform: translateX(calc(-50% - 255px)) scale(.94);
+        filter: blur(.8px) saturate(.92) contrast(.97) brightness(.98);
+    }
+
+    .prod-card.is-left::after {
+        opacity: 1;
     }
 
     .prod-card.is-right {
-        opacity: .55;
         transform: translateX(calc(-50% + 255px)) scale(.94);
+        filter: blur(.8px) saturate(.92) contrast(.97) brightness(.98);
+    }
+
+    .prod-card.is-right::after {
+        opacity: 1;
     }
 
     .prod-title {
@@ -308,10 +345,6 @@
     }
 
     .prod-desc {
-        font-size: .95rem;
-    }
-
-    .prod-list {
         font-size: .95rem;
     }
 
@@ -325,13 +358,12 @@
 }
 
 /* ---------------------------------
-   MOBILE: keep WHEEL (no list mode)
+   MOBILE: wheel mode
 ---------------------------------- */
 @media (max-width: 900px) {
     .prod-wheel {
         height: 360px;
         touch-action: pan-y;
-        /* we’ll detect horizontal swipe in JS */
     }
 
     .prod-card {
@@ -340,15 +372,22 @@
         border-radius: 20px;
     }
 
-    /* tighter offsets for small phones */
     .prod-card.is-left {
-        opacity: .55;
         transform: translateX(calc(-50% - 190px)) scale(.92);
+        filter: blur(.95px) saturate(.90) contrast(.96) brightness(.98);
+    }
+
+    .prod-card.is-left::after {
+        opacity: 1;
     }
 
     .prod-card.is-right {
-        opacity: .55;
         transform: translateX(calc(-50% + 190px)) scale(.92);
+        filter: blur(.95px) saturate(.90) contrast(.96) brightness(.98);
+    }
+
+    .prod-card.is-right::after {
+        opacity: 1;
     }
 
     .prod-title {
@@ -356,10 +395,6 @@
     }
 
     .prod-desc {
-        font-size: .95rem;
-    }
-
-    .prod-list {
         font-size: .95rem;
     }
 
