@@ -405,16 +405,16 @@
 
     /* center card */
     .pkg-card.is-center {
-        transform: translateX(-50%) scale(.9);
+        transform: translateX(-50%) scale(.8);
     }
 
     /* previews */
     .pkg-card.is-left {
-        transform: translateX(calc(-50% - 165px)) scale(.85);
+        transform: translateX(calc(-50% - 165px)) scale(.75);
     }
 
     .pkg-card.is-right {
-        transform: translateX(calc(-50% + 165px)) scale(.85);
+        transform: translateX(calc(-50% + 165px)) scale(.75);
     }
 
     /* tighten text stack */
