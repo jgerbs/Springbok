@@ -31,7 +31,6 @@
     height: 100%;
     transform: translateX(-50%);
     opacity: 1;
-    /* ✅ keep solid */
     pointer-events: none;
 
     /* required for dim overlay */
@@ -48,12 +47,9 @@
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, .38);
-    /* ✅ dim without washing color */
     opacity: 0;
-    /* only on non-center */
     pointer-events: none;
     z-index: 5;
-    /* above image, below text if your tile text is higher */
     transition: opacity 420ms ease;
 }
 
@@ -73,7 +69,6 @@
     pointer-events: auto;
     transform: translateX(calc(-50% - 360px)) scale(.95);
     filter: blur(.75px);
-    /* ✅ blur only (no desat) */
     z-index: 2;
 }
 
@@ -179,12 +174,8 @@
 
 /* ---------------------------------
    ULTRA-WIDE: 5 cards
-   - INNER 3 fully visible (no overlap)
-   - OUTER 2 ghosted + blurred behind
 ---------------------------------- */
 @media (min-width: 2150px) {
-
-    /* center stays clear (already) */
     .staff-wheel .service-tile.is-center {
         filter: none;
     }
@@ -193,7 +184,6 @@
         opacity: 0;
     }
 
-    /* ✅ INNER 3 = fully visible, separated */
     .staff-wheel .service-tile.is-left {
         transform: translateX(calc(-50% - 560px)) scale(.98);
         filter: none;
@@ -212,15 +202,12 @@
         opacity: 0;
     }
 
-    /* ✅ OUTER 2 = ghost peeks behind */
     .staff-wheel .service-tile.is-far-left,
     .staff-wheel .service-tile.is-far-right {
         opacity: .28;
-        /* outer can fade */
         pointer-events: auto;
         z-index: 1;
         filter: blur(1.35px);
-        /* blur only, keep colour */
     }
 
     .staff-wheel .service-tile.is-far-left {
@@ -231,7 +218,6 @@
         transform: translateX(calc(-50% + 840px)) scale(.92);
     }
 
-    /* dim the outer two slightly */
     .staff-wheel .service-tile.is-far-left::after,
     .staff-wheel .service-tile.is-far-right::after {
         opacity: 1;
@@ -251,7 +237,6 @@
         transform: translateX(calc(-50% + 320px)) scale(.955);
     }
 
-    /* keep far cards hidden */
     .staff-wheel .service-tile.is-far-left,
     .staff-wheel .service-tile.is-far-right {
         opacity: 0;
@@ -262,8 +247,7 @@
 }
 
 /* ---------------------------------
-   TABLET / SMALL DESKTOP:
-   3-up smaller + tighter
+   TABLET / SMALL DESKTOP
 ---------------------------------- */
 @media (max-width: 1050px) {
     .staff-wheel {
@@ -297,15 +281,19 @@
    MOBILE: bottom row arrows + button
    - hide overlay arrows
    - show row arrows beside button
+   - PIN controls to bottom (like products/packages)
 ---------------------------------- */
 @media (max-width: 900px) {
     .staff-wheel {
         height: 380px;
+        /* keep your breathing room */
         touch-action: pan-y;
     }
 
+    /* scale from top if you ever scale cards later */
     .staff-wheel .service-tile {
         width: min(360px, 86vw);
+        transform-origin: top center;
     }
 
     .staff-wheel .service-tile.is-left {
@@ -323,8 +311,24 @@
         display: none;
     }
 
-    /* row layout under wheel */
+    /* ✅ KEY FIX:
+     reserve space + pin controls to bottom of the wheel shell */
+    .staff-wheel-shell {
+        --controls-h: 56px;
+        /* row height */
+        --controls-gap: 16px;
+        /* same “feel” spacing */
+        padding-bottom: calc(var(--controls-h) + var(--controls-gap));
+    }
+
     .staff-wheel-shell .wheel-controls {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        margin-top: 0;
+        /* important: remove the flow gap */
         justify-content: space-between;
         gap: 10px;
     }
