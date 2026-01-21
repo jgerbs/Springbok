@@ -392,13 +392,13 @@
      420 * .62 ≈ 260px. Add a bit for shadow = ~290px.
   */
     .pkg-wheel {
-        height: 290px;
+        height: 310px;
         touch-action: pan-y;
     }
 
     /* make cards skinnier */
     .pkg-card {
-        width: min(300px, 80vw);
+        width: min(300px, 60vw);
         padding: 16px 16px 18px;
         border-radius: 20px;
     }
@@ -474,27 +474,25 @@
 
 
 /* =========================================
-   PACKAGES — prevent horizontal scroll + blur overflow edges
+   PACKAGES — prevent horizontal scroll
+   + very subtle edge soften (almost hard cut)
    ========================================= */
 
-/* 1) stop the page from getting horizontal scroll from the peeks */
+/* 1) stop page-level horizontal scroll */
 .spa-packages {
     overflow-x: clip;
-    /* modern */
 }
 
 @supports not (overflow: clip) {
     .spa-packages {
         overflow-x: hidden;
     }
-
-    /* fallback */
 }
 
-/* keep wheel peeks visually, but clip scrollable overflow */
+/* 2) clip wheel overflow (previews still visible inside shell) */
 .pkg-wheel-shell {
+    position: relative;
     overflow-x: clip;
-    /* key */
 }
 
 @supports not (overflow: clip) {
@@ -503,37 +501,50 @@
     }
 }
 
-/* 2) Edge blur “guards” so overflow past the container looks intentional */
+/* 3) VERY subtle edge soften (can be removed entirely if desired) */
 .pkg-wheel-shell::before,
 .pkg-wheel-shell::after {
     content: "";
     position: absolute;
-    top: -80px;
-    bottom: -80px;
+    top: -40px;
+    bottom: -40px;
 
-    /* width of the blur zone at the edges */
-    width: clamp(26px, 6vw, 110px);
+    /* much narrower edge zone */
+    width: clamp(10px, 3vw, 32px);
 
     z-index: 12;
     pointer-events: none;
 
-    /* blur whatever is behind without tinting the color */
-    background: rgba(255, 255, 255, .01);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    /* extremely light blur */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    /* no visible tint */
+    background: rgba(255, 255, 255, 0.001);
 }
 
 /* left edge */
 .pkg-wheel-shell::before {
     left: 0;
-    /* fade the blur inward */
-    -webkit-mask-image: linear-gradient(to right, #000 0%, #000 55%, transparent 100%);
-    mask-image: linear-gradient(to right, #000 0%, #000 55%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right,
+            #000 0%,
+            #000 30%,
+            transparent 100%);
+    mask-image: linear-gradient(to right,
+            #000 0%,
+            #000 30%,
+            transparent 100%);
 }
 
 /* right edge */
 .pkg-wheel-shell::after {
     right: 0;
-    -webkit-mask-image: linear-gradient(to left, #000 0%, #000 55%, transparent 100%);
-    mask-image: linear-gradient(to left, #000 0%, #000 55%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left,
+            #000 0%,
+            #000 30%,
+            transparent 100%);
+    mask-image: linear-gradient(to left,
+            #000 0%,
+            #000 30%,
+            transparent 100%);
 }
