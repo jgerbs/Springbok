@@ -216,7 +216,8 @@
 
           <!-- Shell (same pattern as testimonials) -->
           <div class="staff-wheel-shell reveal" data-wheel="staff">
-            <button class="staff-nav staff-prev" type="button" aria-label="Previous staff">‹</button>
+            <!-- overlay arrows (desktop/tablet) -->
+            <button class="staff-nav staff-prev staff-nav--overlay" type="button" aria-label="Previous staff">‹</button>
 
             <div class="staff-wheel" id="staffWheel" aria-label="Staff carousel (looping)">
               <!-- Keep your EXACT same .service-tile anchors inside here -->
@@ -343,16 +344,16 @@
               <!-- Add more staff cards anytime -->
             </div>
 
-            <button class="staff-nav staff-next" type="button" aria-label="Next staff">›</button>
+            <button class="staff-nav staff-next staff-nav--overlay" type="button" aria-label="Next staff">›</button>
+
+            <div class="wheel-controls">
+              <button class="staff-nav staff-prev staff-nav--row" type="button" aria-label="Previous staff">‹</button>
+
+              <a class="btn btn-outline" href="SpringbokTeam.html">View Full Team</a>
+
+              <button class="staff-nav staff-next staff-nav--row" type="button" aria-label="Next staff">›</button>
+            </div>
           </div>
-
-
-          <div class="staff-dots" id="staffDots" aria-label="Staff navigation"></div>
-
-          <div style="margin-top: 22px; display:flex; gap:12px; flex-wrap:wrap;">
-            <a class="btn btn-outline" href="SpringbokTeam.html">View Full Team</a>
-          </div>
-        </div>
       </section>
 
       <!-- TESTIMONIALS (slow rotating wheel) -->

@@ -5,8 +5,9 @@ function initStaffWheel(shell) {
   const cards = [...wheel.querySelectorAll('.service-tile')];
   if (!cards.length) return;
 
-  const prev = shell.querySelector('.staff-prev');
-  const next = shell.querySelector('.staff-next');
+  // ✅ support BOTH overlay + row buttons
+  const prevBtns = [...shell.querySelectorAll('.staff-prev')];
+  const nextBtns = [...shell.querySelectorAll('.staff-next')];
 
   let index = 0;
   let locked = false;
@@ -39,8 +40,8 @@ function initStaffWheel(shell) {
     window.setTimeout(() => { locked = false; }, 560);
   }
 
-  prev?.addEventListener('click', () => go(-1));
-  next?.addEventListener('click', () => go(1));
+  prevBtns.forEach(btn => btn.addEventListener('click', () => go(-1)));
+  nextBtns.forEach(btn => btn.addEventListener('click', () => go(1)));
 
   wheel.setAttribute('tabindex', '0');
   wheel.addEventListener('keydown', (e) => {
