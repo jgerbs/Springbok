@@ -2,12 +2,12 @@
    spaTeam.css — Team tiles + reveal-stagger fix
    ========================================================= */
 
-.spa-team{
+html[data-brand="spa"].spa-team{
   padding: 0px 0 90px;
 }
 
 /* Tile */
-.spa-team-tile{
+html[data-brand="spa"].spa-team-tile{
   position: relative;
   display: block;
   border-radius: 22px;
@@ -20,7 +20,7 @@
   box-shadow: var(--shadow);
 }
 
-.spa-team-bg{
+html[data-brand="spa"] .spa-team-bg{
   position: absolute;
   inset: 0;
   background-size: cover;
@@ -31,7 +31,7 @@
 }
 
 /* Gold-tinted “spa” shade */
- .spa-team-shade{
+html[data-brand="spa"] .spa-team-shade{
   position: absolute;
   inset: 0;
   background:
