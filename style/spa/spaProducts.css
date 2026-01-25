@@ -9,7 +9,7 @@
    ========================================================= */
 
 /* Section wrapper */
-.spa-products {
+html[data-brand="spa"] .spa-products {
     padding: 0px 0 110px;
     position: relative;
     overflow-x: clip;
@@ -17,12 +17,12 @@
 }
 
 @supports not (overflow: clip) {
-    .spa-products {
+    html[data-brand="spa"] .spa-products {
         overflow-x: hidden;
     }
 }
 
-.spa-products::before {
+html[data-brand="spa"] .spa-products::before {
     content: "";
     position: absolute;
     inset: -140px -120px auto -120px;
@@ -34,7 +34,7 @@
 }
 
 /* Shell (no frame) */
-.prod-wheel-shell {
+html[data-brand="spa"] .prod-wheel-shell {
     position: relative;
     border: 0;
     background: transparent;
@@ -44,20 +44,20 @@
 }
 
 @supports not (overflow: clip) {
-    .prod-wheel-shell {
+    html[data-brand="spa"] .prod-wheel-shell {
         overflow-x: hidden;
     }
 }
 
 /* Stage (wheel mode) */
-.prod-wheel {
+html[data-brand="spa"] .prod-wheel {
     position: relative;
     height: 440px;
     touch-action: pan-y;
 }
 
 /* Card base (wheel mode) */
-.prod-card {
+html[data-brand="spa"] .prod-card {
     position: absolute;
     top: 0;
     left: 50%;
@@ -89,7 +89,7 @@
 }
 
 /* dim overlay (does NOT create transparency like opacity does) */
-.prod-card::after {
+html[data-brand="spa"] .prod-card::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -100,38 +100,38 @@
 }
 
 /* Default 3-up: center clear, edges softened */
-.prod-card.is-center {
+html[data-brand="spa"] .prod-card.is-center {
     pointer-events: auto;
     transform: translateX(-50%) scale(1);
     filter: none;
     z-index: 3;
 }
 
-.prod-card.is-left {
+html[data-brand="spa"] .prod-card.is-left {
     pointer-events: auto;
     transform: translateX(calc(-50% - 360px)) scale(.95);
     filter: blur(.7px) saturate(.92) contrast(.97) brightness(.98);
     z-index: 2;
 }
 
-.prod-card.is-left::after {
+html[data-brand="spa"] .prod-card.is-left::after {
     opacity: 1;
 }
 
-.prod-card.is-right {
+html[data-brand="spa"] .prod-card.is-right {
     pointer-events: auto;
     transform: translateX(calc(-50% + 360px)) scale(.95);
     filter: blur(.7px) saturate(.92) contrast(.97) brightness(.98);
     z-index: 2;
 }
 
-.prod-card.is-right::after {
+html[data-brand="spa"] .prod-card.is-right::after {
     opacity: 1;
 }
 
 /* Far cards OFF by default */
-.prod-card.is-far-left,
-.prod-card.is-far-right {
+html[data-brand="spa"] .prod-card.is-far-left,
+html[data-brand="spa"] .prod-card.is-far-right {
     opacity: 0;
     pointer-events: none;
     transform: translateX(-50%) scale(.98);
@@ -139,13 +139,13 @@
     z-index: 1;
 }
 
-.prod-card.is-off {
+html[data-brand="spa"] .prod-card.is-off {
     opacity: 0;
     pointer-events: none;
 }
 
 /* Media */
-.prod-media {
+html[data-brand="spa"] .prod-media {
     width: 100%;
     height: 200px;
     border-radius: 18px;
@@ -155,7 +155,7 @@
     margin-bottom: 14px;
 }
 
-.prod-media img {
+html[data-brand="spa"] .prod-media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -163,7 +163,7 @@
 }
 
 /* Top row */
-.prod-card-top {
+html[data-brand="spa"] .prod-card-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -171,7 +171,7 @@
     margin-bottom: 10px;
 }
 
-.prod-pill {
+html[data-brand="spa"] .prod-pill {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -184,20 +184,20 @@
     color: rgba(0, 0, 0, .76);
 }
 
-.prod-price {
+html[data-brand="spa"] .prod-price {
     font-size: .95rem;
     font-weight: 800;
     color: rgba(0, 0, 0, .62);
 }
 
 /* Text */
-.prod-title {
+html[data-brand="spa"] .prod-title {
     margin: 6px 0 8px;
     font-size: 1.45rem;
     letter-spacing: -.02em;
 }
 
-.prod-desc {
+html[data-brand="spa"] .prod-desc {
     margin: 0 0 14px;
     color: rgba(0, 0, 0, .62);
     line-height: 1.65;
@@ -205,7 +205,7 @@
 }
 
 /* Actions (pinned to bottom) */
-.prod-actions {
+html[data-brand="spa"] .prod-actions {
     margin-top: auto;
     display: flex;
     gap: 10px;
@@ -215,7 +215,7 @@
 /* -----------------------------
    NAV BUTTONS (shared style like packages)
 ------------------------------ */
-.prod-nav {
+html[data-brand="spa"] .prod-nav {
     width: 44px;
     height: 44px;
     border-radius: 12px;
@@ -230,25 +230,25 @@
     transition: transform .18s ease, background .18s ease, border-color .18s ease;
 }
 
-.prod-nav:hover {
+html[data-brand="spa"] .prod-nav:hover {
     transform: translateY(-2px);
     background: rgba(214, 163, 107, .20);
     border-color: rgba(214, 163, 107, .26);
 }
 
 /* Overlay arrows (desktop/tablet) */
-.prod-nav--overlay {
+html[data-brand="spa"] .prod-nav--overlay {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 20;
 }
 
-.prod-nav--overlay.prod-prev {
+html[data-brand="spa"] .prod-nav--overlay.prod-prev {
     left: 14px;
 }
 
-.prod-nav--overlay.prod-next {
+html[data-brand="spa"] .prod-nav--overlay.prod-next {
     right: 14px;
 }
 
@@ -256,7 +256,7 @@
    Desktop/tablet: ONLY the button, aligned LEFT
    Mobile: arrows + button row (pinned under cards)
 */
-.prod-controls {
+html[data-brand="spa"] .prod-controls {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -265,12 +265,12 @@
 }
 
 /* Hide row arrows by default (non-mobile only shows the button) */
-.prod-controls .prod-nav--row {
+html[data-brand="spa"] .prod-controls .prod-nav--row {
     display: none;
 }
 
 /* Non-mobile button sizing + left alignment */
-.prod-controls .btn {
+html[data-brand="spa"] .prod-controls .btn {
     width: auto;
     min-width: 220px;
     text-align: center;
@@ -280,37 +280,37 @@
    ULTRA-WIDE: 5 cards
 ---------------------------------- */
 @media (min-width: 2150px) {
-    .prod-card.is-left {
+    html[data-brand="spa"] .prod-card.is-left {
         transform: translateX(calc(-50% - 560px)) scale(.98);
         filter: none;
     }
 
-    .prod-card.is-left::after {
+    html[data-brand="spa"] .prod-card.is-left::after {
         opacity: 0;
     }
 
-    .prod-card.is-right {
+    html[data-brand="spa"] .prod-card.is-right {
         transform: translateX(calc(-50% + 560px)) scale(.98);
         filter: none;
     }
 
-    .prod-card.is-right::after {
+    html[data-brand="spa"] .prod-card.is-right::after {
         opacity: 0;
     }
 
-    .prod-card.is-far-left,
-    .prod-card.is-far-right {
+    html[data-brand="spa"] .prod-card.is-far-left,
+    html[data-brand="spa"] .prod-card.is-far-right {
         opacity: .28;
         pointer-events: auto;
         z-index: 1;
         filter: blur(1.35px) saturate(.88) contrast(.95) brightness(.97);
     }
 
-    .prod-card.is-far-left {
+    html[data-brand="spa"] .prod-card.is-far-left {
         transform: translateX(calc(-50% - 840px)) scale(.92);
     }
 
-    .prod-card.is-far-right {
+    html[data-brand="spa"] .prod-card.is-far-right {
         transform: translateX(calc(-50% + 840px)) scale(.92);
     }
 }
@@ -319,11 +319,11 @@
    MID: tighten spacing slightly
 ---------------------------------- */
 @media (max-width: 1280px) {
-    .prod-card.is-left {
+    html[data-brand="spa"] .prod-card.is-left {
         transform: translateX(calc(-50% - 320px)) scale(.955);
     }
 
-    .prod-card.is-right {
+    html[data-brand="spa"] .prod-card.is-right {
         transform: translateX(calc(-50% + 320px)) scale(.955);
     }
 }
@@ -332,39 +332,39 @@
    TABLET / SMALL DESKTOP
 ---------------------------------- */
 @media (max-width: 1050px) {
-    .prod-wheel {
+    html[data-brand="spa"] .prod-wheel {
         height: 400px;
     }
 
-    .prod-card {
+    html[data-brand="spa"] .prod-card {
         width: min(440px, 86vw);
         padding: 18px;
         border-radius: 20px;
     }
 
-    .prod-card.is-left {
+    html[data-brand="spa"] .prod-card.is-left {
         opacity: .55;
         transform: translateX(calc(-50% - 255px)) scale(.94);
     }
 
-    .prod-card.is-right {
+    html[data-brand="spa"] .prod-card.is-right {
         opacity: .55;
         transform: translateX(calc(-50% + 255px)) scale(.94);
     }
 
-    .prod-title {
+    html[data-brand="spa"] .prod-title {
         font-size: 1.25rem;
     }
 
-    .prod-desc {
+    html[data-brand="spa"] .prod-desc {
         font-size: .95rem;
     }
 
-    .prod-nav--overlay.prod-prev {
+    html[data-brand="spa"] .prod-nav--overlay.prod-prev {
         left: 10px;
     }
 
-    .prod-nav--overlay.prod-next {
+    html[data-brand="spa"] .prod-nav--overlay.prod-next {
         right: 10px;
     }
 }
@@ -377,61 +377,61 @@
    - PIN controls to bottom of shell (like packages)
 ---------------------------------- */
 @media (max-width: 900px) {
-    .spa-products {
+    html[data-brand="spa"] .spa-products {
         padding: 70px 0 0;
     }
 
     /* scale from top */
-    .prod-card {
+    html[data-brand="spa"] .prod-card {
         transform-origin: top center;
     }
 
     /* keep your breathing room */
-    .prod-wheel {
+    html[data-brand="spa"] .prod-wheel {
         height: 400px;
         touch-action: pan-y;
     }
 
     /* skinnier */
-    .prod-card {
+    html[data-brand="spa"] .prod-card {
         width: min(300px, 78vw);
         padding: 16px 16px 18px;
         border-radius: 20px;
     }
 
-    .prod-card.is-center {
+    html[data-brand="spa"] .prod-card.is-center {
         transform: translateX(-50%) scale(.8);
     }
 
-    .prod-card.is-left {
+    html[data-brand="spa"] .prod-card.is-left {
         transform: translateX(calc(-50% - 165px)) scale(.75);
         opacity: .55;
     }
 
-    .prod-card.is-right {
+    html[data-brand="spa"] .prod-card.is-right {
         transform: translateX(calc(-50% + 165px)) scale(.75);
         opacity: .55;
     }
 
-    .prod-title {
+    html[data-brand="spa"] .prod-title {
         font-size: 1.05rem;
         margin: 6px 0;
     }
 
-    .prod-desc {
+    html[data-brand="spa"] .prod-desc {
         font-size: .9rem;
         margin: 0 0 10px;
         line-height: 1.55;
     }
 
     /* hide overlay arrows */
-    .prod-nav--overlay {
+    html[data-brand="spa"] .prod-nav--overlay {
         display: none;
     }
 
     /* ✅ KEY FIX (same as packages):
      reserve space + pin controls to bottom of the wheel shell */
-    .prod-wheel-shell {
+    html[data-brand="spa"] .prod-wheel-shell {
         --controls-h: 56px;
         /* row height */
         --controls-gap: 16px;
@@ -439,7 +439,7 @@
         padding-bottom: calc(var(--controls-h) + var(--controls-gap));
     }
 
-    .prod-controls {
+    html[data-brand="spa"] .prod-controls {
         position: absolute;
         left: 0;
         right: 0;
@@ -450,7 +450,7 @@
         gap: 10px;
     }
 
-    .prod-controls .prod-nav--row {
+    html[data-brand="spa"] .prod-controls .prod-nav--row {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -458,14 +458,14 @@
         transform: none;
     }
 
-    .prod-controls .btn {
+    html[data-brand="spa"] .prod-controls .btn {
         flex: 1;
         width: auto;
         min-width: 0;
         text-align: center;
     }
 
-    .spa-team {
+    html[data-brand="spa"] .spa-team {
         padding: 70px 0 90px;
     }
 }
@@ -473,8 +473,8 @@
 /* =========================================
    PRODUCTS — very subtle edge soften (almost hard cut)
    ========================================= */
-.prod-wheel-shell::before,
-.prod-wheel-shell::after {
+html[data-brand="spa"] .prod-wheel-shell::before,
+html[data-brand="spa"] .prod-wheel-shell::after {
     content: "";
     position: absolute;
     top: -40px;
@@ -488,13 +488,13 @@
     background: rgba(255, 255, 255, 0.001);
 }
 
-.prod-wheel-shell::before {
+html[data-brand="spa"] .prod-wheel-shell::before {
     left: 0;
     -webkit-mask-image: linear-gradient(to right, #000 0%, #000 30%, transparent 100%);
     mask-image: linear-gradient(to right, #000 0%, #000 30%, transparent 100%);
 }
 
-.prod-wheel-shell::after {
+html[data-brand="spa"] .prod-wheel-shell::after {
     right: 0;
     -webkit-mask-image: linear-gradient(to left, #000 0%, #000 30%, transparent 100%);
     mask-image: linear-gradient(to left, #000 0%, #000 30%, transparent 100%);

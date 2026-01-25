@@ -2,12 +2,12 @@
    PACKAGES (preview wheel)
    ========================= */
 
-.spa-packages {
+html[data-brand="spa"] .spa-packages {
     padding: 90px 0 110px;
     position: relative;
 }
 
-.spa-packages::before {
+html[data-brand="spa"] .spa-packages::before {
     content: "";
     position: absolute;
     inset: -140px -120px auto -120px;
@@ -19,7 +19,7 @@
 }
 
 /* Shell (no frame) */
-.pkg-wheel-shell {
+html[data-brand="spa"] .pkg-wheel-shell {
     position: relative;
     border: 0;
     background: transparent;
@@ -29,14 +29,14 @@
 }
 
 /* Stage (wheel mode) */
-.pkg-wheel {
+html[data-brand="spa"] .pkg-wheel {
     position: relative;
     height: 420px;
     touch-action: pan-y;
 }
 
 /* Card base (wheel mode) */
-.pkg-card {
+html[data-brand="spa"] .pkg-card {
     position: absolute;
     top: 0;
     left: 50%;
@@ -64,7 +64,7 @@
 }
 
 /* Dim overlay (not opacity on the whole card) */
-.pkg-card::after {
+html[data-brand="spa"] .pkg-card::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -75,38 +75,38 @@
 }
 
 /* Default 3-up */
-.pkg-card.is-center {
+html[data-brand="spa"] .pkg-card.is-center {
     pointer-events: auto;
     transform: translateX(-50%) scale(1);
     filter: none;
     z-index: 3;
 }
 
-.pkg-card.is-left {
+html[data-brand="spa"] .pkg-card.is-left {
     pointer-events: auto;
     transform: translateX(calc(-50% - 360px)) scale(.95);
     filter: blur(.7px) saturate(.92) contrast(.97) brightness(.98);
     z-index: 2;
 }
 
-.pkg-card.is-left::after {
+html[data-brand="spa"] .pkg-card.is-left::after {
     opacity: 1;
 }
 
-.pkg-card.is-right {
+html[data-brand="spa"] .pkg-card.is-right {
     pointer-events: auto;
     transform: translateX(calc(-50% + 360px)) scale(.95);
     filter: blur(.7px) saturate(.92) contrast(.97) brightness(.98);
     z-index: 2;
 }
 
-.pkg-card.is-right::after {
+html[data-brand="spa"] .pkg-card.is-right::after {
     opacity: 1;
 }
 
 /* Far cards OFF by default */
-.pkg-card.is-far-left,
-.pkg-card.is-far-right {
+html[data-brand="spa"] .pkg-card.is-far-left,
+html[data-brand="spa"] .pkg-card.is-far-right {
     opacity: 0;
     pointer-events: none;
     transform: translateX(-50%) scale(.98);
@@ -115,13 +115,13 @@
 }
 
 /* Everything else hidden */
-.pkg-card.is-off {
+html[data-brand="spa"] .pkg-card.is-off {
     opacity: 0;
     pointer-events: none;
 }
 
 /* Card internals */
-.pkg-card-top {
+html[data-brand="spa"] .pkg-card-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -129,7 +129,7 @@
     margin-bottom: 10px;
 }
 
-.pkg-pill {
+html[data-brand="spa"] .pkg-pill {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -142,33 +142,33 @@
     color: rgba(0, 0, 0, .76);
 }
 
-.pkg-price {
+html[data-brand="spa"] .pkg-price {
     font-size: .9rem;
     font-weight: 750;
     color: rgba(0, 0, 0, .62);
 }
 
-.pkg-title {
+html[data-brand="spa"] .pkg-title {
     margin: 6px 0 8px;
     font-size: 1.45rem;
     letter-spacing: -.02em;
 }
 
-.pkg-desc {
+html[data-brand="spa"] .pkg-desc {
     margin: 0 0 14px;
     color: rgba(0, 0, 0, .62);
     line-height: 1.65;
     max-width: 70ch;
 }
 
-.pkg-list {
+html[data-brand="spa"] .pkg-list {
     margin: 0 0 18px;
     padding-left: 18px;
     color: rgba(0, 0, 0, .64);
     line-height: 1.6;
 }
 
-.pkg-actions {
+html[data-brand="spa"] .pkg-actions {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
@@ -176,7 +176,7 @@
 }
 
 /* NAV BUTTONS (base styles) */
-.pkg-nav {
+html[data-brand="spa"] .pkg-nav {
     width: 44px;
     height: 44px;
     border-radius: 12px;
@@ -191,37 +191,37 @@
     transition: transform .18s ease, background .18s ease, border-color .18s ease;
 }
 
-.pkg-nav:hover {
+html[data-brand="spa"] .pkg-nav:hover {
     transform: translateY(-2px);
     background: rgba(214, 163, 107, .20);
     border-color: rgba(214, 163, 107, .26);
 }
 
 /* Overlay arrows (desktop/tablet) */
-.pkg-nav--overlay {
+html[data-brand="spa"] .pkg-nav--overlay {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 20;
 }
 
-.pkg-nav--overlay.pkg-prev {
+html[data-brand="spa"] .pkg-nav--overlay.pkg-prev {
     left: 14px;
 }
 
-.pkg-nav--overlay.pkg-next {
+html[data-brand="spa"] .pkg-nav--overlay.pkg-next {
     right: 14px;
 }
 
 /* Footer under the wheel (desktop) */
-.pkg-footer {
+html[data-brand="spa"] .pkg-footer {
     margin-top: 18px;
     display: flex;
     justify-content: flex-start;
 }
 
 /* Controls under the wheel */
-.wheel-controls {
+html[data-brand="spa"] .wheel-controls {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -231,12 +231,12 @@
 }
 
 /* Hide row arrows by default (non-mobile only shows button) */
-.wheel-controls .pkg-nav--row {
+html[data-brand="spa"] .wheel-controls .pkg-nav--row {
     display: none;
 }
 
 /* Non-mobile button sizing */
-.wheel-controls .btn {
+html[data-brand="spa"] .wheel-controls .btn {
     width: auto;
     min-width: 220px;
     text-align: center;
@@ -244,99 +244,99 @@
 
 /* ULTRA-WIDE */
 @media (min-width: 2150px) {
-    .pkg-card.is-center {
+    html[data-brand="spa"] .pkg-card.is-center {
         filter: none;
     }
 
-    .pkg-card.is-center::after {
+    html[data-brand="spa"] .pkg-card.is-center::after {
         opacity: 0;
     }
 
-    .pkg-card.is-left {
+    html[data-brand="spa"] .pkg-card.is-left {
         transform: translateX(calc(-50% - 560px)) scale(.98);
         filter: none;
     }
 
-    .pkg-card.is-left::after {
+    html[data-brand="spa"] .pkg-card.is-left::after {
         opacity: 0;
     }
 
-    .pkg-card.is-right {
+    html[data-brand="spa"] .pkg-card.is-right {
         transform: translateX(calc(-50% + 560px)) scale(.98);
         filter: none;
     }
 
-    .pkg-card.is-right::after {
+    html[data-brand="spa"] .pkg-card.is-right::after {
         opacity: 0;
     }
 
-    .pkg-card.is-far-left,
-    .pkg-card.is-far-right {
+    html[data-brand="spa"] .pkg-card.is-far-left,
+    html[data-brand="spa"] .pkg-card.is-far-right {
         opacity: .28;
         pointer-events: auto;
         z-index: 1;
         filter: blur(1.35px) saturate(.88) contrast(.95) brightness(.97);
     }
 
-    .pkg-card.is-far-left {
+    html[data-brand="spa"] .pkg-card.is-far-left {
         transform: translateX(calc(-50% - 840px)) scale(.92);
     }
 
-    .pkg-card.is-far-right {
+    html[data-brand="spa"] .pkg-card.is-far-right {
         transform: translateX(calc(-50% + 840px)) scale(.92);
     }
 }
 
 /* MID */
 @media (max-width: 1280px) {
-    .pkg-card.is-left {
+    html[data-brand="spa"] .pkg-card.is-left {
         transform: translateX(calc(-50% - 320px)) scale(.955);
     }
 
-    .pkg-card.is-right {
+    html[data-brand="spa"] .pkg-card.is-right {
         transform: translateX(calc(-50% + 320px)) scale(.955);
     }
 }
 
 /* TABLET / SMALL DESKTOP */
 @media (max-width: 1050px) {
-    .pkg-wheel {
+    html[data-brand="spa"] .pkg-wheel {
         height: 400px;
     }
 
-    .pkg-card {
+    html[data-brand="spa"] .pkg-card {
         width: min(440px, 86vw);
         padding: 18px;
         border-radius: 20px;
     }
 
-    .pkg-card.is-left {
+    html[data-brand="spa"] .pkg-card.is-left {
         opacity: .55;
         transform: translateX(calc(-50% - 255px)) scale(.94);
     }
 
-    .pkg-card.is-right {
+    html[data-brand="spa"] .pkg-card.is-right {
         opacity: .55;
         transform: translateX(calc(-50% + 255px)) scale(.94);
     }
 
-    .pkg-title {
+    html[data-brand="spa"] .pkg-title {
         font-size: 1.25rem;
     }
 
-    .pkg-desc {
+    html[data-brand="spa"] .pkg-desc {
         font-size: .95rem;
     }
 
-    .pkg-list {
+    html[data-brand="spa"] .pkg-list {
         font-size: .95rem;
     }
 
-    .pkg-nav--overlay.pkg-prev {
+    html[data-brand="spa"] .pkg-nav--overlay.pkg-prev {
         left: 10px;
     }
 
-    .pkg-nav--overlay.pkg-next {
+    html[data-brand="spa"] .pkg-nav--overlay.pkg-next {
         right: 10px;
     }
 }
@@ -345,38 +345,38 @@
    BUT pin the controls to bottom of the shell and reserve space */
 @media (max-width: 900px) {
 
-    .spa-packages {
+    html[data-brand="spa"] .spa-packages {
         padding: 70px 0 0px;
     }
 
     /* keep your 400px breathing room */
-    .pkg-wheel {
-        height: 400px;
+    html[data-brand="spa"] .pkg-wheel {
+        height: 450px;
         touch-action: pan-y;
     }
 
     /* cards unchanged; just ensure scaling origin */
-    .pkg-card {
+    html[data-brand="spa"] .pkg-card {
         transform-origin: top center;
         width: min(300px, 60vw);
         padding: 16px 16px 18px;
         border-radius: 20px;
     }
 
-    .pkg-card.is-center {
+    html[data-brand="spa"] .pkg-card.is-center {
         transform: translateX(-50%) scale(.8);
     }
 
-    .pkg-card.is-left {
+    html[data-brand="spa"] .pkg-card.is-left {
         transform: translateX(calc(-50% - 165px)) scale(.75);
     }
 
-    .pkg-card.is-right {
+    html[data-brand="spa"] .pkg-card.is-right {
         transform: translateX(calc(-50% + 165px)) scale(.75);
     }
 
     /* hide overlay arrows */
-    .pkg-nav--overlay {
+    html[data-brand="spa"] .pkg-nav--overlay {
         display: none;
     }
 
@@ -384,7 +384,7 @@
      Reserve space inside the shell and absolutely place controls at the bottom.
      This makes the controls sit "right under the cards" visually,
      and stops the "random gap" caused by the wheel's fixed height. */
-    .pkg-wheel-shell {
+    html[data-brand="spa"] .pkg-wheel-shell {
         --controls-h: 56px;
         /* height area for arrows/button row */
         --controls-gap: 16px;
@@ -392,7 +392,7 @@
         padding-bottom: calc(var(--controls-h) + var(--controls-gap));
     }
 
-    .wheel-controls {
+    html[data-brand="spa"] .wheel-controls {
         position: absolute;
         left: 0;
         right: 0;
@@ -404,7 +404,7 @@
         gap: 10px;
     }
 
-    .wheel-controls .pkg-nav--row {
+    html[data-brand="spa"] .wheel-controls .pkg-nav--row {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -412,7 +412,7 @@
         transform: none;
     }
 
-    .wheel-controls .btn {
+    html[data-brand="spa"] .wheel-controls .btn {
         flex: 1;
         width: auto;
         min-width: 0;
@@ -425,7 +425,7 @@
    + very subtle edge soften (almost hard cut)
    ========================================= */
 
-.spa-packages {
+html[data-brand="spa"] .spa-packages {
     overflow-x: clip;
 }
 
@@ -435,7 +435,7 @@
     }
 }
 
-.pkg-wheel-shell {
+html[data-brand="spa"] .pkg-wheel-shell {
     position: relative;
     overflow-x: clip;
 }
@@ -447,8 +447,8 @@
 }
 
 /* subtle edge soften */
-.pkg-wheel-shell::before,
-.pkg-wheel-shell::after {
+html[data-brand="spa"] .pkg-wheel-shell::before,
+html[data-brand="spa"] .pkg-wheel-shell::after {
     content: "";
     position: absolute;
     top: -40px;
@@ -462,13 +462,13 @@
     background: rgba(255, 255, 255, 0.001);
 }
 
-.pkg-wheel-shell::before {
+html[data-brand="spa"] .pkg-wheel-shell::before {
     left: 0;
     -webkit-mask-image: linear-gradient(to right, #000 0%, #000 30%, transparent 100%);
     mask-image: linear-gradient(to right, #000 0%, #000 30%, transparent 100%);
 }
 
-.pkg-wheel-shell::after {
+html[data-brand="spa"] .pkg-wheel-shell::after {
     right: 0;
     -webkit-mask-image: linear-gradient(to left, #000 0%, #000 30%, transparent 100%);
     mask-image: linear-gradient(to left, #000 0%, #000 30%, transparent 100%);
