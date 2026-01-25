@@ -346,7 +346,7 @@ html[data-brand="spa"] .wheel-controls .btn {
 @media (max-width: 900px) {
 
     html[data-brand="spa"] .spa-packages {
-        padding: 70px 0 0px;
+        padding: 50px 0 0px;
     }
 
     /* keep your 400px breathing room */
@@ -385,9 +385,9 @@ html[data-brand="spa"] .wheel-controls .btn {
      This makes the controls sit "right under the cards" visually,
      and stops the "random gap" caused by the wheel's fixed height. */
     html[data-brand="spa"] .pkg-wheel-shell {
-        --controls-h: 56px;
+        --controls-h: 0px;
         /* height area for arrows/button row */
-        --controls-gap: 16px;
+        --controls-gap: 0px;
         /* same spacing feel as desktop */
         padding-bottom: calc(var(--controls-h) + var(--controls-gap));
     }
