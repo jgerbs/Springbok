@@ -1,3 +1,15 @@
+/* =========================================================
+   base.css — global tokens + foundations (clinic dark default)
+   Fixes:
+   - No more “white flash” on mobile scroll (html + body bg locked)
+   - Background/glow layer no longer uses negative z-index
+   - Proper spa theme overrides (bg/bg2/text/muted/line)
+   ========================================================= */
+
+/* =========================
+   Theme Tokens
+   ========================= */
+
 :root {
   --bg: #070808;
   --bg2: #0b0d0d;
@@ -22,11 +34,35 @@
   --container: 80%;
 }
 
+/* Clinic (explicit, optional) */
+html[data-brand="clinic"] {
+  --bg: #070808;
+  --bg2: #0b0d0d;
+  --text: rgba(255, 255, 255, .92);
+  --muted: rgba(255, 255, 255, .70);
+  --line: rgba(255, 255, 255, .12);
+
+  --accent: #12c08a;
+  --accent2: #0ea375;
+  --accentSoft: rgba(18, 192, 138, .18);
+}
+
+/* ✅ Spa overrides (FULL theme, not just accent) */
 html[data-brand="spa"] {
+  --bg: #fbf7f1;
+  --bg2: #f3eee6;
+  --text: rgba(20, 20, 20, .92);
+  --muted: rgba(20, 20, 20, .70);
+  --line: rgba(0, 0, 0, .12);
+
   --accent: #d6a36b;
   --accent2: #b9854f;
   --accentSoft: rgba(214, 163, 107, .18);
 }
+
+/* =========================
+   Resets / Base
+   ========================= */
 
 * {
   box-sizing: border-box;
@@ -34,27 +70,53 @@ html[data-brand="spa"] {
 
 html,
 body {
+  min-height: 100%;
   height: 100%;
   overflow-x: clip;
+
+  /* ✅ lock viewport paint to theme (prevents mobile white flash) */
+  background: var(--bg);
+  background-color: var(--bg);
+
+  color: var(--text);
+}
+
+@supports not (overflow: clip) {
+
+  html,
+  body {
+    overflow-x: hidden;
+  }
 }
 
 body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color: var(--text);
+
+  /* main surface gradient for the whole page */
   background: linear-gradient(180deg, var(--bg), var(--bg2) 70%);
+
   overflow-x: hidden;
+
+  /* ✅ critical: keep decorative layers inside a stable stacking context */
   position: relative;
-  /* needed for pseudo layers */
+  isolation: isolate;
 }
 
-/* global ambient glow layer (no seams between sections) */
+/* =========================
+   Global Ambient Glow Layer
+   (no seams between sections)
+   ✅ no negative z-index; lives behind content within body context
+   ========================= */
+
 body::before {
   content: "";
   position: fixed;
   inset: -20vh -20vw;
   pointer-events: none;
-  z-index: -1;
+
+  /* behind content, but not behind the browser canvas */
+  z-index: 0;
 
   background:
     radial-gradient(900px 520px at 12% 18%, var(--accentSoft), transparent 60%),
@@ -65,6 +127,15 @@ body::before {
   opacity: 1;
 }
 
+/* Ensure normal page content sits above the glow */
+.site-header,
+main,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Links / Media */
 a {
   color: inherit;
   text-decoration: none;
@@ -75,26 +146,33 @@ img {
   max-width: 100%;
 }
 
+/* Layout container */
 .container {
   max-width: var(--container);
   margin: 0 auto;
   padding: 0 22px;
 }
 
-/* Buttons */
+/* =========================
+   Buttons
+   ========================= */
+
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+
   padding: 12px 16px;
   border-radius: 999px;
   border: 1px solid transparent;
+
   font-weight: 650;
   line-height: 1;
   cursor: pointer;
-  transition: transform .15s ease, background .15s ease, border-color .15s ease;
   white-space: nowrap;
+
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
 }
 
 .btn:hover {
@@ -114,9 +192,19 @@ img {
   background: rgba(255, 255, 255, .06);
 }
 
+/* spa needs darker hover surface because text is dark */
+html[data-brand="spa"] .btn-outline:hover {
+  background: rgba(0, 0, 0, .05);
+}
+
 .btn-accent {
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   color: #04140e;
+}
+
+/* On spa, keep accent button text readable */
+html[data-brand="spa"] .btn-accent {
+  color: rgba(0, 0, 0, .92);
 }
 
 /* =========================
@@ -128,22 +216,18 @@ img {
   gap: 22px;
 }
 
-/* 1 across (vertical stack) */
 .tile-grid.grid-1 {
   grid-template-columns: 1fr;
 }
 
-/* 2 across (2,4,6,8...) */
 .tile-grid.grid-2 {
   grid-template-columns: repeat(2, 1fr);
 }
 
-/* 3 across (3,6,9...) */
 .tile-grid.grid-3 {
   grid-template-columns: repeat(3, 1fr);
 }
 
-/* Responsive: always stack on smaller screens */
 @media (max-width: 1100px) {
 
   .tile-grid.grid-1,
@@ -171,7 +255,6 @@ img {
   transform: none;
 }
 
-/* Optional: stagger children */
 .reveal-stagger>* {
   opacity: 0;
   transform: translateY(18px);
@@ -180,16 +263,11 @@ img {
 .reveal-stagger.is-visible>* {
   opacity: 1;
   transform: none;
-}
-
-.reveal-stagger.is-visible>* {
   transition:
     opacity 1.5s ease,
     transform 1.5s cubic-bezier(.22, .61, .36, 1);
 }
 
-
-/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
 
   .reveal,
@@ -200,9 +278,11 @@ img {
   }
 }
 
-/* =========================================================
-   Shared Section Head (clinic default)
-   ========================================================= */
+/* =========================
+   Shared Section Head
+   Clinic default + Spa overrides
+   ========================= */
+
 .section-eyebrow {
   display: inline-block;
   letter-spacing: .14em;
@@ -235,4 +315,21 @@ img {
   max-width: 70ch;
   color: rgba(255, 255, 255, .66);
   line-height: 1.75;
+}
+
+/* Spa section head colors */
+html[data-brand="spa"] .section-eyebrow {
+  color: rgba(110, 74, 40, .85);
+}
+
+html[data-brand="spa"] .section-title {
+  color: rgba(20, 20, 20, .92);
+}
+
+html[data-brand="spa"] .section-divider {
+  background: rgba(214, 163, 107, .85);
+}
+
+html[data-brand="spa"] .section-sub {
+  color: rgba(20, 20, 20, .70);
 }
