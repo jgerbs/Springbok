@@ -1,13 +1,13 @@
 /* =========================================================
-   spaTeam.css — Team tiles + reveal-stagger fix
+   spaTeam.css — Team tiles (fixed selectors + grid match)
    ========================================================= */
 
-html[data-brand="spa"].spa-team{
-  padding: 0px 0 90px;
+html[data-brand="spa"] .spa-team {
+  padding: 0 0 90px;
 }
 
 /* Tile */
-html[data-brand="spa"].spa-team-tile{
+html[data-brand="spa"] .spa-team-tile {
   position: relative;
   display: block;
   border-radius: 22px;
@@ -16,11 +16,15 @@ html[data-brand="spa"].spa-team-tile{
   isolation: isolate;
 
   border: 1px solid rgba(18, 18, 18, 0.10);
-  background: rgba(255,255,255,0.75);
+  background: rgba(255, 255, 255, 0.75);
   box-shadow: var(--shadow);
+
+  /* you were transforming on hover but had no base transition */
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  will-change: transform;
 }
 
-html[data-brand="spa"] .spa-team-bg{
+html[data-brand="spa"] .spa-team-bg {
   position: absolute;
   inset: 0;
   background-size: cover;
@@ -31,20 +35,20 @@ html[data-brand="spa"] .spa-team-bg{
 }
 
 /* Gold-tinted “spa” shade */
-html[data-brand="spa"] .spa-team-shade{
+html[data-brand="spa"] .spa-team-shade {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(900px 700px at 10% 10%, rgba(214,163,107, 0.22), transparent 56%),
+    radial-gradient(900px 700px at 10% 10%, rgba(214, 163, 107, 0.22), transparent 56%),
     linear-gradient(180deg,
-      rgba(255,255,255, 0.08) 0%,
-      rgba(0,0,0, 0.34) 55%,
-      rgba(0,0,0, 0.62) 100%);
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(0, 0, 0, 0.34) 55%,
+      rgba(0, 0, 0, 0.62) 100%);
   z-index: 1;
 }
 
 /* Content */
-html[data-brand="spa"] .spa-team-inner{
+html[data-brand="spa"] .spa-team-inner {
   position: relative;
   z-index: 2;
   height: 100%;
@@ -55,7 +59,7 @@ html[data-brand="spa"] .spa-team-inner{
   color: rgba(255, 255, 255, 0.95);
 }
 
-html[data-brand="spa"] .spa-team-top{
+html[data-brand="spa"] .spa-team-top {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -63,25 +67,25 @@ html[data-brand="spa"] .spa-team-top{
   font-size: 0.95rem;
 }
 
-html[data-brand="spa"] .spa-team-dot{
+html[data-brand="spa"] .spa-team-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.92);
+  background: rgba(255, 255, 255, 0.92);
   opacity: 0.85;
 }
 
-html[data-brand="spa"] .spa-team-tag{
+html[data-brand="spa"] .spa-team-tag {
   letter-spacing: 0.02em;
 }
 
-html[data-brand="spa"] .spa-team-bottom{
+html[data-brand="spa"] .spa-team-bottom {
   display: grid;
   grid-template-rows: auto auto auto;
   gap: 10px;
 }
 
-html[data-brand="spa"] .spa-team-bottom h3{
+html[data-brand="spa"] .spa-team-bottom h3 {
   margin: 0;
   font-size: 1.38rem;
   line-height: 1.15;
@@ -90,32 +94,32 @@ html[data-brand="spa"] .spa-team-bottom h3{
   transition: transform 0.22s ease;
 }
 
-html[data-brand="spa"] .spa-team-desc{
+html[data-brand="spa"] .spa-team-desc {
   margin: 0;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
   transform: translateY(6px);
   transition: max-height 0.28s ease, opacity 0.22s ease, transform 0.22s ease;
-  color: rgba(255,255,255,0.82);
+  color: rgba(255, 255, 255, 0.82);
   line-height: 1.55;
 }
 
-html[data-brand="spa"] .spa-team-cta{
+html[data-brand="spa"] .spa-team-cta {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: rgba(255,255,255,0.92);
+  color: rgba(255, 255, 255, 0.92);
   font-weight: 800;
 }
 
-html[data-brand="spa"] .spa-team-arrow{
+html[data-brand="spa"] .spa-team-arrow {
   width: 34px;
   height: 34px;
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.18);
-  background: rgba(255,255,255,0.08);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -123,49 +127,56 @@ html[data-brand="spa"] .spa-team-arrow{
 }
 
 /* Hover */
-html[data-brand="spa"] .spa-team-tile:hover{
+html[data-brand="spa"] .spa-team-tile:hover {
   transform: translateY(-8px) scale(1.02);
-  border-color: rgba(214,163,107,0.40);
-  box-shadow: 0 26px 90px rgba(17,12,8,0.20);
+  border-color: rgba(214, 163, 107, 0.40);
+  box-shadow: 0 26px 90px rgba(17, 12, 8, 0.20);
   z-index: 5;
 }
 
-html[data-brand="spa"] .spa-team-tile:hover .spa-team-bg{
+html[data-brand="spa"] .spa-team-tile:hover .spa-team-bg {
   transform: scale(1.08);
   filter: saturate(1.03) contrast(1.03);
 }
 
-html[data-brand="spa"] .spa-team-tile:hover .spa-team-bottom h3{
+html[data-brand="spa"] .spa-team-tile:hover .spa-team-bottom h3 {
   transform: translateY(-6px);
 }
 
-html[data-brand="spa"] .spa-team-tile:hover .spa-team-desc{
+html[data-brand="spa"] .spa-team-tile:hover .spa-team-desc {
   max-height: 120px;
   opacity: 1;
   transform: translateY(0);
 }
 
-html[data-brand="spa"] .spa-team-tile:hover .spa-team-arrow{
+html[data-brand="spa"] .spa-team-tile:hover .spa-team-arrow {
   transform: translateX(3px);
-  background: rgba(214,163,107,0.18);
-  border-color: rgba(214,163,107,0.30);
+  background: rgba(214, 163, 107, 0.18);
+  border-color: rgba(214, 163, 107, 0.30);
 }
 
-html[data-brand="spa"] .spa-team-tile:focus-visible{
-  outline: 2px solid rgba(214,163,107,0.72);
+html[data-brand="spa"] .spa-team-tile:focus-visible {
+  outline: 2px solid rgba(214, 163, 107, 0.72);
   outline-offset: 4px;
 }
 
 /* Mobile behavior */
-@media (max-width: 1100px){
-  html[data-brand="spa"] .spa-team-tile{ min-height: 560px; }
-  html[data-brand="spa"] .spa-team-desc{ opacity: 1; transform: none; max-height: 140px; }
+@media (max-width: 1100px) {
+  html[data-brand="spa"] .spa-team-tile {
+    min-height: 560px;
+  }
+
+  html[data-brand="spa"] .spa-team-desc {
+    opacity: 1;
+    transform: none;
+    max-height: 140px;
+  }
 }
 
 /* =========================
-   REVEAL-STAGGER FIX
+   REVEAL-STAGGER FIX (match your HTML: .tile-grid)
    ========================= */
-html[data-brand="spa"] .spa-team-grid.reveal-stagger > .spa-team-tile{
+html[data-brand="spa"] .tile-grid.reveal-stagger>.spa-team-tile {
   --reveal-y: 18px;
   --reveal-dur: 1.5s;
 
@@ -174,14 +185,12 @@ html[data-brand="spa"] .spa-team-grid.reveal-stagger > .spa-team-tile{
 
   transition:
     opacity var(--reveal-dur) ease,
-    transform var(--reveal-dur) cubic-bezier(.22,.61,.36,1),
+    transform var(--reveal-dur) cubic-bezier(.22, .61, .36, 1),
     box-shadow .22s ease,
     border-color .22s ease;
 }
 
-html[data-brand="spa"] .spa-team-grid.reveal-stagger.is-visible > .spa-team-tile{
-  --reveal-y: 0px;
-  --reveal-dur: .22s;
-
+html[data-brand="spa"] .tile-grid.reveal-stagger.is-visible>.spa-team-tile {
   opacity: 1;
+  transform: translateY(0) translateZ(0);
 }
