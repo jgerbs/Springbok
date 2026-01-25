@@ -379,21 +379,31 @@
 
     /* overlay */
     .mobile-panel {
+        /* BREAK OUT of .container */
+        max-width: none !important;
+        width: 100vw !important;
+        padding: 0 !important;
+        margin: 0 !important;
+
         position: fixed;
         inset: 0;
+        left: 0;
+        right: 0;
+
         z-index: 9998;
 
-        /* hidden state */
         opacity: 0;
         pointer-events: none;
 
-        background: rgba(0, 0, 0, .55);
-        backdrop-filter: blur(10px);
+        background: transparent;
+
+        /* blur EVERYTHING behind */
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
 
         transition: opacity 220ms ease;
     }
 
-    /* open state */
     .mobile-panel.is-open {
         opacity: 1;
         pointer-events: auto;
@@ -542,23 +552,22 @@
 /* =========================================
    SPA MOBILE MENU – light surface
    ========================================= */
-@media (max-width: 860px){
-  html[data-brand="spa"] .mobile-menu{
-    background: rgba(255,255,255,.88);
-    border-color: rgba(0,0,0,.10);
-    box-shadow: 0 24px 70px rgba(0,0,0,.25);
-  }
+@media (max-width: 860px) {
+    html[data-brand="spa"] .mobile-menu {
+        background: rgba(255, 255, 255, .88);
+        border-color: rgba(0, 0, 0, .10);
+        box-shadow: 0 24px 70px rgba(0, 0, 0, .25);
+    }
 
-  html[data-brand="spa"] .mobile-link{
-    background: rgba(0,0,0,.04);
-    border-color: rgba(0,0,0,.08);
-    color: rgba(0,0,0,.78);
-  }
+    html[data-brand="spa"] .mobile-link {
+        background: rgba(0, 0, 0, .04);
+        border-color: rgba(0, 0, 0, .08);
+        color: rgba(0, 0, 0, .78);
+    }
 
-  html[data-brand="spa"] .mobile-link.is-active{
-    background: rgba(214,163,107,.20);
-    border-color: rgba(214,163,107,.45);
-    color: rgba(0,0,0,.95);
-  }
+    html[data-brand="spa"] .mobile-link.is-active {
+        background: rgba(214, 163, 107, .20);
+        border-color: rgba(214, 163, 107, .45);
+        color: rgba(0, 0, 0, .95);
+    }
 }
-
