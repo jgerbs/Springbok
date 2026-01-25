@@ -58,6 +58,10 @@ html[data-brand="spa"] .pkg-card {
     color: rgba(0, 0, 0, .86);
     padding: 22px;
 
+    /* ✅ KEY FIX: make card a flex column so actions can pin to bottom */
+    display: flex;
+    flex-direction: column;
+
     transition:
         transform 520ms cubic-bezier(.2, .9, .2, 1),
         filter 520ms cubic-bezier(.2, .9, .2, 1);
@@ -114,7 +118,6 @@ html[data-brand="spa"] .pkg-card.is-far-right {
     z-index: 1;
 }
 
-/* Everything else hidden */
 html[data-brand="spa"] .pkg-card.is-off {
     opacity: 0;
     pointer-events: none;
@@ -168,11 +171,17 @@ html[data-brand="spa"] .pkg-list {
     line-height: 1.6;
 }
 
+/* ✅ Actions now truly pin to bottom because .pkg-card is flex */
 html[data-brand="spa"] .pkg-actions {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
     margin-top: auto;
+}
+
+html[data-brand="spa"] .pkg-actions .btn {
+    flex: 1 1 auto;
+    justify-content: center;
 }
 
 /* NAV BUTTONS (base styles) */
@@ -213,45 +222,29 @@ html[data-brand="spa"] .pkg-nav--overlay.pkg-next {
     right: 14px;
 }
 
-/* Footer under the wheel (desktop) */
-html[data-brand="spa"] .pkg-footer {
-    margin-top: 18px;
-    display: flex;
-    justify-content: flex-start;
-}
-
 /* Controls under the wheel */
 html[data-brand="spa"] .wheel-controls {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    /* left on non-mobile */
     gap: 12px;
     margin-top: 16px;
 }
 
-/* Hide row arrows by default (non-mobile only shows button) */
 html[data-brand="spa"] .wheel-controls .pkg-nav--row {
     display: none;
 }
 
-/* Non-mobile button sizing */
 html[data-brand="spa"] .wheel-controls .btn {
     width: auto;
     min-width: 220px;
     text-align: center;
 }
 
-/* ULTRA-WIDE */
+/* ---------------------------------
+   ULTRA-WIDE: 5 cards (match products)
+---------------------------------- */
 @media (min-width: 2150px) {
-    html[data-brand="spa"] .pkg-card.is-center {
-        filter: none;
-    }
-
-    html[data-brand="spa"] .pkg-card.is-center::after {
-        opacity: 0;
-    }
-
     html[data-brand="spa"] .pkg-card.is-left {
         transform: translateX(calc(-50% - 560px)) scale(.98);
         filter: none;
@@ -287,7 +280,9 @@ html[data-brand="spa"] .wheel-controls .btn {
     }
 }
 
-/* MID */
+/* ---------------------------------
+   MID: tighten spacing slightly (match products)
+---------------------------------- */
 @media (max-width: 1280px) {
     html[data-brand="spa"] .pkg-card.is-left {
         transform: translateX(calc(-50% - 320px)) scale(.955);
@@ -298,7 +293,9 @@ html[data-brand="spa"] .wheel-controls .btn {
     }
 }
 
-/* TABLET / SMALL DESKTOP */
+/* ---------------------------------
+   TABLET / SMALL DESKTOP (match products)
+---------------------------------- */
 @media (max-width: 1050px) {
     html[data-brand="spa"] .pkg-wheel {
         height: 400px;
@@ -341,38 +338,67 @@ html[data-brand="spa"] .wheel-controls .btn {
     }
 }
 
-/* MOBILE: keep 400px wheel, keep card transforms,
-   BUT pin the controls to bottom of the shell and reserve space */
+/* ---------------------------------
+   SMALL VIEW (≤ 900px) (match products behavior)
+   - hide overlay arrows
+   - show bottom row arrows + button
+   - KEEP the wheel height breathing room
+   - PIN controls to bottom of shell
+---------------------------------- */
 @media (max-width: 900px) {
-
     html[data-brand="spa"] .spa-packages {
-        padding: 50px 0 0px;
+        padding: 70px 0 0;
     }
 
-    /* keep your 400px breathing room */
+    /* scale from top */
+    html[data-brand="spa"] .pkg-card {
+        transform-origin: top center;
+    }
+
+    /* match products: wheel height 400 */
     html[data-brand="spa"] .pkg-wheel {
-        height: 450px;
+        height: 400px;
         touch-action: pan-y;
     }
 
-    /* cards unchanged; just ensure scaling origin */
+    /* match products: skinnier card */
     html[data-brand="spa"] .pkg-card {
-        transform-origin: top center;
-        width: min(300px, 60vw);
+        width: min(300px, 78vw);
         padding: 16px 16px 18px;
         border-radius: 20px;
     }
 
+    /* match products: scaling + offsets */
     html[data-brand="spa"] .pkg-card.is-center {
         transform: translateX(-50%) scale(.8);
     }
 
     html[data-brand="spa"] .pkg-card.is-left {
         transform: translateX(calc(-50% - 165px)) scale(.75);
+        opacity: .55;
     }
 
     html[data-brand="spa"] .pkg-card.is-right {
         transform: translateX(calc(-50% + 165px)) scale(.75);
+        opacity: .55;
+    }
+
+    /* optional: match products tighter type on mobile */
+    html[data-brand="spa"] .pkg-title {
+        font-size: 1.05rem;
+        margin: 6px 0;
+    }
+
+    html[data-brand="spa"] .pkg-desc {
+        font-size: .9rem;
+        margin: 0 0 10px;
+        line-height: 1.55;
+    }
+
+    html[data-brand="spa"] .pkg-list {
+        font-size: .9rem;
+        margin: 0 0 12px;
+        line-height: 1.55;
     }
 
     /* hide overlay arrows */
@@ -380,15 +406,8 @@ html[data-brand="spa"] .wheel-controls .btn {
         display: none;
     }
 
-    /* ✅ KEY FIX:
-     Reserve space inside the shell and absolutely place controls at the bottom.
-     This makes the controls sit "right under the cards" visually,
-     and stops the "random gap" caused by the wheel's fixed height. */
+    /* ✅ match products: reserve space + pin controls */
     html[data-brand="spa"] .pkg-wheel-shell {
-        --controls-h: 0px;
-        /* height area for arrows/button row */
-        --controls-gap: 0px;
-        /* same spacing feel as desktop */
         padding-bottom: calc(var(--controls-h) + var(--controls-gap));
     }
 
@@ -399,7 +418,6 @@ html[data-brand="spa"] .wheel-controls .btn {
         bottom: 0;
 
         margin-top: 0;
-        /* don't use flow spacing on mobile */
         justify-content: space-between;
         gap: 10px;
     }
@@ -419,6 +437,7 @@ html[data-brand="spa"] .wheel-controls .btn {
         text-align: center;
     }
 }
+
 
 /* =========================================
    PACKAGES — prevent horizontal scroll

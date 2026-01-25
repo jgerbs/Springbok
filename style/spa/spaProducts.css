@@ -279,7 +279,7 @@ html[data-brand="spa"] .prod-controls .btn {
 /* ---------------------------------
    ULTRA-WIDE: 5 cards
 ---------------------------------- */
-@media (min-width: 2150px) {
+@media (min-width: 2000px) {
     html[data-brand="spa"] .prod-card.is-left {
         transform: translateX(calc(-50% - 560px)) scale(.98);
         filter: none;
@@ -432,10 +432,6 @@ html[data-brand="spa"] .prod-controls .btn {
     /* ✅ KEY FIX (same as packages):
      reserve space + pin controls to bottom of the wheel shell */
     html[data-brand="spa"] .prod-wheel-shell {
-        --controls-h: 56px;
-        /* row height */
-        --controls-gap: 16px;
-        /* distance from cards “feel” */
         padding-bottom: calc(var(--controls-h) + var(--controls-gap));
     }
 
