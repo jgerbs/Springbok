@@ -308,7 +308,7 @@
 
     /* scale from top if you ever scale cards later */
     .staff-wheel .service-tile {
-        width: min(320px, 82vw);
+        width: min(320px, 70vw);
         /* ✅ skinnier like products */
         transform-origin: top center;
     }
