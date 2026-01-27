@@ -363,3 +363,41 @@
         text-align: center;
     }
 }
+
+/* =========================================
+   STAFF WHEEL — description visibility
+   - Only CENTER card shows description
+   - CTA ("Meet the team") stays visible
+   - Smooth pop-in animation
+   ========================================= */
+
+/* Hide description on non-center cards */
+.staff-wheel .service-tile:not(.is-center) .tile-desc {
+    opacity: 0;
+    max-height: 0;
+    margin-top: 0;
+    overflow: hidden;
+    pointer-events: none;
+
+    transform: translateY(8px);
+    transition:
+        opacity 240ms ease,
+        transform 240ms ease,
+        max-height 300ms ease;
+}
+
+/* Center card: show description */
+.staff-wheel .service-tile.is-center .tile-desc {
+    opacity: 1;
+    max-height: 140px;
+    /* enough for 2–3 lines */
+    margin-top: 8px;
+
+    transform: translateY(0);
+    pointer-events: auto;
+
+    transition:
+        opacity 260ms ease,
+        transform 260ms ease,
+        max-height 320ms ease;
+}

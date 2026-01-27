@@ -1,69 +1,115 @@
 /* =========================
-   FOOTER (Zone4-inspired, Springbok-styled)
+   FOOTER (Springbok)
+   Layout goals:
+   - Desktop: BRAND | PAGES | CLINIC | SPA | ADDRESS (all in one row)
+   - When it starts feeling cramped / tries to “stack”: switch to ONE-COLUMN footer
+   - Never let the address overflow/cut off
    ========================= */
 
-.site-footer{
+.site-footer {
   margin-top: 80px;
-  padding: 56px 0 22px;
-  color: rgba(255,255,255,.82);
+  padding: clamp(44px, 5vw, 56px) 0 22px;
+  color: rgba(255, 255, 255, .82);
 
   background:
-    radial-gradient(1200px 800px at 20% 0%, rgba(18,192,138,.18), transparent 55%),
-    radial-gradient(900px 700px at 90% 15%, rgba(18,192,138,.10), transparent 60%),
-    linear-gradient(180deg, rgba(2,6,8,.92), rgba(2,6,8,.98));
-  border-top: 1px solid rgba(255,255,255,.10);
+    radial-gradient(1200px 800px at 20% 0%, rgba(18, 192, 138, .18), transparent 55%),
+    radial-gradient(900px 700px at 90% 15%, rgba(18, 192, 138, .10), transparent 60%),
+    linear-gradient(180deg, rgba(2, 6, 8, .92), rgba(2, 6, 8, .98));
+  border-top: 1px solid rgba(255, 255, 255, .10);
 }
 
-.footer-inner{
+/* ====== DESKTOP / FULL VIEW (5 columns) ======
+   We "flatten" .footer-cols with display: contents
+   so the 3 link columns become real grid columns next to brand + contact.
+*/
+.footer-inner {
   display: grid;
-  grid-template-columns: 1.1fr 1.6fr 1.1fr;
-  gap: 34px;
+  grid-template-columns:
+    minmax(220px, 1.15fr)
+    /* brand */
+    minmax(160px, 1fr)
+    /* pages */
+    minmax(190px, 1fr)
+    /* clinic */
+    minmax(170px, 1fr)
+    /* spa */
+    minmax(260px, 1.15fr);
+  /* contact */
+  column-gap: clamp(18px, 3vw, 42px);
+  row-gap: clamp(18px, 2.5vw, 28px);
   align-items: start;
 }
 
-/* Brand */
-.footer-brand{ display:flex; flex-direction: column; gap: 18px; }
-
-.footer-logo{
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  text-decoration: none;
-  color: inherit;
+/* Flatten the wrapper so its children become columns 2/3/4 */
+.footer-cols {
+  display: contents;
+  position: relative;
+  margin-top: 28px;
+  padding-top: 28px;
 }
 
-.footer-logo img{
-  width: 54px;
-  height: 54px;
-  object-fit: contain;
-  filter: drop-shadow(0 10px 26px rgba(0,0,0,.35));
+.footer-cols::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, .10);
 }
 
-.footer-logo-text strong{
-  display:block;
-  letter-spacing: .08em;
-  font-weight: 850;
-  font-size: 1.05rem;
-  color: rgba(255,255,255,.92);
+/* Safety: allow grid items to shrink without overflow */
+.footer-brand,
+.footer-col,
+.footer-contact {
+  min-width: 0;
 }
-.footer-logo-text em{
-  display:block;
-  letter-spacing: .24em;
-  font-style: normal;
-  font-weight: 800;
-  font-size: .78rem;
-  color: rgba(255,255,255,.62);
-  margin-top: 2px;
+
+/* ===== Brand ===== */
+.footer-brand {
+  align-items: flex-start;
+  /* keeps column aligned with the other footer columns */
+}
+
+.footer-brand-stack {
+  display: flex;
+  /* override inline-flex */
+  flex-direction: column;
+  /* stack */
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.footer-brand-logo {
+  width: clamp(110px, 9vw, 170px);
+  height: auto;
+  /* let it keep aspect ratio */
+  max-width: 100%;
+}
+
+/* center the type under the logo (optional: remove if you want left-aligned) */
+.footer-brand-type {
+  text-align: left;
+  padding-top: 18px;
+}
+
+.footer-brand-name,
+.footer-brand-sub {
+  white-space: normal;
+  
+  /* allow wrapping if needed */
 }
 
 /* Social */
-.footer-social{
-  display:flex;
+.footer-social {
+  display: flex;
   gap: 10px;
-  align-items:center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 14px;
 }
 
-.social-btn{
+.social-btn {
   width: 42px;
   height: 42px;
   border-radius: 999px;
@@ -71,130 +117,360 @@
   place-items: center;
   text-decoration: none;
 
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255, 255, 255, .14);
+  background: rgba(255, 255, 255, .06);
   backdrop-filter: blur(14px);
-  color: rgba(255,255,255,.86);
+  -webkit-backdrop-filter: blur(14px);
+  color: rgba(255, 255, 255, .86);
   font-weight: 900;
 
   transition: transform .18s ease, background .18s ease, border-color .18s ease;
 }
 
-.social-btn:hover{
+.social-btn:hover {
   transform: translateY(-2px);
-  background: rgba(18,192,138,.16);
-  border-color: rgba(18,192,138,.26);
+  background: rgba(18, 192, 138, .16);
+  border-color: rgba(18, 192, 138, .26);
 }
 
-/* Columns */
-.footer-cols{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-}
-
-.footer-col h3{
+/* ===== Link Columns ===== */
+.footer-col h3 {
   margin: 0 0 12px;
   font-size: .92rem;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.92);
+  color: rgba(255, 255, 255, .92);
 }
 
-.footer-col a{
+.footer-col a {
   display: block;
-  padding: 8px 0;
+  padding: 7px 0;
   text-decoration: none;
-  color: rgba(255,255,255,.68);
+  color: rgba(255, 255, 255, .68);
   font-weight: 650;
-  transition: color .16s ease;
+
+  /* let long labels wrap nicely */
+  white-space: normal;
+  overflow-wrap: anywhere;
+
+  transition: color .16s ease, transform .16s ease;
 }
 
-.footer-col a:hover{
-  color: rgba(18,192,138,.92);
+.footer-col a:hover {
+  color: rgba(18, 192, 138, .92);
+  transform: translateX(2px);
 }
 
-/* Contact */
-.footer-contact{
+/* Add consistent vertical rhythm between sections (helps across viewports) */
+.footer-col+.footer-col {
+  margin-top: 2px;
+}
+
+/* ===== Contact (Address distinct from links) ===== */
+.footer-contact {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  justify-self: end;
+  gap: 16px;
   text-align: left;
+  justify-self: stretch;
+
+  /* visual separation */
+  position: relative;
+  padding-left: 18px;
 }
 
-.footer-contact-title{
+.footer-contact::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 1px;
+  background: linear-gradient(180deg,
+      transparent,
+      rgba(255, 255, 255, .18),
+      transparent);
+}
+
+.footer-contact-title {
   margin: 0 0 10px;
   font-weight: 850;
-  color: rgba(255,255,255,.92);
+  font-size: .95rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .86);
 }
 
-.footer-contact p{
+.footer-contact p {
   margin: 0;
-  color: rgba(255,255,255,.70);
   line-height: 1.65;
+  font-size: .92rem;
+  color: rgba(255, 255, 255, .62);
 }
 
-.footer-link{
-  color: rgba(255,255,255,.82);
+.footer-link {
+  color: rgba(255, 255, 255, .84);
   text-decoration: none;
-  font-weight: 750;
+  font-weight: 780;
+  display: inline-block;
+  margin-top: 6px;
 }
 
-.footer-link:hover{
-  color: rgba(18,192,138,.92);
+.footer-link:hover {
+  color: rgba(18, 192, 138, .92);
 }
 
-/* Bottom bar */
-.footer-bottom{
+.footer-contact-block:last-child .footer-link {
+  margin-top: 0;
+  font-size: .96rem;
+  color: rgba(255, 255, 255, .88);
+}
+
+/* ===== Bottom bar ===== */
+.footer-bottom {
   margin-top: 28px;
   padding-top: 18px;
-  border-top: 1px solid rgba(255,255,255,.10);
+  border-top: 1px solid rgba(255, 255, 255, .10);
 
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 16px;
 
-  color: rgba(255,255,255,.58);
+  color: rgba(255, 255, 255, .58);
   font-weight: 650;
 }
 
-.footer-bottom p{ margin: 0; }
+.footer-bottom p {
+  margin: 0;
+}
 
 /* Back to top button */
-.to-top{
+.to-top {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.06);
-  color: rgba(255,255,255,.86);
+  border: 1px solid rgba(255, 255, 255, .14);
+  background: rgba(255, 255, 255, .06);
+  color: rgba(255, 255, 255, .86);
   font-weight: 900;
   cursor: pointer;
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   transition: transform .18s ease, background .18s ease, border-color .18s ease;
 }
 
-.to-top:hover{
+.to-top:hover {
   transform: translateY(-2px);
-  background: rgba(18,192,138,.16);
-  border-color: rgba(18,192,138,.26);
+  background: rgba(18, 192, 138, .16);
+  border-color: rgba(18, 192, 138, .26);
 }
 
-/* Responsive */
-@media (max-width: 1050px){
-  .footer-inner{
+/* =========================
+   BREAKPOINT: switch to ONE-COLUMN footer
+   (this prevents the “weird middle stacking / address overflow” view)
+   ========================= */
+@media (max-width: 1400px) {
+  .footer-inner {
     grid-template-columns: 1fr;
   }
-  .footer-contact{
-    justify-self: start;
-  }
-  .footer-cols{
+
+  /* stop flattening; make the middle columns a normal stack */
+  .footer-cols {
+    display: grid;
     grid-template-columns: 1fr;
+    gap: 20px;
   }
-  .footer-bottom{
+
+  .footer-brand {
+    gap: 14px;
+  }
+
+  /* remove vertical divider; add breathing room instead */
+  .footer-contact {
+    padding-left: 0;
+    margin-top: 6px;
+  }
+
+  .footer-contact::before {
+    display: none;
+  }
+
+  /* optional: subtle separation for contact in single-column */
+  .footer-contact {
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, .10);
+  }
+
+  .footer-bottom {
     flex-direction: column;
     align-items: flex-start;
+    gap: 12px;
+  }
+
+  .footer-cols::before {
+    display: block;
+  }
+
+  .footer-brand {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "logo socials"
+      "type socials";
+    column-gap: 18px;
+    row-gap: 10px;
+    align-items: start;
+  }
+
+  /* let logo + type place directly into grid areas */
+  .footer-brand-stack {
+    display: contents;
+  }
+
+  .footer-brand-logo {
+    grid-area: logo;
+    width: clamp(96px, 14vw, 140px);
+    height: auto;
+    max-width: 100%;
+  }
+
+  .footer-brand-type {
+    grid-area: type;
+    text-align: left;
+  }
+
+  .footer-social {
+    grid-area: socials;
+    margin-top: 0;
+    /* kill the desktop top spacing */
+    justify-self: start;
+    /* keep it near the logo, not pushed far right */
+    align-self: center;
+  }
+
+  .footer-cols {
+    display: flex;
+    /* instead of contents */
+    flex-wrap: wrap;
+    gap: clamp(18px, 3vw, 42px);
+    align-items: flex-start;
+  }
+}
+
+/* Extra-small: tighten padding a touch */
+@media (max-width: 420px) {
+  .site-footer {
+    padding: 42px 0 20px;
+  }
+
+  .footer-col h3 {
+    font-size: .88rem;
+  }
+
+  .social-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* =========================
+   BRAND ONLY – size + spacing refinement
+   ========================= */
+
+/* Desktop: make logo more readable */
+.footer-brand-logo {
+  width: clamp(140px, 10vw, 190px);
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 32px rgba(0, 0, 0, .35));
+}
+
+/* Tighten brand vertical rhythm */
+.footer-brand {
+  gap: 12px;
+}
+
+.footer-brand-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* =========================
+   ONE-COLUMN FOOTER (≤1400px)
+   BRAND LAYOUT ONLY
+   ========================= */
+@media (max-width: 1400px) {
+
+  .footer-brand {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "logo type"
+      "logo socials";
+    column-gap: 20px;
+    row-gap: 8px;
+    align-items: start;
+  }
+
+  /* logo */
+  .footer-brand-top {
+    grid-area: logo;
+  }
+
+  .footer-brand-logo {
+    width: clamp(160px, 18vw, 220px);
+  }
+
+  /* text */
+  .footer-brand-type {
+    grid-area: type;
+    text-align: left;
+  }
+
+  .footer-brand-name {
+    font-size: 1.1rem;
+    letter-spacing: .09em;
+  }
+
+  .footer-brand-sub {
+    font-size: .8rem;
+    letter-spacing: .26em;
+  }
+
+  /* socials under text */
+  .footer-social {
+    grid-area: socials;
+    margin-top: 2px;
+    justify-self: start;
+    align-self: start;
+  }
+}
+
+/* =========================
+   SMALL SCREENS
+   BRAND STACKS NICELY
+   ========================= */
+@media (max-width: 700px) {
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .footer-brand-logo {
+    width: clamp(180px, 48vw, 240px);
+  }
+
+  .footer-brand-type {
+    text-align: left;
+  }
+
+  .footer-social {
+    margin-top: 6px;
   }
 }
