@@ -1,11 +1,13 @@
 /* =========================
-   STAFF WHEEL (Home)
+   staffWheel.css — STAFF WHEEL (Home)
    Matches PACKAGES / PRODUCTS behavior:
    - overlay arrows on desktop/tablet
    - bottom row arrows + "View Full Team" on mobile
    - "View Full Team" stays visible at ALL viewports
    - Non-mobile: button stays LEFT (no arrows beside it)
    - Side cards: dim + blur (NO color shift / NO see-through)
+   - Cards more NARROW (closer to products visual proportions)
+   NOTE: Far cards stay OFF by default; ultra-wide shows 5.
    ========================= */
 
 .staff-wheel-shell {
@@ -17,7 +19,8 @@
 /* Stage (wheel mode always) */
 .staff-wheel {
     position: relative;
-    height: 440px;
+    height: 410px;
+    /* scaled down from 440 */
     touch-action: pan-y;
     overflow: visible;
 }
@@ -27,7 +30,8 @@
     position: absolute;
     top: 0;
     left: 50%;
-    width: min(520px, 92vw);
+    width: min(460px, 90vw);
+    /* ✅ narrower than before */
     height: 100%;
     transform: translateX(-50%);
     opacity: 1;
@@ -67,7 +71,8 @@
 
 .staff-wheel .service-tile.is-left {
     pointer-events: auto;
-    transform: translateX(calc(-50% - 360px)) scale(.95);
+    transform: translateX(calc(-50% - 320px)) scale(.93);
+    /* tighter + slightly smaller */
     filter: blur(.75px);
     z-index: 2;
 }
@@ -78,7 +83,7 @@
 
 .staff-wheel .service-tile.is-right {
     pointer-events: auto;
-    transform: translateX(calc(-50% + 360px)) scale(.95);
+    transform: translateX(calc(-50% + 320px)) scale(.93);
     filter: blur(.75px);
     z-index: 2;
 }
@@ -152,7 +157,7 @@
 
 /* ✅ Controls under the wheel (ALWAYS visible)
    Desktop/tablet: ONLY button, LEFT
-   Mobile: arrows + button row
+   Mobile: arrows + button row (pinned)
 */
 .staff-wheel-shell .wheel-controls {
     display: flex;
@@ -174,6 +179,7 @@
 
 /* ---------------------------------
    ULTRA-WIDE: 5 cards
+   (3 crisp + 2 ghosted behind)
 ---------------------------------- */
 @media (min-width: 2150px) {
     .staff-wheel .service-tile.is-center {
@@ -185,7 +191,7 @@
     }
 
     .staff-wheel .service-tile.is-left {
-        transform: translateX(calc(-50% - 560px)) scale(.98);
+        transform: translateX(calc(-50% - 520px)) scale(.965);
         filter: none;
     }
 
@@ -194,7 +200,7 @@
     }
 
     .staff-wheel .service-tile.is-right {
-        transform: translateX(calc(-50% + 560px)) scale(.98);
+        transform: translateX(calc(-50% + 520px)) scale(.965);
         filter: none;
     }
 
@@ -211,11 +217,11 @@
     }
 
     .staff-wheel .service-tile.is-far-left {
-        transform: translateX(calc(-50% - 840px)) scale(.92);
+        transform: translateX(calc(-50% - 780px)) scale(.90);
     }
 
     .staff-wheel .service-tile.is-far-right {
-        transform: translateX(calc(-50% + 840px)) scale(.92);
+        transform: translateX(calc(-50% + 780px)) scale(.90);
     }
 
     .staff-wheel .service-tile.is-far-left::after,
@@ -229,12 +235,20 @@
    MID: tighten spacing slightly
 ---------------------------------- */
 @media (max-width: 1280px) {
+    .staff-wheel {
+        height: 390px;
+    }
+
+    .staff-wheel .service-tile {
+        width: min(440px, 90vw);
+    }
+
     .staff-wheel .service-tile.is-left {
-        transform: translateX(calc(-50% - 320px)) scale(.955);
+        transform: translateX(calc(-50% - 290px)) scale(.93);
     }
 
     .staff-wheel .service-tile.is-right {
-        transform: translateX(calc(-50% + 320px)) scale(.955);
+        transform: translateX(calc(-50% + 290px)) scale(.93);
     }
 
     .staff-wheel .service-tile.is-far-left,
@@ -251,20 +265,22 @@
 ---------------------------------- */
 @media (max-width: 1050px) {
     .staff-wheel {
-        height: 400px;
+        height: 360px;
+        /* was 400 */
     }
 
     .staff-wheel .service-tile {
-        width: min(440px, 86vw);
+        width: min(410px, 86vw);
+        /* narrower */
     }
 
     .staff-wheel .service-tile.is-left {
-        transform: translateX(calc(-50% - 255px)) scale(.94);
+        transform: translateX(calc(-50% - 230px)) scale(.915);
         filter: blur(.75px);
     }
 
     .staff-wheel .service-tile.is-right {
-        transform: translateX(calc(-50% + 255px)) scale(.94);
+        transform: translateX(calc(-50% + 230px)) scale(.915);
         filter: blur(.75px);
     }
 
@@ -285,24 +301,25 @@
 ---------------------------------- */
 @media (max-width: 900px) {
     .staff-wheel {
-        height: 380px;
-        /* keep your breathing room */
+        height: 350px;
+        /* scaled down */
         touch-action: pan-y;
     }
 
     /* scale from top if you ever scale cards later */
     .staff-wheel .service-tile {
-        width: min(360px, 86vw);
+        width: min(320px, 82vw);
+        /* ✅ skinnier like products */
         transform-origin: top center;
     }
 
     .staff-wheel .service-tile.is-left {
-        transform: translateX(calc(-50% - 190px)) scale(.92);
+        transform: translateX(calc(-50% - 175px)) scale(.895);
         filter: blur(.75px);
     }
 
     .staff-wheel .service-tile.is-right {
-        transform: translateX(calc(-50% + 190px)) scale(.92);
+        transform: translateX(calc(-50% + 175px)) scale(.895);
         filter: blur(.75px);
     }
 
@@ -311,13 +328,10 @@
         display: none;
     }
 
-    /* ✅ KEY FIX:
-     reserve space + pin controls to bottom of the wheel shell */
+    /* reserve space + pin controls to bottom of the wheel shell */
     .staff-wheel-shell {
         --controls-h: 56px;
-        /* row height */
         --controls-gap: 16px;
-        /* same “feel” spacing */
         padding-bottom: calc(var(--controls-h) + var(--controls-gap));
     }
 
@@ -328,7 +342,6 @@
         bottom: 0;
 
         margin-top: 0;
-        /* important: remove the flow gap */
         justify-content: space-between;
         gap: 10px;
     }

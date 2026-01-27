@@ -4,7 +4,7 @@
    - overlay arrows on desktop/tablet
    - bottom row arrows + "View all products" on mobile
    - solid cards (no see-through)
-   - center clear, edges softened via blur + overlay (not opacity)
+   - center clear, edges softened via DIM overlay (NO blur)
    - ultra-wide 5: 3 crisp (no overlap) + 2 ghosted behind
    ========================================================= */
 
@@ -99,7 +99,7 @@ html[data-brand="spa"] .prod-card::after {
     transition: opacity 420ms ease;
 }
 
-/* Default 3-up: center clear, edges softened */
+/* Default 3-up: center clear, edges softened (NO BLUR) */
 html[data-brand="spa"] .prod-card.is-center {
     pointer-events: auto;
     transform: translateX(-50%) scale(1);
@@ -110,7 +110,8 @@ html[data-brand="spa"] .prod-card.is-center {
 html[data-brand="spa"] .prod-card.is-left {
     pointer-events: auto;
     transform: translateX(calc(-50% - 360px)) scale(.95);
-    filter: blur(.7px) saturate(.92) contrast(.97) brightness(.98);
+    /* ✅ removed blur; keep subtle “soften” via slight tone + overlay */
+    filter: saturate(.92) contrast(.97) brightness(.985);
     z-index: 2;
 }
 
@@ -121,7 +122,8 @@ html[data-brand="spa"] .prod-card.is-left::after {
 html[data-brand="spa"] .prod-card.is-right {
     pointer-events: auto;
     transform: translateX(calc(-50% + 360px)) scale(.95);
-    filter: blur(.7px) saturate(.92) contrast(.97) brightness(.98);
+    /* ✅ removed blur */
+    filter: saturate(.92) contrast(.97) brightness(.985);
     z-index: 2;
 }
 
@@ -264,12 +266,10 @@ html[data-brand="spa"] .prod-controls {
     margin-top: 16px;
 }
 
-/* Hide row arrows by default (non-mobile only shows the button) */
 html[data-brand="spa"] .prod-controls .prod-nav--row {
     display: none;
 }
 
-/* Non-mobile button sizing + left alignment */
 html[data-brand="spa"] .prod-controls .btn {
     width: auto;
     min-width: 220px;
@@ -303,7 +303,8 @@ html[data-brand="spa"] .prod-controls .btn {
         opacity: .28;
         pointer-events: auto;
         z-index: 1;
-        filter: blur(1.35px) saturate(.88) contrast(.95) brightness(.97);
+        /* ✅ removed blur; keep ghost via overlay + mild tone */
+        filter: saturate(.88) contrast(.95) brightness(.97);
     }
 
     html[data-brand="spa"] .prod-card.is-far-left {
@@ -312,6 +313,12 @@ html[data-brand="spa"] .prod-controls .btn {
 
     html[data-brand="spa"] .prod-card.is-far-right {
         transform: translateX(calc(-50% + 840px)) scale(.92);
+    }
+
+    html[data-brand="spa"] .prod-card.is-far-left::after,
+    html[data-brand="spa"] .prod-card.is-far-right::after {
+        opacity: 1;
+        background: rgba(255, 255, 255, .28);
     }
 }
 
@@ -345,11 +352,15 @@ html[data-brand="spa"] .prod-controls .btn {
     html[data-brand="spa"] .prod-card.is-left {
         opacity: .55;
         transform: translateX(calc(-50% - 255px)) scale(.94);
+        filter: saturate(.92) contrast(.97) brightness(.985);
+        /* ✅ no blur */
     }
 
     html[data-brand="spa"] .prod-card.is-right {
         opacity: .55;
         transform: translateX(calc(-50% + 255px)) scale(.94);
+        filter: saturate(.92) contrast(.97) brightness(.985);
+        /* ✅ no blur */
     }
 
     html[data-brand="spa"] .prod-title {
@@ -371,10 +382,6 @@ html[data-brand="spa"] .prod-controls .btn {
 
 /* ---------------------------------
    SMALL VIEW (≤ 900px)
-   - hide overlay arrows
-   - show bottom row arrows + button
-   - KEEP the wheel height breathing room
-   - PIN controls to bottom of shell (like packages)
 ---------------------------------- */
 @media (max-width: 900px) {
     html[data-brand="spa"] .spa-products {
@@ -406,11 +413,15 @@ html[data-brand="spa"] .prod-controls .btn {
     html[data-brand="spa"] .prod-card.is-left {
         transform: translateX(calc(-50% - 165px)) scale(.75);
         opacity: .55;
+        filter: saturate(.92) contrast(.97) brightness(.985);
+        /* ✅ no blur */
     }
 
     html[data-brand="spa"] .prod-card.is-right {
         transform: translateX(calc(-50% + 165px)) scale(.75);
         opacity: .55;
+        filter: saturate(.92) contrast(.97) brightness(.985);
+        /* ✅ no blur */
     }
 
     html[data-brand="spa"] .prod-title {
@@ -429,8 +440,7 @@ html[data-brand="spa"] .prod-controls .btn {
         display: none;
     }
 
-    /* ✅ KEY FIX (same as packages):
-     reserve space + pin controls to bottom of the wheel shell */
+    /* reserve space + pin controls to bottom of the wheel shell */
     html[data-brand="spa"] .prod-wheel-shell {
         padding-bottom: calc(var(--controls-h) + var(--controls-gap));
     }
@@ -466,32 +476,3 @@ html[data-brand="spa"] .prod-controls .btn {
     }
 }
 
-/* =========================================
-   PRODUCTS — very subtle edge soften (almost hard cut)
-   ========================================= */
-html[data-brand="spa"] .prod-wheel-shell::before,
-html[data-brand="spa"] .prod-wheel-shell::after {
-    content: "";
-    position: absolute;
-    top: -40px;
-    bottom: -40px;
-    width: clamp(10px, 3vw, 32px);
-    z-index: 12;
-    pointer-events: none;
-
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    background: rgba(255, 255, 255, 0.001);
-}
-
-html[data-brand="spa"] .prod-wheel-shell::before {
-    left: 0;
-    -webkit-mask-image: linear-gradient(to right, #000 0%, #000 30%, transparent 100%);
-    mask-image: linear-gradient(to right, #000 0%, #000 30%, transparent 100%);
-}
-
-html[data-brand="spa"] .prod-wheel-shell::after {
-    right: 0;
-    -webkit-mask-image: linear-gradient(to left, #000 0%, #000 30%, transparent 100%);
-    mask-image: linear-gradient(to left, #000 0%, #000 30%, transparent 100%);
-}
