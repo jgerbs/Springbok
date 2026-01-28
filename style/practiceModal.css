@@ -401,3 +401,140 @@ select.field-input:focus {
     -webkit-overflow-scrolling: touch;
     /* smooth iOS swipe */
 }
+
+/* =========================================================
+   SPA THEME OVERRIDES for the Contact Doctor Modal
+   Uses: html[data-brand="spa"] ...
+   Paste this at the END of practiceModal.css
+   ========================================================= */
+
+html[data-brand="spa"] {
+    color-scheme: light;
+}
+
+/* Backdrop + subtle gold glow */
+html[data-brand="spa"] .modal-backdrop {
+    background:
+        radial-gradient(1200px 800px at 15% 0%,
+            rgba(214, 163, 107, .16),
+            transparent 60%),
+        rgba(10, 12, 12, 0.55);
+    backdrop-filter: blur(8px);
+}
+
+/* Dialog: light spa surface */
+html[data-brand="spa"] .modal-dialog {
+    background:
+        radial-gradient(900px 650px at 0% 0%,
+            rgba(214, 163, 107, .18),
+            transparent 55%),
+        rgba(255, 255, 255, .96);
+    border: 1px solid rgba(18, 18, 18, .10);
+    box-shadow: 0 26px 90px rgba(0, 0, 0, .28);
+}
+
+/* Close button */
+html[data-brand="spa"] .modal-x {
+    border: 1px solid rgba(18, 18, 18, .12);
+    background: rgba(255, 255, 255, .70);
+    color: rgba(18, 18, 18, .82);
+    backdrop-filter: blur(14px);
+}
+
+html[data-brand="spa"] .modal-x:hover {
+    background: rgba(214, 163, 107, .18);
+    border-color: rgba(214, 163, 107, .30);
+}
+
+/* Head typography */
+html[data-brand="spa"] .modal-eyebrow {
+    color: rgba(185, 133, 79, .98);
+    /* warm gold */
+}
+
+html[data-brand="spa"] .modal-title {
+    color: rgba(18, 18, 18, .94);
+}
+
+html[data-brand="spa"] .modal-sub {
+    color: rgba(18, 18, 18, .65);
+}
+
+/* Labels */
+html[data-brand="spa"] .field-label {
+    color: rgba(18, 18, 18, .78);
+}
+
+/* Inputs */
+html[data-brand="spa"] .field-input {
+    border: 1px solid rgba(18, 18, 18, .12);
+    background: rgba(255, 255, 255, .85);
+    color: rgba(18, 18, 18, .90);
+}
+
+html[data-brand="spa"] .field-input::placeholder {
+    color: rgba(18, 18, 18, .45);
+}
+
+html[data-brand="spa"] .field-input:focus {
+    border-color: rgba(214, 163, 107, .60);
+    background: rgba(255, 255, 255, .92);
+}
+
+/* Custom dropdown (your dd-* version) */
+html[data-brand="spa"] .dd-value {
+    color: rgba(18, 18, 18, .90);
+}
+
+html[data-brand="spa"] .dd-btn .dd-value:empty::before {
+    color: rgba(18, 18, 18, .45);
+}
+
+/* Chevron in dd button */
+html[data-brand="spa"] .dd-btn::after {
+    background: linear-gradient(180deg, rgba(18, 18, 18, .86), rgba(18, 18, 18, .45));
+}
+
+/* Dropdown panel */
+html[data-brand="spa"] .dd-menu {
+    border: 1px solid rgba(18, 18, 18, .10);
+    background:
+        radial-gradient(900px 420px at 10% 0%,
+            rgba(214, 163, 107, .14),
+            transparent 60%),
+        rgba(255, 255, 255, .98);
+    box-shadow: 0 26px 90px rgba(0, 0, 0, .22);
+}
+
+/* Options */
+html[data-brand="spa"] .dd-opt {
+    color: rgba(18, 18, 18, .88);
+}
+
+html[data-brand="spa"] .dd-opt:hover {
+    background: rgba(214, 163, 107, .16);
+}
+
+html[data-brand="spa"] .dd-opt[aria-selected="true"] {
+    background: rgba(214, 163, 107, .38);
+    color: rgba(18, 18, 18, .92);
+    box-shadow: inset 0 0 0 1px rgba(214, 163, 107, .22);
+}
+
+/* Note text */
+html[data-brand="spa"] .modal-note {
+    color: rgba(18, 18, 18, .55);
+}
+
+/* OPTIONAL: make spa modal buttons feel on-brand
+   (only if your .btn styles allow it without breaking) */
+html[data-brand="spa"] .modal-actions .btn.btn-accent {
+    /* relies on your spa --accent / --accent2 / --warm vars */
+}
+
+/* Small screens (keep your existing layout rules; just tweak spacing) */
+@media (max-width: 680px) {
+    html[data-brand="spa"] .modal-dialog {
+        border-radius: 18px;
+    }
+}

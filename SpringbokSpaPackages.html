@@ -19,884 +19,1033 @@
 
     <!-- NEW: packages page styling -->
     <link rel="stylesheet" href="style/spa/spaPackagesPage.css" />
+    <link rel="stylesheet" href="style/practiceModal.css" />
+
 </head>
 
 <body>
-    <!-- NAV ONLY (always visible, pinned top-right) -->
-    <header class="site-header" aria-label="Site navigation">
-        <div class="header-right">
-            <nav class="nav-pill" aria-label="Main navigation">
-                <a class="nav-link" href="index.html">Home</a>
-                <a class="nav-link" href="SpringbokAbout.html">About Us</a>
-                <a class="nav-link" href="SpringbokClinic.html">Clinic</a>
-                <a class="nav-link is-active" href="SpringbokSpa.html">Spa</a>
-                <a class="nav-link" href="SpringbokTeam.html">Our Team</a>
-                <a class="nav-link" href="SpringbokContact.html">Contact</a>
-            </nav>
-
-            <div class="header-actions">
-                <a class="btn btn-accent book-cta"
-                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book" target="_blank"
-                    rel="noopener">Book Now</a>
-
-                <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open menu"
-                    aria-controls="mobilePanel" aria-expanded="false">
-                    <span class="burger" aria-hidden="true">
-                        <span></span><span></span><span></span>
-                    </span>
-                </button>
-            </div>
-        </div>
-
-        <!-- mobile panel -->
-        <div class="container mobile-panel" id="mobilePanel" aria-hidden="true">
-            <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
-                <nav class="mobile-menu-links" aria-label="Mobile navigation">
-                    <a class="mobile-link" href="index.html">Home</a>
-                    <a class="mobile-link" href="SpringbokAbout.html">About Us</a>
-                    <a class="mobile-link" href="SpringbokClinic.html">Clinic</a>
-                    <a class="mobile-link is-active" href="SpringbokSpa.html">Spa</a>
-                    <a class="mobile-link" href="SpringbokTeam.html">Our Team</a>
-                    <a class="mobile-link" href="SpringbokContact.html">Contact</a>
+    <div class="page-transition" aria-hidden="true">
+        <!-- NAV ONLY (always visible, pinned top-right) -->
+        <header class="site-header" aria-label="Site navigation">
+            <div class="header-right">
+                <nav class="nav-pill" aria-label="Main navigation">
+                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="SpringbokAbout.html">About Us</a>
+                    <a class="nav-link" href="SpringbokClinic.html">Clinic</a>
+                    <a class="nav-link is-active" href="SpringbokSpa.html">Spa</a>
+                    <a class="nav-link" href="SpringbokTeam.html">Our Team</a>
+                    <a class="nav-link" href="SpringbokContact.html">Contact</a>
                 </nav>
-            </div>
-        </div>
-    </header>
 
-    <main>
+                <div class="header-actions">
+                    <a class="btn btn-accent book-cta" href="#" data-open-doctor-modal data-doctor="General Inquiry">
+                        Book Clinic
+                    </a>
 
-        <section class="hero">
-            <a class="hero-brand reveal" href="SpringbokSpa.html" aria-label="Springbok Medical Spa Home">
-                <img src="resources/spalogo.png" alt="Springbok Medical Spa" class="hero-logo hero-logo--spa" />
-            </a>
-        
-            <div class="hero-media" aria-hidden="true">
-                <video class="hero-video" autoplay muted loop playsinline poster="resources/filler.jpg">
-                    <source src="resources/vecteezy_spa-massage-decoration-and-body-treatment_1790157.mp4" type="video/mp4" />
-                </video>
-                <div class="hero-overlay"></div>
-            </div>
-        
-            <div class="container hero-content reveal">
-                <h1>Elevating confidence — with modern aesthetics and wellness.</h1>
-                <p>
-                    Physician-led treatments with clear plans and natural results.
-                    Explore services, or book directly in seconds.
-                </p>
-                <div class="hero-actions">
-                    <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                        rel="noopener">Book
-                        Now</a>
-                    <a class="btn btn-outline" href="#services">Services</a>
-                    <a class="btn btn-outline" href="#packages">Packages</a>
-                    <a class="btn btn-outline" href="#products">Products</a>
+                    <!-- Book Spa goes to Jane -->
+                    <a class="btn btn-accent book-cta" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                        rel="noopener">
+                        Book Spa
+                    </a>
+
+                    <!--show only when mobile view is enabled -->
+                    <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open menu"
+                        aria-controls="mobilePanel" aria-expanded="false">
+                        <span class="burger" aria-hidden="true">
+                            <span></span><span></span><span></span>
+                        </span>
+                    </button>
+
                 </div>
             </div>
-        </section>
-        <!-- PAGE HERO (light + readable like your reference) -->
-        <section class="pkg-hero">
-            <div class="container pkg-hero-inner reveal">
-                <div class="pkg-hero-card">
-                    <span class="pkg-eyebrow">Packages</span>
-                    <h1 class="pkg-title">Quick booking, clear options.</h1>
-                    <p class="pkg-lead">
-                        Browse current packages and treatment areas, then book instantly through Jane.
-                        Use the search to find exactly what you want.
-                    </p>
 
-                    <div class="pkg-hero-actions">
-                        <a class="btn btn-accent"
-                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book"
-                            target="_blank" rel="noopener">Book Now</a>
-                        <a class="btn btn-outline" href="#all-packages">View Packages</a>
-                    </div>
-                </div>
+            <!-- mobile panel -->
+            <div class="container mobile-panel" id="mobilePanel" aria-hidden="true">
+                <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
 
-                <div class="pkg-hero-media" aria-hidden="true">
-                    <!-- swap image later if you want -->
-                    <div class="pkg-hero-media-inner"></div>
+                    <nav class="mobile-menu-links" aria-label="Mobile navigation">
+                        <a class="mobile-link" href="index.html">Home</a>
+                        <a class="mobile-link" href="SpringbokAbout.html">About Us</a>
+                        <a class="mobile-link" href="SpringbokClinic.html">Clinic</a>
+                        <a class="mobile-link is-active" href="SpringbokSpa.html">Spa</a>
+                        <a class="mobile-link" href="SpringbokTeam.html">Our Team</a>
+                        <a class="mobile-link" href="SpringbokContact.html">Contact</a>
+                    </nav>
+
                 </div>
             </div>
-        </section>
 
-        <!-- TOOLBAR -->
-        <section class="pkg-toolbar" id="all-packages">
-            <div class="container reveal">
-                <div class="pkg-toolbar-inner">
-                    <div>
-                        <span class="section-eyebrow">Browse</span>
-                        <h2 class="section-title">All packages & treatment areas.</h2>
-                        <div class="section-divider"></div>
-                        <!-- <p class="section-sub">
-                            Type a keyword like <b>brazilian</b>, <b>underarms</b>, <b>face</b>, or <b>legs</b>.
-                        </p> -->
-                    </div>
+        </header>
 
-                    <div class="pkg-search">
-                        <label class="pkg-search-label" for="pkgSearch">Search</label>
-                        <input id="pkgSearch" class="pkg-search-input" type="search"
-                            placeholder="Search packages… (e.g., brazilian, face & neck, back)" autocomplete="off" />
-                        <button class="pkg-search-clear" type="button" id="pkgClearBtn"
-                            aria-label="Clear search">×</button>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <main>
 
-    <section class="pkg-list">
-        <div class="container reveal-stagger">
-    
-            <!-- Morpheus8 -->
-            <details class="pkg-acc" open>
-                <summary class="pkg-acc-summary">
-                    <div class="pkg-acc-left">
-                        <span class="pkg-pill">Skin / Tightening</span>
-                        <h3>Morpheus8 Burst Microneedling (Initial Visits)</h3>
-                        <p>
-                            Advanced radiofrequency microneedling to remodel and tighten skin while improving texture, tone,
-                            and firmness.
-                            Collagen + elastin stimulation for natural, long-lasting rejuvenation and lift.
-                        </p>
-                        <p class="pkg-small" style="margin-top:8px;">
-                            Not sure if you’re eligible? Book a Discovery Visit first.
-                        </p>
-                    </div>
-                    <span class="pkg-acc-icon" aria-hidden="true">+</span>
-                </summary>
-    
-                <div class="pkg-acc-body">
-                    <div class="pkg-grid" role="list">
-    
-                        <article class="pkg-item" role="listitem" data-keywords="morpheus8 burst initial face neck 105">
-                            <div class="pkg-item-top">
-                                <h4>Face &amp; Neck</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">105 min</span><span
-                                        class="pkg-price">$1,000</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Initial%20Visit%20-%20FACE%20%26%20NECK">
-                                    Quick Book
-                                </a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="morpheus8 burst initial face 105">
-                            <div class="pkg-item-top">
-                                <h4>Face</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">105 min</span><span
-                                        class="pkg-price">$850</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Initial%20Visit%20-%20FACE">
-                                    Quick Book
-                                </a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem"
-                            data-keywords="morpheus8 burst initial face neck chest 105">
-                            <div class="pkg-item-top">
-                                <h4>Face, Neck, &amp; Chest</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">105 min</span><span
-                                        class="pkg-price">$1,500</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Initial%20Visit%20-%20FACE%2C%20NECK%2C%20%26%20CHEST">
-                                    Quick Book
-                                </a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="morpheus8 burst initial stretch marks 105">
-                            <div class="pkg-item-top">
-                                <h4>Stretch Marks</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">105 min</span><span
-                                        class="pkg-price">$900</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Initial%20Visit%20-%20STRETCH%20MARKS">
-                                    Quick Book
-                                </a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem"
-                            data-keywords="morpheus8 burst initial underside upper arms 105">
-                            <div class="pkg-item-top">
-                                <h4>Underside of Upper Arms</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">105 min</span><span
-                                        class="pkg-price">$800</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Initial%20Visit%20-%20UNDERSIDE%20OF%20UPPER%20ARMS">
-                                    Quick Book
-                                </a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem"
-                            data-keywords="morpheus8 burst initial underarms hyperhidrosis 105">
-                            <div class="pkg-item-top">
-                                <h4>Underarms (Hyperhidrosis)</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">105 min</span><span class="pkg-price">$0</span>
-                                </div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book">
-                                    Quick Book
-                                </a>
-                            </div>
-                        </article>
-    
-                    </div>
-    
-                    <div class="pkg-note">
-                        <p>Prices and availability are confirmed on the Jane booking page.</p>
-                        <a class="btn btn-outline" target="_blank" rel="noopener"
-                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book">
-                            Open full booking list
-                        </a>
-                    </div>
-                </div>
-            </details>
-    
-            <!-- Diolaze -->
-            <details class="pkg-acc">
-                <summary class="pkg-acc-summary">
-                    <div class="pkg-acc-left">
-                        <span class="pkg-pill">Laser Hair</span>
-                        <h3>Diolaze XL Laser Hair Removal (Initial Visits)</h3>
-                        <p>
-                            Long-lasting hair reduction using a medical-grade diode laser with built-in cooling for comfort.
-                            Best results are achieved with a series tailored to your skin and hair type.
-                        </p>
-                        <p class="pkg-small" style="margin-top:8px;">
-                            Not sure if you’re eligible? Book a Discovery Visit first.
-                        </p>
-                    </div>
-                    <span class="pkg-acc-icon" aria-hidden="true">+</span>
-                </summary>
-    
-                <div class="pkg-acc-body">
-                    <div class="pkg-grid" role="list">
-    
-                        <!-- Face -->
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze initial face neck 45">
-                            <div class="pkg-item-top">
-                                <h4>Face &amp; Neck</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
-                                        class="pkg-price">$170</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20FACE%20%26%20NECK">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze initial face 45">
-                            <div class="pkg-item-top">
-                                <h4>Face</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
-                                        class="pkg-price">$150</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20FACE">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze initial lower face 45">
-                            <div class="pkg-item-top">
-                                <h4>Lower Face</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span class="pkg-price">$90</span>
-                                </div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20LOWER%20FACE">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze initial upper lip 45">
-                            <div class="pkg-item-top">
-                                <h4>Upper Lip</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span class="pkg-price">$60</span>
-                                </div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20UPPER%20LIP">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze initial chin 45">
-                            <div class="pkg-item-top">
-                                <h4>Chin</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span class="pkg-price">$60</span>
-                                </div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20CHIN">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze initial chin upper lip 45">
-                            <div class="pkg-item-top">
-                                <h4>Chin &amp; Upper Lip</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
-                                        class="pkg-price">$100</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20CHIN%20%26%20UPPER%20LIP">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <!-- Head/Neck -->
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze side burns 45">
-                            <div class="pkg-item-top">
-                                <h4>Side Burns</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span class="pkg-price">$60</span>
-                                </div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20SIDE%20BURNS">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze beard line 45">
-                            <div class="pkg-item-top">
-                                <h4>Beard Line</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span class="pkg-price">$60</span>
-                                </div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20BEARD%20LINE">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze back of neck 45">
-                            <div class="pkg-item-top">
-                                <h4>Back of Neck</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span class="pkg-price">$60</span>
-                                </div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20BACK%20OF%20NECK">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <!-- Small areas -->
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze areola 45">
-                            <div class="pkg-item-top">
-                                <h4>Areola</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span class="pkg-price">$60</span>
-                                </div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20AREOLA">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze hands 45">
-                            <div class="pkg-item-top">
-                                <h4>Hands</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span class="pkg-price">$60</span>
-                                </div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20HANDS">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze fingers toes 45">
-                            <div class="pkg-item-top">
-                                <h4>Fingers &amp; Toes</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span class="pkg-price">$60</span>
-                                </div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20FINGERS%20%26%20TOES">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <!-- Arms -->
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze under arms underarms 45">
-                            <div class="pkg-item-top">
-                                <h4>Under Arms</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
-                                        class="pkg-price">$100</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20UNDER%20ARMS">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze lower arms 45">
-                            <div class="pkg-item-top">
-                                <h4>Lower Arms</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
-                                        class="pkg-price">$120</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20LOWER%20ARMS">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze full arms 45">
-                            <div class="pkg-item-top">
-                                <h4>Full Arms</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
-                                        class="pkg-price">$175</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20FULL%20ARMS">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <!-- Torso/Back -->
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze upper back shoulders 45">
-                            <div class="pkg-item-top">
-                                <h4>Upper Back &amp; Shoulders</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
-                                        class="pkg-price">$150</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20UPPER%20BACK%20%26%20SHOULDERS">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze chest 45">
-                            <div class="pkg-item-top">
-                                <h4>Chest</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
-                                        class="pkg-price">$125</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20CHEST">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze abdomen 45">
-                            <div class="pkg-item-top">
-                                <h4>Abdomen</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
-                                        class="pkg-price">$125</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20ABDOMEN">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze chest abdomen 45">
-                            <div class="pkg-item-top">
-                                <h4>Chest &amp; Abdomen</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
-                                        class="pkg-price">$200</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20CHEST%20%26%20ABDOMEN">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item pkg-item--feature" role="listitem"
-                            data-keywords="diolaze full back chest abdomen 45">
-                            <div class="pkg-item-top">
-                                <h4>Full Back, Chest &amp; Abdomen</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
-                                        class="pkg-price">$400</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20FULL%20BACK%2C%20CHEST%20%26%20ABDOMEN">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze linea pregnancy line 45">
-                            <div class="pkg-item-top">
-                                <h4>Linea (Abdominal Mid Line / “Pregnancy Line”)</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span class="pkg-price">$60</span>
-                                </div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20LINEA%20(ABDOMINAL%20MID%20LINE%20OR%20%22PREGNANCY%20LINE%22">
-                                    Quick Book
-                                </a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze low back 45">
-                            <div class="pkg-item-top">
-                                <h4>Low Back</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
-                                        class="pkg-price">$125</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20LOW%20BACK">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze full back 45">
-                            <div class="pkg-item-top">
-                                <h4>Full Back</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
-                                        class="pkg-price">$200</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20FULL%20BACK">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <!-- Bikini/Brazilian -->
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze initial bikini 45">
-                            <div class="pkg-item-top">
-                                <h4>Bikini</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
-                                        class="pkg-price">$100</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20BIKINI">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze initial brazilian 45">
-                            <div class="pkg-item-top">
-                                <h4>Brazilian</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
-                                        class="pkg-price">$150</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20BRAZILIAN">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze initial buttocks 45">
-                            <div class="pkg-item-top">
-                                <h4>Buttocks</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
-                                        class="pkg-price">$115</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20BUTTOCKS">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item pkg-item--feature" role="listitem"
-                            data-keywords="diolaze initial brazilian buttocks 45">
-                            <div class="pkg-item-top">
-                                <h4>Brazilian &amp; Buttocks</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
-                                        class="pkg-price">$225</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20BRAZILIAN%20%26%20BUTTOCKS">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <!-- Legs -->
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze initial lower leg 45">
-                            <div class="pkg-item-top">
-                                <h4>Lower Leg</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
-                                        class="pkg-price">$150</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20LOWER%20LEG">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze initial full leg 45">
-                            <div class="pkg-item-top">
-                                <h4>Full Leg</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
-                                        class="pkg-price">$225</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20FULL%20LEG">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <!-- Bundles -->
-                        <article class="pkg-item pkg-item--feature" role="listitem"
-                            data-keywords="diolaze initial brazilian underarms 45 bundle">
-                            <div class="pkg-item-top">
-                                <h4>Brazilian &amp; Underarms</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
-                                        class="pkg-price">$225</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20BRAZILIAN%20%26%20UNDERARMS">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item pkg-item--feature" role="listitem"
-                            data-keywords="diolaze initial brazilian underarm lower leg 90 bundle">
-                            <div class="pkg-item-top">
-                                <h4>Brazilian, Underarm, &amp; Lower Leg</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">90 min</span><span
-                                        class="pkg-price">$350</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20BRAZILIAN%2C%20UNDERARM%2C%20%26%20LOWER%20LEG">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item pkg-item--feature" role="listitem"
-                            data-keywords="diolaze initial any 3 full areas 90 bundle">
-                            <div class="pkg-item-top">
-                                <h4>Any 3 Full Areas</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">90 min</span><span
-                                        class="pkg-price">$400</span></div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20ANY%203%20FULL%20AREAS">Quick
-                                    Book</a>
-                            </div>
-                        </article>
-    
-                        <!-- Return Visits that show on Jane -->
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze return visit hands 30">
-                            <div class="pkg-item-top">
-                                <h4>Return Visit - Hands</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">30 min</span><span class="pkg-price">$60</span>
-                                </div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book">
-                                    Book in Jane
-                                </a>
-                            </div>
-                        </article>
-    
-                        <article class="pkg-item" role="listitem" data-keywords="diolaze return visit side burns 30">
-                            <div class="pkg-item-top">
-                                <h4>Return Visit - Side Burns</h4>
-                                <div class="pkg-meta"><span class="pkg-chip">30 min</span><span class="pkg-price">$60</span>
-                                </div>
-                            </div>
-                            <p class="pkg-small">Offered by Kacey Kiesman</p>
-                            <div class="pkg-item-actions">
-                                <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book">
-                                    Book in Jane
-                                </a>
-                            </div>
-                        </article>
-    
-                    </div>
-    
-                    <div class="pkg-note">
-                        <p>
-                            Want something not listed here? Open the Jane booking page and choose from the full list.
-                        </p>
-                        <a class="btn btn-outline" target="_blank" rel="noopener"
-                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book">
-                            Open full booking list
-                        </a>
-                    </div>
-                </div>
-            </details>
-    
-        </div>
-    </section>
-
-
-        <!-- CTA -->
-        <section class="pkg-cta">
-            <div class="container reveal">
-                <div class="pkg-cta-card">
-                    <div>
-                        <span class="pkg-eyebrow">Ready?</span>
-                        <h2 class="section-title" style="margin:0;">Book in under a minute.</h2>
-                        <p class="section-sub" style="margin:10px 0 0;">
-                            You’ll be taken to Jane to pick a time that works.
-                        </p>
-                    </div>
-                    <div class="pkg-cta-actions">
-                        <a class="btn btn-accent" target="_blank" rel="noopener"
-                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book">
-                            Book Now
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer: reuse your existing footer markup if you want it identical to Spa page -->
-    <footer class="site-footer" aria-label="Site footer">
-        <div class="container footer-inner reveal">
-            <div class="footer-brand">
-                <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
-                    <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
-                    <div class="footer-brand-type">
-                        <div class="footer-brand-name">SPRINGBOK</div>
-                        <div class="footer-brand-sub">MEDICAL CLINIC</div>
-                    </div>
+            <section class="hero">
+                <a class="hero-brand reveal" href="SpringbokSpa.html" aria-label="Springbok Medical Spa Home">
+                    <img src="resources/spalogo.png" alt="Springbok Medical Spa" class="hero-logo hero-logo--spa" />
                 </a>
 
-                <div class="footer-social" aria-label="Social links">
-                    <a class="social-btn" href="#" aria-label="Instagram">⌁</a>
-                    <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
-                    <a class="social-btn" href="#" aria-label="Facebook">f</a>
+                <div class="hero-media" aria-hidden="true">
+                    <video class="hero-video" autoplay muted loop playsinline poster="resources/filler.jpg">
+                        <source src="resources/vecteezy_spa-massage-decoration-and-body-treatment_1790157.mp4"
+                            type="video/mp4" />
+                    </video>
+                    <div class="hero-overlay"></div>
+                </div>
+
+                <div class="container hero-content reveal">
+                    <h1>Elevating confidence — with modern aesthetics and wellness.</h1>
+                    <p>
+                        Physician-led treatments with clear plans and natural results.
+                        Explore services, or book directly in seconds.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                            rel="noopener">Book
+                            Now</a>
+                        <a class="btn btn-outline" href="#services">Services</a>
+                        <a class="btn btn-outline" href="#packages">Packages</a>
+                        <a class="btn btn-outline" href="#products">Products</a>
+                    </div>
+                </div>
+            </section>
+            <!-- PAGE HERO (light + readable like your reference) -->
+            <section class="pkg-hero">
+                <div class="container pkg-hero-inner reveal">
+                    <div class="pkg-hero-card">
+                        <span class="pkg-eyebrow">Packages</span>
+                        <h1 class="pkg-title">Quick booking, clear options.</h1>
+                        <p class="pkg-lead">
+                            Browse current packages and treatment areas, then book instantly through Jane.
+                            Use the search to find exactly what you want.
+                        </p>
+
+                        <div class="pkg-hero-actions">
+                            <a class="btn btn-accent"
+                                href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book"
+                                target="_blank" rel="noopener">Book Now</a>
+                            <a class="btn btn-outline" href="#all-packages">View Packages</a>
+                        </div>
+                    </div>
+
+                    <div class="pkg-hero-media" aria-hidden="true">
+                        <!-- swap image later if you want -->
+                        <div class="pkg-hero-media-inner"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TOOLBAR -->
+            <section class="pkg-toolbar" id="all-packages">
+                <div class="container reveal">
+                    <div class="pkg-toolbar-inner">
+                        <div>
+                            <span class="section-eyebrow">Browse</span>
+                            <h2 class="section-title">All packages & treatment areas.</h2>
+                            <div class="section-divider"></div>
+                            <!-- <p class="section-sub">
+                            Type a keyword like <b>brazilian</b>, <b>underarms</b>, <b>face</b>, or <b>legs</b>.
+                        </p> -->
+                        </div>
+
+                        <div class="pkg-search">
+                            <label class="pkg-search-label" for="pkgSearch">Search</label>
+                            <input id="pkgSearch" class="pkg-search-input" type="search"
+                                placeholder="Search packages… (e.g., brazilian, face & neck, back)"
+                                autocomplete="off" />
+                            <button class="pkg-search-clear" type="button" id="pkgClearBtn"
+                                aria-label="Clear search">×</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="pkg-list">
+                <div class="container reveal-stagger">
+
+                    <!-- Morpheus8 -->
+                    <details class="pkg-acc" open>
+                        <summary class="pkg-acc-summary">
+                            <div class="pkg-acc-left">
+                                <span class="pkg-pill">Skin / Tightening</span>
+                                <h3>Morpheus8 Burst Microneedling (Initial Visits)</h3>
+                                <p>
+                                    Advanced radiofrequency microneedling to remodel and tighten skin while improving
+                                    texture, tone,
+                                    and firmness.
+                                    Collagen + elastin stimulation for natural, long-lasting rejuvenation and lift.
+                                </p>
+                                <p class="pkg-small" style="margin-top:8px;">
+                                    Not sure if you’re eligible? Book a Discovery Visit first.
+                                </p>
+                            </div>
+                            <span class="pkg-acc-icon" aria-hidden="true">+</span>
+                        </summary>
+
+                        <div class="pkg-acc-body">
+                            <div class="pkg-grid" role="list">
+
+                                <article class="pkg-item" role="listitem"
+                                    data-keywords="morpheus8 burst initial face neck 105">
+                                    <div class="pkg-item-top">
+                                        <h4>Face &amp; Neck</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">105 min</span><span
+                                                class="pkg-price">$1,000</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Initial%20Visit%20-%20FACE%20%26%20NECK">
+                                            Quick Book
+                                        </a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem"
+                                    data-keywords="morpheus8 burst initial face 105">
+                                    <div class="pkg-item-top">
+                                        <h4>Face</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">105 min</span><span
+                                                class="pkg-price">$850</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Initial%20Visit%20-%20FACE">
+                                            Quick Book
+                                        </a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem"
+                                    data-keywords="morpheus8 burst initial face neck chest 105">
+                                    <div class="pkg-item-top">
+                                        <h4>Face, Neck, &amp; Chest</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">105 min</span><span
+                                                class="pkg-price">$1,500</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Initial%20Visit%20-%20FACE%2C%20NECK%2C%20%26%20CHEST">
+                                            Quick Book
+                                        </a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem"
+                                    data-keywords="morpheus8 burst initial stretch marks 105">
+                                    <div class="pkg-item-top">
+                                        <h4>Stretch Marks</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">105 min</span><span
+                                                class="pkg-price">$900</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Initial%20Visit%20-%20STRETCH%20MARKS">
+                                            Quick Book
+                                        </a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem"
+                                    data-keywords="morpheus8 burst initial underside upper arms 105">
+                                    <div class="pkg-item-top">
+                                        <h4>Underside of Upper Arms</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">105 min</span><span
+                                                class="pkg-price">$800</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Initial%20Visit%20-%20UNDERSIDE%20OF%20UPPER%20ARMS">
+                                            Quick Book
+                                        </a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem"
+                                    data-keywords="morpheus8 burst initial underarms hyperhidrosis 105">
+                                    <div class="pkg-item-top">
+                                        <h4>Underarms (Hyperhidrosis)</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">105 min</span><span
+                                                class="pkg-price">$0</span>
+                                        </div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book">
+                                            Quick Book
+                                        </a>
+                                    </div>
+                                </article>
+
+                            </div>
+
+                            <div class="pkg-note">
+                                <p>Prices and availability are confirmed on the Jane booking page.</p>
+                                <a class="btn btn-outline" target="_blank" rel="noopener"
+                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book">
+                                    Open full booking list
+                                </a>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- Diolaze -->
+                    <details class="pkg-acc">
+                        <summary class="pkg-acc-summary">
+                            <div class="pkg-acc-left">
+                                <span class="pkg-pill">Laser Hair</span>
+                                <h3>Diolaze XL Laser Hair Removal (Initial Visits)</h3>
+                                <p>
+                                    Long-lasting hair reduction using a medical-grade diode laser with built-in cooling
+                                    for comfort.
+                                    Best results are achieved with a series tailored to your skin and hair type.
+                                </p>
+                                <p class="pkg-small" style="margin-top:8px;">
+                                    Not sure if you’re eligible? Book a Discovery Visit first.
+                                </p>
+                            </div>
+                            <span class="pkg-acc-icon" aria-hidden="true">+</span>
+                        </summary>
+
+                        <div class="pkg-acc-body">
+                            <div class="pkg-grid" role="list">
+
+                                <!-- Face -->
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze initial face neck 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Face &amp; Neck</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$170</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20FACE%20%26%20NECK">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze initial face 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Face</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$150</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20FACE">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze initial lower face 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Lower Face</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$90</span>
+                                        </div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20LOWER%20FACE">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze initial upper lip 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Upper Lip</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$60</span>
+                                        </div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20UPPER%20LIP">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze initial chin 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Chin</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$60</span>
+                                        </div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20CHIN">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem"
+                                    data-keywords="diolaze initial chin upper lip 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Chin &amp; Upper Lip</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$100</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20CHIN%20%26%20UPPER%20LIP">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <!-- Head/Neck -->
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze side burns 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Side Burns</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$60</span>
+                                        </div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20SIDE%20BURNS">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze beard line 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Beard Line</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$60</span>
+                                        </div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20BEARD%20LINE">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze back of neck 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Back of Neck</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$60</span>
+                                        </div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20BACK%20OF%20NECK">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <!-- Small areas -->
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze areola 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Areola</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$60</span>
+                                        </div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20AREOLA">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze hands 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Hands</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$60</span>
+                                        </div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20HANDS">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze fingers toes 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Fingers &amp; Toes</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$60</span>
+                                        </div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20FINGERS%20%26%20TOES">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <!-- Arms -->
+                                <article class="pkg-item" role="listitem"
+                                    data-keywords="diolaze under arms underarms 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Under Arms</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$100</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20UNDER%20ARMS">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze lower arms 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Lower Arms</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$120</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20LOWER%20ARMS">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze full arms 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Full Arms</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$175</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20FULL%20ARMS">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <!-- Torso/Back -->
+                                <article class="pkg-item" role="listitem"
+                                    data-keywords="diolaze upper back shoulders 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Upper Back &amp; Shoulders</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$150</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20UPPER%20BACK%20%26%20SHOULDERS">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze chest 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Chest</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$125</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20CHEST">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze abdomen 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Abdomen</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$125</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20ABDOMEN">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze chest abdomen 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Chest &amp; Abdomen</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$200</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20CHEST%20%26%20ABDOMEN">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item pkg-item--feature" role="listitem"
+                                    data-keywords="diolaze full back chest abdomen 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Full Back, Chest &amp; Abdomen</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$400</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20-%20FULL%20BACK%2C%20CHEST%20%26%20ABDOMEN">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem"
+                                    data-keywords="diolaze linea pregnancy line 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Linea (Abdominal Mid Line / “Pregnancy Line”)</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$60</span>
+                                        </div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20LINEA%20(ABDOMINAL%20MID%20LINE%20OR%20%22PREGNANCY%20LINE%22">
+                                            Quick Book
+                                        </a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze low back 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Low Back</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$125</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20LOW%20BACK">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze full back 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Full Back</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$200</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20FULL%20BACK">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <!-- Bikini/Brazilian -->
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze initial bikini 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Bikini</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$100</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20BIKINI">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze initial brazilian 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Brazilian</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$150</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20BRAZILIAN">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze initial buttocks 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Buttocks</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$115</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20BUTTOCKS">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item pkg-item--feature" role="listitem"
+                                    data-keywords="diolaze initial brazilian buttocks 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Brazilian &amp; Buttocks</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$225</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20BRAZILIAN%20%26%20BUTTOCKS">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <!-- Legs -->
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze initial lower leg 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Lower Leg</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$150</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20LOWER%20LEG">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze initial full leg 45">
+                                    <div class="pkg-item-top">
+                                        <h4>Full Leg</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$225</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20FULL%20LEG">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <!-- Bundles -->
+                                <article class="pkg-item pkg-item--feature" role="listitem"
+                                    data-keywords="diolaze initial brazilian underarms 45 bundle">
+                                    <div class="pkg-item-top">
+                                        <h4>Brazilian &amp; Underarms</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">45 min</span><span
+                                                class="pkg-price">$225</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20BRAZILIAN%20%26%20UNDERARMS">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item pkg-item--feature" role="listitem"
+                                    data-keywords="diolaze initial brazilian underarm lower leg 90 bundle">
+                                    <div class="pkg-item-top">
+                                        <h4>Brazilian, Underarm, &amp; Lower Leg</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">90 min</span><span
+                                                class="pkg-price">$350</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20BRAZILIAN%2C%20UNDERARM%2C%20%26%20LOWER%20LEG">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item pkg-item--feature" role="listitem"
+                                    data-keywords="diolaze initial any 3 full areas 90 bundle">
+                                    <div class="pkg-item-top">
+                                        <h4>Any 3 Full Areas</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">90 min</span><span
+                                                class="pkg-price">$400</span></div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Diolaze%20XL%20Laser%20Hair%20Removal%20Initial%20Visit%20-%20ANY%203%20FULL%20AREAS">Quick
+                                            Book</a>
+                                    </div>
+                                </article>
+
+                                <!-- Return Visits that show on Jane -->
+                                <article class="pkg-item" role="listitem" data-keywords="diolaze return visit hands 30">
+                                    <div class="pkg-item-top">
+                                        <h4>Return Visit - Hands</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">30 min</span><span
+                                                class="pkg-price">$60</span>
+                                        </div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book">
+                                            Book in Jane
+                                        </a>
+                                    </div>
+                                </article>
+
+                                <article class="pkg-item" role="listitem"
+                                    data-keywords="diolaze return visit side burns 30">
+                                    <div class="pkg-item-top">
+                                        <h4>Return Visit - Side Burns</h4>
+                                        <div class="pkg-meta"><span class="pkg-chip">30 min</span><span
+                                                class="pkg-price">$60</span>
+                                        </div>
+                                    </div>
+                                    <p class="pkg-small">Offered by Kacey Kiesman</p>
+                                    <div class="pkg-item-actions">
+                                        <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book">
+                                            Book in Jane
+                                        </a>
+                                    </div>
+                                </article>
+
+                            </div>
+
+                            <div class="pkg-note">
+                                <p>
+                                    Want something not listed here? Open the Jane booking page and choose from the full
+                                    list.
+                                </p>
+                                <a class="btn btn-outline" target="_blank" rel="noopener"
+                                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book">
+                                    Open full booking list
+                                </a>
+                            </div>
+                        </div>
+                    </details>
+
+                </div>
+            </section>
+
+
+            <!-- CTA -->
+            <section class="pkg-cta">
+                <div class="container reveal">
+                    <div class="pkg-cta-card">
+                        <div>
+                            <span class="pkg-eyebrow">Ready?</span>
+                            <h2 class="section-title" style="margin:0;">Book in under a minute.</h2>
+                            <p class="section-sub" style="margin:10px 0 0;">
+                                You’ll be taken to Jane to pick a time that works.
+                            </p>
+                        </div>
+                        <div class="pkg-cta-actions">
+                            <a class="btn btn-accent" target="_blank" rel="noopener"
+                                href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer: reuse your existing footer markup if you want it identical to Spa page -->
+        <footer class="site-footer" aria-label="Site footer">
+            <div class="container footer-inner reveal">
+                <div class="footer-brand">
+                    <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
+                        <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
+                        <div class="footer-brand-type">
+                            <div class="footer-brand-name">SPRINGBOK</div>
+                            <div class="footer-brand-sub">MEDICAL CLINIC</div>
+                        </div>
+                    </a>
+
+                    <div class="footer-social" aria-label="Social links">
+                        <a class="social-btn" href="#" aria-label="Instagram">⌁</a>
+                        <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
+                        <a class="social-btn" href="#" aria-label="Facebook">f</a>
+                    </div>
+                </div>
+
+                <div class="footer-cols">
+                    <div class="footer-col">
+                        <h3>Pages</h3>
+                        <a href="index.html">Home</a>
+                        <a href="SpringbokAbout.html">About Us</a>
+                        <a href="SpringbokContact.html">Contact</a>
+                    </div>
+
+                    <div class="footer-col">
+                        <h3>Our Services</h3>
+                        <a href="SpringbokClinic.html">Clinic</a>
+                        <a href="SpringbokSpa.html">Medical Spa</a>
+                    </div>
+
+                    <div class="footer-col">
+                        <h3>Our Team</h3>
+                        <a href="SpringbokTeam.html">Meet the Team</a>
+                    </div>
+                </div>
+
+                <div class="footer-contact">
+                    <div class="footer-contact-block">
+                        <p class="footer-contact-title">Springbok Medical Clinic</p>
+                        <p>
+                            147 16th St West, Suite #300<br />
+                            North Vancouver, BC<br />
+                            V7M 1T3
+                        </p>
+                        <a class="footer-link" href="SpringbokContact.html#map">View Directions</a>
+                    </div>
+
+                    <div class="footer-contact-block">
+                        <p>
+                            <a class="footer-link" href="tel:+17780000000">+1 (778) 000-0000</a>
+                        </p>
+                        <p>
+                            <a class="footer-link" href="mailto:info@springbokclinic.ca">info@springbokclinic.ca</a>
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            <div class="footer-cols">
-                <div class="footer-col">
-                    <h3>Pages</h3>
-                    <a href="index.html">Home</a>
-                    <a href="SpringbokAbout.html">About Us</a>
-                    <a href="SpringbokContact.html">Contact</a>
-                </div>
-
-                <div class="footer-col">
-                    <h3>Our Services</h3>
-                    <a href="SpringbokClinic.html">Clinic</a>
-                    <a href="SpringbokSpa.html">Medical Spa</a>
-                </div>
-
-                <div class="footer-col">
-                    <h3>Our Team</h3>
-                    <a href="SpringbokTeam.html">Meet the Team</a>
-                </div>
+            <div class="container footer-bottom">
+                <p>© <span id="footerYear"></span> Springbok Medical Clinic — All Rights Reserved</p>
+                <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">↑</button>
             </div>
+        </footer>
 
-            <div class="footer-contact">
-                <div class="footer-contact-block">
-                    <p class="footer-contact-title">Springbok Medical Clinic</p>
-                    <p>
-                        147 16th St West, Suite #300<br />
-                        North Vancouver, BC<br />
-                        V7M 1T3
+        <!-- CONTACT DOCTOR MODAL (styled like contactModal) -->
+        <div class="modal" id="doctorModal" aria-hidden="true">
+            <div class="modal-backdrop" data-close="true"></div>
+
+            <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="doctorModalTitle">
+                <button class="modal-x" type="button" aria-label="Close" data-close="true">✕</button>
+
+                <div class="modal-head">
+                    <div class="modal-eyebrow">Contact</div>
+                    <h2 class="modal-title" id="doctorModalTitle">Request an appointment</h2>
+                    <p class="modal-sub">
+                        Fill this out and our team will route you to the right provider or next step.
                     </p>
-                    <a class="footer-link" href="SpringbokContact.html#map">View Directions</a>
                 </div>
 
-                <div class="footer-contact-block">
-                    <p>
-                        <a class="footer-link" href="tel:+17780000000">+1 (778) 000-0000</a>
+                <form class="modal-form" id="doctorContactForm">
+                    <div class="modal-grid">
+                        <label class="field">
+                            <span class="field-label">Full Name</span>
+                            <input class="field-input" type="text" name="name" placeholder="Your name"
+                                autocomplete="name" required />
+                        </label>
+
+                        <label class="field">
+                            <span class="field-label">Phone Number</span>
+                            <input class="field-input" type="tel" name="phone" placeholder="(778) 000-0000"
+                                autocomplete="tel" />
+                        </label>
+
+                        <label class="field field-span">
+                            <span class="field-label">Email</span>
+                            <input class="field-input" type="email" name="email" placeholder="you@email.com"
+                                autocomplete="email" required />
+                        </label>
+
+                        <!-- Doctor / Service (custom dropdown) -->
+                        <div class="field select-field field-dd" data-dd="doctor">
+                            <span class="field-label">Doctor</span>
+
+                            <button class="dd-btn field-input" type="button" aria-haspopup="listbox"
+                                aria-expanded="false">
+                                <span class="dd-value" data-placeholder="Select one">Select one</span>
+                            </button>
+
+                            <!-- hidden input keeps your form submission + required validation -->
+                            <input type="hidden" name="doctor" id="doctorSelect" required />
+
+                            <ul class="dd-menu" role="listbox" aria-label="Doctor / Service">
+                                <li class="dd-opt" role="option" data-value="Family Practice">Family Practice</li>
+                                <li class="dd-opt" role="option" data-value="Dr. Kacey Kiesman">Dr. Kacey Kiesman</li>
+                                <li class="dd-opt" role="option" data-value="Hormone Specialist">Hormone Specialist</li>
+                                <li class="dd-opt" role="option" data-value="Naturopathic Medicine">Naturopathic
+                                    Medicine</li>
+                                <li class="dd-opt" role="option" data-value="Plastic Surgery">Plastic Surgery</li>
+                                <li class="dd-opt" role="option" data-value="General Inquiry">General Inquiry</li>
+                            </ul>
+                        </div>
+
+                        <!-- Appointment type (custom dropdown) -->
+                        <div class="field select-field field-dd" data-dd="appt">
+                            <span class="field-label">Appointment type</span>
+
+                            <button class="dd-btn field-input" type="button" aria-haspopup="listbox"
+                                aria-expanded="false">
+                                <span class="dd-value" data-placeholder="Select one">Select one</span>
+                            </button>
+
+                            <input type="hidden" name="apptType" id="apptTypeSelect" required />
+
+                            <ul class="dd-menu" role="listbox" aria-label="Appointment type">
+                                <li class="dd-opt" role="option" data-value="In-person appointment">In-person
+                                    appointment</li>
+                                <li class="dd-opt" role="option" data-value="Phone call appointment">Phone call
+                                    appointment</li>
+                                <li class="dd-opt" role="option" data-value="Video call appointment">Video call
+                                    appointment</li>
+                                <li class="dd-opt" role="option" data-value="Follow-up appointment">Follow-up
+                                    appointment</li>
+                            </ul>
+                        </div>
+
+                        <label class="field field-span">
+                            <span class="field-label">Subject</span>
+                            <input class="field-input" type="text" name="subject" id="subjectInput"
+                                placeholder="e.g., Face Lift, Blood Transfusion, IV Therapy, etc..." required />
+                        </label>
+
+                        <label class="field field-span">
+                            <span class="field-label">Message</span>
+                            <textarea class="field-input field-textarea" name="message"
+                                placeholder="Tell us what you’re looking for and any timing preferences." rows="5"
+                                required></textarea>
+                        </label>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button class="btn btn-outline" type="button" data-close="true">Cancel</button>
+                        <button class="btn btn-accent" type="submit">Send</button>
+                    </div>
+
+                    <p class="modal-note">
+                        If this is urgent, please call the front desk.
                     </p>
-                    <p>
-                        <a class="footer-link" href="mailto:info@springbokclinic.ca">info@springbokclinic.ca</a>
-                    </p>
-                </div>
+                </form>
             </div>
         </div>
 
-        <div class="container footer-bottom">
-            <p>© <span id="footerYear"></span> Springbok Medical Clinic — All Rights Reserved</p>
-            <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">↑</button>
-        </div>
-    </footer>
+        <script src="js/mobileMenu.js"></script>
+        <script src="js/footer.js"></script>
+        <script src="js/scrollReveal.js"></script>
+        <script src="js/spaPackagesPage.js"></script>
+        <script src="js/smoothScroll.js"></script>
+        <script src="js/contactDoctorModal.js"></script>
 
-    <script src="js/mobileMenu.js"></script>
-    <script src="js/footer.js"></script>
-    <script src="js/scrollReveal.js"></script>
-    <script src="js/spaPackagesPage.js"></script>
-    <script src="js/smoothScroll.js"></script>
 </body>
 
 </html>

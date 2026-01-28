@@ -20,860 +20,975 @@
   <link rel="stylesheet" href="style/spa/spaPackages.css" />
   <link rel="stylesheet" href="style/spa/spaProducts.css" />
   <link rel="stylesheet" href="style/responsive.css" />
+  <link rel="stylesheet" href="style/practiceModal.css" />
+
 </head>
 
 <body>
-  <!-- NAV ONLY (always visible, pinned top-right) -->
-  <header class="site-header" aria-label="Site navigation">
-    <div class="header-right">
-      <nav class="nav-pill" aria-label="Main navigation">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="SpringbokAbout.html">About Us</a>
-        <a class="nav-link" href="SpringbokClinic.html">Clinic</a>
-        <a class="nav-link is-active" href="SpringbokSpa.html">Spa</a>
-        <a class="nav-link" href="SpringbokTeam.html">Our Team</a>
-        <a class="nav-link" href="SpringbokContact.html">Contact</a>
-      </nav>
+  <div class="page-transition" aria-hidden="true">
+    <!-- NAV ONLY (always visible, pinned top-right) -->
+    <header class="site-header" aria-label="Site navigation">
+      <div class="header-right">
+        <nav class="nav-pill" aria-label="Main navigation">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="SpringbokAbout.html">About Us</a>
+          <a class="nav-link" href="SpringbokClinic.html">Clinic</a>
+          <a class="nav-link is-active" href="SpringbokSpa.html">Spa</a>
+          <a class="nav-link" href="SpringbokTeam.html">Our Team</a>
+          <a class="nav-link" href="SpringbokContact.html">Contact</a>
+        </nav>
 
-      <div class="header-actions">
-        <a class="btn btn-accent book-cta" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-          rel="noopener">
-          Book Now
+        <div class="header-actions">
+          <a class="btn btn-accent book-cta" href="#" data-open-doctor-modal data-doctor="General Inquiry">
+            Book Clinic
+          </a>
+
+          <!-- Book Spa goes to Jane -->
+          <a class="btn btn-accent book-cta" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+            rel="noopener">
+            Book Spa
+          </a>
+
+          <!--show only when mobile view is enabled -->
+          <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open menu" aria-controls="mobilePanel"
+            aria-expanded="false">
+            <span class="burger" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- mobile panel -->
+      <div class="container mobile-panel" id="mobilePanel" aria-hidden="true">
+        <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
+
+          <nav class="mobile-menu-links" aria-label="Mobile navigation">
+            <a class="mobile-link" href="indexAlt.html">Home</a>
+            <a class="mobile-link" href="SpringbokAbout.html">About Us</a>
+            <a class="mobile-link" href="SpringbokClinic.html">Clinic</a>
+            <a class="mobile-link is-active" href="SpringbokSpa.html">Spa</a>
+            <a class="mobile-link" href="SpringbokTeam.html">Our Team</a>
+            <a class="mobile-link" href="SpringbokContact.html">Contact</a>
+          </nav>
+
+        </div>
+      </div>
+
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <a class="hero-brand reveal" href="SpringbokSpa.html" aria-label="Springbok Medical Spa Home">
+          <img src="resources/spalogo.png" alt="Springbok Medical Spa" class="hero-logo hero-logo--spa" />
         </a>
 
-        <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open menu" aria-controls="mobilePanel"
-          aria-expanded="false">
-          <span class="burger" aria-hidden="true">
-            <span></span><span></span><span></span>
-          </span>
+        <div class="hero-media" aria-hidden="true">
+          <video class="hero-video" autoplay muted loop playsinline poster="resources/filler.jpg">
+            <source src="resources/vecteezy_spa-massage-decoration-and-body-treatment_1790157.mp4" type="video/mp4" />
+          </video>
+          <div class="hero-overlay"></div>
+        </div>
+
+        <div class="container hero-content reveal">
+          <h1>Elevating confidence — with modern aesthetics and wellness.</h1>
+          <p>
+            Physician-led treatments with clear plans and natural results.
+            Explore services, or book directly in seconds.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+              rel="noopener">Book
+              Now</a>
+            <a class="btn btn-outline" href="#services">Services</a>
+            <a class="btn btn-outline" href="#packages">Packages</a>
+            <a class="btn btn-outline" href="#products">Products</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section class="services-tiles" id="services">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Our Services</span>
+            <h2 class="section-title">Treatments designed for real life.</h2>
+            <div class="spa-divider"></div>
+            <p class="section-sub">
+              Two core focuses right now: Morpheus8 Burst RF Microneedling and Diolaze XL Laser Hair Removal —
+              both designed for effective results with a clear plan.
+            </p>
+          </div>
+
+          <div class="tile-grid grid-3 reveal-stagger">
+            <!-- Morpheus8 -->
+            <a class="spa-team-tile" href="SpringbokSpaService1.html" aria-label="Morpheus8 Burst Microneedling">
+              <div class="spa-team-bg" style="background-image: url('resources/morph.jpg')"></div>
+              <div class="spa-team-shade"></div>
+              <div class="spa-team-inner">
+                <div class="spa-team-top">
+                  <span class="spa-team-dot"></span>
+                  <span class="spa-team-tag">Morpheus8 Burst</span>
+                </div>
+                <div class="spa-team-bottom">
+                  <h3>Tighten, smooth, and renew.</h3>
+                  <p class="spa-team-desc">
+                    Advanced RF microneedling for texture, tone, firmness, and long-term collagen support.
+                  </p>
+                  <span class="spa-team-cta">Explore <span class="spa-team-arrow">→</span></span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Diolaze -->
+            <a class="spa-team-tile" href="SpringbokSpaService2.html" aria-label="Diolaze XL Laser Hair Removal">
+              <div class="spa-team-bg" style="background-image: url('resources/filler.jpg')"></div>
+              <div class="spa-team-shade"></div>
+              <div class="spa-team-inner">
+                <div class="spa-team-top">
+                  <span class="spa-team-dot"></span>
+                  <span class="spa-team-tag">Diolaze XL</span>
+                </div>
+                <div class="spa-team-bottom">
+                  <h3>Comfortable, long-lasting hair reduction.</h3>
+                  <p class="spa-team-desc">
+                    Medical-grade diode laser with cooling for fast sessions and reliable results over a series.
+                  </p>
+                  <span class="spa-team-cta">Explore <span class="spa-team-arrow">→</span></span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Discovery / Consult -->
+            <a class="spa-team-tile" href="https://springbokmedicalspa.janeapp.com/" target="_blank" rel="noopener"
+              aria-label="Book a Discovery Visit">
+              <div class="spa-team-bg" style="background-image: url('resources/iv.jpg')"></div>
+              <div class="spa-team-shade"></div>
+              <div class="spa-team-inner">
+                <div class="spa-team-top">
+                  <span class="spa-team-dot"></span>
+                  <span class="spa-team-tag">Discovery Visit</span>
+                </div>
+                <div class="spa-team-bottom">
+                  <h3>Not sure what to book?</h3>
+                  <p class="spa-team-desc">
+                    Start with a consult-style visit so we can match you with the right plan and timeline.
+                  </p>
+                  <span class="spa-team-cta">Book Now <span class="spa-team-arrow">→</span></span>
+                </div>
+              </div>
+            </a>
+
+            <a class="spa-team-tile" href="SpringbokSpaService1.html" aria-label="Morpheus8 Burst Microneedling">
+              <div class="spa-team-bg" style="background-image: url('resources/baf1.jpg')"></div>
+              <div class="spa-team-shade"></div>
+              <div class="spa-team-inner">
+                <div class="spa-team-top">
+                  <span class="spa-team-dot"></span>
+                  <span class="spa-team-tag">Morpheus8 Burst</span>
+                </div>
+                <div class="spa-team-bottom">
+                  <h3>Tighten, smooth, and renew.</h3>
+                  <p class="spa-team-desc">
+                    Advanced RF microneedling for texture, tone, firmness, and long-term collagen support.
+                  </p>
+                  <span class="spa-team-cta">Explore <span class="spa-team-arrow">→</span></span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Diolaze -->
+            <a class="spa-team-tile" href="SpringbokSpaService2.html" aria-label="Diolaze XL Laser Hair Removal">
+              <div class="spa-team-bg" style="background-image: url('resources/after1.png')"></div>
+              <div class="spa-team-shade"></div>
+              <div class="spa-team-inner">
+                <div class="spa-team-top">
+                  <span class="spa-team-dot"></span>
+                  <span class="spa-team-tag">Diolaze XL</span>
+                </div>
+                <div class="spa-team-bottom">
+                  <h3>Comfortable, long-lasting hair reduction.</h3>
+                  <p class="spa-team-desc">
+                    Medical-grade diode laser with cooling for fast sessions and reliable results over a series.
+                  </p>
+                  <span class="spa-team-cta">Explore <span class="spa-team-arrow">→</span></span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Discovery / Consult -->
+            <a class="spa-team-tile" href="https://springbokmedicalspa.janeapp.com/" target="_blank" rel="noopener"
+              aria-label="Book a Discovery Visit">
+              <div class="spa-team-bg" style="background-image: url('resources/amor.jpg')"></div>
+              <div class="spa-team-shade"></div>
+              <div class="spa-team-inner">
+                <div class="spa-team-top">
+                  <span class="spa-team-dot"></span>
+                  <span class="spa-team-tag">Discovery Visit</span>
+                </div>
+                <div class="spa-team-bottom">
+                  <h3>Not sure what to book?</h3>
+                  <p class="spa-team-desc">
+                    Start with a consult-style visit so we can match you with the right plan and timeline.
+                  </p>
+                  <span class="spa-team-cta">Book Now <span class="spa-team-arrow">→</span></span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- PACKAGES PREVIEW -->
+      <section class="spa-packages" id="packages">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Our Packages</span>
+            <h2 class="section-title">Better together — curated series & bundles.</h2>
+            <div class="spa-divider"></div>
+            <p class="section-sub">
+              Save with treatment series and popular combos. Book instantly, or browse all packages.
+            </p>
+          </div>
+
+          <div class="pkg-wheel-shell reveal" data-wheel="packages">
+            <!-- desktop overlay arrows -->
+            <button class="pkg-nav pkg-prev pkg-nav--overlay" type="button" aria-label="Previous package">‹</button>
+
+            <div class="pkg-wheel" id="packagesWheel" tabindex="0" aria-label="Packages carousel (looping)">
+              <!-- Package 1 -->
+              <article class="pkg-card">
+                <div class="pkg-card-top">
+                  <span class="pkg-pill">Laser</span>
+                  <span class="pkg-price">Series pricing</span>
+                </div>
+                <h3 class="pkg-title">Diolaze Laser Series</h3>
+                <p class="pkg-desc">
+                  Best results come from a series. Great option if you want consistent, long-term reduction.
+                </p>
+                <ul class="pkg-list">
+                  <li>Recommended multi-visit plan</li>
+                  <li>Comfort-focused cooling</li>
+                  <li>Common areas + combos</li>
+                </ul>
+                <div class="pkg-actions">
+                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                    rel="noopener">Book Now</a>
+                  <a class="btn btn-outline" href="SpringbokSpaPackages.html">View More</a>
+                </div>
+              </article>
+
+              <!-- Package 2 -->
+              <article class="pkg-card">
+                <div class="pkg-card-top">
+                  <span class="pkg-pill">Morpheus8</span>
+                  <span class="pkg-price">Bundle</span>
+                </div>
+                <h3 class="pkg-title">Morpheus8 Burst Series</h3>
+                <p class="pkg-desc">
+                  A structured plan designed to support collagen remodeling over time for a smoother, firmer look.
+                </p>
+                <ul class="pkg-list">
+                  <li>Face / Face+Neck </li>
+                  <li>Texture + tone + firmness</li>
+                  <li>Clear aftercare guidance</li>
+                </ul>
+                <div class="pkg-actions">
+                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                    rel="noopener">Book Now</a>
+                  <a class="btn btn-outline" href="SpringbokSpaPackages.html">View More</a>
+                </div>
+              </article>
+
+              <!-- Package 3 -->
+              <article class="pkg-card">
+                <div class="pkg-card-top">
+                  <span class="pkg-pill">Combo</span>
+                  <span class="pkg-price">Popular</span>
+                </div>
+                <h3 class="pkg-title">Morpheus + IPL Bundle</h3>
+                <p class="pkg-desc">
+                  Combine resurfacing + tone correction for a brighter, more even finish (details on packages page).
+                </p>
+                <ul class="pkg-list">
+                  <li>Great for uneven tone</li>
+                  <li>Targets texture + clarity</li>
+                  <li>Plan built around your schedule</li>
+                </ul>
+                <div class="pkg-actions">
+                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                    rel="noopener">Book Now</a>
+                  <a class="btn btn-outline" href="SpringbokSpaPackages.html">View More</a>
+                </div>
+              </article>
+
+              <!-- Package 1 -->
+              <article class="pkg-card">
+                <div class="pkg-card-top">
+                  <span class="pkg-pill">Laser</span>
+                  <span class="pkg-price">Series pricing</span>
+                </div>
+                <h3 class="pkg-title">Diolaze Laser Series</h3>
+                <p class="pkg-desc">
+                  Best results come from a series. Great option if you want consistent, long-term reduction.
+                </p>
+                <ul class="pkg-list">
+                  <li>Recommended multi-visit plan</li>
+                  <li>Comfort-focused cooling</li>
+                  <li>Common areas + combos</li>
+                </ul>
+                <div class="pkg-actions">
+                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                    rel="noopener">Book
+                    Now</a>
+                  <a class="btn btn-outline" href="SpringbokSpaPackages.html">View More</a>
+                </div>
+              </article>
+
+              <!-- Package 2 -->
+              <article class="pkg-card">
+                <div class="pkg-card-top">
+                  <span class="pkg-pill">Morpheus8</span>
+                  <span class="pkg-price">Bundle</span>
+                </div>
+                <h3 class="pkg-title">Morpheus8 Burst Series</h3>
+                <p class="pkg-desc">
+                  A structured plan designed to support collagen remodeling over time for a smoother, firmer look.
+                </p>
+                <ul class="pkg-list">
+                  <li>Face / Face+Neck </li>
+                  <li>Texture + tone + firmness</li>
+                  <li>Clear aftercare guidance</li>
+                </ul>
+                <div class="pkg-actions">
+                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                    rel="noopener">Book
+                    Now</a>
+                  <a class="btn btn-outline" href="SpringbokSpaPackages.html">View More</a>
+                </div>
+              </article>
+
+              <!-- Package 3 -->
+              <article class="pkg-card">
+                <div class="pkg-card-top">
+                  <span class="pkg-pill">Combo</span>
+                  <span class="pkg-price">Popular</span>
+                </div>
+                <h3 class="pkg-title">Morpheus + IPL Bundle</h3>
+                <p class="pkg-desc">
+                  Combine resurfacing + tone correction for a brighter, more even finish (details on packages page).
+                </p>
+                <ul class="pkg-list">
+                  <li>Great for uneven tone</li>
+                  <li>Targets texture + clarity</li>
+                  <li>Plan built around your schedule</li>
+                </ul>
+                <div class="pkg-actions">
+                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                    rel="noopener">Book
+                    Now</a>
+                  <a class="btn btn-outline" href="SpringbokSpaPackages.html">View More</a>
+                </div>
+              </article>
+            </div>
+
+            <button class="pkg-nav pkg-next pkg-nav--overlay" type="button" aria-label="Next package">›</button>
+
+            <!-- mobile row controls -->
+            <div class="wheel-controls">
+              <button class="pkg-nav pkg-prev pkg-nav--row" type="button" aria-label="Previous package">‹</button>
+              <a class="btn btn-outline" href="SpringbokSpaPackages.html">View all packages</a>
+              <button class="pkg-nav pkg-next pkg-nav--row" type="button" aria-label="Next package">›</button>
+            </div>
+          </div>
+      </section>
+
+      <!-- PRODUCTS PREVIEW -->
+      <section class="spa-products" id="products">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Products</span>
+            <h2 class="section-title">Post-treatment essentials.</h2>
+            <div class="spa-divider"></div>
+            <p class="section-sub">
+              A quick preview of products we often recommend. Tap “View details” to jump to the full product section.
+            </p>
+          </div>
+
+          <div class="pkg-wheel-shell reveal" data-wheel="packages">
+            <!-- desktop overlay arrows -->
+            <button class="pkg-nav pkg-prev pkg-nav--overlay" type="button" aria-label="Previous package">‹</button>
+
+
+            <div class="prod-wheel" tabindex="0" aria-label="Products carousel (looping)">
+              <!-- Product 1 -->
+              <article class="prod-card">
+                <div class="prod-media">
+                  <img src="resources/filler.jpg" alt="Barrier Repair Cream" loading="lazy">
+                </div>
+
+                <div class="prod-card-top">
+                  <span class="prod-pill">Aftercare</span>
+                  <span class="prod-price">$68</span>
+                </div>
+
+                <h3 class="prod-title">Barrier Repair Cream</h3>
+                <p class="prod-desc">
+                  Rich, calming hydration to support your skin barrier after treatment.
+                </p>
+
+                <div class="prod-actions">
+                  <a class="btn btn-outline" href="SpringbokSpaProducts.html#barrier-repair">View details</a>
+                </div>
+              </article>
+
+              <!-- Product 2 -->
+              <article class="prod-card">
+                <div class="prod-media">
+                  <img src="resources/filler.jpg" alt="Hyaluronic Serum" loading="lazy">
+                </div>
+
+                <div class="prod-card-top">
+                  <span class="prod-pill">Hydration</span>
+                  <span class="prod-price">$74</span>
+                </div>
+
+                <h3 class="prod-title">Hyaluronic Serum</h3>
+                <p class="prod-desc">
+                  Lightweight hydration for smoother-looking texture and bounce.
+                </p>
+
+                <div class="prod-actions">
+                  <a class="btn btn-outline" href="SpringbokSpaProducts.html#hyaluronic-serum">View details</a>
+                </div>
+              </article>
+
+              <!-- Product 3 -->
+              <article class="prod-card">
+                <div class="prod-media">
+                  <img src="resources/filler.jpg" alt="Mineral Sunscreen" loading="lazy">
+                </div>
+
+                <div class="prod-card-top">
+                  <span class="prod-pill">SPF</span>
+                  <span class="prod-price">$54</span>
+                </div>
+
+                <h3 class="prod-title">Mineral Sunscreen</h3>
+                <p class="prod-desc">
+                  Daily protection that helps preserve results and support healthy recovery.
+                </p>
+
+                <div class="prod-actions">
+                  <a class="btn btn-outline" href="SpringbokSpaProducts.html#mineral-spf">View details</a>
+                </div>
+              </article>
+
+              <!-- Product 1 -->
+              <article class="prod-card">
+                <div class="prod-media">
+                  <img src="resources/filler.jpg" alt="Barrier Repair Cream" loading="lazy">
+                </div>
+
+                <div class="prod-card-top">
+                  <span class="prod-pill">Aftercare</span>
+                  <span class="prod-price">$68</span>
+                </div>
+
+                <h3 class="prod-title">Barrier Repair Cream</h3>
+                <p class="prod-desc">
+                  Rich, calming hydration to support your skin barrier after treatment.
+                </p>
+
+                <div class="prod-actions">
+                  <a class="btn btn-outline" href="SpringbokSpaProducts.html#barrier-repair">View details</a>
+                </div>
+              </article>
+
+              <!-- Product 2 -->
+              <article class="prod-card">
+                <div class="prod-media">
+                  <img src="resources/filler.jpg" alt="Hyaluronic Serum" loading="lazy">
+                </div>
+
+                <div class="prod-card-top">
+                  <span class="prod-pill">Hydration</span>
+                  <span class="prod-price">$74</span>
+                </div>
+
+                <h3 class="prod-title">Hyaluronic Serum</h3>
+                <p class="prod-desc">
+                  Lightweight hydration for smoother-looking texture and bounce.
+                </p>
+
+                <div class="prod-actions">
+                  <a class="btn btn-outline" href="SpringbokSpaProducts.html#hyaluronic-serum">View details</a>
+                </div>
+              </article>
+
+              <!-- Product 3 -->
+              <article class="prod-card">
+                <div class="prod-media">
+                  <img src="resources/filler.jpg" alt="Mineral Sunscreen" loading="lazy">
+                </div>
+
+                <div class="prod-card-top">
+                  <span class="prod-pill">SPF</span>
+                  <span class="prod-price">$54</span>
+                </div>
+
+                <h3 class="prod-title">Mineral Sunscreen</h3>
+                <p class="prod-desc">
+                  Daily protection that helps preserve results and support healthy recovery.
+                </p>
+
+                <div class="prod-actions">
+                  <a class="btn btn-outline" href="SpringbokSpaProducts.html#mineral-spf">View details</a>
+                </div>
+              </article>
+            </div>
+
+            <button class="pkg-nav pkg-next pkg-nav--overlay" type="button" aria-label="Next package">›</button>
+
+            <!-- mobile row controls -->
+            <div class="wheel-controls">
+              <button class="pkg-nav pkg-prev pkg-nav--row" type="button" aria-label="Previous package">‹</button>
+              <a class="btn btn-outline" href="SpringbokSpaPackages.html">View all products</a>
+              <button class="pkg-nav pkg-next pkg-nav--row" type="button" aria-label="Next package">›</button>
+            </div>
+          </div>
+      </section>
+
+      <!-- TEAM -->
+      <section class="spa-team" id="team">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Our Team</span>
+            <h2 class="section-title">Specialist. One standard of care.</h2>
+            <div class="spa-divider"></div>
+            <p class="section-sub">
+              Book with the provider that fits your goals — both options lead to the same calm, guided experience.
+            </p>
+          </div>
+
+          <div class="tile-grid grid-2 reveal-stagger">
+            <!-- Provider 1 -->
+            <a class="spa-team-tile" href="https://springbokmedicalspa.janeapp.com/" target="_blank" rel="noopener"
+              aria-label="Book with Kacey Kiesman, RN">
+              <div class="spa-team-bg" style="background-image: url('resources/kacey.jpg')"></div>
+              <div class="spa-team-shade"></div>
+
+              <div class="spa-team-inner">
+                <div class="spa-team-top">
+                  <span class="spa-team-dot"></span>
+                  <span class="spa-team-tag">Aesthetics & Wellness</span>
+                </div>
+
+                <div class="spa-team-bottom">
+                  <h3>Kacey Kiesman, RN</h3>
+                  <p class="spa-team-desc">
+                    Experienced, safety-first care with a calm approach and clear next steps.
+                  </p>
+                  <span class="spa-team-cta">Book Now <span class="spa-team-arrow">→</span></span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Provider 2 (use real info when ready) -->
+            <a class="spa-team-tile" href="https://springbokmedicalspa.janeapp.com/" target="_blank" rel="noopener"
+              aria-label="Book with Springbok Medical Spa Provider">
+              <div class="spa-team-bg" style="background-image: url('resources/doc2.webp')"></div>
+              <div class="spa-team-shade"></div>
+
+              <div class="spa-team-inner">
+                <div class="spa-team-top">
+                  <span class="spa-team-dot"></span>
+                  <span class="spa-team-tag">Provider</span>
+                </div>
+
+                <div class="spa-team-bottom">
+                  <h3>Second Provider</h3>
+                  <p class="spa-team-desc">
+                    Book directly online — we’ll keep this profile updated as services expand.
+                  </p>
+                  <span class="spa-team-cta">Book Now <span class="spa-team-arrow">→</span></span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div style="margin-top: 18px">
+            <a class="btn btn-outline reveal" href="SpringbokTeam.html">Meet the full team</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS (slow rotating wheel) -->
+      <section class="testimonials" id="testimonials">
+        <div class="container reveal">
+          <!-- Match your other section headers -->
+          <div class="section-head">
+            <span class="section-eyebrow">Testimonials</span>
+            <h2 class="section-title">Real experiences. Clear results.</h2>
+            <div class="spa-divider"></div>
+            <p class="section-sub">
+              A few words from patients and clients who’ve visited Springbok.
+            </p>
+          </div>
+
+          <!-- Slow, constant wheel -->
+          <div class="t-wheel" aria-label="Testimonials rotating wheel">
+            <div class="t-wheel-track" id="tWheelTrack">
+              <!-- Card 1 (Google style) -->
+              <!-- SPA wheel reviews — same standardized format (stars top + initial + name + sub) -->
+
+              <article class="t-card">
+                <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
+
+                <p class="t-text">
+                  I’ve had a few facials here and every visit feels like a reset. Super clean, calming vibe, and the
+                  team
+                  is genuinely
+                  warm and attentive.
+                </p>
+
+                <div class="t-personRow">
+                  <div class="t-initial" aria-hidden="true">S</div>
+                  <div class="t-personMeta">
+                    <div class="t-name">Shelly Point</div>
+                    <div class="t-sub">Google Review • Jul 24, 2025</div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="t-card">
+                <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
+
+                <p class="t-text">
+                  The treatment consult was thorough and never pushy. They explained options clearly, answered all my
+                  questions, and
+                  made me feel completely at ease.
+                </p>
+
+                <div class="t-personRow">
+                  <div class="t-initial" aria-hidden="true">A</div>
+                  <div class="t-personMeta">
+                    <div class="t-name">Alyssa K.</div>
+                    <div class="t-sub">Google Review • Jun 12, 2025</div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="t-card">
+                <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
+
+                <p class="t-text">
+                  Beautiful space and really professional staff. I loved that they set expectations upfront and checked
+                  in
+                  during the
+                  service to make sure I was comfortable.
+                </p>
+
+                <div class="t-personRow">
+                  <div class="t-initial" aria-hidden="true">N</div>
+                  <div class="t-personMeta">
+                    <div class="t-name">Nimfa Amparado</div>
+                    <div class="t-sub">Google Review • Aug 5, 2025</div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="t-card">
+                <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
+
+                <p class="t-text">
+                  I did laser hair removal and the whole process was so much smoother than I expected. Clear aftercare
+                  instructions
+                  and great follow-up between sessions.
+                </p>
+
+                <div class="t-personRow">
+                  <div class="t-initial" aria-hidden="true">M</div>
+                  <div class="t-personMeta">
+                    <div class="t-name">Megan L.</div>
+                    <div class="t-sub">Google Review • Sep 02, 2025</div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="t-card">
+                <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
+
+                <p class="t-text">
+                  My skin looked brighter after one visit, but what impressed me most was how personalized it felt. They
+                  adjusted
+                  everything to my sensitivity and goals.
+                </p>
+
+                <div class="t-personRow">
+                  <div class="t-initial" aria-hidden="true">J</div>
+                  <div class="t-personMeta">
+                    <div class="t-name">Jenna R.</div>
+                    <div class="t-sub">Google Review • Aug 14, 2025</div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="t-card">
+                <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
+
+                <p class="t-text">
+                  The nurse was gentle, meticulous, and explained what to expect over the next few days. Results looked
+                  natural and
+                  the experience was genuinely relaxing.
+                </p>
+
+                <div class="t-personRow">
+                  <div class="t-initial" aria-hidden="true">C</div>
+                  <div class="t-personMeta">
+                    <div class="t-name">Chloe P.</div>
+                    <div class="t-sub">Google Review • Jul 08, 2025</div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="t-card">
+                <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
+
+                <p class="t-text">
+                  I booked a package and everything ran on time. The team is knowledgeable, the environment is peaceful,
+                  and the
+                  post-treatment care tips were super helpful.
+                </p>
+
+                <div class="t-personRow">
+                  <div class="t-initial" aria-hidden="true">D</div>
+                  <div class="t-personMeta">
+                    <div class="t-name">Dylan H.</div>
+                    <div class="t-sub">Google Review • Jun 27, 2025</div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="t-card">
+                <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
+
+                <p class="t-text">
+                  I’ve been to a lot of med spas and this one stands out. It feels premium but not intimidating, and I
+                  always leave
+                  feeling confident about the plan.
+                </p>
+
+                <div class="t-personRow">
+                  <div class="t-initial" aria-hidden="true">K</div>
+                  <div class="t-personMeta">
+                    <div class="t-name">Kara S.</div>
+                    <div class="t-sub">Google Review • May 19, 2025</div>
+                  </div>
+                </div>
+              </article>
+
+
+              <!-- OPTIONAL: add more .t-card items anytime -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" aria-label="Site footer">
+      <div class="container footer-inner reveal">
+        <!-- Left: Brand -->
+        <div class="footer-brand">
+          <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
+            <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
+            <div class="footer-brand-type">
+              <div class="footer-brand-name">SPRINGBOK</div>
+              <div class="footer-brand-sub">MEDICAL CLINIC</div>
+            </div>
+          </a>
+
+          <div class="footer-social" aria-label="Social links">
+            <a class="social-btn" href="#" aria-label="Instagram">⌁</a>
+            <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
+            <a class="social-btn" href="#" aria-label="Facebook">f</a>
+          </div>
+        </div>
+
+        <!-- Middle: Columns -->
+        <div class="footer-cols">
+          <!-- Pages -->
+          <div class="footer-col">
+            <h3>Pages</h3>
+            <a href="index.html">Home</a>
+            <a href="SpringbokAbout.html">About Us</a>
+            <a href="SpringbokTeam.html">Our Team</a>
+            <a href="SpringbokContact.html">Contact</a>
+          </div>
+
+          <!-- Clinic Services (4 main) -->
+          <div class="footer-col">
+            <h3>Clinic Services</h3>
+            <a href="SpringbokClinic.html#family">Family Practice</a>
+            <a href="SpringbokClinic.html#hormone">Hormone Specialist</a>
+            <a href="SpringbokClinic.html#naturopathic">Naturopathic Medicine</a>
+            <a href="SpringbokClinic.html#plastics">Plastic Surgery</a>
+          </div>
+
+          <!-- Spa Services (concise set) -->
+          <div class="footer-col">
+            <h3>Spa Services</h3>
+            <a href="SpringbokSpa.html">Medical Spa</a>
+            <a href="SpringbokSpa.html#injectables">Injectables</a>
+            <a href="SpringbokSpa.html#laser">Laser</a>
+            <a href="SpringbokSpa.html#skin">Skin Treatments</a>
+            <a href="SpringbokSpa.html#body">Body Treatments</a>
+          </div>
+
+        </div>
+
+        <!-- Right: Contact -->
+        <div class="footer-contact">
+          <div class="footer-contact-block">
+            <p class="footer-contact-title">Springbok Medical Clinic</p>
+            <p>
+              147 16th St West, Suite #300<br />
+              North Vancouver, BC<br />
+              V7M 1T3
+            </p>
+            <a class="footer-link" href="SpringbokContact.html#map">View Directions</a>
+          </div>
+
+          <div class="footer-contact-block">
+            <p>
+              <a class="footer-link" href="tel:+17780000000">+1 (778) 000-0000</a>
+            </p>
+            <p>
+              <a class="footer-link" href="mailto:info@springbokclinic.ca">info@springbokclinic.ca</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <p>
+          © <span id="footerYear"></span> Springbok Medical Clinic — All Rights
+          Reserved
+        </p>
+
+        <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">
+          ↑
         </button>
       </div>
-    </div>
+    </footer>
 
-    <!-- mobile panel -->
-    <div class="container mobile-panel" id="mobilePanel" aria-hidden="true">
-      <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
-        <nav class="mobile-menu-links" aria-label="Mobile navigation">
-          <a class="mobile-link" href="index.html">Home</a>
-          <a class="mobile-link" href="SpringbokAbout.html">About Us</a>
-          <a class="mobile-link" href="SpringbokClinic.html">Clinic</a>
-          <a class="mobile-link is-active" href="SpringbokSpa.html">Spa</a>
-          <a class="mobile-link" href="SpringbokTeam.html">Our Team</a>
-          <a class="mobile-link" href="SpringbokContact.html">Contact</a>
-        </nav>
-      </div>
-    </div>
-  </header>
+    <!-- CONTACT DOCTOR MODAL (styled like contactModal) -->
+    <div class="modal" id="doctorModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close="true"></div>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <a class="hero-brand reveal" href="SpringbokSpa.html" aria-label="Springbok Medical Spa Home">
-        <img src="resources/spalogo.png" alt="Springbok Medical Spa" class="hero-logo hero-logo--spa" />
-      </a>
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="doctorModalTitle">
+        <button class="modal-x" type="button" aria-label="Close" data-close="true">✕</button>
 
-      <div class="hero-media" aria-hidden="true">
-        <video class="hero-video" autoplay muted loop playsinline poster="resources/filler.jpg">
-          <source src="resources/vecteezy_spa-massage-decoration-and-body-treatment_1790157.mp4" type="video/mp4" />
-        </video>
-        <div class="hero-overlay"></div>
-      </div>
-
-      <div class="container hero-content reveal">
-        <h1>Elevating confidence — with modern aesthetics and wellness.</h1>
-        <p>
-          Physician-led treatments with clear plans and natural results.
-          Explore services, or book directly in seconds.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank" rel="noopener">Book
-            Now</a>
-          <a class="btn btn-outline" href="#services">Services</a>
-          <a class="btn btn-outline" href="#packages">Packages</a>
-          <a class="btn btn-outline" href="#products">Products</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section class="services-tiles" id="services">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="section-eyebrow">Our Services</span>
-          <h2 class="section-title">Treatments designed for real life.</h2>
-          <div class="section-divider"></div>
-          <p class="section-sub">
-            Two core focuses right now: Morpheus8 Burst RF Microneedling and Diolaze XL Laser Hair Removal —
-            both designed for effective results with a clear plan.
+        <div class="modal-head">
+          <div class="modal-eyebrow">Contact</div>
+          <h2 class="modal-title" id="doctorModalTitle">Request an appointment</h2>
+          <p class="modal-sub">
+            Fill this out and our team will route you to the right provider or next step.
           </p>
         </div>
 
-        <div class="tile-grid grid-3 reveal-stagger">
-          <!-- Morpheus8 -->
-          <a class="spa-team-tile" href="SpringbokSpaService1.html" aria-label="Morpheus8 Burst Microneedling">
-            <div class="spa-team-bg" style="background-image: url('resources/morph.jpg')"></div>
-            <div class="spa-team-shade"></div>
-            <div class="spa-team-inner">
-              <div class="spa-team-top">
-                <span class="spa-team-dot"></span>
-                <span class="spa-team-tag">Morpheus8 Burst</span>
-              </div>
-              <div class="spa-team-bottom">
-                <h3>Tighten, smooth, and renew.</h3>
-                <p class="spa-team-desc">
-                  Advanced RF microneedling for texture, tone, firmness, and long-term collagen support.
-                </p>
-                <span class="spa-team-cta">Explore <span class="spa-team-arrow">→</span></span>
-              </div>
-            </div>
-          </a>
+        <form class="modal-form" id="doctorContactForm">
+          <div class="modal-grid">
+            <label class="field">
+              <span class="field-label">Full Name</span>
+              <input class="field-input" type="text" name="name" placeholder="Your name" autocomplete="name" required />
+            </label>
 
-          <!-- Diolaze -->
-          <a class="spa-team-tile" href="SpringbokSpaService2.html" aria-label="Diolaze XL Laser Hair Removal">
-            <div class="spa-team-bg" style="background-image: url('resources/filler.jpg')"></div>
-            <div class="spa-team-shade"></div>
-            <div class="spa-team-inner">
-              <div class="spa-team-top">
-                <span class="spa-team-dot"></span>
-                <span class="spa-team-tag">Diolaze XL</span>
-              </div>
-              <div class="spa-team-bottom">
-                <h3>Comfortable, long-lasting hair reduction.</h3>
-                <p class="spa-team-desc">
-                  Medical-grade diode laser with cooling for fast sessions and reliable results over a series.
-                </p>
-                <span class="spa-team-cta">Explore <span class="spa-team-arrow">→</span></span>
-              </div>
-            </div>
-          </a>
+            <label class="field">
+              <span class="field-label">Phone Number</span>
+              <input class="field-input" type="tel" name="phone" placeholder="(778) 000-0000" autocomplete="tel" />
+            </label>
 
-          <!-- Discovery / Consult -->
-          <a class="spa-team-tile" href="https://springbokmedicalspa.janeapp.com/" target="_blank" rel="noopener"
-            aria-label="Book a Discovery Visit">
-            <div class="spa-team-bg" style="background-image: url('resources/iv.jpg')"></div>
-            <div class="spa-team-shade"></div>
-            <div class="spa-team-inner">
-              <div class="spa-team-top">
-                <span class="spa-team-dot"></span>
-                <span class="spa-team-tag">Discovery Visit</span>
-              </div>
-              <div class="spa-team-bottom">
-                <h3>Not sure what to book?</h3>
-                <p class="spa-team-desc">
-                  Start with a consult-style visit so we can match you with the right plan and timeline.
-                </p>
-                <span class="spa-team-cta">Book Now <span class="spa-team-arrow">→</span></span>
-              </div>
-            </div>
-          </a>
+            <label class="field field-span">
+              <span class="field-label">Email</span>
+              <input class="field-input" type="email" name="email" placeholder="you@email.com" autocomplete="email"
+                required />
+            </label>
 
-          <a class="spa-team-tile" href="SpringbokSpaService1.html" aria-label="Morpheus8 Burst Microneedling">
-            <div class="spa-team-bg" style="background-image: url('resources/baf1.jpg')"></div>
-            <div class="spa-team-shade"></div>
-            <div class="spa-team-inner">
-              <div class="spa-team-top">
-                <span class="spa-team-dot"></span>
-                <span class="spa-team-tag">Morpheus8 Burst</span>
-              </div>
-              <div class="spa-team-bottom">
-                <h3>Tighten, smooth, and renew.</h3>
-                <p class="spa-team-desc">
-                  Advanced RF microneedling for texture, tone, firmness, and long-term collagen support.
-                </p>
-                <span class="spa-team-cta">Explore <span class="spa-team-arrow">→</span></span>
-              </div>
-            </div>
-          </a>
+            <!-- Doctor / Service (custom dropdown) -->
+            <div class="field select-field field-dd" data-dd="doctor">
+              <span class="field-label">Doctor</span>
 
-          <!-- Diolaze -->
-          <a class="spa-team-tile" href="SpringbokSpaService2.html" aria-label="Diolaze XL Laser Hair Removal">
-            <div class="spa-team-bg" style="background-image: url('resources/after1.png')"></div>
-            <div class="spa-team-shade"></div>
-            <div class="spa-team-inner">
-              <div class="spa-team-top">
-                <span class="spa-team-dot"></span>
-                <span class="spa-team-tag">Diolaze XL</span>
-              </div>
-              <div class="spa-team-bottom">
-                <h3>Comfortable, long-lasting hair reduction.</h3>
-                <p class="spa-team-desc">
-                  Medical-grade diode laser with cooling for fast sessions and reliable results over a series.
-                </p>
-                <span class="spa-team-cta">Explore <span class="spa-team-arrow">→</span></span>
-              </div>
-            </div>
-          </a>
+              <button class="dd-btn field-input" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span class="dd-value" data-placeholder="Select one">Select one</span>
+              </button>
 
-          <!-- Discovery / Consult -->
-          <a class="spa-team-tile" href="https://springbokmedicalspa.janeapp.com/" target="_blank" rel="noopener"
-            aria-label="Book a Discovery Visit">
-            <div class="spa-team-bg" style="background-image: url('resources/amor.jpg')"></div>
-            <div class="spa-team-shade"></div>
-            <div class="spa-team-inner">
-              <div class="spa-team-top">
-                <span class="spa-team-dot"></span>
-                <span class="spa-team-tag">Discovery Visit</span>
-              </div>
-              <div class="spa-team-bottom">
-                <h3>Not sure what to book?</h3>
-                <p class="spa-team-desc">
-                  Start with a consult-style visit so we can match you with the right plan and timeline.
-                </p>
-                <span class="spa-team-cta">Book Now <span class="spa-team-arrow">→</span></span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
+              <!-- hidden input keeps your form submission + required validation -->
+              <input type="hidden" name="doctor" id="doctorSelect" required />
 
-    <!-- PACKAGES PREVIEW -->
-    <section class="spa-packages" id="packages">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="section-eyebrow">Our Packages</span>
-          <h2 class="section-title">Better together — curated series & bundles.</h2>
-          <div class="section-divider"></div>
-          <p class="section-sub">
-            Save with treatment series and popular combos. Book instantly, or browse all packages.
-          </p>
-        </div>
-
-        <div class="pkg-wheel-shell reveal" data-wheel="packages">
-          <!-- desktop overlay arrows -->
-          <button class="pkg-nav pkg-prev pkg-nav--overlay" type="button" aria-label="Previous package">‹</button>
-
-          <div class="pkg-wheel" id="packagesWheel" tabindex="0" aria-label="Packages carousel (looping)">
-            <!-- Package 1 -->
-            <article class="pkg-card">
-              <div class="pkg-card-top">
-                <span class="pkg-pill">Laser</span>
-                <span class="pkg-price">Series pricing</span>
-              </div>
-              <h3 class="pkg-title">Diolaze Laser Series</h3>
-              <p class="pkg-desc">
-                Best results come from a series. Great option if you want consistent, long-term reduction.
-              </p>
-              <ul class="pkg-list">
-                <li>Recommended multi-visit plan</li>
-                <li>Comfort-focused cooling</li>
-                <li>Common areas + combos</li>
+              <ul class="dd-menu" role="listbox" aria-label="Doctor / Service">
+                <li class="dd-opt" role="option" data-value="Family Practice">Family Practice</li>
+                <li class="dd-opt" role="option" data-value="Dr. Kacey Kiesman">Dr. Kacey Kiesman</li>
+                <li class="dd-opt" role="option" data-value="Hormone Specialist">Hormone Specialist</li>
+                <li class="dd-opt" role="option" data-value="Naturopathic Medicine">Naturopathic Medicine</li>
+                <li class="dd-opt" role="option" data-value="Plastic Surgery">Plastic Surgery</li>
+                <li class="dd-opt" role="option" data-value="General Inquiry">General Inquiry</li>
               </ul>
-              <div class="pkg-actions">
-                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                  rel="noopener">Book Now</a>
-                <a class="btn btn-outline" href="SpringbokSpaPackages.html">View More</a>
-              </div>
-            </article>
+            </div>
 
-            <!-- Package 2 -->
-            <article class="pkg-card">
-              <div class="pkg-card-top">
-                <span class="pkg-pill">Morpheus8</span>
-                <span class="pkg-price">Bundle</span>
-              </div>
-              <h3 class="pkg-title">Morpheus8 Burst Series</h3>
-              <p class="pkg-desc">
-                A structured plan designed to support collagen remodeling over time for a smoother, firmer look.
-              </p>
-              <ul class="pkg-list">
-                <li>Face / Face+Neck </li>
-                <li>Texture + tone + firmness</li>
-                <li>Clear aftercare guidance</li>
-              </ul>
-              <div class="pkg-actions">
-                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                  rel="noopener">Book Now</a>
-                <a class="btn btn-outline" href="SpringbokSpaPackages.html">View More</a>
-              </div>
-            </article>
+            <!-- Appointment type (custom dropdown) -->
+            <div class="field select-field field-dd" data-dd="appt">
+              <span class="field-label">Appointment type</span>
 
-            <!-- Package 3 -->
-            <article class="pkg-card">
-              <div class="pkg-card-top">
-                <span class="pkg-pill">Combo</span>
-                <span class="pkg-price">Popular</span>
-              </div>
-              <h3 class="pkg-title">Morpheus + IPL Bundle</h3>
-              <p class="pkg-desc">
-                Combine resurfacing + tone correction for a brighter, more even finish (details on packages page).
-              </p>
-              <ul class="pkg-list">
-                <li>Great for uneven tone</li>
-                <li>Targets texture + clarity</li>
-                <li>Plan built around your schedule</li>
-              </ul>
-              <div class="pkg-actions">
-                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                  rel="noopener">Book Now</a>
-                <a class="btn btn-outline" href="SpringbokSpaPackages.html">View More</a>
-              </div>
-            </article>
+              <button class="dd-btn field-input" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span class="dd-value" data-placeholder="Select one">Select one</span>
+              </button>
 
-            <!-- Package 1 -->
-            <article class="pkg-card">
-              <div class="pkg-card-top">
-                <span class="pkg-pill">Laser</span>
-                <span class="pkg-price">Series pricing</span>
-              </div>
-              <h3 class="pkg-title">Diolaze Laser Series</h3>
-              <p class="pkg-desc">
-                Best results come from a series. Great option if you want consistent, long-term reduction.
-              </p>
-              <ul class="pkg-list">
-                <li>Recommended multi-visit plan</li>
-                <li>Comfort-focused cooling</li>
-                <li>Common areas + combos</li>
-              </ul>
-              <div class="pkg-actions">
-                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                  rel="noopener">Book
-                  Now</a>
-                <a class="btn btn-outline" href="SpringbokSpaPackages.html">View More</a>
-              </div>
-            </article>
+              <input type="hidden" name="apptType" id="apptTypeSelect" required />
 
-            <!-- Package 2 -->
-            <article class="pkg-card">
-              <div class="pkg-card-top">
-                <span class="pkg-pill">Morpheus8</span>
-                <span class="pkg-price">Bundle</span>
-              </div>
-              <h3 class="pkg-title">Morpheus8 Burst Series</h3>
-              <p class="pkg-desc">
-                A structured plan designed to support collagen remodeling over time for a smoother, firmer look.
-              </p>
-              <ul class="pkg-list">
-                <li>Face / Face+Neck </li>
-                <li>Texture + tone + firmness</li>
-                <li>Clear aftercare guidance</li>
+              <ul class="dd-menu" role="listbox" aria-label="Appointment type">
+                <li class="dd-opt" role="option" data-value="In-person appointment">In-person appointment</li>
+                <li class="dd-opt" role="option" data-value="Phone call appointment">Phone call appointment</li>
+                <li class="dd-opt" role="option" data-value="Video call appointment">Video call appointment</li>
+                <li class="dd-opt" role="option" data-value="Follow-up appointment">Follow-up appointment</li>
               </ul>
-              <div class="pkg-actions">
-                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                  rel="noopener">Book
-                  Now</a>
-                <a class="btn btn-outline" href="SpringbokSpaPackages.html">View More</a>
-              </div>
-            </article>
+            </div>
 
-            <!-- Package 3 -->
-            <article class="pkg-card">
-              <div class="pkg-card-top">
-                <span class="pkg-pill">Combo</span>
-                <span class="pkg-price">Popular</span>
-              </div>
-              <h3 class="pkg-title">Morpheus + IPL Bundle</h3>
-              <p class="pkg-desc">
-                Combine resurfacing + tone correction for a brighter, more even finish (details on packages page).
-              </p>
-              <ul class="pkg-list">
-                <li>Great for uneven tone</li>
-                <li>Targets texture + clarity</li>
-                <li>Plan built around your schedule</li>
-              </ul>
-              <div class="pkg-actions">
-                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                  rel="noopener">Book
-                  Now</a>
-                <a class="btn btn-outline" href="SpringbokSpaPackages.html">View More</a>
-              </div>
-            </article>
+            <label class="field field-span">
+              <span class="field-label">Subject</span>
+              <input class="field-input" type="text" name="subject" id="subjectInput"
+                placeholder="e.g., Face Lift, Blood Transfusion, IV Therapy, etc..." required />
+            </label>
+
+            <label class="field field-span">
+              <span class="field-label">Message</span>
+              <textarea class="field-input field-textarea" name="message"
+                placeholder="Tell us what you’re looking for and any timing preferences." rows="5" required></textarea>
+            </label>
           </div>
 
-          <button class="pkg-nav pkg-next pkg-nav--overlay" type="button" aria-label="Next package">›</button>
-
-          <!-- mobile row controls -->
-          <div class="wheel-controls">
-            <button class="pkg-nav pkg-prev pkg-nav--row" type="button" aria-label="Previous package">‹</button>
-            <a class="btn btn-outline" href="SpringbokSpaPackages.html">View all packages</a>
-            <button class="pkg-nav pkg-next pkg-nav--row" type="button" aria-label="Next package">›</button>
-          </div>
-        </div>
-    </section>
-
-    <!-- PRODUCTS PREVIEW -->
-    <section class="spa-products" id="products">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="section-eyebrow">Products</span>
-          <h2 class="section-title">Post-treatment essentials.</h2>
-          <div class="section-divider"></div>
-          <p class="section-sub">
-            A quick preview of products we often recommend. Tap “View details” to jump to the full product section.
-          </p>
-        </div>
-
-        <div class="pkg-wheel-shell reveal" data-wheel="packages">
-          <!-- desktop overlay arrows -->
-          <button class="pkg-nav pkg-prev pkg-nav--overlay" type="button" aria-label="Previous package">‹</button>
-
-
-          <div class="prod-wheel" tabindex="0" aria-label="Products carousel (looping)">
-            <!-- Product 1 -->
-            <article class="prod-card">
-              <div class="prod-media">
-                <img src="resources/filler.jpg" alt="Barrier Repair Cream" loading="lazy">
-              </div>
-
-              <div class="prod-card-top">
-                <span class="prod-pill">Aftercare</span>
-                <span class="prod-price">$68</span>
-              </div>
-
-              <h3 class="prod-title">Barrier Repair Cream</h3>
-              <p class="prod-desc">
-                Rich, calming hydration to support your skin barrier after treatment.
-              </p>
-
-              <div class="prod-actions">
-                <a class="btn btn-outline" href="SpringbokSpaProducts.html#barrier-repair">View details</a>
-              </div>
-            </article>
-
-            <!-- Product 2 -->
-            <article class="prod-card">
-              <div class="prod-media">
-                <img src="resources/filler.jpg" alt="Hyaluronic Serum" loading="lazy">
-              </div>
-
-              <div class="prod-card-top">
-                <span class="prod-pill">Hydration</span>
-                <span class="prod-price">$74</span>
-              </div>
-
-              <h3 class="prod-title">Hyaluronic Serum</h3>
-              <p class="prod-desc">
-                Lightweight hydration for smoother-looking texture and bounce.
-              </p>
-
-              <div class="prod-actions">
-                <a class="btn btn-outline" href="SpringbokSpaProducts.html#hyaluronic-serum">View details</a>
-              </div>
-            </article>
-
-            <!-- Product 3 -->
-            <article class="prod-card">
-              <div class="prod-media">
-                <img src="resources/filler.jpg" alt="Mineral Sunscreen" loading="lazy">
-              </div>
-
-              <div class="prod-card-top">
-                <span class="prod-pill">SPF</span>
-                <span class="prod-price">$54</span>
-              </div>
-
-              <h3 class="prod-title">Mineral Sunscreen</h3>
-              <p class="prod-desc">
-                Daily protection that helps preserve results and support healthy recovery.
-              </p>
-
-              <div class="prod-actions">
-                <a class="btn btn-outline" href="SpringbokSpaProducts.html#mineral-spf">View details</a>
-              </div>
-            </article>
-
-            <!-- Product 1 -->
-            <article class="prod-card">
-              <div class="prod-media">
-                <img src="resources/filler.jpg" alt="Barrier Repair Cream" loading="lazy">
-              </div>
-
-              <div class="prod-card-top">
-                <span class="prod-pill">Aftercare</span>
-                <span class="prod-price">$68</span>
-              </div>
-
-              <h3 class="prod-title">Barrier Repair Cream</h3>
-              <p class="prod-desc">
-                Rich, calming hydration to support your skin barrier after treatment.
-              </p>
-
-              <div class="prod-actions">
-                <a class="btn btn-outline" href="SpringbokSpaProducts.html#barrier-repair">View details</a>
-              </div>
-            </article>
-
-            <!-- Product 2 -->
-            <article class="prod-card">
-              <div class="prod-media">
-                <img src="resources/filler.jpg" alt="Hyaluronic Serum" loading="lazy">
-              </div>
-
-              <div class="prod-card-top">
-                <span class="prod-pill">Hydration</span>
-                <span class="prod-price">$74</span>
-              </div>
-
-              <h3 class="prod-title">Hyaluronic Serum</h3>
-              <p class="prod-desc">
-                Lightweight hydration for smoother-looking texture and bounce.
-              </p>
-
-              <div class="prod-actions">
-                <a class="btn btn-outline" href="SpringbokSpaProducts.html#hyaluronic-serum">View details</a>
-              </div>
-            </article>
-
-            <!-- Product 3 -->
-            <article class="prod-card">
-              <div class="prod-media">
-                <img src="resources/filler.jpg" alt="Mineral Sunscreen" loading="lazy">
-              </div>
-
-              <div class="prod-card-top">
-                <span class="prod-pill">SPF</span>
-                <span class="prod-price">$54</span>
-              </div>
-
-              <h3 class="prod-title">Mineral Sunscreen</h3>
-              <p class="prod-desc">
-                Daily protection that helps preserve results and support healthy recovery.
-              </p>
-
-              <div class="prod-actions">
-                <a class="btn btn-outline" href="SpringbokSpaProducts.html#mineral-spf">View details</a>
-              </div>
-            </article>
+          <div class="modal-actions">
+            <button class="btn btn-outline" type="button" data-close="true">Cancel</button>
+            <button class="btn btn-accent" type="submit">Send</button>
           </div>
 
-          <button class="pkg-nav pkg-next pkg-nav--overlay" type="button" aria-label="Next package">›</button>
-
-          <!-- mobile row controls -->
-          <div class="wheel-controls">
-            <button class="pkg-nav pkg-prev pkg-nav--row" type="button" aria-label="Previous package">‹</button>
-            <a class="btn btn-outline" href="SpringbokSpaPackages.html">View all products</a>
-            <button class="pkg-nav pkg-next pkg-nav--row" type="button" aria-label="Next package">›</button>
-          </div>
-        </div>
-    </section>
-
-    <!-- TEAM -->
-    <section class="spa-team" id="team">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="section-eyebrow">Our Team</span>
-          <h2 class="section-title">Specialist. One standard of care.</h2>
-          <div class="section-divider"></div>
-          <p class="section-sub">
-            Book with the provider that fits your goals — both options lead to the same calm, guided experience.
+          <p class="modal-note">
+            If this is urgent, please call the front desk.
           </p>
-        </div>
-
-        <div class="tile-grid grid-2 reveal-stagger">
-          <!-- Provider 1 -->
-          <a class="spa-team-tile" href="https://springbokmedicalspa.janeapp.com/" target="_blank" rel="noopener"
-            aria-label="Book with Kacey Kiesman, RN">
-            <div class="spa-team-bg" style="background-image: url('resources/kacey.jpg')"></div>
-            <div class="spa-team-shade"></div>
-
-            <div class="spa-team-inner">
-              <div class="spa-team-top">
-                <span class="spa-team-dot"></span>
-                <span class="spa-team-tag">Aesthetics & Wellness</span>
-              </div>
-
-              <div class="spa-team-bottom">
-                <h3>Kacey Kiesman, RN</h3>
-                <p class="spa-team-desc">
-                  Experienced, safety-first care with a calm approach and clear next steps.
-                </p>
-                <span class="spa-team-cta">Book Now <span class="spa-team-arrow">→</span></span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Provider 2 (use real info when ready) -->
-          <a class="spa-team-tile" href="https://springbokmedicalspa.janeapp.com/" target="_blank" rel="noopener"
-            aria-label="Book with Springbok Medical Spa Provider">
-            <div class="spa-team-bg" style="background-image: url('resources/doc2.webp')"></div>
-            <div class="spa-team-shade"></div>
-
-            <div class="spa-team-inner">
-              <div class="spa-team-top">
-                <span class="spa-team-dot"></span>
-                <span class="spa-team-tag">Provider</span>
-              </div>
-
-              <div class="spa-team-bottom">
-                <h3>Second Provider</h3>
-                <p class="spa-team-desc">
-                  Book directly online — we’ll keep this profile updated as services expand.
-                </p>
-                <span class="spa-team-cta">Book Now <span class="spa-team-arrow">→</span></span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div style="margin-top: 18px">
-          <a class="btn btn-outline reveal" href="SpringbokTeam.html">Meet the full team</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS (slow rotating wheel) -->
-    <section class="testimonials" id="testimonials">
-      <div class="container reveal">
-        <!-- Match your other section headers -->
-        <div class="section-head">
-          <span class="section-eyebrow">Testimonials</span>
-          <h2 class="section-title">Real experiences. Clear results.</h2>
-          <div class="section-divider"></div>
-          <p class="section-sub">
-            A few words from patients and clients who’ve visited Springbok.
-          </p>
-        </div>
-
-        <!-- Slow, constant wheel -->
-        <div class="t-wheel" aria-label="Testimonials rotating wheel">
-          <div class="t-wheel-track" id="tWheelTrack">
-            <!-- Card 1 (Google style) -->
-            <!-- SPA wheel reviews — same standardized format (stars top + initial + name + sub) -->
-
-            <article class="t-card">
-              <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
-
-              <p class="t-text">
-                I’ve had a few facials here and every visit feels like a reset. Super clean, calming vibe, and the team
-                is genuinely
-                warm and attentive.
-              </p>
-
-              <div class="t-personRow">
-                <div class="t-initial" aria-hidden="true">S</div>
-                <div class="t-personMeta">
-                  <div class="t-name">Shelly Point</div>
-                  <div class="t-sub">Google Review • Jul 24, 2025</div>
-                </div>
-              </div>
-            </article>
-
-            <article class="t-card">
-              <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
-
-              <p class="t-text">
-                The treatment consult was thorough and never pushy. They explained options clearly, answered all my
-                questions, and
-                made me feel completely at ease.
-              </p>
-
-              <div class="t-personRow">
-                <div class="t-initial" aria-hidden="true">A</div>
-                <div class="t-personMeta">
-                  <div class="t-name">Alyssa K.</div>
-                  <div class="t-sub">Google Review • Jun 12, 2025</div>
-                </div>
-              </div>
-            </article>
-
-            <article class="t-card">
-              <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
-
-              <p class="t-text">
-                Beautiful space and really professional staff. I loved that they set expectations upfront and checked in
-                during the
-                service to make sure I was comfortable.
-              </p>
-
-              <div class="t-personRow">
-                <div class="t-initial" aria-hidden="true">N</div>
-                <div class="t-personMeta">
-                  <div class="t-name">Nimfa Amparado</div>
-                  <div class="t-sub">Google Review • Aug 5, 2025</div>
-                </div>
-              </div>
-            </article>
-
-            <article class="t-card">
-              <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
-
-              <p class="t-text">
-                I did laser hair removal and the whole process was so much smoother than I expected. Clear aftercare
-                instructions
-                and great follow-up between sessions.
-              </p>
-
-              <div class="t-personRow">
-                <div class="t-initial" aria-hidden="true">M</div>
-                <div class="t-personMeta">
-                  <div class="t-name">Megan L.</div>
-                  <div class="t-sub">Google Review • Sep 02, 2025</div>
-                </div>
-              </div>
-            </article>
-
-            <article class="t-card">
-              <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
-
-              <p class="t-text">
-                My skin looked brighter after one visit, but what impressed me most was how personalized it felt. They
-                adjusted
-                everything to my sensitivity and goals.
-              </p>
-
-              <div class="t-personRow">
-                <div class="t-initial" aria-hidden="true">J</div>
-                <div class="t-personMeta">
-                  <div class="t-name">Jenna R.</div>
-                  <div class="t-sub">Google Review • Aug 14, 2025</div>
-                </div>
-              </div>
-            </article>
-
-            <article class="t-card">
-              <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
-
-              <p class="t-text">
-                The nurse was gentle, meticulous, and explained what to expect over the next few days. Results looked
-                natural and
-                the experience was genuinely relaxing.
-              </p>
-
-              <div class="t-personRow">
-                <div class="t-initial" aria-hidden="true">C</div>
-                <div class="t-personMeta">
-                  <div class="t-name">Chloe P.</div>
-                  <div class="t-sub">Google Review • Jul 08, 2025</div>
-                </div>
-              </div>
-            </article>
-
-            <article class="t-card">
-              <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
-
-              <p class="t-text">
-                I booked a package and everything ran on time. The team is knowledgeable, the environment is peaceful,
-                and the
-                post-treatment care tips were super helpful.
-              </p>
-
-              <div class="t-personRow">
-                <div class="t-initial" aria-hidden="true">D</div>
-                <div class="t-personMeta">
-                  <div class="t-name">Dylan H.</div>
-                  <div class="t-sub">Google Review • Jun 27, 2025</div>
-                </div>
-              </div>
-            </article>
-
-            <article class="t-card">
-              <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
-
-              <p class="t-text">
-                I’ve been to a lot of med spas and this one stands out. It feels premium but not intimidating, and I
-                always leave
-                feeling confident about the plan.
-              </p>
-
-              <div class="t-personRow">
-                <div class="t-initial" aria-hidden="true">K</div>
-                <div class="t-personMeta">
-                  <div class="t-name">Kara S.</div>
-                  <div class="t-sub">Google Review • May 19, 2025</div>
-                </div>
-              </div>
-            </article>
-
-
-            <!-- OPTIONAL: add more .t-card items anytime -->
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer" aria-label="Site footer">
-    <div class="container footer-inner reveal">
-      <!-- Left: Brand -->
-      <div class="footer-brand">
-        <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
-          <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
-          <div class="footer-brand-type">
-            <div class="footer-brand-name">SPRINGBOK</div>
-            <div class="footer-brand-sub">MEDICAL CLINIC</div>
-          </div>
-        </a>
-
-        <div class="footer-social" aria-label="Social links">
-          <a class="social-btn" href="#" aria-label="Instagram">⌁</a>
-          <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
-          <a class="social-btn" href="#" aria-label="Facebook">f</a>
-        </div>
-      </div>
-
-      <!-- Middle: Columns -->
-      <div class="footer-cols">
-        <!-- Pages -->
-        <div class="footer-col">
-          <h3>Pages</h3>
-          <a href="index.html">Home</a>
-          <a href="SpringbokAbout.html">About Us</a>
-          <a href="SpringbokTeam.html">Our Team</a>
-          <a href="SpringbokContact.html">Contact</a>
-        </div>
-
-        <!-- Clinic Services (4 main) -->
-        <div class="footer-col">
-          <h3>Clinic Services</h3>
-          <a href="SpringbokClinic.html#family">Family Practice</a>
-          <a href="SpringbokClinic.html#hormone">Hormone Specialist</a>
-          <a href="SpringbokClinic.html#naturopathic">Naturopathic Medicine</a>
-          <a href="SpringbokClinic.html#plastics">Plastic Surgery</a>
-        </div>
-
-        <!-- Spa Services (concise set) -->
-        <div class="footer-col">
-          <h3>Spa Services</h3>
-          <a href="SpringbokSpa.html">Medical Spa</a>
-          <a href="SpringbokSpa.html#injectables">Injectables</a>
-          <a href="SpringbokSpa.html#laser">Laser</a>
-          <a href="SpringbokSpa.html#skin">Skin Treatments</a>
-          <a href="SpringbokSpa.html#body">Body Treatments</a>
-        </div>
-
-      </div>
-
-      <!-- Right: Contact -->
-      <div class="footer-contact">
-        <div class="footer-contact-block">
-          <p class="footer-contact-title">Springbok Medical Clinic</p>
-          <p>
-            147 16th St West, Suite #300<br />
-            North Vancouver, BC<br />
-            V7M 1T3
-          </p>
-          <a class="footer-link" href="SpringbokContact.html#map">View Directions</a>
-        </div>
-
-        <div class="footer-contact-block">
-          <p>
-            <a class="footer-link" href="tel:+17780000000">+1 (778) 000-0000</a>
-          </p>
-          <p>
-            <a class="footer-link" href="mailto:info@springbokclinic.ca">info@springbokclinic.ca</a>
-          </p>
-        </div>
+        </form>
       </div>
     </div>
 
-    <div class="container footer-bottom">
-      <p>
-        © <span id="footerYear"></span> Springbok Medical Clinic — All Rights
-        Reserved
-      </p>
+    <script src="js/mobileMenu.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/testimonialsWheel.js"></script>
+    <script src="js/scrollReveal.js"></script>
+    <script src="js/packagesWheel.js"></script>
+    <script src="js/smoothScroll.js"></script>
+    <script src="js/contactDoctorModal.js"></script>
 
-      <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">
-        ↑
-      </button>
-    </div>
-  </footer>
-
-  <script src="js/mobileMenu.js"></script>
-  <script src="js/footer.js"></script>
-  <script src="js/testimonialsWheel.js"></script>
-  <script src="js/scrollReveal.js"></script>
-  <script src="js/packagesWheel.js"></script>
-  <script src="js/smoothScroll.js"></script>
 </body>
 
 </html>

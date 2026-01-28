@@ -17,772 +17,889 @@
   <link rel="stylesheet" href="style/spa/spaTeam.css" />
   <link rel="stylesheet" href="style/spa/spaTestimonials.css" />
   <link rel="stylesheet" href="style/responsive.css" />
+  <link rel="stylesheet" href="style/practiceModal.css" />
 
 </head>
 
 <body>
-  <!-- NAV ONLY (always visible, pinned top-right) -->
-  <header class="site-header" aria-label="Site navigation">
-    <div class="header-right">
-      <nav class="nav-pill" aria-label="Main navigation">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="SpringbokAbout.html">About Us</a>
-        <a class="nav-link" href="SpringbokClinic.html">Clinic</a>
-        <a class="nav-link is-active" href="SpringbokSpa.html">Spa</a>
-        <a class="nav-link" href="SpringbokTeam.html">Our Team</a>
-        <a class="nav-link" href="SpringbokContact.html">Contact</a>
-      </nav>
-
-      <div class="header-actions">
-        <a class="btn btn-accent book-cta" href="https://jane.app/" target="_blank">Book Now</a>
-
-        <!--show only when mobile view is enabled -->
-        <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open menu" aria-controls="mobilePanel"
-          aria-expanded="false">
-          <span class="burger" aria-hidden="true">
-            <span></span><span></span><span></span>
-          </span>
-        </button>
-
-      </div>
-    </div>
-
-    <!-- mobile panel -->
-    <div class="container mobile-panel" id="mobilePanel" aria-hidden="true">
-      <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
-
-        <nav class="mobile-menu-links" aria-label="Mobile navigation">
-          <a class="mobile-link" href="index.html">Home</a>
-          <a class="mobile-link" href="SpringbokAbout.html">About Us</a>
-          <a class="mobile-link" href="SpringbokClinic.html">Clinic</a>
-          <a class="mobile-link is-active" href="SpringbokSpa.html">Spa</a>
-          <a class="mobile-link" href="SpringbokTeam.html">Our Team</a>
-          <a class="mobile-link" href="SpringbokContact.html">Contact</a>
+  <div class="page-transition" aria-hidden="true">
+    <!-- NAV ONLY (always visible, pinned top-right) -->
+    <header class="site-header" aria-label="Site navigation">
+      <div class="header-right">
+        <nav class="nav-pill" aria-label="Main navigation">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="SpringbokAbout.html">About Us</a>
+          <a class="nav-link" href="SpringbokClinic.html">Clinic</a>
+          <a class="nav-link is-active" href="SpringbokSpa.html">Spa</a>
+          <a class="nav-link" href="SpringbokTeam.html">Our Team</a>
+          <a class="nav-link" href="SpringbokContact.html">Contact</a>
         </nav>
 
+        <div class="header-actions">
+          <a class="btn btn-accent book-cta" href="#" data-open-doctor-modal data-doctor="General Inquiry">
+            Book Clinic
+          </a>
+
+          <!-- Book Spa goes to Jane -->
+          <a class="btn btn-accent book-cta" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+            rel="noopener">
+            Book Spa
+          </a>
+
+          <!--show only when mobile view is enabled -->
+          <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open menu" aria-controls="mobilePanel"
+            aria-expanded="false">
+            <span class="burger" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+          </button>
+
+        </div>
       </div>
-    </div>
 
-  </header>
+      <!-- mobile panel -->
+      <div class="container mobile-panel" id="mobilePanel" aria-hidden="true">
+        <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
 
-  <main>
+          <nav class="mobile-menu-links" aria-label="Mobile navigation">
+            <a class="mobile-link" href="index.html">Home</a>
+            <a class="mobile-link" href="SpringbokAbout.html">About Us</a>
+            <a class="mobile-link" href="SpringbokClinic.html">Clinic</a>
+            <a class="mobile-link is-active" href="SpringbokSpa.html">Spa</a>
+            <a class="mobile-link" href="SpringbokTeam.html">Our Team</a>
+            <a class="mobile-link" href="SpringbokContact.html">Contact</a>
+          </nav>
 
-    <!-- HERO (service-specific) -->
-    <section class="hero hero--service">
-      <a class="hero-brand reveal" href="SpringbokSpa.html" aria-label="Springbok Medical Spa Home">
-        <img src="resources/spalogo.png" alt="Springbok Medical Spa" class="hero-logo hero-logo--spa" />
-      </a>
+        </div>
+      </div>
 
-      <!-- <div class="hero-media" aria-hidden="true">
+    </header>
+
+    <main>
+
+      <!-- HERO (service-specific) -->
+      <section class="hero hero--service">
+        <a class="hero-brand reveal" href="SpringbokSpa.html" aria-label="Springbok Medical Spa Home">
+          <img src="resources/spalogo.png" alt="Springbok Medical Spa" class="hero-logo hero-logo--spa" />
+        </a>
+
+        <!-- <div class="hero-media" aria-hidden="true">
         <img class="hero-image" src="resources/staff3.jpg" alt="" />
         <div class="hero-overlay"></div>
       </div> -->
 
-      <div class="hero-media" aria-hidden="true">
-        <video class="hero-video" autoplay muted loop playsinline poster="resources/filler.jpg">
-          <source src="resources/vecteezy_spa-massage-decoration-and-body-treatment_1790157.mp4" type="video/mp4" />
-        </video>
-        <div class="hero-overlay"></div>
+        <div class="hero-media" aria-hidden="true">
+          <video class="hero-video" autoplay muted loop playsinline poster="resources/filler.jpg">
+            <source src="resources/vecteezy_spa-massage-decoration-and-body-treatment_1790157.mp4" type="video/mp4" />
+          </video>
+          <div class="hero-overlay"></div>
+        </div>
+
+        <div class="container hero-content reveal">
+          <span class="svc-kicker">Radiofrequency Microneedling</span>
+          <h1>Morpheus8</h1>
+          <p>
+            A next-level skin tightening + texture treatment that targets deeper layers for smoother,
+            firmer-looking skin with minimal downtime.
+          </p>
+
+          <div class="svc-hero-actions">
+            <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Book Now</a>
+            <a class="btn btn-outline" href="#about">About this service</a>
+          </div>
+
+          <!-- Quick details row -->
+          <div class="svc-quick">
+            <div class="svc-chip"><span class="svc-chip-label">Time</span><span class="svc-chip-val">45–60 min</span>
+            </div>
+            <div class="svc-chip"><span class="svc-chip-label">Format</span><span class="svc-chip-val">In-clinic</span>
+            </div>
+            <div class="svc-chip"><span class="svc-chip-label">Downtime</span><span class="svc-chip-val">1–3 days</span>
+            </div>
+            <div class="svc-chip"><span class="svc-chip-label">Best for</span><span class="svc-chip-val">Tone, texture,
+                pores</span></div>
+          </div>
+        </div>
+      </section>
+      <!-- ABOUT THIS SERVICE -->
+      <section class="svc-section" id="about">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">About</span>
+            <h2 class="section-title">What Morpheus8 does</h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">
+              Morpheus8 combines microneedling + radiofrequency energy to stimulate collagen and remodel skin
+              for a firmer, smoother appearance.
+            </p>
+          </div>
+
+          <div class="svc-split reveal">
+            <div class="svc-card">
+              <h3>Results you can expect</h3>
+              <ul class="svc-list">
+                <li>Improves skin texture + visible pores</li>
+                <li>Firmer-looking skin and refined contours</li>
+                <li>Helps with acne scarring and uneven tone</li>
+                <li>Targets deeper layers than standard microneedling</li>
+              </ul>
+            </div>
+
+            <div class="svc-card svc-card--highlight">
+              <h3>Ideal for</h3>
+              <ul class="svc-list">
+                <li>Fine lines + crepey texture</li>
+                <li>Acne scarring / uneven texture</li>
+                <li>Large or visible pores</li>
+                <li>Mild skin laxity</li>
+                <li>Jawline / lower face contour support</li>
+                <li>Neck concerns (case-by-case)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="svc-note" role="note">
+            Not sure? Book a consult — we’ll recommend the safest option for your skin and goals.
+          </div>
+
+          <div class="svc-mini-cta">
+            <a class="btn btn-outline" href="#providers">See providers</a>
+            <a class="btn btn-accent"
+              href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book" target="_blank"
+              rel="noopener">
+              Book Now
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICE DETAILS -->
+      <section class="svc-section svc-section--alt" id="details">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Details</span>
+            <h2 class="section-title">Service details</h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">Clear expectations — time, steps, and what’s included.</p>
+          </div>
+
+          <div class="svc-details-grid reveal-stagger">
+            <article class="svc-detail">
+              <h3>Time</h3>
+              <p>105 minutes. Includes assessment + treatment (and numbing as needed).</p>
+            </article>
+
+            <article class="svc-detail">
+              <h3>Format</h3>
+              <p>In-clinic session. We tailor depth + intensity to your skin and comfort.</p>
+            </article>
+
+            <article class="svc-detail">
+              <h3>Comfort</h3>
+              <p>Topical numbing is commonly used. Expect warmth and mild pressure.</p>
+            </article>
+
+            <article class="svc-detail">
+              <h3>Downtime</h3>
+              <p>Redness and mild swelling for 1–3 days. Makeup often ok after 24–48 hours.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- MORPHEUS8 BOOKING (Jane-aligned) -->
+      <section class="svc-section" id="m8-booking">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Book</span>
+            <h2 class="section-title">Morpheus8 appointments</h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">
+              Choose your visit type below. These match our Jane booking menu (Initial / Return, Burst / Resurfacing).
+            </p>
+          </div>
+
+          <div class="svc-book-acc reveal">
+
+            <!-- BURST — INITIAL -->
+            <details class="svc-faq-item" open>
+              <summary>Burst — Initial Visits</summary>
+              <div class="svc-faq-body">
+                <p style="margin:0 0 12px; color: rgba(18,18,18,.70);">
+                  Includes assessment + treatment. A $100 fee may apply if treatment is not performed.
+                  Please complete the intake form or book a 15-minute Discovery Visit prior to booking to confirm
+                  eligibility.
+                </p>
+
+                <div class="svc-book-grid" role="list">
+
+                  <article class="svc-book-item" role="listitem">
+                    <div class="svc-book-top">
+                      <h3>Face &amp; Neck</h3>
+                      <div class="svc-book-meta">
+                        <span class="svc-book-chip">105 min</span>
+                        <span class="svc-book-price">$1,000</span>
+                      </div>
+                    </div>
+                    <p class="svc-book-small">For new patients — assessment + treatment plan for firmness, texture, fat
+                      reduction, radiance.</p>
+                    <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                      href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Initial%20Visit%20-%20FACE%20%26%20NECK">
+                      Quick Book
+                    </a>
+                  </article>
+
+                  <article class="svc-book-item" role="listitem">
+                    <div class="svc-book-top">
+                      <h3>Face</h3>
+                      <div class="svc-book-meta">
+                        <span class="svc-book-chip">105 min</span>
+                        <span class="svc-book-price">$850</span>
+                      </div>
+                    </div>
+                    <p class="svc-book-small">For new patients — assessment + treatment plan for firmness, texture, fat
+                      reduction, radiance.</p>
+                    <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                      href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Initial%20Visit%20-%20FACE">
+                      Quick Book
+                    </a>
+                  </article>
+
+                  <article class="svc-book-item" role="listitem">
+                    <div class="svc-book-top">
+                      <h3>Face, Neck, &amp; Chest</h3>
+                      <div class="svc-book-meta">
+                        <span class="svc-book-chip">105 min</span>
+                        <span class="svc-book-price">$1,500</span>
+                      </div>
+                    </div>
+                    <p class="svc-book-small">For new patients — assessment + treatment plan for firmness, texture, fat
+                      reduction, radiance.</p>
+                    <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                      href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Initial%20Visit%20-%20FACE%2C%20NECK%2C%20%26%20CHEST">
+                      Quick Book
+                    </a>
+                  </article>
+
+                  <article class="svc-book-item" role="listitem">
+                    <div class="svc-book-top">
+                      <h3>Stretch Marks</h3>
+                      <div class="svc-book-meta">
+                        <span class="svc-book-chip">105 min</span>
+                        <span class="svc-book-price">$900+</span>
+                      </div>
+                    </div>
+                    <p class="svc-book-small">For new patients — treatment cost depends on region. Assessment +
+                      treatment plan
+                      included.</p>
+                    <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                      href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Initial%20Visit%20-%20STRETCH%20MARKS">
+                      Quick Book
+                    </a>
+                  </article>
+
+                  <article class="svc-book-item" role="listitem">
+                    <div class="svc-book-top">
+                      <h3>Underside of Upper Arms</h3>
+                      <div class="svc-book-meta">
+                        <span class="svc-book-chip">105 min</span>
+                        <span class="svc-book-price">$800</span>
+                      </div>
+                    </div>
+                    <p class="svc-book-small">For new patients — restore firmness, improve texture, reduce fat
+                      (area-specific).</p>
+                    <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                      href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Initial%20Visit%20-%20UNDERSIDE%20OF%20UPPER%20ARMS">
+                      Quick Book
+                    </a>
+                  </article>
+
+                  <article class="svc-book-item" role="listitem">
+                    <div class="svc-book-top">
+                      <h3>Underarms (Hyperhidrosis)</h3>
+                      <div class="svc-book-meta">
+                        <span class="svc-book-chip">105 min</span>
+                        <span class="svc-book-price">Packages (x3)</span>
+                      </div>
+                    </div>
+                    <p class="svc-book-small">For new patients — treatment is purchased in packages of 3 (see Packages
+                      prior
+                      to booking).</p>
+                    <a class="btn btn-outline btn-sm" target="_blank" rel="noopener"
+                      href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book">
+                      Open in Jane
+                    </a>
+                  </article>
+
+                </div>
+              </div>
+            </details>
+
+            <!-- BURST — RETURN -->
+            <details class="svc-faq-item">
+              <summary>Burst — Return Visits</summary>
+              <div class="svc-faq-body">
+                <p style="margin:0 0 12px; color: rgba(18,18,18,.70);">
+                  Continue your tailored treatment plan. Choose the same area you’re treating.
+                </p>
+
+                <div class="svc-book-grid" role="list">
+
+                  <article class="svc-book-item" role="listitem">
+                    <div class="svc-book-top">
+                      <h3>Face &amp; Neck</h3>
+                      <div class="svc-book-meta">
+                        <span class="svc-book-chip">105 min</span>
+                        <span class="svc-book-price">$1,000</span>
+                      </div>
+                    </div>
+                    <p class="svc-book-small">For existing patients — continue plan for firmness, texture, fat
+                      reduction,
+                      radiance.</p>
+                    <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                      href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Return%20Visit%20-%20FACE%20%26%20NECK">
+                      Quick Book
+                    </a>
+                  </article>
+
+                  <article class="svc-book-item" role="listitem">
+                    <div class="svc-book-top">
+                      <h3>Face (Recovery Visit)</h3>
+                      <div class="svc-book-meta">
+                        <span class="svc-book-chip">105 min</span>
+                        <span class="svc-book-price">$850</span>
+                      </div>
+                    </div>
+                    <p class="svc-book-small">For existing patients — continue your tailored treatment plan.</p>
+                    <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                      href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Recovery%20Visit%20-%20FACE">
+                      Quick Book
+                    </a>
+                  </article>
+
+                  <article class="svc-book-item" role="listitem">
+                    <div class="svc-book-top">
+                      <h3>Face, Neck, &amp; Chest</h3>
+                      <div class="svc-book-meta">
+                        <span class="svc-book-chip">105 min</span>
+                        <span class="svc-book-price">$1,500</span>
+                      </div>
+                    </div>
+                    <p class="svc-book-small">For existing patients — continue your tailored treatment plan.</p>
+                    <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                      href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Return%20Visit%20-%20FACE%2C%20NECK%2C%20%26%20CHEST">
+                      Quick Book
+                    </a>
+                  </article>
+
+                  <article class="svc-book-item" role="listitem">
+                    <div class="svc-book-top">
+                      <h3>Stretch Marks</h3>
+                      <div class="svc-book-meta">
+                        <span class="svc-book-chip">105 min</span>
+                        <span class="svc-book-price">$900+</span>
+                      </div>
+                    </div>
+                    <p class="svc-book-small">For existing patients — continue plan. Cost depends on region.</p>
+                    <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                      href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Return%20Visit%20-%20STRETCH%20MARKS">
+                      Quick Book
+                    </a>
+                  </article>
+
+                  <article class="svc-book-item" role="listitem">
+                    <div class="svc-book-top">
+                      <h3>Underside of Upper Arms</h3>
+                      <div class="svc-book-meta">
+                        <span class="svc-book-chip">105 min</span>
+                        <span class="svc-book-price">$800</span>
+                      </div>
+                    </div>
+                    <p class="svc-book-small">For existing patients — continue plan for firmness, texture, fat
+                      reduction.</p>
+                    <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                      href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Return%20Visit%20-%20UNDERSIDE%20OF%20UPPER%20ARMS">
+                      Quick Book
+                    </a>
+                  </article>
+
+                  <article class="svc-book-item" role="listitem">
+                    <div class="svc-book-top">
+                      <h3>Underarms (Hyperhidrosis)</h3>
+                      <div class="svc-book-meta">
+                        <span class="svc-book-chip">105 min</span>
+                        <span class="svc-book-price">Packages (x3)</span>
+                      </div>
+                    </div>
+                    <p class="svc-book-small">Continue your plan. Purchased in packages of 3 (see Packages prior to
+                      booking).
+                    </p>
+                    <a class="btn btn-outline btn-sm" target="_blank" rel="noopener"
+                      href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book">
+                      Open in Jane
+                    </a>
+                  </article>
+
+                </div>
+              </div>
+            </details>
+
+            <!-- RESURFACING — INITIAL -->
+            <details class="svc-faq-item">
+              <summary>Resurfacing — Initial Visits</summary>
+              <div class="svc-faq-body">
+                <p style="margin:0 0 12px; color: rgba(18,18,18,.70);">
+                  Book this if it’s your first Morpheus8 Resurfacing treatment with us. Includes an in-depth skin
+                  assessment
+                  and a plan targeted to textured skin, acne scarring, and fine lines.
+                </p>
+
+                <div class="svc-book-grid" role="list">
+
+                  <article class="svc-book-item" role="listitem">
+                    <div class="svc-book-top">
+                      <h3>Face</h3>
+                      <div class="svc-book-meta">
+                        <span class="svc-book-chip">105 min</span>
+                        <span class="svc-book-price">$700</span>
+                      </div>
+                    </div>
+                    <p class="svc-book-small">For new patients — textured skin, acne scarring, fine lines.</p>
+                    <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                      href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus8%20Resurfacing%20Initial%20Visit%20-%20FACE">
+                      Quick Book
+                    </a>
+                  </article>
+
+                  <article class="svc-book-item" role="listitem">
+                    <div class="svc-book-top">
+                      <h3>Face &amp; Neck</h3>
+                      <div class="svc-book-meta">
+                        <span class="svc-book-chip">105 min</span>
+                        <span class="svc-book-price">$900</span>
+                      </div>
+                    </div>
+                    <p class="svc-book-small">For new patients — textured skin, acne scarring, fine lines.</p>
+                    <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                      href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus8%20Resurfacing%20Initial%20Visit%20-%20FACE%20%26%20NECK">
+                      Quick Book
+                    </a>
+                  </article>
+
+                </div>
+              </div>
+            </details>
+
+            <!-- RESURFACING — RETURN -->
+            <details class="svc-faq-item">
+              <summary>Resurfacing — Return Visits</summary>
+              <div class="svc-faq-body">
+                <p style="margin:0 0 12px; color: rgba(18,18,18,.70);">
+                  Continue your safe and effective plan targeted to textured skin, acne scarring, and fine lines.
+                </p>
+
+                <div class="svc-book-grid" role="list">
+
+                  <article class="svc-book-item" role="listitem">
+                    <div class="svc-book-top">
+                      <h3>Face</h3>
+                      <div class="svc-book-meta">
+                        <span class="svc-book-chip">105 min</span>
+                        <span class="svc-book-price">$700</span>
+                      </div>
+                    </div>
+                    <p class="svc-book-small">For existing patients — continue resurfacing plan.</p>
+                    <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                      href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus8%20Resurfacing%20Return%20Visit%20-%20FACE">
+                      Quick Book
+                    </a>
+                  </article>
+
+                  <article class="svc-book-item" role="listitem">
+                    <div class="svc-book-top">
+                      <h3>Face &amp; Neck</h3>
+                      <div class="svc-book-meta">
+                        <span class="svc-book-chip">105 min</span>
+                        <span class="svc-book-price">$900</span>
+                      </div>
+                    </div>
+                    <p class="svc-book-small">For existing patients — continue resurfacing plan.</p>
+                    <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
+                      href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus8%20Resurfacing%20Return%20Visit%20-%20FACE%20%26%20NECK">
+                      Quick Book
+                    </a>
+                  </article>
+
+                </div>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- WHAT TO EXPECT (timeline) -->
+      <section class="svc-section svc-section--alt" id="expect">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">What To Expect</span>
+            <h2 class="section-title">Your visit, step by step</h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">Simple timeline so you know exactly what happens.</p>
+          </div>
+
+          <ol class="svc-timeline reveal-stagger">
+            <li class="svc-step">
+              <div class="svc-step-num">1</div>
+              <div class="svc-step-body">
+                <h3>Prep + consult</h3>
+                <p>We review your goals, skin history, and confirm settings and treatment area.</p>
+              </div>
+            </li>
+            <li class="svc-step">
+              <div class="svc-step-num">2</div>
+              <div class="svc-step-body">
+                <h3>Numbing + cleanse</h3>
+                <p>Topical numbing may be applied. Skin is cleansed and prepped.</p>
+              </div>
+            </li>
+            <li class="svc-step">
+              <div class="svc-step-num">3</div>
+              <div class="svc-step-body">
+                <h3>Treatment</h3>
+                <p>Microneedling + RF is delivered in controlled passes tailored to your skin.</p>
+              </div>
+            </li>
+            <li class="svc-step">
+              <div class="svc-step-num">4</div>
+              <div class="svc-step-body">
+                <h3>Aftercare</h3>
+                <p>We apply soothing post-care and review what to avoid + how to protect skin.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- BEFORE & AFTER -->
+      <section class="svc-section" id="results">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Results</span>
+            <h2 class="section-title">Before & after</h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">
+              Realistic outcomes vary. Photos should be consistent lighting and angles for best comparison.
+            </p>
+          </div>
+
+          <div class="ba-grid reveal-stagger">
+            <figure class="ba-card">
+              <div class="ba-compare">
+                <div class="ba-img" style="background-image:url('resources/before1.png');">
+                  <span class="ba-tag">Before</span>
+                </div>
+                <div class="ba-img" style="background-image:url('resources/after1.png');">
+                  <span class="ba-tag">After</span>
+                </div>
+              </div>
+              <figcaption class="ba-cap">Texture + pore refinement (3 sessions).</figcaption>
+            </figure>
+
+            <figure class="ba-card">
+              <div class="ba-compare">
+                <div class="ba-img" style="background-image:url('resources/before1.png');">
+                  <span class="ba-tag">Before</span>
+                </div>
+                <div class="ba-img" style="background-image:url('resources/after1.png');">
+                  <span class="ba-tag">After</span>
+                </div>
+              </div>
+              <figcaption class="ba-cap">Jawline + lower face support (2 sessions).</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROVIDERS (who offers + Jane booking buttons) -->
+      <section class="svc-section" id="providers">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Providers</span>
+            <h2 class="section-title">Who offers Morpheus8</h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">Choose your provider — book instantly via Jane.</p>
+          </div>
+
+          <div class="svc-provider-grid reveal-stagger">
+            <article class="svc-provider">
+              <img class="svc-provider-img" src="resources/doc1.jpg" alt="Dr. Ava Patel" />
+              <div class="svc-provider-body">
+                <h3>Dr. Ava Patel</h3>
+                <p>Physician-led planning, natural results focus.</p>
+                <div class="svc-provider-actions">
+                  <a class="btn btn-outline" href="SpringbokTeam.html">View Profile</a>
+                  <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Book with Ava</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="svc-provider">
+              <img class="svc-provider-img" src="resources/doc2.webp" alt="Dr. Marcus Chen" />
+              <div class="svc-provider-body">
+                <h3>Dr. Marcus Chen</h3>
+                <p>Comfort-first approach, great for first-timers.</p>
+                <div class="svc-provider-actions">
+                  <a class="btn btn-outline" href="SpringbokTeam.html">View Profile</a>
+                  <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Book with Marcus</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="svc-bottom-cta reveal">
+            <div class="svc-bottom-cta-inner">
+              <div>
+                <h3>Not sure which provider to choose?</h3>
+                <p>Book an aesthetic consult — we’ll match you to the right plan.</p>
+              </div>
+              <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Book a Consult</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="svc-section svc-section--alt" id="faq">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">FAQ</span>
+            <h2 class="section-title">Questions, answered</h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">Quick answers. Ask us anything at your consult.</p>
+          </div>
+
+          <div class="svc-faq reveal">
+            <details class="svc-faq-item">
+              <summary>How many sessions do I need?</summary>
+              <div class="svc-faq-body">
+                Most people do 2–3 sessions. We’ll tailor it based on goals and skin response.
+              </div>
+            </details>
+
+            <details class="svc-faq-item">
+              <summary>Is there downtime?</summary>
+              <div class="svc-faq-body">
+                Expect redness and mild swelling. Many clients feel comfortable in 1–3 days.
+              </div>
+            </details>
+
+            <details class="svc-faq-item">
+              <summary>When will I see results?</summary>
+              <div class="svc-faq-body">
+                Some see early improvement within weeks, with continued collagen remodeling over 2–3 months.
+              </div>
+            </details>
+
+            <details class="svc-faq-item">
+              <summary>Can I wear makeup after?</summary>
+              <div class="svc-faq-body">
+                Often after 24–48 hours, depending on your skin and the depth used.
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+
+    <footer class="site-footer" aria-label="Site footer">
+      <div class="container footer-inner reveal">
+        <!-- Left: Brand -->
+        <div class="footer-brand">
+          <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
+            <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
+            <div class="footer-brand-type">
+              <div class="footer-brand-name">SPRINGBOK</div>
+              <div class="footer-brand-sub">MEDICAL CLINIC</div>
+            </div>
+          </a>
+
+          <div class="footer-social" aria-label="Social links">
+            <a class="social-btn" href="#" aria-label="Instagram">⌁</a>
+            <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
+            <a class="social-btn" href="#" aria-label="Facebook">f</a>
+          </div>
+        </div>
+
+        <!-- Middle: Columns -->
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h3>Pages</h3>
+            <a href="index.html">Home</a>
+            <a href="SpringbokAbout.html">About Us</a>
+            <a href="SpringbokContact.html">Contact</a>
+          </div>
+
+          <div class="footer-col">
+            <h3>Our Services</h3>
+            <a href="SpringbokClinic.html">Clinic</a>
+            <a href="SpringbokSpa.html">Medical Spa</a>
+            <a href="#">Sleep Clinic</a>
+            <a href="#">Concussion Care</a>
+          </div>
+
+          <div class="footer-col">
+            <h3>Our Team</h3>
+            <a href="SpringbokTeam.html">Meet the Team</a>
+            <a href="#">Physicians</a>
+            <a href="#">Nursing / Support</a>
+          </div>
+        </div>
+
+        <!-- Right: Contact -->
+        <div class="footer-contact">
+          <div class="footer-contact-block">
+            <p class="footer-contact-title">Springbok Medical Clinic</p>
+            <p>
+              147 16th St West, Suite #300<br />
+              North Vancouver, BC<br />
+              V7M 1T3
+            </p>
+            <a class="footer-link" href="#" target="_blank" rel="noopener">View Directions</a>
+          </div>
+
+          <div class="footer-contact-block">
+            <p>
+              <a class="footer-link" href="tel:+17780000000">+1 (778) 000-0000</a>
+            </p>
+            <p>
+              <a class="footer-link" href="mailto:info@springbokclinic.ca">info@springbokclinic.ca</a>
+            </p>
+          </div>
+        </div>
       </div>
 
-      <div class="container hero-content reveal">
-        <span class="svc-kicker">Radiofrequency Microneedling</span>
-        <h1>Morpheus8</h1>
+      <div class="container footer-bottom">
         <p>
-          A next-level skin tightening + texture treatment that targets deeper layers for smoother,
-          firmer-looking skin with minimal downtime.
+          © <span id="footerYear"></span> Springbok Medical Clinic — All Rights
+          Reserved
         </p>
 
-        <div class="svc-hero-actions">
-          <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Book Now</a>
-          <a class="btn btn-outline" href="#about">About this service</a>
-        </div>
-
-        <!-- Quick details row -->
-        <div class="svc-quick">
-          <div class="svc-chip"><span class="svc-chip-label">Time</span><span class="svc-chip-val">45–60 min</span>
-          </div>
-          <div class="svc-chip"><span class="svc-chip-label">Format</span><span class="svc-chip-val">In-clinic</span>
-          </div>
-          <div class="svc-chip"><span class="svc-chip-label">Downtime</span><span class="svc-chip-val">1–3 days</span>
-          </div>
-          <div class="svc-chip"><span class="svc-chip-label">Best for</span><span class="svc-chip-val">Tone, texture,
-              pores</span></div>
-        </div>
+        <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">
+          ↑
+        </button>
       </div>
-    </section>
-    <!-- ABOUT THIS SERVICE -->
-    <section class="svc-section" id="about">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="section-eyebrow">About</span>
-          <h2 class="section-title">What Morpheus8 does</h2>
-          <div class="section-divider"></div>
-          <p class="section-sub">
-            Morpheus8 combines microneedling + radiofrequency energy to stimulate collagen and remodel skin
-            for a firmer, smoother appearance.
-          </p>
-        </div>
-    
-        <div class="svc-split reveal">
-          <div class="svc-card">
-            <h3>Results you can expect</h3>
-            <ul class="svc-list">
-              <li>Improves skin texture + visible pores</li>
-              <li>Firmer-looking skin and refined contours</li>
-              <li>Helps with acne scarring and uneven tone</li>
-              <li>Targets deeper layers than standard microneedling</li>
-            </ul>
-          </div>
-    
-          <div class="svc-card svc-card--highlight">
-            <h3>Ideal for</h3>
-            <ul class="svc-list">
-              <li>Fine lines + crepey texture</li>
-              <li>Acne scarring / uneven texture</li>
-              <li>Large or visible pores</li>
-              <li>Mild skin laxity</li>
-              <li>Jawline / lower face contour support</li>
-              <li>Neck concerns (case-by-case)</li>
-            </ul>
-          </div>
-        </div>
-    
-        <div class="svc-note" role="note">
-          Not sure? Book a consult — we’ll recommend the safest option for your skin and goals.
-        </div>
-    
-        <div class="svc-mini-cta">
-          <a class="btn btn-outline" href="#providers">See providers</a>
-          <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book"
-            target="_blank" rel="noopener">
-            Book Now
-          </a>
-        </div>
-      </div>
-    </section>
-    
-    <!-- SERVICE DETAILS -->
-    <section class="svc-section svc-section--alt" id="details">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="section-eyebrow">Details</span>
-          <h2 class="section-title">Service details</h2>
-          <div class="section-divider"></div>
-          <p class="section-sub">Clear expectations — time, steps, and what’s included.</p>
-        </div>
-    
-        <div class="svc-details-grid reveal-stagger">
-          <article class="svc-detail">
-            <h3>Time</h3>
-            <p>105 minutes. Includes assessment + treatment (and numbing as needed).</p>
-          </article>
-    
-          <article class="svc-detail">
-            <h3>Format</h3>
-            <p>In-clinic session. We tailor depth + intensity to your skin and comfort.</p>
-          </article>
-    
-          <article class="svc-detail">
-            <h3>Comfort</h3>
-            <p>Topical numbing is commonly used. Expect warmth and mild pressure.</p>
-          </article>
-    
-          <article class="svc-detail">
-            <h3>Downtime</h3>
-            <p>Redness and mild swelling for 1–3 days. Makeup often ok after 24–48 hours.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-    
-    <!-- MORPHEUS8 BOOKING (Jane-aligned) -->
-    <section class="svc-section" id="m8-booking">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="section-eyebrow">Book</span>
-          <h2 class="section-title">Morpheus8 appointments</h2>
-          <div class="section-divider"></div>
-          <p class="section-sub">
-            Choose your visit type below. These match our Jane booking menu (Initial / Return, Burst / Resurfacing).
-          </p>
-        </div>
-    
-        <div class="svc-book-acc reveal">
-    
-          <!-- BURST — INITIAL -->
-          <details class="svc-faq-item" open>
-            <summary>Burst — Initial Visits</summary>
-            <div class="svc-faq-body">
-              <p style="margin:0 0 12px; color: rgba(18,18,18,.70);">
-                Includes assessment + treatment. A $100 fee may apply if treatment is not performed.
-                Please complete the intake form or book a 15-minute Discovery Visit prior to booking to confirm eligibility.
-              </p>
-    
-              <div class="svc-book-grid" role="list">
-    
-                <article class="svc-book-item" role="listitem">
-                  <div class="svc-book-top">
-                    <h3>Face &amp; Neck</h3>
-                    <div class="svc-book-meta">
-                      <span class="svc-book-chip">105 min</span>
-                      <span class="svc-book-price">$1,000</span>
-                    </div>
-                  </div>
-                  <p class="svc-book-small">For new patients — assessment + treatment plan for firmness, texture, fat
-                    reduction, radiance.</p>
-                  <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Initial%20Visit%20-%20FACE%20%26%20NECK">
-                    Quick Book
-                  </a>
-                </article>
-    
-                <article class="svc-book-item" role="listitem">
-                  <div class="svc-book-top">
-                    <h3>Face</h3>
-                    <div class="svc-book-meta">
-                      <span class="svc-book-chip">105 min</span>
-                      <span class="svc-book-price">$850</span>
-                    </div>
-                  </div>
-                  <p class="svc-book-small">For new patients — assessment + treatment plan for firmness, texture, fat
-                    reduction, radiance.</p>
-                  <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Initial%20Visit%20-%20FACE">
-                    Quick Book
-                  </a>
-                </article>
-    
-                <article class="svc-book-item" role="listitem">
-                  <div class="svc-book-top">
-                    <h3>Face, Neck, &amp; Chest</h3>
-                    <div class="svc-book-meta">
-                      <span class="svc-book-chip">105 min</span>
-                      <span class="svc-book-price">$1,500</span>
-                    </div>
-                  </div>
-                  <p class="svc-book-small">For new patients — assessment + treatment plan for firmness, texture, fat
-                    reduction, radiance.</p>
-                  <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Initial%20Visit%20-%20FACE%2C%20NECK%2C%20%26%20CHEST">
-                    Quick Book
-                  </a>
-                </article>
-    
-                <article class="svc-book-item" role="listitem">
-                  <div class="svc-book-top">
-                    <h3>Stretch Marks</h3>
-                    <div class="svc-book-meta">
-                      <span class="svc-book-chip">105 min</span>
-                      <span class="svc-book-price">$900+</span>
-                    </div>
-                  </div>
-                  <p class="svc-book-small">For new patients — treatment cost depends on region. Assessment + treatment plan
-                    included.</p>
-                  <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Initial%20Visit%20-%20STRETCH%20MARKS">
-                    Quick Book
-                  </a>
-                </article>
-    
-                <article class="svc-book-item" role="listitem">
-                  <div class="svc-book-top">
-                    <h3>Underside of Upper Arms</h3>
-                    <div class="svc-book-meta">
-                      <span class="svc-book-chip">105 min</span>
-                      <span class="svc-book-price">$800</span>
-                    </div>
-                  </div>
-                  <p class="svc-book-small">For new patients — restore firmness, improve texture, reduce fat
-                    (area-specific).</p>
-                  <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Initial%20Visit%20-%20UNDERSIDE%20OF%20UPPER%20ARMS">
-                    Quick Book
-                  </a>
-                </article>
-    
-                <article class="svc-book-item" role="listitem">
-                  <div class="svc-book-top">
-                    <h3>Underarms (Hyperhidrosis)</h3>
-                    <div class="svc-book-meta">
-                      <span class="svc-book-chip">105 min</span>
-                      <span class="svc-book-price">Packages (x3)</span>
-                    </div>
-                  </div>
-                  <p class="svc-book-small">For new patients — treatment is purchased in packages of 3 (see Packages prior
-                    to booking).</p>
-                  <a class="btn btn-outline btn-sm" target="_blank" rel="noopener"
-                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book">
-                    Open in Jane
-                  </a>
-                </article>
-    
-              </div>
-            </div>
-          </details>
-    
-          <!-- BURST — RETURN -->
-          <details class="svc-faq-item">
-            <summary>Burst — Return Visits</summary>
-            <div class="svc-faq-body">
-              <p style="margin:0 0 12px; color: rgba(18,18,18,.70);">
-                Continue your tailored treatment plan. Choose the same area you’re treating.
-              </p>
-    
-              <div class="svc-book-grid" role="list">
-    
-                <article class="svc-book-item" role="listitem">
-                  <div class="svc-book-top">
-                    <h3>Face &amp; Neck</h3>
-                    <div class="svc-book-meta">
-                      <span class="svc-book-chip">105 min</span>
-                      <span class="svc-book-price">$1,000</span>
-                    </div>
-                  </div>
-                  <p class="svc-book-small">For existing patients — continue plan for firmness, texture, fat reduction,
-                    radiance.</p>
-                  <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Return%20Visit%20-%20FACE%20%26%20NECK">
-                    Quick Book
-                  </a>
-                </article>
-    
-                <article class="svc-book-item" role="listitem">
-                  <div class="svc-book-top">
-                    <h3>Face (Recovery Visit)</h3>
-                    <div class="svc-book-meta">
-                      <span class="svc-book-chip">105 min</span>
-                      <span class="svc-book-price">$850</span>
-                    </div>
-                  </div>
-                  <p class="svc-book-small">For existing patients — continue your tailored treatment plan.</p>
-                  <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Recovery%20Visit%20-%20FACE">
-                    Quick Book
-                  </a>
-                </article>
-    
-                <article class="svc-book-item" role="listitem">
-                  <div class="svc-book-top">
-                    <h3>Face, Neck, &amp; Chest</h3>
-                    <div class="svc-book-meta">
-                      <span class="svc-book-chip">105 min</span>
-                      <span class="svc-book-price">$1,500</span>
-                    </div>
-                  </div>
-                  <p class="svc-book-small">For existing patients — continue your tailored treatment plan.</p>
-                  <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Return%20Visit%20-%20FACE%2C%20NECK%2C%20%26%20CHEST">
-                    Quick Book
-                  </a>
-                </article>
-    
-                <article class="svc-book-item" role="listitem">
-                  <div class="svc-book-top">
-                    <h3>Stretch Marks</h3>
-                    <div class="svc-book-meta">
-                      <span class="svc-book-chip">105 min</span>
-                      <span class="svc-book-price">$900+</span>
-                    </div>
-                  </div>
-                  <p class="svc-book-small">For existing patients — continue plan. Cost depends on region.</p>
-                  <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Return%20Visit%20-%20STRETCH%20MARKS">
-                    Quick Book
-                  </a>
-                </article>
-    
-                <article class="svc-book-item" role="listitem">
-                  <div class="svc-book-top">
-                    <h3>Underside of Upper Arms</h3>
-                    <div class="svc-book-meta">
-                      <span class="svc-book-chip">105 min</span>
-                      <span class="svc-book-price">$800</span>
-                    </div>
-                  </div>
-                  <p class="svc-book-small">For existing patients — continue plan for firmness, texture, fat reduction.</p>
-                  <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus%208%20Burst%20Return%20Visit%20-%20UNDERSIDE%20OF%20UPPER%20ARMS">
-                    Quick Book
-                  </a>
-                </article>
-    
-                <article class="svc-book-item" role="listitem">
-                  <div class="svc-book-top">
-                    <h3>Underarms (Hyperhidrosis)</h3>
-                    <div class="svc-book-meta">
-                      <span class="svc-book-chip">105 min</span>
-                      <span class="svc-book-price">Packages (x3)</span>
-                    </div>
-                  </div>
-                  <p class="svc-book-small">Continue your plan. Purchased in packages of 3 (see Packages prior to booking).
-                  </p>
-                  <a class="btn btn-outline btn-sm" target="_blank" rel="noopener"
-                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book">
-                    Open in Jane
-                  </a>
-                </article>
-    
-              </div>
-            </div>
-          </details>
-    
-          <!-- RESURFACING — INITIAL -->
-          <details class="svc-faq-item">
-            <summary>Resurfacing — Initial Visits</summary>
-            <div class="svc-faq-body">
-              <p style="margin:0 0 12px; color: rgba(18,18,18,.70);">
-                Book this if it’s your first Morpheus8 Resurfacing treatment with us. Includes an in-depth skin assessment
-                and a plan targeted to textured skin, acne scarring, and fine lines.
-              </p>
-    
-              <div class="svc-book-grid" role="list">
-    
-                <article class="svc-book-item" role="listitem">
-                  <div class="svc-book-top">
-                    <h3>Face</h3>
-                    <div class="svc-book-meta">
-                      <span class="svc-book-chip">105 min</span>
-                      <span class="svc-book-price">$700</span>
-                    </div>
-                  </div>
-                  <p class="svc-book-small">For new patients — textured skin, acne scarring, fine lines.</p>
-                  <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus8%20Resurfacing%20Initial%20Visit%20-%20FACE">
-                    Quick Book
-                  </a>
-                </article>
-    
-                <article class="svc-book-item" role="listitem">
-                  <div class="svc-book-top">
-                    <h3>Face &amp; Neck</h3>
-                    <div class="svc-book-meta">
-                      <span class="svc-book-chip">105 min</span>
-                      <span class="svc-book-price">$900</span>
-                    </div>
-                  </div>
-                  <p class="svc-book-small">For new patients — textured skin, acne scarring, fine lines.</p>
-                  <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus8%20Resurfacing%20Initial%20Visit%20-%20FACE%20%26%20NECK">
-                    Quick Book
-                  </a>
-                </article>
-    
-              </div>
-            </div>
-          </details>
-    
-          <!-- RESURFACING — RETURN -->
-          <details class="svc-faq-item">
-            <summary>Resurfacing — Return Visits</summary>
-            <div class="svc-faq-body">
-              <p style="margin:0 0 12px; color: rgba(18,18,18,.70);">
-                Continue your safe and effective plan targeted to textured skin, acne scarring, and fine lines.
-              </p>
-    
-              <div class="svc-book-grid" role="list">
-    
-                <article class="svc-book-item" role="listitem">
-                  <div class="svc-book-top">
-                    <h3>Face</h3>
-                    <div class="svc-book-meta">
-                      <span class="svc-book-chip">105 min</span>
-                      <span class="svc-book-price">$700</span>
-                    </div>
-                  </div>
-                  <p class="svc-book-small">For existing patients — continue resurfacing plan.</p>
-                  <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus8%20Resurfacing%20Return%20Visit%20-%20FACE">
-                    Quick Book
-                  </a>
-                </article>
-    
-                <article class="svc-book-item" role="listitem">
-                  <div class="svc-book-top">
-                    <h3>Face &amp; Neck</h3>
-                    <div class="svc-book-meta">
-                      <span class="svc-book-chip">105 min</span>
-                      <span class="svc-book-price">$900</span>
-                    </div>
-                  </div>
-                  <p class="svc-book-small">For existing patients — continue resurfacing plan.</p>
-                  <a class="btn btn-accent btn-sm" target="_blank" rel="noopener"
-                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book?service=Morpheus8%20Resurfacing%20Return%20Visit%20-%20FACE%20%26%20NECK">
-                    Quick Book
-                  </a>
-                </article>
-    
-              </div>
-            </div>
-          </details>
-    
-        </div>
-      </div>
-    </section>
+    </footer>
 
+    <!-- CONTACT DOCTOR MODAL (styled like contactModal) -->
+    <div class="modal" id="doctorModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close="true"></div>
 
-    <!-- WHAT TO EXPECT (timeline) -->
-    <section class="svc-section svc-section--alt" id="expect">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="section-eyebrow">What To Expect</span>
-          <h2 class="section-title">Your visit, step by step</h2>
-          <div class="section-divider"></div>
-          <p class="section-sub">Simple timeline so you know exactly what happens.</p>
-        </div>
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="doctorModalTitle">
+        <button class="modal-x" type="button" aria-label="Close" data-close="true">✕</button>
 
-        <ol class="svc-timeline reveal-stagger">
-          <li class="svc-step">
-            <div class="svc-step-num">1</div>
-            <div class="svc-step-body">
-              <h3>Prep + consult</h3>
-              <p>We review your goals, skin history, and confirm settings and treatment area.</p>
-            </div>
-          </li>
-          <li class="svc-step">
-            <div class="svc-step-num">2</div>
-            <div class="svc-step-body">
-              <h3>Numbing + cleanse</h3>
-              <p>Topical numbing may be applied. Skin is cleansed and prepped.</p>
-            </div>
-          </li>
-          <li class="svc-step">
-            <div class="svc-step-num">3</div>
-            <div class="svc-step-body">
-              <h3>Treatment</h3>
-              <p>Microneedling + RF is delivered in controlled passes tailored to your skin.</p>
-            </div>
-          </li>
-          <li class="svc-step">
-            <div class="svc-step-num">4</div>
-            <div class="svc-step-body">
-              <h3>Aftercare</h3>
-              <p>We apply soothing post-care and review what to avoid + how to protect skin.</p>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- BEFORE & AFTER -->
-    <section class="svc-section" id="results">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="section-eyebrow">Results</span>
-          <h2 class="section-title">Before & after</h2>
-          <div class="section-divider"></div>
-          <p class="section-sub">
-            Realistic outcomes vary. Photos should be consistent lighting and angles for best comparison.
+        <div class="modal-head">
+          <div class="modal-eyebrow">Contact</div>
+          <h2 class="modal-title" id="doctorModalTitle">Request an appointment</h2>
+          <p class="modal-sub">
+            Fill this out and our team will route you to the right provider or next step.
           </p>
         </div>
 
-        <div class="ba-grid reveal-stagger">
-          <figure class="ba-card">
-            <div class="ba-compare">
-              <div class="ba-img" style="background-image:url('resources/before1.png');">
-                <span class="ba-tag">Before</span>
-              </div>
-              <div class="ba-img" style="background-image:url('resources/after1.png');">
-                <span class="ba-tag">After</span>
-              </div>
-            </div>
-            <figcaption class="ba-cap">Texture + pore refinement (3 sessions).</figcaption>
-          </figure>
+        <form class="modal-form" id="doctorContactForm">
+          <div class="modal-grid">
+            <label class="field">
+              <span class="field-label">Full Name</span>
+              <input class="field-input" type="text" name="name" placeholder="Your name" autocomplete="name" required />
+            </label>
 
-          <figure class="ba-card">
-            <div class="ba-compare">
-              <div class="ba-img" style="background-image:url('resources/before1.png');">
-                <span class="ba-tag">Before</span>
-              </div>
-              <div class="ba-img" style="background-image:url('resources/after1.png');">
-                <span class="ba-tag">After</span>
-              </div>
-            </div>
-            <figcaption class="ba-cap">Jawline + lower face support (2 sessions).</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
+            <label class="field">
+              <span class="field-label">Phone Number</span>
+              <input class="field-input" type="tel" name="phone" placeholder="(778) 000-0000" autocomplete="tel" />
+            </label>
 
-    <!-- PROVIDERS (who offers + Jane booking buttons) -->
-    <section class="svc-section" id="providers">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="section-eyebrow">Providers</span>
-          <h2 class="section-title">Who offers Morpheus8</h2>
-          <div class="section-divider"></div>
-          <p class="section-sub">Choose your provider — book instantly via Jane.</p>
-        </div>
+            <label class="field field-span">
+              <span class="field-label">Email</span>
+              <input class="field-input" type="email" name="email" placeholder="you@email.com" autocomplete="email"
+                required />
+            </label>
 
-        <div class="svc-provider-grid reveal-stagger">
-          <article class="svc-provider">
-            <img class="svc-provider-img" src="resources/doc1.jpg" alt="Dr. Ava Patel" />
-            <div class="svc-provider-body">
-              <h3>Dr. Ava Patel</h3>
-              <p>Physician-led planning, natural results focus.</p>
-              <div class="svc-provider-actions">
-                <a class="btn btn-outline" href="SpringbokTeam.html">View Profile</a>
-                <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Book with Ava</a>
-              </div>
-            </div>
-          </article>
+            <!-- Doctor / Service (custom dropdown) -->
+            <div class="field select-field field-dd" data-dd="doctor">
+              <span class="field-label">Doctor</span>
 
-          <article class="svc-provider">
-            <img class="svc-provider-img" src="resources/doc2.webp" alt="Dr. Marcus Chen" />
-            <div class="svc-provider-body">
-              <h3>Dr. Marcus Chen</h3>
-              <p>Comfort-first approach, great for first-timers.</p>
-              <div class="svc-provider-actions">
-                <a class="btn btn-outline" href="SpringbokTeam.html">View Profile</a>
-                <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Book with Marcus</a>
-              </div>
-            </div>
-          </article>
-        </div>
+              <button class="dd-btn field-input" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span class="dd-value" data-placeholder="Select one">Select one</span>
+              </button>
 
-        <div class="svc-bottom-cta reveal">
-          <div class="svc-bottom-cta-inner">
-            <div>
-              <h3>Not sure which provider to choose?</h3>
-              <p>Book an aesthetic consult — we’ll match you to the right plan.</p>
+              <!-- hidden input keeps your form submission + required validation -->
+              <input type="hidden" name="doctor" id="doctorSelect" required />
+
+              <ul class="dd-menu" role="listbox" aria-label="Doctor / Service">
+                <li class="dd-opt" role="option" data-value="Family Practice">Family Practice</li>
+                <li class="dd-opt" role="option" data-value="Dr. Kacey Kiesman">Dr. Kacey Kiesman</li>
+                <li class="dd-opt" role="option" data-value="Hormone Specialist">Hormone Specialist</li>
+                <li class="dd-opt" role="option" data-value="Naturopathic Medicine">Naturopathic Medicine</li>
+                <li class="dd-opt" role="option" data-value="Plastic Surgery">Plastic Surgery</li>
+                <li class="dd-opt" role="option" data-value="General Inquiry">General Inquiry</li>
+              </ul>
             </div>
-            <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Book a Consult</a>
+
+            <!-- Appointment type (custom dropdown) -->
+            <div class="field select-field field-dd" data-dd="appt">
+              <span class="field-label">Appointment type</span>
+
+              <button class="dd-btn field-input" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span class="dd-value" data-placeholder="Select one">Select one</span>
+              </button>
+
+              <input type="hidden" name="apptType" id="apptTypeSelect" required />
+
+              <ul class="dd-menu" role="listbox" aria-label="Appointment type">
+                <li class="dd-opt" role="option" data-value="In-person appointment">In-person appointment</li>
+                <li class="dd-opt" role="option" data-value="Phone call appointment">Phone call appointment</li>
+                <li class="dd-opt" role="option" data-value="Video call appointment">Video call appointment</li>
+                <li class="dd-opt" role="option" data-value="Follow-up appointment">Follow-up appointment</li>
+              </ul>
+            </div>
+
+            <label class="field field-span">
+              <span class="field-label">Subject</span>
+              <input class="field-input" type="text" name="subject" id="subjectInput"
+                placeholder="e.g., Face Lift, Blood Transfusion, IV Therapy, etc..." required />
+            </label>
+
+            <label class="field field-span">
+              <span class="field-label">Message</span>
+              <textarea class="field-input field-textarea" name="message"
+                placeholder="Tell us what you’re looking for and any timing preferences." rows="5" required></textarea>
+            </label>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- FAQ -->
-    <section class="svc-section svc-section--alt" id="faq">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="section-eyebrow">FAQ</span>
-          <h2 class="section-title">Questions, answered</h2>
-          <div class="section-divider"></div>
-          <p class="section-sub">Quick answers. Ask us anything at your consult.</p>
-        </div>
-
-        <div class="svc-faq reveal">
-          <details class="svc-faq-item">
-            <summary>How many sessions do I need?</summary>
-            <div class="svc-faq-body">
-              Most people do 2–3 sessions. We’ll tailor it based on goals and skin response.
-            </div>
-          </details>
-
-          <details class="svc-faq-item">
-            <summary>Is there downtime?</summary>
-            <div class="svc-faq-body">
-              Expect redness and mild swelling. Many clients feel comfortable in 1–3 days.
-            </div>
-          </details>
-
-          <details class="svc-faq-item">
-            <summary>When will I see results?</summary>
-            <div class="svc-faq-body">
-              Some see early improvement within weeks, with continued collagen remodeling over 2–3 months.
-            </div>
-          </details>
-
-          <details class="svc-faq-item">
-            <summary>Can I wear makeup after?</summary>
-            <div class="svc-faq-body">
-              Often after 24–48 hours, depending on your skin and the depth used.
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-
-  <footer class="site-footer" aria-label="Site footer">
-    <div class="container footer-inner reveal">
-      <!-- Left: Brand -->
-      <div class="footer-brand">
-        <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
-          <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
-          <div class="footer-brand-type">
-            <div class="footer-brand-name">SPRINGBOK</div>
-            <div class="footer-brand-sub">MEDICAL CLINIC</div>
+          <div class="modal-actions">
+            <button class="btn btn-outline" type="button" data-close="true">Cancel</button>
+            <button class="btn btn-accent" type="submit">Send</button>
           </div>
-        </a>
 
-        <div class="footer-social" aria-label="Social links">
-          <a class="social-btn" href="#" aria-label="Instagram">⌁</a>
-          <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
-          <a class="social-btn" href="#" aria-label="Facebook">f</a>
-        </div>
-      </div>
-
-      <!-- Middle: Columns -->
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h3>Pages</h3>
-          <a href="index.html">Home</a>
-          <a href="SpringbokAbout.html">About Us</a>
-          <a href="SpringbokContact.html">Contact</a>
-        </div>
-
-        <div class="footer-col">
-          <h3>Our Services</h3>
-          <a href="SpringbokClinic.html">Clinic</a>
-          <a href="SpringbokSpa.html">Medical Spa</a>
-          <a href="#">Sleep Clinic</a>
-          <a href="#">Concussion Care</a>
-        </div>
-
-        <div class="footer-col">
-          <h3>Our Team</h3>
-          <a href="SpringbokTeam.html">Meet the Team</a>
-          <a href="#">Physicians</a>
-          <a href="#">Nursing / Support</a>
-        </div>
-      </div>
-
-      <!-- Right: Contact -->
-      <div class="footer-contact">
-        <div class="footer-contact-block">
-          <p class="footer-contact-title">Springbok Medical Clinic</p>
-          <p>
-            147 16th St West, Suite #300<br />
-            North Vancouver, BC<br />
-            V7M 1T3
+          <p class="modal-note">
+            If this is urgent, please call the front desk.
           </p>
-          <a class="footer-link" href="#" target="_blank" rel="noopener">View Directions</a>
-        </div>
-
-        <div class="footer-contact-block">
-          <p>
-            <a class="footer-link" href="tel:+17780000000">+1 (778) 000-0000</a>
-          </p>
-          <p>
-            <a class="footer-link" href="mailto:info@springbokclinic.ca">info@springbokclinic.ca</a>
-          </p>
-        </div>
+        </form>
       </div>
     </div>
 
-    <div class="container footer-bottom">
-      <p>
-        © <span id="footerYear"></span> Springbok Medical Clinic — All Rights
-        Reserved
-      </p>
+    <script src="js/mobileMenu.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/testimonialsWheel.js"></script>
 
-      <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">
-        ↑
-      </button>
-    </div>
-  </footer>
+    <script src="js/contactModal.js"></script>
+    <script src="js/scrollReveal.js"></script>
+    <script src="js/smoothScroll.js"></script>
+    <script src="js/contactDoctorModal.js"></script>
 
-  <script src="js/mobileMenu.js"></script>
-  <script src="js/footer.js"></script>
-  <script src="js/testimonialsWheel.js"></script>
-
-  <script src="js/contactModal.js"></script>
-  <script src="js/scrollReveal.js"></script>
-  <script src="js/smoothScroll.js"></script>
 </body>
 
 </html>

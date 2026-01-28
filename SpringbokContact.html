@@ -18,305 +18,371 @@
 
   <!-- contact-only layout -->
   <link rel="stylesheet" href="style/contact.css" />
-  <link rel="stylesheet" href="style/contactModal.css" />
+
+  <link rel="stylesheet" href="style/practiceModal.css" />
+  <link rel="stylesheet" href="style/responsive.css" />
 
 </head>
 
 <body>
-  <!-- NAV ONLY (always visible, pinned top-right) -->
-  <header class="site-header" aria-label="Site navigation">
-    <div class="header-right">
-      <nav class="nav-pill" aria-label="Main navigation">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="SpringbokAbout.html">About Us</a>
-        <a class="nav-link" href="SpringbokClinic.html">Clinic</a>
-        <a class="nav-link" href="SpringbokSpa.html">Spa</a>
-        <a class="nav-link" href="SpringbokTeam.html">Our Team</a>
-        <a class="nav-link is-active" href="SpringbokContact.html">Contact</a>
-        <link rel="stylesheet" href="style/responsive.css" />
-      </nav>
-
-      <div class="header-actions">
-        <a class="btn btn-accent book-cta" href="https://jane.app/" target="_blank" rel="noopener">Book Now</a>
-
-        <!--show only when mobile view is enabled -->
-        <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open menu" aria-controls="mobilePanel"
-          aria-expanded="false">
-          <span class="burger" aria-hidden="true">
-            <span></span><span></span><span></span>
-          </span>
-        </button>
-
-      </div>
-    </div>
-
-    <!-- mobile panel -->
-    <div class="container mobile-panel" id="mobilePanel" aria-hidden="true">
-      <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
-
-        <nav class="mobile-menu-links" aria-label="Mobile navigation">
-          <a class="mobile-link" href="index.html">Home</a>
-          <a class="mobile-link" href="SpringbokAbout.html">About Us</a>
-          <a class="mobile-link" href="SpringbokClinic.html">Clinic</a>
-          <a class="mobile-link" href="SpringbokSpa.html">Spa</a>
-          <a class="mobile-link" href="SpringbokTeam.html">Our Team</a>
-          <a class="mobile-link is-active" href="SpringbokContact.html">Contact</a>
+  <div class="page-transition" aria-hidden="true">
+    <!-- NAV ONLY (always visible, pinned top-right) -->
+    <header class="site-header" aria-label="Site navigation">
+      <div class="header-right">
+        <nav class="nav-pill" aria-label="Main navigation">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="SpringbokAbout.html">About Us</a>
+          <a class="nav-link" href="SpringbokClinic.html">Clinic</a>
+          <a class="nav-link" href="SpringbokSpa.html">Spa</a>
+          <a class="nav-link" href="SpringbokTeam.html">Our Team</a>
+          <a class="nav-link is-active" href="SpringbokContact.html">Contact</a>
         </nav>
 
-      </div>
-    </div>
-
-  </header>
-
-  <main>
-    <!-- HERO (same structure as home; content changed for Contact) -->
-    <section class="hero hero--contact">
-      <a class="hero-brand reveal" href="index.html" aria-label="Springbok Home">
-        <img src="resources/logo1.png" alt="Springbok Medical Clinic" class="hero-logo" />
-      </a>
-
-      <div class="hero-media" aria-hidden="true">
-        <video class="hero-video" autoplay muted loop playsinline poster="resources/building.jpg">
-          <source src="resources/" type="video/mp4" />
-        </video>
-        <div class="hero-overlay"></div>
-      </div>
-
-      <div class="container hero-content reveal">
-        <span class="contact-kicker">CONTACT US</span>
-        <h1>Contact us easily — online, by phone, or by dropping in.</h1>
-
-        <p>
-          Questions, bookings, or referrals — reach out and we’ll point you in
-          the right direction.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn btn-accent book-cta" href="https://jane.app/" target="_blank" rel="noopener">Book Online</a>
-          <a class="btn btn-outline" href="tel:7787466460">Call 778-746-6460</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section class="contact-block" aria-label="Contact Information">
-      <div class="container contact-grid reveal-stagger">
-        <!-- Left card -->
-        <div class="contact-card">
-          <div class="contact-head">
-            <h2>Contact Information</h2>
-            <p>
-              Learn more about our clinic and doctors, and why we’re trusted
-              by so many families in our community.
-            </p>
-          </div>
-
-          <div class="contact-list">
-            <div class="contact-item">
-              <div class="contact-label">Address</div>
-              <div class="contact-value">
-                590 McKay Ave #200<br />
-                Kelowna, BC<br />
-                V1Y 5A8
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-label">Phone</div>
-              <div class="contact-value">
-                <a href="tel:7787466460">778-746-6460</a>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-label">Email</div>
-              <div class="contact-value">
-                <a href="mailto:hello@springbok.ca">hello@springbok.ca</a>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-label">Hours</div>
-              <div class="contact-value hours">
-                <div><span>Monday</span><span>9 a.m. – 4:30 p.m.</span></div>
-                <div><span>Tuesday</span><span>9 a.m. – 4:30 p.m.</span></div>
-                <div>
-                  <span>Wednesday</span><span>9 a.m. – 4:30 p.m.</span>
-                </div>
-                <div><span>Thursday</span><span>9 a.m. – 4 a.m.</span></div>
-                <div><span>Friday</span><span>9 a.m. – 2 p.m.</span></div>
-                <div><span>Saturday</span><span>Closed</span></div>
-                <div><span>Sunday</span><span>Closed</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="contact-actions">
-            <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Book Appointment</a>
-            <a class="btn btn-outline" href="#" id="sendMessageBtn">Send a Message</a>
-          </div>
-        </div>
-
-        <!-- Right: Map -->
-        <div class="map-card" aria-label="Map" id="map">
-          <div class="map-shell">
-            <iframe title="Springbok Medical Clinic Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=590%20McKay%20Ave%20%23200%20Kelowna%20BC%20V1Y%205A8&output=embed"></iframe>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="site-footer" aria-label="Site footer">
-    <div class="container footer-inner reveal">
-      <!-- Left: Brand -->
-      <div class="footer-brand">
-        <div class="footer-brand-top">
-          <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
-            <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
-
+        <div class="header-actions">
+          <a class="btn btn-accent book-cta" href="#" data-open-doctor-modal data-doctor="General Inquiry">
+            Book Clinic
           </a>
-        </div>
 
-        <div class="footer-brand-bottom">
-          <div class="footer-brand-type">
-            <div class="footer-brand-name">SPRINGBOK</div>
-            <div class="footer-brand-sub">MEDICAL CLINIC</div>
-          </div>
-          <div class="footer-social" aria-label="Social links">
-            <a class="social-btn" href="#" aria-label="Instagram">⌁</a>
-            <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
-            <a class="social-btn" href="#" aria-label="Facebook">f</a>
-          </div>
+          <!-- Book Spa goes to Jane -->
+          <a class="btn btn-accent book-cta" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+            rel="noopener">
+            Book Spa
+          </a>
+
+          <!--show only when mobile view is enabled -->
+          <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open menu" aria-controls="mobilePanel"
+            aria-expanded="false">
+            <span class="burger" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+          </button>
+
         </div>
       </div>
 
-      <!-- Middle: Columns -->
-      <div class="footer-cols">
-        <!-- Pages -->
-        <div class="footer-col">
-          <h3>Pages</h3>
-          <a href="index.html">Home</a>
-          <a href="SpringbokAbout.html">About Us</a>
-          <a href="SpringbokTeam.html">Our Team</a>
-          <a href="SpringbokContact.html">Contact</a>
-        </div>
+      <!-- mobile panel -->
+      <div class="container mobile-panel" id="mobilePanel" aria-hidden="true">
+        <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
 
-        <!-- Clinic Services (4 main) -->
-        <div class="footer-col">
-          <h3>Clinic Services</h3>
-          <a href="SpringbokClinic.html#family">Family Practice</a>
-          <a href="SpringbokClinic.html#hormone">Hormone Specialist</a>
-          <a href="SpringbokClinic.html#naturopathic">Naturopathic Medicine</a>
-          <a href="SpringbokClinic.html#plastics">Plastic Surgery</a>
-        </div>
+          <nav class="mobile-menu-links" aria-label="Mobile navigation">
+            <a class="mobile-link" href="index.html">Home</a>
+            <a class="mobile-link" href="SpringbokAbout.html">About Us</a>
+            <a class="mobile-link" href="SpringbokClinic.html">Clinic</a>
+            <a class="mobile-link" href="SpringbokSpa.html">Spa</a>
+            <a class="mobile-link" href="SpringbokTeam.html">Our Team</a>
+            <a class="mobile-link is-active" href="SpringbokContact.html">Contact</a>
+          </nav>
 
-        <!-- Spa Services (concise set) -->
-        <div class="footer-col">
-          <h3>Spa Services</h3>
-          <a href="SpringbokSpa.html">Medical Spa</a>
-          <a href="SpringbokSpa.html#injectables">Injectables</a>
-          <a href="SpringbokSpa.html#laser">Laser</a>
-          <a href="SpringbokSpa.html#skin">Skin Treatments</a>
-          <a href="SpringbokSpa.html#body">Body Treatments</a>
         </div>
-
       </div>
 
+    </header>
 
-      <!-- Right: Contact (unchanged) -->
-      <div class="footer-contact">
-        <div class="footer-contact-block">
-          <p class="footer-contact-title">Springbok Medical Clinic</p>
+    <main>
+      <!-- HERO (same structure as home; content changed for Contact) -->
+      <section class="hero hero--contact">
+        <a class="hero-brand reveal" href="index.html" aria-label="Springbok Home">
+          <img src="resources/logo1.png" alt="Springbok Medical Clinic" class="hero-logo" />
+        </a>
+
+        <div class="hero-media" aria-hidden="true">
+          <video class="hero-video" autoplay muted loop playsinline poster="resources/building.jpg">
+            <source src="resources/" type="video/mp4" />
+          </video>
+          <div class="hero-overlay"></div>
+        </div>
+
+        <div class="container hero-content reveal">
+          <span class="contact-kicker">CONTACT US</span>
+          <h1>Contact us easily — online, by phone, or by dropping in.</h1>
+
           <p>
-            147 16th St West, Suite #300<br />
-            North Vancouver, BC<br />
-            V7M 1T3
+            Questions, bookings, or referrals — reach out and we’ll point you in
+            the right direction.
           </p>
-          <a class="footer-link" href="SpringbokContact.html#map">View Directions</a>
+
+          <div class="hero-actions">
+            <a class="btn btn-accent book-cta" href="#" data-open-doctor-modal data-doctor="General Inquiry">
+              Book Clinic
+            </a>
+
+            <!-- Book Spa goes to Jane -->
+            <a class="btn btn-accent book-cta" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+              rel="noopener">
+              Book Spa
+            </a>
+            <a class="btn btn-outline" href="tel:7787466460">Call 778-746-6460</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT SECTION -->
+      <section class="contact-block" aria-label="Contact Information">
+        <div class="container contact-grid reveal-stagger">
+          <!-- Left card -->
+          <div class="contact-card">
+            <div class="contact-head">
+              <h2>Contact Information</h2>
+              <p>
+                Learn more about our clinic and doctors, and why we’re trusted
+                by so many families in our community.
+              </p>
+            </div>
+
+            <div class="contact-list">
+              <div class="contact-item">
+                <div class="contact-label">Address</div>
+                <div class="contact-value">
+                  590 McKay Ave #200<br />
+                  Kelowna, BC<br />
+                  V1Y 5A8
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-label">Phone</div>
+                <div class="contact-value">
+                  <a href="tel:7787466460">778-746-6460</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-label">Email</div>
+                <div class="contact-value">
+                  <a href="mailto:hello@springbok.ca">hello@springbok.ca</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-label">Hours</div>
+                <div class="contact-value hours">
+                  <div><span>Monday</span><span>9 a.m. – 4:30 p.m.</span></div>
+                  <div><span>Tuesday</span><span>9 a.m. – 4:30 p.m.</span></div>
+                  <div>
+                    <span>Wednesday</span><span>9 a.m. – 4:30 p.m.</span>
+                  </div>
+                  <div><span>Thursday</span><span>9 a.m. – 4 a.m.</span></div>
+                  <div><span>Friday</span><span>9 a.m. – 2 p.m.</span></div>
+                  <div><span>Saturday</span><span>Closed</span></div>
+                  <div><span>Sunday</span><span>Closed</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-actions">
+
+
+              <!-- Book Spa goes to Jane -->
+              <a class="btn btn-accent book-cta" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                rel="noopener">
+                Book Appointment
+              </a>
+              <a class="btn btn-outline book-cta" href="#" data-open-doctor-modal data-doctor="General Inquiry">
+                Send a Message
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Map -->
+          <div class="map-card" aria-label="Map" id="map">
+            <div class="map-shell">
+              <iframe title="Springbok Medical Clinic Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=590%20McKay%20Ave%20%23200%20Kelowna%20BC%20V1Y%205A8&output=embed"></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" aria-label="Site footer">
+      <div class="container footer-inner reveal">
+        <!-- Left: Brand -->
+        <div class="footer-brand">
+          <div class="footer-brand-top">
+            <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
+              <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
+
+            </a>
+          </div>
+
+          <div class="footer-brand-bottom">
+            <div class="footer-brand-type">
+              <div class="footer-brand-name">SPRINGBOK</div>
+              <div class="footer-brand-sub">MEDICAL CLINIC</div>
+            </div>
+            <div class="footer-social" aria-label="Social links">
+              <a class="social-btn" href="#" aria-label="Instagram">⌁</a>
+              <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
+              <a class="social-btn" href="#" aria-label="Facebook">f</a>
+            </div>
+          </div>
         </div>
 
-        <div class="footer-contact-block">
-          <p><a class="footer-link" href="tel:+17780000000">+1 (778) 000-0000</a></p>
-          <p><a class="footer-link" href="mailto:info@springbokclinic.ca">info@springbokclinic.ca</a></p>
+        <!-- Middle: Columns -->
+        <div class="footer-cols">
+          <!-- Pages -->
+          <div class="footer-col">
+            <h3>Pages</h3>
+            <a href="index.html">Home</a>
+            <a href="SpringbokAbout.html">About Us</a>
+            <a href="SpringbokTeam.html">Our Team</a>
+            <a href="SpringbokContact.html">Contact</a>
+          </div>
+
+          <!-- Clinic Services (4 main) -->
+          <div class="footer-col">
+            <h3>Clinic Services</h3>
+            <a href="SpringbokClinic.html#family">Family Practice</a>
+            <a href="SpringbokClinic.html#hormone">Hormone Specialist</a>
+            <a href="SpringbokClinic.html#naturopathic">Naturopathic Medicine</a>
+            <a href="SpringbokClinic.html#plastics">Plastic Surgery</a>
+          </div>
+
+          <!-- Spa Services (concise set) -->
+          <div class="footer-col">
+            <h3>Spa Services</h3>
+            <a href="SpringbokSpa.html">Medical Spa</a>
+            <a href="SpringbokSpa.html#injectables">Injectables</a>
+            <a href="SpringbokSpa.html#laser">Laser</a>
+            <a href="SpringbokSpa.html#skin">Skin Treatments</a>
+            <a href="SpringbokSpa.html#body">Body Treatments</a>
+          </div>
+
         </div>
+
+
+        <!-- Right: Contact (unchanged) -->
+        <div class="footer-contact">
+          <div class="footer-contact-block">
+            <p class="footer-contact-title">Springbok Medical Clinic</p>
+            <p>
+              147 16th St West, Suite #300<br />
+              North Vancouver, BC<br />
+              V7M 1T3
+            </p>
+            <a class="footer-link" href="SpringbokContact.html#map">View Directions</a>
+          </div>
+
+          <div class="footer-contact-block">
+            <p><a class="footer-link" href="tel:+17780000000">+1 (778) 000-0000</a></p>
+            <p><a class="footer-link" href="mailto:info@springbokclinic.ca">info@springbokclinic.ca</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <p>© <span id="footerYear"></span> Springbok Medical Clinic — All Rights Reserved</p>
+
+        <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">↑</button>
+      </div>
+    </footer>
+
+    <!-- CONTACT DOCTOR MODAL (styled like contactModal) -->
+    <div class="modal" id="doctorModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close="true"></div>
+
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="doctorModalTitle">
+        <button class="modal-x" type="button" aria-label="Close" data-close="true">✕</button>
+
+        <div class="modal-head">
+          <div class="modal-eyebrow">Contact</div>
+          <h2 class="modal-title" id="doctorModalTitle">Request an appointment</h2>
+          <p class="modal-sub">
+            Fill this out and our team will route you to the right provider or next step.
+          </p>
+        </div>
+
+        <form class="modal-form" id="doctorContactForm">
+          <div class="modal-grid">
+            <label class="field">
+              <span class="field-label">Full Name</span>
+              <input class="field-input" type="text" name="name" placeholder="Your name" autocomplete="name" required />
+            </label>
+
+            <label class="field">
+              <span class="field-label">Phone Number</span>
+              <input class="field-input" type="tel" name="phone" placeholder="(778) 000-0000" autocomplete="tel" />
+            </label>
+
+            <label class="field field-span">
+              <span class="field-label">Email</span>
+              <input class="field-input" type="email" name="email" placeholder="you@email.com" autocomplete="email"
+                required />
+            </label>
+
+            <!-- Doctor / Service (custom dropdown) -->
+            <div class="field select-field field-dd" data-dd="doctor">
+              <span class="field-label">Doctor</span>
+
+              <button class="dd-btn field-input" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span class="dd-value" data-placeholder="Select one">Select one</span>
+              </button>
+
+              <!-- hidden input keeps your form submission + required validation -->
+              <input type="hidden" name="doctor" id="doctorSelect" required />
+
+              <ul class="dd-menu" role="listbox" aria-label="Doctor / Service">
+                <li class="dd-opt" role="option" data-value="Family Practice">Family Practice</li>
+                <li class="dd-opt" role="option" data-value="Dr. Kacey Kiesman">Dr. Kacey Kiesman</li>
+                <li class="dd-opt" role="option" data-value="Hormone Specialist">Hormone Specialist</li>
+                <li class="dd-opt" role="option" data-value="Naturopathic Medicine">Naturopathic Medicine</li>
+                <li class="dd-opt" role="option" data-value="Plastic Surgery">Plastic Surgery</li>
+                <li class="dd-opt" role="option" data-value="General Inquiry">General Inquiry</li>
+              </ul>
+            </div>
+
+            <!-- Appointment type (custom dropdown) -->
+            <div class="field select-field field-dd" data-dd="appt">
+              <span class="field-label">Appointment type</span>
+
+              <button class="dd-btn field-input" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span class="dd-value" data-placeholder="Select one">Select one</span>
+              </button>
+
+              <input type="hidden" name="apptType" id="apptTypeSelect" required />
+
+              <ul class="dd-menu" role="listbox" aria-label="Appointment type">
+                <li class="dd-opt" role="option" data-value="In-person appointment">In-person appointment</li>
+                <li class="dd-opt" role="option" data-value="Phone call appointment">Phone call appointment</li>
+                <li class="dd-opt" role="option" data-value="Video call appointment">Video call appointment</li>
+                <li class="dd-opt" role="option" data-value="Follow-up appointment">Follow-up appointment</li>
+              </ul>
+            </div>
+
+            <label class="field field-span">
+              <span class="field-label">Subject</span>
+              <input class="field-input" type="text" name="subject" id="subjectInput"
+                placeholder="e.g., Face Lift, Blood Transfusion, IV Therapy, etc..." required />
+            </label>
+
+            <label class="field field-span">
+              <span class="field-label">Message</span>
+              <textarea class="field-input field-textarea" name="message"
+                placeholder="Tell us what you’re looking for and any timing preferences." rows="5" required></textarea>
+            </label>
+          </div>
+
+          <div class="modal-actions">
+            <button class="btn btn-outline" type="button" data-close="true">Cancel</button>
+            <button class="btn btn-accent" type="submit">Send</button>
+          </div>
+
+          <p class="modal-note">
+            If this is urgent, please call the front desk.
+          </p>
+        </form>
       </div>
     </div>
 
-    <div class="container footer-bottom">
-      <p>© <span id="footerYear"></span> Springbok Medical Clinic — All Rights Reserved</p>
+    <script src="js/mobileMenu.js"></script>
+    <script src="js/footer.js"></script>
 
-      <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">↑</button>
-    </div>
-  </footer>
+    <script src="js/contactModal.js"></script>
+    <script src="js/scrollReveal.js"></script>
+    <script src="js/smoothScroll.js"></script>
+    <script src="js/contactDoctorModal.js"></script>
 
-  <!-- SEND A MESSAGE MODAL -->
-  <div class="modal" id="contactModal" aria-hidden="true">
-    <div class="modal-backdrop" data-close="true"></div>
-
-    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
-      <button class="modal-x" type="button" aria-label="Close" data-close="true">
-        ✕
-      </button>
-
-      <div class="modal-head">
-        <div class="modal-eyebrow">Contact</div>
-        <h2 class="modal-title" id="contactModalTitle">Send us a message</h2>
-        <p class="modal-sub">
-          Fill this out and our team will get back to you as soon as possible.
-        </p>
-      </div>
-
-      <form class="modal-form" id="contactForm">
-        <div class="modal-grid">
-          <label class="field">
-            <span class="field-label">Full Name</span>
-            <input class="field-input" type="text" name="name" placeholder="Your name" autocomplete="name" required />
-          </label>
-
-          <label class="field">
-            <span class="field-label">Phone Number</span>
-            <input class="field-input" type="tel" name="phone" placeholder="(778) 000-0000" autocomplete="tel" />
-          </label>
-
-          <label class="field field-span">
-            <span class="field-label">Email</span>
-            <input class="field-input" type="email" name="email" placeholder="you@email.com" autocomplete="email"
-              required />
-          </label>
-
-          <label class="field field-span">
-            <span class="field-label">Subject</span>
-            <input class="field-input" type="text" name="subject" placeholder="How can we help?" required />
-          </label>
-
-          <label class="field field-span">
-            <span class="field-label">Message</span>
-            <textarea class="field-input field-textarea" name="message" placeholder="Write your message..." rows="5"
-              required></textarea>
-          </label>
-        </div>
-
-        <div class="modal-actions">
-          <button class="btn btn-outline" type="button" data-close="true">Cancel</button>
-          <button class="btn btn-accent" type="submit">Send</button>
-        </div>
-
-        <p class="modal-note">
-          By sending, you agree we may contact you about your request.
-        </p>
-      </form>
-    </div>
-  </div>
-
-  <script src="js/mobileMenu.js"></script>
-  <script src="js/footer.js"></script>
-
-  <script src="js/contactModal.js"></script>
-  <script src="js/scrollReveal.js"></script>
-  <script src="js/smoothScroll.js"></script>
 </body>
 
 </html>

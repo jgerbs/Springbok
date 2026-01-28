@@ -39,14 +39,6 @@ html[data-brand="spa"] .mission h2 {
   color: rgba(18, 18, 18, 0.94);
 }
 
-html[data-brand="spa"] .mission-divider {
-  width: 54px;
-  height: 2px;
-  background: rgba(185, 133, 79, 0.85);
-  margin: 16px 0 18px;
-  border-radius: 999px;
-}
-
 html[data-brand="spa"] .mission p {
   margin: 0 0 14px;
   color: rgba(18, 18, 18, 0.70);

@@ -729,8 +729,14 @@ html[data-brand="spa"] .to-top:hover {
 }
 
 /* Reduce side margins on large screens (SPA pages) */
-html[data-brand="spa"] .container {
-  max-width: 80%;
-  padding-left: 24px;
-  padding-right: 24px;
+.spa-divider {
+  width: 33%;
+  height: 2px;
+  margin: 18px 0 22px;
+  border-radius: 2px;
+
+  background: linear-gradient(90deg,
+      rgba(214, 163, 107, 0.95),
+      rgba(214, 163, 107, 0.35),
+      transparent);
 }
