@@ -1,10 +1,7 @@
 /* =========================================================
-   spaTestimonials.css — UPDATED for new standardized review cards
-   Works for BOTH:
-   A) Scroll-snap carousel (.testimonials-shell / .t-track)
-   B) Wheel marquee (.t-wheel / .t-wheel-track)
-   New markup uses:
-   .t-starsTop, .t-personRow, .t-initial, .t-personMeta, .t-sub
+   spaTestimonials.css — UPDATED responsive sizing (3 mostly visible)
+   Keeps desktop cards at 360px, shrinks down in steps like clinic.
+   IMPORTANT: remove the old "flex-basis: 78vw" rule.
    ========================================================= */
 
 /* =========================
@@ -18,13 +15,13 @@ html[data-brand="spa"] .testimonials-head h2 {
   margin: 0 0 18px;
   font-size: clamp(1.6rem, 2.6vw, 2.2rem);
   letter-spacing: -0.02em;
-  color: rgba(18, 18, 18, 0.94);
+  color: rgba(18, 18, 18, .94);
 }
 
 html[data-brand="spa"] .testimonials-shell {
   border-radius: 26px;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, .82);
   box-shadow: var(--shadow);
   padding: 18px;
   overflow: hidden;
@@ -44,8 +41,8 @@ html[data-brand="spa"] .t-track {
 html[data-brand="spa"] .t-card {
   scroll-snap-align: start;
   border-radius: 22px;
-  border: 1px solid rgba(18, 18, 18, 0.10);
-  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(18, 18, 18, .10);
+  background: rgba(255, 255, 255, .88);
   padding: 18px;
   min-height: 230px;
 
@@ -71,10 +68,10 @@ html[data-brand="spa"] .t-starsTop {
   margin-top: 2px;
 }
 
-/* Review text (standardized height) */
+/* Review text */
 html[data-brand="spa"] .t-text {
   margin: 14px 0 0;
-  color: rgba(18, 18, 18, 0.72);
+  color: rgba(18, 18, 18, .72);
   line-height: 1.65;
 
   display: -webkit-box;
@@ -91,12 +88,11 @@ html[data-brand="spa"] .t-personRow {
   gap: 12px;
 }
 
-/* Initial avatar (Google-ish, but spa palette) */
+/* Initial avatar */
 html[data-brand="spa"] .t-initial {
   width: 44px;
   height: 44px;
   border-radius: 14px;
-  /* keeps your spa card geometry */
   display: grid;
   place-items: center;
   font-weight: 950;
@@ -113,7 +109,7 @@ html[data-brand="spa"] .t-personMeta {
 
 html[data-brand="spa"] .t-name {
   font-weight: 900;
-  color: rgba(18, 18, 18, 0.92);
+  color: rgba(18, 18, 18, .92);
   line-height: 1.2;
   white-space: nowrap;
   overflow: hidden;
@@ -122,27 +118,12 @@ html[data-brand="spa"] .t-name {
 
 html[data-brand="spa"] .t-sub {
   margin-top: 4px;
-  color: rgba(18, 18, 18, 0.56);
+  color: rgba(18, 18, 18, .56);
   font-size: .92rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-/* Old elements (safe no-op if still present somewhere) */
-html[data-brand="spa"] .t-top,
-html[data-brand="spa"] .t-avatar,
-html[data-brand="spa"] .t-date,
-html[data-brand="spa"] .t-stars,
-html[data-brand="spa"] .t-verify,
-html[data-brand="spa"] .t-gmark,
-html[data-brand="spa"] .t-more,
-html[data-brand="spa"] .t-feature,
-html[data-brand="spa"] .t-quote,
-html[data-brand="spa"] .t-person,
-html[data-brand="spa"] .t-person-img,
-html[data-brand="spa"] .t-person-name,
-html[data-brand="spa"] .t-person-role {}
 
 /* =========================
    B) TESTIMONIALS “wheel” marquee
@@ -205,30 +186,101 @@ html[data-brand="spa"] .t-wheel-track {
   will-change: transform;
 }
 
-/* Wheel card sizing */
+/* Desktop default: keep your current size */
 html[data-brand="spa"] .t-wheel-track .t-card {
   flex: 0 0 360px;
   min-height: 230px;
 }
 
-/* Pause animation on hover */
+/* Pause on hover */
 html[data-brand="spa"] .t-wheel:hover .t-wheel-track {
   animation-play-state: paused;
 }
 
-/* Responsive */
-@media (max-width: 1050px) {
-  html[data-brand="spa"] .t-wheel {
-    padding: 14px;
-    border-radius: 22px;
+/* =========================
+   Responsive sizing (same idea as clinic)
+   ========================= */
+@media (max-width: 1200px) {
+  html[data-brand="spa"] .t-wheel-track .t-card {
+    flex: 0 0 320px;
+  }
+
+  html[data-brand="spa"] .t-wheel::before,
+  html[data-brand="spa"] .t-wheel::after {
+    width: 90px;
+  }
+}
+
+@media (max-width: 980px) {
+  html[data-brand="spa"] .t-wheel-track {
+    gap: 14px;
+  }
+
+  html[data-brand="spa"] .t-wheel-track .t-card {
+    flex: 0 0 280px;
+    min-height: 210px;
   }
 
   html[data-brand="spa"] .t-wheel::before,
   html[data-brand="spa"] .t-wheel::after {
     width: 70px;
   }
+}
+
+@media (max-width: 780px) {
+  html[data-brand="spa"] .t-wheel {
+    padding: 14px;
+    border-radius: 22px;
+  }
+
+  html[data-brand="spa"] .t-wheel-track {
+    gap: 12px;
+  }
 
   html[data-brand="spa"] .t-wheel-track .t-card {
-    flex-basis: 78vw;
+    flex: 0 0 240px;
+    min-height: 200px;
+  }
+
+  html[data-brand="spa"] .t-wheel::before,
+  html[data-brand="spa"] .t-wheel::after {
+    width: 55px;
+  }
+}
+
+/* Extra small phones: shrink harder so 3 are mostly visible */
+@media (max-width: 520px) {
+  html[data-brand="spa"] .t-wheel {
+    padding: 12px;
+  }
+
+  html[data-brand="spa"] .t-wheel-track {
+    gap: 8px;
+  }
+
+  html[data-brand="spa"] .t-wheel-track .t-card {
+    flex: 0 0 150px;
+    min-height: 165px;
+    padding: 14px;
+  }
+
+  html[data-brand="spa"] .t-starsTop {
+    font-size: .95rem;
+    letter-spacing: .14em;
+  }
+
+  html[data-brand="spa"] .t-text {
+    font-size: .92rem;
+    -webkit-line-clamp: 3;
+  }
+
+  html[data-brand="spa"] .t-initial {
+    width: 36px;
+    height: 36px;
+  }
+
+  html[data-brand="spa"] .t-wheel::before,
+  html[data-brand="spa"] .t-wheel::after {
+    width: 18px;
   }
 }
