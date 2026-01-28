@@ -113,10 +113,16 @@
         isolation: isolate;
     }
 
-    .hero-brand {
-        top: calc(var(--top-pad) + env(safe-area-inset-top));
-        left: calc(var(--edge-pad) + env(safe-area-inset-left));
-    }
+   .hero-brand {
+       top: calc(var(--top-pad) + env(safe-area-inset-top));
+       left: calc(var(--edge-pad) + env(safe-area-inset-left));
+   }
+
+   /* scale down BOTH clinic + spa hero logos on mobile */
+   .hero-logo,
+   .hero-logo--spa {
+       height: clamp(96px, 22vw, 132px);
+   }
 
     .hero-logo {
         height: clamp(96px, 22vw, 132px);
@@ -441,3 +447,4 @@
         color: rgba(0, 0, 0, .95);
     }
 }
+

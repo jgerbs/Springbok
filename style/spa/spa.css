@@ -35,10 +35,13 @@ html[data-brand="spa"] {
   --edge-pad: 48px;
   --top-pad: 18px;
 
-  /* Make SPA logo *visually* match clinic logo size */
-  --spa-logo-min: 170px;
-  --spa-logo-ideal: 12vw;
-  --spa-logo-max: 220px;
+  /* SPA logo sizing (only applied to .hero-logo--spa) */
+  --spa-logo-min: 200px;
+  --spa-logo-ideal: 13vw;
+  --spa-logo-max: 240px;
+
+  /* Nudge the SPA logo anchor left (spa only) */
+  --spa-logo-left-nudge: 14px;
 }
 
 /* Kill base.css’s green-ish background by overriding body entirely */
@@ -248,10 +251,12 @@ html[data-brand="spa"] .hero {
 html[data-brand="spa"] .hero-brand {
   position: absolute;
   top: var(--top-pad);
-  left: var(--edge-pad);
+  left: calc(var(--edge-pad) - var(--spa-logo-left-nudge));
+  /* <-- moved left */
   z-index: 10050;
   pointer-events: auto;
 }
+
 
 /* Clearer backdrop (the one you liked) */
 html[data-brand="spa"] .hero-brand::before {
@@ -273,13 +278,16 @@ html[data-brand="spa"] .hero-brand::before {
   transform: translateZ(0);
 }
 
-/* Slightly larger than clinic so it *looks* same size */
+/* Base hero logo (safe defaults) */
 html[data-brand="spa"] .hero-logo {
-  height: clamp(var(--spa-logo-min), var(--spa-logo-ideal), var(--spa-logo-max));
   width: auto;
   opacity: 0.98;
   filter: drop-shadow(0 14px 32px rgba(0, 0, 0, 0.22));
-  transform: translateX(-16px);
+}
+
+/* ✅ SPA logo only: larger */
+html[data-brand="spa"] .hero-logo--spa {
+  height: clamp(var(--spa-logo-min), var(--spa-logo-ideal), var(--spa-logo-max));
 }
 
 /* Media layer */
@@ -712,6 +720,18 @@ html[data-brand="spa"] .to-top:hover {
   }
 }
 
+@media (max-width: 960px) {
+  html[data-brand="spa"] .hero-brand {
+    top: calc(var(--top-pad) + env(safe-area-inset-top));
+    left: calc(var(--edge-pad) + env(safe-area-inset-left));
+  }
+
+  /* keep your perfect mobile size */
+  html[data-brand="spa"] .hero-logo--spa {
+    height: clamp(96px, 22vw, 132px);
+  }
+}
+
 /* Extra-small: tighten padding a touch */
 @media (max-width: 420px) {
   html[data-brand="spa"] .site-footer {
@@ -739,4 +759,46 @@ html[data-brand="spa"] .to-top:hover {
       rgba(214, 163, 107, 0.95),
       rgba(214, 163, 107, 0.35),
       transparent);
+}
+
+/* =========================================================
+   SPA: make header + hero brand behave EXACTLY like clinic on mobile
+   Put this at the VERY END of spa.css so it wins.
+   ========================================================= */
+@media (max-width: 960px) {
+
+  /* match clinic's mobile tokens */
+  html[data-brand="spa"] {
+    --edge-pad: 16px;
+    --top-pad: 10px;
+  }
+
+  /* match clinic header padding/safe-area */
+  html[data-brand="spa"] .site-header {
+    padding-top: calc(var(--top-pad) + env(safe-area-inset-top));
+    padding-bottom: 10px;
+  }
+
+  /* match clinic "full width pinned row" behavior */
+  html[data-brand="spa"] .header-right {
+    top: calc(var(--top-pad) + env(safe-area-inset-top));
+    right: calc(var(--edge-pad) + env(safe-area-inset-right));
+    left: calc(var(--edge-pad) + env(safe-area-inset-left));
+
+    width: auto;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  /* match clinic hero logo anchor position */
+  html[data-brand="spa"] .hero-brand {
+    top: calc(var(--top-pad) + env(safe-area-inset-top));
+    left: calc(var(--edge-pad) + env(safe-area-inset-left));
+  }
+
+  /* match clinic logo scale rules (and keep your spa looking good) */
+  html[data-brand="spa"] .hero-logo--spa {
+    height: clamp(96px, 22vw, 132px);
+  }
 }
