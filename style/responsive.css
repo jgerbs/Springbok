@@ -1,9 +1,25 @@
 /* =========================================================
-   Mobile Header Overrides (for your fixed overlay header)
-   Drop into responsive.css
+   RESPONSIVE.CSS — Mobile / Tablet Overrides (CLEANED)
+   - NAV + HERO switch at 960px (per request)
+   - Services + Mobile menu blocks also use 960px
+   - Keeps your existing behavior, just organized + consistent
    ========================================================= */
 
-@media (max-width: 860px) {
+/* =========================================================
+   1) NAV / HEADER (fixed overlay header)
+   ========================================================= */
+
+/* Desktop default: hamburger + panel OFF */
+.mobile-only {
+    display: none !important;
+}
+
+.mobile-panel {
+    display: none !important;
+}
+
+/* Mobile/Tablet header behavior */
+@media (max-width: 960px) {
 
     /* tighter edge + top spacing on mobile */
     :root {
@@ -11,36 +27,35 @@
         --top-pad: 10px;
     }
 
-    /* keep your overlay, but ensure safe-area padding */
+    /* overlay header keeps safe-area */
     .site-header {
         padding-top: calc(var(--top-pad) + env(safe-area-inset-top));
         padding-bottom: 10px;
     }
 
-    /* pin cluster with safe-area */
+    /* pin cluster with safe-area; allow it to stretch */
     .header-right {
         top: calc(var(--top-pad) + env(safe-area-inset-top));
         right: calc(var(--edge-pad) + env(safe-area-inset-right));
         left: calc(var(--edge-pad) + env(safe-area-inset-left));
 
-        /* instead of “inline size”, make it stretch */
         width: auto;
         display: flex;
         justify-content: flex-end;
         gap: 10px;
     }
 
-    /* hide pill nav */
+    /* switch: hide desktop pill nav */
     .nav-pill {
-        display: none;
+        display: none !important;
     }
 
-    /* keep actions aligned */
+    /* actions row spacing */
     .header-actions {
         gap: 10px;
     }
 
-    /* Book CTA shrinks nicely */
+    /* CTA shrinks nicely */
     .book-cta {
         padding: 10px 14px;
         font-size: .95rem;
@@ -48,9 +63,9 @@
         box-shadow: 0 18px 45px rgba(0, 0, 0, .45);
     }
 
-    /* show the hamburger */
+    /* switch: show hamburger + allow panel to exist */
     .mobile-only {
-        display: inline-flex;
+        display: inline-flex !important;
         align-items: center;
         justify-content: center;
         width: 44px;
@@ -65,13 +80,18 @@
         line-height: 1;
     }
 
-    /* in case your .icon-btn has weird defaults elsewhere */
+    /* in case .icon-btn has defaults elsewhere */
     .icon-btn.mobile-only {
         padding: 0;
     }
+
+    /* IMPORTANT: allow panel to exist so opacity/transform can animate */
+    .mobile-panel {
+        display: block !important;
+    }
 }
 
-/* Extra-small phones */
+/* Extra-small phones: CTA a touch smaller */
 @media (max-width: 420px) {
     .book-cta {
         padding: 10px 12px;
@@ -79,13 +99,12 @@
     }
 }
 
+
 /* =========================================================
-   Mobile Hero Overrides (works for clinic + staff + spa heroes)
+   2) HERO (clinic + staff + spa heroes)
    ========================================================= */
+@media (max-width: 960px) {
 
-@media (max-width: 860px) {
-
-    /* give hero less top padding since header is tighter on mobile */
     .hero {
         min-height: 78vh;
         padding: 128px 0 44px;
@@ -94,18 +113,15 @@
         isolation: isolate;
     }
 
-    /* logo follows your safe-area + mobile edge pad */
     .hero-brand {
         top: calc(var(--top-pad) + env(safe-area-inset-top));
         left: calc(var(--edge-pad) + env(safe-area-inset-left));
     }
 
-    /* smaller logo so it doesn't dominate */
     .hero-logo {
         height: clamp(96px, 22vw, 132px);
     }
 
-    /* tighten content block */
     .hero-content {
         padding-bottom: 10px;
     }
@@ -115,7 +131,6 @@
         line-height: 1.08;
         letter-spacing: -0.03em;
         max-width: 22ch;
-        /* slightly wider so lines break nicer */
     }
 
     .hero p {
@@ -125,7 +140,6 @@
         margin-bottom: 18px;
     }
 
-    /* stack buttons full width */
     .hero-actions {
         display: grid;
         grid-template-columns: 1fr;
@@ -138,7 +152,6 @@
         min-height: 44px;
     }
 
-    /* slightly stronger overlay on mobile for readability */
     .hero-overlay {
         background:
             radial-gradient(700px 520px at 18% 10%, rgba(18, 192, 138, .16), transparent 60%),
@@ -146,7 +159,6 @@
     }
 }
 
-/* Extra small phones */
 @media (max-width: 420px) {
     .hero {
         min-height: 74vh;
@@ -165,12 +177,10 @@
 
 
 /* =========================================================
-   Mobile Services + Staff Wheel Overrides
+   3) SERVICES + STAFF WHEELS
    ========================================================= */
+@media (max-width: 960px) {
 
-@media (max-width: 860px) {
-
-    /* --- Services section spacing --- */
     .services-tiles {
         padding: 70px 0 84px;
         /* was 90 / 120 */
@@ -185,60 +195,52 @@
         margin-bottom: 20px;
     }
 
-    /* --- Tiles grid: tighter gap on mobile --- */
     .tiles-grid {
         gap: 14px;
     }
 
-    /* --- Tile sizing + padding --- */
     .service-tile {
         height: 360px;
-        /* was 520 (too tall on mobile) */
+        /* was 520 */
         border-radius: 22px;
     }
 
     .tile-inner {
         padding: 18px;
-        /* was 22 */
     }
 
-    /* --- Mobile has no hover: keep content visible --- */
+    /* Mobile has no hover: keep content visible */
     .tile-bottom {
         transform: none;
-        /* remove slide-up dependency */
     }
 
     .tile-desc {
         max-height: none;
-        /* show it */
         opacity: 1;
         margin-top: 6px;
     }
 
-    /* keep hover styles from causing odd jumps on tap */
+    /* avoid hover jumps on tap */
     .service-tile:hover {
         transform: none;
     }
 
     .service-tile:hover .tile-bg {
         transform: scale(1.05);
-        /* basically static */
     }
 
     .service-tile:hover .tile-arrow {
         transform: none;
     }
 
-    /* --- Corner logo: stop pushing it off screen --- */
+    /* Corner logo: stop pushing off screen */
     .service-tile .tile-corner {
         top: 14px;
         right: 14px;
-
         width: 120px;
         height: 56px;
-
         transform: none;
-        /* IMPORTANT: remove your translate(50px,-20px) */
+        /* remove translate(50px,-20px) */
         opacity: .95;
     }
 
@@ -247,9 +249,7 @@
     }
 }
 
-/* Extra small phones */
 @media (max-width: 420px) {
-
     .services-tiles {
         padding: 64px 0 76px;
     }
@@ -271,13 +271,13 @@
 
 
 /* =========================================================
-   Mobile Menu: slide-down + hamburger -> red X
+   4) MOBILE MENU (panel + slide-down card + burger->X)
    ========================================================= */
-@media (max-width: 860px) {
+@media (max-width: 960px) {
 
     /* overlay */
     .mobile-panel {
-        /* BREAK OUT of .container */
+        /* break out of .container */
         max-width: none !important;
         width: 100vw !important;
         padding: 0 !important;
@@ -292,10 +292,8 @@
 
         opacity: 0;
         pointer-events: none;
-
         background: transparent;
 
-        /* blur EVERYTHING behind */
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
 
@@ -307,12 +305,12 @@
         pointer-events: auto;
     }
 
-    /* menu card slides down */
+    /* menu card */
     .mobile-menu {
         width: min(560px, calc(100% - (var(--edge-pad) * 2)));
         margin: calc(var(--top-pad) + env(safe-area-inset-top) + 70px) auto 0;
-        border-radius: 22px;
 
+        border-radius: 22px;
         border: 1px solid rgba(255, 255, 255, .12);
         background: rgba(10, 10, 10, .78);
         box-shadow: 0 24px 80px rgba(0, 0, 0, .55);
@@ -320,6 +318,7 @@
 
         transform: translateY(-14px);
         opacity: 0;
+
         transition:
             transform 260ms cubic-bezier(.2, .9, .2, 1),
             opacity 220ms ease;
@@ -338,6 +337,7 @@
     .mobile-link {
         display: flex;
         align-items: center;
+
         min-height: 48px;
         padding: 12px 14px;
         border-radius: 14px;
@@ -353,13 +353,12 @@
         background: color-mix(in srgb, var(--accent) 14%, transparent);
     }
 
-
     /* lock scroll when open */
     body.menu-open {
         overflow: hidden;
     }
 
-    /* ===== hamburger icon (3 lines) ===== */
+    /* burger icon */
     #mobileMenuBtn {
         position: relative;
     }
@@ -378,6 +377,7 @@
         height: 2px;
         border-radius: 999px;
         background: rgba(255, 255, 255, .9);
+
         transition:
             transform 260ms cubic-bezier(.2, .9, .2, 1),
             opacity 200ms ease,
@@ -418,39 +418,11 @@
     }
 }
 
+
 /* =========================================================
-   Mobile nav enablement (override header defaults)
+   5) SPA MOBILE MENU THEME (light surface)
    ========================================================= */
-
-/* Desktop default: hamburger + panel OFF */
-.mobile-only {
-    display: none !important;
-}
-
-.mobile-panel {
-    display: none !important;
-}
-
-/* Mobile: hamburger ON, desktop nav OFF, panel available */
-@media (max-width: 860px) {
-    .nav-pill {
-        display: none !important;
-    }
-
-    .mobile-only {
-        display: inline-flex !important;
-    }
-
-    /* IMPORTANT: allow panel to exist so opacity/transform can animate */
-    .mobile-panel {
-        display: block !important;
-    }
-}
-
-/* =========================================
-   SPA MOBILE MENU – light surface
-   ========================================= */
-@media (max-width: 860px) {
+@media (max-width: 960px) {
     html[data-brand="spa"] .mobile-menu {
         background: rgba(255, 255, 255, .88);
         border-color: rgba(0, 0, 0, .10);
