@@ -3,6 +3,11 @@
    Keep base.css loaded for resets/buttons/container
    Includes: tokens, body bg, button tweaks, header/nav, hero, footer,
              shared section head helpers
+
+   NOTE:
+   - SPA FOOTER is now styled to match the CLINIC footer layout/behavior
+     (same grid + same breakpoints + same brand behavior)
+   - Only the SPA color scheme differs (light tokens + gold accents)
    ========================================================= */
 
 /* =========================
@@ -53,9 +58,11 @@ html[data-brand="spa"] .btn-outline {
   border-color: var(--line);
   color: rgba(18, 18, 18, 0.86);
 }
+
 html[data-brand="spa"] .btn-outline:hover {
   background: rgba(255, 255, 255, 0.78);
 }
+
 html[data-brand="spa"] .btn-accent {
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   color: rgba(28, 16, 10, 0.92);
@@ -71,12 +78,10 @@ html[data-brand="spa"] .site-header {
   padding: var(--top-pad) 0;
   pointer-events: none;
 
-  background: linear-gradient(
-    180deg,
-    rgba(251, 250, 248, 0.92) 0%,
-    rgba(251, 250, 248, 0.55) 55%,
-    rgba(251, 250, 248, 0) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(251, 250, 248, 0.92) 0%,
+      rgba(251, 250, 248, 0.55) 55%,
+      rgba(251, 250, 248, 0) 100%);
 }
 
 html[data-brand="spa"] .header-right {
@@ -219,8 +224,13 @@ html[data-brand="spa"] .book-cta {
   box-shadow: var(--shadow-soft);
 }
 
-html[data-brand="spa"] .mobile-only { display: none; }
-html[data-brand="spa"] .mobile-panel { display: none; }
+html[data-brand="spa"] .mobile-only {
+  display: none;
+}
+
+html[data-brand="spa"] .mobile-panel {
+  display: none;
+}
 
 /* =========================
    HERO (single clean version)
@@ -330,9 +340,11 @@ html[data-brand="spa"] .hero-actions {
 
 /* =========================
    SHARED SECTION HEAD (reusable)
-   Used by services/testimonials/team etc.
    ========================= */
-html[data-brand="spa"] .section-head { margin-bottom: 22px; max-width: 860px; }
+html[data-brand="spa"] .section-head {
+  margin-bottom: 22px;
+  max-width: 860px;
+}
 
 html[data-brand="spa"] .section-eyebrow {
   display: inline-block;
@@ -365,71 +377,112 @@ html[data-brand="spa"] .section-sub {
   line-height: 1.75;
 }
 
-/* =========================
-   FOOTER (Zone4-inspired) — SPA
-   ========================= */
-html[data-brand="spa"] .site-footer{
+/* =========================================================
+   FOOTER — SPA (MATCHES CLINIC FOOTER LAYOUT/RESPONSIVE)
+   Only the color scheme differs.
+   ========================================================= */
+
+/* Wrapper */
+html[data-brand="spa"] .site-footer {
   margin-top: 80px;
-  padding: 56px 0 22px;
-  color: rgba(18,18,18,.72);
+  padding: clamp(44px, 5vw, 56px) 0 22px;
+  color: rgba(18, 18, 18, .72);
 
   background:
-    radial-gradient(1200px 800px at 20% 0%, rgba(214,163,107,.22), transparent 55%),
-    radial-gradient(900px 700px at 90% 15%, rgba(214,163,107,.14), transparent 60%),
-    linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.96));
-  border-top: 1px solid rgba(18,18,18,.10);
+    radial-gradient(1200px 800px at 20% 0%, rgba(214, 163, 107, .22), transparent 55%),
+    radial-gradient(900px 700px at 90% 15%, rgba(214, 163, 107, .14), transparent 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, .88), rgba(255, 255, 255, .96));
+  border-top: 1px solid rgba(18, 18, 18, .10);
 }
 
-html[data-brand="spa"] .footer-inner{
+/* 5 columns (brand | pages | clinic | spa | contact) */
+html[data-brand="spa"] .footer-inner {
   display: grid;
-  grid-template-columns: 1.1fr 1.6fr 1.1fr;
-  gap: 34px;
+  grid-template-columns:
+    minmax(220px, 1.15fr) minmax(160px, 1fr) minmax(190px, 1fr) minmax(170px, 1fr) minmax(260px, 1.15fr);
+  column-gap: clamp(18px, 3vw, 42px);
+  row-gap: clamp(18px, 2.5vw, 28px);
   align-items: start;
 }
 
-/* Brand */
-html[data-brand="spa"] .footer-brand{ display:flex; flex-direction: column; gap: 18px; }
+/* Flatten the wrapper so the 3 link columns become real grid columns */
+html[data-brand="spa"] .footer-cols {
+  display: contents;
+  position: relative;
+  margin-top: 28px;
+  padding-top: 28px;
+}
 
-html[data-brand="spa"] .footer-logo{
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
+html[data-brand="spa"] .footer-cols::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(18, 18, 18, .10);
+}
+
+/* Safety: allow items to shrink without overflow */
+html[data-brand="spa"] .footer-brand,
+html[data-brand="spa"] .footer-col,
+html[data-brand="spa"] .footer-contact {
+  min-width: 0;
+}
+
+/* ===== Brand ===== */
+html[data-brand="spa"] .footer-brand {
+  align-items: flex-start;
+}
+
+html[data-brand="spa"] .footer-brand-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
   text-decoration: none;
   color: inherit;
 }
 
-html[data-brand="spa"] .footer-logo img{
-  width: 54px;
-  height: 54px;
+html[data-brand="spa"] .footer-brand-logo {
+  width: clamp(140px, 10vw, 190px);
+  height: auto;
+  max-width: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 10px 26px rgba(17,12,8,.18));
+  filter: drop-shadow(0 14px 32px rgba(17, 12, 8, .14));
 }
 
-html[data-brand="spa"] .footer-logo-text strong{
-  display:block;
+html[data-brand="spa"] .footer-brand-type {
+  text-align: left;
+}
+
+html[data-brand="spa"] .footer-brand-name {
   letter-spacing: .08em;
   font-weight: 850;
   font-size: 1.05rem;
-  color: rgba(18,18,18,.92);
+  color: rgba(18, 18, 18, .92);
+  white-space: normal;
 }
-html[data-brand="spa"] .footer-logo-text em{
-  display:block;
+
+html[data-brand="spa"] .footer-brand-sub {
   letter-spacing: .24em;
-  font-style: normal;
   font-weight: 800;
   font-size: .78rem;
-  color: rgba(18,18,18,.56);
+  color: rgba(18, 18, 18, .56);
   margin-top: 2px;
+  white-space: normal;
 }
 
 /* Social */
-html[data-brand="spa"] .footer-social{
-  display:flex;
+html[data-brand="spa"] .footer-social {
+  display: flex;
   gap: 10px;
-  align-items:center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 14px;
 }
 
-html[data-brand="spa"] .social-btn{
+html[data-brand="spa"] .social-btn {
   width: 42px;
   height: 42px;
   border-radius: 999px;
@@ -437,137 +490,247 @@ html[data-brand="spa"] .social-btn{
   place-items: center;
   text-decoration: none;
 
-  border: 1px solid rgba(18,18,18,.14);
-  background: rgba(255,255,255,.60);
+  border: 1px solid rgba(18, 18, 18, .14);
+  background: rgba(255, 255, 255, .60);
   backdrop-filter: blur(14px);
-  color: rgba(18,18,18,.86);
+  -webkit-backdrop-filter: blur(14px);
+  color: rgba(18, 18, 18, .86);
   font-weight: 900;
 
   transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
 }
 
-html[data-brand="spa"] .social-btn:hover{
+html[data-brand="spa"] .social-btn:hover {
   transform: translateY(-2px);
-  background: rgba(214,163,107,.14);
-  border-color: rgba(214,163,107,.34);
-  color: rgba(28,16,10,.92);
+  background: rgba(214, 163, 107, .14);
+  border-color: rgba(214, 163, 107, .34);
+  color: rgba(28, 16, 10, .92);
 }
 
-/* Columns */
-html[data-brand="spa"] .footer-cols{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-}
-
-html[data-brand="spa"] .footer-col h3{
+/* ===== Link Columns ===== */
+html[data-brand="spa"] .footer-col h3 {
   margin: 0 0 12px;
   font-size: .92rem;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: rgba(18,18,18,.92);
+  color: rgba(18, 18, 18, .92);
 }
 
-html[data-brand="spa"] .footer-col a{
+html[data-brand="spa"] .footer-col a {
   display: block;
-  padding: 8px 0;
+  padding: 7px 0;
   text-decoration: none;
-  color: rgba(18,18,18,.62);
+  color: rgba(18, 18, 18, .62);
   font-weight: 650;
-  transition: color .16s ease;
+
+  white-space: normal;
+  overflow-wrap: anywhere;
+
+  transition: color .16s ease, transform .16s ease;
 }
 
-html[data-brand="spa"] .footer-col a:hover{
-  color: rgba(185,133,79,.98);
+html[data-brand="spa"] .footer-col a:hover {
+  color: rgba(185, 133, 79, .98);
+  transform: translateX(2px);
 }
 
-/* Contact */
-html[data-brand="spa"] .footer-contact{
+html[data-brand="spa"] .footer-col+.footer-col {
+  margin-top: 2px;
+}
+
+/* ===== Contact ===== */
+html[data-brand="spa"] .footer-contact {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  justify-self: end;
+  gap: 16px;
   text-align: left;
+  justify-self: stretch;
+
+  position: relative;
+  padding-left: 18px;
 }
 
-html[data-brand="spa"] .footer-contact-title{
+html[data-brand="spa"] .footer-contact::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 1px;
+  background: linear-gradient(180deg,
+      transparent,
+      rgba(18, 18, 18, .18),
+      transparent);
+}
+
+html[data-brand="spa"] .footer-contact-title {
   margin: 0 0 10px;
   font-weight: 850;
-  color: rgba(18,18,18,.92);
+  font-size: .95rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(18, 18, 18, .86);
 }
 
-html[data-brand="spa"] .footer-contact p{
+html[data-brand="spa"] .footer-contact p {
   margin: 0;
-  color: rgba(18,18,18,.64);
   line-height: 1.65;
+  font-size: .92rem;
+  color: rgba(18, 18, 18, .62);
 }
 
-html[data-brand="spa"] .footer-link{
-  color: rgba(18,18,18,.78);
+html[data-brand="spa"] .footer-link {
+  color: rgba(18, 18, 18, .78);
   text-decoration: none;
-  font-weight: 750;
+  font-weight: 780;
+  display: inline-block;
+  margin-top: 6px;
   transition: color .16s ease;
 }
 
-html[data-brand="spa"] .footer-link:hover{
-  color: rgba(185,133,79,.98);
+html[data-brand="spa"] .footer-link:hover {
+  color: rgba(185, 133, 79, .98);
 }
 
-/* Bottom bar */
-html[data-brand="spa"] .footer-bottom{
+html[data-brand="spa"] .footer-contact-block:last-child .footer-link {
+  margin-top: 0;
+  font-size: .96rem;
+  color: rgba(18, 18, 18, .88);
+}
+
+/* ===== Bottom bar ===== */
+html[data-brand="spa"] .footer-bottom {
   margin-top: 28px;
   padding-top: 18px;
-  border-top: 1px solid rgba(18,18,18,.10);
+  border-top: 1px solid rgba(18, 18, 18, .10);
 
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 16px;
 
-  color: rgba(18,18,18,.50);
+  color: rgba(18, 18, 18, .50);
   font-weight: 650;
 }
 
-html[data-brand="spa"] .footer-bottom p{ margin: 0; }
+html[data-brand="spa"] .footer-bottom p {
+  margin: 0;
+}
 
 /* Back to top button */
-html[data-brand="spa"] .to-top{
+html[data-brand="spa"] .to-top {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-
-  border: 1px solid rgba(18,18,18,.14);
-  background: rgba(255,255,255,.60);
-  color: rgba(18,18,18,.86);
+  border: 1px solid rgba(18, 18, 18, .14);
+  background: rgba(255, 255, 255, .60);
+  color: rgba(18, 18, 18, .86);
   font-weight: 900;
-
   cursor: pointer;
+
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
 }
 
-html[data-brand="spa"] .to-top:hover{
+html[data-brand="spa"] .to-top:hover {
   transform: translateY(-2px);
-  background: rgba(214,163,107,.14);
-  border-color: rgba(214,163,107,.34);
-  color: rgba(28,16,10,.92);
+  background: rgba(214, 163, 107, .14);
+  border-color: rgba(214, 163, 107, .34);
+  color: rgba(28, 16, 10, .92);
 }
 
-/* Footer responsive */
-@media (max-width: 1050px){
-  html[data-brand="spa"] .footer-inner{ grid-template-columns: 1fr; }
-  html[data-brand="spa"] .footer-contact{ justify-self: start; }
-  html[data-brand="spa"] .footer-cols{ grid-template-columns: 1fr; }
-  html[data-brand="spa"] .footer-bottom{
+/* =========================
+   BREAKPOINT: switch to ONE-COLUMN footer
+   (prevents weird mid stacking / address overflow)
+   ========================= */
+@media (max-width: 1400px) {
+  html[data-brand="spa"] .footer-inner {
+    grid-template-columns: 1fr;
+  }
+
+  /* stop flattening; make the middle columns a normal stack */
+  html[data-brand="spa"] .footer-cols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* remove vertical divider; add breathing room instead */
+  html[data-brand="spa"] .footer-contact {
+    padding-left: 0;
+    margin-top: 6px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(18, 18, 18, .10);
+  }
+
+  html[data-brand="spa"] .footer-contact::before {
+    display: none;
+  }
+
+  html[data-brand="spa"] .footer-bottom {
     flex-direction: column;
     align-items: flex-start;
+    gap: 12px;
+  }
+
+  /* keep the separator above the link sections */
+  html[data-brand="spa"] .footer-cols::before {
+    display: block;
+  }
+
+  /* BRAND (same behavior as clinic 1-col): logo left, text right, socials under text */
+  html[data-brand="spa"] .footer-brand {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "logo type"
+      "logo socials";
+    column-gap: 20px;
+    row-gap: 8px;
+    align-items: start;
+  }
+
+  html[data-brand="spa"] .footer-brand-stack {
+    display: contents;
+  }
+
+  html[data-brand="spa"] .footer-brand-logo {
+    grid-area: logo;
+    width: clamp(160px, 18vw, 220px);
+  }
+
+  html[data-brand="spa"] .footer-brand-type {
+    grid-area: type;
+  }
+
+  html[data-brand="spa"] .footer-social {
+    grid-area: socials;
+    margin-top: 2px;
+    justify-self: start;
+    align-self: start;
   }
 }
 
-/* Reduce side margins on large screens */
+/* Extra-small: tighten padding a touch */
+@media (max-width: 420px) {
+  html[data-brand="spa"] .site-footer {
+    padding: 42px 0 20px;
+  }
+
+  html[data-brand="spa"] .footer-col h3 {
+    font-size: .88rem;
+  }
+
+  html[data-brand="spa"] .social-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Reduce side margins on large screens (SPA pages) */
 html[data-brand="spa"] .container {
   max-width: 80%;
-  /* was likely ~1100–1200 */
   padding-left: 24px;
   padding-right: 24px;
 }

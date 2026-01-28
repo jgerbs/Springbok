@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="style/base.css" />
   <link rel="stylesheet" href="style/header.css" />
   <link rel="stylesheet" href="style/footer.css" />
+  <link rel="stylesheet" href="style/mission.css" />
 
   <!-- keep hero styling the same as other pages -->
   <link rel="stylesheet" href="style/home.css" />
@@ -20,7 +21,7 @@
   <!-- optional: if you want to reuse existing section head styles -->
   <link rel="stylesheet" href="style/services.css" />
 
-  <!-- NEW: only for the clinic content sections below the hero -->
+  <!-- clinic sections below hero -->
   <link rel="stylesheet" href="style/practice.css" />
 
   <link rel="stylesheet" href="style/responsive.css" />
@@ -85,15 +86,12 @@
       </div>
 
       <div class="container hero-content reveal">
-        <!-- NEW: hero label + big title pattern -->
-        <span class="hero-eyebrow">Clinic Services</span>
-        <h1>Specialties offered at Springbok</h1>
+        <h1>Springbok Clinic Services</h1>
 
         <p>
           Explore areas of care available at our clinic. Some specialties are currently accepting new patients.
         </p>
 
-        <!-- NEW: informational pills (not clickable) -->
         <div class="hero-pills" aria-label="New patient availability legend">
           <span class="status-pill status-pill--open" role="status" aria-label="Accepting new patients">
             Accepting new patients
@@ -102,11 +100,6 @@
             Waitlist / existing patients
           </span>
         </div>
-
-        <!-- <div class="hero-actions">
-          <a class="btn btn-accent" href="SpringbokContact.html">Book / Request</a>
-          <a class="btn btn-outline" href="#clinicServices">Explore Services</a>
-        </div> -->
       </div>
     </section>
 
@@ -119,20 +112,16 @@
           <header class="clinic-head">
             <div class="clinic-head-left">
               <span class="clinic-eyebrow">Family Practice</span>
-              <h3 class="clinic-title">
-                Full-spectrum primary care
-                <span class="status-pill status-pill--wait">Existing patients</span>
-              </h3>
-              <p class="clinic-sub">
-                Prevention-focused care, continuity, and clear action plans.
-              </p>
+              <h3 class="clinic-title">Full-spectrum primary care</h3>
+              <div class="green-divider"></div>
+
+              <p class="clinic-sub">Prevention-focused care, continuity, and clear action plans.</p>
             </div>
 
             <div class="clinic-head-actions">
               <a class="btn btn-accent btn-sm" href="tel:+17780000000">Call front desk</a>
-              <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal data-doctor="Hormone Specialist">
-                Send inquiry
-              </a>
+              <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal data-doctor="Family Practice">Send
+                inquiry</a>
             </div>
           </header>
 
@@ -146,10 +135,6 @@
                 <li>Referrals, requisitions, and follow-ups</li>
                 <li>Ongoing care plans and progress tracking</li>
               </ul>
-
-              <p class="status-note status-note--wait">
-                Not accepting new patients at this time.
-              </p>
             </div>
 
             <div class="clinic-panel clinic-panel--soft">
@@ -157,20 +142,32 @@
 
               <div class="doc-grid" aria-label="Family doctors">
                 <article class="doc-card">
-                  <img class="_tf doc-img" src="resources/doc1.jpg" alt="Dr. Kacey Kiesman" loading="lazy" />
+                  <img class="doc-img" src="resources/doc1.jpg" alt="Dr. Kacey Kiesman" loading="lazy" />
                   <div class="doc-body">
-                    <p class="doc-role">Family Physician</p>
                     <h5 class="doc-name">Dr. Kacey Kiesman</h5>
-                    <a class="btn btn-outline btn-sm" href="SpringbokTeamMember_KaceyKiesman.html">View profile</a>
+                    <span class="doc-inline-status status-pill status-pill--wait" role="status"
+                      aria-label="Not accepting new patients">Existing patients only</span>
+
+                    <div class="doc-actions">
+                      <a class="btn btn-outline btn-sm" href="SpringbokTeamMember_KaceyKiesman.html">View profile</a>
+                      <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal
+                        data-doctor="Dr. Kacey Kiesman">Send inquiry</a>
+                    </div>
                   </div>
                 </article>
 
                 <article class="doc-card">
                   <img class="doc-img" src="resources/doc2.webp" alt="Family physician" loading="lazy" />
                   <div class="doc-body">
-                    <p class="doc-role">Family Physician</p>
                     <h5 class="doc-name">Dr. (Name)</h5>
-                    <a class="btn btn-outline btn-sm" href="SpringbokTeam.html">View profile</a>
+                    <span class="doc-inline-status status-pill status-pill--open" role="status"
+                      aria-label="Accepting new patients">Accepting new patients</span>
+
+                    <div class="doc-actions">
+                      <a class="btn btn-outline btn-sm" href="SpringbokTeam.html">View profile</a>
+                      <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal data-doctor="Dr. (Name)">Send
+                        inquiry</a>
+                    </div>
                   </div>
                 </article>
               </div>
@@ -185,49 +182,24 @@
         <div class="clinic-divider" aria-hidden="true"></div>
 
         <!-- HORMONE SPECIALIST -->
-        <section class="clinic-section reveal" id="hormone">
+        <section class="clinic-section clinic-section--flip reveal" id="hormone">
           <header class="clinic-head">
             <div class="clinic-head-left">
               <span class="clinic-eyebrow">Hormone Specialist</span>
-              <h3 class="clinic-title">
-                Symptom-driven hormone care
-                <span class="status-pill status-pill--wait">Existing patients</span>
-              </h3>
-              <p class="clinic-sub">
-                Thorough assessment, lab review, and individualized plans (where appropriate).
-              </p>
+              <h3 class="clinic-title">Symptom-driven hormone care</h3>
+              <div class="green-divider"></div>
+
+              <p class="clinic-sub">Thorough assessment, lab review, and individualized plans (where appropriate).</p>
             </div>
 
             <div class="clinic-head-actions">
               <a class="btn btn-accent btn-sm" href="tel:+17780000000">Call front desk</a>
-              <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal data-doctor="Hormone Specialist">
-                Send inquiry
-              </a>
+              <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal data-doctor="Hormone Specialist">Send
+                inquiry</a>
             </div>
           </header>
 
           <div class="clinic-body">
-            <!-- Left: provider panel -->
-            <div class="clinic-panel clinic-panel--soft">
-              <h4 class="clinic-mini-title">Provider</h4>
-
-              <div class="doc-grid doc-grid--single" aria-label="Hormone specialist provider">
-                <article class="doc-card">
-                  <img class="doc-img" src="resources/doc3.jpg" alt="Hormone specialist" loading="lazy" />
-                  <div class="doc-body">
-                    <p class="doc-role">Hormone Specialist</p>
-                    <h5 class="doc-name">Dr. (Name)</h5>
-                    <a class="btn btn-outline btn-sm" href="SpringbokTeam.html">View profile</a>
-                  </div>
-                </article>
-              </div>
-
-              <p class="fineprint">
-                Existing patients: please call or send an inquiry for bookings and follow-ups.
-              </p>
-            </div>
-
-            <!-- Right: content panel -->
             <div class="clinic-panel">
               <h4 class="clinic-mini-title">Focus areas</h4>
               <ul class="clinic-bullets">
@@ -237,9 +209,30 @@
                 <li>Lab interpretation + shared decision-making</li>
                 <li>Personalized plan + follow-up pathway</li>
               </ul>
+            </div>
 
-              <p class="status-note status-note--wait">
-                Not accepting new patients at this time.
+            <div class="clinic-panel clinic-panel--soft">
+              <h4 class="clinic-mini-title">Provider</h4>
+
+              <div class="doc-grid doc-grid--single" aria-label="Hormone specialist provider">
+                <article class="doc-card">
+                  <img class="doc-img" src="resources/doc3.jpg" alt="Hormone specialist" loading="lazy" />
+                  <div class="doc-body">
+                    <h5 class="doc-name">Dr. (Name)</h5>
+                    <span class="doc-inline-status status-pill status-pill--wait" role="status"
+                      aria-label="Not accepting new patients">Existing patients</span>
+
+                    <div class="doc-actions">
+                      <a class="btn btn-outline btn-sm" href="SpringbokTeam.html">View profile</a>
+                      <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal
+                        data-doctor="Hormone Specialist">Send inquiry</a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <p class="fineprint">
+                Existing patients: please call or send an inquiry for bookings and follow-ups.
               </p>
             </div>
           </div>
@@ -252,47 +245,21 @@
           <header class="clinic-head">
             <div class="clinic-head-left">
               <span class="clinic-eyebrow">Naturopathic Medicine</span>
-              <h3 class="clinic-title">
-                Integrative, evidence-informed care
-                <span class="status-pill status-pill--open">Accepting new patients</span>
-              </h3>
-              <p class="clinic-sub">
-                Long-term health support with clear next steps.
-              </p>
+              <h3 class="clinic-title">Integrative, evidence-informed care</h3>
+              <div class="green-divider"></div>
+
+              <p class="clinic-sub">Long-term health support with clear next steps.</p>
             </div>
 
             <div class="clinic-head-actions">
               <a class="btn btn-accent btn-sm"
                 href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book" target="_blank"
-                rel="noopener">
-                Book online
-              </a>
+                rel="noopener">Book online</a>
               <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
             </div>
           </header>
 
           <div class="clinic-body">
-            <!-- Left: provider panel -->
-            <div class="clinic-panel clinic-panel--soft">
-              <h4 class="clinic-mini-title">Provider</h4>
-
-              <div class="doc-grid doc-grid--single" aria-label="Naturopathic provider">
-                <article class="doc-card">
-                  <img class="doc-img" src="resources/kacey.jpg" alt="Naturopathic provider" loading="lazy" />
-                  <div class="doc-body">
-                    <p class="doc-role">Naturopathic Medicine</p>
-                    <h5 class="doc-name">Dr. (Name)</h5>
-                    <a class="btn btn-outline btn-sm" href="SpringbokTeam.html">View profile</a>
-                  </div>
-                </article>
-              </div>
-
-              <p class="fineprint">
-                Book online through Jane for available appointment times.
-              </p>
-            </div>
-
-            <!-- Right: content panel -->
             <div class="clinic-panel">
               <h4 class="clinic-mini-title">Common reasons clients visit</h4>
               <ul class="clinic-bullets">
@@ -302,10 +269,29 @@
                 <li>Metabolic health and sustainable weight goals</li>
                 <li>Women’s health & cycle-related concerns</li>
               </ul>
+            </div>
 
-              <p class="status-note status-note--open">
-                Accepting new patients.
-              </p>
+            <div class="clinic-panel clinic-panel--soft">
+              <h4 class="clinic-mini-title">Provider</h4>
+
+              <div class="doc-grid doc-grid--single" aria-label="Naturopathic provider">
+                <article class="doc-card">
+                  <img class="doc-img" src="resources/kacey.jpg" alt="Naturopathic provider" loading="lazy" />
+                  <div class="doc-body">
+                    <h5 class="doc-name">Dr. (Name)</h5>
+                    <span class="doc-inline-status status-pill status-pill--open" role="status"
+                      aria-label="Accepting new patients">Accepting new patients</span>
+
+                    <div class="doc-actions">
+                      <a class="btn btn-outline btn-sm" href="SpringbokTeam.html">View profile</a>
+                      <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal
+                        data-doctor="Naturopathic Medicine">Send inquiry</a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <p class="fineprint">Book online through Jane for available appointment times.</p>
             </div>
           </div>
         </section>
@@ -317,45 +303,19 @@
           <header class="clinic-head">
             <div class="clinic-head-left">
               <span class="clinic-eyebrow">Plastic Surgery</span>
-              <h3 class="clinic-title">
-                Consults & procedures
-                <span class="status-pill status-pill--open">Accepting new patients</span>
-              </h3>
-              <p class="clinic-sub">
-                Safety-first approach and clear expectations.
-              </p>
+              <h3 class="clinic-title">Consults & procedures</h3>
+              <div class="green-divider"></div>
+              <p class="clinic-sub">Safety-first approach and clear expectations.</p>
             </div>
 
             <div class="clinic-head-actions">
               <a class="btn btn-accent btn-sm" href="tel:+17780000000">Call front desk</a>
-              <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal data-doctor="Hormone Specialist">
-                Send inquiry
-              </a>
+              <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal data-doctor="Plastic Surgery">Send
+                inquiry</a>
             </div>
           </header>
 
           <div class="clinic-body">
-            <!-- Left: provider panel -->
-            <div class="clinic-panel clinic-panel--soft">
-              <h4 class="clinic-mini-title">Provider</h4>
-
-              <div class="doc-grid doc-grid--single" aria-label="Plastic surgeon provider">
-                <article class="doc-card">
-                  <img class="doc-img" src="resources/doc4.jpg" alt="Plastic surgeon" loading="lazy" />
-                  <div class="doc-body">
-                    <p class="doc-role">Plastic Surgeon</p>
-                    <h5 class="doc-name">Dr. (Name)</h5>
-                    <a class="btn btn-outline btn-sm" href="SpringbokTeam.html">View profile</a>
-                  </div>
-                </article>
-              </div>
-
-              <p class="fineprint">
-                To book a consult, please call the front desk or send an inquiry.
-              </p>
-            </div>
-
-            <!-- Right: content panel -->
             <div class="clinic-panel">
               <h4 class="clinic-mini-title">Services may include</h4>
               <ul class="clinic-bullets">
@@ -365,10 +325,29 @@
                 <li>Aesthetic surgery pathways and referrals</li>
                 <li>Post-procedure follow-up and support</li>
               </ul>
+            </div>
 
-              <p class="status-note status-note--open">
-                Accepting new patients.
-              </p>
+            <div class="clinic-panel clinic-panel--soft">
+              <h4 class="clinic-mini-title">Provider</h4>
+
+              <div class="doc-grid doc-grid--single" aria-label="Plastic surgeon provider">
+                <article class="doc-card">
+                  <img class="doc-img" src="resources/doc4.jpg" alt="Plastic surgeon" loading="lazy" />
+                  <div class="doc-body">
+                    <h5 class="doc-name">Dr. (Name)</h5>
+                    <span class="doc-inline-status status-pill status-pill--open" role="status"
+                      aria-label="Accepting new patients">Accepting new patients</span>
+
+                    <div class="doc-actions">
+                      <a class="btn btn-outline btn-sm" href="SpringbokTeam.html">View profile</a>
+                      <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal
+                        data-doctor="Plastic Surgery">Send inquiry</a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <p class="fineprint">To book a consult, please call the front desk or send an inquiry.</p>
             </div>
           </div>
         </section>
@@ -384,9 +363,7 @@
           <p>Tell us what you’re looking for and we’ll route you to the right provider or first appointment.</p>
         </div>
         <div class="clinic-cta-actions">
-          <a class="btn btn-accent" href="#" data-open-doctor-modal data-doctor="Hormone Specialist">
-            Send inquiry
-          </a>
+          <a class="btn btn-accent" href="#" data-open-doctor-modal data-doctor="Hormone Specialist">Send inquiry</a>
           <a class="btn btn-outline" href="tel:+17780000000">Call front desk</a>
         </div>
       </div>
@@ -396,45 +373,62 @@
 
   <footer class="site-footer" aria-label="Site footer">
     <div class="container footer-inner reveal">
+      <!-- Left: Brand -->
       <div class="footer-brand">
-        <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
-          <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
+        <div class="footer-brand-top">
+          <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
+            <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
+
+          </a>
+        </div>
+
+        <div class="footer-brand-bottom">
           <div class="footer-brand-type">
             <div class="footer-brand-name">SPRINGBOK</div>
             <div class="footer-brand-sub">MEDICAL CLINIC</div>
           </div>
-        </a>
-
-        <div class="footer-social" aria-label="Social links">
-          <a class="social-btn" href="#" aria-label="Instagram">⌁</a>
-          <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
-          <a class="social-btn" href="#" aria-label="Facebook">f</a>
+          <div class="footer-social" aria-label="Social links">
+            <a class="social-btn" href="#" aria-label="Instagram">⌁</a>
+            <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
+            <a class="social-btn" href="#" aria-label="Facebook">f</a>
+          </div>
         </div>
       </div>
 
+      <!-- Middle: Columns -->
       <div class="footer-cols">
+        <!-- Pages -->
         <div class="footer-col">
           <h3>Pages</h3>
           <a href="index.html">Home</a>
           <a href="SpringbokAbout.html">About Us</a>
+          <a href="SpringbokTeam.html">Our Team</a>
           <a href="SpringbokContact.html">Contact</a>
         </div>
 
+        <!-- Clinic Services (4 main) -->
         <div class="footer-col">
-          <h3>Our Services</h3>
-          <a href="SpringbokClinic.html">Clinic</a>
-          <a href="SpringbokSpa.html">Medical Spa</a>
-          <a href="SpringbokSpaProducts.html">Shop</a>
+          <h3>Clinic Services</h3>
+          <a href="SpringbokClinic.html#family">Family Practice</a>
+          <a href="SpringbokClinic.html#hormone">Hormone Specialist</a>
+          <a href="SpringbokClinic.html#naturopathic">Naturopathic Medicine</a>
+          <a href="SpringbokClinic.html#plastics">Plastic Surgery</a>
         </div>
 
+        <!-- Spa Services (concise set) -->
         <div class="footer-col">
-          <h3>Our Team</h3>
-          <a href="SpringbokTeam.html">Meet the Team</a>
-          <a href="#">Physicians</a>
-          <a href="#">Nursing / Support</a>
+          <h3>Spa Services</h3>
+          <a href="SpringbokSpa.html">Medical Spa</a>
+          <a href="SpringbokSpa.html#injectables">Injectables</a>
+          <a href="SpringbokSpa.html#laser">Laser</a>
+          <a href="SpringbokSpa.html#skin">Skin Treatments</a>
+          <a href="SpringbokSpa.html#body">Body Treatments</a>
         </div>
+
       </div>
 
+
+      <!-- Right: Contact (unchanged) -->
       <div class="footer-contact">
         <div class="footer-contact-block">
           <p class="footer-contact-title">Springbok Medical Clinic</p>
@@ -443,7 +437,7 @@
             North Vancouver, BC<br />
             V7M 1T3
           </p>
-          <a class="footer-link" href="#" target="_blank" rel="noopener">View Directions</a>
+          <a class="footer-link" href="SpringbokContact.html#map">View Directions</a>
         </div>
 
         <div class="footer-contact-block">
@@ -455,6 +449,7 @@
 
     <div class="container footer-bottom">
       <p>© <span id="footerYear"></span> Springbok Medical Clinic — All Rights Reserved</p>
+
       <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">↑</button>
     </div>
   </footer>
@@ -562,6 +557,7 @@
   <script src="js/footer.js"></script>
   <script src="js/scrollReveal.js"></script>
   <script src="js/contactDoctorModal.js"></script>
+  <script src="js/smoothScroll.js"></script>
 
 </body>
 

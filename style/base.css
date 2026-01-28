@@ -71,7 +71,7 @@ html[data-brand="spa"] {
 html,
 body {
   min-height: 100%;
-  height: 100%;
+  height: auto;
   overflow-x: clip;
 
   /* ✅ lock viewport paint to theme (prevents mobile white flash) */
@@ -332,4 +332,12 @@ html[data-brand="spa"] .section-divider {
 
 html[data-brand="spa"] .section-sub {
   color: rgba(20, 20, 20, .70);
+}
+
+.green-divider {
+  width: 33%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  margin: 18px 0 22px;
+  border-radius: 2px;
 }

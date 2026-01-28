@@ -391,3 +391,13 @@ select.field-input:focus {
     /* dark text */
     box-shadow: inset 0 0 0 1px rgba(18, 192, 138, .28);
 }
+
+.modal-dialog {
+    width: min(860px, 100%);
+    max-height: calc(100dvh - 48px);
+    /* respects mobile browser UI */
+    overflow: auto;
+    /* scroll ONLY if needed */
+    -webkit-overflow-scrolling: touch;
+    /* smooth iOS swipe */
+}

@@ -1,9 +1,12 @@
 /* =========================
-   Clinic content sections only
+   practice.css — Clinic page sections only
    (Hero stays controlled by home.css)
    ========================= */
 
-/* HERO additions (minimal, safe) */
+/* ---------------------------------------------------------
+   HERO additions (minimal, safe)
+   --------------------------------------------------------- */
+
 .hero-eyebrow {
     display: inline-block;
     margin-bottom: 10px;
@@ -11,6 +14,7 @@
     letter-spacing: .18em;
     text-transform: uppercase;
     color: var(--accent);
+    font-weight: 600;
 }
 
 .hero-pills {
@@ -25,24 +29,27 @@
     user-select: none;
 }
 
-/* Clinic wrapper */
-.clinic {
+/* ---------------------------------------------------------
+   Clinic wrapper + layout
+   --------------------------------------------------------- */
+
+html[data-brand="clinic"] .clinic {
     padding: 78px 0 40px;
 }
 
-/* “Independent sections” look */
-.clinic-section {
+html[data-brand="clinic"] .clinic-section {
     padding: 18px 0 0;
+    text-rendering: geometricPrecision;
 }
 
-.clinic-divider {
+html[data-brand="clinic"] .clinic-divider {
     height: 1px;
     margin: 34px 0;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .10), transparent);
 }
 
 /* section header row */
-.clinic-head {
+html[data-brand="clinic"] .clinic-head {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -50,128 +57,177 @@
     margin-bottom: 18px;
 }
 
-.clinic-head-left {
+html[data-brand="clinic"] .clinic-head-left {
     max-width: 78ch;
 }
 
-/* green eyebrow + big title pattern */
-.clinic-eyebrow {
-    display: inline-block;
-    margin-bottom: 10px;
-    font-size: .85rem;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: var(--accent);
-}
-
-.clinic-title {
-    margin: 0 0 10px;
-    font-size: clamp(1.55rem, 2.4vw, 2.2rem);
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-}
-
-.clinic-title .status-pill {
-    margin-left: 12px;
-    transform: translateY(-3px);
-}
-
-.clinic-sub {
-    margin: 0;
-    color: var(--muted);
-}
-
-.clinic-head-actions {
+html[data-brand="clinic"] .clinic-head-actions {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
     align-items: center;
 }
 
-/* two-panel body */
-.clinic-body {
+/* two-panel body (default desktop/tablet wide) */
+html[data-brand="clinic"] .clinic-body {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 18px;
 }
 
-/* panels */
-.clinic-panel {
+/* ---------------------------------------------------------
+   Typography (single source of truth)
+   Matches the feel of your other pages
+   --------------------------------------------------------- */
+
+html[data-brand="clinic"] .clinic-eyebrow {
+    display: inline-block;
+    margin-bottom: 12px;
+    font-size: .85rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+html[data-brand="clinic"] .clinic-title {
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    font-size: clamp(2rem, 3.1vw, 2.75rem);
+}
+
+html[data-brand="clinic"] .clinic-title .status-pill {
+    margin-left: 10px;
+    transform: translateY(-2px);
+}
+
+html[data-brand="clinic"] .clinic-sub {
+    margin: 10px 0 0;
+    max-width: 62ch;
+    color: var(--muted);
+    font-size: 1.02rem;
+    line-height: 1.55;
+}
+
+html[data-brand="clinic"] .clinic-mini-title {
+    margin: 0 0 10px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, .92);
+}
+
+html[data-brand="clinic"] .clinic-bullets {
+    margin: 0;
+    padding-left: 18px;
+    color: rgba(255, 255, 255, .86);
+    line-height: 1.6;
+    font-size: .98rem;
+    display: grid;
+    gap: 10px;
+}
+
+html[data-brand="clinic"] .clinic-bullets li+li {
+    margin-top: 0;
+}
+
+html[data-brand="clinic"] .fineprint,
+html[data-brand="clinic"] .status-note {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: .95rem;
+    line-height: 1.5;
+}
+
+/* ---------------------------------------------------------
+   Panels
+   --------------------------------------------------------- */
+
+html[data-brand="clinic"] .clinic-panel {
     border-radius: var(--radius-xl);
     padding: 18px 18px 20px;
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02));
+    background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02));
     box-shadow: var(--shadow-soft);
 }
 
-.clinic-panel--soft {
-    background:
-        radial-gradient(900px 420px at 12% 15%, rgba(18, 192, 138, .10), transparent 58%),
-        linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02));
-}
+/* ---------------------------------------------------------
+   Doctor grid + cards
+   --------------------------------------------------------- */
 
-.clinic-mini-title {
-    margin: 0 0 12px;
-    font-size: 1.02rem;
-}
-
-.clinic-bullets {
-    margin: 0;
-    padding-left: 18px;
+html[data-brand="clinic"] .doc-grid {
     display: grid;
-    gap: 10px;
-    color: rgba(255, 255, 255, .82);
-}
-
-/* Doctor cards */
-.doc-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 14px;
     margin-top: 12px;
 }
 
-.doc-card {
-    border-radius: 22px;
-    overflow: hidden;
-    background: rgba(0, 0, 0, .14);
-    box-shadow: var(--shadow-soft);
+html[data-brand="clinic"] .doc-grid--single {
+    grid-template-columns: 1fr;
 }
 
-.doc-img {
+/* Doctor card becomes a “soft tile” with a hairline, not a hard box */
+html[data-brand="clinic"] .doc-card {
+    border-radius: 22px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, .03);
+    border: 1px solid rgba(255, 255, 255, .08);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .28);
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+html[data-brand="clinic"] .doc-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 44px rgba(0, 0, 0, .36);
+    border-color: rgba(255, 255, 255, .12);
+}
+
+html[data-brand="clinic"] .doc-img {
     width: 100%;
     height: 190px;
     object-fit: cover;
     display: block;
 }
 
-.doc-body {
+/* subtle fade so image blends into body (reduces “two rectangles” feeling) */
+html[data-brand="clinic"] .doc-card .doc-img {
+    mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
+}
+
+html[data-brand="clinic"] .doc-grid--single .doc-img {
+    height: 320px;
+}
+
+html[data-brand="clinic"] .doc-body {
     padding: 14px;
+    display: grid;
+    gap: 10px;
 }
 
-.doc-role {
-    margin: 0 0 6px;
-    color: var(--muted);
-    font-size: .92rem;
-}
-
-.doc-name {
-    margin: 0 0 12px;
+html[data-brand="clinic"] .doc-name {
+    margin: 0;
     font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
 }
 
-/* Small button helper */
-.btn-sm {
-    padding: 10px 12px;
-    font-size: .92rem;
-    border-radius: 14px;
+html[data-brand="clinic"] .doc-inline-status {
+    display: inline-flex;
+    margin: -4px 0 0;
+    font-size: .78rem;
 }
 
-/* =========================
-   Status pills
-   ========================= */
+html[data-brand="clinic"] .doc-body .btn {
+    justify-self: start;
+}
 
-.status-pill {
+/* ---------------------------------------------------------
+   Status pills + note bars
+   --------------------------------------------------------- */
+
+html[data-brand="clinic"] .status-pill {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -182,9 +238,10 @@
     background: rgba(0, 0, 0, .18);
     color: rgba(255, 255, 255, .82);
     vertical-align: middle;
+    border: 1px solid rgba(255, 255, 255, .10);
 }
 
-.status-pill::before {
+html[data-brand="clinic"] .status-pill::before {
     content: "";
     width: 8px;
     height: 8px;
@@ -192,27 +249,29 @@
     background: rgba(255, 255, 255, .35);
 }
 
-.status-pill--open {
+html[data-brand="clinic"] .status-pill--open {
     background: rgba(18, 192, 138, .12);
     color: rgba(255, 255, 255, .92);
+    border-color: rgba(18, 192, 138, .22);
 }
 
-.status-pill--open::before {
+html[data-brand="clinic"] .status-pill--open::before {
     background: var(--accent);
     box-shadow: 0 0 0 4px rgba(18, 192, 138, .14);
 }
 
-.status-pill--wait {
+html[data-brand="clinic"] .status-pill--wait {
     background: rgba(255, 255, 255, .07);
     color: rgba(255, 255, 255, .75);
+    border-color: rgba(255, 255, 255, .10);
 }
 
-.status-pill--wait::before {
+html[data-brand="clinic"] .status-pill--wait::before {
     background: rgba(255, 255, 255, .35);
 }
 
 /* status note bars */
-.status-note {
+html[data-brand="clinic"] .status-note {
     margin: 14px 0 0;
     padding: 10px 12px;
     border-radius: 16px;
@@ -221,35 +280,51 @@
     font-size: .95rem;
 }
 
-.status-note--open {
+html[data-brand="clinic"] .status-note--open {
     background: rgba(18, 192, 138, .10);
 }
 
-.status-note--wait {
+html[data-brand="clinic"] .status-note--wait {
     background: rgba(255, 255, 255, .06);
 }
 
-.fineprint {
+html[data-brand="clinic"] .fineprint {
     margin: 12px 0 0;
     color: rgba(255, 255, 255, .65);
     font-size: .92rem;
 }
 
-/* Single provider card layout (used in bottom 3 sections) */
-.doc-grid--single {
-    grid-template-columns: 1fr;
+/* ---------------------------------------------------------
+   Staff/provider panel: remove outer “card outline”
+   (keeps the common panel boxed; provider feels embedded)
+   --------------------------------------------------------- */
+
+html[data-brand="clinic"] .clinic-panel.clinic-panel--soft {
+    position: relative;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    padding: 8px 6px 0 !important;
 }
 
-.doc-grid--single .doc-img {
-    height: 320px;
+html[data-brand="clinic"] .clinic-panel.clinic-panel--soft::before {
+    content: "";
+    position: absolute;
+    inset: -18px;
+    border-radius: var(--radius-xl);
+    pointer-events: none;
+    opacity: .9;
 }
 
-/* CTA strip */
-.clinic-cta {
+/* ---------------------------------------------------------
+   CTA strip
+   --------------------------------------------------------- */
+
+html[data-brand="clinic"] .clinic-cta {
     padding: 24px 0 86px;
 }
 
-.clinic-cta-inner {
+html[data-brand="clinic"] .clinic-cta-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -262,50 +337,120 @@
     box-shadow: var(--shadow-soft);
 }
 
-.clinic-cta-inner h2 {
+html[data-brand="clinic"] .clinic-cta-inner h2 {
     margin: 0 0 8px;
     font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
-.clinic-cta-inner p {
+html[data-brand="clinic"] .clinic-cta-inner p {
     margin: 0;
     color: rgba(255, 255, 255, .80);
     max-width: 70ch;
+    line-height: 1.55;
 }
 
-.clinic-cta-actions {
+html[data-brand="clinic"] .clinic-cta-actions {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
 }
 
-/* Responsive */
-@media (max-width: 980px) {
-    .clinic-head {
+/* ---------------------------------------------------------
+   Alternate layout: flip columns for sections that opt-in
+   (only when you're actually in 2-col mode)
+   --------------------------------------------------------- */
+
+@media (min-width: 1251px) {
+    html[data-brand="clinic"] .clinic-section--flip .clinic-body> :first-child {
+        order: 2;
+        /* boxed info goes right */
+    }
+
+    html[data-brand="clinic"] .clinic-section--flip .clinic-body> :last-child {
+        order: 1;
+        /* provider/staff goes left */
+    }
+}
+
+/* ---------------------------------------------------------
+   Family Practice: make doctors panel 2/3 (desktop only)
+   --------------------------------------------------------- */
+
+@media (min-width: 1251px) {
+    html[data-brand="clinic"] #family .clinic-body {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    }
+}
+
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
+
+/* ≤ 1250px: stack panels + stack doc cards */
+@media (max-width: 1250px) {
+    html[data-brand="clinic"] .clinic-head {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    .clinic-body {
+    html[data-brand="clinic"] .clinic-body {
         grid-template-columns: 1fr;
     }
 
-    .doc-grid {
+    html[data-brand="clinic"] .doc-grid {
         grid-template-columns: 1fr;
     }
 
-    .doc-grid--single .doc-img {
+    html[data-brand="clinic"] .doc-grid--single .doc-img {
         height: 280px;
     }
 }
 
-@media (max-width: 620px) {
-    .doc-grid--single .doc-img {
+/* ≤ 981px: small tweaks only */
+@media (max-width: 981px) {
+    html[data-brand="clinic"] .doc-grid--single .doc-img {
         height: 240px;
     }
 
-    .clinic-cta-inner {
+    html[data-brand="clinic"] .clinic-cta-inner {
         flex-direction: column;
         align-items: flex-start;
+    }
+}
+
+/* ≤ 620px: optional extra tightening (kept from your earlier version) */
+@media (max-width: 620px) {
+    html[data-brand="clinic"] .doc-grid--single .doc-img {
+        height: 240px;
+    }
+}
+
+/* ---------------------------------------------------------
+   Small-screen button tightening (prevent stacking)
+   --------------------------------------------------------- */
+
+@media (max-width: 620px) {
+
+    /* keep action rows on one line */
+    html[data-brand="clinic"] .clinic-head-actions,
+    html[data-brand="clinic"] .doc-actions,
+    html[data-brand="clinic"] .clinic-cta-actions {
+        flex-wrap: nowrap;
+        gap: 8px;
+    }
+
+    /* shrink buttons slightly */
+    html[data-brand="clinic"] .btn {
+        padding: 6px 10px;
+        font-size: .78rem;
+        border-radius: 999px;
+        white-space: nowrap;
+    }
+
+    /* outline buttons can be a hair tighter */
+    html[data-brand="clinic"] .btn-outline {
+        padding: 6px 9px;
     }
 }

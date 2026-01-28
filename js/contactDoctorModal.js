@@ -79,7 +79,7 @@
   });
 
   // ---------- Modal open/close ----------
-  const openModal = () => {
+  const openModal = (preselectDoctor = "") => {
     lastFocus = document.activeElement;
 
     modal.classList.add("is-open");
@@ -88,6 +88,15 @@
 
     // Force both dropdowns to "Select one" every time
     dropdowns.forEach(resetDropdown);
+
+    // ✅ If this button provided a doctor/service, set it AFTER reset
+    if (preselectDoctor) {
+      const doctorDD = modal.querySelector('.field-dd[data-dd="doctor"]');
+      if (doctorDD) {
+        const opt = doctorDD.querySelector(`.dd-opt[data-value="${CSS.escape(preselectDoctor)}"]`);
+        if (opt) setDropdownValue(doctorDD, preselectDoctor);
+      }
+    }
 
     // Focus first input
     modal.querySelector('input[name="name"]')?.focus();
@@ -104,7 +113,8 @@
   openBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
-      openModal();
+      const preselectDoctor = btn.getAttribute("data-doctor") || "";
+      openModal(preselectDoctor);
     });
   });
 
@@ -113,6 +123,7 @@
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
   });
+
 
   // ---------- "Sending..." / "Sent ✓" submit behavior ----------
   let sending = false;

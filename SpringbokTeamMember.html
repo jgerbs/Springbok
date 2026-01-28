@@ -391,47 +391,60 @@
     <div class="container footer-inner reveal">
       <!-- Left: Brand -->
       <div class="footer-brand">
-        <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
-          <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
+        <div class="footer-brand-top">
+          <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
+            <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
+
+          </a>
+        </div>
+
+        <div class="footer-brand-bottom">
           <div class="footer-brand-type">
             <div class="footer-brand-name">SPRINGBOK</div>
             <div class="footer-brand-sub">MEDICAL CLINIC</div>
           </div>
-        </a>
-
-        <div class="footer-social" aria-label="Social links">
-          <a class="social-btn" href="#" aria-label="Instagram">⌁</a>
-          <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
-          <a class="social-btn" href="#" aria-label="Facebook">f</a>
+          <div class="footer-social" aria-label="Social links">
+            <a class="social-btn" href="#" aria-label="Instagram">⌁</a>
+            <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
+            <a class="social-btn" href="#" aria-label="Facebook">f</a>
+          </div>
         </div>
       </div>
 
       <!-- Middle: Columns -->
       <div class="footer-cols">
+        <!-- Pages -->
         <div class="footer-col">
           <h3>Pages</h3>
           <a href="index.html">Home</a>
           <a href="SpringbokAbout.html">About Us</a>
+          <a href="SpringbokTeam.html">Our Team</a>
           <a href="SpringbokContact.html">Contact</a>
         </div>
 
+        <!-- Clinic Services (4 main) -->
         <div class="footer-col">
-          <h3>Our Services</h3>
-          <a href="SpringbokClinic.html">Clinic</a>
-          <a href="SpringbokSpa.html">Medical Spa</a>
-          <a href="#">Sleep Clinic</a>
-          <a href="#">Concussion Care</a>
+          <h3>Clinic Services</h3>
+          <a href="SpringbokClinic.html#family">Family Practice</a>
+          <a href="SpringbokClinic.html#hormone">Hormone Specialist</a>
+          <a href="SpringbokClinic.html#naturopathic">Naturopathic Medicine</a>
+          <a href="SpringbokClinic.html#plastics">Plastic Surgery</a>
         </div>
 
+        <!-- Spa Services (concise set) -->
         <div class="footer-col">
-          <h3>Our Team</h3>
-          <a href="SpringbokTeam.html">Meet the Team</a>
-          <a href="#">Physicians</a>
-          <a href="#">Nursing / Support</a>
+          <h3>Spa Services</h3>
+          <a href="SpringbokSpa.html">Medical Spa</a>
+          <a href="SpringbokSpa.html#injectables">Injectables</a>
+          <a href="SpringbokSpa.html#laser">Laser</a>
+          <a href="SpringbokSpa.html#skin">Skin Treatments</a>
+          <a href="SpringbokSpa.html#body">Body Treatments</a>
         </div>
+
       </div>
 
-      <!-- Right: Contact -->
+
+      <!-- Right: Contact (unchanged) -->
       <div class="footer-contact">
         <div class="footer-contact-block">
           <p class="footer-contact-title">Springbok Medical Clinic</p>
@@ -440,29 +453,20 @@
             North Vancouver, BC<br />
             V7M 1T3
           </p>
-          <a class="footer-link" href="#" target="_blank" rel="noopener">View Directions</a>
+          <a class="footer-link" href="SpringbokContact.html#map">View Directions</a>
         </div>
 
         <div class="footer-contact-block">
-          <p>
-            <a class="footer-link" href="tel:+17780000000">+1 (778) 000-0000</a>
-          </p>
-          <p>
-            <a class="footer-link" href="mailto:info@springbokclinic.ca">info@springbokclinic.ca</a>
-          </p>
+          <p><a class="footer-link" href="tel:+17780000000">+1 (778) 000-0000</a></p>
+          <p><a class="footer-link" href="mailto:info@springbokclinic.ca">info@springbokclinic.ca</a></p>
         </div>
       </div>
     </div>
 
     <div class="container footer-bottom">
-      <p>
-        © <span id="footerYear"></span> Springbok Medical Clinic — All Rights
-        Reserved
-      </p>
+      <p>© <span id="footerYear"></span> Springbok Medical Clinic — All Rights Reserved</p>
 
-      <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">
-        ↑
-      </button>
+      <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">↑</button>
     </div>
   </footer>
 
@@ -471,6 +475,7 @@
 
   <script src="js/contactModal.js"></script>
   <script src="js/scrollReveal.js"></script>
+  <script src="js/smoothScroll.js"></script>
 
 </body>
 
