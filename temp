@@ -159,3 +159,76 @@
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+    <section class="services-tiles" id="services">
+      <div class="container">
+        <!-- NEW: Services header -->
+        <div class="section-head reveal">
+          <span class="section-eyebrow">Our Services</span>
+          <h2 class="section-title">Care that meets you where you’re at.</h2>
+          <div class="green-divider"></div>
+          <p class="section-sub">
+            Explore specialized clinics and physician-led wellness options —
+            built around clear next steps.
+          </p>
+        </div>
+    
+        <!-- Your existing tiles -->
+        <div class="tiles-grid grid-2 reveal-stagger">
+          <!-- Tile 1 -->
+          <a class="service-tile tile--clinic" href="SpringbokClinic.html" aria-label="Medical Clinic">
+            <div class="tile-bg" style="background-image: url('resources/clinic.jpg')"></div>
+            <div class="tile-shade"></div>
+    
+            <!-- Top-right badge -->
+            <div class="tile-corner">
+              <img src="resources/logo1.png" alt="Springbok Medical Clinic" class="tile-corner-logo" />
+            </div>
+    
+            <div class="tile-inner">
+              <div class="tile-top"></div>
+    
+              <div class="tile-bottom">
+                <h3>Medical Clinic</h3>
+                <p class="tile-desc">
+                  Assessments, diagnostics, and treatment plans tailored to your health goals.
+                </p>
+                <span class="tile-cta">Explore <span class="tile-arrow">→</span></span>
+              </div>
+            </div>
+          </a>
+    
+    
+          <!-- Tile 2 -->
+          <a class="service-tile tile--spa" href="SpringbokSpa.html" aria-label="Medical Spa">
+            <div class="tile-bg" style="background-image: url('resources/spa.webp')"></div>
+            <div class="tile-shade"></div>
+    
+            <!-- Top-right badge -->
+            <div class="tile-corner">
+              <img src="resources/spalogo.png" alt="Springbok Medical Spa" class="tile-corner-logo" />
+            </div>
+    
+            <div class="tile-inner">
+              <div class="tile-top"></div>
+    
+              <div class="tile-bottom">
+                <h3>Medical Spa</h3>
+                <p class="tile-desc">
+                  Physician-led treatments designed to refresh, refine, and restore confidence.
+                </p>
+                <span class="tile-cta">Explore <span class="tile-arrow">→</span></span>
+              </div>
+            </div>
+          </a>
+    
+        </div>
+      </div>
+    </section>

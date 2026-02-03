@@ -1,0 +1,161 @@
+(() => {
+    const slider = document.querySelector("[data-mission-slider]");
+    if (!slider) return;
+
+    const shell = slider.closest(".mission-v2-shell");
+    if (!shell) return;
+
+    // timer bar (span.mission-timer-bar)
+    const bar = shell.querySelector("[data-mission-timer]");
+
+    // arrows (your buttons in the controls row)
+    const nextBtn = shell.querySelector(".mission-next");
+    const prevBtn = shell.querySelector(".mission-prev");
+
+    const items = Array.from(slider.querySelectorAll(".mission-item"));
+    if (!items.length) return;
+
+    const DURATION = 6000; // ms per slide
+    const POSITIONS = ["br", "bl"]; // rotate positions
+
+    let active = items.findIndex((el) => el.classList.contains("is-active"));
+    if (active < 0) active = 0;
+
+    let rafId = null;
+    let lastTs = null;
+    let elapsed = 0;
+    let paused = false;
+    let inView = true;
+
+    function setProgress(p) {
+        if (!bar) return;
+        const clamped = Math.max(0, Math.min(1, p));
+        bar.style.width = `${clamped * 100}%`;
+    }
+
+    function applyPositions() {
+        // assign position based on current DOM order (scales to any slide count)
+        const slides = Array.from(slider.children);
+        slides.forEach((slide, i) => {
+            slide.dataset.pos = POSITIONS[i % POSITIONS.length];
+        });
+    }
+
+    function setActive(idx) {
+        items[active]?.classList.remove("is-active");
+        active = (idx + items.length) % items.length;
+        items[active]?.classList.add("is-active");
+
+        // ensure staggered CSS animations restart reliably
+        void items[active].offsetHeight;
+
+        applyPositions();
+    }
+
+    function next() {
+        setActive(active + 1);
+    }
+
+    function prev() {
+        setActive(active - 1);
+    }
+
+    function resetTimer() {
+        elapsed = 0;
+        lastTs = null;
+        setProgress(0);
+    }
+
+    function tick(ts) {
+        if (!lastTs) lastTs = ts;
+        const dt = ts - lastTs;
+        lastTs = ts;
+
+        if (!paused && inView) {
+            elapsed += dt;
+            setProgress(elapsed / DURATION);
+
+            if (elapsed >= DURATION) {
+                next();
+                resetTimer(); // progress back to 0 after advancing
+            }
+        }
+
+        rafId = requestAnimationFrame(tick);
+    }
+
+    // ---------------------------------------------------------
+    // Controls
+    // ---------------------------------------------------------
+
+    // Pause on hover (desktop) — resumes from same elapsed
+    shell.addEventListener("mouseenter", () => { paused = true; });
+    shell.addEventListener("mouseleave", () => { paused = false; });
+
+    // Pause when not visible — resumes from same elapsed
+    const io = new IntersectionObserver(([entry]) => {
+        inView = entry.isIntersecting;
+    }, { threshold: 0.35 });
+    io.observe(shell);
+
+    // Arrow buttons (don’t hijack autoplay, but do reset timer after manual nav)
+    nextBtn?.addEventListener("click", (e) => {
+        e.preventDefault();
+        next();
+        resetTimer();
+    });
+
+    prevBtn?.addEventListener("click", (e) => {
+        e.preventDefault();
+        prev();
+        resetTimer();
+    });
+
+    // Optional: click anywhere on slide to advance (ignore buttons/links)
+    shell.addEventListener("click", (e) => {
+        if (e.target.closest("a, button")) return;
+        // If you ONLY want arrows, comment out the next 2 lines:
+        next();
+        resetTimer();
+    });
+
+    // Swipe support (touch)
+    let startX = 0, startY = 0, tracking = false;
+
+    shell.addEventListener("touchstart", (e) => {
+        if (!e.touches?.length) return;
+        tracking = true;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+    }, { passive: true });
+
+    shell.addEventListener("touchend", (e) => {
+        if (!tracking) return;
+        tracking = false;
+
+        const t = e.changedTouches?.[0];
+        if (!t) return;
+
+        const dx = t.clientX - startX;
+        const dy = t.clientY - startY;
+
+        if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+
+        if (dx < 0) next();
+        else prev();
+
+        resetTimer();
+    }, { passive: true });
+
+    // Reduced motion
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches) {
+        paused = true;
+        setProgress(1);
+    }
+
+    // Init
+    items.forEach((el, i) => el.classList.toggle("is-active", i === active));
+    applyPositions();
+    setProgress(elapsed / DURATION);
+    rafId = requestAnimationFrame(tick);
+})();

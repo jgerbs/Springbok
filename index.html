@@ -100,50 +100,95 @@
           book directly in seconds.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-accent" href="#">Book Now</a>
+          <a class="btn btn-accent book-cta" href="#" data-open-doctor-modal data-doctor="General Inquiry">
+            Book Clinic
+          </a>
+          
+          <!-- Book Spa goes to Jane -->
+          <a class="btn btn-accent book-cta" href="https://springbokmedicalspa.janeapp.com/" target="_blank" rel="noopener">
+            Book Spa
+          </a>
           <a class="btn btn-outline" href="#services">Explore Services</a>
         </div>
       </div>
     </section>
 
-    <section class="mission">
-      <div class="container mission-grid">
-        <!-- Left: Statement -->
-        <div class="mission-content reveal">
-          <span class="mission-eyebrow">Our Mission</span>
-          <h2>
-            Empowering modern healthcare —
-            <br />with clarity, compassion, and confidence.
-          </h2>
+    <section class="mission-v2" id="mission">
+      <div class="container">
+        <div class="mission-v2-shell reveal">
+          <ul class="mission-slider" data-mission-slider>
+            <!-- Slide 1 -->
+            <li class="mission-item is-active" style="background-image:url('resources/clinic.jpg')">
+              <div class="mission-content">
+                <h2 class="mission-title">ABOUT US</h2>
+                <p class="mission-desc">
+                  Meet the Springbok team and learn how we deliver modern care with clarity,
+                  compassion, and confidence.
+                </p>
+                <a class="btn btn-outline btn-sm" href="SpringbokAbout.html">Learn More</a>
+              </div>
+            </li>
 
-          <div class="green-divider"></div>
+            <!-- Slide 2 -->
+            <li class="mission-item" style="background-image:url('resources/doc1.jpg')">
+              <div class="mission-content">
+                <h2 class="mission-title">FAMILY PRACTICE</h2>
+                <p class="mission-desc">
+                  Primary care for every stage of life — prevention, assessments, ongoing support,
+                  and clear next steps.
+                </p>
+                <a class="btn btn-outline btn-sm" href="SpringbokClinic.html#family-practice">Learn More</a>
+              </div>
+            </li>
 
-          <p>
-            Springbok Medical Clinic blends evidence-based medicine with
-            personalized care to support your health at every stage of life.
-            From specialized clinics to wellness and aesthetics, our approach
-            removes barriers, prioritizes prevention, and delivers clear next
-            steps — without overwhelm.
-          </p>
+            <!-- Slide 3 -->
+            <li class="mission-item" style="background-image:url('resources/doc3.jpg')">
+              <div class="mission-content">
+                <h2 class="mission-title">HORMONE SPECIALIST</h2>
+                <p class="mission-desc">
+                  Personalized hormone support with evidence-based planning and careful follow-up.
+                </p>
+                <a class="btn btn-outline btn-sm" href="SpringbokClinic.html#hormone-specialist">Learn More</a>
+              </div>
+            </li>
 
-          <p>
-            We believe healthcare should feel human, informed, and empowering
-            — never rushed or confusing.
-          </p>
+            <!-- Slide 4 -->
+            <li class="mission-item" style="background-image:url('resources/doc4.jpg')">
+              <div class="mission-content">
+                <h2 class="mission-title">NATUROPATH</h2>
+                <p class="mission-desc">
+                  Root-cause focused care and wellness strategies to support long-term health and energy.
+                </p>
+                <a class="btn btn-outline btn-sm" href="SpringbokClinic.html#naturopath">Learn More</a>
+              </div>
+            </li>
 
-          <a href="SpringbokAbout.html" class="btn btn-outline mission-cta">
-            Learn More About Our Approach
-          </a>
-        </div>
+            <!-- Slide 5 -->
+            <li class="mission-item" style="background-image:url('resources/staff6.jpg')">
+              <div class="mission-content">
+                <h2 class="mission-title">MEDICAL SPA</h2>
+                <p class="mission-desc">
+                  Treatments built around natural confidence — personalized, subtle, and guided by expertise.
+                </p>
+                <a class="btn btn-outline btn-sm" href="SpringbokSpa.html">Explore Spa</a>
+              </div>
+            </li>
+          </ul>
 
-        <!-- Right: Visual / Video Placeholder -->
-        <div class="mission-media reveal">
-          <div class="mission-media-inner">
-            <span class="play-btn" aria-hidden="true">▶</span>
+          <div class="mission-controls" aria-label="Mission controls">
+            <button class="mission-nav-btn mission-prev" aria-label="Previous slide">‹</button>
+
+            <div class="mission-timer" aria-hidden="true">
+              <span class="mission-timer-bar" data-mission-timer></span>
+            </div>
+
+            <button class="mission-nav-btn mission-next" aria-label="Next slide">›</button>
           </div>
+
         </div>
       </div>
     </section>
+
 
     <section class="services-tiles" id="services">
       <div class="container">
@@ -158,56 +203,53 @@
           </p>
         </div>
 
-        <!-- Your existing tiles -->
-        <div class="tiles-grid grid-2 reveal-stagger">
-          <!-- Tile 1 -->
-          <a class="service-tile tile--clinic" href="SpringbokClinic.html" aria-label="Medical Clinic">
-            <div class="tile-bg" style="background-image: url('resources/clinic.jpg')"></div>
-            <div class="tile-shade"></div>
-
-            <!-- Top-right badge -->
-            <div class="tile-corner">
-              <img src="resources/logo1.png" alt="Springbok Medical Clinic" class="tile-corner-logo" />
+        <!-- NEW: Services split rows -->
+        <div class="services-split reveal-stagger">
+        
+          <!-- Row 1: logo left, content right -->
+          <div class="service-split service-split--logo-left reveal">
+            <div class="service-split__logo">
+              <img src="resources/logo1.png" alt="Springbok Medical Clinic" />
             </div>
-
-            <div class="tile-inner">
-              <div class="tile-top"></div>
-
-              <div class="tile-bottom">
-                <h3>Medical Clinic</h3>
-                <p class="tile-desc">
-                  Assessments, diagnostics, and treatment plans tailored to your health goals.
-                </p>
-                <span class="tile-cta">Explore <span class="tile-arrow">→</span></span>
-              </div>
+        
+            <div class="service-split__content">
+              <h3 class="service-split__title">Medical Clinic</h3>
+              <p class="service-split__desc">
+                Assessments, diagnostics, and treatment plans tailored to your health goals.
+              </p>
+        
+              <a class="service-split__btn" href="SpringbokClinic.html">
+                Explore <span aria-hidden="true">→</span>
+              </a>
             </div>
-          </a>
-
-
-          <!-- Tile 2 -->
-          <a class="service-tile tile--spa" href="SpringbokSpa.html" aria-label="Medical Spa">
-            <div class="tile-bg" style="background-image: url('resources/spa.webp')"></div>
-            <div class="tile-shade"></div>
-
-            <!-- Top-right badge -->
-            <div class="tile-corner">
-              <img src="resources/spalogo.png" alt="Springbok Medical Spa" class="tile-corner-logo" />
+        
+            <!-- optional “image pop” layer -->
+            <div class="service-split__pop" style="background-image:url('resources/clinic.jpg')"></div>
+          </div>
+        
+          <!-- Row 2: content left, logo right -->
+          <div class="service-split service-split--logo-right reveal">
+            <div class="service-split__content">
+              <h3 class="service-split__title">Medical Spa</h3>
+              <p class="service-split__desc">
+                Physician-led treatments designed to refresh, refine, and restore confidence.
+              </p>
+        
+              <a class="service-split__btn" href="SpringbokSpa.html">
+                Explore <span aria-hidden="true">→</span>
+              </a>
             </div>
-
-            <div class="tile-inner">
-              <div class="tile-top"></div>
-
-              <div class="tile-bottom">
-                <h3>Medical Spa</h3>
-                <p class="tile-desc">
-                  Physician-led treatments designed to refresh, refine, and restore confidence.
-                </p>
-                <span class="tile-cta">Explore <span class="tile-arrow">→</span></span>
-              </div>
+        
+            <div class="service-split__logo">
+              <img src="resources/spalogo.png" alt="Springbok Medical Spa" class="service-split__logo-img--spa" />
             </div>
-          </a>
-
+        
+            <!-- optional “image pop” layer -->
+            <div class="service-split__pop" style="background-image:url('resources/spa.webp')"></div>
+          </div>
+        
         </div>
+
       </div>
     </section>
 
@@ -720,6 +762,7 @@
   <script src="js/scrollReveal.js"></script>
   <script src="js/smoothScroll.js"></script>
   <script src="js/contactDoctorModal.js"></script>
+  <script src="js/missionSlider.js"></script>
 </body>
 
 </html>
