@@ -181,7 +181,7 @@
    ULTRA-WIDE: 5 cards
    (3 crisp + 2 ghosted behind)
 ---------------------------------- */
-@media (min-width: 2150px) {
+@media (min-width: 2000px) {
     .staff-wheel .service-tile.is-center {
         filter: none;
     }
