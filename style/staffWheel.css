@@ -401,3 +401,81 @@
         transform 260ms ease,
         max-height 320ms ease;
 }
+
+/* =========================================================
+   STAFF WHEEL — CTA spacing (all viewports)
+   ========================================================= */
+
+/* keep inner content above dim overlay */
+.staff-wheel .service-tile .tile-inner {
+    position: relative;
+    z-index: 6;
+}
+
+/* extra bottom room so "Learn More" never feels clipped */
+.staff-wheel .service-tile .tile-bottom {
+    padding-bottom: 16px;
+    /* tweak 12–20px */
+}
+
+.staff-wheel .service-tile .tile-cta {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 10px;
+    padding-bottom: 6px;
+}
+
+
+/* =========================================================
+   STAFF WHEEL — description visibility
+   DEFAULT: only CENTER shows (3-preview mode)
+   ========================================================= */
+
+/* hide on all non-center cards by default */
+.staff-wheel .service-tile:not(.is-center) .tile-desc {
+    opacity: 0;
+    max-height: 0;
+    margin-top: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition:
+        opacity 240ms ease,
+        transform 240ms ease,
+        max-height 300ms ease;
+}
+
+/* center card shows */
+.staff-wheel .service-tile.is-center .tile-desc {
+    opacity: 1;
+    max-height: 140px;
+    margin-top: 8px;
+    transform: translateY(0);
+    pointer-events: auto;
+    transition:
+        opacity 260ms ease,
+        transform 260ms ease,
+        max-height 320ms ease;
+}
+
+
+/* =========================================================
+   ULTRA-WIDE (5-card mode): show for the 3 foreground cards
+   (left + center + right)
+   ========================================================= */
+
+@media (min-width: 2000px) {
+
+    .staff-wheel .service-tile.is-left .tile-desc,
+    .staff-wheel .service-tile.is-right .tile-desc {
+        opacity: 1;
+        max-height: 140px;
+        margin-top: 8px;
+        transform: translateY(0);
+        pointer-events: auto;
+        transition:
+            opacity 260ms ease,
+            transform 260ms ease,
+            max-height 320ms ease;
+    }
+}
