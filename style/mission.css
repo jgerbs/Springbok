@@ -323,8 +323,6 @@
     border-radius: var(--radius-lg);
   }
 
-
-
   .mission-title {
     font-size: clamp(1.35rem, 6vw, 1.85rem);
     margin-bottom: 8px;
@@ -373,4 +371,48 @@
     opacity: 1 !important;
     transform: none !important;
   }
+}
+
+/* Mission storytelling bullets */
+
+.mission-bullets {
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  max-width: 56ch;
+
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.mission-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: .98rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, .84);
+}
+
+.mission-bullets li::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--accent);
+  margin-top: .45em;
+  flex: 0 0 7px;
+  box-shadow: 0 0 0 3px rgba(18, 192, 138, .14);
+}
+
+/* animate bullets in sequence */
+.mission-item.is-active .mission-bullets {
+  animation: missionBodyIn .65s ease .75s forwards;
+}
+
+/* right aligned slides */
+.mission-item[data-pos="br"] .mission-bullets {
+  margin-left: auto;
 }

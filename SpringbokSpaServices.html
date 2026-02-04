@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en" data-brand="spa" data-spa-page="services">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Springbok Medical Spa | Services</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="style/base.css" />
+    <link rel="stylesheet" href="style/spa/spa.css" />
+    <link rel="stylesheet" href="style/spa/spaGrid.css" />
+    <link rel="stylesheet" href="style/spa/spaMission.css" />
+    <link rel="stylesheet" href="style/spa/spaTeam.css" />
+    <link rel="stylesheet" href="style/spa/spaTestimonials.css" />
+    <link rel="stylesheet" href="style/spa/spaService.css" />
+    <link rel="stylesheet" href="style/spa/spaPackages.css" />
+    <link rel="stylesheet" href="style/spa/spaProducts.css" />
+    <link rel="stylesheet" href="style/responsive.css" />
+    <link rel="stylesheet" href="style/practiceModal.css" />
+    <link rel="stylesheet" href="style/spa/spaServicesPage.css" />
+
+</head>
+
+<body>
+    <div class="page-transition" aria-hidden="true">
+        <!-- NAV ONLY (always visible, pinned top-right) -->
+        <header class="site-header" aria-label="Site navigation">
+            <div class="header-right">
+                <nav class="nav-pill" aria-label="Main navigation">
+                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="SpringbokAbout.html">About Us</a>
+                    <a class="nav-link" href="SpringbokClinic.html">Clinic</a>
+                    <a class="nav-link is-active" href="SpringbokSpa.html">Spa</a>
+                    <a class="nav-link" href="SpringbokTeam.html">Our Team</a>
+                    <a class="nav-link" href="SpringbokContact.html">Contact</a>
+                </nav>
+
+                <div class="header-actions">
+                    <a class="btn btn-accent book-cta" href="#" data-open-doctor-modal data-doctor="General Inquiry">
+                        Book Clinic
+                    </a>
+
+                    <!-- Book Spa goes to Jane -->
+                    <a class="btn btn-accent book-cta" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                        rel="noopener">
+                        Book Spa
+                    </a>
+
+                    <!--show only when mobile view is enabled -->
+                    <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open menu"
+                        aria-controls="mobilePanel" aria-expanded="false">
+                        <span class="burger" aria-hidden="true">
+                            <span></span><span></span><span></span>
+                        </span>
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- mobile panel -->
+            <div class="container mobile-panel" id="mobilePanel" aria-hidden="true">
+                <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
+
+                    <nav class="mobile-menu-links" aria-label="Mobile navigation">
+                        <a class="mobile-link" href="index.html">Home</a>
+                        <a class="mobile-link" href="SpringbokAbout.html">About Us</a>
+                        <a class="mobile-link" href="SpringbokClinic.html">Clinic</a>
+                        <a class="mobile-link is-active" href="SpringbokSpa.html">Spa</a>
+                        <a class="mobile-link" href="SpringbokTeam.html">Our Team</a>
+                        <a class="mobile-link" href="SpringbokContact.html">Contact</a>
+                    </nav>
+
+                </div>
+            </div>
+
+        </header>
+
+        <main>
+            <!-- HERO -->
+            <section class="hero">
+                <a class="hero-brand reveal" href="SpringbokSpa.html" aria-label="Springbok Medical Spa Home">
+                    <img src="resources/spalogo2.png" alt="Springbok Medical Spa" class="hero-logo hero-logo--spa" />
+                </a>
+
+                <div class="hero-media" aria-hidden="true">
+                    <video class="hero-video" autoplay muted loop playsinline poster="resources/filler.jpg">
+                        <source src="resources/vecteezy_spa-massage-decoration-and-body-treatment_1790157.mp4"
+                            type="video/mp4" />
+                    </video>
+                    <div class="hero-overlay"></div>
+                </div>
+
+                <div class="container hero-content reveal">
+                    <h1>Elevating confidence — with modern aesthetics and wellness.</h1>
+                    <p>
+                        Physician-led treatments with clear plans and natural results.
+                        Explore services, or book directly in seconds.
+                    </p>
+                    <div class="hero-actions spa-subnav">
+                        <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                            rel="noopener">
+                            Book Now
+                        </a>
+
+                        <a class="btn btn-outline spa-subnav-link spa-subnav-services" href="SpringbokSpaServices.html">
+                            Services
+                        </a>
+
+                        <a class="btn btn-outline spa-subnav-link spa-subnav-packages" href="SpringbokSpaPackages.html">
+                            Packages
+                        </a>
+
+                        <a class="btn btn-outline spa-subnav-link spa-subnav-products" href="SpringbokSpaProducts.html">
+                            Products
+                        </a>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- SERVICES (Stacked list — same slider style, no controls) -->
+            <section class="spa-services-v2">
+                <div class="container">
+                    <div class="section-head reveal">
+                        <span class="section-eyebrow">Our Services</span>
+                        <h2 class="section-title">Treatments designed for real life.</h2>
+                        <div class="spa-divider"></div>
+                        <p class="section-sub">
+                            Explore our core treatments — each designed with clear planning and natural results.
+                        </p>
+                    </div>
+
+                    <div class="services-stack">
+
+                        <!-- 1) IV Therapy -->
+                        <article class="services-v2-shell services-v2-shell--static reveal"
+                            style="--bg:url('../../resources/iv.jpg');">
+                            <div class="services-item-static" aria-hidden="true"></div>
+
+                            <div class="services-content" data-pos="bl">
+                                <h2 class="services-title">IV THERAPY</h2>
+                                <p class="services-desc">
+                                    Hydration and nutrient support delivered with comfort and clinical standards — built
+                                    around your goals
+                                    and schedule.
+                                </p>
+                                <div class="services-actions">
+                                    <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
+                                    <a class="btn btn-accent btn-sm" href="https://springbokmedicalspa.janeapp.com/"
+                                        target="_blank" rel="noopener">Book Now</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- 2) Plasma Pen -->
+                        <article class="services-v2-shell services-v2-shell--static reveal"
+                            style="--bg:url('../../resources/iv.jpg');">
+                            <div class="services-item-static" aria-hidden="true"></div>
+
+                            <div class="services-content" data-pos="br">
+                                <h2 class="services-title">PLASMA PEN</h2>
+                                <p class="services-desc">
+                                    Precision treatment designed to support skin tightening and refinement — with a
+                                    consult-first plan and
+                                    realistic expectations.
+                                </p>
+                                <div class="services-actions">
+                                    <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
+                                    <a class="btn btn-accent btn-sm" href="https://springbokmedicalspa.janeapp.com/"
+                                        target="_blank" rel="noopener">Book Now</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- 3) Microneedling -->
+                        <article class="services-v2-shell services-v2-shell--static reveal"
+                            style="--bg:url('../../resources/filler.jpg');">
+                            <div class="services-item-static" aria-hidden="true"></div>
+
+                            <div class="services-content" data-pos="bl">
+                                <h2 class="services-title">MICRONEEDLING</h2>
+                                <p class="services-desc">
+                                    Collagen-supporting treatment for texture, tone, and overall skin quality — tailored
+                                    by area, depth, and
+                                    downtime preferences.
+                                </p>
+                                <div class="services-actions">
+                                    <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
+                                    <a class="btn btn-accent btn-sm" href="https://springbokmedicalspa.janeapp.com/"
+                                        target="_blank" rel="noopener">Book Now</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- 4) PRP -->
+                        <article class="services-v2-shell services-v2-shell--static reveal"
+                            style="--bg:url('../../resources/filler.jpg');">
+                            <div class="services-item-static" aria-hidden="true"></div>
+
+                            <div class="services-content" data-pos="br">
+                                <h2 class="services-title">PRP</h2>
+                                <p class="services-desc">
+                                    Platelet-rich plasma treatments planned around your goals — designed to support
+                                    natural-looking skin
+                                    revitalization.
+                                </p>
+                                <div class="services-actions">
+                                    <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
+                                    <a class="btn btn-accent btn-sm" href="https://springbokmedicalspa.janeapp.com/"
+                                        target="_blank" rel="noopener">Book Now</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- 5) Morpheus8 -->
+                        <article class="services-v2-shell services-v2-shell--static reveal"
+                            style="--bg:url('../../resources/morph.jpg');">
+                            <div class="services-item-static" aria-hidden="true"></div>
+
+                            <div class="services-content" data-pos="bl">
+                                <h2 class="services-title">MORPHEUS8</h2>
+                                <p class="services-desc">
+                                    Advanced RF microneedling for texture, tone, firmness, and collagen support — with a
+                                    plan tailored to
+                                    your goals.
+                                </p>
+                                <div class="services-actions">
+                                    <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
+                                    <a class="btn btn-accent btn-sm" href="https://springbokmedicalspa.janeapp.com/"
+                                        target="_blank" rel="noopener">Book Now</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- 6) Laser -->
+                        <article class="services-v2-shell services-v2-shell--static reveal"
+                            style="--bg:url('../../resources/after1.png');">
+                            <div class="services-item-static" aria-hidden="true"></div>
+
+                            <div class="services-content" data-pos="br">
+                                <h2 class="services-title">LASER</h2>
+                                <p class="services-desc">
+                                    Comfortable laser treatments with clear series planning — designed for consistent,
+                                    measurable results
+                                    over time.
+                                </p>
+                                <div class="services-actions">
+                                    <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
+                                    <a class="btn btn-accent btn-sm" href="https://springbokmedicalspa.janeapp.com/"
+                                        target="_blank" rel="noopener">Book Now</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- 7) IPL -->
+                        <article class="services-v2-shell services-v2-shell--static reveal"
+                            style="--bg:url('../../resources/filler.jpg');">
+                            <div class="services-item-static" aria-hidden="true"></div>
+
+                            <div class="services-content" data-pos="bl">
+                                <h2 class="services-title">IPL</h2>
+                                <p class="services-desc">
+                                    Intense pulsed light treatments to support tone and clarity — planned with realistic
+                                    downtime and
+                                    results expectations.
+                                </p>
+                                <div class="services-actions">
+                                    <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
+                                    <a class="btn btn-accent btn-sm" href="https://springbokmedicalspa.janeapp.com/"
+                                        target="_blank" rel="noopener">Book Now</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- 8) Botox -->
+                        <article class="services-v2-shell services-v2-shell--static reveal"
+                            style="--bg:url('../../resources/filler.jpg');">
+                            <div class="services-item-static" aria-hidden="true"></div>
+
+                            <div class="services-content" data-pos="br">
+                                <h2 class="services-title">BOTOX</h2>
+                                <p class="services-desc">
+                                    Subtle, balanced results with a consultation-first approach — designed to preserve
+                                    expression while
+                                    refining lines.
+                                </p>
+                                <div class="services-actions">
+                                    <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
+                                    <a class="btn btn-accent btn-sm" href="https://springbokmedicalspa.janeapp.com/"
+                                        target="_blank" rel="noopener">Book Now</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- 9) Filler -->
+                        <article class="services-v2-shell services-v2-shell--static reveal"
+                            style="--bg:url('../../resources/filler.jpg');">
+                            <div class="services-item-static" aria-hidden="true"></div>
+
+                            <div class="services-content" data-pos="bl">
+                                <h2 class="services-title">FILLER</h2>
+                                <p class="services-desc">
+                                    Natural-looking enhancement guided by facial balance and anatomy — with a plan that
+                                    prioritizes subtlety
+                                    and harmony.
+                                </p>
+                                <div class="services-actions">
+                                    <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
+                                    <a class="btn btn-accent btn-sm" href="https://springbokmedicalspa.janeapp.com/"
+                                        target="_blank" rel="noopener">Book Now</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- 10) Naturopathic Medicine -->
+                        <article class="services-v2-shell services-v2-shell--static reveal"
+                            style="--bg:url('../../resources/baf1.jpg');">
+                            <div class="services-item-static" aria-hidden="true"></div>
+
+                            <div class="services-content" data-pos="br">
+                                <h2 class="services-title">NATUROPATHIC MEDICINE</h2>
+                                <p class="services-desc">
+                                    Whole-person support focused on sustainable health — combining root-cause thinking
+                                    with practical,
+                                    realistic next steps.
+                                </p>
+                                <div class="services-actions">
+                                    <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
+                                    <a class="btn btn-accent btn-sm" href="https://springbokmedicalspa.janeapp.com/"
+                                        target="_blank" rel="noopener">Book Now</a>
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- CTA STRIP (Spa) -->
+            <section class="clinic-cta" id="cta">
+                <div class="container clinic-cta-inner reveal">
+                    <div>
+                        <h2>Not sure where to start?</h2>
+                        <p>
+                            Tell us what you’re looking for and we’ll recommend the best first step — from a consult to
+                            the right
+                            treatment plan.
+                        </p>
+                    </div>
+
+                    <div class="clinic-cta-actions">
+                        <a class="btn btn-accent"
+                            href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book#/discipline/21/treatment/101"
+                            target="_blank" rel="noopener">
+                            Book Consult
+                        </a>
+
+                        <a class="btn btn-outline" href="#" data-open-doctor-modal data-doctor="General Inquiry">
+                            Send inquiry
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+
+        </main>
+
+        <footer class="site-footer" aria-label="Site footer">
+            <div class="container footer-inner reveal">
+                <!-- Left: Brand -->
+                <div class="footer-brand">
+                    <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
+                        <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
+                        <div class="footer-brand-type">
+                            <div class="footer-brand-name">SPRINGBOK</div>
+                            <div class="footer-brand-sub">MEDICAL CLINIC</div>
+                        </div>
+                    </a>
+
+                    <div class="footer-social" aria-label="Social links">
+                        <a class="social-btn" href="#" aria-label="Instagram">⌁</a>
+                    </div>
+                </div>
+
+                <!-- Middle: Columns -->
+                <div class="footer-cols">
+                    <!-- Pages -->
+                    <div class="footer-col">
+                        <h3>Pages</h3>
+                        <a href="index.html">Home</a>
+                        <a href="SpringbokAbout.html">About Us</a>
+                        <a href="SpringbokTeam.html">Our Team</a>
+                        <a href="SpringbokContact.html">Contact</a>
+                    </div>
+
+                    <!-- Clinic Services (4 main) -->
+                    <div class="footer-col">
+                        <h3>Clinic Services</h3>
+                        <a href="SpringbokClinic.html#family">Family Practice</a>
+                        <a href="SpringbokClinic.html#hormone">Hormone Specialist</a>
+                        <a href="SpringbokClinic.html#naturopathic">Naturopathic Medicine</a>
+                        <a href="SpringbokClinic.html#plastics">Plastic Surgery</a>
+                    </div>
+
+                    <!-- Spa Services (concise set) -->
+                    <div class="footer-col">
+                        <h3>Spa Services</h3>
+                        <a href="SpringbokSpa.html">Medical Spa</a>
+                        <a href="SpringbokSpa.html#injectables">Injectables</a>
+                        <a href="SpringbokSpa.html#laser">Laser</a>
+                        <a href="SpringbokSpa.html#skin">Skin Treatments</a>
+                        <a href="SpringbokSpa.html#body">Body Treatments</a>
+                    </div>
+
+                </div>
+
+                <!-- Right: Contact -->
+                <div class="footer-contact">
+                    <div class="footer-contact-block">
+                        <p class="footer-contact-title">Springbok Medical Clinic</p>
+                        <p>
+                            147 16th St West, Suite #300<br />
+                            North Vancouver, BC<br />
+                            V7M 1T3
+                        </p>
+                        <a class="footer-link" href="SpringbokContact.html#map">View Directions</a>
+                    </div>
+
+                    <div class="footer-contact-block">
+                        <p>
+                            <a class="footer-link" href="tel:+17780000000">+1 (778) 000-0000</a>
+                        </p>
+                        <p>
+                            <a class="footer-link" href="mailto:info@springbokclinic.ca">info@springbokclinic.ca</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container footer-bottom">
+                <p>
+                    © <span id="footerYear"></span> Springbok Medical Clinic — All Rights
+                    Reserved
+                </p>
+
+                <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">
+                    ↑
+                </button>
+            </div>
+        </footer>
+
+        <!-- CONTACT DOCTOR MODAL (styled like contactModal) -->
+        <div class="modal" id="doctorModal" aria-hidden="true">
+            <div class="modal-backdrop" data-close="true"></div>
+
+            <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="doctorModalTitle">
+                <button class="modal-x" type="button" aria-label="Close" data-close="true">✕</button>
+
+                <div class="modal-head">
+                    <div class="modal-eyebrow">Contact</div>
+                    <h2 class="modal-title" id="doctorModalTitle">Request an appointment</h2>
+                    <p class="modal-sub">
+                        Fill this out and our team will route you to the right provider or next step.
+                    </p>
+                </div>
+
+                <form class="modal-form" id="doctorContactForm">
+                    <div class="modal-grid">
+                        <label class="field">
+                            <span class="field-label">Full Name</span>
+                            <input class="field-input" type="text" name="name" placeholder="Your name"
+                                autocomplete="name" required />
+                        </label>
+
+                        <label class="field">
+                            <span class="field-label">Phone Number</span>
+                            <input class="field-input" type="tel" name="phone" placeholder="(778) 000-0000"
+                                autocomplete="tel" />
+                        </label>
+
+                        <label class="field field-span">
+                            <span class="field-label">Email</span>
+                            <input class="field-input" type="email" name="email" placeholder="you@email.com"
+                                autocomplete="email" required />
+                        </label>
+
+                        <!-- Doctor / Service (custom dropdown) -->
+                        <div class="field select-field field-dd" data-dd="doctor">
+                            <span class="field-label">Doctor</span>
+
+                            <button class="dd-btn field-input" type="button" aria-haspopup="listbox"
+                                aria-expanded="false">
+                                <span class="dd-value" data-placeholder="Select one">Select one</span>
+                            </button>
+
+                            <!-- hidden input keeps your form submission + required validation -->
+                            <input type="hidden" name="doctor" id="doctorSelect" required />
+
+                            <ul class="dd-menu" role="listbox" aria-label="Doctor / Service">
+                                <li class="dd-opt" role="option" data-value="Family Practice">Family Practice</li>
+                                <li class="dd-opt" role="option" data-value="Dr. Kacey Kiesman">Dr. Kacey Kiesman</li>
+                                <li class="dd-opt" role="option" data-value="Hormone Specialist">Hormone Specialist</li>
+                                <li class="dd-opt" role="option" data-value="Naturopathic Medicine">Naturopathic
+                                    Medicine</li>
+                                <li class="dd-opt" role="option" data-value="Plastic Surgery">Plastic Surgery</li>
+                                <li class="dd-opt" role="option" data-value="General Inquiry">General Inquiry</li>
+                            </ul>
+                        </div>
+
+                        <!-- Appointment type (custom dropdown) -->
+                        <div class="field select-field field-dd" data-dd="appt">
+                            <span class="field-label">Appointment type</span>
+
+                            <button class="dd-btn field-input" type="button" aria-haspopup="listbox"
+                                aria-expanded="false">
+                                <span class="dd-value" data-placeholder="Select one">Select one</span>
+                            </button>
+
+                            <input type="hidden" name="apptType" id="apptTypeSelect" required />
+
+                            <ul class="dd-menu" role="listbox" aria-label="Appointment type">
+                                <li class="dd-opt" role="option" data-value="In-person appointment">In-person
+                                    appointment</li>
+                                <li class="dd-opt" role="option" data-value="Phone call appointment">Phone call
+                                    appointment</li>
+                                <li class="dd-opt" role="option" data-value="Video call appointment">Video call
+                                    appointment</li>
+                                <li class="dd-opt" role="option" data-value="Follow-up appointment">Follow-up
+                                    appointment</li>
+                            </ul>
+                        </div>
+
+                        <label class="field field-span">
+                            <span class="field-label">Subject</span>
+                            <input class="field-input" type="text" name="subject" id="subjectInput"
+                                placeholder="e.g., Face Lift, Blood Transfusion, IV Therapy, etc..." required />
+                        </label>
+
+                        <label class="field field-span">
+                            <span class="field-label">Message</span>
+                            <textarea class="field-input field-textarea" name="message"
+                                placeholder="Tell us what you’re looking for and any timing preferences." rows="5"
+                                required></textarea>
+                        </label>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button class="btn btn-outline" type="button" data-close="true">Cancel</button>
+                        <button class="btn btn-accent" type="submit">Send</button>
+                    </div>
+
+                    <p class="modal-note">
+                        If this is urgent, please call 911.
+                    </p>
+                </form>
+            </div>
+        </div>
+
+        <script src="js/mobileMenu.js"></script>
+        <script src="js/footer.js"></script>
+        <script src="js/testimonialsWheel.js"></script>
+        <script src="js/scrollReveal.js"></script>
+        <script src="js/packagesWheel.js"></script>
+        <script src="js/smoothScroll.js"></script>
+        <script src="js/contactDoctorModal.js"></script>
+
+</body>
+
+</html>

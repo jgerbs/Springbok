@@ -1,0 +1,160 @@
+/* =========================================================
+   Services "Stack" — same slider look, but static list
+   ========================================================= */
+
+.services-stack {
+    display: grid;
+    gap: clamp(18px, 2.2vw, 26px);
+}
+
+/* reuse your existing .services-v2-shell visuals,
+   but allow each item to size naturally */
+.services-v2-shell--static {
+    height: auto;
+    min-height: clamp(360px, 44vw, 520px);
+    position: relative;
+}
+
+/* background image layer */
+.services-item-static {
+    position: absolute;
+    inset: 0;
+    background-image: var(--bg);
+    background-size: cover;
+    background-position: center;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    z-index: 1;
+}
+
+/* overlay readability */
+.services-v2-shell--static::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    background:
+        linear-gradient(90deg,
+            rgba(0, 0, 0, .70) 0%,
+            rgba(0, 0, 0, .44) 42%,
+            rgba(0, 0, 0, .16) 72%,
+            rgba(0, 0, 0, .06) 100%),
+        linear-gradient(180deg,
+            rgba(0, 0, 0, .06) 0%,
+            rgba(0, 0, 0, .40) 100%);
+}
+
+/* text layer */
+.services-v2-shell--static .services-content {
+    position: absolute;
+    z-index: 3;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+/* kill any slider "active-only" animations */
+.services-v2-shell--static .services-title,
+.services-v2-shell--static .services-desc,
+.services-v2-shell--static .services-actions {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+}
+
+/* extra guardrail if slider css targets children */
+.services-v2-shell--static .services-content * {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+}
+
+/* position support — bl / br */
+.services-v2-shell--static .services-content[data-pos="bl"] {
+    bottom: clamp(22px, 3.2vw, 36px);
+    left: clamp(18px, 3.2vw, 40px);
+    right: auto;
+    text-align: left;
+    width: min(44vw, 560px);
+    max-width: 560px;
+}
+
+.services-v2-shell--static .services-content[data-pos="br"] {
+    bottom: clamp(22px, 3.2vw, 36px);
+    right: clamp(18px, 3.2vw, 40px);
+    left: auto;
+    text-align: right;
+    width: min(44vw, 560px);
+    max-width: 560px;
+}
+
+/* align buttons on right variant */
+.services-v2-shell--static .services-content[data-pos="br"] .services-actions {
+    justify-content: flex-end;
+}
+
+.services-v2-shell--static .services-content[data-pos="br"] .services-desc {
+    margin-left: auto;
+}
+
+/* mobile */
+@media (max-width: 650px) {
+    .services-v2-shell--static {
+        min-height: clamp(320px, 78vw, 420px);
+        border-radius: var(--radius-lg);
+    }
+
+    .services-v2-shell--static .services-content {
+        left: 14px !important;
+        right: 14px !important;
+        text-align: left !important;
+        width: auto !important;
+        max-width: none !important;
+        bottom: 18px !important;
+    }
+
+    .services-v2-shell--static .services-actions {
+        justify-content: flex-start !important;
+    }
+}
+
+/* CTA strip (reuse clinic look on spa pages) */
+html[data-brand="spa"] .clinic-cta {
+    padding: clamp(70px, 6vw, 110px) 0;
+}
+
+html[data-brand="spa"] .clinic-cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    padding: clamp(20px, 3vw, 28px);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255, 255, 255, .12);
+    background: rgba(255, 255, 255, .04);
+    box-shadow: var(--shadow-soft);
+}
+
+html[data-brand="spa"] .clinic-cta h2 {
+    margin: 0 0 8px;
+}
+
+html[data-brand="spa"] .clinic-cta p {
+    margin: 0;
+    color: rgba(0, 0, 0, 0.72);
+    max-width: 60ch;
+}
+
+html[data-brand="spa"] .clinic-cta-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* mobile */
+@media (max-width: 650px) {
+    html[data-brand="spa"] .clinic-cta-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
