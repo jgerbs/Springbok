@@ -429,6 +429,7 @@ html[data-brand="clinic"] .clinic-cta-actions {
 
 /* ---------------------------------------------------------
    Small-screen button tightening (prevent stacking)
+   ONLY inside the clinic page content areas (NOT header/nav)
    --------------------------------------------------------- */
 
 @media (max-width: 620px) {
@@ -441,16 +442,20 @@ html[data-brand="clinic"] .clinic-cta-actions {
         gap: 8px;
     }
 
-    /* shrink buttons slightly */
-    html[data-brand="clinic"] .btn {
+    /* shrink ONLY the buttons inside those action rows */
+    html[data-brand="clinic"] .clinic-head-actions .btn,
+    html[data-brand="clinic"] .doc-actions .btn,
+    html[data-brand="clinic"] .clinic-cta-actions .btn {
         padding: 6px 10px;
         font-size: .78rem;
         border-radius: 999px;
         white-space: nowrap;
     }
 
-    /* outline buttons can be a hair tighter */
-    html[data-brand="clinic"] .btn-outline {
+    /* outline buttons can be a hair tighter (scoped too) */
+    html[data-brand="clinic"] .clinic-head-actions .btn-outline,
+    html[data-brand="clinic"] .doc-actions .btn-outline,
+    html[data-brand="clinic"] .clinic-cta-actions .btn-outline {
         padding: 6px 9px;
     }
 }

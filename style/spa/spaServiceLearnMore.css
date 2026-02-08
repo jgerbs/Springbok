@@ -1,0 +1,934 @@
+/* =========================================================
+   spaServiceLearnMore.css — SPA Service "Learn More" pages
+   - Hero + quick chips
+   - About cards
+   - Details grid
+   - Options cards
+   - Timeline "what to expect"
+   - Before/after grid
+   - Providers
+   - FAQ accordion
+   ========================================================= */
+
+html[data-brand="spa"] .svc-lm {
+    --svc-text: rgba(18, 18, 18, .92);
+    --svc-muted: rgba(18, 18, 18, .68);
+    --svc-line: rgba(18, 18, 18, .10);
+    --svc-card: rgba(255, 255, 255, .92);
+    --svc-card2: rgba(255, 255, 255, .86);
+    --svc-shadow: 0 22px 70px rgba(0, 0, 0, .18);
+    --svc-shadow-soft: 0 14px 40px rgba(0, 0, 0, .14);
+
+    color: var(--svc-text);
+}
+
+/* =========================
+   HERO
+   ========================= */
+
+html[data-brand="spa"] .svc-hero {
+    position: relative;
+    min-height: clamp(520px, 68vh, 760px);
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: clamp(120px, 10vw, 170px) 0 56px;
+}
+
+html[data-brand="spa"] .svc-hero-media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+html[data-brand="spa"] .svc-hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+html[data-brand="spa"] .svc-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(1200px 650px at 18% 18%, rgba(214, 163, 107, .38), transparent 60%),
+        radial-gradient(900px 600px at 78% 10%, rgba(214, 163, 107, .18), transparent 62%),
+        linear-gradient(to bottom, rgba(0, 0, 0, .55), rgba(0, 0, 0, .38) 45%, rgba(0, 0, 0, .20));
+}
+
+html[data-brand="spa"] .svc-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 860px;
+    color: rgba(255, 255, 255, .94);
+}
+
+html[data-brand="spa"] .svc-kicker {
+    display: inline-block;
+    font-size: .85rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .78);
+    margin-bottom: 10px;
+}
+
+html[data-brand="spa"] .svc-title {
+    font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+    line-height: 1.05;
+    margin: 0 0 12px;
+}
+
+html[data-brand="spa"] .svc-lede {
+    margin: 0 0 18px;
+    max-width: 64ch;
+    color: rgba(255, 255, 255, .86);
+    font-size: 1.04rem;
+    line-height: 1.6;
+}
+
+html[data-brand="spa"] .svc-hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 18px 0 18px;
+}
+
+html[data-brand="spa"] .svc-quick {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 18px;
+}
+
+html[data-brand="spa"] .svc-chip {
+    border: 1px solid rgba(255, 255, 255, .18);
+    background: rgba(0, 0, 0, .22);
+    border-radius: 16px;
+    padding: 12px 12px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+html[data-brand="spa"] .svc-chip-label {
+    display: block;
+    font-size: .72rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .72);
+    margin-bottom: 6px;
+}
+
+html[data-brand="spa"] .svc-chip-val {
+    display: block;
+    font-weight: 600;
+    color: rgba(255, 255, 255, .92);
+}
+
+/* =========================
+   SECTION WRAPPER
+   ========================= */
+
+html[data-brand="spa"] .svc-section {
+    position: relative;
+    padding: clamp(66px, 6vw, 110px) 0;
+    overflow: hidden;
+}
+
+html[data-brand="spa"] .svc-section--alt {
+    background:
+        radial-gradient(900px 520px at 20% 12%, rgba(214, 163, 107, .10), transparent 62%),
+        radial-gradient(900px 520px at 80% 22%, rgba(214, 163, 107, .08), transparent 66%),
+        rgba(255, 255, 255, .55);
+}
+
+html[data-brand="spa"] .svc-note {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    border: 1px solid var(--svc-line);
+    background: rgba(255, 255, 255, .70);
+    color: var(--svc-muted);
+}
+
+html[data-brand="spa"] .svc-mini-cta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+}
+
+/* =========================
+   ABOUT CARDS
+   ========================= */
+
+html[data-brand="spa"] .svc-about-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 18px;
+}
+
+html[data-brand="spa"] .svc-card {
+    grid-column: span 4;
+    background: var(--svc-card);
+    border: 1px solid var(--svc-line);
+    border-radius: 22px;
+    padding: 18px 18px;
+    box-shadow: var(--svc-shadow-soft);
+}
+
+html[data-brand="spa"] .svc-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.05rem;
+}
+
+html[data-brand="spa"] .svc-card--soft {
+    background: rgba(255, 255, 255, .82);
+}
+
+html[data-brand="spa"] .svc-card--highlight {
+    background:
+        radial-gradient(900px 520px at 20% 10%, rgba(214, 163, 107, .20), transparent 62%),
+        rgba(255, 255, 255, .90);
+    border-color: rgba(214, 163, 107, .22);
+}
+
+html[data-brand="spa"] .svc-muted {
+    margin: 0;
+    color: var(--svc-muted);
+    line-height: 1.6;
+}
+
+html[data-brand="spa"] .svc-list {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--svc-muted);
+    line-height: 1.65;
+}
+
+html[data-brand="spa"] .svc-list li {
+    margin: 6px 0;
+}
+
+html[data-brand="spa"] .svc-pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+html[data-brand="spa"] .svc-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(214, 163, 107, .26);
+    background: rgba(214, 163, 107, .10);
+    color: rgba(18, 18, 18, .80);
+    font-weight: 600;
+    font-size: .86rem;
+}
+
+/* =========================
+   DETAILS GRID
+   ========================= */
+
+html[data-brand="spa"] .svc-details-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+}
+
+html[data-brand="spa"] .svc-detail {
+    grid-column: span 4;
+    background: rgba(255, 255, 255, .86);
+    border: 1px solid var(--svc-line);
+    border-radius: 20px;
+    padding: 16px 16px;
+    box-shadow: var(--svc-shadow-soft);
+}
+
+html[data-brand="spa"] .svc-detail h3 {
+    margin: 0 0 8px;
+    font-size: 1.02rem;
+}
+
+html[data-brand="spa"] .svc-detail p {
+    margin: 0;
+    color: var(--svc-muted);
+    line-height: 1.65;
+}
+
+/* =========================================================
+   OPTIONS — square tiles (title/price top, CTA/provider bottom)
+   ========================================================= */
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-options-grid {
+    margin-top: 22px;
+    display: grid;
+    gap: 16px;
+
+    /* 4 across on wide, then 2, then 1 */
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: stretch;
+}
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt {
+    background: rgba(255, 255, 255, .92);
+    border: 1px solid rgba(18, 18, 18, .10);
+    border-radius: 24px;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, .10);
+    overflow: hidden;
+
+    /* square-ish: keeps consistent tile height without forcing true squares */
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 16px;
+}
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt-title {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.15;
+}
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt-price {
+    font-weight: 800;
+    color: rgba(18, 18, 18, .86);
+    background: rgba(214, 163, 107, .14);
+    border: 1px solid rgba(214, 163, 107, .22);
+    padding: 8px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+    font-size: .92rem;
+}
+
+/* content */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt-body {
+    flex: 1;
+}
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt-points {
+    margin: 0;
+    padding-left: 18px;
+    color: rgba(18, 18, 18, .72);
+    line-height: 1.6;
+    font-size: .98rem;
+}
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt-points li {
+    margin: 6px 0;
+}
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt-note {
+    margin: 10px 0 0;
+    color: rgba(18, 18, 18, .68);
+    line-height: 1.6;
+    font-size: .98rem;
+}
+
+/* bottom row */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt-provider {
+    text-align: right;
+    font-size: .82rem;
+    line-height: 1.35;
+    color: rgba(18, 18, 18, .55);
+    max-width: 48%;
+}
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt-provider span {
+    font-weight: 700;
+    color: rgba(18, 18, 18, .62);
+}
+
+/* hover polish */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt {
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt:hover {
+    transform: translateY(-2px);
+    border-color: rgba(214, 163, 107, .22);
+    box-shadow: 0 22px 70px rgba(0, 0, 0, .16);
+}
+
+/* responsiveness */
+@media (max-width: 1200px) {
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-options-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-options-grid {
+        grid-template-columns: 1fr;
+    }
+
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt-provider {
+        max-width: 52%;
+    }
+}
+
+/* =========================
+   WHAT TO EXPECT — clean flow
+   ========================= */
+
+.svc-flow {
+    padding: clamp(80px, 8vw, 120px) 0;
+    background:
+        radial-gradient(900px 520px at 20% 10%, rgba(214, 163, 107, .12), transparent 60%),
+        #faf8f5;
+}
+
+.svc-flow-head {
+    max-width: 640px;
+    margin-bottom: 56px;
+}
+
+.svc-eyebrow {
+    display: inline-block;
+    font-size: .75rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: rgba(18, 18, 18, .55);
+    margin-bottom: 8px;
+}
+
+.svc-flow-head h2 {
+    margin: 0 0 10px;
+    font-size: clamp(2rem, 4vw, 2.6rem);
+}
+
+.svc-flow-head p {
+    margin: 0;
+    color: rgba(18, 18, 18, .65);
+    line-height: 1.6;
+}
+
+/* steps container */
+.svc-flow-steps {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 28px;
+}
+
+/* individual step */
+.svc-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.svc-step-icon {
+    width: 80px;
+    height: 150px;
+    margin-bottom: 14px;
+    opacity: .85;
+}
+
+.svc-step-num {
+    display: block;
+    font-size: .75rem;
+    letter-spacing: .14em;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.svc-step h3 {
+    margin: 0 0 8px;
+    font-size: 1.05rem;
+}
+
+.svc-step p {
+    margin: 0;
+    font-size: .95rem;
+    line-height: 1.6;
+    color: rgba(18, 18, 18, .65);
+}
+
+/* arrows */
+.svc-arrow {
+    width: 28px;
+    height: 28px;
+    opacity: .5;
+    align-self: center;
+}
+
+.svc-arrow--mobile {
+    display: none;
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 1010px) {
+    .svc-flow-steps {
+        flex-direction: column;
+        align-items: center;
+        gap: 26px;
+    }
+
+    .svc-step {
+        max-width: 420px;
+    }
+
+    .svc-arrow--desktop {
+        display: none;
+    }
+
+    .svc-arrow--mobile {
+        display: block;
+    }
+}
+
+/* =========================
+   BEFORE/AFTER
+   ========================= */
+
+html[data-brand="spa"] .ba-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+}
+
+html[data-brand="spa"] .ba-card {
+    grid-column: span 6;
+    margin: 0;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--svc-line);
+    background: rgba(255, 255, 255, .90);
+    box-shadow: var(--svc-shadow-soft);
+}
+
+html[data-brand="spa"] .ba-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 220px;
+}
+
+html[data-brand="spa"] .ba-img {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    min-height: 220px;
+}
+
+html[data-brand="spa"] .ba-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: inline-flex;
+    padding: 8px 10px;
+    border-radius: 999px;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .92);
+    background: rgba(0, 0, 0, .40);
+    border: 1px solid rgba(255, 255, 255, .16);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+html[data-brand="spa"] .ba-cap {
+    padding: 14px 16px;
+    color: var(--svc-muted);
+    line-height: 1.55;
+}
+
+/* =========================
+   PROVIDERS
+   ========================= */
+
+html[data-brand="spa"] .svc-provider-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+}
+
+html[data-brand="spa"] .svc-provider {
+    grid-column: span 6;
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 14px;
+    border-radius: 24px;
+    border: 1px solid var(--svc-line);
+    background: rgba(255, 255, 255, .92);
+    box-shadow: var(--svc-shadow-soft);
+    overflow: hidden;
+}
+
+html[data-brand="spa"] .svc-provider-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 170px;
+}
+
+html[data-brand="spa"] .svc-provider-body {
+    padding: 16px 16px 16px 0;
+    align-self: center;
+}
+
+html[data-brand="spa"] .svc-provider-body h3 {
+    margin: 0 0 6px;
+}
+
+html[data-brand="spa"] .svc-provider-body p {
+    margin: 0 0 12px;
+    color: var(--svc-muted);
+    line-height: 1.55;
+}
+
+html[data-brand="spa"] .svc-provider-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+html[data-brand="spa"] .svc-bottom-cta {
+    margin-top: 18px;
+}
+
+html[data-brand="spa"] .svc-bottom-cta-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    padding: 18px;
+    border-radius: 26px;
+    border: 1px solid rgba(214, 163, 107, .22);
+    background:
+        radial-gradient(900px 520px at 16% 10%, rgba(214, 163, 107, .18), transparent 62%),
+        rgba(255, 255, 255, .90);
+    box-shadow: var(--svc-shadow-soft);
+}
+
+html[data-brand="spa"] .svc-bottom-cta-inner h3 {
+    margin: 0 0 6px;
+}
+
+html[data-brand="spa"] .svc-bottom-cta-inner p {
+    margin: 0;
+    color: var(--svc-muted);
+}
+
+/* =========================
+   FAQ
+   ========================= */
+
+html[data-brand="spa"] .svc-faq {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+html[data-brand="spa"] .svc-faq-item {
+    border-radius: 20px;
+    border: 1px solid var(--svc-line);
+    background: rgba(255, 255, 255, .92);
+    box-shadow: var(--svc-shadow-soft);
+    overflow: hidden;
+}
+
+html[data-brand="spa"] .svc-faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 16px 16px;
+    font-weight: 700;
+    position: relative;
+}
+
+html[data-brand="spa"] .svc-faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+html[data-brand="spa"] .svc-faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(214, 163, 107, .22);
+    background: rgba(214, 163, 107, .12);
+    color: rgba(18, 18, 18, .78);
+}
+
+html[data-brand="spa"] .svc-faq-item[open] summary::after {
+    content: "–";
+}
+
+html[data-brand="spa"] .svc-faq-body {
+    padding: 0 16px 16px;
+    color: var(--svc-muted);
+    line-height: 1.7;
+}
+
+/* =========================
+   BUTTON SIZING (fits well in grids)
+   ========================= */
+
+html[data-brand="spa"] .btn.btn-sm {
+    padding: 10px 12px;
+    font-size: .9rem;
+    border-radius: 999px;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 1024px) {
+    html[data-brand="spa"] .svc-quick {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    html[data-brand="spa"] .svc-card {
+        grid-column: span 6;
+    }
+
+    html[data-brand="spa"] .svc-detail {
+        grid-column: span 6;
+    }
+
+    html[data-brand="spa"] .svc-option {
+        grid-column: span 6;
+    }
+
+    html[data-brand="spa"] .ba-card {
+        grid-column: span 12;
+    }
+
+    html[data-brand="spa"] .svc-provider {
+        grid-column: span 12;
+    }
+
+    html[data-brand="spa"] .svc-list--two {
+        columns: 1;
+    }
+}
+
+@media (max-width: 640px) {
+    html[data-brand="spa"] .svc-hero {
+        padding: 110px 0 46px;
+    }
+
+    html[data-brand="spa"] .svc-hero-actions {
+        gap: 10px;
+    }
+
+    html[data-brand="spa"] .svc-chip {
+        border-radius: 14px;
+        padding: 11px 11px;
+    }
+
+    html[data-brand="spa"] .svc-provider {
+        grid-template-columns: 1fr;
+    }
+
+    html[data-brand="spa"] .svc-provider-body {
+        padding: 14px 14px 16px;
+    }
+
+    html[data-brand="spa"] .svc-bottom-cta-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    html[data-brand="spa"] .ba-compare {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
+   MOBILE READABILITY FIXES (Learn More)
+   - better typography scaling
+   - options grid becomes 1-col on phones
+   - more padding, better button sizing
+   ========================================================= */
+
+/* Global text safety for this page */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-lm {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* Section head readability */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .section-sub {
+    max-width: 62ch;
+    line-height: 1.65;
+}
+
+/* Options grid: keep it readable across widths */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-options {
+    /* default is fine on desktop, but give a minimum so cards don't get too skinny */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* Card typography + spacing */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-option {
+    padding: 18px 18px;
+}
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-option h3 {
+    font-size: clamp(1.05rem, 2.2vw, 1.2rem);
+    line-height: 1.15;
+    margin-bottom: 8px;
+}
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-option p {
+    font-size: clamp(.98rem, 2.05vw, 1.05rem);
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+/* Buttons: keep them comfy, never microscopic */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-option .btn {
+    padding: 10px 14px;
+    font-size: .92rem;
+    white-space: nowrap;
+}
+
+/* --- Breakpoints that matter --- */
+
+/* Small tablets / large phones: 2 columns if possible */
+@media (max-width: 720px) {
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-options {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-option {
+        padding: 16px 16px;
+    }
+}
+
+/* Phones: go 1 column so everything is readable */
+@media (max-width: 520px) {
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-options {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-option {
+        border-radius: 24px;
+        padding: 18px 18px;
+    }
+
+    /* give the paragraph more breathing room */
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-option p {
+        margin-bottom: 16px;
+    }
+
+    /* optional: make CTA full-width for thumb reach */
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-option .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Very small phones: tighten without shrinking text too far */
+@media (max-width: 380px) {
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-option {
+        padding: 16px 16px;
+    }
+}
+
+/* =========================================================
+   HARD LAYOUT OVERRIDES — ABOUT + DETAILS
+   Match your drawings:
+   ABOUT: 3 across → stack (1 col)
+   DETAILS: 6 across → 2 cols (2x3) → stack (1 col)
+   Also fixes the "big empty gaps" by forcing cards to fill columns.
+   ========================================================= */
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-about-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 16px !important;
+    align-items: stretch !important;
+}
+
+/* CRITICAL: remove any max-width / spanning that causes whitespace */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-about-grid>.svc-card {
+    width: 100% !important;
+    max-width: none !important;
+    grid-column: auto !important;
+    justify-self: stretch !important;
+    align-self: stretch !important;
+}
+
+@media (max-width: 920px) {
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-about-grid {
+        grid-template-columns: 1fr !important;
+        /* 3 vertically */
+    }
+}
+
+/* ---------------- DETAILS ---------------- */
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-details-grid {
+    display: grid !important;
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+    align-items: stretch !important;
+}
+
+/* CRITICAL: kill any old "span" rules so 6 across actually happens */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-details-grid>.svc-detail {
+    width: 100% !important;
+    max-width: none !important;
+    grid-column: auto !important;
+    justify-self: stretch !important;
+    align-self: stretch !important;
+}
+
+@media (max-width: 1200px) {
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-details-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        /* 2 by 3 */
+    }
+}
+
+@media (max-width: 560px) {
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-details-grid {
+        grid-template-columns: 1fr !important;
+        /* 6 vertically */
+    }
+}
+
+/* Optional: make the detail cards look more "chip-like" on wide 6-across */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-details-grid>.svc-detail {
+    padding: 14px 14px;
+    border-radius: 18px;
+}

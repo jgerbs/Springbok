@@ -405,3 +405,53 @@ html[data-brand="spa"] .services-viewall {
     transform: none !important;
   }
 }
+
+/* =========================================================
+   SPA SERVICES v2 — prevent ultra-wide "rectangle" distortion
+   Applies to: html[data-brand="spa"] .services-v2-shell
+   ========================================================= */
+
+/* Cap width so the slider never becomes a super-wide banner */
+html[data-brand="spa"] .services-v2-shell {
+  max-width: 1600px;
+  /* tweak: 1400–1700 depending on your taste */
+  margin: 0 auto;
+}
+
+/* Use aspect-ratio so height scales naturally with width */
+@supports (aspect-ratio: 1 / 1) {
+  html[data-brand="spa"] .services-v2-shell {
+    height: auto;
+    /* override the clamp height */
+    aspect-ratio: 16 / 9;
+    /* great default for people photos */
+    min-height: 420px;
+    /* keep presence */
+    max-height: 620px;
+    /* prevents it getting too tall */
+  }
+}
+
+/* On ultra-wide monitors, go more cinematic */
+@media (min-width: 1400px) {
+  @supports (aspect-ratio: 1 / 1) {
+    html[data-brand="spa"] .services-v2-shell {
+      aspect-ratio: 21 / 9;
+      /* premium ultra-wide feel */
+      max-height: 640px;
+    }
+  }
+}
+
+/* Keep your existing mobile behavior exactly the same */
+@media (max-width: 650px) {
+  @supports (aspect-ratio: 1 / 1) {
+    html[data-brand="spa"] .services-v2-shell {
+      aspect-ratio: auto;
+      /* let your clamp drive mobile height */
+      height: clamp(360px, 72vw, 460px);
+      min-height: 0;
+      max-height: none;
+    }
+  }
+}

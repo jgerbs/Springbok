@@ -795,3 +795,7 @@ html[data-brand="spa"] .spa-subnav-link:hover {
     height: clamp(96px, 22vw, 132px);
   }
 }
+
+html[data-brand="spa"] .footer-brand-bottom {
+  padding-top: 16px;
+}
