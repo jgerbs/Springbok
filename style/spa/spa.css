@@ -236,15 +236,44 @@ html[data-brand="spa"] .mobile-panel {
 }
 
 /* =========================
-   HERO (single clean version)
+   HERO (SPA visuals + CLINIC sizing mechanics)
    ========================= */
 html[data-brand="spa"] .hero {
   position: relative;
-  min-height: 92vh;
+
+  /* same viewport-based behavior as clinic (desktop/tablet) */
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+
   display: grid;
   align-items: end;
+
+  box-sizing: border-box;
+
+  /* responsive padding system (same as clinic) */
   padding: 170px 0 60px;
   overflow: hidden;
+}
+
+/* Mobile: fixed clinic-style hero height (stable across devices) */
+@media (max-width: 960px) {
+  html[data-brand="spa"] .hero {
+    min-height: 720px;
+    height: 720px;
+
+    padding: 120px 0 48px;
+  }
+}
+
+/* Extra-small phones: tighten a touch */
+@media (max-width: 420px) {
+  html[data-brand="spa"] .hero {
+    min-height: 680px;
+    height: 680px;
+
+    padding: 110px 0 42px;
+  }
 }
 
 /* Logo anchored to hero (scrolls away naturally) */

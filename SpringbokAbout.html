@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="style/services.css" />
   <link rel="stylesheet" href="style/responsive.css" />
   <link rel="stylesheet" href="style/practiceModal.css" />
+  <link rel="stylesheet" href="style/about.css" />
 
 </head>
 
@@ -118,7 +119,7 @@
             <ul class="mission-slider" data-mission-slider>
 
               <!-- Slide 1: Mission -->
-              <li class="mission-item is-active" data-pos="tl" style="background-image:url('resources/clinic.jpg')">
+              <li class="mission-item is-active" data-pos="tl" style="background-image:url('resources/space1.jpg')">
                 <div class="mission-content">
                   <h2 class="mission-title">Our Mission</h2>
 
@@ -137,7 +138,7 @@
               </li>
 
               <!-- Slide 2: Preventative Care -->
-              <li class="mission-item" data-pos="tr" style="background-image:url('resources/doc1.jpg')">
+              <li class="mission-item" data-pos="tr" style="background-image:url('resources/space2.jpg')">
                 <div class="mission-content">
                   <h2 class="mission-title">Prevention, Not Just Reaction</h2>
 
@@ -156,7 +157,7 @@
               </li>
 
               <!-- Slide 3: Comfort & Experience -->
-              <li class="mission-item" data-pos="bl" style="background-image:url('resources/doc3.jpg')">
+              <li class="mission-item" data-pos="bl" style="background-image:url('resources/space3.jpg')">
                 <div class="mission-content">
                   <h2 class="mission-title">Care That Feels Comfortable</h2>
 
@@ -175,7 +176,7 @@
               </li>
 
               <!-- Slide 4: Team-Based Care -->
-              <li class="mission-item" data-pos="br" style="background-image:url('resources/doc4.jpg')">
+              <li class="mission-item" data-pos="br" style="background-image:url('resources/space4.jpg')">
                 <div class="mission-content">
                   <h2 class="mission-title">A Team, Not Isolated Visits</h2>
 
@@ -194,7 +195,7 @@
               </li>
 
               <!-- Slide 5: One Roof -->
-              <li class="mission-item" data-pos="tl" style="background-image:url('resources/staff6.jpg')">
+              <li class="mission-item" data-pos="tl" style="background-image:url('resources/space5.jpg')">
                 <div class="mission-content">
                   <h2 class="mission-title">Everything Under One Roof</h2>
 
@@ -292,83 +293,119 @@
 
 
 
-      <!-- WHY CHOOSE US -->
-      <section class="services-tiles" id="why">
+      <!-- WHY CHOOSE US (new info layout — no tiles/cards) -->
+      <!-- WHY CHOOSE US — Alternating info bubbles -->
+      <section class="why-bubbles" id="why">
         <div class="container">
           <div class="section-head reveal">
             <span class="section-eyebrow">Why Choose Us?</span>
             <h2 class="section-title">A higher standard, without the hassle.</h2>
             <div class="green-divider"></div>
             <p class="section-sub">
-              We’re built for people who want premium care — with practical next steps and a calm, modern experience.
+              If you’ve ever left an appointment with more questions than answers, this is for you.
+              Springbok is built around clarity, continuity, and evidence-based decisions.
             </p>
           </div>
 
-          <div class="tiles-grid grid-3 reveal-stagger">
-            <!-- Reason 1 -->
-            <div class="service-tile" role="group" aria-label="Physician-led care">
-              <div class="tile-bg" style="background-image: url('resources/filler.jpg')"></div>
-              <div class="tile-shade"></div>
-              <div class="tile-inner">
-                <div class="tile-top">
-                  <span class="tile-dot"></span>
-                  <span class="tile-tag">Physician-led</span>
+          <div class="why-thread reveal-stagger" aria-label="Reasons to choose Springbok">
+            <!-- Bubble 1 -->
+            <div class="why-row is-left">
+              <div class="why-bubble">
+                <div class="why-badge">
+                  <span class="why-dot" aria-hidden="true"></span>
+                  <span class="why-tag">Physician-led care</span>
                 </div>
-                <div class="tile-bottom">
-                  <h3>Clinically rigorous, human delivery.</h3>
-                  <p class="tile-desc">
-                    Evidence-based plans, clear education, and a team that takes the time to explain your options.
-                  </p>
-                  <span class="tile-cta">What that means <span class="tile-arrow">→</span></span>
-                </div>
+                <h3 class="why-title">Clinically rigorous, human delivery.</h3>
+                <p class="why-text">
+                  We build evidence-based plans and explain the “why” behind decisions — so you can choose confidently.
+                </p>
               </div>
             </div>
 
-            <!-- Reason 2 -->
-            <div class="service-tile" role="group" aria-label="Clear next steps">
-              <div class="tile-bg" style="background-image: url('resources/filler.jpg')"></div>
-              <div class="tile-shade"></div>
-              <div class="tile-inner">
-                <div class="tile-top">
-                  <span class="tile-dot"></span>
-                  <span class="tile-tag">Clarity First</span>
+            <!-- Bubble 2 -->
+            <div class="why-row is-right">
+              <div class="why-bubble">
+                <div class="why-badge">
+                  <span class="why-dot" aria-hidden="true"></span>
+                  <span class="why-tag">Clarity-first</span>
                 </div>
-                <div class="tile-bottom">
-                  <h3>Plans you can actually follow.</h3>
-                  <p class="tile-desc">
-                    No vague advice. You leave with a structured plan, timelines, and follow-up so you stay on track.
-                  </p>
-                  <span class="tile-cta">Our approach <span class="tile-arrow">→</span></span>
-                </div>
+                <h3 class="why-title">You leave with next steps.</h3>
+                <p class="why-text">
+                  No vague advice. You’ll get a structured plan with timelines, options, and follow-up so progress
+                  doesn’t
+                  stall.
+                </p>
               </div>
             </div>
 
-            <!-- Reason 3 -->
-            <div class="service-tile" role="group" aria-label="Modern experience">
-              <div class="tile-bg" style="background-image: url('resources/filler.jpg')"></div>
-              <div class="tile-shade"></div>
-              <div class="tile-inner">
-                <div class="tile-top">
-                  <span class="tile-dot"></span>
-                  <span class="tile-tag">Modern Experience</span>
+            <!-- Bubble 3 -->
+            <div class="why-row is-left">
+              <div class="why-bubble">
+                <div class="why-badge">
+                  <span class="why-dot" aria-hidden="true"></span>
+                  <span class="why-tag">Continuity</span>
                 </div>
-                <div class="tile-bottom">
-                  <h3>Organized, calm, and efficient.</h3>
-                  <p class="tile-desc">
-                    Streamlined booking, thoughtful intake, and a clinic environment that feels premium — not stressful.
-                  </p>
-                  <span class="tile-cta">See how <span class="tile-arrow">→</span></span>
+                <h3 class="why-title">Less repeating yourself.</h3>
+                <p class="why-text">
+                  We focus on consistent care over time — your history, goals, and plan stay connected instead of
+                  starting
+                  over.
+                </p>
+              </div>
+            </div>
+
+            <!-- Bubble 4 -->
+            <div class="why-row is-right">
+              <div class="why-bubble">
+                <div class="why-badge">
+                  <span class="why-dot" aria-hidden="true"></span>
+                  <span class="why-tag">Modern experience</span>
                 </div>
+                <h3 class="why-title">Organized, calm, and efficient.</h3>
+                <p class="why-text">
+                  Streamlined booking, thoughtful intake, and a clinic flow that respects your time — without feeling
+                  rushed.
+                </p>
+              </div>
+            </div>
+
+            <!-- Bubble 5 -->
+            <div class="why-row is-left">
+              <div class="why-bubble">
+                <div class="why-badge">
+                  <span class="why-dot" aria-hidden="true"></span>
+                  <span class="why-tag">Practical outcomes</span>
+                </div>
+                <h3 class="why-title">Care you can act on.</h3>
+                <p class="why-text">
+                  Referrals, testing, treatment, prevention — whatever your next step is, we make it clear and doable.
+                </p>
+              </div>
+            </div>
+
+            <!-- Bubble 6 -->
+            <div class="why-row is-left">
+              <div class="why-bubble">
+                <div class="why-badge">
+                  <span class="why-dot" aria-hidden="true"></span>
+                  <span class="why-tag">Practical outcomes</span>
+                </div>
+                <h3 class="why-title">Care you can act on.</h3>
+                <p class="why-text">
+                  Referrals, testing, treatment, prevention — whatever your next step is, we make it clear and doable.
+                </p>
               </div>
             </div>
           </div>
 
-          <div class="reveal" style="margin-top:26px; display:flex; gap:12px; flex-wrap:wrap;">
+          <div class="why-actions reveal">
             <a class="btn btn-accent" href="index.html#services">Browse Services</a>
             <a class="btn btn-outline" href="SpringbokContact.html">Ask a Question</a>
           </div>
         </div>
       </section>
+
+
     </main>
 
 
