@@ -455,3 +455,178 @@ html[data-brand="spa"] .services-v2-shell {
     }
   }
 }
+
+/* =========================================================
+   SPA SERVICES v2 — MOBILE split layout (wins)
+   Put this at END of spaService.css
+   ========================================================= */
+@media (max-width: 720px) {
+
+  html[data-brand="spa"] .services-v2-shell {
+    height: clamp(420px, 82vw, 540px);
+  }
+
+  /* Make the active slide a 2-row grid: image (top) + panel (bottom) */
+  html[data-brand="spa"] .services-item.is-active {
+    display: grid;
+    grid-template-rows: 1fr auto;
+  }
+
+  /* Top image area (uses the inline background-image via inherit) */
+  html[data-brand="spa"] .services-item.is-active::before {
+    content: "";
+    grid-row: 1;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    background-size: cover;
+    background-position: var(--bg-pos-m, 50% 35%);
+  }
+
+  /* Overlay only on the image zone */
+  html[data-brand="spa"] .services-item.is-active::after {
+    content: "";
+    grid-row: 1;
+    inset: 0;
+    opacity: 1;
+    background:
+      linear-gradient(180deg,
+        rgba(0, 0, 0, .10) 0%,
+        rgba(0, 0, 0, .26) 70%,
+        rgba(0, 0, 0, .34) 100%);
+    pointer-events: none;
+  }
+
+  /* Bottom light panel */
+  html[data-brand="spa"] .services-content {
+    position: relative !important;
+    grid-row: 2;
+
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+
+    width: auto !important;
+    max-width: none !important;
+
+    padding: 20px 16px 92px;
+    text-align: left !important;
+
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, .88) 0%,
+        rgba(255, 255, 255, .96) 8%,
+        rgba(255, 255, 255, 1) 100%);
+    border-top: 1px solid rgba(18, 18, 18, .10);
+
+    color: rgba(18, 18, 18, .92);
+    text-shadow: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  html[data-brand="spa"] .services-title {
+    color: rgba(18, 18, 18, .92);
+  }
+
+  html[data-brand="spa"] .services-desc {
+    color: rgba(18, 18, 18, .70);
+    max-width: none;
+    margin-bottom: 12px;
+  }
+
+  /* Stop BL/BR positioning rules from fighting */
+  html[data-brand="spa"] .services-item[data-pos="bl"] .services-content,
+  html[data-brand="spa"] .services-item[data-pos="br"] .services-content {
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    text-align: left !important;
+  }
+
+  /* Controls stay pinned to bottom */
+  html[data-brand="spa"] .services-controls {
+    bottom: 12px;
+    z-index: 5;
+  }
+
+  /* Learn More button (outline) needs dark text/border on the light panel */
+  html[data-brand="spa"] .services-actions .btn.btn-outline {
+    border-color: rgba(18, 18, 18, .22) !important;
+    background: rgba(255, 255, 255, .72) !important;
+    color: rgba(18, 18, 18, .88) !important;
+    box-shadow: var(--shadow-soft);
+  }
+
+  html[data-brand="spa"] .services-actions .btn.btn-outline:hover {
+    background: rgba(255, 255, 255, .92) !important;
+    border-color: rgba(18, 18, 18, .30) !important;
+  }
+
+  /* Keep Book Now gold (still readable on light panel) */
+  html[data-brand="spa"] .services-actions .btn.btn-accent {
+    background: linear-gradient(135deg, var(--accent), var(--accent2)) !important;
+    color: rgba(28, 16, 10, .92) !important;
+  }
+
+  /* Arrow buttons are sitting over the light area now → make them dark */
+  html[data-brand="spa"] .services-nav-btn {
+    border-color: rgba(18, 18, 18, .18) !important;
+    background: rgba(255, 255, 255, .78) !important;
+    color: rgba(18, 18, 18, .86) !important;
+    backdrop-filter: blur(12px);
+  }
+
+  html[data-brand="spa"] .services-nav-btn:hover {
+    background: rgba(214, 163, 107, .18) !important;
+    border-color: rgba(214, 163, 107, .40) !important;
+    color: rgba(18, 18, 18, .92) !important;
+  }
+}
+
+@media (max-width: 650px) {
+
+  /* Card text */
+  html[data-brand="spa"] .services-title {
+    font-size: clamp(1.25rem, 5.6vw, 1.65rem);
+    /* ~8% smaller */
+    margin-bottom: 6px;
+  }
+
+  html[data-brand="spa"] .services-desc {
+    font-size: .92rem;
+    /* down from ~.95–1rem */
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  /* Buttons */
+  html[data-brand="spa"] .services-actions .btn {
+    font-size: .9rem;
+    /* subtle shrink */
+    padding: 8px 10px;
+    /* tighter pill */
+    min-height: 40px;
+    /* down from ~46 */
+    border-radius: 999px;
+  }
+
+  /* Reduce gap between Learn More + Book Now */
+  html[data-brand="spa"] .services-actions {
+    gap: 6px;
+  }
+
+  /* Controls (arrows) slightly smaller so they breathe */
+  html[data-brand="spa"] .services-nav-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+
+  /* Pull content up a hair to avoid feeling bottom-heavy */
+  html[data-brand="spa"] .services-content {
+    padding-bottom: 84px;
+    /* down from 92 */
+  }
+}

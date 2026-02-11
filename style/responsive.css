@@ -104,27 +104,26 @@
    2) HERO (clinic + staff + spa heroes)
    ========================================================= */
 @media (max-width: 960px) {
-
     .hero {
-        min-height: 78vh;
+        /* keep full viewport fill on mobile */
+        min-height: 100vh;
+        min-height: 100svh;
+        min-height: 100dvh;
+
+        /* keep your existing behavior */
         padding: 128px 0 44px;
-        /* was 170/60 */
         position: relative;
         isolation: isolate;
     }
 
-   .hero-brand {
-       top: calc(var(--top-pad) + env(safe-area-inset-top));
-       left: calc(var(--edge-pad) + env(safe-area-inset-left));
-   }
+    .hero-brand {
+        top: calc(var(--top-pad) + env(safe-area-inset-top));
+        left: calc(var(--edge-pad) + env(safe-area-inset-left));
+    }
 
-   /* scale down BOTH clinic + spa hero logos on mobile */
-   .hero-logo,
-   .hero-logo--spa {
-       height: clamp(96px, 22vw, 132px);
-   }
-
-    .hero-logo {
+    /* scale down BOTH clinic + spa hero logos on mobile */
+    .hero-logo,
+    .hero-logo--spa {
         height: clamp(96px, 22vw, 132px);
     }
 
@@ -167,7 +166,11 @@
 
 @media (max-width: 420px) {
     .hero {
-        min-height: 74vh;
+        /* DO NOT switch to vh (this is what made it feel "fixed") */
+        min-height: 100vh;
+        min-height: 100svh;
+        min-height: 100dvh;
+
         padding: 118px 0 38px;
     }
 
@@ -180,7 +183,6 @@
         height: 92px;
     }
 }
-
 
 /* =========================================================
    3) SERVICES + STAFF WHEELS

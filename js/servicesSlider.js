@@ -98,13 +98,6 @@
         resetTimer();
     });
 
-    // click anywhere on slide to advance (ignore buttons/links)
-    shell.addEventListener("click", (e) => {
-        if (e.target.closest("a, button")) return;
-        next();
-        resetTimer();
-    });
-
     // swipe support
     let startX = 0, startY = 0, tracking = false;
 

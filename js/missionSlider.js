@@ -88,13 +88,6 @@
         resetTimer();
     });
 
-    // Optional click-to-advance (keep if you want)
-    shell.addEventListener("click", (e) => {
-        if (e.target.closest("a, button")) return;
-        next();
-        resetTimer();
-    });
-
     // Swipe
     let startX = 0, startY = 0, tracking = false;
 
