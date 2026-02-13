@@ -751,6 +751,342 @@
     }
 }
 
+/* =========================================================
+   FOUNDERS — FINAL (clean)
+   - Desktop: image L/R, optional flip on 2nd card
+   - Mobile: still L/R (no stacking), but compact so content fits
+   - Photo: cover (no tiny contain), with subtle 25% letterbox bands
+   ========================================================= */
+
+html[data-brand="clinic"] .founders {
+    position: relative;
+    padding: clamp(78px, 7vw, 120px) 0;
+    overflow: hidden;
+}
+
+html[data-brand="clinic"] .founders::before {
+    content: "";
+    position: absolute;
+    inset: -140px -140px auto -140px;
+    height: 520px;
+    background:
+        radial-gradient(900px 520px at 18% 30%, rgba(18, 192, 138, .14), transparent 60%),
+        radial-gradient(800px 520px at 80% 10%, rgba(197, 138, 99, .10), transparent 62%);
+    pointer-events: none;
+}
+
+html[data-brand="clinic"] .founders-grid {
+    margin-top: clamp(22px, 2.8vw, 30px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(14px, 2.2vw, 20px);
+}
+
+/* Card */
+html[data-brand="clinic"] .founder-card {
+    display: grid;
+    grid-template-columns: clamp(140px, 18vw, 190px) 1fr;
+    gap: clamp(14px, 2.2vw, 18px);
+    align-items: stretch;
+
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255, 255, 255, .12);
+    background: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .03));
+    box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+
+    position: relative;
+    isolation: isolate;
+}
+
+html[data-brand="clinic"] .founder-card::before {
+    content: "";
+    position: absolute;
+    inset: -110px -110px auto -110px;
+    height: 240px;
+    background:
+        radial-gradient(240px 170px at 12% 35%, rgba(18, 192, 138, .16), transparent 65%),
+        radial-gradient(300px 200px at 82% 10%, rgba(255, 255, 255, .08), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Flip layout (2nd card) */
+html[data-brand="clinic"] .founder-card--flip {
+    grid-template-columns: 1fr clamp(140px, 18vw, 190px);
+}
+
+html[data-brand="clinic"] .founder-card--flip .founder-media {
+    order: 2;
+}
+
+html[data-brand="clinic"] .founder-card--flip .founder-body {
+    order: 1;
+}
+
+/* Media */
+html[data-brand="clinic"] .founder-media {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    background: rgba(0, 0, 0, .22);
+}
+
+html[data-brand="clinic"] .founder-media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    /* IMPORTANT: prevents “tiny image” */
+    object-position: 50% 22%;
+    /* show face/upper body */
+}
+
+/* 25% total letterbox bands (12.5% top + 12.5% bottom) */
+html[data-brand="clinic"] .founder-media::before,
+html[data-brand="clinic"] .founder-media::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 12.5%;
+    z-index: 2;
+    pointer-events: none;
+    backdrop-filter: blur(12px) saturate(1.05);
+    -webkit-backdrop-filter: blur(12px) saturate(1.05);
+}
+
+html[data-brand="clinic"] .founder-media::before {
+    top: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, .38), rgba(0, 0, 0, .12));
+}
+
+html[data-brand="clinic"] .founder-media::after {
+    bottom: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, .42), rgba(0, 0, 0, .14));
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+
+    html[data-brand="clinic"] .founder-media::before,
+    html[data-brand="clinic"] .founder-media::after {
+        background: rgba(0, 0, 0, .18);
+    }
+}
+
+/* Body */
+html[data-brand="clinic"] .founder-body {
+    position: relative;
+    z-index: 1;
+
+    padding: clamp(14px, 2vw, 18px) clamp(14px, 2.2vw, 22px) clamp(14px, 2vw, 18px) 0;
+    display: grid;
+    align-content: center;
+    gap: 10px;
+}
+
+/* if flipped, swap the “0” padding side */
+html[data-brand="clinic"] .founder-card--flip .founder-body {
+    padding: clamp(14px, 2vw, 18px) 0 clamp(14px, 2vw, 18px) clamp(14px, 2.2vw, 22px);
+}
+
+html[data-brand="clinic"] .founder-kicker {
+    margin: 0 0 4px;
+    font-size: .86rem;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .78);
+    font-weight: 700;
+}
+
+html[data-brand="clinic"] .founder-name {
+    margin: 0;
+    font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+    letter-spacing: .01em;
+}
+
+html[data-brand="clinic"] .founder-tagline {
+    margin: 2px 0 0;
+    color: rgba(255, 255, 255, .78);
+    line-height: 1.5;
+}
+
+html[data-brand="clinic"] .founder-desc {
+    margin: 0;
+    color: rgba(255, 255, 255, .74);
+    line-height: 1.65;
+    max-width: 70ch;
+}
+
+/* Actions (scoped buttons — won’t touch nav) */
+html[data-brand="clinic"] .founder-actions {
+    margin-top: 6px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+html[data-brand="clinic"] .founder-btn {
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-weight: 700;
+    white-space: nowrap;
+    min-height: 42px;
+}
+
+html[data-brand="clinic"] .founder-btn--ghost {
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid rgba(255, 255, 255, .18);
+    color: rgba(255, 255, 255, .92);
+}
+
+html[data-brand="clinic"] .founder-btn--ghost:hover {
+    background: rgba(255, 255, 255, .10);
+    border-color: rgba(255, 255, 255, .28);
+}
+
+html[data-brand="clinic"] .founder-btn--solid {
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border: 1px solid rgba(255, 255, 255, .10);
+    color: rgba(0, 0, 0, .88);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, .25);
+}
+
+html[data-brand="clinic"] .founder-btn--solid:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, .30);
+}
+
+/* Optional 2-up on wide screens */
+@media (min-width: 1200px) {
+    html[data-brand="clinic"] .founders-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* =========================================================
+   FOUNDERS — Mobile: card can grow + media stretches to match
+   (fixes SE overflow + keeps L/R layout)
+   ========================================================= */
+@media (max-width: 720px) {
+
+    html[data-brand="clinic"] .founder-card {
+        grid-template-columns: clamp(128px, 36vw, 168px) 1fr;
+        gap: 12px;
+        border-radius: var(--radius-lg);
+
+        height: auto;
+        min-height: 0;
+
+        /* keep content from forcing weird vertical compression */
+        align-items: start;
+    }
+
+    html[data-brand="clinic"] .founder-card--flip {
+        grid-template-columns: 1fr clamp(128px, 36vw, 168px);
+    }
+
+    /* KEY: make the image column stretch to the full card height */
+    html[data-brand="clinic"] .founder-media {
+        align-self: stretch;
+        /* overrides the grid's align-items:start */
+        min-height: 0;
+        height: auto;
+    }
+
+    html[data-brand="clinic"] .founder-media img {
+        width: 100%;
+        height: 100%;
+        /* fill the stretched media column */
+        object-fit: cover;
+        object-position: 50% 25%;
+        display: block;
+    }
+
+    /* a bit tighter so it reads cleaner on phones */
+    html[data-brand="clinic"] .founder-body {
+        align-content: start;
+        padding: 12px 12px 14px 0;
+        gap: 8px;
+    }
+
+    html[data-brand="clinic"] .founder-card--flip .founder-body {
+        padding: 12px 0 14px 12px;
+    }
+
+    html[data-brand="clinic"] .founder-kicker {
+        font-size: .76rem;
+        letter-spacing: .09em;
+    }
+
+    html[data-brand="clinic"] .founder-name {
+        font-size: 1.02rem;
+        line-height: 1.12;
+    }
+
+    html[data-brand="clinic"] .founder-desc {
+        font-size: .92rem;
+        line-height: 1.45;
+    }
+
+    html[data-brand="clinic"] .founder-actions {
+        margin-top: 8px;
+        gap: 10px;
+    }
+
+    html[data-brand="clinic"] .founder-btn {
+        padding: 9px 12px;
+        min-height: 40px;
+        font-size: .92rem;
+    }
+}
+
+/* =========================================================
+   FOUNDERS — Extra small phones (iPhone SE)
+   Give text more width (reduces wrapping) + slightly tighter UI
+   ========================================================= */
+@media (max-width: 380px) {
+
+    html[data-brand="clinic"] .founder-card {
+        grid-template-columns: 118px 1fr;
+        /* more room for text */
+        gap: 10px;
+    }
+
+    html[data-brand="clinic"] .founder-card--flip {
+        grid-template-columns: 1fr 118px;
+    }
+
+    html[data-brand="clinic"] .founder-body {
+        padding: 10px 10px 12px 0;
+        gap: 7px;
+    }
+
+    html[data-brand="clinic"] .founder-card--flip .founder-body {
+        padding: 10px 0 12px 10px;
+    }
+
+    html[data-brand="clinic"] .founder-kicker {
+        font-size: .72rem;
+    }
+
+    html[data-brand="clinic"] .founder-name {
+        font-size: .98rem;
+    }
+
+    html[data-brand="clinic"] .founder-desc {
+        font-size: .90rem;
+        line-height: 1.42;
+    }
+
+    html[data-brand="clinic"] .founder-btn {
+        padding: 8px 11px;
+        min-height: 38px;
+        font-size: .90rem;
+    }
+}
 
 /* =========================================================
    WHY CHOOSE US — Responsive bubble grid (simple + scalable)
