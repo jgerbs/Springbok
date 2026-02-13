@@ -673,7 +673,7 @@
         /* IMPORTANT: keep controls on same "darkened" vibe without seams */
         padding: 12px 12px 14px !important;
         border-radius: 16px;
-        background: rgba(0, 0, 0, .40) !important;
+        background: rgba(0, 0, 0, .0) !important;
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, .10);
     }
@@ -750,6 +750,66 @@
         min-width: 84px !important;
     }
 }
+
+/* Black background behind the controls (desktop + mobile) */
+.mission-v2-shell {
+    position: relative;
+}
+
+/* the black band */
+.mission-v2-shell::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 92px;
+    /* tweak: 80–110px */
+    background: #000;
+    z-index: 6;
+    /* below controls (z7), above slide */
+    pointer-events: none;
+}
+
+/* keep controls above the band */
+.mission-controls {
+    z-index: 7;
+}
+
+.mission-controls {
+    background: #000;
+    padding: 10px 12px;
+    border-radius: 999px;
+}
+
+/* 1) Ensure slider/slides stay BELOW the controls + black band */
+.mission-slider,
+.mission-item,
+.mission-item::before,
+.mission-item::after {
+    z-index: 1 !important;
+}
+
+/* 2) Keep the black band above the image, but below controls */
+.mission-v2-shell::after {
+    z-index: 6 !important;
+}
+
+/* 3) Put controls on top */
+.mission-controls {
+    position: absolute;
+    /* keep it out of the slider stacking */
+    z-index: 20 !important;
+    /* top of this component */
+}
+
+/* 4) Make the buttons/timer definitely clickable */
+.mission-nav-btn,
+.mission-timer {
+    position: relative;
+    z-index: 21;
+}
+
 
 /* =========================================================
    FOUNDERS — FINAL (clean)
