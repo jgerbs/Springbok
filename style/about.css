@@ -528,74 +528,229 @@
 }
 
 /* =========================================================
-   MOBILE ONLY — force EVERYTHING to TL + prevent overflow
-   Keeps your desktop TR/BR bullet style untouched
+   MOBILE @720 (DROP-IN): blurred image behind text + controls
+   - Uses the ACTIVE LI's background-image (no HTML change)
+   - No top image zone
+   - Shell becomes grid: [content] [controls] (no overlap)
+   - No seam: controls sit on same overlay continuation
+   - Bullets: TL/BL left, TR/BR right (dot on right)
    ========================================================= */
 @media (max-width: 720px) {
 
-    /* Give the text box the full usable width + keep comfy padding */
+    /* 0) Card becomes 2 rows */
+    .mission-v2-shell {
+        display: grid !important;
+        grid-template-rows: 1fr auto;
+        height: auto !important;
+        min-height: 0 !important;
+        aspect-ratio: auto !important;
+        overflow: hidden;
+        position: relative;
+        isolation: isolate;
+        /* keeps bg layers contained */
+    }
+
+    .mission-slider {
+        grid-row: 1;
+        height: auto !important;
+        min-height: 0;
+        position: relative;
+        z-index: 2;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* 1) Only active slide participates in layout */
+    .mission-item {
+        position: relative !important;
+        inset: auto !important;
+        display: none !important;
+        opacity: 1 !important;
+        pointer-events: none !important;
+    }
+
+    .mission-item.is-active {
+        display: block !important;
+        pointer-events: auto !important;
+    }
+
+    /* 2) Kill the "top image zone" idea completely */
+    .mission-item::before {
+        content: none !important;
+    }
+
+    /* 3) Create ONE continuous blurred background + dark overlay
+        using the ACTIVE slide itself (so we can read its bg-image) */
+    .mission-item.is-active {
+        /* keep the original image on the LI so ::before can clone it */
+        background-position: var(--bg-pos-m, 50% 35%);
+        background-size: cover;
+    }
+
+    /* blurred image layer */
+    .mission-item.is-active::before {
+        content: "" !important;
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+
+        /* IMPORTANT: copy the background-image reliably */
+        background-image: inherit;
+        background-size: inherit;
+        background-position: inherit;
+        background-repeat: no-repeat;
+
+        filter: blur(16px) saturate(1.12) contrast(1.03);
+        transform: scale(1.10);
+        opacity: .92;
+    }
+
+    /* dark overlay layer (this is what makes it blend to dark bottom) */
+    .mission-item.is-active::after {
+        content: "" !important;
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        opacity: 1 !important;
+
+        background:
+            radial-gradient(120% 80% at 50% 10%, rgba(255, 255, 255, .06), transparent 60%),
+            linear-gradient(180deg,
+                rgba(0, 0, 0, .40) 0%,
+                rgba(0, 0, 0, .78) 58%,
+                rgba(0, 0, 0, 1) 100%);
+    }
+
+    /* 4) Content becomes normal flow, sits above overlay */
     .mission-content {
-        top: 14px !important;
-        left: 14px !important;
-        right: 14px !important;
-        /* allow full width */
-        bottom: auto !important;
+        position: relative !important;
+        z-index: 2 !important;
+
         width: auto !important;
         max-width: none !important;
+
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+
+        padding: 18px 16px 18px !important;
+        margin: 0 !important;
+
+        background: transparent !important;
+        border: 0 !important;
+        text-shadow: none !important;
         text-align: left !important;
     }
 
-    /* Reserve space so text never collides with the controls row */
-    .mission-controls {
-        bottom: 14px;
-    }
-
-    /* Reduce title/desc a touch (not cramped) */
     .mission-title {
-        font-size: clamp(1.15rem, 6.2vw, 1.55rem);
-        line-height: 1.08;
-        margin-bottom: 8px;
+        text-align: center !important;
+        margin: 0 0 10px !important;
+        font-size: clamp(1.25rem, 6.2vw, 1.65rem) !important;
+        line-height: 1.08 !important;
     }
 
     .mission-desc {
-        font-size: .92rem;
-        line-height: 1.45;
-        max-width: none;
-        margin-bottom: 10px;
-
-        /* Stops long paragraphs from overflowing into controls */
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 5;
-        /* adjust 4–6 if you want */
-        overflow: hidden;
+        margin: 0 0 12px !important;
+        font-size: .95rem !important;
+        line-height: 1.55 !important;
+        max-width: none !important;
     }
 
-    /* Bullets: ALWAYS left on mobile (even if slide is TR/BR) */
+    /* 5) Controls are their own row (never overlay text) */
+    .mission-controls {
+        grid-row: 2;
+        position: relative !important;
+        z-index: 3 !important;
+
+        left: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+
+        width: calc(100% - 28px) !important;
+        margin: 10px auto 14px !important;
+
+        /* IMPORTANT: keep controls on same "darkened" vibe without seams */
+        padding: 12px 12px 14px !important;
+        border-radius: 16px;
+        background: rgba(0, 0, 0, .40) !important;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, .10);
+    }
+
+    .mission-timer {
+        max-width: none !important;
+        flex: 1 1 auto !important;
+    }
+
+    /* 6) BULLETS: HARD RESET so nothing "stays right" accidentally */
     .mission-bullets {
-        max-width: none;
-        gap: 6px;
-        margin-left: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: none !important;
+        gap: 8px !important;
+
         text-align: left !important;
         justify-items: start !important;
     }
 
     .mission-bullets li {
-        font-size: .92rem;
-        line-height: 1.35;
+        flex-direction: row !important;
+        /* dot LEFT */
+        justify-content: flex-start !important;
+        text-align: left !important;
+    }
 
-        /* kill the desktop right-align behavior (row-reverse) */
+    .mission-bullets li::before {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* hard-kill any right-align behavior from desktop rules */
+    .mission-item[data-pos="tr"] .mission-bullets,
+    .mission-item[data-pos="br"] .mission-bullets {
+        margin-left: 0 !important;
+        justify-items: start !important;
+        text-align: left !important;
+    }
+
+    .mission-item[data-pos="tr"] .mission-bullets li,
+    .mission-item[data-pos="br"] .mission-bullets li {
         flex-direction: row !important;
         justify-content: flex-start !important;
         text-align: left !important;
     }
 
-    /* dot back on the LEFT with normal spacing */
-    .mission-bullets li::before {
+    .mission-item[data-pos="tr"] .mission-bullets li::before,
+    .mission-item[data-pos="br"] .mission-bullets li::before {
         margin-left: 0 !important;
         margin-right: 0 !important;
     }
-}b
+
+    /* 7) Kill ALL old corner positioning on mobile */
+    .mission-item[data-pos="bl"] .mission-content,
+    .mission-item[data-pos="br"] .mission-content,
+    .mission-item[data-pos="tl"] .mission-content,
+    .mission-item[data-pos="tr"] .mission-content {
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+    }
+
+    /* 8) Slight sizing for very small devices so controls always fit */
+    .mission-nav-btn {
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 26px !important;
+    }
+
+    .mission-timer {
+        height: 5px !important;
+        min-width: 84px !important;
+    }
+}
+
 
 /* =========================================================
    WHY CHOOSE US — Responsive bubble grid (simple + scalable)
