@@ -1330,3 +1330,16 @@ html[data-brand="spa"] .to-top:hover {
 html[data-brand="spa"] .footer-brand-bottom {
   padding-top: 16px;
 }
+
+
+/* SPA — remove section background panels (keep cards intact) */
+html[data-brand="spa"] main>section {
+  background: transparent !important;
+}
+
+/* If any SPA wrappers are divs instead of section tags, include common patterns */
+html[data-brand="spa"] .spa-section,
+html[data-brand="spa"] .section,
+html[data-brand="spa"] .section-wrap {
+  background: transparent !important;
+}

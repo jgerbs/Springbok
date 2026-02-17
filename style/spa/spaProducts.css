@@ -27,9 +27,6 @@ html[data-brand="spa"] .spa-products::before {
     position: absolute;
     inset: -140px -120px auto -120px;
     height: 360px;
-    background:
-        radial-gradient(900px 520px at 20% 20%, rgba(214, 163, 107, .14), transparent 62%),
-        radial-gradient(900px 520px at 85% 10%, rgba(214, 163, 107, .08), transparent 60%);
     pointer-events: none;
 }
 

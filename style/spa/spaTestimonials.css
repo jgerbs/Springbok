@@ -139,9 +139,7 @@ html[data-brand="spa"] .testimonials::before {
   position: absolute;
   inset: -160px -140px auto -140px;
   height: 520px;
-  background:
-    radial-gradient(900px 520px at 22% 40%, rgba(214, 163, 107, .20), transparent 62%),
-    radial-gradient(820px 520px at 86% 18%, rgba(214, 163, 107, .14), transparent 68%);
+
   filter: blur(10px);
   pointer-events: none;
 }

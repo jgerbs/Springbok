@@ -18,9 +18,6 @@ html[data-brand="spa"] .founders.providers::before {
   position: absolute;
   inset: -140px -140px auto -140px;
   height: 520px;
-  background:
-    radial-gradient(900px 520px at 18% 30%, rgba(214, 163, 107, .14), transparent 60%),
-    radial-gradient(800px 520px at 80% 10%, rgba(185, 133, 79, .10), transparent 62%);
   pointer-events: none;
 }
 
