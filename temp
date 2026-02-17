@@ -443,3 +443,520 @@
               </div>
             </div>
           </section>
+
+
+
+          <!-- our team backup-->
+
+          <!DOCTYPE html>
+          <html lang="en" data-brand="clinic">
+          
+          <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Springbok Medical Clinic | Home</title>
+          
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+          
+            <link rel="stylesheet" href="style/base.css" />
+            <link rel="stylesheet" href="style/footer.css" />
+            <link rel="stylesheet" href="style/header.css" />
+            <link rel="stylesheet" href="style/home.css" />
+            <link rel="stylesheet" href="style/reviews.css" />
+            <link rel="stylesheet" href="style/mission.css" />
+            <link rel="stylesheet" href="style/services.css" />
+            <link rel="stylesheet" href="style/team.css" />
+            <link rel="stylesheet" href="style/responsive.css" />
+            <link rel="stylesheet" href="style/practiceModal.css" />
+          
+          </head>
+          
+          <body>
+            <div class="page-transition" aria-hidden="true">
+              <!-- NAV ONLY (always visible, pinned top-right) -->
+              <header class="site-header" aria-label="Site navigation">
+                <div class="header-right">
+                  <nav class="nav-pill" aria-label="Main navigation">
+                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="SpringbokAbout.html">About Us</a>
+                    <a class="nav-link" href="SpringbokClinic.html">Clinic</a>
+                    <a class="nav-link" href="SpringbokSpa.html">Spa</a>
+                    <a class="nav-link is-active" href="SpringbokTeam.html">Our Team</a>
+                    <a class="nav-link" href="SpringbokContact.html">Contact</a>
+                  </nav>
+          
+                  <div class="header-actions">
+                    <a class="btn btn-accent book-cta" href="#" data-open-doctor-modal data-doctor="General Inquiry">
+                      Book Clinic
+                    </a>
+          
+                    <!-- Book Spa goes to Jane -->
+                    <a class="btn btn-accent book-cta" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                      rel="noopener">
+                      Book Spa
+                    </a>
+          
+                    <!--show only when mobile view is enabled -->
+                    <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open menu" aria-controls="mobilePanel"
+                      aria-expanded="false">
+                      <span class="burger" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                      </span>
+                    </button>
+          
+                  </div>
+                </div>
+          
+                <!-- mobile panel -->
+                <div class="container mobile-panel" id="mobilePanel" aria-hidden="true">
+                  <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
+          
+                    <nav class="mobile-menu-links" aria-label="Mobile navigation">
+                      <a class="mobile-link" href="index.html">Home</a>
+                      <a class="mobile-link" href="SpringbokAbout.html">About Us</a>
+                      <a class="mobile-link" href="SpringbokClinic.html">Clinic</a>
+                      <a class="mobile-link" href="SpringbokSpa.html">Spa</a>
+                      <a class="mobile-link is-active" href="SpringbokTeam.html">Our Team</a>
+                      <a class="mobile-link" href="SpringbokContact.html">Contact</a>
+                    </nav>
+          
+                  </div>
+                </div>
+          
+              </header>
+          
+              <main>
+                <section class="hero">
+                  <!-- LOGO: part of HERO visually, but fixed top-left -->
+                  <a class="hero-brand reveal" href="index.html" aria-label="Springbok Home">
+                    <img src="resources/cliniclogo1.png" alt="Springbok Medical Clinic" class="hero-logo" />
+                  </a>
+          
+                  <div class="hero-media" aria-hidden="true">
+                    <video class="hero-video" autoplay muted loop playsinline poster="resources/team.jpg">
+                      <source src="resources/" type="video/mp4" />
+                    </video>
+                    <div class="hero-overlay"></div>
+                  </div>
+          
+                  <div class="container hero-content reveal">
+                    <h1>Dedicated experts, working together for you.</h1>
+                    <p>
+                      Premium, modern care with clear next steps. Explore our clinics, or
+                      book directly in seconds.
+                    </p>
+                    <div class="hero-actions">
+                      <a class="btn btn-accent book-cta" href="#" data-open-doctor-modal data-doctor="General Inquiry">
+                        Book Clinic
+                      </a>
+          
+                      <!-- Book Spa goes to Jane -->
+                      <a class="btn btn-accent book-cta" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                        rel="noopener">
+                        Book Spa
+                      </a>
+                      <a class="btn btn-outline" href="SpringbokAbout.html">Learn More</a>
+                    </div>
+                  </div>
+                </section>
+          
+                <!-- TEAM (Doctors) -->
+                <section class="team-tiles" id="team">
+                  <div class="container">
+                    <div class="section-head reveal">
+                      <span class="section-eyebrow">Our Team</span>
+                      <h2 class="section-title">Four doctors. One standard of care.</h2>
+                      <div class="green-divider"></div>
+                      <p class="section-sub">
+                        Physician-led care with clear next steps — designed around your goals.
+                      </p>
+                    </div>
+          
+                    <div class="doc-grid doc-grid--team reveal-stagger" aria-label="Doctors">
+          
+                      <!-- Dr. Amor Kloppers -->
+                      <article class="doc-card doc-card--team">
+                        <div class="doc-media" style="--pos: 50% 18%;">
+                          <img class="doc-img" src="resources/amor2.jpg" alt="Dr. Amor Kloppers" loading="lazy" />
+                        </div>
+          
+                        <div class="doc-body">
+                          <div class="doc-topline">
+                            <span class="doc-dot" aria-hidden="true"></span>
+                            <span class="doc-tag">Family Practice</span>
+                          </div>
+          
+                          <h5 class="doc-name">Dr. Amor Kloppers</h5>
+                          <p class="doc-desc">
+                            Full-spectrum primary care with continuity, prevention, and clear follow-up plans.
+                          </p>
+          
+                          <div class="doc-actions">
+                            <a class="btn btn-outline btn-sm" href="SpringbokAmorKloppers.html">View profile</a>
+                            <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal data-doctor="Dr. Amor Kloppers">Send
+                              inquiry</a>
+                          </div>
+                        </div>
+                      </article>
+          
+                      <!-- Dr. Francois Erasmus -->
+                      <article class="doc-card doc-card--team">
+                        <div class="doc-media" style="--pos: 50% 18%;">
+                          <img class="doc-img" src="resources/francois.jpg" alt="Dr. Francois Erasmus" loading="lazy" />
+                        </div>
+          
+                        <div class="doc-body">
+                          <div class="doc-topline">
+                            <span class="doc-dot" aria-hidden="true"></span>
+                            <span class="doc-tag">Family Practice</span>
+                          </div>
+          
+                          <h5 class="doc-name">Dr. Francois Erasmus</h5>
+                          <p class="doc-desc">
+                            Preventative care, chronic disease management, and practical next steps you can follow.
+                          </p>
+          
+                          <div class="doc-actions">
+                            <a class="btn btn-outline btn-sm" href="SpringbokFrancoisErasmus.html">View profile</a>
+                            <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal
+                              data-doctor="Dr. Francois Erasmus">Send
+                              inquiry</a>
+                          </div>
+                        </div>
+                      </article>
+          
+                      <!-- Dr. Janneme Frouws -->
+                      <article class="doc-card doc-card--team">
+                        <div class="doc-media" style="--pos: 50% 18%;">
+                          <img class="doc-img" src="resources/staff1.jpg" alt="Dr. Janneme Frouws" loading="lazy" />
+                        </div>
+          
+                        <div class="doc-body">
+                          <div class="doc-topline">
+                            <span class="doc-dot" aria-hidden="true"></span>
+                            <span class="doc-tag">Hormone Specialist</span>
+                          </div>
+          
+                          <h5 class="doc-name">Dr. Janneme Frouws</h5>
+                          <p class="doc-desc">
+                            Symptom-driven hormone care with thorough assessment, lab review, and individualized planning.
+                          </p>
+          
+                          <div class="doc-actions">
+                            <a class="btn btn-outline btn-sm" href="SpringbokJannemeFrouws.html">View profile</a>
+                            <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal
+                              data-doctor="Dr. Janneme Frouws">Send
+                              inquiry</a>
+                          </div>
+                        </div>
+                      </article>
+          
+                      <!-- Dr. Kacey Kiesman -->
+                      <article class="doc-card doc-card--team">
+                        <div class="doc-media" style="--pos: 50% 18%;">
+                          <img class="doc-img" src="resources/kacey2.png" alt="Dr. Kacey Kiesman" loading="lazy" />
+                        </div>
+          
+                        <div class="doc-body">
+                          <div class="doc-topline">
+                            <span class="doc-dot" aria-hidden="true"></span>
+                            <span class="doc-tag">Naturopathic Medicine</span>
+                          </div>
+          
+                          <h5 class="doc-name">Dr. Kacey Kiesman</h5>
+                          <p class="doc-desc">
+                            Evidence-informed, integrative care focused on long-term health, clarity, and sustainable progress.
+                          </p>
+          
+                          <div class="doc-actions">
+                            <a class="btn btn-outline btn-sm" href="SpringbokKaceyKiesman.html">View profile</a>
+                            <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal data-doctor="Dr. Kacey Kiesman">Send
+                              inquiry</a>
+                          </div>
+                        </div>
+                      </article>
+          
+                      <!-- Coming Soon (NO buttons) -->
+                      <article class="doc-card doc-card--team doc-card--soon" aria-label="New provider coming soon">
+                        <div class="doc-media doc-media--plus">
+                          <span class="doc-plus" aria-hidden="true">+</span>
+                        </div>
+          
+                        <div class="doc-body">
+                          <div class="doc-topline">
+                            <span class="doc-dot doc-dot--muted" aria-hidden="true"></span>
+                            <span class="doc-tag">Coming Soon</span>
+                          </div>
+          
+                          <h5 class="doc-name">New Providers</h5>
+                          <p class="doc-desc">
+                            We’re expanding the team. Check back soon for new specialties and availability.
+                          </p>
+                        </div>
+                      </article>
+          
+                    </div>
+                  </div>
+                </section>
+          
+                <!-- TEAM (Reception / Operations) -->
+                <section class="services-tiles team-support" id="teamSupport">
+                  <div class="container">
+                    <div class="section-head reveal">
+                      <span class="section-eyebrow">Support Team</span>
+                      <h2 class="section-title">The people who make every visit smooth.</h2>
+                      <div class="green-divider"></div>
+                      <p class="section-sub">
+                        From first call to follow-up — our front desk team keeps everything clear, calm, and organized.
+                      </p>
+                    </div>
+          
+                    <div class="doc-grid doc-grid--support reveal-stagger" aria-label="Reception staff">
+          
+                      <!-- Receptionist 1 -->
+                      <article class="doc-card doc-card--support">
+                        <div class="doc-media" style="--pos: 50% 20%;">
+                          <img class="doc-img" src="resources/staff2.jpg" alt="Reception Team Member" loading="lazy" />
+                        </div>
+          
+                        <div class="doc-body">
+                          <div class="doc-topline">
+                            <span class="doc-dot" aria-hidden="true"></span>
+                            <span class="doc-tag">Reception</span>
+                          </div>
+          
+                          <h5 class="doc-name">Firstname Lastname</h5>
+                          <p class="doc-desc">
+                            Scheduling, intake, and helping you get to the right provider — quickly and clearly.
+                          </p>
+          
+                          <div class="doc-actions">
+                            <a class="btn btn-outline btn-sm" href="tel:+17780000000">Call front desk</a>
+                          </div>
+                        </div>
+                      </article>
+          
+                      <!-- Receptionist 2 -->
+                      <article class="doc-card doc-card--support">
+                        <div class="doc-media" style="--pos: 50% 18%;">
+                          <img class="doc-img" src="resources/staff3.jpg" alt="Reception Team Member" loading="lazy" />
+                        </div>
+          
+                        <div class="doc-body">
+                          <div class="doc-topline">
+                            <span class="doc-dot" aria-hidden="true"></span>
+                            <span class="doc-tag">Registered Nurse</span>
+                          </div>
+          
+                          <h5 class="doc-name">Firstname Lastname</h5>
+                          <p class="doc-desc">
+                            Coordinating bookings and follow-ups so your next step is always straightforward.
+                          </p>
+          
+                          <div class="doc-actions">
+                            <a class="btn btn-outline btn-sm" href="tel:+17780000000">Call front desk</a>
+                          </div>
+                        </div>
+                      </article>
+          
+                    </div>
+                  </div>
+                </section>
+          
+              </main>
+          
+              <footer class="site-footer" aria-label="Site footer">
+                <div class="container footer-inner reveal">
+                  <!-- Left: Brand -->
+                  <div class="footer-brand">
+                    <div class="footer-brand-top">
+                      <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
+                        <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
+          
+                      </a>
+                    </div>
+          
+                    <div class="footer-brand-bottom">
+                      <div class="footer-brand-type">
+                        <div class="footer-brand-name">SPRINGBOK</div>
+                        <div class="footer-brand-sub">MEDICAL CLINIC</div>
+                      </div>
+                      <div class="footer-social" aria-label="Social links">
+                        <a class="social-btn" href="#" aria-label="Instagram">
+                          <img class="social-icon" src="resources/instagram-logo.svg" alt="Instagram">
+                        </a>
+                        <a class="social-btn" href="#" aria-label="Facebook">
+                          <img class="social-icon" src="resources/facebook-logo.svg" alt="Facebook">
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+          
+                  <!-- Middle: Columns -->
+                  <div class="footer-cols">
+                    <!-- Pages -->
+                    <div class="footer-col">
+                      <h3>Pages</h3>
+                      <a href="index.html">Home</a>
+                      <a href="SpringbokAbout.html">About Us</a>
+                      <a href="SpringbokTeam.html">Our Team</a>
+                      <a href="SpringbokContact.html">Contact</a>
+                    </div>
+          
+                    <!-- Clinic Services (4 main) -->
+                    <div class="footer-col">
+                      <h3>Clinic Services</h3>
+                      <a href="SpringbokClinic.html#family">Family Practice</a>
+                      <a href="SpringbokClinic.html#hormone">Hormone Specialist</a>
+                      <a href="SpringbokClinic.html#naturopathic">Naturopathic Medicine</a>
+                      <a href="SpringbokClinic.html#plastics">Plastic Surgery</a>
+                    </div>
+          
+                    <!-- Spa Services (concise set) -->
+                    <div class="footer-col">
+                      <h3>Spa Services</h3>
+                      <a href="SpringbokSpa.html">Medical Spa</a>
+                      <a href="SpringbokSpa.html#injectables">Injectables</a>
+                      <a href="SpringbokSpa.html#laser">Laser</a>
+                      <a href="SpringbokSpa.html#skin">Skin Treatments</a>
+                      <a href="SpringbokSpa.html#body">Body Treatments</a>
+                    </div>
+          
+                  </div>
+          
+          
+                  <!-- Right: Contact (unchanged) -->
+                  <div class="footer-contact">
+                    <div class="footer-contact-block">
+                      <p class="footer-contact-title">Springbok Medical Clinic</p>
+                      <p>
+                        147 16th St West, Suite #300<br />
+                        North Vancouver, BC<br />
+                        V7M 1T3
+                      </p>
+                      <a class="footer-link" href="SpringbokContact.html#map">View Directions</a>
+                    </div>
+          
+                    <div class="footer-contact-block">
+                      <p><a class="footer-link" href="tel:+17780000000">+1 (778) 000-0000</a></p>
+                      <p><a class="footer-link" href="mailto:info@springbokclinic.ca">info@springbokclinic.ca</a></p>
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="container footer-bottom">
+                  <p>© <span id="footerYear"></span> Springbok Medical Clinic — All Rights Reserved</p>
+          
+                  <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">↑</button>
+                </div>
+              </footer>
+          
+              <!-- CONTACT DOCTOR MODAL (styled like contactModal) -->
+              <div class="modal" id="doctorModal" aria-hidden="true">
+                <div class="modal-backdrop" data-close="true"></div>
+          
+                <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="doctorModalTitle">
+                  <button class="modal-x" type="button" aria-label="Close" data-close="true">✕</button>
+          
+                  <div class="modal-head">
+                    <div class="modal-eyebrow">Contact</div>
+                    <h2 class="modal-title" id="doctorModalTitle">Request an appointment</h2>
+                    <p class="modal-sub">
+                      Fill this out and our team will route you to the right provider or next step.
+                    </p>
+                  </div>
+          
+                  <form class="modal-form" id="doctorContactForm">
+                    <div class="modal-grid">
+                      <label class="field">
+                        <span class="field-label">Full Name</span>
+                        <input class="field-input" type="text" name="name" placeholder="Your name" autocomplete="name" required />
+                      </label>
+          
+                      <label class="field">
+                        <span class="field-label">Phone Number</span>
+                        <input class="field-input" type="tel" name="phone" placeholder="(778) 000-0000" autocomplete="tel" />
+                      </label>
+          
+                      <label class="field field-span">
+                        <span class="field-label">Email</span>
+                        <input class="field-input" type="email" name="email" placeholder="you@email.com" autocomplete="email"
+                          required />
+                      </label>
+          
+                      <!-- Doctor / Service (custom dropdown) -->
+                      <div class="field select-field field-dd" data-dd="doctor">
+                        <span class="field-label">Doctor</span>
+          
+                        <button class="dd-btn field-input" type="button" aria-haspopup="listbox" aria-expanded="false">
+                          <span class="dd-value" data-placeholder="Select one">Select one</span>
+                        </button>
+          
+                        <!-- hidden input keeps your form submission + required validation -->
+                        <input type="hidden" name="doctor" id="doctorSelect" required />
+          
+                        <ul class="dd-menu" role="listbox" aria-label="Doctor / Service">
+                          <li class="dd-opt" role="option" data-value="Dr. Amor Kloppers">Dr. Amor Kloppers</li>
+                          <li class="dd-opt" role="option" data-value="Dr. Francois Erasmus">Dr. Francois Erasmus</li>
+                          <li class="dd-opt" role="option" data-value="Dr. Janneme Frouws">Dr. Janneme Frouws</li>
+                          <li class="dd-opt" role="option" data-value="Dr. Kacey Kiesman">Dr. Kacey Kiesman</li>
+                          <li class="dd-opt" role="option" data-value="General Inquiry">General Inquiry</li>
+                        </ul>
+                      </div>
+          
+                      <!-- Appointment type (custom dropdown) -->
+                      <div class="field select-field field-dd" data-dd="appt">
+                        <span class="field-label">Appointment type</span>
+          
+                        <button class="dd-btn field-input" type="button" aria-haspopup="listbox" aria-expanded="false">
+                          <span class="dd-value" data-placeholder="Select one">Select one</span>
+                        </button>
+          
+                        <input type="hidden" name="apptType" id="apptTypeSelect" required />
+          
+                        <ul class="dd-menu" role="listbox" aria-label="Appointment type">
+                          <li class="dd-opt" role="option" data-value="In-person appointment">In-person appointment</li>
+                          <li class="dd-opt" role="option" data-value="Phone call appointment">Phone call appointment</li>
+                          <li class="dd-opt" role="option" data-value="Video call appointment">Video call appointment</li>
+                          <li class="dd-opt" role="option" data-value="Follow-up appointment">Follow-up appointment</li>
+                        </ul>
+                      </div>
+          
+                      <label class="field field-span">
+                        <span class="field-label">Subject</span>
+                        <input class="field-input" type="text" name="subject" id="subjectInput"
+                          placeholder="e.g., Face Lift, Blood Transfusion, IV Therapy, etc..." required />
+                      </label>
+          
+                      <label class="field field-span">
+                        <span class="field-label">Message</span>
+                        <textarea class="field-input field-textarea" name="message"
+                          placeholder="Tell us what you’re looking for and any timing preferences." rows="5" required></textarea>
+                      </label>
+                    </div>
+          
+                    <div class="modal-actions">
+                      <button class="btn btn-outline" type="button" data-close="true">Cancel</button>
+                      <button class="btn btn-accent" type="submit">Send</button>
+                    </div>
+          
+                    <p class="modal-note">
+                      If this is urgent, please call 911.
+                    </p>
+                  </form>
+                </div>
+              </div>
+          
+              <script src="js/mobileMenu.js"></script>
+              <script src="js/footer.js"></script>
+          
+              <script src="js/contactModal.js"></script>
+              <script src="js/scrollReveal.js"></script>
+              <script src="js/smoothScroll.js"></script>
+              <script src="js/contactDoctorModal.js"></script>
+              <script src="js/missionSlider.js"></script>
+          </body>
+          
+          </html>

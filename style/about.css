@@ -1035,7 +1035,7 @@ html[data-brand="clinic"] .founder-btn--solid:hover {
    text
    + buttons stacked like screenshot
    ========================================================= */
-@media (max-width: 720px) {
+@media (max-width: 635px) {
 
     /* STACK the card: image on top, text below */
     html[data-brand="clinic"] .founder-card,
@@ -1075,7 +1075,7 @@ html[data-brand="clinic"] .founder-btn--solid:hover {
     /* stronger top/bottom blur bands for mobile */
     html[data-brand="clinic"] .founder-media::before,
     html[data-brand="clinic"] .founder-media::after {
-        height: 18%;
+        height: 8%;
         backdrop-filter: blur(16px) saturate(1.06);
         -webkit-backdrop-filter: blur(16px) saturate(1.06);
     }
