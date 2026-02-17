@@ -684,7 +684,7 @@
       </div>
     </footer>
 
-    <!-- CONTACT DOCTOR MODAL (your existing modal) -->
+    <!-- CONTACT DOCTOR MODAL (styled like contactModal) -->
     <div class="modal" id="doctorModal" aria-hidden="true">
       <div class="modal-backdrop" data-close="true"></div>
 
@@ -717,25 +717,36 @@
                 required />
             </label>
 
+            <!-- Doctor / Service (custom dropdown) -->
             <div class="field select-field field-dd" data-dd="doctor">
               <span class="field-label">Doctor</span>
+
               <button class="dd-btn field-input" type="button" aria-haspopup="listbox" aria-expanded="false">
                 <span class="dd-value" data-placeholder="Select one">Select one</span>
               </button>
+
+              <!-- hidden input keeps your form submission + required validation -->
               <input type="hidden" name="doctor" id="doctorSelect" required />
+
               <ul class="dd-menu" role="listbox" aria-label="Doctor / Service">
-                <li class="dd-opt" role="option" data-value="General Inquiry">General Inquiry</li>
+                <li class="dd-opt" role="option" data-value="Dr. Amor Kloppers">Dr. Amor Kloppers</li>
+                <li class="dd-opt" role="option" data-value="Dr. Francois Erasmus">Dr. Francois Erasmus</li>
+                <li class="dd-opt" role="option" data-value="Dr. Janneme Frouws">Dr. Janneme Frouws</li>
                 <li class="dd-opt" role="option" data-value="Dr. Kacey Kiesman">Dr. Kacey Kiesman</li>
-                <li class="dd-opt" role="option" data-value="Plastic Surgery">Plastic Surgery</li>
+                <li class="dd-opt" role="option" data-value="General Inquiry">General Inquiry</li>
               </ul>
             </div>
 
+            <!-- Appointment type (custom dropdown) -->
             <div class="field select-field field-dd" data-dd="appt">
               <span class="field-label">Appointment type</span>
+
               <button class="dd-btn field-input" type="button" aria-haspopup="listbox" aria-expanded="false">
                 <span class="dd-value" data-placeholder="Select one">Select one</span>
               </button>
+
               <input type="hidden" name="apptType" id="apptTypeSelect" required />
+
               <ul class="dd-menu" role="listbox" aria-label="Appointment type">
                 <li class="dd-opt" role="option" data-value="In-person appointment">In-person appointment</li>
                 <li class="dd-opt" role="option" data-value="Phone call appointment">Phone call appointment</li>
@@ -747,7 +758,7 @@
             <label class="field field-span">
               <span class="field-label">Subject</span>
               <input class="field-input" type="text" name="subject" id="subjectInput"
-                placeholder="e.g., Morpheus8 consult" required />
+                placeholder="e.g., Face Lift, Blood Transfusion, IV Therapy, etc..." required />
             </label>
 
             <label class="field field-span">
@@ -762,7 +773,9 @@
             <button class="btn btn-accent" type="submit">Send</button>
           </div>
 
-          <p class="modal-note">If this is urgent, please call 911.</p>
+          <p class="modal-note">
+            If this is urgent, please call 911.
+          </p>
         </form>
       </div>
     </div>

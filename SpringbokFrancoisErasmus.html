@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Springbok Medical Clinic | Home</title>
+  <title>Springbok Medical Clinic | Dr. Francois Erasmus</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,13 +14,10 @@
   <link rel="stylesheet" href="style/footer.css" />
   <link rel="stylesheet" href="style/header.css" />
   <link rel="stylesheet" href="style/home.css" />
-  <link rel="stylesheet" href="style/reviews.css" />
-  <link rel="stylesheet" href="style/mission.css" />
-  <link rel="stylesheet" href="style/services.css" />
-  <link rel="stylesheet" href="style/team.css" />
+
+  <link rel="stylesheet" href="style/staff.css" />
   <link rel="stylesheet" href="style/responsive.css" />
   <link rel="stylesheet" href="style/practiceModal.css" />
-
 </head>
 
 <body>
@@ -55,14 +52,12 @@
               <span></span><span></span><span></span>
             </span>
           </button>
-
         </div>
       </div>
 
       <!-- mobile panel -->
       <div class="container mobile-panel" id="mobilePanel" aria-hidden="true">
         <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
-
           <nav class="mobile-menu-links" aria-label="Mobile navigation">
             <a class="mobile-link" href="index.html">Home</a>
             <a class="mobile-link" href="SpringbokAbout.html">About Us</a>
@@ -71,13 +66,12 @@
             <a class="mobile-link is-active" href="SpringbokTeam.html">Our Team</a>
             <a class="mobile-link" href="SpringbokContact.html">Contact</a>
           </nav>
-
         </div>
       </div>
-
     </header>
 
     <main>
+      <!-- HERO -->
       <section class="hero">
         <!-- LOGO: part of HERO visually, but fixed top-left -->
         <a class="hero-brand reveal" href="index.html" aria-label="Springbok Home">
@@ -85,165 +79,243 @@
         </a>
 
         <div class="hero-media" aria-hidden="true">
-          <video class="hero-video" autoplay muted loop playsinline poster="resources/team.jpg">
+          <!-- swap to your real asset when ready -->
+          <video class="hero-video" autoplay muted loop playsinline poster="resources/francois.jpg">
             <source src="resources/" type="video/mp4" />
           </video>
           <div class="hero-overlay"></div>
         </div>
 
         <div class="container hero-content reveal">
-          <h1>Dedicated experts, working together for you.</h1>
+          <h1>Dr. Francois Erasmus</h1>
           <p>
-            Premium, modern care with clear next steps. Explore our clinics, or
-            book directly in seconds.
+            Family medicine focused on practical, evidence-based care — plus select medical spa services available
+            through online booking.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-accent book-cta" href="#" data-open-doctor-modal data-doctor="General Inquiry">
-              Book Clinic
+            <a class="btn btn-accent" href="#" data-open-doctor-modal data-doctor="Dr. Francois Erasmus">
+              Send inquiry
             </a>
-
-            <!-- Book Spa goes to Jane -->
-            <a class="btn btn-accent book-cta" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-              rel="noopener">
-              Book Spa
-            </a>
-            <a class="btn btn-outline" href="SpringbokAbout.html">Learn More</a>
+            <a class="btn btn-outline" href="#services">Explore services</a>
           </div>
         </div>
       </section>
 
-      <!-- TEAM (Doctors) -->
-      <section class="team-tiles" id="team">
+      <!-- STAFF PROFILE -->
+      <section class="staff-profile" id="top">
+        <div class="container">
+          <div class="staff-profile-grid reveal">
+            <div class="staff-card staff-card--profile">
+
+              <!-- top identity row -->
+              <div class="staff-profile-top">
+                <div class="staff-avatar">
+                  <!-- swap to your real asset when ready -->
+                  <img src="resources/francois.jpg" alt="Dr. Francois Erasmus" />
+                </div>
+
+                <div class="staff-ident">
+                  <span class="staff-role">Family Physician • Primary Care</span>
+                  <h2 class="staff-name">Dr. Francois Erasmus</h2>
+                  <p class="staff-tagline">
+                    Clear communication, careful assessment, and practical plans — supporting long-term health,
+                    prevention,
+                    and continuity of care.
+                  </p>
+                </div>
+              </div>
+
+              <!-- meta (ONLY Focus + New clients) -->
+              <div class="staff-meta">
+                <div class="staff-meta-item">
+                  <span class="staff-meta-k">Focus</span>
+                  <span class="staff-meta-v">Family care • Preventative health</span>
+                </div>
+                <div class="staff-meta-item">
+                  <span class="staff-meta-k">New clients</span>
+                  <span class="staff-meta-v">Not accepting</span>
+                </div>
+              </div>
+
+              <div class="staff-divider"></div>
+
+              <!-- bio inside the main card -->
+              <div class="staff-bio">
+                <p>
+                  Dr. Erasmus provides evidence-based family medicine with an emphasis on prevention, long-term
+                  health planning, and continuity of care. Appointments focus on understanding what’s happening,
+                  outlining
+                  realistic options, and agreeing on a plan that’s clear and achievable.
+                </p>
+                <p>
+                  When appropriate, Dr. Erasmus also offers select medical aesthetics services through Springbok Medical
+                  Spa —
+                  with consult-first planning and clear guidance on expectations, timing, and aftercare.
+                </p>
+              </div>
+
+              <div class="staff-divider"></div>
+
+              <div class="staff-focus">
+                <h3 class="staff-mini-title">Treatment focus</h3>
+                <ul class="staff-bullets">
+                  <li>Preventative care and long-term health planning</li>
+                  <li>Evidence-based diagnostics and referrals</li>
+                  <li>Chronic condition monitoring (for established patients)</li>
+                  <li>Clear next steps with appropriate follow-up</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUICK BOOKING -->
+      <section class="staff-section staff-section--alt" id="quick-book">
         <div class="container">
           <div class="section-head reveal">
-            <span class="section-eyebrow">Our Team</span>
-            <h2 class="section-title">Four doctors. One standard of care.</h2>
-            <div class="green-divider"></div>
+            <span class="section-eyebrow">Quick actions</span>
+            <h2 class="section-title">Book or contact</h2>
+            <div class="section-divider"></div>
             <p class="section-sub">
-              Physician-led care with clear next steps — designed around your goals.
+              Family practice is currently full. For questions or clinic coordination, send an inquiry. For spa
+              services,
+              book online in Jane.
             </p>
           </div>
 
-          <div class="doc-grid doc-grid--team reveal-stagger" aria-label="Doctors">
+          <div class="staff-quick reveal">
+            <div class="staff-card">
+              <h3>Choose an option</h3>
+              <p class="staff-muted">
+                Clinic care is coordinated through our team. Spa services can be booked directly online (choose Dr.
+                Francois Erasmus
+                as your practitioner).
+              </p>
 
-            <!-- Dr. Amor Kloppers -->
-            <article class="doc-card doc-card--team">
-              <div class="doc-media" style="--pos: 50% 18%;">
-                <img class="doc-img" src="resources/amor2.jpg" alt="Dr. Amor Kloppers" loading="lazy" />
+              <div class="staff-quick-links">
+                <!-- Clinic: inquiry (full patients) -->
+                <a class="staff-link" href="#" data-open-doctor-modal data-doctor="Dr. Francois Erasmus">
+                  Clinic / Family Care Inquiry <span>→</span>
+                </a>
+
+                <!-- Spa: Jane (direct) -->
+                <a class="staff-link" href="https://springbokmedicalspa.janeapp.com/" target="_blank" rel="noopener">
+                  Spa Services / Online Booking <span>→</span>
+                </a>
+
+                <!-- Fallback contact -->
+                <a class="staff-link" href="SpringbokContact.html">
+                  Contact Information <span>→</span>
+                </a>
               </div>
 
-              <div class="doc-body">
-                <div class="doc-topline">
-                  <span class="doc-dot" aria-hidden="true"></span>
-                  <span class="doc-tag">Family Practice</span>
-                </div>
-
-                <h5 class="doc-name">Dr. Amor Kloppers</h5>
-                <p class="doc-desc">
-                  Full-spectrum primary care with continuity, prevention, and clear follow-up plans.
-                </p>
-
-                <div class="doc-actions">
-                  <a class="btn btn-outline btn-sm" href="SpringbokAmorKloppers.html">View profile</a>
-                  <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal data-doctor="Dr. Amor Kloppers">Send
-                    inquiry</a>
-                </div>
+              <div class="staff-note" role="note">
+                Prefer phone? <a href="tel:+17780000000">+1 (778) 000-0000</a>
               </div>
-            </article>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <!-- Dr. Francois Erasmus -->
-            <article class="doc-card doc-card--team">
-              <div class="doc-media" style="--pos: 50% 18%;">
-                <img class="doc-img" src="resources/francois.jpg" alt="Dr. Francois Erasmus" loading="lazy" />
-              </div>
+      <!-- SERVICES -->
+      <section class="staff-section" id="services">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Services</span>
+            <h2 class="section-title">Services offered</h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">
+              Family care services are coordinated through our clinic. The spa services below are available for online
+              booking in Jane.
+            </p>
+          </div>
 
-              <div class="doc-body">
-                <div class="doc-topline">
-                  <span class="doc-dot" aria-hidden="true"></span>
-                  <span class="doc-tag">Family Practice</span>
-                </div>
+          <div class="staff-services-list reveal-stagger">
 
-                <h5 class="doc-name">Dr. Francois Erasmus</h5>
-                <p class="doc-desc">
-                  Preventative care, chronic disease management, and practical next steps you can follow.
-                </p>
-
-                <div class="doc-actions">
-                  <a class="btn btn-outline btn-sm" href="SpringbokFrancoisErasmus.html">View profile</a>
-                  <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal
-                    data-doctor="Dr. Francois Erasmus">Send
-                    inquiry</a>
-                </div>
-              </div>
-            </article>
-
-            <!-- Dr. Janneme Frouws -->
-            <article class="doc-card doc-card--team">
-              <div class="doc-media" style="--pos: 50% 18%;">
-                <img class="doc-img" src="resources/staff1.jpg" alt="Dr. Janneme Frouws" loading="lazy" />
-              </div>
-
-              <div class="doc-body">
-                <div class="doc-topline">
-                  <span class="doc-dot" aria-hidden="true"></span>
-                  <span class="doc-tag">Hormone Specialist</span>
-                </div>
-
-                <h5 class="doc-name">Dr. Janneme Frouws</h5>
-                <p class="doc-desc">
-                  Symptom-driven hormone care with thorough assessment, lab review, and individualized planning.
-                </p>
-
-                <div class="doc-actions">
-                  <a class="btn btn-outline btn-sm" href="SpringbokJannemeFrouws.html">View profile</a>
-                  <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal
-                    data-doctor="Dr. Janneme Frouws">Send
-                    inquiry</a>
-                </div>
+            <!-- FAMILY CARE -->
+            <article class="staff-card staff-svc">
+              <h3>Family Practice (Established Patients)</h3>
+              <p>Ongoing primary care, follow-ups, and long-term health planning for established patients.</p>
+              <div class="staff-svc-actions">
+                <a class="btn btn-outline" href="SpringbokClinic.html#family">Learn more</a>
+                <a class="btn btn-accent" href="#" data-open-doctor-modal data-doctor="Dr. Francois Erasmus">Send
+                  inquiry</a>
               </div>
             </article>
 
-            <!-- Dr. Kacey Kiesman -->
-            <article class="doc-card doc-card--team">
-              <div class="doc-media" style="--pos: 50% 18%;">
-                <img class="doc-img" src="resources/kacey.jpg" alt="Dr. Kacey Kiesman" loading="lazy" />
-              </div>
-
-              <div class="doc-body">
-                <div class="doc-topline">
-                  <span class="doc-dot" aria-hidden="true"></span>
-                  <span class="doc-tag">Naturopathic Medicine</span>
-                </div>
-
-                <h5 class="doc-name">Dr. Kacey Kiesman</h5>
-                <p class="doc-desc">
-                  Evidence-informed, integrative care focused on long-term health, clarity, and sustainable progress.
-                </p>
-
-                <div class="doc-actions">
-                  <a class="btn btn-outline btn-sm" href="SpringbokKaceyKiesman.html">View profile</a>
-                  <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal data-doctor="Dr. Kacey Kiesman">Send
-                    inquiry</a>
-                </div>
+            <article class="staff-card staff-svc">
+              <h3>Preventative Care</h3>
+              <p>Screening, lifestyle guidance, and proactive planning to support long-term wellness.</p>
+              <div class="staff-svc-actions">
+                <a class="btn btn-outline" href="SpringbokClinic.html#family">Learn more</a>
+                <a class="btn btn-accent" href="#" data-open-doctor-modal data-doctor="Dr. Francois Erasmus">Send
+                  inquiry</a>
               </div>
             </article>
 
-            <!-- Coming Soon (NO buttons) -->
-            <article class="doc-card doc-card--team doc-card--soon" aria-label="New provider coming soon">
-              <div class="doc-media doc-media--plus">
-                <span class="doc-plus" aria-hidden="true">+</span>
+            <article class="staff-card staff-svc">
+              <h3>Chronic Disease Management</h3>
+              <p>Structured follow-up and monitoring for common ongoing conditions (case-by-case, established patients).
+              </p>
+              <div class="staff-svc-actions">
+                <a class="btn btn-outline" href="SpringbokClinic.html#family">Learn more</a>
+                <a class="btn btn-accent" href="#" data-open-doctor-modal data-doctor="Dr. Francois Erasmus">Send
+                  inquiry</a>
               </div>
+            </article>
 
-              <div class="doc-body">
-                <div class="doc-topline">
-                  <span class="doc-dot doc-dot--muted" aria-hidden="true"></span>
-                  <span class="doc-tag">Coming Soon</span>
-                </div>
+            <!-- SPA SERVICES (verified on Jane staff listing for Dr. Francois Erasmus) -->
+            <article class="staff-card staff-svc">
+              <h3>Morpheus8 Burst (RF Microneedling)</h3>
+              <p>Advanced RF microneedling to support texture, tone, firmness, and collagen remodeling.</p>
+              <div class="staff-svc-actions">
+                <a class="btn btn-outline" href="SpringbokSpaServices.html">Learn more</a>
+                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                  rel="noopener">Book Now</a>
+              </div>
+            </article>
 
-                <h5 class="doc-name">New Providers</h5>
-                <p class="doc-desc">
-                  We’re expanding the team. Check back soon for new specialties and availability.
-                </p>
+            <article class="staff-card staff-svc">
+              <h3>Morpheus8 Resurfacing</h3>
+              <p>Resurfacing-focused RF microneedling to refine skin texture and support a smoother look.</p>
+              <div class="staff-svc-actions">
+                <a class="btn btn-outline" href="SpringbokSpaServices.html">Learn more</a>
+                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                  rel="noopener">Book Now</a>
+              </div>
+            </article>
+
+            <article class="staff-card staff-svc">
+              <h3>Lumecca Peak IPL</h3>
+              <p>Light-based treatment that targets pigmentation and redness to support a clearer, more even tone.</p>
+              <div class="staff-svc-actions">
+                <a class="btn btn-outline" href="SpringbokSpaServices.html">Learn more</a>
+                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                  rel="noopener">Book Now</a>
+              </div>
+            </article>
+
+            <article class="staff-card staff-svc">
+              <h3>Diolaze XL Laser Hair Removal</h3>
+              <p>Medical-grade laser hair reduction with built-in cooling for comfort and consistent series planning.
+              </p>
+              <div class="staff-svc-actions">
+                <a class="btn btn-outline" href="SpringbokSpaServices.html">Learn more</a>
+                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                  rel="noopener">Book Now</a>
+              </div>
+            </article>
+
+            <article class="staff-card staff-svc">
+              <h3>PRP</h3>
+              <p>Platelet-rich plasma therapy planned around your goals (hair restoration or facial rejuvenation
+                options).</p>
+              <div class="staff-svc-actions">
+                <a class="btn btn-outline" href="SpringbokSpaServices.html">Learn more</a>
+                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                  rel="noopener">Book Now</a>
               </div>
             </article>
 
@@ -251,66 +323,31 @@
         </div>
       </section>
 
-      <!-- TEAM (Reception / Operations) -->
-      <section class="services-tiles team-support" id="teamSupport">
+      <!-- TESTIMONIALS -->
+      <section class="staff-section" id="testimonials">
         <div class="container">
           <div class="section-head reveal">
-            <span class="section-eyebrow">Support Team</span>
-            <h2 class="section-title">The people who make every visit smooth.</h2>
-            <div class="green-divider"></div>
-            <p class="section-sub">
-              From first call to follow-up — our front desk team keeps everything clear, calm, and organized.
-            </p>
+            <span class="section-eyebrow">Testimonials</span>
+            <h2 class="section-title">What clients say</h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">A few words about Dr. Erasmus’ approach and care.</p>
           </div>
 
-          <div class="doc-grid doc-grid--support reveal-stagger" aria-label="Reception staff">
-
-            <!-- Receptionist 1 -->
-            <article class="doc-card doc-card--support">
-              <div class="doc-media" style="--pos: 50% 20%;">
-                <img class="doc-img" src="resources/staff2.jpg" alt="Reception Team Member" loading="lazy" />
-              </div>
-
-              <div class="doc-body">
-                <div class="doc-topline">
-                  <span class="doc-dot" aria-hidden="true"></span>
-                  <span class="doc-tag">Reception</span>
-                </div>
-
-                <h5 class="doc-name">Reception Team Member</h5>
-                <p class="doc-desc">
-                  Scheduling, intake, and helping you get to the right provider — quickly and clearly.
-                </p>
-
-                <div class="doc-actions">
-                  <a class="btn btn-outline btn-sm" href="tel:+17780000000">Call front desk</a>
-                </div>
-              </div>
+          <div class="staff-testimonials reveal-stagger">
+            <article class="staff-quote">
+              <p>“Thorough and straightforward — I understood the plan and what to do next.”</p>
+              <span>— Patient</span>
             </article>
 
-            <!-- Receptionist 2 -->
-            <article class="doc-card doc-card--support">
-              <div class="doc-media" style="--pos: 50% 18%;">
-                <img class="doc-img" src="resources/staff3.jpg" alt="Reception Team Member" loading="lazy" />
-              </div>
-
-              <div class="doc-body">
-                <div class="doc-topline">
-                  <span class="doc-dot" aria-hidden="true"></span>
-                  <span class="doc-tag">Reception</span>
-                </div>
-
-                <h5 class="doc-name">Reception Team Member</h5>
-                <p class="doc-desc">
-                  Coordinating bookings and follow-ups so your next step is always straightforward.
-                </p>
-
-                <div class="doc-actions">
-                  <a class="btn btn-outline btn-sm" href="tel:+17780000000">Call front desk</a>
-                </div>
-              </div>
+            <article class="staff-quote">
+              <p>“Professional, calm, and respectful. Everything was explained clearly without feeling rushed.”</p>
+              <span>— Patient</span>
             </article>
 
+            <article class="staff-quote">
+              <p>“I appreciated the preventative focus and how options were laid out in a practical way.”</p>
+              <span>— Patient</span>
+            </article>
           </div>
         </div>
       </section>
@@ -324,7 +361,6 @@
           <div class="footer-brand-top">
             <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
               <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
-
             </a>
           </div>
 
@@ -346,7 +382,6 @@
 
         <!-- Middle: Columns -->
         <div class="footer-cols">
-          <!-- Pages -->
           <div class="footer-col">
             <h3>Pages</h3>
             <a href="index.html">Home</a>
@@ -355,7 +390,6 @@
             <a href="SpringbokContact.html">Contact</a>
           </div>
 
-          <!-- Clinic Services (4 main) -->
           <div class="footer-col">
             <h3>Clinic Services</h3>
             <a href="SpringbokClinic.html#family">Family Practice</a>
@@ -364,7 +398,6 @@
             <a href="SpringbokClinic.html#plastics">Plastic Surgery</a>
           </div>
 
-          <!-- Spa Services (concise set) -->
           <div class="footer-col">
             <h3>Spa Services</h3>
             <a href="SpringbokSpa.html">Medical Spa</a>
@@ -373,11 +406,9 @@
             <a href="SpringbokSpa.html#skin">Skin Treatments</a>
             <a href="SpringbokSpa.html#body">Body Treatments</a>
           </div>
-
         </div>
 
-
-        <!-- Right: Contact (unchanged) -->
+        <!-- Right: Contact -->
         <div class="footer-contact">
           <div class="footer-contact-block">
             <p class="footer-contact-title">Springbok Medical Clinic</p>
@@ -398,7 +429,6 @@
 
       <div class="container footer-bottom">
         <p>© <span id="footerYear"></span> Springbok Medical Clinic — All Rights Reserved</p>
-
         <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">↑</button>
       </div>
     </footer>
@@ -444,7 +474,6 @@
                 <span class="dd-value" data-placeholder="Select one">Select one</span>
               </button>
 
-              <!-- hidden input keeps your form submission + required validation -->
               <input type="hidden" name="doctor" id="doctorSelect" required />
 
               <ul class="dd-menu" role="listbox" aria-label="Doctor / Service">
@@ -477,7 +506,7 @@
             <label class="field field-span">
               <span class="field-label">Subject</span>
               <input class="field-input" type="text" name="subject" id="subjectInput"
-                placeholder="e.g., Face Lift, Blood Transfusion, IV Therapy, etc..." required />
+                placeholder="e.g., Appointment request, follow-up, referral question..." required />
             </label>
 
             <label class="field field-span">
@@ -492,9 +521,7 @@
             <button class="btn btn-accent" type="submit">Send</button>
           </div>
 
-          <p class="modal-note">
-            If this is urgent, please call 911.
-          </p>
+          <p class="modal-note">If this is urgent, please call 911.</p>
         </form>
       </div>
     </div>
@@ -506,7 +533,6 @@
     <script src="js/scrollReveal.js"></script>
     <script src="js/smoothScroll.js"></script>
     <script src="js/contactDoctorModal.js"></script>
-    <script src="js/missionSlider.js"></script>
 </body>
 
 </html>

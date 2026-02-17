@@ -536,7 +536,31 @@
    - Bullets: TL/BL left, TR/BR right (dot on right)
    ========================================================= */
 @media (max-width: 720px) {
+/* the black band */
+    .mission-v2-shell::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 92px;
+        /* tweak: 80–110px */
+        background: #000;
+        z-index: 6;
+        /* below controls (z7), above slide */
+        pointer-events: none;
+    }
 
+    /* keep controls above the band */
+    .mission-controls {
+        z-index: 7;
+    }
+
+    .mission-controls {
+        background: #000;
+        padding: 10px 12px;
+        border-radius: 999px;
+    }
     /* 0) Card becomes 2 rows */
     .mission-v2-shell {
         display: grid !important;
@@ -547,6 +571,7 @@
         overflow: hidden;
         position: relative;
         isolation: isolate;
+        background: #000;
         /* keeps bg layers contained */
     }
 
@@ -756,31 +781,7 @@
     position: relative;
 }
 
-/* the black band */
-.mission-v2-shell::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 92px;
-    /* tweak: 80–110px */
-    background: #000;
-    z-index: 6;
-    /* below controls (z7), above slide */
-    pointer-events: none;
-}
 
-/* keep controls above the band */
-.mission-controls {
-    z-index: 7;
-}
-
-.mission-controls {
-    background: #000;
-    padding: 10px 12px;
-    border-radius: 999px;
-}
 
 /* 1) Ensure slider/slides stay BELOW the controls + black band */
 .mission-slider,
@@ -1027,109 +1028,120 @@ html[data-brand="clinic"] .founder-btn--solid:hover {
 }
 
 /* =========================================================
-   FOUNDERS — Mobile: card can grow + media stretches to match
-   (fixes SE overflow + keeps L/R layout)
+   FOUNDERS — Mobile (<=720): STACKED layout
+   img
+   text
+   img
+   text
+   + buttons stacked like screenshot
    ========================================================= */
 @media (max-width: 720px) {
 
-    html[data-brand="clinic"] .founder-card {
-        grid-template-columns: clamp(128px, 36vw, 168px) 1fr;
-        gap: 12px;
-        border-radius: var(--radius-lg);
-
-        height: auto;
-        min-height: 0;
-
-        /* keep content from forcing weird vertical compression */
-        align-items: start;
-    }
-
+    /* STACK the card: image on top, text below */
+    html[data-brand="clinic"] .founder-card,
     html[data-brand="clinic"] .founder-card--flip {
-        grid-template-columns: 1fr clamp(128px, 36vw, 168px);
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto auto !important;
+        gap: 0 !important;
+        border-radius: var(--radius-lg);
+        align-items: stretch !important;
     }
 
-    /* KEY: make the image column stretch to the full card height */
+    /* remove flip ordering on mobile */
+    html[data-brand="clinic"] .founder-card--flip .founder-media,
+    html[data-brand="clinic"] .founder-card--flip .founder-body {
+        order: initial !important;
+    }
+
+    /* IMAGE block: keep it big enough to feel premium */
     html[data-brand="clinic"] .founder-media {
-        align-self: stretch;
-        /* overrides the grid's align-items:start */
-        min-height: 0;
-        height: auto;
+        width: 100%;
+        min-height: 220px;
+        /* tweak 200–260 */
+        max-height: 320px;
+        /* prevents huge portraits */
+        overflow: hidden;
+        background: rgba(0, 0, 0, .22);
     }
 
     html[data-brand="clinic"] .founder-media img {
         width: 100%;
         height: 100%;
-        /* fill the stretched media column */
-        object-fit: cover;
-        object-position: 50% 25%;
         display: block;
+        object-fit: cover;
+        object-position: 50% 22%;
     }
 
-    /* a bit tighter so it reads cleaner on phones */
+    /* stronger top/bottom blur bands for mobile */
+    html[data-brand="clinic"] .founder-media::before,
+    html[data-brand="clinic"] .founder-media::after {
+        height: 18%;
+        backdrop-filter: blur(16px) saturate(1.06);
+        -webkit-backdrop-filter: blur(16px) saturate(1.06);
+    }
+
+    /* BODY: no side “0 padding” anymore */
     html[data-brand="clinic"] .founder-body {
-        align-content: start;
-        padding: 12px 12px 14px 0;
+        padding: 12px 14px 14px !important;
         gap: 8px;
+        border-left: 0 !important;
+        border-right: 0 !important;
     }
 
-    html[data-brand="clinic"] .founder-card--flip .founder-body {
-        padding: 12px 0 14px 12px;
-    }
-
+    /* tighter type for phones (no truncation) */
     html[data-brand="clinic"] .founder-kicker {
-        font-size: .76rem;
+        font-size: .72rem;
         letter-spacing: .09em;
+        margin: 0;
     }
 
     html[data-brand="clinic"] .founder-name {
         font-size: 1.02rem;
         line-height: 1.12;
+        margin: 0;
     }
 
     html[data-brand="clinic"] .founder-desc {
         font-size: .92rem;
-        line-height: 1.45;
+        line-height: 1.42;
+        margin: 0;
     }
 
+    /* BUTTONS: stacked vertically like your screenshot */
     html[data-brand="clinic"] .founder-actions {
-        margin-top: 8px;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
         gap: 10px;
+        align-items: stretch;
     }
 
     html[data-brand="clinic"] .founder-btn {
-        padding: 9px 12px;
-        min-height: 40px;
+        width: 100%;
+        justify-content: center;
+        padding: 10px 14px;
+        min-height: 42px;
         font-size: .92rem;
     }
 }
 
 /* =========================================================
-   FOUNDERS — Extra small phones (iPhone SE)
-   Give text more width (reduces wrapping) + slightly tighter UI
+   FOUNDERS — Extra small (<=380): even tighter
    ========================================================= */
 @media (max-width: 380px) {
 
-    html[data-brand="clinic"] .founder-card {
-        grid-template-columns: 118px 1fr;
-        /* more room for text */
-        gap: 10px;
-    }
-
-    html[data-brand="clinic"] .founder-card--flip {
-        grid-template-columns: 1fr 118px;
+    html[data-brand="clinic"] .founder-media {
+        min-height: 200px;
+        max-height: 280px;
     }
 
     html[data-brand="clinic"] .founder-body {
-        padding: 10px 10px 12px 0;
+        padding: 10px 12px 12px !important;
         gap: 7px;
     }
 
-    html[data-brand="clinic"] .founder-card--flip .founder-body {
-        padding: 10px 0 12px 10px;
-    }
-
     html[data-brand="clinic"] .founder-kicker {
-        font-size: .72rem;
+        font-size: .70rem;
     }
 
     html[data-brand="clinic"] .founder-name {
@@ -1137,13 +1149,17 @@ html[data-brand="clinic"] .founder-btn--solid:hover {
     }
 
     html[data-brand="clinic"] .founder-desc {
-        font-size: .90rem;
-        line-height: 1.42;
+        font-size: .88rem;
+        line-height: 1.36;
+    }
+
+    html[data-brand="clinic"] .founder-actions {
+        gap: 9px;
     }
 
     html[data-brand="clinic"] .founder-btn {
-        padding: 8px 11px;
-        min-height: 38px;
+        padding: 9px 12px;
+        min-height: 40px;
         font-size: .90rem;
     }
 }
@@ -1324,4 +1340,24 @@ html[data-brand="clinic"] .why-actions {
         border-radius: 16px;
         padding: 14px 14px 12px;
     }
+}
+
+/* =========================================================
+   GLOBAL: KILL ALL "GLOW" BACKGROUNDS
+   (section halos + card halos)
+   ========================================================= */
+
+/* section glows */
+.mission-v2::before,
+html[data-brand="clinic"] .founders::before,
+html[data-brand="clinic"] .why-bubbles::before {
+    content: none !important;
+    display: none !important;
+}
+
+/* optional: remove the little top glow inside founder cards too */
+html[data-brand="clinic"] .founder-card::before,
+html[data-brand="clinic"] .why-bubble::before {
+    content: none !important;
+    display: none !important;
 }

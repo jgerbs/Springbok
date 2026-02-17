@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Springbok Medical Clinic | Home</title>
+  <title>Springbok Medical Clinic | Dr. Kacey Kiesman</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,7 +18,6 @@
   <link rel="stylesheet" href="style/staff.css" />
   <link rel="stylesheet" href="style/responsive.css" />
   <link rel="stylesheet" href="style/practiceModal.css" />
-
 </head>
 
 <body>
@@ -36,7 +35,7 @@
         </nav>
 
         <div class="header-actions">
-          <a class="btn btn-accent book-cta" href="#" data-open-doctor-modal data-doctor="General Inquiry">
+          <a class="btn btn-accent book-cta" href="#" data-open-doctor-modal data-doctor="Dr. Kacey Kiesman">
             Book Clinic
           </a>
 
@@ -53,14 +52,12 @@
               <span></span><span></span><span></span>
             </span>
           </button>
-
         </div>
       </div>
 
       <!-- mobile panel -->
       <div class="container mobile-panel" id="mobilePanel" aria-hidden="true">
         <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
-
           <nav class="mobile-menu-links" aria-label="Mobile navigation">
             <a class="mobile-link" href="index.html">Home</a>
             <a class="mobile-link" href="SpringbokAbout.html">About Us</a>
@@ -69,20 +66,19 @@
             <a class="mobile-link is-active" href="SpringbokTeam.html">Our Team</a>
             <a class="mobile-link" href="SpringbokContact.html">Contact</a>
           </nav>
-
         </div>
       </div>
-
     </header>
+
     <main>
+      <!-- HERO -->
       <section class="hero">
-        <!-- LOGO: part of HERO visually, but fixed top-left -->
         <a class="hero-brand reveal" href="index.html" aria-label="Springbok Home">
           <img src="resources/cliniclogo1.png" alt="Springbok Medical Clinic" class="hero-logo" />
         </a>
 
         <div class="hero-media" aria-hidden="true">
-          <video class="hero-video" autoplay muted loop playsinline poster="resources/team.jpg">
+          <video class="hero-video" autoplay muted loop playsinline poster="resources/kacey.jpg">
             <source src="resources/" type="video/mp4" />
           </video>
           <div class="hero-overlay"></div>
@@ -91,17 +87,21 @@
         <div class="container hero-content reveal">
           <h1>Dr. Kacey Kiesman</h1>
           <p>
-            Premium, modern care with clear next steps. Explore our clinics, or
-            book directly in seconds.
+            Naturopathic medicine focused on whole-person care, clear next steps, and realistic plans that fit real
+            life.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-accent" href="#">Book Now</a>
-            <a class="btn btn-outline" href="#">Explore Services</a>
+            <a class="btn btn-accent"
+              href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book#/discipline/21/treatment/101"
+              target="_blank" rel="noopener">
+              Book Discovery Visit
+            </a>
+            <a class="btn btn-outline" href="#services">Explore Services</a>
           </div>
         </div>
       </section>
 
-      <!-- STAFF PROFILE (combined card: profile + bio + 2 focus tabs) -->
+      <!-- STAFF PROFILE -->
       <section class="staff-profile" id="top">
         <div class="container">
           <div class="staff-profile-grid reveal">
@@ -111,17 +111,17 @@
               <!-- top identity row -->
               <div class="staff-profile-top">
                 <div class="staff-avatar">
-                  <img src="resources/doc1.jpg" alt="Dr. Ava Patel" />
+                  <!-- swap to your real image -->
+                  <img src="resources/kacey2.png" alt="Dr. Kacey Kiesman" />
                 </div>
 
                 <div class="staff-ident">
-                  <span class="staff-role">Family Physician • Aesthetic Medicine</span>
-                  <h2 class="staff-name">Dr. Ava Patel</h2>
+                  <span class="staff-role">Naturopathic Doctor • Wellness + Integrative Care</span>
+                  <h2 class="staff-name">Dr. Kacey Kiesman</h2>
                   <p class="staff-tagline">
-                    Physician-led aesthetic consults focused on safe planning, natural results, and long-term skin
-                    confidence.
+                    Whole-person care with practical, sustainable next steps — blending root-cause thinking with modern
+                    clinical standards.
                   </p>
-
                 </div>
               </div>
 
@@ -129,7 +129,7 @@
               <div class="staff-meta">
                 <div class="staff-meta-item">
                   <span class="staff-meta-k">Focus</span>
-                  <span class="staff-meta-v">Aesthetics • Skin health</span>
+                  <span class="staff-meta-v">Naturopathic medicine • Wellness planning</span>
                 </div>
                 <div class="staff-meta-item">
                   <span class="staff-meta-k">New clients</span>
@@ -139,33 +139,31 @@
 
               <div class="staff-divider"></div>
 
-              <!-- bio inside the main card -->
+              <!-- bio -->
               <div class="staff-bio">
                 <p>
-                  Dr. Patel’s approach is grounded in thoughtful assessment, conservative planning, and results that
-                  look like
-                  you — just refreshed. She focuses on skin health, structure, and long-term maintenance.
+                  Dr. Kiesman focuses on whole-person health with an emphasis on clarity and sustainable routines.
+                  Visits are collaborative and consult-first: we’ll review what’s going on, what matters most to you,
+                  and what a realistic plan looks like.
                 </p>
                 <p>
-                  During consults, she prioritizes clarity: what’s happening, what options exist, what’s realistic, and
-                  what’s
-                  safest.
+                  Her approach prioritizes measurable progress, education, and supportive care strategies designed to
+                  fit your schedule — with clear follow-ups and practical next steps.
                 </p>
               </div>
 
-              <!-- 2 focus tabs -->
               <div class="staff-divider"></div>
 
+              <!-- Treatment focus -->
               <div class="staff-focus">
                 <h3 class="staff-mini-title">Treatment focus</h3>
                 <ul class="staff-bullets">
-                  <li>Skin texture, tone, and firmness support</li>
-                  <li>Conservative facial balancing (case-by-case)</li>
-                  <li>Evidence-based treatment planning</li>
-                  <li>Maintenance programs for long-term results</li>
+                  <li>Root-cause assessment + step-by-step wellness plans</li>
+                  <li>Stress, sleep, and energy support strategies</li>
+                  <li>Nutrition + lifestyle guidance (realistic + sustainable)</li>
+                  <li>Preventative care and long-term health maintenance</li>
                 </ul>
               </div>
-
 
             </div>
 
@@ -173,41 +171,36 @@
         </div>
       </section>
 
-      <!-- QUICK BOOKING (now below the main card) -->
+      <!-- QUICK BOOKING -->
       <section class="staff-section staff-section--alt" id="quick-book">
         <div class="container">
           <div class="section-head reveal">
             <span class="section-eyebrow">Quick booking</span>
-            <h2 class="section-title">Book in seconds</h2>
+            <h2 class="section-title">Start with the right appointment</h2>
             <div class="section-divider"></div>
-            <p class="section-sub">If you’re unsure, start with a consult.</p>
+            <p class="section-sub">Not sure what to choose? Book a Discovery Visit and we’ll build your plan.</p>
           </div>
 
           <div class="staff-quick reveal">
             <div class="staff-card">
               <h3>Choose an appointment type</h3>
               <p class="staff-muted">
-                Booking happens in Jane. These are shortcuts to the most common options.
+                Booking happens in Jane. These links are shortcuts to common starting points.
               </p>
 
               <div class="staff-quick-links">
-                <a class="staff-link" href="https://jane.app/" target="_blank" rel="noopener">
-                  Aesthetic Consultation <span>→</span>
+                <a class="staff-link"
+                  href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book#/discipline/21/treatment/101"
+                  target="_blank" rel="noopener">
+                  Discovery Visit (Consult) <span>→</span>
                 </a>
-                <a class="staff-link" href="https://jane.app/" target="_blank" rel="noopener">
-                  Morpheus8 <span>→</span>
+
+                <a class="staff-link" href="https://springbokmedicalspa.janeapp.com/" target="_blank" rel="noopener">
+                  Naturopathic Follow-up <span>→</span>
                 </a>
-                <a class="staff-link" href="https://jane.app/" target="_blank" rel="noopener">
-                  Injectables Follow-up <span>→</span>
-                </a>
-                <a class="staff-link" href="https://jane.app/" target="_blank" rel="noopener">
-                  Aesthetic Consultation <span>→</span>
-                </a>
-                <a class="staff-link" href="https://jane.app/" target="_blank" rel="noopener">
-                  Morpheus8 <span>→</span>
-                </a>
-                <a class="staff-link" href="https://jane.app/" target="_blank" rel="noopener">
-                  Injectables Follow-up <span>→</span>
+
+                <a class="staff-link" href="https://springbokmedicalspa.janeapp.com/" target="_blank" rel="noopener">
+                  IV Therapy (if recommended) <span>→</span>
                 </a>
               </div>
 
@@ -219,73 +212,148 @@
         </div>
       </section>
 
-      <!-- SERVICES (scalable list with direct booking links) -->
+      <!-- SERVICES -->
       <section class="staff-section" id="services">
         <div class="container">
           <div class="section-head reveal">
             <span class="section-eyebrow">Services</span>
             <h2 class="section-title">Services offered</h2>
             <div class="section-divider"></div>
-            <p class="section-sub">A full list — scales cleanly as you add more.</p>
+            <p class="section-sub">A full list of services Dr. Kiesman offers — book directly in Jane.</p>
           </div>
 
           <div class="staff-services-list reveal-stagger">
-            <!-- repeat this card for every service -->
+
+            <!-- Discovery Visit -->
             <article class="staff-card staff-svc">
-              <h3>Aesthetic Consultation</h3>
-              <p>Best starting point to build a safe plan with clear steps.</p>
+              <h3>Discovery Visit (Consult)</h3>
+              <p>Not sure where to start? A consult-style visit to review goals, history, and build a clear plan.</p>
               <div class="staff-svc-actions">
-                <a class="btn btn-outline" href="SpringbokSpa.html#injectables">Learn more</a>
-                <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Book</a>
+                <a class="btn btn-outline" href="SpringbokSpaServices.html">Learn more</a>
+                <a class="btn btn-accent"
+                  href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book#/discipline/21/treatment/101"
+                  target="_blank" rel="noopener">Book</a>
               </div>
             </article>
 
+            <!-- Naturopathic Medicine -->
+            <article class="staff-card staff-svc">
+              <h3>Naturopathic Medicine</h3>
+              <p>Whole-person support focused on sustainable health — practical next steps built around your life.</p>
+              <div class="staff-svc-actions">
+                <a class="btn btn-outline" href="SpringbokSpaServices.html">Learn more</a>
+                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                  rel="noopener">Book</a>
+              </div>
+            </article>
+
+            <!-- IV Therapy -->
+            <article class="staff-card staff-svc">
+              <h3>IV Therapy</h3>
+              <p>Hydration and nutrient support delivered with comfort and clinical standards — planned around your
+                goals.</p>
+              <div class="staff-svc-actions">
+                <a class="btn btn-outline" href="SpringbokSpaService1.html">Learn more</a>
+                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                  rel="noopener">Book</a>
+              </div>
+            </article>
+
+            <!-- Plasma Pen -->
+            <article class="staff-card staff-svc">
+              <h3>Plasma Pen</h3>
+              <p>Precision treatment designed to support skin tightening and refinement — with a consult-first plan.</p>
+              <div class="staff-svc-actions">
+                <a class="btn btn-outline" href="SpringbokSpaService1.html">Learn more</a>
+                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                  rel="noopener">Book</a>
+              </div>
+            </article>
+
+            <!-- Microneedling -->
+            <article class="staff-card staff-svc">
+              <h3>Microneedling</h3>
+              <p>Collagen-supporting treatment for texture, tone, and overall skin quality — tailored to downtime
+                preferences.</p>
+              <div class="staff-svc-actions">
+                <a class="btn btn-outline" href="SpringbokSpaService1.html">Learn more</a>
+                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                  rel="noopener">Book</a>
+              </div>
+            </article>
+
+            <!-- PRP -->
+            <article class="staff-card staff-svc">
+              <h3>PRP</h3>
+              <p>Platelet-rich plasma treatments planned around your goals — designed to support natural-looking
+                revitalization.</p>
+              <div class="staff-svc-actions">
+                <a class="btn btn-outline" href="SpringbokSpaService1.html">Learn more</a>
+                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                  rel="noopener">Book</a>
+              </div>
+            </article>
+
+            <!-- Morpheus8 -->
             <article class="staff-card staff-svc">
               <h3>Morpheus8</h3>
-              <p>RF microneedling for texture, pores, and firming support.</p>
+              <p>Advanced RF microneedling for texture, tone, firmness, and collagen support — with a plan tailored to
+                you.</p>
               <div class="staff-svc-actions">
-                <a class="btn btn-outline" href="SpringbokSpa.html#skin">Learn more</a>
-                <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Book</a>
+                <a class="btn btn-outline" href="SpringbokSpaService1.html">Learn more</a>
+                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                  rel="noopener">Book</a>
               </div>
             </article>
 
+            <!-- Laser -->
             <article class="staff-card staff-svc">
-              <h3>Injectables</h3>
-              <p>Conservative, natural balancing (case-by-case).</p>
+              <h3>Laser</h3>
+              <p>Comfortable laser treatments with clear series planning — designed for consistent, measurable results
+                over time.</p>
               <div class="staff-svc-actions">
-                <a class="btn btn-outline" href="SpringbokSpa.html#injectables">Learn more</a>
-                <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Book</a>
+                <a class="btn btn-outline" href="SpringbokSpaService1.html">Learn more</a>
+                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                  rel="noopener">Book</a>
               </div>
             </article>
 
+            <!-- IPL -->
             <article class="staff-card staff-svc">
-              <h3>Aesthetic Consultation</h3>
-              <p>Best starting point to build a safe plan with clear steps.</p>
+              <h3>IPL</h3>
+              <p>Intense pulsed light treatments to support tone and clarity — planned with realistic downtime and
+                expectations.</p>
               <div class="staff-svc-actions">
-                <a class="btn btn-outline" href="SpringbokSpa.html#injectables">Learn more</a>
-                <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Book</a>
+                <a class="btn btn-outline" href="SpringbokSpaService1.html">Learn more</a>
+                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                  rel="noopener">Book</a>
               </div>
             </article>
 
+            <!-- Botox -->
             <article class="staff-card staff-svc">
-              <h3>Morpheus8</h3>
-              <p>RF microneedling for texture, pores, and firming support.</p>
+              <h3>Botox</h3>
+              <p>Subtle, balanced results with a consultation-first approach — designed to preserve expression while
+                refining lines.</p>
               <div class="staff-svc-actions">
-                <a class="btn btn-outline" href="SpringbokSpa.html#skin">Learn more</a>
-                <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Book</a>
+                <a class="btn btn-outline" href="SpringbokSpaService1.html">Learn more</a>
+                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                  rel="noopener">Book</a>
               </div>
             </article>
 
+            <!-- Filler -->
             <article class="staff-card staff-svc">
-              <h3>Injectables</h3>
-              <p>Conservative, natural balancing (case-by-case).</p>
+              <h3>Filler</h3>
+              <p>Natural-looking enhancement guided by facial balance and anatomy — prioritizing subtlety and harmony.
+              </p>
               <div class="staff-svc-actions">
-                <a class="btn btn-outline" href="SpringbokSpa.html#injectables">Learn more</a>
-                <a class="btn btn-accent" href="https://jane.app/" target="_blank" rel="noopener">Book</a>
+                <a class="btn btn-outline" href="SpringbokSpaService1.html">Learn more</a>
+                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                  rel="noopener">Book</a>
               </div>
             </article>
 
-            <!-- add as many as you want -->
           </div>
         </div>
       </section>
@@ -297,22 +365,22 @@
             <span class="section-eyebrow">Testimonials</span>
             <h2 class="section-title">What clients say</h2>
             <div class="section-divider"></div>
-            <p class="section-sub">A few words about this provider’s approach and care.</p>
+            <p class="section-sub">A few words about Dr. Kiesman’s approach and care.</p>
           </div>
 
           <div class="staff-testimonials reveal-stagger">
             <article class="staff-quote">
-              <p>“I felt listened to and never rushed. The plan was clear and conservative — exactly what I wanted.”</p>
+              <p>“I left with a clear plan that felt realistic. Everything was explained in a way that made sense.”</p>
               <span>— Client</span>
             </article>
 
             <article class="staff-quote">
-              <p>“Professional, warm, and detail-oriented. The aftercare guidance was amazing.”</p>
+              <p>“Compassionate, thorough, and practical. I felt supported without pressure.”</p>
               <span>— Client</span>
             </article>
 
             <article class="staff-quote">
-              <p>“Results looked natural. I appreciated how everything was explained before we started.”</p>
+              <p>“The follow-up steps were simple and actionable — I finally felt like I knew what to do next.”</p>
               <span>— Client</span>
             </article>
           </div>
@@ -321,14 +389,13 @@
 
     </main>
 
+    <!-- FOOTER -->
     <footer class="site-footer" aria-label="Site footer">
       <div class="container footer-inner reveal">
-        <!-- Left: Brand -->
         <div class="footer-brand">
           <div class="footer-brand-top">
             <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
               <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
-
             </a>
           </div>
 
@@ -345,13 +412,10 @@
                 <img class="social-icon" src="resources/facebook-logo.svg" alt="Facebook">
               </a>
             </div>
-
           </div>
         </div>
 
-        <!-- Middle: Columns -->
         <div class="footer-cols">
-          <!-- Pages -->
           <div class="footer-col">
             <h3>Pages</h3>
             <a href="index.html">Home</a>
@@ -360,7 +424,6 @@
             <a href="SpringbokContact.html">Contact</a>
           </div>
 
-          <!-- Clinic Services (4 main) -->
           <div class="footer-col">
             <h3>Clinic Services</h3>
             <a href="SpringbokClinic.html#family">Family Practice</a>
@@ -369,7 +432,6 @@
             <a href="SpringbokClinic.html#plastics">Plastic Surgery</a>
           </div>
 
-          <!-- Spa Services (concise set) -->
           <div class="footer-col">
             <h3>Spa Services</h3>
             <a href="SpringbokSpa.html">Medical Spa</a>
@@ -378,11 +440,8 @@
             <a href="SpringbokSpa.html#skin">Skin Treatments</a>
             <a href="SpringbokSpa.html#body">Body Treatments</a>
           </div>
-
         </div>
 
-
-        <!-- Right: Contact (unchanged) -->
         <div class="footer-contact">
           <div class="footer-contact-block">
             <p class="footer-contact-title">Springbok Medical Clinic</p>
@@ -403,7 +462,6 @@
 
       <div class="container footer-bottom">
         <p>© <span id="footerYear"></span> Springbok Medical Clinic — All Rights Reserved</p>
-
         <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">↑</button>
       </div>
     </footer>

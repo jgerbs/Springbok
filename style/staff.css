@@ -1,476 +1,431 @@
 /* =========================================================
    staff.css — Staff subpages (clinic default)
-   Uses existing tokens from base.css:
-   --bg --bg2 --text --muted --line --accent --accent2 --accentSoft
-   --radius-xl --radius-lg --radius-md --shadow --shadow-soft
+   New layout:
+   - ONE combined staff card (profile + bio + 2 focus tabs)
+   - Quick booking section
+   - Scalable services list (any count)
+   - Testimonials section
+   Uses tokens from base.css
    ========================================================= */
 
 /* Page spacing */
-.staff-profile{ padding: 46px 0 26px; }
-.staff-section{ padding: 76px 0; }
-
-/* Alt section glow (matches your site ambient layer) */
-.staff-section--alt{
-  position: relative;
-  overflow: hidden;
-}
-.staff-section--alt::before{
-  content:"";
-  position:absolute;
-  inset: -220px -180px auto -180px;
-  height: 620px;
-  background:
-    radial-gradient(900px 520px at 18% 28%, var(--accentSoft), transparent 62%),
-    radial-gradient(900px 560px at 88% 22%, rgba(197,138,99,.10), transparent 62%),
-    radial-gradient(1100px 700px at 30% 85%, rgba(255,255,255,.04), transparent 65%);
-  filter: blur(12px);
-  pointer-events:none;
-  opacity: 1;
+.staff-profile {
+  padding: 46px 0 26px;
 }
 
-/* =========================
-   Layout
-   ========================= */
-.staff-profile-grid{
-  display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  gap: 18px;
-  align-items: start;
+.staff-section {
+  padding: 76px 0;
 }
 
-.staff-two-col{
-  margin-top: 22px;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 18px;
-  align-items: stretch;
-}
-
-.staff-quals{
-  margin-top: 22px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 18px;
-}
-
-.staff-services-grid{
-  margin-top: 22px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 18px;
-}
-
-.staff-quote-grid{
-  margin-top: 18px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 18px;
-}
-
-/* =========================
-   Staff page section header spacing
-   ========================= */
-.staff-section .section-head{
+/* Section header spacing */
+.staff-section .section-head {
   max-width: 78ch;
   margin-bottom: 22px;
 }
 
 /* =========================
-   Cards (fix cramped bio padding)
+   Layout blocks
    ========================= */
-.staff-card{
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,0.06);
-  box-shadow: var(--shadow-soft);
-  overflow: hidden;
-
-  /* ✅ this fixes your bio cards looking “tight” */
-  padding: 18px;
+.staff-profile-grid {
+  display: grid;
+  gap: 18px;
 }
 
-/* Keep your variants */
-.staff-card--profile{ padding: 22px; }
-.staff-card--aside{ padding: 18px; }
+.staff-card {
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
 
-/* Bio two-col spacing */
-.staff-two-col{
-  margin-top: 26px; /* was a bit tight in your screenshot */
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 18px;
-  align-items: stretch;
+.staff-card--profile {
+  padding: 22px;
 }
 
 /* =========================
-   Profile header
+   Profile header (avatar + identity)
    ========================= */
-.staff-profile-top{
+.staff-profile-top {
   display: grid;
   grid-template-columns: 112px 1fr;
   gap: 18px;
   align-items: center;
 }
 
-.staff-avatar{
+.staff-avatar {
   width: 112px;
   height: 112px;
   border-radius: var(--radius-xl);
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.14);
-  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
 }
-.staff-avatar img{
+
+.staff-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display:block;
+  display: block;
 }
 
-/* Eyebrow to match screenshot vibe (OUR MISSION etc.) */
-.staff-role{
+.staff-role {
   display: inline-block;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 900;
   font-size: 0.82rem;
-  color: rgba(18,192,138,.92);
+  color: rgba(18, 192, 138, .92);
   margin-bottom: 10px;
 }
 
-.staff-name{
+.staff-name {
   margin: 0 0 10px;
   letter-spacing: -0.03em;
   line-height: 1.06;
   color: var(--text);
 }
 
-.staff-tagline{
+.staff-tagline {
   margin: 0 0 14px;
-  color: rgba(255,255,255,.74);
+  color: rgba(255, 255, 255, .74);
   line-height: 1.75;
-  max-width: 70ch;
+  max-width: 72ch;
 }
 
-.staff-actions{
-  display:flex;
+.staff-actions {
+  display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-/* meta row */
-.staff-meta{
+/* Meta row (NOW ONLY 2 items) */
+.staff-meta {
   margin-top: 18px;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0,1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
 
-.staff-meta-item{
+.staff-meta-item {
   border-radius: var(--radius-md);
   padding: 12px 12px;
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(0, 0, 0, 0.18);
 }
 
-.staff-meta-k{
-  display:block;
+.staff-meta-k {
+  display: block;
   font-size: 0.78rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 900;
-  color: rgba(255,255,255,.60);
+  color: rgba(255, 255, 255, .60);
   margin-bottom: 6px;
 }
 
-.staff-meta-v{
-  display:block;
+.staff-meta-v {
+  display: block;
   font-weight: 750;
-  color: rgba(255,255,255,.90);
+  color: rgba(255, 255, 255, .90);
+}
+
+/* Divider inside main card */
+.staff-divider {
+  margin: 18px 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.10);
 }
 
 /* =========================
-   Aside quick links
+   Bio block inside card
    ========================= */
-.staff-card--aside h3{
-  margin: 0 0 8px;
-  letter-spacing: -0.02em;
-  color: var(--text);
+.staff-bio {
+  display: grid;
+  gap: 10px;
+  max-width: 85ch;
 }
 
-.staff-muted{
-  margin: 0 0 14px;
-  color: rgba(255,255,255,.70);
+.staff-bio p {
+  margin: 0;
+  color: rgba(255, 255, 255, .74);
   line-height: 1.75;
 }
 
-.staff-quick-links{
-  display: grid;
-  gap: 10px;
-  margin-top: 8px;
+/* =========================
+   Focus tabs (CSS-only)
+   ========================= */
+.staff-tabs {
+  margin-top: 16px;
 }
 
-.staff-link{
-  display:flex;
-  align-items:center;
-  justify-content: space-between;
-  gap: 12px;
+.staff-tabs input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
 
-  padding: 12px 14px;
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(255,255,255,0.06);
+.staff-tab-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
 
-  text-decoration: none;
-  color: rgba(255,255,255,.86);
+.staff-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.14);
+  color: rgba(255, 255, 255, .84);
+  font-weight: 850;
+  cursor: pointer;
+  user-select: none;
   transition: transform .18s ease, border-color .18s ease, background .18s ease;
 }
 
-.staff-link span{
-  font-weight: 900;
-  opacity: 0.9;
+.staff-tab:hover {
+  transform: translateY(-1px);
+  border-color: rgba(18, 192, 138, 0.26);
+  background: rgba(18, 192, 138, 0.08);
 }
 
-.staff-link:hover{
-  transform: translateY(-2px);
-  border-color: rgba(18,192,138,0.28);
-  background: rgba(18,192,138,0.10);
-}
-
-.staff-note{
-  margin-top: 14px;
-  padding: 12px 14px;
+.staff-panels {
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(0,0,0,0.14);
-  color: rgba(255,255,255,.76);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(0, 0, 0, 0.14);
+  padding: 14px 14px;
 }
 
-.staff-note a{
-  color: rgba(255,255,255,.92);
-  font-weight: 850;
+.staff-panel {
+  display: none;
 }
 
-/* =========================
-   Bullets (nice + consistent)
-   ========================= */
-.staff-mini-title{
+#focusA:checked~.staff-tabs .staff-panels .staff-panel--a {
+  display: block;
+}
+
+#focusB:checked~.staff-tabs .staff-panels .staff-panel--b {
+  display: block;
+}
+
+/* active tab styling */
+#focusA:checked~.staff-tabs .staff-tab-bar label[for="focusA"],
+#focusB:checked~.staff-tabs .staff-tab-bar label[for="focusB"] {
+  border-color: rgba(18, 192, 138, 0.30);
+  background: rgba(18, 192, 138, 0.12);
+}
+
+.staff-mini-title {
   margin: 0 0 10px;
   letter-spacing: -0.02em;
-  color: rgba(255,255,255,.92);
+  color: rgba(255, 255, 255, .92);
 }
 
-.staff-bullets{
+.staff-bullets {
   list-style: none;
   padding: 0;
   margin: 0;
-  display:grid;
+  display: grid;
   gap: 10px;
 }
 
-.staff-bullets li{
+.staff-bullets li {
   position: relative;
   padding-left: 18px;
-  color: rgba(255,255,255,.74);
+  color: rgba(255, 255, 255, .74);
   line-height: 1.65;
 }
 
-.staff-bullets li::before{
-  content:"";
-  position:absolute;
+.staff-bullets li::before {
+  content: "";
+  position: absolute;
   left: 0;
   top: 10px;
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  background: rgba(18,192,138,.88);
-  box-shadow: 0 0 0 4px rgba(18,192,138,.14);
+  background: rgba(18, 192, 138, .88);
+  box-shadow: 0 0 0 4px rgba(18, 192, 138, .14);
 }
 
 /* =========================
-   Qualification cards
+   Quick booking section
    ========================= */
-.staff-qual{ padding: 18px; }
-.staff-qual h3{
-  margin: 0 0 10px;
-  letter-spacing: -0.02em;
-  color: rgba(255,255,255,.92);
+.staff-quick {
+  display: grid;
+  gap: 14px;
 }
 
-/* =========================
-   Service cards (slightly different class)
-   ========================= */
-.staff-svc-card{
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,0.06);
-  box-shadow: var(--shadow-soft);
+.staff-quick .staff-card {
   padding: 18px;
 }
 
-.staff-svc-card h3{
-  margin: 0 0 10px;
+.staff-quick h3 {
+  margin: 0 0 8px;
   letter-spacing: -0.02em;
-  color: rgba(255,255,255,.92);
+  color: var(--text);
 }
 
-.staff-svc-card p{
+.staff-muted {
   margin: 0 0 14px;
-  color: rgba(255,255,255,.70);
+  color: rgba(255, 255, 255, .70);
   line-height: 1.75;
 }
 
-.staff-svc-actions{
-  display:flex;
+.staff-quick-links {
+  display: grid;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.staff-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 12px 14px;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.06);
+
+  text-decoration: none;
+  color: rgba(255, 255, 255, .86);
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+}
+
+.staff-link span {
+  font-weight: 900;
+  opacity: 0.9;
+}
+
+.staff-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(18, 192, 138, 0.28);
+  background: rgba(18, 192, 138, 0.10);
+}
+
+.staff-note {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(0, 0, 0, 0.14);
+  color: rgba(255, 255, 255, .76);
+}
+
+.staff-note a {
+  color: rgba(255, 255, 255, .92);
+  font-weight: 850;
+}
+
+/* =========================
+   Scalable service list (any count)
+   ========================= */
+.staff-services-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.staff-svc {
+  padding: 18px;
+}
+
+.staff-svc h3 {
+  margin: 0 0 10px;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, .92);
+}
+
+.staff-svc p {
+  margin: 0 0 14px;
+  color: rgba(255, 255, 255, .70);
+  line-height: 1.75;
+}
+
+.staff-svc-actions {
+  display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
 /* =========================
-   Availability embed
-   ========================= */
-.staff-embed{ padding: 18px; }
-
-.staff-embed-head{
-  display:flex;
-  align-items:center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-
-.staff-embed-frame{
-  width: 100%;
-  height: 520px;
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: var(--radius-lg);
-  background: rgba(0,0,0,0.22);
-}
-
-.staff-embed-note{
-  margin: 10px 0 0;
-  color: rgba(255,255,255,.62);
-  line-height: 1.7;
-}
-
-/* Slot list */
-.staff-slots{
-  margin-top: 18px;
-  display:grid;
-  gap: 10px;
-}
-
-.staff-slot{
-  display:grid;
-  grid-template-columns: 72px 120px 1fr auto;
-  gap: 12px;
-  align-items:center;
-
-  padding: 14px 14px;
-  border-radius: var(--radius-xl);
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(255,255,255,0.06);
-
-  text-decoration:none;
-  color: rgba(255,255,255,.86);
-
-  transition: transform .18s ease, border-color .18s ease, background .18s ease;
-}
-
-.staff-slot:hover{
-  transform: translateY(-2px);
-  border-color: rgba(18,192,138,0.26);
-  background: rgba(18,192,138,0.09);
-}
-
-.staff-slot-date{
-  font-weight: 900;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.78);
-}
-
-.staff-slot-time{
-  font-weight: 900;
-  color: rgba(255,255,255,.92);
-}
-
-.staff-slot-type{
-  color: rgba(255,255,255,.70);
-}
-
-.staff-slot-cta{
-  font-weight: 900;
-  color: rgba(18,192,138,.92);
-}
-
-/* =========================
    Testimonials
    ========================= */
-.staff-quote{
+.staff-testimonials {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.staff-quote {
   border-radius: var(--radius-xl);
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.06);
   box-shadow: var(--shadow-soft);
   padding: 18px;
 }
 
-.staff-quote p{
-  margin: 0 0 10px;
-  color: rgba(255,255,255,.74);
+.staff-quote p {
+  margin: 0 0 12px;
+  color: rgba(255, 255, 255, .78);
   line-height: 1.75;
-  font-style: italic;
 }
 
-.staff-quote span{
-  color: rgba(255,255,255,.62);
-  font-weight: 900;
+.staff-quote span {
+  color: rgba(255, 255, 255, .62);
+  font-weight: 850;
 }
 
 /* =========================
-   Sticky book bar
+   Sticky book bar (optional, keep)
    ========================= */
-.staff-bookbar{
+.staff-bookbar {
   position: sticky;
   bottom: 14px;
   z-index: 50;
   padding: 0 0 14px;
 }
 
-.staff-bookbar-inner{
+.staff-bookbar-inner {
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(10,10,10,.42);
+  border: 1px solid rgba(255, 255, 255, .14);
+  background: rgba(10, 10, 10, .42);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: var(--shadow);
 
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
   padding: 12px 14px;
 }
 
-.staff-bookbar-left{
-  display:flex;
+.staff-bookbar-left {
+  display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.staff-bookbar-name{
+.staff-bookbar-name {
   font-weight: 900;
   letter-spacing: -0.02em;
-  color: rgba(255,255,255,.92);
+  color: rgba(255, 255, 255, .92);
 }
 
-.staff-bookbar-sub{
-  color: rgba(255,255,255,.62);
+.staff-bookbar-sub {
+  color: rgba(255, 255, 255, .62);
   font-size: 0.92rem;
 }
 
-.staff-bookbar-actions{
-  display:flex;
+.staff-bookbar-actions {
+  display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
@@ -478,20 +433,46 @@
 /* =========================
    Responsive
    ========================= */
-@media (max-width: 1050px){
-  .staff-profile-grid{ grid-template-columns: 1fr; }
-  .staff-meta{ grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .staff-two-col{ grid-template-columns: 1fr; }
-  .staff-quals{ grid-template-columns: 1fr; }
-  .staff-services-grid{ grid-template-columns: 1fr; }
-  .staff-quote-grid{ grid-template-columns: 1fr; }
-
-  .staff-slot{ grid-template-columns: 64px 110px 1fr; }
-  .staff-slot-cta{ display:none; }
+@media (max-width: 900px) {
+  .staff-testimonials {
+    grid-template-columns: 1fr;
+  }
 }
 
-@media (max-width: 520px){
-  .staff-profile-top{ grid-template-columns: 1fr; }
-  .staff-avatar{ width: 96px; height: 96px; border-radius: 22px; }
-  .staff-bookbar-inner{ border-radius: var(--radius-xl); align-items: flex-start; }
+@media (max-width: 520px) {
+  .staff-profile-top {
+    grid-template-columns: 1fr;
+  }
+
+  .staff-avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 22px;
+  }
+
+  .staff-bookbar-inner {
+    border-radius: var(--radius-xl);
+    align-items: flex-start;
+  }
+}
+
+/* Panels hidden by default */
+.staff-panel {
+  display: none;
+}
+
+/* ✅ Your radios are siblings of .staff-card, not .staff-tabs */
+#focusA:checked~.staff-card .staff-tabs .staff-panel--a {
+  display: block;
+}
+
+#focusB:checked~.staff-card .staff-tabs .staff-panel--b {
+  display: block;
+}
+
+/* Active tab styling */
+#focusA:checked~.staff-card .staff-tabs .staff-tab-bar label[for="focusA"],
+#focusB:checked~.staff-card .staff-tabs .staff-tab-bar label[for="focusB"] {
+  border-color: rgba(18, 192, 138, 0.30);
+  background: rgba(18, 192, 138, 0.12);
 }
