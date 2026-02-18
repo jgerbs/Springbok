@@ -561,85 +561,9 @@ html[data-brand="spa"] .ba-cap {
 }
 
 /* =========================
-   PROVIDERS
-   ========================= */
-
-html[data-brand="spa"] .svc-provider-grid {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 14px;
-    margin-top: 18px;
-}
-
-html[data-brand="spa"] .svc-provider {
-    grid-column: span 6;
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 14px;
-    border-radius: 24px;
-    border: 1px solid var(--svc-line);
-    background: rgba(255, 255, 255, .92);
-    box-shadow: var(--svc-shadow-soft);
-    overflow: hidden;
-}
-
-html[data-brand="spa"] .svc-provider-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    min-height: 170px;
-}
-
-html[data-brand="spa"] .svc-provider-body {
-    padding: 16px 16px 16px 0;
-    align-self: center;
-}
-
-html[data-brand="spa"] .svc-provider-body h3 {
-    margin: 0 0 6px;
-}
-
-html[data-brand="spa"] .svc-provider-body p {
-    margin: 0 0 12px;
-    color: var(--svc-muted);
-    line-height: 1.55;
-}
-
-html[data-brand="spa"] .svc-provider-actions {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-html[data-brand="spa"] .svc-bottom-cta {
-    margin-top: 18px;
-}
-
-html[data-brand="spa"] .svc-bottom-cta-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 14px;
-    padding: 18px;
-    border-radius: 26px;
-    border: 1px solid rgba(214, 163, 107, .22);
-    background:
-        radial-gradient(900px 520px at 16% 10%, rgba(214, 163, 107, .18), transparent 62%),
-        rgba(255, 255, 255, .90);
-    box-shadow: var(--svc-shadow-soft);
-}
-
-html[data-brand="spa"] .svc-bottom-cta-inner h3 {
-    margin: 0 0 6px;
-}
-
-html[data-brand="spa"] .svc-bottom-cta-inner p {
-    margin: 0;
-    color: var(--svc-muted);
-}
-
-/* =========================
-   FAQ
+   FAQ (match Packages accordion behavior)
+   - circle icon stays circle
+   - ONLY glyph rotates into X
    ========================= */
 
 html[data-brand="spa"] .svc-faq {
@@ -656,38 +580,70 @@ html[data-brand="spa"] .svc-faq-item {
     overflow: hidden;
 }
 
-html[data-brand="spa"] .svc-faq-item summary {
-    cursor: pointer;
+/* summary row */
+html[data-brand="spa"] .svc-faq-summary {
     list-style: none;
+    cursor: pointer;
+
     padding: 16px 16px;
-    font-weight: 700;
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+
+    font-weight: 800;
 }
 
-html[data-brand="spa"] .svc-faq-item summary::-webkit-details-marker {
+html[data-brand="spa"] .svc-faq-summary::-webkit-details-marker {
     display: none;
 }
 
-html[data-brand="spa"] .svc-faq-item summary::after {
-    content: "+";
-    position: absolute;
-    right: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-    border-radius: 12px;
-    display: grid;
+html[data-brand="spa"] .svc-faq-q {
+    color: var(--svc-text);
+}
+
+/* icon circle (stays a circle) */
+html[data-brand="spa"] .svc-faq-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    flex: 0 0 44px;
+
+    display: inline-grid;
     place-items: center;
-    border: 1px solid rgba(214, 163, 107, .22);
-    background: rgba(214, 163, 107, .12);
-    color: rgba(18, 18, 18, .78);
+
+    border: 1px solid rgba(0, 0, 0, .10);
+    background: rgba(255, 255, 255, .72);
+    color: rgba(20, 20, 20, .60);
+
+    transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
 }
 
-html[data-brand="spa"] .svc-faq-item[open] summary::after {
-    content: "–";
+/* the glyph (+) rotates into X */
+html[data-brand="spa"] .svc-faq-glyph {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 1;
+    transform-origin: 50% 50%;
+    transition: transform .18s ease, color .18s ease;
 }
 
+/* OPEN: rotate glyph + turn red, keep circle circular */
+html[data-brand="spa"] details.svc-faq-item[open] .svc-faq-glyph {
+    transform: rotate(45deg);
+    color: rgba(255, 90, 90, .96);
+}
+
+html[data-brand="spa"] details.svc-faq-item[open] .svc-faq-icon {
+    border-color: rgba(255, 90, 90, .55);
+    background: rgba(255, 90, 90, .10);
+    box-shadow:
+        0 0 0 6px rgba(255, 90, 90, .08),
+        0 10px 26px rgba(255, 90, 90, .20);
+}
+
+/* body */
 html[data-brand="spa"] .svc-faq-body {
     padding: 0 16px 16px;
     color: var(--svc-muted);
