@@ -341,6 +341,82 @@ html[data-brand="spa"] .btn-accent {
   }
 }
 
+/* =========================================
+   REVEAL (safe + simple)
+   - Only elements with .reveal animate in
+   - .reveal-stagger animates its direct children
+   ========================================= */
+
+/* Base reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .55s ease, transform .55s ease;
+  will-change: opacity, transform;
+}
+
+/* When visible */
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger container doesn't hide itself */
+.reveal-stagger {
+  /* no opacity/transform here */
+}
+
+/* Children start hidden */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .55s ease, transform .55s ease;
+  will-change: opacity, transform;
+}
+
+/* When container is visible, children animate in with stagger delays */
+.reveal-stagger.is-visible > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger timing (up to 24 items; extend if you need more) */
+.reveal-stagger.is-visible > *:nth-child(1)  { transition-delay: .00s; }
+.reveal-stagger.is-visible > *:nth-child(2)  { transition-delay: .06s; }
+.reveal-stagger.is-visible > *:nth-child(3)  { transition-delay: .12s; }
+.reveal-stagger.is-visible > *:nth-child(4)  { transition-delay: .18s; }
+.reveal-stagger.is-visible > *:nth-child(5)  { transition-delay: .24s; }
+.reveal-stagger.is-visible > *:nth-child(6)  { transition-delay: .30s; }
+.reveal-stagger.is-visible > *:nth-child(7)  { transition-delay: .36s; }
+.reveal-stagger.is-visible > *:nth-child(8)  { transition-delay: .42s; }
+.reveal-stagger.is-visible > *:nth-child(9)  { transition-delay: .48s; }
+.reveal-stagger.is-visible > *:nth-child(10) { transition-delay: .54s; }
+.reveal-stagger.is-visible > *:nth-child(11) { transition-delay: .60s; }
+.reveal-stagger.is-visible > *:nth-child(12) { transition-delay: .66s; }
+.reveal-stagger.is-visible > *:nth-child(13) { transition-delay: .72s; }
+.reveal-stagger.is-visible > *:nth-child(14) { transition-delay: .78s; }
+.reveal-stagger.is-visible > *:nth-child(15) { transition-delay: .84s; }
+.reveal-stagger.is-visible > *:nth-child(16) { transition-delay: .90s; }
+.reveal-stagger.is-visible > *:nth-child(17) { transition-delay: .96s; }
+.reveal-stagger.is-visible > *:nth-child(18) { transition-delay: 1.02s; }
+.reveal-stagger.is-visible > *:nth-child(19) { transition-delay: 1.08s; }
+.reveal-stagger.is-visible > *:nth-child(20) { transition-delay: 1.14s; }
+.reveal-stagger.is-visible > *:nth-child(21) { transition-delay: 1.20s; }
+.reveal-stagger.is-visible > *:nth-child(22) { transition-delay: 1.26s; }
+.reveal-stagger.is-visible > *:nth-child(23) { transition-delay: 1.32s; }
+.reveal-stagger.is-visible > *:nth-child(24) { transition-delay: 1.38s; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-stagger > * {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+
 /* =========================
    Shared Section Head
    Clinic default + Spa overrides

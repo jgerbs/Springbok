@@ -462,3 +462,28 @@ html[data-brand="spa"] .products-tiles .doc-desc {
 html[data-brand="spa"] .products-tiles .doc-card[hidden] {
     display: none !important;
 }
+
+/* =========================================================
+   Products — Card reveal (safe + independent of scrollReveal.js)
+   Fixes: cards hidden on load / filter show on mobile
+   ========================================================= */
+html[data-brand="spa"][data-spa-page="products"] .products-tiles .doc-card {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity .55s ease, transform .55s ease;
+}
+
+/* When revealed */
+html[data-brand="spa"][data-spa-page="products"] .products-tiles .doc-card.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    html[data-brand="spa"][data-spa-page="products"] .products-tiles .doc-card {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}

@@ -1,56 +1,118 @@
-// js/productsSelector.js
-(function () {
-    function initProductsFilter() {
-        const filterButtons = Array.from(document.querySelectorAll(".prod-filter[data-filter]"));
-        const cards = Array.from(document.querySelectorAll(".doc-card[data-cat]"));
+// productsSelector.js
+(() => {
+    const grid = document.querySelector("[data-products-grid]");
+    if (!grid) return;
 
-        if (!filterButtons.length || !cards.length) return;
+    const cards = Array.from(grid.querySelectorAll(".doc-card"));
+    const buttons = Array.from(document.querySelectorAll(".prod-filter"));
+    const selected = new Set();
 
-        const selected = new Set();
-
-        function applyFilter() {
-            if (selected.size === 0) {
-                cards.forEach(card => (card.hidden = false));
-                return;
-            }
-
-            cards.forEach(card => {
-                const cat = (card.getAttribute("data-cat") || "").trim().toLowerCase();
-                card.hidden = !selected.has(cat);
-            });
-        }
-
-        function setBtnState(btn, isOn) {
-            btn.classList.toggle("is-active", isOn);
-            btn.setAttribute("aria-pressed", String(isOn));
-        }
-
-        // Start: NONE selected => show all
-        filterButtons.forEach(btn => setBtnState(btn, false));
-        applyFilter();
-
-        filterButtons.forEach(btn => {
-            btn.addEventListener("click", () => {
-                const cat = (btn.getAttribute("data-filter") || "").trim().toLowerCase();
-                if (!cat) return;
-
-                if (selected.has(cat)) {
-                    selected.delete(cat);
-                    setBtnState(btn, false);
-                } else {
-                    selected.add(cat);
-                    setBtnState(btn, true);
+    // --- Reveal observer for cards (independent of scrollReveal.js) ---
+    const revealObserver = new IntersectionObserver(
+        (entries) => {
+            for (const entry of entries) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-revealed");
+                    revealObserver.unobserve(entry.target);
                 }
+            }
+        },
+        {
+            root: null,
+            threshold: 0.12,
+            rootMargin: "0px 0px -10% 0px",
+        }
+    );
 
-                applyFilter();
-            });
+    function observeVisibleCards() {
+        cards.forEach((card) => {
+            if (!card.hidden && !card.classList.contains("is-revealed")) {
+                revealObserver.observe(card);
+            }
         });
     }
 
-    // Ensure DOM exists
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initProductsFilter);
-    } else {
-        initProductsFilter();
+    // If a card becomes visible and is already in view, reveal it immediately
+    function revealIfInViewport(el) {
+        const r = el.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        if (r.top < vh * 0.92 && r.bottom > 0) {
+            el.classList.add("is-revealed");
+            revealObserver.unobserve(el);
+        } else {
+            revealObserver.observe(el);
+        }
     }
+
+    // --- Filtering ---
+    function setButtonState(btn, isOn) {
+        btn.classList.toggle("is-active", isOn);
+        btn.setAttribute("aria-pressed", isOn ? "true" : "false");
+    }
+
+    function applyFilters() {
+        const anySelected = selected.size > 0;
+
+        cards.forEach((card) => {
+            const cat = (card.dataset.cat || "").trim();
+            const shouldShow = !anySelected || selected.has(cat);
+
+            // If we are hiding, just hide.
+            if (!shouldShow) {
+                card.hidden = true;
+                return;
+            }
+
+            // Show:
+            const wasHidden = card.hidden;
+            card.hidden = false;
+
+            // If it was previously hidden, it never got revealed — re-arm it:
+            if (wasHidden) {
+                // Remove reveal state so it can animate again if needed
+                card.classList.remove("is-revealed");
+
+                // Reveal now if already in viewport, otherwise observe
+                revealIfInViewport(card);
+            }
+        });
+
+        // Also observe any visible cards that haven't been revealed yet
+        observeVisibleCards();
+    }
+
+    // --- Init: IMPORTANT: show everything immediately on load ---
+    cards.forEach((c) => (c.hidden = false));
+
+    // Attach handlers
+    buttons.forEach((btn) => {
+        const filter = (btn.dataset.filter || "").trim();
+
+        // Ensure clean initial UI state
+        setButtonState(btn, false);
+
+        btn.addEventListener("click", () => {
+            const isOn = selected.has(filter);
+
+            if (isOn) selected.delete(filter);
+            else selected.add(filter);
+
+            setButtonState(btn, !isOn);
+            applyFilters();
+        });
+    });
+
+    // Kick off reveal + filtering after layout settles (mobile-safe)
+    // (This avoids "hidden on init" races with other scripts)
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            applyFilters();
+            observeVisibleCards();
+        });
+    });
+
+    // If orientation changes / resize, re-check visible reveal (mobile)
+    window.addEventListener("resize", () => {
+        observeVisibleCards();
+    });
 })();

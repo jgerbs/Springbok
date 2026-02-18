@@ -31,6 +31,7 @@
                     <a class="nav-link" href="index.html">Home</a>
                     <a class="nav-link" href="SpringbokAbout.html">About Us</a>
                     <a class="nav-link" href="SpringbokClinic.html">Clinic</a>
+                    <!-- Products page: do NOT mark Spa as active in top nav -->
                     <a class="nav-link is-active" href="SpringbokSpa.html">Spa</a>
                     <a class="nav-link" href="SpringbokTeam.html">Our Team</a>
                     <a class="nav-link" href="SpringbokContact.html">Contact</a>
@@ -63,8 +64,7 @@
                         <a class="mobile-link" href="index.html">Home</a>
                         <a class="mobile-link" href="SpringbokAbout.html">About Us</a>
                         <a class="mobile-link" href="SpringbokClinic.html">Clinic</a>
-                        <!-- Products page: do NOT mark Spa as active in top nav -->
-                        <a class="mobile-link" href="SpringbokSpa.html">Spa</a>
+                        <a class="mobile-link is-active" href="SpringbokSpa.html">Spa</a>
                         <a class="mobile-link" href="SpringbokTeam.html">Our Team</a>
                         <a class="mobile-link" href="SpringbokContact.html">Contact</a>
                     </nav>
@@ -118,10 +118,10 @@
 
             <!-- PRODUCTS -->
             <section class="products-tiles" id="all-products">
-                <div class="container reveal">
+                <div class="container">
 
                     <!-- Use the SAME SPA section header styling system -->
-                    <header class="section-head">
+                    <header class="section-head reveal">
                         <span class="section-eyebrow">Products</span>
                         <h2 class="section-title">Browse products</h2>
                         <div class="spa-divider"></div>
@@ -131,7 +131,7 @@
                     </header>
 
                     <!-- FILTER BUTTONS -->
-                    <div class="prod-filters" role="group" aria-label="Filter products by category">
+                    <div class="prod-filters reveal" role="group" aria-label="Filter products by category">
                         <button class="btn btn-outline prod-filter" type="button" data-filter="anti-aging"
                             aria-pressed="false">
                             Anti-Aging
@@ -159,7 +159,7 @@
                     </div>
 
                     <!-- GRID -->
-                    <div class="doc-grid" data-products-grid>
+                    <div class="doc-grid reveal" data-products-grid>
 
                         <!-- SUNSCREEN -->
                         <article class="doc-card" data-cat="sunscreen" id="hydratint-spf-36">
@@ -237,7 +237,8 @@
 
                         <article class="doc-card" data-cat="anti-aging" id="renewal-retinol">
                             <div class="doc-media">
-                                <img class="doc-img" src="resources/alastin/RenewalRetinol.webp" alt="Renewal Retinol" loading="lazy" />
+                                <img class="doc-img" src="resources/alastin/RenewalRetinol.webp" alt="Renewal Retinol"
+                                    loading="lazy" />
                             </div>
                             <div class="doc-body">
                                 <div class="doc-topline">
@@ -270,8 +271,8 @@
 
                         <article class="doc-card" data-cat="anti-aging" id="a-luminate">
                             <div class="doc-media">
-                                <img class="doc-img" src="resources/alastin/LUMINATESerum.webp" alt="A-LUMINATE Brightening Serum"
-                                    loading="lazy" />
+                                <img class="doc-img" src="resources/alastin/LUMINATESerum.webp"
+                                    alt="A-LUMINATE Brightening Serum" loading="lazy" />
                             </div>
                             <div class="doc-body">
                                 <div class="doc-topline">
@@ -340,7 +341,8 @@
                         <!-- CLEANSER -->
                         <article class="doc-card" data-cat="cleanser" id="gentle-cleanser">
                             <div class="doc-media">
-                                <img class="doc-img" src="resources/alastin/GentleCleanser.webp" alt="Gentle Cleanser" loading="lazy" />
+                                <img class="doc-img" src="resources/alastin/GentleCleanser.webp" alt="Gentle Cleanser"
+                                    loading="lazy" />
                             </div>
                             <div class="doc-body">
                                 <div class="doc-topline">
@@ -356,8 +358,8 @@
 
                         <article class="doc-card" data-cat="cleanser" id="ultra-calm-cleansing-cream">
                             <div class="doc-media">
-                                <img class="doc-img" src="resources/alastin/CleansingCream.webp" alt="Ultra Calm Cleansing Cream"
-                                    loading="lazy" />
+                                <img class="doc-img" src="resources/alastin/CleansingCream.webp"
+                                    alt="Ultra Calm Cleansing Cream" loading="lazy" />
                             </div>
                             <div class="doc-body">
                                 <div class="doc-topline">
@@ -373,8 +375,8 @@
 
                         <article class="doc-card" data-cat="cleanser" id="resurface-skin-polish">
                             <div class="doc-media">
-                                <img class="doc-img" src="resources/alastin/ReSURFACEPolish.webp" alt="ReSURFACE Skin Polish"
-                                    loading="lazy" />
+                                <img class="doc-img" src="resources/alastin/ReSURFACEPolish.webp"
+                                    alt="ReSURFACE Skin Polish" loading="lazy" />
                             </div>
                             <div class="doc-body">
                                 <div class="doc-topline">
@@ -408,8 +410,8 @@
 
                         <article class="doc-card" data-cat="aftercare" id="soothe-protect-recovery-balm">
                             <div class="doc-media">
-                                <img class="doc-img" src="resources/alastin/RecoveryBalm.webp" alt="Soothe + Protect Recovery Balm"
-                                    loading="lazy" />
+                                <img class="doc-img" src="resources/alastin/RecoveryBalm.webp"
+                                    alt="Soothe + Protect Recovery Balm" loading="lazy" />
                             </div>
                             <div class="doc-body">
                                 <div class="doc-topline">
@@ -508,24 +510,36 @@
                     </div>
                 </div>
 
+                <!-- Middle: Columns -->
                 <div class="footer-cols">
+                    <!-- Pages -->
                     <div class="footer-col">
                         <h3>Pages</h3>
                         <a href="index.html">Home</a>
                         <a href="SpringbokAbout.html">About Us</a>
+                        <a href="SpringbokTeam.html">Our Team</a>
                         <a href="SpringbokContact.html">Contact</a>
                     </div>
 
+                    <!-- Clinic Services (4 main) -->
                     <div class="footer-col">
-                        <h3>Our Services</h3>
-                        <a href="SpringbokClinic.html">Clinic</a>
-                        <a href="SpringbokSpa.html">Medical Spa</a>
+                        <h3>Clinic Services</h3>
+                        <a href="SpringbokClinic.html#family">Family Practice</a>
+                        <a href="SpringbokClinic.html#hormone">Hormone Specialist</a>
+                        <a href="SpringbokClinic.html#naturopathic">Naturopathic Medicine</a>
+                        <a href="SpringbokClinic.html#plastics">Plastic Surgery</a>
                     </div>
 
+                    <!-- Spa Services (concise set) -->
                     <div class="footer-col">
-                        <h3>Our Team</h3>
-                        <a href="SpringbokTeam.html">Meet the Team</a>
+                        <h3>Spa Services</h3>
+                        <a href="SpringbokSpa.html">Medical Spa</a>
+                        <a href="SpringbokSpa.html#injectables">Injectables</a>
+                        <a href="SpringbokSpa.html#laser">Laser</a>
+                        <a href="SpringbokSpa.html#skin">Skin Treatments</a>
+                        <a href="SpringbokSpa.html#body">Body Treatments</a>
                     </div>
+
                 </div>
 
                 <div class="footer-contact">
@@ -658,7 +672,6 @@
                 </form>
             </div>
         </div>
-    </div>
 
         <script src="js/mobileMenu.js"></script>
         <script src="js/footer.js"></script>
