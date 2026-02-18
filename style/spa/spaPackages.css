@@ -343,6 +343,9 @@ html[data-brand="spa"] .wheel-controls .btn {
    - PIN controls to bottom of shell
 ---------------------------------- */
 @media (max-width: 900px) {
+    html[data-brand="spa"] .spa-packages {
+        padding: 0px 0 0;
+    }
 
     /* scale from top */
     html[data-brand="spa"] .pkg-card {
