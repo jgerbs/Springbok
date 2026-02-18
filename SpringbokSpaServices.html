@@ -554,17 +554,10 @@
 
                             <input type="hidden" name="apptType" id="apptTypeSelect" required />
 
-                            <ul class="dd-menu" role="listbox" aria-label="Appointment type">
-                                <li class="dd-opt" role="option" data-value="In-person appointment">In-person
-                                    appointment</li>
-                                <li class="dd-opt" role="option" data-value="Phone call appointment">Phone call
-                                    appointment</li>
-                                <li class="dd-opt" role="option" data-value="Video call appointment">Video call
-                                    appointment</li>
-                                <li class="dd-opt" role="option" data-value="Follow-up appointment">Follow-up
-                                    appointment</li>
-                            </ul>
+                            <!-- JS will populate -->
+                            <ul class="dd-menu" role="listbox" aria-label="Appointment type"></ul>
                         </div>
+
 
                         <label class="field field-span">
                             <span class="field-label">Subject</span>
@@ -592,6 +585,7 @@
             </div>
         </div>
 
+        <script src="js/prefillFields.js"></script>
         <script src="js/mobileMenu.js"></script>
         <script src="js/footer.js"></script>
         <script src="js/testimonialsWheel.js"></script>

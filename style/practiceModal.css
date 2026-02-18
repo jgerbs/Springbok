@@ -174,65 +174,6 @@
    Select styling (match modal dark theme)
    ========================= */
 
-/* Make selects look like other inputs */
-select.field-input {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-
-    padding-right: 44px;
-    /* room for chevron */
-    cursor: pointer;
-
-    /* Hint browsers to render menus in dark UI where supported */
-    color-scheme: dark;
-}
-
-/* Custom chevron */
-.field.select-field {
-    position: relative;
-}
-
-.field.select-field::after {
-    content: "";
-    position: absolute;
-    right: 14px;
-    top: 42px;
-    /* aligns with input height + label gap */
-    width: 18px;
-    height: 18px;
-    pointer-events: none;
-    opacity: .85;
-
-    background: radial-gradient(circle at 30% 30%, rgba(18, 192, 138, .25), transparent 55%),
-        linear-gradient(180deg, rgba(255, 255, 255, .9), rgba(255, 255, 255, .55));
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M7 10l5 5 5-5'/%3E%3C/svg%3E") center/contain no-repeat;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M7 10l5 5 5-5'/%3E%3C/svg%3E") center/contain no-repeat;
-}
-
-/* Improve dropdown list styling where browsers allow */
-select.field-input option {
-    background: rgba(6, 16, 20, 0.98);
-    /* fixes white list on most Chromium/WebKit */
-    color: rgba(255, 255, 255, .92);
-}
-
-/* Disabled placeholder option */
-select.field-input option:disabled {
-    color: rgba(255, 255, 255, .45);
-}
-
-/* Hover/focus in dropdown list (support varies by browser) */
-select.field-input option:checked {
-    background: rgba(18, 192, 138, .22);
-    color: rgba(255, 255, 255, .95);
-}
-
-/* Remove the dotted focus ring in some browsers + match focus glow */
-select.field-input:focus {
-    border-color: rgba(18, 192, 138, 0.6);
-    background: rgba(255, 255, 255, 0.08);
-}
 
 /* actions */
 .modal-actions {
@@ -537,4 +478,41 @@ html[data-brand="spa"] .modal-actions .btn.btn-accent {
     html[data-brand="spa"] .modal-dialog {
         border-radius: 18px;
     }
+}
+
+/* -------------------------
+   Dropdown icon: + -> red X
+   ------------------------- */
+
+/* reserve room for icon */
+.dd-btn {
+    position: relative;
+    padding-right: 44px;
+    /* space for icon */
+}
+
+/* icon base */
+.dd-btn::after {
+    content: "";
+    position: absolute;
+    right: 14px;
+    width: 18px;
+    height: 18px;
+    opacity: .95;
+    pointer-events: none;
+
+    /* default: "+" */
+    background: rgba(255, 255, 255, .92);
+
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M11 5h2v14h-2zM5 11h14v2H5z'/%3E%3C/svg%3E") center/contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M11 5h2v14h-2zM5 11h14v2H5z'/%3E%3C/svg%3E") center/contain no-repeat;
+
+    transition: background .16s ease, transform .16s ease, opacity .16s ease;
+}
+
+/* open: "X" + red */
+.field-dd.is-open .dd-btn::after {
+    background: rgba(255, 90, 90, .95);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M18.3 5.71 12 12l6.3 6.29-1.41 1.42L10.59 13.4 4.29 19.71 2.88 18.29 9.17 12 2.88 5.71 4.29 4.29 10.59 10.6 16.89 4.29z'/%3E%3C/svg%3E") center/contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M18.3 5.71 12 12l6.3 6.29-1.41 1.42L10.59 13.4 4.29 19.71 2.88 18.29 9.17 12 2.88 5.71 4.29 4.29 10.59 10.6 16.89 4.29z'/%3E%3C/svg%3E") center/contain no-repeat;
 }

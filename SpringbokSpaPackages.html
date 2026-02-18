@@ -717,7 +717,7 @@
             </div>
         </footer>
 
-        <!-- CONTACT MODAL -->
+        <!-- CONTACT DOCTOR MODAL (styled like contactModal) -->
         <div class="modal" id="doctorModal" aria-hidden="true">
             <div class="modal-backdrop" data-close="true"></div>
 
@@ -752,6 +752,7 @@
                                 autocomplete="email" required />
                         </label>
 
+                        <!-- Doctor / Service (custom dropdown) -->
                         <div class="field select-field field-dd" data-dd="doctor">
                             <span class="field-label">Doctor</span>
 
@@ -760,6 +761,7 @@
                                 <span class="dd-value" data-placeholder="Select one">Select one</span>
                             </button>
 
+                            <!-- hidden input keeps your form submission + required validation -->
                             <input type="hidden" name="doctor" id="doctorSelect" required />
 
                             <ul class="dd-menu" role="listbox" aria-label="Doctor / Service">
@@ -772,6 +774,7 @@
                             </ul>
                         </div>
 
+                        <!-- Appointment type (custom dropdown) -->
                         <div class="field select-field field-dd" data-dd="appt">
                             <span class="field-label">Appointment type</span>
 
@@ -782,22 +785,15 @@
 
                             <input type="hidden" name="apptType" id="apptTypeSelect" required />
 
-                            <ul class="dd-menu" role="listbox" aria-label="Appointment type">
-                                <li class="dd-opt" role="option" data-value="In-person appointment">In-person
-                                    appointment</li>
-                                <li class="dd-opt" role="option" data-value="Phone call appointment">Phone call
-                                    appointment</li>
-                                <li class="dd-opt" role="option" data-value="Video call appointment">Video call
-                                    appointment</li>
-                                <li class="dd-opt" role="option" data-value="Follow-up appointment">Follow-up
-                                    appointment</li>
-                            </ul>
+                            <!-- JS will populate -->
+                            <ul class="dd-menu" role="listbox" aria-label="Appointment type"></ul>
                         </div>
+
 
                         <label class="field field-span">
                             <span class="field-label">Subject</span>
                             <input class="field-input" type="text" name="subject" id="subjectInput"
-                                placeholder="e.g., Morpheus8 3 Pack (Face & Neck)" required />
+                                placeholder="e.g., Face Lift, Blood Transfusion, IV Therapy, etc..." required />
                         </label>
 
                         <label class="field field-span">
@@ -820,6 +816,7 @@
             </div>
         </div>
 
+        <script src="js/prefillFields.js"></script>
         <script src="js/mobileMenu.js"></script>
         <script src="js/footer.js"></script>
         <script src="js/scrollReveal.js"></script>

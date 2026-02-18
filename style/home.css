@@ -113,3 +113,20 @@
   gap: 12px;
   flex-wrap: wrap;
 }
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  /* ✅ fallback when video doesn't paint on mobile */
+  background: url("resources/filler.jpg") center/cover no-repeat;
+}
+
+/* keep video above the fallback bg */
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}

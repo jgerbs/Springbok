@@ -254,31 +254,32 @@
                     <li>Personalized plan + follow-up pathway</li>
                   </ul>
                 </div>
-            
+
                 <p class="fineprint fineprint--below">
                   Existing patients: please call or send an inquiry for bookings and follow-ups.
                 </p>
               </div>
-            
+
               <!-- RIGHT: Provider -->
               <div class="clinic-panel clinic-panel--providers">
                 <h4 class="clinic-mini-title">Provider</h4>
-            
+
                 <article class="provider-card provider-card--single" aria-label="Hormone specialist provider">
                   <div class="provider-media">
-                    <img src="resources/staff1.jpg" alt="Dr. Janneme Frouws" loading="lazy" />
+                    <img src="resources/janneme.jpg" alt="Dr. Janneme Frouws" loading="lazy" />
                   </div>
-            
+
                   <div class="provider-body">
                     <p class="provider-kicker">Hormone Specialist</p>
                     <h5 class="provider-name">Dr. Janneme Frouws</h5>
-            
+
                     <span class="doc-inline-status status-pill status-pill--wait" role="status"
                       aria-label="Not accepting new patients">Existing patients only</span>
-            
+
                     <div class="provider-actions">
                       <a class="btn btn-outline btn-sm" href="SpringbokJannemeFrouws.html">About</a>
-                      <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal data-doctor="Dr. Janneme Frouws">
+                      <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal
+                        data-doctor="Dr. Janneme Frouws">
                         Send inquiry
                       </a>
                     </div>
@@ -322,28 +323,28 @@
                     <li>Women’s health & cycle-related concerns</li>
                   </ul>
                 </div>
-            
+
                 <p class="fineprint fineprint--below">
                   Book online through Jane for available appointment times.
                 </p>
               </div>
-            
+
               <!-- RIGHT: Provider -->
               <div class="clinic-panel clinic-panel--providers">
                 <h4 class="clinic-mini-title">Provider</h4>
-            
+
                 <article class="provider-card provider-card--single" aria-label="Naturopathic provider">
                   <div class="provider-media">
                     <img src="resources/kacey2.png" alt="Dr. Kacey Kiesman" loading="lazy" />
                   </div>
-            
+
                   <div class="provider-body">
                     <p class="provider-kicker">Naturopathic Doctor</p>
                     <h5 class="provider-name">Dr. Kacey Kiesman</h5>
-            
+
                     <span class="doc-inline-status status-pill status-pill--open" role="status"
                       aria-label="Accepting new patients">Accepting new patients</span>
-            
+
                     <div class="provider-actions">
                       <a class="btn btn-outline btn-sm" href="SpringbokKaceyKiesman.html">About</a>
                       <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal data-doctor="Dr. Kacey Kiesman">
@@ -580,13 +581,10 @@
 
               <input type="hidden" name="apptType" id="apptTypeSelect" required />
 
-              <ul class="dd-menu" role="listbox" aria-label="Appointment type">
-                <li class="dd-opt" role="option" data-value="In-person appointment">In-person appointment</li>
-                <li class="dd-opt" role="option" data-value="Phone call appointment">Phone call appointment</li>
-                <li class="dd-opt" role="option" data-value="Video call appointment">Video call appointment</li>
-                <li class="dd-opt" role="option" data-value="Follow-up appointment">Follow-up appointment</li>
-              </ul>
+              <!-- JS will populate -->
+              <ul class="dd-menu" role="listbox" aria-label="Appointment type"></ul>
             </div>
+
 
             <label class="field field-span">
               <span class="field-label">Subject</span>
@@ -613,8 +611,7 @@
       </div>
     </div>
 
-
-
+    <script src="js/prefillFields.js"></script>
     <script src="js/mobileMenu.js"></script>
     <script src="js/footer.js"></script>
     <script src="js/scrollReveal.js"></script>
