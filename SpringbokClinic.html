@@ -150,8 +150,9 @@
               </div>
             </header>
 
-            <div class="clinic-body">
-              <div class="clinic-panel">
+            <div class="clinic-layout clinic-layout--stack">
+              <!-- Bullets (top) -->
+              <div class="clinic-panel clinic-panel--bullets">
                 <h4 class="clinic-mini-title">Common visit types</h4>
                 <ul class="clinic-bullets">
                   <li>Annual checkups & preventive screening</li>
@@ -162,35 +163,50 @@
                 </ul>
               </div>
 
-              <div class="clinic-panel clinic-panel--soft">
+              <!-- Providers (below) -->
+              <div class="clinic-panel clinic-panel--providers">
                 <h4 class="clinic-mini-title">Family physicians</h4>
 
-                <div class="doc-grid" aria-label="Family doctors">
-                  <article class="doc-card">
-                    <img class="doc-img" src="resources/amor2.jpg" alt="Family physician" loading="lazy" />
-                    <div class="doc-body">
-                      <h5 class="doc-name">Dr. Amor Kloppers</h5>
+                <div class="providers-grid" aria-label="Family doctors">
+                  <!-- Provider 1 -->
+                  <article class="provider-card">
+                    <div class="provider-media">
+                      <img src="resources/amor2.jpg" alt="Dr. Amor Kloppers" loading="lazy" />
+                    </div>
+
+                    <div class="provider-body">
+                      <p class="provider-kicker">Family Physician</p>
+                      <h5 class="provider-name">Dr. Amor Kloppers</h5>
+
                       <span class="doc-inline-status status-pill status-pill--wait" role="status"
                         aria-label="Not accepting new patients">Existing patients only</span>
 
-                      <div class="doc-actions">
-                        <a class="btn btn-outline btn-sm" href="SpringbokTeam.html">View profile</a>
-                        <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal data-doctor="Dr. Amor Kloppers">Send
+                      <div class="provider-actions">
+                        <a class="btn btn-outline btn-sm" href="SpringbokAmorKloppers.html">About</a>
+                        <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal
+                          data-doctor="Dr. Amor Kloppers">Send
                           inquiry</a>
                       </div>
                     </div>
                   </article>
 
-                  <article class="doc-card">
-                    <img class="doc-img" src="resources/francois.jpg" alt="Family physician" loading="lazy" />
-                    <div class="doc-body">
-                      <h5 class="doc-name">Dr. Francois Erasmus</h5>
+                  <!-- Provider 2 -->
+                  <article class="provider-card provider-card--flip">
+                    <div class="provider-media">
+                      <img src="resources/francois.jpg" alt="Dr. Francois Erasmus" loading="lazy" />
+                    </div>
+
+                    <div class="provider-body">
+                      <p class="provider-kicker">Family Physician</p>
+                      <h5 class="provider-name">Dr. Francois Erasmus</h5>
+
                       <span class="doc-inline-status status-pill status-pill--wait" role="status"
                         aria-label="Not accepting new patients">Existing patients only</span>
 
-                      <div class="doc-actions">
-                        <a class="btn btn-outline btn-sm" href="SpringbokTeam.html">View profile</a>
-                        <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal data-doctor="Dr. Francois Erasmus">Send
+                      <div class="provider-actions">
+                        <a class="btn btn-outline btn-sm" href="SpringbokFrancoisErasmus.html">About</a>
+                        <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal
+                          data-doctor="Dr. Francois Erasmus">Send
                           inquiry</a>
                       </div>
                     </div>
@@ -202,6 +218,7 @@
                 </p>
               </div>
             </div>
+
           </section>
 
           <div class="clinic-divider" aria-hidden="true"></div>
@@ -224,41 +241,49 @@
               </div>
             </header>
 
-            <div class="clinic-body">
-              <div class="clinic-panel">
-                <h4 class="clinic-mini-title">Focus areas</h4>
-                <ul class="clinic-bullets">
-                  <li>Perimenopause & menopause support</li>
-                  <li>Thyroid screening and symptom review</li>
-                  <li>Fatigue, sleep, mood, and metabolic health</li>
-                  <li>Lab interpretation + shared decision-making</li>
-                  <li>Personalized plan + follow-up pathway</li>
-                </ul>
-              </div>
-
-              <div class="clinic-panel clinic-panel--soft">
-                <h4 class="clinic-mini-title">Provider</h4>
-
-                <div class="doc-grid doc-grid--single" aria-label="Hormone specialist provider">
-                  <article class="doc-card">
-                    <img class="doc-img" src="resources/staff1.jpg" alt="Hormone specialist" loading="lazy" />
-                    <div class="doc-body">
-                      <h5 class="doc-name">Dr. Janneme Frouws</h5>
-                      <span class="doc-inline-status status-pill status-pill--wait" role="status"
-                        aria-label="Not accepting new patients">Existing patients only</span>
-
-                      <div class="doc-actions">
-                        <a class="btn btn-outline btn-sm" href="SpringbokTeam.html">View profile</a>
-                        <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal
-                          data-doctor="Dr. Janneme Frouws">Send inquiry</a>
-                      </div>
-                    </div>
-                  </article>
+            <div class="clinic-layout clinic-layout--split">
+              <!-- LEFT: Bullets + fineprint (fineprint OUTSIDE the bubble) -->
+              <div class="clinic-left">
+                <div class="clinic-panel clinic-panel--bullets">
+                  <h4 class="clinic-mini-title">Focus areas</h4>
+                  <ul class="clinic-bullets">
+                    <li>Perimenopause & menopause support</li>
+                    <li>Thyroid screening and symptom review</li>
+                    <li>Fatigue, sleep, mood, and metabolic health</li>
+                    <li>Lab interpretation + shared decision-making</li>
+                    <li>Personalized plan + follow-up pathway</li>
+                  </ul>
                 </div>
-
-                <p class="fineprint">
+            
+                <p class="fineprint fineprint--below">
                   Existing patients: please call or send an inquiry for bookings and follow-ups.
                 </p>
+              </div>
+            
+              <!-- RIGHT: Provider -->
+              <div class="clinic-panel clinic-panel--providers">
+                <h4 class="clinic-mini-title">Provider</h4>
+            
+                <article class="provider-card provider-card--single" aria-label="Hormone specialist provider">
+                  <div class="provider-media">
+                    <img src="resources/staff1.jpg" alt="Dr. Janneme Frouws" loading="lazy" />
+                  </div>
+            
+                  <div class="provider-body">
+                    <p class="provider-kicker">Hormone Specialist</p>
+                    <h5 class="provider-name">Dr. Janneme Frouws</h5>
+            
+                    <span class="doc-inline-status status-pill status-pill--wait" role="status"
+                      aria-label="Not accepting new patients">Existing patients only</span>
+            
+                    <div class="provider-actions">
+                      <a class="btn btn-outline btn-sm" href="SpringbokJannemeFrouws.html">About</a>
+                      <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal data-doctor="Dr. Janneme Frouws">
+                        Send inquiry
+                      </a>
+                    </div>
+                  </div>
+                </article>
               </div>
             </div>
           </section>
@@ -284,40 +309,49 @@
               </div>
             </header>
 
-            <div class="clinic-body">
-              <div class="clinic-panel">
-                <h4 class="clinic-mini-title">Common reasons clients visit</h4>
-                <ul class="clinic-bullets">
-                  <li>Digestive concerns and food sensitivities (as appropriate)</li>
-                  <li>Stress, sleep, and energy support</li>
-                  <li>Inflammation and immune health</li>
-                  <li>Metabolic health and sustainable weight goals</li>
-                  <li>Women’s health & cycle-related concerns</li>
-                </ul>
-              </div>
-
-              <div class="clinic-panel clinic-panel--soft">
-                <h4 class="clinic-mini-title">Provider</h4>
-
-                <div class="doc-grid doc-grid--single" aria-label="Naturopathic provider">
-                  <article class="doc-card">
-                    <img class="doc-img" src="resources/kacey.jpg" alt="Dr. Kacey Kiesman" loading="lazy" />
-                    <div class="doc-body">
-                      <h5 class="doc-name">Dr. Kacey Kiesman</h5>
-                      <span class="doc-inline-status status-pill status-pill--open" role="status"
-                        aria-label="Accepting new patients">Accepting new patients</span>
-
-                      <div class="doc-actions">
-                        <a class="btn btn-outline btn-sm" href="SpringbokTeamMember_KaceyKiesman.html">View profile</a>
-                        <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal
-                          data-doctor="Dr. Kacey Kiesman">Send inquiry</a>
-                      </div>
-                    </div>
-                  </article>
-
+            <div class="clinic-layout clinic-layout--split">
+              <!-- LEFT: Bullets + fineprint (outside bubble) -->
+              <div class="clinic-left">
+                <div class="clinic-panel clinic-panel--bullets">
+                  <h4 class="clinic-mini-title">Common reasons clients visit</h4>
+                  <ul class="clinic-bullets">
+                    <li>Digestive concerns and food sensitivities (as appropriate)</li>
+                    <li>Stress, sleep, and energy support</li>
+                    <li>Inflammation and immune health</li>
+                    <li>Metabolic health and sustainable weight goals</li>
+                    <li>Women’s health & cycle-related concerns</li>
+                  </ul>
                 </div>
-
-                <p class="fineprint">Book online through Jane for available appointment times.</p>
+            
+                <p class="fineprint fineprint--below">
+                  Book online through Jane for available appointment times.
+                </p>
+              </div>
+            
+              <!-- RIGHT: Provider -->
+              <div class="clinic-panel clinic-panel--providers">
+                <h4 class="clinic-mini-title">Provider</h4>
+            
+                <article class="provider-card provider-card--single" aria-label="Naturopathic provider">
+                  <div class="provider-media">
+                    <img src="resources/kacey2.png" alt="Dr. Kacey Kiesman" loading="lazy" />
+                  </div>
+            
+                  <div class="provider-body">
+                    <p class="provider-kicker">Naturopathic Doctor</p>
+                    <h5 class="provider-name">Dr. Kacey Kiesman</h5>
+            
+                    <span class="doc-inline-status status-pill status-pill--open" role="status"
+                      aria-label="Accepting new patients">Accepting new patients</span>
+            
+                    <div class="provider-actions">
+                      <a class="btn btn-outline btn-sm" href="SpringbokKaceyKiesman.html">About</a>
+                      <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal data-doctor="Dr. Kacey Kiesman">
+                        Send inquiry
+                      </a>
+                    </div>
+                  </div>
+                </article>
               </div>
             </div>
           </section>

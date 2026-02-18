@@ -459,3 +459,258 @@ html[data-brand="clinic"] .clinic-cta-actions {
         padding: 6px 9px;
     }
 }
+
+/* =========================================================
+   CLINIC PAGE — Provider card layout (founder-card style)
+   - Keeps your clinic-head + actions + bullets
+   - 1-provider sections: bullets LEFT, provider RIGHT
+   - 2-provider sections: bullets TOP, providers BELOW
+   Scoped to html[data-brand="clinic"] .clinic
+   ========================================================= */
+
+html[data-brand="clinic"] .clinic .clinic-layout {
+    margin-top: clamp(18px, 2.6vw, 26px);
+    display: grid;
+    gap: clamp(14px, 2.2vw, 18px);
+}
+
+/* 1 provider: 2 columns (bullets left, provider right) */
+html[data-brand="clinic"] .clinic .clinic-layout--split {
+    grid-template-columns: 1.05fr .95fr;
+    align-items: start;
+}
+
+/* 2 providers: bullets top then providers below */
+html[data-brand="clinic"] .clinic .clinic-layout--stack {
+    grid-template-columns: 1fr;
+}
+
+/* Panels keep your existing “clinic-panel” vibe but cleaner */
+html[data-brand="clinic"] .clinic .clinic-panel {
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255, 255, 255, .08);
+    background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .03));
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+}
+
+/* Panel padding */
+html[data-brand="clinic"] .clinic .clinic-panel--bullets {
+    padding: clamp(16px, 2.2vw, 22px);
+}
+
+html[data-brand="clinic"] .clinic .clinic-panel--providers {
+    padding: clamp(16px, 2.2vw, 22px);
+}
+
+/* Providers grid (2-up when available) */
+html[data-brand="clinic"] .clinic .providers-grid {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(12px, 2vw, 16px);
+}
+
+/* Single provider card just sits nicely */
+html[data-brand="clinic"] .clinic .provider-card--single {
+    margin-top: 12px;
+}
+
+/* =========================================================
+   PROVIDER CARD (founder-card vibe)
+   ========================================================= */
+
+html[data-brand="clinic"] .clinic .provider-card {
+    display: grid;
+    grid-template-columns: clamp(150px, 18vw, 200px) 1fr;
+    gap: clamp(14px, 2vw, 18px);
+    align-items: stretch;
+
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255, 255, 255, .10);
+
+    background:
+        radial-gradient(600px 240px at 14% 18%, rgba(18, 192, 138, .12), transparent 60%),
+        linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .03));
+
+    box-shadow: 0 18px 50px rgba(0, 0, 0, .35);
+    overflow: hidden;
+    position: relative;
+    isolation: isolate;
+}
+
+/* Flip (image on right) */
+html[data-brand="clinic"] .clinic .provider-card--flip {
+    grid-template-columns: 1fr clamp(150px, 18vw, 200px);
+}
+
+html[data-brand="clinic"] .clinic .provider-card--flip .provider-media {
+    order: 2;
+}
+
+html[data-brand="clinic"] .clinic .provider-card--flip .provider-body {
+    order: 1;
+}
+
+/* Media */
+html[data-brand="clinic"] .clinic .provider-media {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, .04);
+}
+
+html[data-brand="clinic"] .clinic .provider-media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: 50% 22%;
+}
+
+/* subtle letterbox bands (like your founders) */
+html[data-brand="clinic"] .clinic .provider-media::before,
+html[data-brand="clinic"] .clinic .provider-media::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 12%;
+    z-index: 2;
+    pointer-events: none;
+    backdrop-filter: blur(12px) saturate(1.05);
+    -webkit-backdrop-filter: blur(12px) saturate(1.05);
+}
+
+html[data-brand="clinic"] .clinic .provider-media::before {
+    top: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, .30), rgba(0, 0, 0, .08));
+}
+
+html[data-brand="clinic"] .clinic .provider-media::after {
+    bottom: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, .34), rgba(0, 0, 0, .10));
+}
+
+/* Body */
+html[data-brand="clinic"] .clinic .provider-body {
+    padding: clamp(14px, 2vw, 18px) clamp(14px, 2.2vw, 20px) clamp(14px, 2vw, 18px) 0;
+    display: grid;
+    align-content: center;
+    gap: 10px;
+}
+
+html[data-brand="clinic"] .clinic .provider-card--flip .provider-body {
+    padding: clamp(14px, 2vw, 18px) 0 clamp(14px, 2vw, 18px) clamp(14px, 2.2vw, 20px);
+}
+
+html[data-brand="clinic"] .clinic .provider-kicker {
+    margin: 0 0 4px;
+    font-size: .80rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .68);
+    font-weight: 800;
+}
+
+html[data-brand="clinic"] .clinic .provider-name {
+    margin: 0;
+    font-size: 1.1rem;
+    letter-spacing: .01em;
+    color: rgba(255, 255, 255, .92);
+}
+
+/* Actions: scoped so nav buttons never get hit */
+html[data-brand="clinic"] .clinic .provider-actions {
+    margin-top: 6px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+/* Make split go stacked earlier */
+@media (max-width: 1210px) {
+    html[data-brand="clinic"] .clinic .clinic-layout--split {
+        grid-template-columns: 1fr;
+    }
+
+    html[data-brand="clinic"] .clinic .providers-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Phone: provider cards become stacked (image on top) */
+@media (max-width: 635px) {
+
+    html[data-brand="clinic"] .clinic .provider-card,
+    html[data-brand="clinic"] .clinic .provider-card--flip {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto auto !important;
+        gap: 0 !important;
+        border-radius: var(--radius-lg);
+    }
+
+    html[data-brand="clinic"] .clinic .provider-media {
+        min-height: 220px;
+        max-height: 320px;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-media::before,
+    html[data-brand="clinic"] .clinic .provider-media::after {
+        height: 8%;
+        backdrop-filter: blur(16px) saturate(1.06);
+        -webkit-backdrop-filter: blur(16px) saturate(1.06);
+    }
+
+    html[data-brand="clinic"] .clinic .provider-body {
+        padding: 12px 14px 14px !important;
+        gap: 8px;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-actions {
+        margin-top: 10px;
+    }
+
+    /* even flipped cards should be image first on mobile */
+    html[data-brand="clinic"] .clinic .provider-card--flip .provider-media {
+        order: 1 !important;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-card--flip .provider-body {
+        order: 2 !important;
+    }
+}
+
+/* =========================================================
+   FIX: remove the "double bubble"
+   Keep bullets panel boxed, but make providers wrapper invisible
+   ========================================================= */
+
+/* Only affect the providers wrapper panel */
+html[data-brand="clinic"] .clinic .clinic-panel--providers {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+/* Give the title + fineprint a little breathing room without re-adding a card */
+html[data-brand="clinic"] .clinic .clinic-panel--providers .clinic-mini-title {
+    margin: 0 0 12px;
+    padding: 0 2px;
+}
+
+html[data-brand="clinic"] .clinic .clinic-panel--providers .fineprint {
+    margin: 12px 0 0;
+    padding: 0 2px;
+}
+
+/* Optional: if you still feel it’s “too puffy”, soften card shadow slightly */
+html[data-brand="clinic"] .clinic .provider-card {
+    box-shadow: 0 14px 38px rgba(0, 0, 0, .30);
+}
