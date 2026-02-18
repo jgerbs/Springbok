@@ -10,3 +10,10 @@
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   });
 })();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const v = document.querySelector(".hero-video");
+  if (!v) return;
+  const p = v.play();
+  if (p?.catch) p.catch(() => { });
+});
