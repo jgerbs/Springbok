@@ -382,7 +382,7 @@ html[data-brand="spa"] .prod-controls .btn {
 ---------------------------------- */
 @media (max-width: 900px) {
     html[data-brand="spa"] .spa-products {
-        padding: 70px 0 0;
+        padding: 70px 0 70px;
     }
 
     /* scale from top */
