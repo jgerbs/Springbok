@@ -108,247 +108,312 @@
         </div>
       </section>
 
-      <!-- SERVICES (Mission-v2 replica) -->
-      <section class="spa-services-v2" id="services">
+
+
+      <!-- SERVICES PREVIEW (wheel) -->
+      <section class="spa-products" id="services-preview">
         <div class="container">
           <div class="section-head reveal">
             <span class="section-eyebrow">Our Services</span>
             <h2 class="section-title">Treatments designed for real life.</h2>
             <div class="spa-divider"></div>
-
+            <p class="section-sub">
+              A quick preview of our most-booked services. Tap “Learn more” to jump to the service page, or book
+              instantly.
+            </p>
           </div>
 
-          <div class="services-v2-shell reveal">
-            <ul class="services-slider" data-services-slider>
+          <div class="pkg-wheel-shell reveal" data-wheel="services">
+            <!-- desktop overlay arrows -->
+            <button class="pkg-nav pkg-prev pkg-nav--overlay" type="button" aria-label="Previous service">‹</button>
 
-              <!-- 1) IV Therapy -->
-              <li class="services-item is-active" data-pos="bl" style="background-image:url('resources/iv.jpg')">
-                <div class="services-content">
-                  <h2 class="services-title">IV THERAPY</h2>
-                  <p class="services-desc">
-                    Hydration and nutrient support delivered with comfort and clinical standards —
-                    built around your goals and schedule.
-                  </p>
-                  <div class="services-actions">
-                    <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
-                    <a class="btn btn-accent btn-sm" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                      rel="noopener">
-                      Book Now
-                    </a>
-                  </div>
+            <div class="prod-wheel" tabindex="0" aria-label="Services carousel (looping)">
+
+              <!-- 1) IV Therapy (provider not confirmed on Jane public list) -->
+              <article class="prod-card" id="svc-iv-therapy">
+                <div class="prod-media">
+                  <img src="resources/clinic.jpg" alt="IV Therapy" loading="lazy">
                 </div>
-              </li>
 
-              <!-- 2) Plasma Pen -->
-              <li class="services-item" data-pos="br" style="background-image:url('resources/iv.jpg')">
-                <div class="services-content">
-                  <h2 class="services-title">PLASMA PEN</h2>
-                  <p class="services-desc">
-                    Precision treatment designed to support skin tightening and refinement —
-                    with a consult-first plan and realistic expectations.
-                  </p>
-                  <div class="services-actions">
-                    <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
-                    <a class="btn btn-accent btn-sm" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                      rel="noopener">
-                      Book Now
-                    </a>
-                  </div>
+                <div class="prod-card-top">
+                  <span class="prod-providers">Providers: Coming Soon...</span>
                 </div>
-              </li>
 
-              <!-- 3) Microneedling -->
-              <li class="services-item" data-pos="bl" style="background-image:url('resources/filler.jpg')">
-                <div class="services-content">
-                  <h2 class="services-title">MICRONEEDLING</h2>
-                  <p class="services-desc">
-                    Collagen-supporting treatment for texture, tone, and overall skin quality —
-                    tailored by area, depth, and downtime preferences.
-                  </p>
-                  <div class="services-actions">
-                    <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
-                    <a class="btn btn-accent btn-sm" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                      rel="noopener">
-                      Book Now
-                    </a>
-                  </div>
+                <h3 class="prod-title">IV Therapy</h3>
+                <p class="prod-desc">
+                  Hydration and nutrient support delivered with comfort and clinical standards — built around your goals
+                  and
+                  schedule.
+                </p>
+
+                <div class="prod-actions">
+                  <a class="btn btn-outline" href="SpringbokSpaService1.html">Learn more</a>
+                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                    rel="noopener">Book now</a>
                 </div>
-              </li>
+              </article>
 
-              <!-- 4) PRP -->
-              <li class="services-item" data-pos="br" style="background-image:url('resources/filler.jpg')">
-                <div class="services-content">
-                  <h2 class="services-title">PRP</h2>
-                  <p class="services-desc">
-                    Platelet-rich plasma treatments planned around your goals —
-                    designed to support natural-looking skin revitalization.
-                  </p>
-                  <div class="services-actions">
-                    <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
-                    <a class="btn btn-accent btn-sm" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                      rel="noopener">
-                      Book Now
-                    </a>
-                  </div>
+              <!-- 2) Plasma Pen (Jane: Dr. Amor Kloppers) -->
+              <article class="prod-card" id="svc-plasma-pen">
+                <div class="prod-media">
+                  <img src="resources/iv.jpg" alt="Plasma Pen" loading="lazy">
                 </div>
-              </li>
 
-              <!-- 5) Morpheus8 -->
-              <li class="services-item" data-pos="bl" style="background-image:url('resources/morph.jpg')">
-                <div class="services-content">
-                  <h2 class="services-title">MORPHEUS8</h2>
-                  <p class="services-desc">
-                    Advanced RF microneedling for texture, tone, firmness, and collagen support —
-                    with a plan tailored to your goals.
-                  </p>
-                  <div class="services-actions">
-                    <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
-                    <a class="btn btn-accent btn-sm" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                      rel="noopener">
-                      Book Now
-                    </a>
-                  </div>
+                <div class="prod-card-top">
+                  <span class="prod-providers">Providers: Dr. Kloppers</span>
                 </div>
-              </li>
 
-              <!-- 6) Laser -->
-              <li class="services-item" data-pos="br" style="background-image:url('resources/after1.png')">
-                <div class="services-content">
-                  <h2 class="services-title">LASER</h2>
-                  <p class="services-desc">
-                    Comfortable laser treatments with clear series planning —
-                    designed for consistent, measurable results over time.
-                  </p>
-                  <div class="services-actions">
-                    <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
-                    <a class="btn btn-accent btn-sm" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                      rel="noopener">
-                      Book Now
-                    </a>
-                  </div>
+                <h3 class="prod-title">Plasma Pen</h3>
+                <p class="prod-desc">
+                  Non-surgical tightening and refinement designed to support collagen and elastin — with realistic
+                  expectations.
+                </p>
+
+                <div class="prod-actions">
+                  <a class="btn btn-outline" href="SpringbokSpaService1.html">Learn more</a>
+                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                    rel="noopener">Book now</a>
                 </div>
-              </li>
+              </article>
 
-              <!-- 7) IPL -->
-              <li class="services-item" data-pos="bl" style="background-image:url('resources/filler.jpg')">
-                <div class="services-content">
-                  <h2 class="services-title">IPL</h2>
-                  <p class="services-desc">
-                    Intense pulsed light treatments to support tone and clarity —
-                    planned with realistic downtime and results expectations.
-                  </p>
-                  <div class="services-actions">
-                    <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
-                    <a class="btn btn-accent btn-sm" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                      rel="noopener">
-                      Book Now
-                    </a>
-                  </div>
+              <!-- 3) Microneedling (mapped to Jane Morpheus8 microneedling: Francois, Kacey, Amor) -->
+              <article class="prod-card" id="svc-microneedling">
+                <div class="prod-media">
+                  <img src="resources/filler.jpg" alt="Microneedling" loading="lazy">
                 </div>
-              </li>
 
-              <!-- 8) Botox -->
-              <li class="services-item" data-pos="br" style="background-image:url('resources/filler.jpg')">
-                <div class="services-content">
-                  <h2 class="services-title">BOTOX</h2>
-                  <p class="services-desc">
-                    Subtle, balanced results with a consultation-first approach —
-                    designed to preserve expression while refining lines.
-                  </p>
-                  <div class="services-actions">
-                    <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
-                    <a class="btn btn-accent btn-sm" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                      rel="noopener">
-                      Book Now
-                    </a>
-                  </div>
+                <div class="prod-card-top">
+                  <span class="prod-providers">Providers: Dr. Erasmus, Dr. Kiesman, Dr. Kloppers</span>
                 </div>
-              </li>
 
-              <!-- 9) Filler -->
-              <li class="services-item" data-pos="bl" style="background-image:url('resources/filler.jpg')">
-                <div class="services-content">
-                  <h2 class="services-title">FILLER</h2>
-                  <p class="services-desc">
-                    Natural-looking enhancement guided by facial balance and anatomy —
-                    prioritizing subtlety and harmony.
-                  </p>
-                  <div class="services-actions">
-                    <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
-                    <a class="btn btn-accent btn-sm" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                      rel="noopener">
-                      Book Now
-                    </a>
-                  </div>
+                <h3 class="prod-title">Microneedling</h3>
+                <p class="prod-desc">
+                  Collagen-supporting treatment for texture and tone — tailored by area, depth, and downtime
+                  preferences.
+                </p>
+
+                <div class="prod-actions">
+                  <a class="btn btn-outline" href="SpringbokSpaService1.html">Learn more</a>
+                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                    rel="noopener">Book now</a>
                 </div>
-              </li>
+              </article>
 
-              <!-- 10) Naturopathic Medicine -->
-              <li class="services-item" data-pos="br" style="background-image:url('resources/baf1.jpg')">
-                <div class="services-content">
-                  <h2 class="services-title">NATUROPATHIC MEDICINE</h2>
-                  <p class="services-desc">
-                    Whole-person support focused on sustainable health —
-                    combining root-cause thinking with practical next steps.
-                  </p>
-                  <div class="services-actions">
-                    <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
-                    <a class="btn btn-accent btn-sm" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                      rel="noopener">
-                      Book Now
-                    </a>
-                  </div>
+              <!-- 4) PRP (Jane: Dr. Francois Erasmus) -->
+              <article class="prod-card" id="svc-prp">
+                <div class="prod-media">
+                  <img src="resources/filler.jpg" alt="PRP" loading="lazy">
                 </div>
-              </li>
 
-              <!-- 11) Discovery Visit -->
-              <li class="services-item" data-pos="bl" style="background-image:url('resources/iv.jpg')">
-                <div class="services-content">
-                  <h2 class="services-title">DISCOVERY VISIT</h2>
-                  <p class="services-desc">
-                    Not sure what to book? Start with a consult-style visit and we’ll build a plan.
-                  </p>
-                  <div class="services-actions">
-                    <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
-                    <a class="btn btn-accent btn-sm" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                      rel="noopener">
-                      Book Now
-                    </a>
-                  </div>
+                <div class="prod-card-top">
+                  <span class="prod-providers">Providers: Dr. Erasmus</span>
                 </div>
-              </li>
 
-            </ul>
+                <h3 class="prod-title">PRP</h3>
+                <p class="prod-desc">
+                  Platelet-rich plasma treatments planned around your goals — designed to support natural-looking
+                  revitalization.
+                </p>
 
-            <!-- Controls -->
-            <div class="services-controls" aria-label="Services controls">
-              <button class="services-nav-btn services-prev" aria-label="Previous slide">‹</button>
+                <div class="prod-actions">
+                  <a class="btn btn-outline" href="SpringbokSpaService1.html">Learn more</a>
+                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                    rel="noopener">Book now</a>
+                </div>
+              </article>
 
-              <div class="services-timer" aria-hidden="true">
-                <span class="services-timer-bar" data-services-timer></span>
-              </div>
+              <!-- 5) Morpheus8 (Jane: Francois, Kacey, Amor) -->
+              <article class="prod-card" id="svc-morpheus8">
+                <div class="prod-media">
+                  <img src="resources/morph.jpg" alt="Morpheus8" loading="lazy">
+                </div>
 
-              <button class="services-nav-btn services-next" aria-label="Next slide">›</button>
+                <div class="prod-card-top">
+                  <span class="prod-providers">Providers: Dr. Erasmus, Dr. Kiesman, Dr. Kloppers</span>
+                </div>
+
+                <h3 class="prod-title">Morpheus8</h3>
+                <p class="prod-desc">
+                  Advanced RF microneedling for firmness, texture, and collagen support — with a plan tailored to your
+                  goals.
+                </p>
+
+                <div class="prod-actions">
+                  <a class="btn btn-outline" href="SpringbokSpaService1.html">Learn more</a>
+                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                    rel="noopener">Book now</a>
+                </div>
+              </article>
+
+              <!-- 6) Laser (using Jane Laser Hair Removal provider list: Francois, Kacey, Amor) -->
+              <article class="prod-card" id="svc-laser">
+                <div class="prod-media">
+                  <img src="resources/after1.png" alt="Laser" loading="lazy">
+                </div>
+
+                <div class="prod-card-top">
+                  <span class="prod-providers">Providers: Dr. Erasmus, Dr. Kiesman, Dr. Kloppers</span>
+                </div>
+
+                <h3 class="prod-title">Laser</h3>
+                <p class="prod-desc">
+                  Comfortable laser treatments with clear series planning — designed for consistent, measurable results
+                  over
+                  time.
+                </p>
+
+                <div class="prod-actions">
+                  <a class="btn btn-outline" href="SpringbokSpaService1.html">Learn more</a>
+                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                    rel="noopener">Book now</a>
+                </div>
+              </article>
+
+              <!-- 7) IPL (Jane: Francois, Kacey, Amor) -->
+              <article class="prod-card" id="svc-ipl">
+                <div class="prod-media">
+                  <img src="resources/filler.jpg" alt="IPL" loading="lazy">
+                </div>
+
+                <div class="prod-card-top">
+                  <span class="prod-providers">Providers: Dr. Erasmus, Dr. Kiesman, Dr. Kloppers</span>
+                </div>
+
+                <h3 class="prod-title">IPL</h3>
+                <p class="prod-desc">
+                  Intense pulsed light treatments to support tone and clarity — planned with realistic downtime and
+                  results
+                  expectations.
+                </p>
+
+                <div class="prod-actions">
+                  <a class="btn btn-outline" href="SpringbokSpaService1.html">Learn more</a>
+                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                    rel="noopener">Book now</a>
+                </div>
+              </article>
+
+              <!-- 8) Botox (provider not confirmed on Jane public list) -->
+              <article class="prod-card" id="svc-botox">
+                <div class="prod-media">
+                  <img src="resources/filler.jpg" alt="Botox" loading="lazy">
+                </div>
+
+                <div class="prod-card-top">
+                  <span class="prod-providers">Providers: Coming Soon...</span>
+                </div>
+
+                <h3 class="prod-title">Botox</h3>
+                <p class="prod-desc">
+                  Subtle, balanced results with a consultation-first approach — designed to preserve expression while
+                  refining
+                  lines.
+                </p>
+
+                <div class="prod-actions">
+                  <a class="btn btn-outline" href="SpringbokSpaService1.html">Learn more</a>
+                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                    rel="noopener">Book now</a>
+                </div>
+              </article>
+
+              <!-- 9) Filler (provider not confirmed on Jane public list) -->
+              <article class="prod-card" id="svc-filler">
+                <div class="prod-media">
+                  <img src="resources/filler.jpg" alt="Filler" loading="lazy">
+                </div>
+
+                <div class="prod-card-top">
+                  <span class="prod-providers">Providers: Coming Soon.../span>
+                </div>
+
+                <h3 class="prod-title">Filler</h3>
+                <p class="prod-desc">
+                  Natural-looking enhancement guided by facial balance and anatomy — prioritizing subtlety and harmony.
+                </p>
+
+                <div class="prod-actions">
+                  <a class="btn btn-outline" href="SpringbokSpaService1.html">Learn more</a>
+                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                    rel="noopener">Book now</a>
+                </div>
+              </article>
+
+              <!-- 10) Naturopathic Medicine (provider not confirmed on Jane public list) -->
+              <article class="prod-card" id="svc-naturopathic">
+                <div class="prod-media">
+                  <img src="resources/baf1.jpg" alt="Naturopathic Medicine" loading="lazy">
+                </div>
+
+                <div class="prod-card-top">
+                  <span class="prod-providers">Providers: Coming Soon...</span>
+                </div>
+
+                <h3 class="prod-title">Naturopathic Medicine</h3>
+                <p class="prod-desc">
+                  Whole-person support focused on sustainable health — combining root-cause thinking with practical next
+                  steps.
+                </p>
+
+                <div class="prod-actions">
+                  <a class="btn btn-outline" href="SpringbokSpaService1.html">Learn more</a>
+                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                    rel="noopener">Book now</a>
+                </div>
+              </article>
+
+              <!-- 11) Discovery Visit (Jane: Kacey Kiesman) -->
+              <article class="prod-card" id="svc-discovery-visit">
+                <div class="prod-media">
+                  <img src="resources/iv.jpg" alt="Discovery Visit" loading="lazy">
+                </div>
+
+                <div class="prod-card-top">
+                  <span class="prod-providers">Providers: Dr. Kiesman</span>
+                </div>
+
+                <h3 class="prod-title">Discovery Visit</h3>
+                <p class="prod-desc">
+                  Not sure what to book? Start with a consult-style visit and we’ll build a plan around your goals and
+                  timeline.
+                </p>
+
+                <div class="prod-actions">
+                  <a class="btn btn-outline" href="SpringbokSpaService1.html">Learn more</a>
+                  <a class="btn btn-accent"
+                    href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book#/discipline/21/treatment/101"
+                    target="_blank" rel="noopener">
+                    Book now
+                  </a>
+                </div>
+              </article>
+
             </div>
-          </div>
 
+            <button class="pkg-nav pkg-next pkg-nav--overlay" type="button" aria-label="Next service">›</button>
 
-          <!-- View all BELOW the shell (with space, not inside) -->
-          <div class="services-viewall reveal">
-            <a class="btn btn-outline" href="SpringbokSpaServices.html">View all services</a>
+            <!-- mobile row controls -->
+            <div class="wheel-controls">
+              <button class="pkg-nav pkg-prev pkg-nav--row" type="button" aria-label="Previous service">‹</button>
+              <a class="btn btn-outline" href="SpringbokSpaServices.html">View all services</a>
+              <button class="pkg-nav pkg-next pkg-nav--row" type="button" aria-label="Next service">›</button>
+            </div>
           </div>
         </div>
       </section>
+
 
       <!-- PACKAGES PREVIEW -->
       <section class="spa-packages" id="packages">
         <div class="container">
           <div class="section-head reveal">
             <span class="section-eyebrow">Our Packages</span>
-            <h2 class="section-title">Better together — curated series & bundles.</h2>
+            <h2 class="section-title">Better together — curated series &amp; bundles.</h2>
             <div class="spa-divider"></div>
             <p class="section-sub">
-              Save with treatment series and popular combos. Book instantly, or browse all packages.
+              Save with treatment series and popular combos. Packages are booked through the clinic so we can confirm
+              the best
+              plan for you.
             </p>
           </div>
 
@@ -357,140 +422,125 @@
             <button class="pkg-nav pkg-prev pkg-nav--overlay" type="button" aria-label="Previous package">‹</button>
 
             <div class="pkg-wheel" id="packagesWheel" tabindex="0" aria-label="Packages carousel (looping)">
-              <!-- Package 1 -->
-              <article class="pkg-card">
-                <div class="pkg-card-top">
-                  <span class="pkg-pill">Laser</span>
-                  <span class="pkg-price">Series pricing</span>
-                </div>
-                <h3 class="pkg-title">Diolaze Laser Series</h3>
-                <p class="pkg-desc">
-                  Best results come from a series. Great option if you want consistent, long-term reduction.
-                </p>
-                <ul class="pkg-list">
-                  <li>Recommended multi-visit plan</li>
-                  <li>Comfort-focused cooling</li>
-                  <li>Common areas + combos</li>
-                </ul>
-                <div class="pkg-actions">
-                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                    rel="noopener">Book Now</a>
-                  <a class="btn btn-outline" href="SpringbokSpaPackages.html">View More</a>
-                </div>
-              </article>
 
-              <!-- Package 2 -->
+              <!-- 1) Morpheus8 Packages -->
               <article class="pkg-card">
                 <div class="pkg-card-top">
                   <span class="pkg-pill">Morpheus8</span>
+                  <span class="pkg-price">Series</span>
+                </div>
+                <h3 class="pkg-title">Morpheus8 Packages</h3>
+                <p class="pkg-desc">
+                  RF microneedling bundles designed to tighten, smooth texture, and support long-term collagen
+                  remodeling.
+                </p>
+                <ul class="pkg-list">
+                  <li>3 Pack — Any Area</li>
+                  <li>3 Pack — Face</li>
+                  <li>3 Pack — Face &amp; Neck</li>
+                </ul>
+                <div class="pkg-actions">
+                  <a class="btn btn-accent" href="SpringbokSpaPackages.html#pkg-morpheus8"
+                    data-open-package="morpheus8">
+                    Book Now
+                  </a>
+                  <a class="btn btn-outline" href="SpringbokSpaPackages.html#all-packages">View More</a>
+                </div>
+              </article>
+
+              <!-- 2) IPL Packages -->
+              <article class="pkg-card">
+                <div class="pkg-card-top">
+                  <span class="pkg-pill">IPL</span>
+                  <span class="pkg-price">Series</span>
+                </div>
+                <h3 class="pkg-title">IPL Packages</h3>
+                <p class="pkg-desc">
+                  Light-based treatment bundles targeting sun damage, redness, and uneven tone for clearer, brighter
+                  skin.
+                </p>
+                <ul class="pkg-list">
+                  <li>3 Pack — Face</li>
+                  <li>3 Pack — Face &amp; Neck</li>
+                  <li>3 Pack — Chest</li>
+                </ul>
+                <div class="pkg-actions">
+                  <a class="btn btn-accent" href="SpringbokSpaPackages.html#pkg-ipl" data-open-package="ipl">
+                    Book Now
+                  </a>
+                  <a class="btn btn-outline" href="SpringbokSpaPackages.html#all-packages">View More</a>
+                </div>
+              </article>
+
+              <!-- 3) Botox Packages -->
+              <article class="pkg-card">
+                <div class="pkg-card-top">
+                  <span class="pkg-pill">Botox</span>
                   <span class="pkg-price">Bundle</span>
                 </div>
-                <h3 class="pkg-title">Morpheus8 Burst Series</h3>
+                <h3 class="pkg-title">Botox Packages</h3>
                 <p class="pkg-desc">
-                  A structured plan designed to support collagen remodeling over time for a smoother, firmer look.
+                  Bundled options for common treatment areas, tailored to your facial structure and goals.
                 </p>
                 <ul class="pkg-list">
-                  <li>Face / Face+Neck </li>
-                  <li>Texture + tone + firmness</li>
-                  <li>Clear aftercare guidance</li>
+                  <li>Starter Bundle — 2 Areas</li>
+                  <li>Full Upper Face Bundle</li>
+                  <li>Maintenance Bundle</li>
                 </ul>
                 <div class="pkg-actions">
-                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                    rel="noopener">Book Now</a>
-                  <a class="btn btn-outline" href="SpringbokSpaPackages.html">View More</a>
+                  <a class="btn btn-accent" href="SpringbokSpaPackages.html#pkg-botox" data-open-package="botox">
+                    Book Now
+                  </a>
+                  <a class="btn btn-outline" href="SpringbokSpaPackages.html#all-packages">View More</a>
                 </div>
               </article>
 
-              <!-- Package 3 -->
+              <!-- 4) Filler Packages -->
               <article class="pkg-card">
                 <div class="pkg-card-top">
-                  <span class="pkg-pill">Combo</span>
-                  <span class="pkg-price">Popular</span>
-                </div>
-                <h3 class="pkg-title">Morpheus + IPL Bundle</h3>
-                <p class="pkg-desc">
-                  Combine resurfacing + tone correction for a brighter, more even finish (details on packages page).
-                </p>
-                <ul class="pkg-list">
-                  <li>Great for uneven tone</li>
-                  <li>Targets texture + clarity</li>
-                  <li>Plan built around your schedule</li>
-                </ul>
-                <div class="pkg-actions">
-                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                    rel="noopener">Book Now</a>
-                  <a class="btn btn-outline" href="SpringbokSpaPackages.html">View More</a>
-                </div>
-              </article>
-
-              <!-- Package 1 -->
-              <article class="pkg-card">
-                <div class="pkg-card-top">
-                  <span class="pkg-pill">Laser</span>
-                  <span class="pkg-price">Series pricing</span>
-                </div>
-                <h3 class="pkg-title">Diolaze Laser Series</h3>
-                <p class="pkg-desc">
-                  Best results come from a series. Great option if you want consistent, long-term reduction.
-                </p>
-                <ul class="pkg-list">
-                  <li>Recommended multi-visit plan</li>
-                  <li>Comfort-focused cooling</li>
-                  <li>Common areas + combos</li>
-                </ul>
-                <div class="pkg-actions">
-                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                    rel="noopener">Book
-                    Now</a>
-                  <a class="btn btn-outline" href="SpringbokSpaPackages.html">View More</a>
-                </div>
-              </article>
-
-              <!-- Package 2 -->
-              <article class="pkg-card">
-                <div class="pkg-card-top">
-                  <span class="pkg-pill">Morpheus8</span>
+                  <span class="pkg-pill">Filler</span>
                   <span class="pkg-price">Bundle</span>
                 </div>
-                <h3 class="pkg-title">Morpheus8 Burst Series</h3>
+                <h3 class="pkg-title">Filler Packages</h3>
                 <p class="pkg-desc">
-                  A structured plan designed to support collagen remodeling over time for a smoother, firmer look.
+                  Bundled options for restoring volume and enhancing facial balance with natural-looking results.
                 </p>
                 <ul class="pkg-list">
-                  <li>Face / Face+Neck </li>
-                  <li>Texture + tone + firmness</li>
-                  <li>Clear aftercare guidance</li>
+                  <li>Lip Package</li>
+                  <li>Cheek &amp; Midface Package</li>
+                  <li>Jawline &amp; Chin Package</li>
                 </ul>
                 <div class="pkg-actions">
-                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                    rel="noopener">Book
-                    Now</a>
-                  <a class="btn btn-outline" href="SpringbokSpaPackages.html">View More</a>
+                  <a class="btn btn-accent" href="SpringbokSpaPackages.html#pkg-filler" data-open-package="filler">
+                    Book Now
+                  </a>
+                  <a class="btn btn-outline" href="SpringbokSpaPackages.html#all-packages">View More</a>
                 </div>
               </article>
 
-              <!-- Package 3 -->
+              <!-- 5) Laser Hair Packages -->
               <article class="pkg-card">
                 <div class="pkg-card-top">
-                  <span class="pkg-pill">Combo</span>
-                  <span class="pkg-price">Popular</span>
+                  <span class="pkg-pill">Laser Hair</span>
+                  <span class="pkg-price">Package</span>
                 </div>
-                <h3 class="pkg-title">Morpheus + IPL Bundle</h3>
+                <h3 class="pkg-title">Laser Hair Packages</h3>
                 <p class="pkg-desc">
-                  Combine resurfacing + tone correction for a brighter, more even finish (details on packages page).
+                  Bundled plans for one or more areas. We’ll recommend sessions based on skin and hair type.
                 </p>
                 <ul class="pkg-list">
-                  <li>Great for uneven tone</li>
-                  <li>Targets texture + clarity</li>
-                  <li>Plan built around your schedule</li>
+                  <li>Bundle — Brazilian &amp; Underarms</li>
+                  <li>Bundle — Lower Legs</li>
+                  <li>Custom Multi-Area Package</li>
                 </ul>
                 <div class="pkg-actions">
-                  <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-                    rel="noopener">Book
-                    Now</a>
-                  <a class="btn btn-outline" href="SpringbokSpaPackages.html">View More</a>
+                  <a class="btn btn-accent" href="SpringbokSpaPackages.html#pkg-laser" data-open-package="laser">
+                    Book Now
+                  </a>
+                  <a class="btn btn-outline" href="SpringbokSpaPackages.html#all-packages">View More</a>
                 </div>
               </article>
+
             </div>
 
             <button class="pkg-nav pkg-next pkg-nav--overlay" type="button" aria-label="Next package">›</button>
@@ -502,6 +552,7 @@
               <button class="pkg-nav pkg-next pkg-nav--row" type="button" aria-label="Next package">›</button>
             </div>
           </div>
+        </div>
       </section>
 
       <!-- PRODUCTS PREVIEW -->
@@ -509,156 +560,163 @@
         <div class="container">
           <div class="section-head reveal">
             <span class="section-eyebrow">Products</span>
-            <h2 class="section-title">Post-treatment essentials.</h2>
+            <h2 class="section-title">Professional-grade essentials.</h2>
             <div class="spa-divider"></div>
             <p class="section-sub">
-              A quick preview of products we often recommend. Tap “View details” to jump to the full product section.
+              A quick preview of products we often recommend. Tap “View details” to jump to the full product page.
             </p>
           </div>
 
-          <div class="pkg-wheel-shell reveal" data-wheel="packages">
+          <div class="pkg-wheel-shell reveal" data-wheel="products">
             <!-- desktop overlay arrows -->
-            <button class="pkg-nav pkg-prev pkg-nav--overlay" type="button" aria-label="Previous package">‹</button>
-
+            <button class="pkg-nav pkg-prev pkg-nav--overlay" type="button" aria-label="Previous product">‹</button>
 
             <div class="prod-wheel" tabindex="0" aria-label="Products carousel (looping)">
-              <!-- Product 1 -->
+
+              <!-- 1) Sunscreen -->
               <article class="prod-card">
                 <div class="prod-media">
-                  <img src="resources/filler.jpg" alt="Barrier Repair Cream" loading="lazy">
+                  <img src="resources/alastin/SPF36.webp" alt="HydraTint Pro Mineral Broad Spectrum Sunscreen SPF 36"
+                    loading="lazy">
+                </div>
+
+                <div class="prod-card-top">
+                  <span class="prod-pill">Sunscreen</span>
+                  <span class="prod-price">$84</span>
+                </div>
+
+                <h3 class="prod-title">HydraTint Pro Mineral SPF 36</h3>
+                <p class="prod-desc">
+                  Tinted mineral SPF for daily wear—great for a polished finish and post-treatment routines.
+                </p>
+
+                <div class="prod-actions">
+                  <a class="btn btn-outline" href="SpringbokSpaProducts.html#hydratint-spf-36">View details</a>
+                </div>
+              </article>
+
+              <!-- 2) Aftercare -->
+              <article class="prod-card">
+                <div class="prod-media">
+                  <img src="resources/alastin/RecoveryBalm.webp" alt="Soothe + Protect Recovery Balm" loading="lazy">
                 </div>
 
                 <div class="prod-card-top">
                   <span class="prod-pill">Aftercare</span>
-                  <span class="prod-price">$68</span>
+                  <span class="prod-price">$52</span>
                 </div>
 
-                <h3 class="prod-title">Barrier Repair Cream</h3>
+                <h3 class="prod-title">Soothe + Protect Recovery Balm</h3>
                 <p class="prod-desc">
-                  Rich, calming hydration to support your skin barrier after treatment.
+                  Barrier-support balm for dryness, irritation, and post-service comfort.
                 </p>
 
                 <div class="prod-actions">
-                  <a class="btn btn-outline" href="SpringbokSpaProducts.html#barrier-repair">View details</a>
+                  <a class="btn btn-outline" href="SpringbokSpaProducts.html#soothe-protect-recovery-balm">View
+                    details</a>
                 </div>
               </article>
 
-              <!-- Product 2 -->
+              <!-- 3) Anti-Aging -->
               <article class="prod-card">
                 <div class="prod-media">
-                  <img src="resources/filler.jpg" alt="Hyaluronic Serum" loading="lazy">
+                  <img src="resources/alastin/TriHex+.webp" alt="Restorative Skin Complex with TriHex+™" loading="lazy">
                 </div>
 
                 <div class="prod-card-top">
-                  <span class="prod-pill">Hydration</span>
-                  <span class="prod-price">$74</span>
+                  <span class="prod-pill">Anti-Aging</span>
+                  <span class="prod-price">$258</span>
                 </div>
 
-                <h3 class="prod-title">Hyaluronic Serum</h3>
+                <h3 class="prod-title">Restorative Skin Complex (TriHex+™)</h3>
                 <p class="prod-desc">
-                  Lightweight hydration for smoother-looking texture and bounce.
+                  Supports smoother texture and a more refreshed-looking complexion.
                 </p>
 
                 <div class="prod-actions">
-                  <a class="btn btn-outline" href="SpringbokSpaProducts.html#hyaluronic-serum">View details</a>
+                  <a class="btn btn-outline" href="SpringbokSpaProducts.html#restorative-skin-complex">View details</a>
                 </div>
               </article>
 
-              <!-- Product 3 -->
+              <!-- 4) Cleanser -->
               <article class="prod-card">
                 <div class="prod-media">
-                  <img src="resources/filler.jpg" alt="Mineral Sunscreen" loading="lazy">
+                  <img src="resources/alastin/GentleCleanser.webp" alt="Gentle Cleanser" loading="lazy">
                 </div>
 
                 <div class="prod-card-top">
-                  <span class="prod-pill">SPF</span>
-                  <span class="prod-price">$54</span>
+                  <span class="prod-pill">Cleanser</span>
+                  <span class="prod-price">$58</span>
                 </div>
 
-                <h3 class="prod-title">Mineral Sunscreen</h3>
+                <h3 class="prod-title">Gentle Cleanser</h3>
                 <p class="prod-desc">
-                  Daily protection that helps preserve results and support healthy recovery.
+                  A gentle daily cleanse to remove buildup without leaving skin feeling stripped.
                 </p>
 
                 <div class="prod-actions">
-                  <a class="btn btn-outline" href="SpringbokSpaProducts.html#mineral-spf">View details</a>
+                  <a class="btn btn-outline" href="SpringbokSpaProducts.html#gentle-cleanser">View details</a>
                 </div>
               </article>
 
-              <!-- Product 1 -->
+              <!-- 5) Moisturizer -->
               <article class="prod-card">
                 <div class="prod-media">
-                  <img src="resources/filler.jpg" alt="Barrier Repair Cream" loading="lazy">
+                  <img src="resources/alastin/TriHexMoistureUltraLight.webp"
+                    alt="Ultra Light Moisturizer with TriHex Technology®" loading="lazy">
                 </div>
 
                 <div class="prod-card-top">
-                  <span class="prod-pill">Aftercare</span>
-                  <span class="prod-price">$68</span>
+                  <span class="prod-pill">Moisturizer</span>
+                  <span class="prod-price">$98</span>
                 </div>
 
-                <h3 class="prod-title">Barrier Repair Cream</h3>
+                <h3 class="prod-title">Ultra Light Moisturizer (TriHex®)</h3>
                 <p class="prod-desc">
-                  Rich, calming hydration to support your skin barrier after treatment.
+                  Lightweight daily hydration—ideal for a breathable feel under SPF and makeup.
                 </p>
 
                 <div class="prod-actions">
-                  <a class="btn btn-outline" href="SpringbokSpaProducts.html#barrier-repair">View details</a>
+                  <a class="btn btn-outline" href="SpringbokSpaProducts.html#ultra-light-moisturizer">View details</a>
                 </div>
               </article>
 
-              <!-- Product 2 -->
+              <!-- 6) Body Care -->
               <article class="prod-card">
                 <div class="prod-media">
-                  <img src="resources/filler.jpg" alt="Hyaluronic Serum" loading="lazy">
+                  <img src="resources/alastin/TriHexTransFORM.webp"
+                    alt="TransFORM Body Treatment with TriHex Technology®" loading="lazy">
                 </div>
 
                 <div class="prod-card-top">
-                  <span class="prod-pill">Hydration</span>
-                  <span class="prod-price">$74</span>
+                  <span class="prod-pill">Body Care</span>
+                  <span class="prod-price">$220</span>
                 </div>
 
-                <h3 class="prod-title">Hyaluronic Serum</h3>
+                <h3 class="prod-title">TransFORM Body Treatment (TriHex®)</h3>
                 <p class="prod-desc">
-                  Lightweight hydration for smoother-looking texture and bounce.
+                  Body-focused support for smoother-looking texture and overall skin appearance.
                 </p>
 
                 <div class="prod-actions">
-                  <a class="btn btn-outline" href="SpringbokSpaProducts.html#hyaluronic-serum">View details</a>
+                  <a class="btn btn-outline" href="SpringbokSpaProducts.html#transform-body-treatment">View details</a>
                 </div>
               </article>
 
-              <!-- Product 3 -->
-              <article class="prod-card">
-                <div class="prod-media">
-                  <img src="resources/filler.jpg" alt="Mineral Sunscreen" loading="lazy">
-                </div>
-
-                <div class="prod-card-top">
-                  <span class="prod-pill">SPF</span>
-                  <span class="prod-price">$54</span>
-                </div>
-
-                <h3 class="prod-title">Mineral Sunscreen</h3>
-                <p class="prod-desc">
-                  Daily protection that helps preserve results and support healthy recovery.
-                </p>
-
-                <div class="prod-actions">
-                  <a class="btn btn-outline" href="SpringbokSpaProducts.html#mineral-spf">View details</a>
-                </div>
-              </article>
             </div>
 
-            <button class="pkg-nav pkg-next pkg-nav--overlay" type="button" aria-label="Next package">›</button>
+            <button class="pkg-nav pkg-next pkg-nav--overlay" type="button" aria-label="Next product">›</button>
 
             <!-- mobile row controls -->
             <div class="wheel-controls">
-              <button class="pkg-nav pkg-prev pkg-nav--row" type="button" aria-label="Previous package">‹</button>
-              <a class="btn btn-outline" href="SpringbokSpaPackages.html">View all products</a>
-              <button class="pkg-nav pkg-next pkg-nav--row" type="button" aria-label="Next package">›</button>
+              <button class="pkg-nav pkg-prev pkg-nav--row" type="button" aria-label="Previous product">‹</button>
+              <a class="btn btn-outline" href="SpringbokSpaProducts.html">View all products</a>
+              <button class="pkg-nav pkg-next pkg-nav--row" type="button" aria-label="Next product">›</button>
             </div>
           </div>
+        </div>
       </section>
+
 
       <!-- PROVIDERS (SPA) — L/R/L cards (Amor + Francois + Kacey) -->
       <section class="founders providers" id="providers">
@@ -777,15 +835,15 @@
               <div class="founder-media founder-media--plus">
                 <span class="founder-plus" aria-hidden="true">+</span>
               </div>
-            
+
               <div class="founder-body">
                 <p class="founder-kicker">Coming Soon...</p>
                 <h3 class="founder-name">New Providers</h3>
-            
+
                 <p class="founder-desc">
                   We’re expanding the team. Check back soon for new specialties and availability.
                 </p>
-            
+
                 <!-- no actions/buttons -->
               </div>
             </article>

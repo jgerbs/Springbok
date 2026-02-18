@@ -473,3 +473,17 @@ html[data-brand="spa"] .prod-controls .btn {
     }
 }
 
+html[data-brand="spa"] .prod-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* was space-between */
+    gap: 10px;
+}
+
+html[data-brand="spa"] .prod-providers {
+    font-weight: 650;
+    font-size: .9rem;
+    color: rgba(0, 0, 0, .62);
+}
+

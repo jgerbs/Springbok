@@ -8,7 +8,6 @@
 
 html[data-brand="spa"] .founders.providers {
   position: relative;
-  padding: clamp(78px, 7vw, 120px) 0;
   overflow: hidden;
 }
 

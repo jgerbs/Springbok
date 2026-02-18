@@ -366,20 +366,112 @@ html[data-brand="spa"] .spa-subnav .btn {
   box-shadow: var(--shadow-soft);
 }
 
-/* Active tab style */
+/* =========================
+   ACTIVE TAB — white + strong gold edge
+   ========================= */
 html[data-brand="spa"][data-spa-page="services"] .spa-subnav-services,
 html[data-brand="spa"][data-spa-page="packages"] .spa-subnav-packages,
 html[data-brand="spa"][data-spa-page="products"] .spa-subnav-products {
-  background: rgba(214, 163, 107, 0.20);
-  border-color: rgba(214, 163, 107, 0.55);
-  color: rgba(18, 18, 18, 0.94);
-  box-shadow: 0 18px 48px rgba(214, 163, 107, 0.22);
+  background: rgba(255, 255, 255, 0.98);
+  color: rgba(18, 18, 18, 0.98);
+
+  border: 2px solid rgba(214, 163, 107, 0.95);
+
+  box-shadow:
+    inset 0 0 0 2px rgba(214, 163, 107, 0.55),
+    /* strong inner rim */
+    inset 0 8px 18px rgba(214, 163, 107, 0.28),
+    /* richer inner glow */
+    0 0 0 1px rgba(214, 163, 107, 0.35),
+    /* crisp edge halo */
+    0 20px 50px rgba(214, 163, 107, 0.28);
+  /* outer gold glow */
+
   transform: translateY(-1px);
 }
 
+/* =========================
+   HOVER — elevated gold edge
+   ========================= */
 html[data-brand="spa"] .spa-subnav-link:hover {
-  background: rgba(214, 163, 107, 0.12);
-  border-color: rgba(214, 163, 107, 0.30);
+  background: rgba(255, 255, 255, 0.98);
+  border: 2px solid rgba(214, 163, 107, 0.75);
+
+  box-shadow:
+    inset 0 0 0 1.5px rgba(214, 163, 107, 0.45),
+    inset 0 6px 14px rgba(214, 163, 107, 0.22),
+    0 14px 36px rgba(214, 163, 107, 0.20);
+
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   SPA HERO — same gold-edge hover for the 2nd nav buttons
+   (Services / Packages / Products inside .hero-actions)
+   Only affects SPA hero outline buttons
+   ========================================================= */
+
+html[data-brand="spa"] .hero .hero-actions .btn.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.98);
+  border: 2px solid rgba(214, 163, 107, 0.75);
+
+  box-shadow:
+    inset 0 0 0 1.5px rgba(214, 163, 107, 0.45),
+    inset 0 6px 14px rgba(214, 163, 107, 0.22),
+    0 14px 36px rgba(214, 163, 107, 0.20);
+
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   SPA HOME — gold-edge hover for outline CTAs (page-only)
+   Targets: hero second nav + all "view" outline buttons on this page
+   ========================================================= */
+
+/* unify selector to just this page’s sections */
+html[data-brand="spa"] .hero .hero-actions .btn.btn-outline:hover,
+html[data-brand="spa"] .spa-services-v2 .btn.btn-outline:hover,
+html[data-brand="spa"] .spa-packages .btn.btn-outline:hover,
+html[data-brand="spa"] .spa-products .btn.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.98);
+  border: 2px solid rgba(214, 163, 107, 0.75);
+
+  box-shadow:
+    inset 0 0 0 1.5px rgba(214, 163, 107, 0.45),
+    inset 0 6px 14px rgba(214, 163, 107, 0.22),
+    0 14px 36px rgba(214, 163, 107, 0.20);
+
+  transform: translateY(-1px);
+}
+
+/* optional: make sure transition feels smooth (if base doesn't already) */
+html[data-brand="spa"] .hero .hero-actions .btn.btn-outline,
+html[data-brand="spa"] .spa-services-v2 .btn.btn-outline,
+html[data-brand="spa"] .spa-packages .btn.btn-outline,
+html[data-brand="spa"] .spa-products .btn.btn-outline {
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+}
+
+/* =========================================================
+   SPA PROVIDERS — gold-edge hover for "About" ghost buttons
+   ========================================================= */
+
+html[data-brand="spa"] .founders .founder-actions .btn.founder-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.98);
+  border: 2px solid rgba(214, 163, 107, 0.75);
+  color: rgba(18, 18, 18, 0.98);
+
+  box-shadow:
+    inset 0 0 0 1.5px rgba(214, 163, 107, 0.45),
+    inset 0 6px 14px rgba(214, 163, 107, 0.22),
+    0 14px 36px rgba(214, 163, 107, 0.20);
+
+  transform: translateY(-1px);
+}
+
+/* optional smoothing (safe) */
+html[data-brand="spa"] .founders .founder-actions .btn.founder-btn--ghost {
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease, color .18s ease;
 }
 
 /* =========================================================

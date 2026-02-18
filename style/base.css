@@ -404,3 +404,17 @@ html[data-brand="spa"] .section-sub {
   margin: 18px 0 22px;
   border-radius: 2px;
 }
+
+/* =========================================================
+   CLINIC — Make basic outline buttons glow blue by default
+   ========================================================= */
+
+
+
+/* Optional: slightly stronger on hover */
+html[data-brand="clinic"] .btn.btn-outline:hover {
+  box-shadow:
+    0 0 0 1px rgba(18, 192, 138, .92),
+    0 0 24px rgba(18, 192, 138, 0.55);
+}
+

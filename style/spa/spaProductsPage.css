@@ -1,0 +1,464 @@
+/* =========================================================
+   spaProductsPage.css — PRODUCTS PAGE (SPA)
+   - Founders/providers style list
+   - Auto LRLR flip via :nth-child(even)
+   - 2-up on wide, stacked on mobile
+   - Type chip + price
+   ========================================================= */
+
+/* =========================
+   PRODUCTS HERO (page hero)
+   ========================= */
+
+html[data-brand="spa"] .prod-hero {
+    padding: clamp(42px, 5vw, 62px) 0 clamp(20px, 3vw, 34px);
+}
+
+html[data-brand="spa"] .prod-hero-inner {
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: clamp(16px, 2.6vw, 26px);
+    align-items: stretch;
+}
+
+@media (max-width: 900px) {
+    html[data-brand="spa"] .prod-hero-inner {
+        grid-template-columns: 1fr;
+    }
+}
+
+html[data-brand="spa"] .prod-hero-card {
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(20, 20, 20, .10);
+    background: linear-gradient(180deg, rgba(255, 255, 255, .86), rgba(255, 255, 255, .70));
+    box-shadow: 0 18px 50px rgba(0, 0, 0, .10);
+    padding: clamp(18px, 2.4vw, 26px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+html[data-brand="spa"] .prod-eyebrow {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: .78rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: rgba(20, 20, 20, .62);
+}
+
+html[data-brand="spa"] .prod-title {
+    margin: 0;
+    font-size: clamp(1.45rem, 2.2vw, 2rem);
+    line-height: 1.08;
+    letter-spacing: -.01em;
+    color: rgba(10, 10, 10, .92);
+}
+
+html[data-brand="spa"] .prod-lead {
+    margin: 12px 0 0;
+    color: rgba(20, 20, 20, .72);
+    line-height: 1.65;
+    max-width: 68ch;
+}
+
+html[data-brand="spa"] .prod-hero-actions {
+    margin-top: 16px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+html[data-brand="spa"] .prod-hero-media {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    border: 1px solid rgba(20, 20, 20, .10);
+    background: rgba(255, 255, 255, .60);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, .10);
+    position: relative;
+}
+
+html[data-brand="spa"] .prod-hero-media-inner {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(900px 520px at 20% 10%, rgba(214, 163, 107, .22), transparent 55%),
+        radial-gradient(760px 520px at 80% 0%, rgba(185, 133, 79, .16), transparent 62%),
+        url("../../resources/filler.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: saturate(1.02) contrast(1.02);
+}
+
+/* =========================
+   FILTER BUTTONS (Products)
+   ========================= */
+
+html[data-brand="spa"] .prod-filters {
+    margin-top: clamp(14px, 2.4vw, 20px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+/* keep filters from feeling too wide on desktop */
+html[data-brand="spa"] .prod-filters .prod-filter {
+    /* uses your existing .btn + .btn-outline styling */
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+/* Selected state: make it feel "pressed"/active */
+html[data-brand="spa"] .prod-filters .prod-filter.is-active,
+html[data-brand="spa"] .prod-filters .prod-filter[aria-pressed="true"] {
+    background: rgba(214, 163, 107, .18);
+    border-color: rgba(185, 133, 79, .32);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, .08);
+    transform: translateY(-1px);
+}
+
+/* Nice focus ring (keyboard) */
+html[data-brand="spa"] .prod-filters .prod-filter:focus-visible {
+    outline: 2px solid rgba(185, 133, 79, .55);
+    outline-offset: 3px;
+}
+
+/* Optional small helper note */
+html[data-brand="spa"] .prod-filter-note {
+    margin-left: 6px;
+    font-size: .9rem;
+    color: rgba(20, 20, 20, .62);
+}
+
+/* Mobile: make filters easier to tap */
+@media (max-width: 635px) {
+    html[data-brand="spa"] .prod-filters {
+        gap: 8px;
+    }
+
+    html[data-brand="spa"] .prod-filters .prod-filter {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    html[data-brand="spa"] .prod-filter-note {
+        width: 100%;
+        margin: 2px 0 0;
+    }
+}
+
+/* =========================
+   SECTION WRAPPER
+   ========================= */
+
+html[data-brand="spa"] .products-tiles {
+    position: relative;
+    padding: clamp(78px, 7vw, 120px) 0;
+    overflow: hidden;
+}
+
+/* subtle spa ambience */
+html[data-brand="spa"] .products-tiles::before {
+    content: "";
+    position: absolute;
+    inset: -140px -140px auto -140px;
+    height: 520px;
+    background:
+        radial-gradient(900px 520px at 18% 30%, rgba(214, 163, 107, .18), transparent 60%),
+        radial-gradient(800px 520px at 80% 10%, rgba(185, 133, 79, .12), transparent 62%);
+    pointer-events: none;
+}
+
+/* =========================
+   GRID (matches founders/provides list)
+   ========================= */
+
+html[data-brand="spa"] .products-tiles .doc-grid {
+    margin-top: clamp(22px, 2.8vw, 30px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(14px, 2.2vw, 20px);
+    align-items: stretch;
+}
+
+@media (min-width: 1200px) {
+    html[data-brand="spa"] .products-tiles .doc-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* =========================
+   CARD (founders-style)
+   ========================= */
+
+html[data-brand="spa"] .products-tiles .doc-card {
+    display: grid;
+    grid-template-columns: clamp(140px, 18vw, 190px) 1fr;
+    gap: clamp(14px, 2.2vw, 18px);
+    align-items: stretch;
+
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(20, 20, 20, .10);
+    background: linear-gradient(180deg, rgba(255, 255, 255, .86), rgba(255, 255, 255, .70));
+    box-shadow: 0 18px 50px rgba(0, 0, 0, .10);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    position: relative;
+    isolation: isolate;
+    padding: 0;
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+html[data-brand="spa"] .products-tiles .doc-card::before {
+    content: "";
+    position: absolute;
+    inset: -110px -110px auto -110px;
+    height: 240px;
+    background:
+        radial-gradient(240px 170px at 12% 35%, rgba(214, 163, 107, .18), transparent 65%),
+        radial-gradient(320px 220px at 82% 10%, rgba(0, 0, 0, .06), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+html[data-brand="spa"] .products-tiles .doc-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, .12);
+}
+
+/* =========================
+   AUTO FLIP (LRLR)
+   ========================= */
+
+html[data-brand="spa"] .products-tiles .doc-card:nth-child(even) {
+    grid-template-columns: 1fr clamp(140px, 18vw, 190px);
+}
+
+html[data-brand="spa"] .products-tiles .doc-card:nth-child(even) .doc-media {
+    order: 2;
+}
+
+html[data-brand="spa"] .products-tiles .doc-card:nth-child(even) .doc-body {
+    order: 1;
+}
+
+/* =========================
+   MEDIA
+   ========================= */
+
+html[data-brand="spa"] .products-tiles .doc-media {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    background: rgba(0, 0, 0, .06);
+    width: auto;
+    border-radius: 0;
+    border: 0;
+}
+
+html[data-brand="spa"] .products-tiles .doc-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: var(--pos, 50% 30%);
+}
+
+/* soft top/bottom bands (works even on light theme) */
+html[data-brand="spa"] .products-tiles .doc-media::before,
+html[data-brand="spa"] .products-tiles .doc-media::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 12.5%;
+    z-index: 2;
+    pointer-events: none;
+    backdrop-filter: blur(12px) saturate(1.05);
+    -webkit-backdrop-filter: blur(12px) saturate(1.05);
+}
+
+html[data-brand="spa"] .products-tiles .doc-media::before {
+    top: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, .12), rgba(0, 0, 0, .02));
+}
+
+html[data-brand="spa"] .products-tiles .doc-media::after {
+    bottom: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, .14), rgba(0, 0, 0, .03));
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+
+    html[data-brand="spa"] .products-tiles .doc-media::before,
+    html[data-brand="spa"] .products-tiles .doc-media::after {
+        background: rgba(0, 0, 0, .06);
+    }
+}
+
+/* =========================
+   BODY
+   ========================= */
+
+html[data-brand="spa"] .products-tiles .doc-body {
+    position: relative;
+    z-index: 1;
+
+    padding: clamp(14px, 2vw, 18px) clamp(14px, 2.2vw, 22px) clamp(14px, 2vw, 18px) 0;
+    display: grid;
+    align-content: center;
+    gap: 10px;
+}
+
+/* flip padding side on even cards */
+html[data-brand="spa"] .products-tiles .doc-card:nth-child(even) .doc-body {
+    padding: clamp(14px, 2vw, 18px) 0 clamp(14px, 2vw, 18px) clamp(14px, 2.2vw, 22px);
+}
+
+/* =========================
+   TOPLINE: chip + price
+   ========================= */
+
+html[data-brand="spa"] .products-tiles .doc-topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0 0 4px;
+}
+
+/* type chip */
+html[data-brand="spa"] .products-tiles .doc-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(20, 20, 20, .10);
+    background: rgba(255, 255, 255, .70);
+    color: rgba(20, 20, 20, .72);
+    font-size: .78rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+html[data-brand="spa"] .products-tiles .doc-icon {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+html[data-brand="spa"] .products-tiles .doc-price {
+    font-weight: 800;
+    color: rgba(10, 10, 10, .82);
+    letter-spacing: .02em;
+    white-space: nowrap;
+}
+
+/* =========================
+   TEXT
+   ========================= */
+
+html[data-brand="spa"] .products-tiles .doc-name {
+    margin: 0;
+    font-size: clamp(1.08rem, 1.6vw, 1.35rem);
+    letter-spacing: .01em;
+    color: rgba(10, 10, 10, .92);
+}
+
+html[data-brand="spa"] .products-tiles .doc-desc {
+    margin: 0;
+    color: rgba(20, 20, 20, .72);
+    line-height: 1.65;
+    max-width: 70ch;
+}
+
+/* =========================================================
+   MOBILE (<=635): STACKED
+   ========================================================= */
+
+@media (max-width: 635px) {
+    html[data-brand="spa"] .products-tiles .doc-card {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto auto !important;
+        gap: 0 !important;
+        border-radius: var(--radius-lg);
+        align-items: stretch !important;
+    }
+
+    /* remove even flip ordering on mobile */
+    html[data-brand="spa"] .products-tiles .doc-card:nth-child(even) .doc-media,
+    html[data-brand="spa"] .products-tiles .doc-card:nth-child(even) .doc-body {
+        order: initial !important;
+    }
+
+    html[data-brand="spa"] .products-tiles .doc-media {
+        width: 100%;
+        min-height: 220px;
+        max-height: 320px;
+    }
+
+    html[data-brand="spa"] .products-tiles .doc-media::before,
+    html[data-brand="spa"] .products-tiles .doc-media::after {
+        height: 8%;
+        backdrop-filter: blur(16px) saturate(1.06);
+        -webkit-backdrop-filter: blur(16px) saturate(1.06);
+    }
+
+    html[data-brand="spa"] .products-tiles .doc-body {
+        padding: 12px 14px 14px !important;
+        gap: 8px;
+    }
+
+    html[data-brand="spa"] .products-tiles .doc-topline {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+
+    html[data-brand="spa"] .products-tiles .doc-chip {
+        font-size: .72rem;
+        padding: 6px 9px;
+    }
+
+    html[data-brand="spa"] .products-tiles .doc-name {
+        font-size: 1.02rem;
+        line-height: 1.12;
+    }
+
+    html[data-brand="spa"] .products-tiles .doc-desc {
+        font-size: .92rem;
+        line-height: 1.42;
+    }
+}
+
+/* =========================================================
+   EXTRA SMALL (<=380)
+   ========================================================= */
+
+@media (max-width: 380px) {
+    html[data-brand="spa"] .products-tiles .doc-media {
+        min-height: 200px;
+        max-height: 280px;
+    }
+
+    html[data-brand="spa"] .products-tiles .doc-body {
+        padding: 10px 12px 12px !important;
+        gap: 7px;
+    }
+
+    html[data-brand="spa"] .products-tiles .doc-desc {
+        font-size: .88rem;
+        line-height: 1.36;
+    }
+}
+
+/* Force hidden cards to actually disappear */
+html[data-brand="spa"] .products-tiles .doc-card[hidden] {
+    display: none !important;
+}

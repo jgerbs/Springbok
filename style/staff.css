@@ -456,23 +456,3 @@
   }
 }
 
-/* Panels hidden by default */
-.staff-panel {
-  display: none;
-}
-
-/* ✅ Your radios are siblings of .staff-card, not .staff-tabs */
-#focusA:checked~.staff-card .staff-tabs .staff-panel--a {
-  display: block;
-}
-
-#focusB:checked~.staff-card .staff-tabs .staff-panel--b {
-  display: block;
-}
-
-/* Active tab styling */
-#focusA:checked~.staff-card .staff-tabs .staff-tab-bar label[for="focusA"],
-#focusB:checked~.staff-card .staff-tabs .staff-tab-bar label[for="focusB"] {
-  border-color: rgba(18, 192, 138, 0.30);
-  background: rgba(18, 192, 138, 0.12);
-}

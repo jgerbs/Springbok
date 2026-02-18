@@ -241,7 +241,7 @@ html[data-brand="spa"] .wheel-controls .btn {
 /* ---------------------------------
    ULTRA-WIDE: 5 cards (match products)
 ---------------------------------- */
-@media (min-width: 2150px) {
+@media (min-width: 2000px) {
     html[data-brand="spa"] .pkg-card.is-left {
         transform: translateX(calc(-50% - 560px)) scale(.98);
         filter: none;
@@ -435,4 +435,7 @@ html[data-brand="spa"] .wheel-controls .btn {
     }
 }
 
+html[data-brand="spa"] .pkg-nav--overlay:hover {
+    transform: translateY(-50%);
+}
 

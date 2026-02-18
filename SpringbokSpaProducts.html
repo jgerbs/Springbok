@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en" data-brand="spa" data-spa-page="products">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Springbok Medical Spa | Products</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- keep your existing spa stack -->
+    <link rel="stylesheet" href="style/base.css" />
+    <link rel="stylesheet" href="style/spa/spa.css" />
+    <link rel="stylesheet" href="style/spa/spaGrid.css" />
+    <link rel="stylesheet" href="style/responsive.css" />
+
+    <link rel="stylesheet" href="style/spa/spaProductsPage.css" />
+    <link rel="stylesheet" href="style/practiceModal.css" />
+</head>
+
+<body>
+    <div class="page-transition" aria-hidden="true">
+
+        <!-- HEADER -->
+        <header class="site-header" aria-label="Site navigation">
+            <div class="header-right">
+                <nav class="nav-pill" aria-label="Main navigation">
+                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="SpringbokAbout.html">About Us</a>
+                    <a class="nav-link" href="SpringbokClinic.html">Clinic</a>
+                    <a class="nav-link is-active" href="SpringbokSpa.html">Spa</a>
+                    <a class="nav-link" href="SpringbokTeam.html">Our Team</a>
+                    <a class="nav-link" href="SpringbokContact.html">Contact</a>
+                </nav>
+
+                <div class="header-actions">
+                    <a class="btn btn-accent book-cta" href="#" data-open-doctor-modal data-doctor="General Inquiry"
+                        data-subject="Spa Products — Booking Request">
+                        Book Clinic
+                    </a>
+
+                    <a class="btn btn-accent book-cta" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+                        rel="noopener">
+                        Book Spa
+                    </a>
+
+                    <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open menu"
+                        aria-controls="mobilePanel" aria-expanded="false">
+                        <span class="burger" aria-hidden="true">
+                            <span></span><span></span><span></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- mobile panel -->
+            <div class="container mobile-panel" id="mobilePanel" aria-hidden="true">
+                <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
+                    <nav class="mobile-menu-links" aria-label="Mobile navigation">
+                        <a class="mobile-link" href="index.html">Home</a>
+                        <a class="mobile-link" href="SpringbokAbout.html">About Us</a>
+                        <a class="mobile-link" href="SpringbokClinic.html">Clinic</a>
+                        <!-- Products page: do NOT mark Spa as active in top nav -->
+                        <a class="mobile-link" href="SpringbokSpa.html">Spa</a>
+                        <a class="mobile-link" href="SpringbokTeam.html">Our Team</a>
+                        <a class="mobile-link" href="SpringbokContact.html">Contact</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main>
+
+            <!-- HERO -->
+            <section class="hero hero--products">
+                <a class="hero-brand reveal" href="SpringbokSpa.html" aria-label="Springbok Medical Spa Home">
+                    <img src="resources/spalogo2.png" alt="Springbok Medical Spa" class="hero-logo hero-logo--spa" />
+                </a>
+
+                <div class="hero-media" aria-hidden="true">
+                    <video class="hero-video" autoplay muted loop playsinline poster="resources/filler.jpg">
+                        <source src="resources/vecteezy_spa-massage-decoration-and-body-treatment_1790157.mp4"
+                            type="video/mp4" />
+                    </video>
+                    <div class="hero-overlay"></div>
+                </div>
+
+                <div class="container hero-content reveal">
+                    <h1>Professional-grade products — curated for your routine.</h1>
+                    <p>
+                        In-clinic only. Browse skincare, aftercare essentials, SPF, and more — and message us if you
+                        want a
+                        recommendation.
+                    </p>
+
+                    <div class="hero-actions spa-subnav">
+                        <a class="btn btn-accent" href="#" data-open-doctor-modal data-doctor="General Inquiry"
+                            data-subject="Spa Products — Product Questions">
+                            Ask About Products
+                        </a>
+
+                        <a class="btn btn-outline spa-subnav-link spa-subnav-services" href="SpringbokSpaServices.html">
+                            Services
+                        </a>
+                        <a class="btn btn-outline spa-subnav-link spa-subnav-packages" href="SpringbokSpaPackages.html">
+                            Packages
+                        </a>
+                        <a class="btn btn-outline spa-subnav-link spa-subnav-products is-active"
+                            href="SpringbokSpaProducts.html">
+                            Products
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PRODUCTS -->
+            <section class="products-tiles" id="all-products">
+                <div class="container reveal">
+
+                    <!-- Use the SAME SPA section header styling system -->
+                    <header class="section-head">
+                        <span class="section-eyebrow">Products</span>
+                        <h2 class="section-title">Browse products</h2>
+                        <div class="spa-divider"></div>
+                        <p class="section-sub">
+                            Filter by category. If none are selected, you’ll see everything.
+                        </p>
+                    </header>
+
+                    <!-- FILTER BUTTONS -->
+                    <div class="prod-filters" role="group" aria-label="Filter products by category">
+                        <button class="btn btn-outline prod-filter" type="button" data-filter="anti-aging"
+                            aria-pressed="false">
+                            Anti-Aging
+                        </button>
+                        <button class="btn btn-outline prod-filter" type="button" data-filter="sunscreen"
+                            aria-pressed="false">
+                            Sunscreen
+                        </button>
+                        <button class="btn btn-outline prod-filter" type="button" data-filter="moisturizers"
+                            aria-pressed="false">
+                            Moisturizers
+                        </button>
+                        <button class="btn btn-outline prod-filter" type="button" data-filter="cleanser"
+                            aria-pressed="false">
+                            Cleanser
+                        </button>
+                        <button class="btn btn-outline prod-filter" type="button" data-filter="aftercare"
+                            aria-pressed="false">
+                            Aftercare
+                        </button>
+                        <button class="btn btn-outline prod-filter" type="button" data-filter="bodycare"
+                            aria-pressed="false">
+                            Body Care
+                        </button>
+                    </div>
+
+                    <!-- GRID -->
+                    <div class="doc-grid" data-products-grid>
+
+                        <!-- SUNSCREEN -->
+                        <article class="doc-card" data-cat="sunscreen" id="hydratint-spf-36">
+                            <div class="doc-media">
+                                <img class="doc-img" src="resources/alastin/SPF36.webp"
+                                    alt="HydraTint Pro Mineral Broad Spectrum Sunscreen SPF 36" loading="lazy" />
+                            </div>
+                            <div class="doc-body">
+                                <div class="doc-topline">
+                                    <span class="doc-chip" aria-label="Sunscreen"><span class="doc-icon"
+                                            aria-hidden="true">☀️</span>Sunscreen</span>
+                                    <span class="doc-price">$84</span>
+                                </div>
+                                <h3 class="doc-name">HydraTint Pro Mineral Broad Spectrum Sunscreen SPF 36</h3>
+                                <p class="doc-desc">Tinted mineral SPF for daily wear—great for a polished finish and
+                                    post-treatment
+                                    routines.</p>
+                            </div>
+                        </article>
+
+                        <article class="doc-card" data-cat="sunscreen" id="silkshield-spf-30">
+                            <div class="doc-media">
+                                <img class="doc-img" src="resources/alastin/SPF30.webp"
+                                    alt="SilkSHIELD All Mineral Sunscreen SPF 30 with TriHex Technology"
+                                    loading="lazy" />
+                            </div>
+                            <div class="doc-body">
+                                <div class="doc-topline">
+                                    <span class="doc-chip" aria-label="Sunscreen"><span class="doc-icon"
+                                            aria-hidden="true">☀️</span>Sunscreen</span>
+                                    <span class="doc-price">$78</span>
+                                </div>
+                                <h3 class="doc-name">SilkSHIELD® All Mineral Sunscreen SPF 30</h3>
+                                <p class="doc-desc">Lightweight mineral SPF designed for comfortable daily protection
+                                    and recovery-friendly
+                                    wear.</p>
+                            </div>
+                        </article>
+
+                        <!-- ANTI-AGING -->
+                        <article class="doc-card" data-cat="anti-aging" id="restorative-skin-complex">
+                            <div class="doc-media">
+                                <img class="doc-img" src="resources/alastin/TriHex+.webp"
+                                    alt="Restorative Skin Complex with TriHex+" loading="lazy" />
+                            </div>
+                            <div class="doc-body">
+                                <div class="doc-topline">
+                                    <span class="doc-chip" aria-label="Anti-Aging"><span class="doc-icon"
+                                            aria-hidden="true">✨</span>Anti-Aging</span>
+                                    <span class="doc-price">$258</span>
+                                </div>
+                                <h3 class="doc-name">Restorative Skin Complex with TriHex+™</h3>
+                                <p class="doc-desc">A signature face treatment supporting smoother texture and a more
+                                    refreshed-looking
+                                    complexion.</p>
+                            </div>
+                        </article>
+
+                        <article class="doc-card" data-cat="anti-aging" id="restorative-eye-complex">
+                            <div class="doc-media">
+                                <img class="doc-img" src="resources/alastin/TriHexEye.webp"
+                                    alt="Restorative Eye Complex with TriHex Technology" loading="lazy" />
+                            </div>
+                            <div class="doc-body">
+                                <div class="doc-topline">
+                                    <span class="doc-chip" aria-label="Anti-Aging"><span class="doc-icon"
+                                            aria-hidden="true">✨</span>Anti-Aging</span>
+                                    <span class="doc-price">$128</span>
+                                </div>
+                                <h3 class="doc-name">Restorative Eye Complex with TriHex Technology®</h3>
+                                <p class="doc-desc">Targeted eye support for a brighter, smoother-looking under-eye and
+                                    lid area.</p>
+                            </div>
+                        </article>
+
+                        <article class="doc-card" data-cat="anti-aging" id="renewal-retinol">
+                            <div class="doc-media">
+                                <img class="doc-img" src="resources/alastin/RenewalRetinol.webp" alt="Renewal Retinol" loading="lazy" />
+                            </div>
+                            <div class="doc-body">
+                                <div class="doc-topline">
+                                    <span class="doc-chip" aria-label="Anti-Aging"><span class="doc-icon"
+                                            aria-hidden="true">✨</span>Anti-Aging</span>
+                                    <span class="doc-price">$81</span>
+                                </div>
+                                <h3 class="doc-name">Renewal Retinol</h3>
+                                <p class="doc-desc">Retinol option designed to support smoother-looking tone and texture
+                                    over time.</p>
+                            </div>
+                        </article>
+
+                        <article class="doc-card" data-cat="anti-aging" id="restorative-neck-complex">
+                            <div class="doc-media">
+                                <img class="doc-img" src="resources/alastin/TriHexNeck.webp"
+                                    alt="Restorative Neck Complex with TriHex Technology" loading="lazy" />
+                            </div>
+                            <div class="doc-body">
+                                <div class="doc-topline">
+                                    <span class="doc-chip" aria-label="Anti-Aging"><span class="doc-icon"
+                                            aria-hidden="true">✨</span>Anti-Aging</span>
+                                    <span class="doc-price">$158</span>
+                                </div>
+                                <h3 class="doc-name">Restorative Neck Complex with TriHex Technology®</h3>
+                                <p class="doc-desc">Focused support for the neck—helps improve the look of firmness and
+                                    skin texture.</p>
+                            </div>
+                        </article>
+
+                        <article class="doc-card" data-cat="anti-aging" id="a-luminate">
+                            <div class="doc-media">
+                                <img class="doc-img" src="resources/alastin/LUMINATESerum.webp" alt="A-LUMINATE Brightening Serum"
+                                    loading="lazy" />
+                            </div>
+                            <div class="doc-body">
+                                <div class="doc-topline">
+                                    <span class="doc-chip" aria-label="Anti-Aging"><span class="doc-icon"
+                                            aria-hidden="true">✨</span>Anti-Aging</span>
+                                    <span class="doc-price">$198</span>
+                                </div>
+                                <h3 class="doc-name">A-LUMINATE Brightening Serum™</h3>
+                                <p class="doc-desc">Brightening-focused serum for a more even, radiant-looking tone.</p>
+                            </div>
+                        </article>
+
+                        <article class="doc-card" data-cat="anti-aging" id="c-radical">
+                            <div class="doc-media">
+                                <img class="doc-img" src="resources/alastin/RADICALSerum.webp"
+                                    alt="C-RADICAL Defense Antioxidant Serum" loading="lazy" />
+                            </div>
+                            <div class="doc-body">
+                                <div class="doc-topline">
+                                    <span class="doc-chip" aria-label="Anti-Aging"><span class="doc-icon"
+                                            aria-hidden="true">✨</span>Anti-Aging</span>
+                                    <span class="doc-price">$218</span>
+                                </div>
+                                <h3 class="doc-name">C-RADICAL Defense Antioxidant Serum</h3>
+                                <p class="doc-desc">Antioxidant support designed to complement a daily routine and help
+                                    defend skin’s look.
+                                </p>
+                            </div>
+                        </article>
+
+                        <!-- MOISTURIZERS -->
+                        <article class="doc-card" data-cat="moisturizers" id="ultra-nourishing-moisturizer">
+                            <div class="doc-media">
+                                <img class="doc-img" src="resources/alastin/TriHexMoisture.webp"
+                                    alt="Ultra Nourishing Moisturizer with TriHex Technology" loading="lazy" />
+                            </div>
+                            <div class="doc-body">
+                                <div class="doc-topline">
+                                    <span class="doc-chip" aria-label="Moisturizers"><span class="doc-icon"
+                                            aria-hidden="true">💧</span>Moisturizers</span>
+                                    <span class="doc-price">$98</span>
+                                </div>
+                                <h3 class="doc-name">Ultra Nourishing Moisturizer with TriHex Technology®</h3>
+                                <p class="doc-desc">Richer moisture support—great for dry-feeling skin or when you want
+                                    extra comfort.</p>
+                            </div>
+                        </article>
+
+                        <article class="doc-card" data-cat="moisturizers" id="ultra-light-moisturizer">
+                            <div class="doc-media">
+                                <img class="doc-img" src="resources/alastin/TriHexMoistureUltraLight.webp"
+                                    alt="Ultra Light Moisturizer with TriHex Technology" loading="lazy" />
+                            </div>
+                            <div class="doc-body">
+                                <div class="doc-topline">
+                                    <span class="doc-chip" aria-label="Moisturizers"><span class="doc-icon"
+                                            aria-hidden="true">💧</span>Moisturizers</span>
+                                    <span class="doc-price">$98</span>
+                                </div>
+                                <h3 class="doc-name">Ultra Light Moisturizer with TriHex Technology®</h3>
+                                <p class="doc-desc">Lightweight daily hydration—ideal for a breathable feel under SPF
+                                    and makeup.</p>
+                            </div>
+                        </article>
+
+                        <!-- CLEANSER -->
+                        <article class="doc-card" data-cat="cleanser" id="gentle-cleanser">
+                            <div class="doc-media">
+                                <img class="doc-img" src="resources/alastin/GentleCleanser.webp" alt="Gentle Cleanser" loading="lazy" />
+                            </div>
+                            <div class="doc-body">
+                                <div class="doc-topline">
+                                    <span class="doc-chip" aria-label="Cleanser"><span class="doc-icon"
+                                            aria-hidden="true">🧼</span>Cleanser</span>
+                                    <span class="doc-price">$58</span>
+                                </div>
+                                <h3 class="doc-name">Gentle Cleanser</h3>
+                                <p class="doc-desc">A gentle daily cleanse to remove buildup without leaving skin
+                                    feeling stripped.</p>
+                            </div>
+                        </article>
+
+                        <article class="doc-card" data-cat="cleanser" id="ultra-calm-cleansing-cream">
+                            <div class="doc-media">
+                                <img class="doc-img" src="resources/alastin/CleansingCream.webp" alt="Ultra Calm Cleansing Cream"
+                                    loading="lazy" />
+                            </div>
+                            <div class="doc-body">
+                                <div class="doc-topline">
+                                    <span class="doc-chip" aria-label="Cleanser"><span class="doc-icon"
+                                            aria-hidden="true">🧼</span>Cleanser</span>
+                                    <span class="doc-price">$58</span>
+                                </div>
+                                <h3 class="doc-name">Ultra Calm Cleansing Cream</h3>
+                                <p class="doc-desc">Cream cleanser option for sensitive-feeling skin and comfort-focused
+                                    routines.</p>
+                            </div>
+                        </article>
+
+                        <article class="doc-card" data-cat="cleanser" id="resurface-skin-polish">
+                            <div class="doc-media">
+                                <img class="doc-img" src="resources/alastin/ReSURFACEPolish.webp" alt="ReSURFACE Skin Polish"
+                                    loading="lazy" />
+                            </div>
+                            <div class="doc-body">
+                                <div class="doc-topline">
+                                    <span class="doc-chip" aria-label="Cleanser"><span class="doc-icon"
+                                            aria-hidden="true">🧼</span>Cleanser</span>
+                                    <span class="doc-price">$78</span>
+                                </div>
+                                <h3 class="doc-name">ReSURFACE Skin Polish</h3>
+                                <p class="doc-desc">Polish/exfoliating cleanser-style step to help refine the look of
+                                    texture.</p>
+                            </div>
+                        </article>
+
+                        <!-- AFTERCARE (TREATMENT ENHANCING) -->
+                        <article class="doc-card" data-cat="aftercare" id="regenerating-skin-nectar">
+                            <div class="doc-media">
+                                <img class="doc-img" src="resources/alastin/TriHexNectar.webp"
+                                    alt="Regenerating Skin Nectar with TriHex Technology" loading="lazy" />
+                            </div>
+                            <div class="doc-body">
+                                <div class="doc-topline">
+                                    <span class="doc-chip" aria-label="Aftercare"><span class="doc-icon"
+                                            aria-hidden="true">🩹</span>Aftercare</span>
+                                    <span class="doc-price">$258</span>
+                                </div>
+                                <h3 class="doc-name">Regenerating Skin Nectar with TriHex Technology®</h3>
+                                <p class="doc-desc">Post-treatment support designed to complement recovery and enhance
+                                    your routine.</p>
+                            </div>
+                        </article>
+
+                        <article class="doc-card" data-cat="aftercare" id="soothe-protect-recovery-balm">
+                            <div class="doc-media">
+                                <img class="doc-img" src="resources/alastin/RecoveryBalm.webp" alt="Soothe + Protect Recovery Balm"
+                                    loading="lazy" />
+                            </div>
+                            <div class="doc-body">
+                                <div class="doc-topline">
+                                    <span class="doc-chip" aria-label="Aftercare"><span class="doc-icon"
+                                            aria-hidden="true">🩹</span>Aftercare</span>
+                                    <span class="doc-price">$52</span>
+                                </div>
+                                <h3 class="doc-name">Soothe + Protect Recovery Balm</h3>
+                                <p class="doc-desc">Barrier-support balm for dryness, irritation, and post-service
+                                    comfort.</p>
+                            </div>
+                        </article>
+
+                        <article class="doc-card" data-cat="aftercare" id="inhance-post-injection-serum">
+                            <div class="doc-media">
+                                <img class="doc-img" src="resources/alastin/TriHexPostInjection.webp"
+                                    alt="INhance Post-Injection Serum with TriHex Technology" loading="lazy" />
+                            </div>
+                            <div class="doc-body">
+                                <div class="doc-topline">
+                                    <span class="doc-chip" aria-label="Aftercare"><span class="doc-icon"
+                                            aria-hidden="true">🩹</span>Aftercare</span>
+                                    <span class="doc-price">$72</span>
+                                </div>
+                                <h3 class="doc-name">INhance Post-Injection Serum with TriHex Technology®</h3>
+                                <p class="doc-desc">Designed to complement post-injection aftercare routines and support
+                                    a calm look.</p>
+                            </div>
+                        </article>
+
+                        <article class="doc-card" data-cat="aftercare" id="reform-repair-complex">
+                            <div class="doc-media">
+                                <img class="doc-img" src="resources/alastin/TriHexComplex.webp"
+                                    alt="ReFORM & RePAIR COMPLEX with TriHex Technology" loading="lazy" />
+                            </div>
+                            <div class="doc-body">
+                                <div class="doc-topline">
+                                    <span class="doc-chip" aria-label="Aftercare"><span class="doc-icon"
+                                            aria-hidden="true">🩹</span>Aftercare</span>
+                                    <span class="doc-price">$268</span>
+                                </div>
+                                <h3 class="doc-name">ReFORM &amp; RePAIR COMPLEX with TriHex Technology®</h3>
+                                <p class="doc-desc">Advanced treatment-enhancing option used to support results and skin
+                                    recovery pathways.
+                                </p>
+                            </div>
+                        </article>
+
+                        <!-- BODY CARE -->
+                        <article class="doc-card" data-cat="bodycare" id="transform-body-treatment">
+                            <div class="doc-media">
+                                <img class="doc-img" src="resources/alastin/TriHexTransFORM.webp"
+                                    alt="TransFORM Body Treatment with TriHex Technology" loading="lazy" />
+                            </div>
+                            <div class="doc-body">
+                                <div class="doc-topline">
+                                    <span class="doc-chip" aria-label="Body Care"><span class="doc-icon"
+                                            aria-hidden="true">🧴</span>Body
+                                        Care</span>
+                                    <span class="doc-price">$220</span>
+                                </div>
+                                <h3 class="doc-name">TransFORM Body Treatment with TriHex Technology®</h3>
+                                <p class="doc-desc">Body-focused treatment supporting smoother-looking texture and
+                                    overall skin appearance.
+                                </p>
+                            </div>
+                        </article>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="site-footer" aria-label="Site footer">
+            <div class="container footer-inner reveal">
+                <div class="footer-brand">
+                    <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
+                        <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
+                    </a>
+
+                    <div class="footer-brand-bottom">
+                        <div class="footer-brand-type">
+                            <div class="footer-brand-name">SPRINGBOK</div>
+                            <div class="footer-brand-sub">MEDICAL CLINIC</div>
+                        </div>
+                        <div class="footer-social" aria-label="Social links">
+                            <a class="social-btn" href="#" aria-label="Instagram">
+                                <img class="social-icon" src="resources/instagram-logo.svg" alt="Instagram">
+                            </a>
+                            <a class="social-btn" href="#" aria-label="Facebook">
+                                <img class="social-icon" src="resources/facebook-logo.svg" alt="Facebook">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-cols">
+                    <div class="footer-col">
+                        <h3>Pages</h3>
+                        <a href="index.html">Home</a>
+                        <a href="SpringbokAbout.html">About Us</a>
+                        <a href="SpringbokContact.html">Contact</a>
+                    </div>
+
+                    <div class="footer-col">
+                        <h3>Our Services</h3>
+                        <a href="SpringbokClinic.html">Clinic</a>
+                        <a href="SpringbokSpa.html">Medical Spa</a>
+                    </div>
+
+                    <div class="footer-col">
+                        <h3>Our Team</h3>
+                        <a href="SpringbokTeam.html">Meet the Team</a>
+                    </div>
+                </div>
+
+                <div class="footer-contact">
+                    <div class="footer-contact-block">
+                        <p class="footer-contact-title">Springbok Medical Clinic</p>
+                        <p>
+                            147 16th St West, Suite #300<br />
+                            North Vancouver, BC<br />
+                            V7M 1T3
+                        </p>
+                        <a class="footer-link" href="SpringbokContact.html#map">View Directions</a>
+                    </div>
+
+                    <div class="footer-contact-block">
+                        <p>
+                            <a class="footer-link" href="tel:+17780000000">+1 (778) 000-0000</a>
+                        </p>
+                        <p>
+                            <a class="footer-link" href="mailto:info@springbokclinic.ca">info@springbokclinic.ca</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container footer-bottom">
+                <p>© <span id="footerYear"></span> Springbok Medical Clinic — All Rights Reserved</p>
+                <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">↑</button>
+            </div>
+        </footer>
+
+        <!-- CONTACT MODAL -->
+        <div class="modal" id="doctorModal" aria-hidden="true">
+            <div class="modal-backdrop" data-close="true"></div>
+
+            <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="doctorModalTitle">
+                <button class="modal-x" type="button" aria-label="Close" data-close="true">✕</button>
+
+                <div class="modal-head">
+                    <div class="modal-eyebrow">Contact</div>
+                    <h2 class="modal-title" id="doctorModalTitle">Request an appointment</h2>
+                    <p class="modal-sub">
+                        Fill this out and our team will route you to the right provider or next step.
+                    </p>
+                </div>
+
+                <form class="modal-form" id="doctorContactForm">
+                    <div class="modal-grid">
+                        <label class="field">
+                            <span class="field-label">Full Name</span>
+                            <input class="field-input" type="text" name="name" placeholder="Your name"
+                                autocomplete="name" required />
+                        </label>
+
+                        <label class="field">
+                            <span class="field-label">Phone Number</span>
+                            <input class="field-input" type="tel" name="phone" placeholder="(778) 000-0000"
+                                autocomplete="tel" />
+                        </label>
+
+                        <label class="field field-span">
+                            <span class="field-label">Email</span>
+                            <input class="field-input" type="email" name="email" placeholder="you@email.com"
+                                autocomplete="email" required />
+                        </label>
+
+                        <div class="field select-field field-dd" data-dd="doctor">
+                            <span class="field-label">Doctor</span>
+
+                            <button class="dd-btn field-input" type="button" aria-haspopup="listbox"
+                                aria-expanded="false">
+                                <span class="dd-value" data-placeholder="Select one">Select one</span>
+                            </button>
+
+                            <input type="hidden" name="doctor" id="doctorSelect" required />
+
+                            <ul class="dd-menu" role="listbox" aria-label="Doctor / Service">
+                                <li class="dd-opt" role="option" data-value="Dr. Amor Kloppers">Dr. Amor Kloppers</li>
+                                <li class="dd-opt" role="option" data-value="Dr. Francois Erasmus">Dr. Francois Erasmus
+                                </li>
+                                <li class="dd-opt" role="option" data-value="Dr. Janneme Frouws">Dr. Janneme Frouws</li>
+                                <li class="dd-opt" role="option" data-value="Dr. Kacey Kiesman">Dr. Kacey Kiesman</li>
+                                <li class="dd-opt" role="option" data-value="General Inquiry">General Inquiry</li>
+                            </ul>
+                        </div>
+
+                        <div class="field select-field field-dd" data-dd="appt">
+                            <span class="field-label">Appointment type</span>
+
+                            <button class="dd-btn field-input" type="button" aria-haspopup="listbox"
+                                aria-expanded="false">
+                                <span class="dd-value" data-placeholder="Select one">Select one</span>
+                            </button>
+
+                            <input type="hidden" name="apptType" id="apptTypeSelect" required />
+
+                            <ul class="dd-menu" role="listbox" aria-label="Appointment type">
+                                <li class="dd-opt" role="option" data-value="In-person appointment">In-person
+                                    appointment</li>
+                                <li class="dd-opt" role="option" data-value="Phone call appointment">Phone call
+                                    appointment</li>
+                                <li class="dd-opt" role="option" data-value="Video call appointment">Video call
+                                    appointment</li>
+                                <li class="dd-opt" role="option" data-value="Follow-up appointment">Follow-up
+                                    appointment</li>
+                            </ul>
+                        </div>
+
+                        <label class="field field-span">
+                            <span class="field-label">Subject</span>
+                            <input class="field-input" type="text" name="subject" id="subjectInput"
+                                placeholder="e.g., Products — Barrier Repair Cream" required />
+                        </label>
+
+                        <label class="field field-span">
+                            <span class="field-label">Message</span>
+                            <textarea class="field-input field-textarea" name="message"
+                                placeholder="Tell us what you’re looking for and any preferences." rows="5"
+                                required></textarea>
+                        </label>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button class="btn btn-outline" type="button" data-close="true">Cancel</button>
+                        <button class="btn btn-accent" type="submit">Send</button>
+                    </div>
+
+                    <p class="modal-note">
+                        If this is urgent, please call 911.
+                    </p>
+                </form>
+            </div>
+        </div>
+
+        <script src="js/mobileMenu.js"></script>
+        <script src="js/footer.js"></script>
+        <script src="js/scrollReveal.js"></script>
+        <script src="js/smoothScroll.js"></script>
+        <script src="js/contactDoctorModal.js"></script>
+        <script src="js/productsSelector.js"></script>
+
+
+</body>
+
+</html>
