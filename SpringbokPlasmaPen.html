@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en" data-brand="spa" data-page="spa-service-learn-more">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Springbok Medical Spa | Plasma Pen</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style/base.css" />
+  <link rel="stylesheet" href="style/spa/spa.css" />
+  <link rel="stylesheet" href="style/spa/spaServiceLearnMore.css" />
+
+  <link rel="stylesheet" href="style/responsive.css" />
+  <link rel="stylesheet" href="style/practiceModal.css" />
+  <link rel="stylesheet" href="style/spa/spaTeam.css" />
+</head>
+
+<body>
+  <div class="page-transition" aria-hidden="true">
+
+    <!-- NAV ONLY (always visible, pinned top-right) -->
+    <header class="site-header" aria-label="Site navigation">
+      <div class="header-right">
+        <nav class="nav-pill" aria-label="Main navigation">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="SpringbokAbout.html">About Us</a>
+          <a class="nav-link" href="SpringbokClinic.html">Clinic</a>
+          <a class="nav-link is-active" href="SpringbokSpa.html">Spa</a>
+          <a class="nav-link" href="SpringbokTeam.html">Our Team</a>
+          <a class="nav-link" href="SpringbokContact.html">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="btn btn-accent book-cta" href="#" data-open-doctor-modal data-doctor="General Inquiry">
+            Book Clinic
+          </a>
+
+          <a class="btn btn-accent book-cta" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+            rel="noopener">
+            Book Spa
+          </a>
+
+          <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open menu" aria-controls="mobilePanel"
+            aria-expanded="false">
+            <span class="burger" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- mobile panel -->
+      <div class="container mobile-panel" id="mobilePanel" aria-hidden="true">
+        <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
+          <nav class="mobile-menu-links" aria-label="Mobile navigation">
+            <a class="mobile-link" href="index.html">Home</a>
+            <a class="mobile-link" href="SpringbokAbout.html">About Us</a>
+            <a class="mobile-link" href="SpringbokClinic.html">Clinic</a>
+            <a class="mobile-link is-active" href="SpringbokSpa.html">Spa</a>
+            <a class="mobile-link" href="SpringbokTeam.html">Our Team</a>
+            <a class="mobile-link" href="SpringbokContact.html">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="svc-lm">
+
+      <!-- HERO (service-specific, but same SPA hero formatting) -->
+      <section class="hero hero--service">
+        <a class="hero-brand reveal" href="SpringbokSpa.html" aria-label="Springbok Medical Spa Home">
+          <img src="resources/spalogo2.png" alt="Springbok Medical Spa" class="hero-logo hero-logo--spa" />
+        </a>
+
+        <div class="hero-media" aria-hidden="true">
+          <video class="hero-video" autoplay muted loop playsinline poster="resources/filler.jpg">
+            <source src="resources/vecteezy_spa-massage-decoration-and-body-treatment_1790157.mp4" type="video/mp4" />
+          </video>
+          <div class="hero-overlay"></div>
+        </div>
+
+        <div class="container hero-content reveal">
+          <span class="svc-kicker">Skin Tightening • Rejuvenation</span>
+          <h1>Plasma Pen</h1>
+          <p>
+            Transform your skin with a cutting-edge, non-surgical treatment that tightens, lifts, and rejuvenates.
+            Using advanced plasma energy, it stimulates collagen and elastin to reduce fine lines, wrinkles, and
+            sagging skin — revealing a smoother, firmer, more youthful-looking appearance.
+          </p>
+
+          <div class="svc-hero-actions">
+            <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank" rel="noopener">
+              Book Now
+            </a>
+            <a class="btn btn-outline book-cta" href="#" data-open-doctor-modal data-doctor="General Inquiry">
+              Send Inquiry
+            </a>
+          </div>
+
+          <div class="svc-quick">
+            <div class="svc-chip"><span class="svc-chip-label">Time</span><span class="svc-chip-val">90 min</span>
+            </div>
+            <div class="svc-chip"><span class="svc-chip-label">Format</span><span class="svc-chip-val">In-clinic</span>
+            </div>
+            <div class="svc-chip"><span class="svc-chip-label">Downtime</span><span class="svc-chip-val">Varies</span>
+            </div>
+            <div class="svc-chip"><span class="svc-chip-label">Price</span><span class="svc-chip-val">$500+</span></div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ABOUT -->
+      <section class="svc-section" id="about">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">About</span>
+            <h2 class="section-title">What this service does</h2>
+            <div class="spa-divider"></div>
+            <p class="section-sub">
+              Plasma Pen (Plasma IQ) is a non-surgical treatment that uses plasma energy to create controlled
+              micro-injuries
+              on the skin’s surface — triggering collagen and elastin production for tightening and texture improvement.
+            </p>
+          </div>
+
+          <div class="svc-about-grid reveal-stagger">
+            <article class="svc-card">
+              <h3>Results you can expect</h3>
+              <ul class="svc-list">
+                <li>Visible tightening + lift in treated areas</li>
+                <li>Smoother texture + softened fine lines</li>
+                <li>Improved appearance of wrinkles + crepey skin</li>
+                <li>Collagen remodeling that continues over time</li>
+              </ul>
+            </article>
+
+            <article class="svc-card svc-card--soft">
+              <h3>Ideal for</h3>
+              <ul class="svc-list">
+                <li>Fine lines + wrinkles</li>
+                <li>Mild-to-moderate skin laxity</li>
+                <li>Targeted areas needing lift + firming</li>
+                <li>Clients wanting a non-surgical option</li>
+              </ul>
+            </article>
+
+            <article class="svc-card svc-card--highlight">
+              <h3>How it works</h3>
+              <p class="svc-muted">
+                Plasma energy creates a controlled treatment pattern that stimulates the skin’s natural repair response.
+                Over time, collagen + elastin production helps tighten and refine the treated area.
+              </p>
+              <div class="svc-pill-row">
+                <span class="svc-pill">Collagen stimulation</span>
+                <span class="svc-pill">Skin tightening</span>
+                <span class="svc-pill">Texture smoothing</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="svc-note reveal" role="note">
+            Please note: treatment pricing starts at <strong>$500+</strong> and varies by the area treated.
+            For booking support, email <a href="mailto:springbokmedicalspa@gmail.com">springbokmedicalspa@gmail.com</a>.
+          </div>
+
+          <div class="svc-mini-cta reveal">
+            <a class="btn btn-outline" href="#providers">See provider</a>
+            <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank" rel="noopener">
+              Book Now
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- DETAILS -->
+      <section class="svc-section svc-section--alt" id="details">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Details</span>
+            <h2 class="section-title">Service details</h2>
+            <div class="spa-divider"></div>
+            <p class="section-sub">Clear expectations — time, comfort, downtime, and what’s included.</p>
+          </div>
+
+          <div class="svc-details-grid reveal-stagger">
+            <article class="svc-detail">
+              <h3>Time</h3>
+              <p>90 minutes. Includes assessment + treatment.</p>
+            </article>
+
+            <article class="svc-detail">
+              <h3>Format</h3>
+              <p>In-clinic appointment. Area selection + plan confirmed at your visit.</p>
+            </article>
+
+            <article class="svc-detail">
+              <h3>Comfort</h3>
+              <p>Comfort measures may be used. Expect heat sensation and a controlled treatment pattern.</p>
+            </article>
+
+            <article class="svc-detail">
+              <h3>Downtime</h3>
+              <p>Varies by area and intensity. We’ll guide you on healing expectations and aftercare.</p>
+            </article>
+
+            <article class="svc-detail">
+              <h3>Best results</h3>
+              <p>Often a series may be recommended depending on your goals and the area treated.</p>
+            </article>
+
+            <article class="svc-detail">
+              <h3>Aftercare</h3>
+              <p>Follow post-care instructions carefully to support healing and maximize outcomes.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- OPTIONS (2 dropdowns) -->
+      <section class="svc-section" id="options">
+        <div class="container">
+
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Options</span>
+            <h2 class="section-title">Plasma Pen treatment options</h2>
+            <div class="spa-divider"></div>
+            <p class="section-sub">Choose your visit type below. Pricing starts at $500+ depending on area.</p>
+          </div>
+
+          <div class="morph-dd-stack reveal-stagger">
+
+            <!-- 1) INITIAL -->
+            <details class="morph-dd">
+              <summary class="morph-dd-sum">
+                <div class="morph-dd-left">
+                  <span class="morph-pill">Initial Visit</span>
+                  <h3 class="morph-dd-title">Plasma IQ Pen</h3>
+                  <p class="morph-dd-sub">
+                    Initial visit (90 minutes) — starting at $500+ depending on area.
+                  </p>
+                </div>
+
+                <span class="morph-dd-icon" aria-hidden="true">
+                  <span class="morph-dd-glyph">+</span>
+                </span>
+              </summary>
+
+              <div class="morph-dd-body">
+                <div class="svc-options-grid" role="list">
+
+                  <article class="svc-opt" role="listitem">
+                    <header class="svc-opt-top">
+                      <h3 class="svc-opt-title">Initial Visit</h3>
+                      <div class="svc-opt-price">$500+</div>
+                    </header>
+
+                    <div class="svc-opt-body">
+                      <ul class="svc-opt-points">
+                        <li><strong>Time:</strong> 90 minutes</li>
+                        <li><strong>Type:</strong> Plasma IQ Pen (Initial)</li>
+                      </ul>
+                    </div>
+
+                    <footer class="svc-opt-bottom">
+                      <a class="btn btn-accent btn-sm"
+                        href="https://springbokmedicalspa.janeapp.com/#/discipline/11/treatment/102" target="_blank"
+                        rel="noopener">Book</a>
+                      <div class="svc-opt-provider">Offered by Dr. Amor Kloppers</div>
+                    </footer>
+                  </article>
+
+                </div>
+              </div>
+            </details>
+
+            <!-- 2) RETURN -->
+            <details class="morph-dd">
+              <summary class="morph-dd-sum">
+                <div class="morph-dd-left">
+                  <span class="morph-pill">Return Visit</span>
+                  <h3 class="morph-dd-title">Plasma IQ Pen</h3>
+                  <p class="morph-dd-sub">
+                    Return visit (90 minutes) — starting at $500+ depending on area.
+                  </p>
+                </div>
+
+                <span class="morph-dd-icon" aria-hidden="true">
+                  <span class="morph-dd-glyph">+</span>
+                </span>
+              </summary>
+
+              <div class="morph-dd-body">
+                <div class="svc-options-grid" role="list">
+
+                  <article class="svc-opt" role="listitem">
+                    <header class="svc-opt-top">
+                      <h3 class="svc-opt-title">Return Visit</h3>
+                      <div class="svc-opt-price">$500+</div>
+                    </header>
+
+                    <div class="svc-opt-body">
+                      <ul class="svc-opt-points">
+                        <li><strong>Time:</strong> 90 minutes</li>
+                        <li><strong>Type:</strong> Plasma IQ Pen (Return)</li>
+                      </ul>
+                    </div>
+
+                    <footer class="svc-opt-bottom">
+                      <a class="btn btn-accent btn-sm"
+                        href="https://springbokmedicalspa.janeapp.com/#/discipline/11/treatment/103" target="_blank"
+                        rel="noopener">Book</a>
+                      <div class="svc-opt-provider">Offered by Dr. Amor Kloppers</div>
+                    </footer>
+                  </article>
+
+                </div>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- WHAT TO EXPECT -->
+      <section class="svc-flow">
+        <div class="container">
+
+          <div class="section-head reveal">
+            <span class="section-eyebrow">What to expect</span>
+            <h2 class="section-title">Treatment steps</h2>
+            <div class="spa-divider"></div>
+            <p class="section-sub">
+              A quick visual flow so you know exactly what happens.
+            </p>
+          </div>
+
+          <div class="svc-flow-steps">
+
+            <!-- STEP 1 -->
+            <div class="svc-step">
+              <img class="svc-step-icon" src="resources/clipboard_LB.svg" alt="">
+              <span class="svc-step-num">STEP 1</span>
+              <h3>Assess + plan</h3>
+              <p>
+                We review your goals, confirm the treatment area, and align on realistic outcomes.
+              </p>
+            </div>
+
+            <img class="svc-arrow svc-arrow--desktop" src="resources/arrow-right.svg" alt="">
+            <img class="svc-arrow svc-arrow--mobile" src="resources/arrow-down.svg" alt="">
+
+            <!-- STEP 2 -->
+            <div class="svc-step">
+              <img class="svc-step-icon" src="resources/handwash_LB.svg" alt="">
+              <span class="svc-step-num">STEP 2</span>
+              <h3>Prep</h3>
+              <p>
+                Cleanse + prep. Comfort measures may be used depending on the area treated.
+              </p>
+            </div>
+
+            <img class="svc-arrow svc-arrow--desktop" src="resources/arrow-right.svg" alt="">
+            <img class="svc-arrow svc-arrow--mobile" src="resources/arrow-down.svg" alt="">
+
+            <!-- STEP 3 -->
+            <div class="svc-step">
+              <img class="svc-step-icon" src="resources/syringe_LB.svg" alt="">
+              <span class="svc-step-num">STEP 3</span>
+              <h3>Treatment</h3>
+              <p>
+                Controlled plasma energy is applied to stimulate tightening + collagen remodeling.
+              </p>
+            </div>
+
+            <img class="svc-arrow svc-arrow--desktop" src="resources/arrow-right.svg" alt="">
+            <img class="svc-arrow svc-arrow--mobile" src="resources/arrow-down.svg" alt="">
+
+            <!-- STEP 4 -->
+            <div class="svc-step">
+              <img class="svc-step-icon" src="resources/recovery_LB.svg" alt="">
+              <span class="svc-step-num">STEP 4</span>
+              <h3>Aftercare</h3>
+              <p>
+                We provide simple do’s / don’ts and aftercare guidance for smooth healing.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- BEFORE & AFTER -->
+      <section class="svc-section" id="results">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Results</span>
+            <h2 class="section-title">Before &amp; after</h2>
+            <div class="spa-divider"></div>
+            <p class="section-sub">
+              Outcomes vary. For best comparisons, photos should use consistent lighting and angles.
+            </p>
+          </div>
+
+          <div class="ba-grid reveal-stagger">
+            <!-- Keep your existing placeholders/images or swap later -->
+            <figure class="ba-card">
+              <div class="ba-head">
+                <div class="ba-person">
+                  <span class="ba-person-name">Patient A</span>
+                  <span class="ba-person-meta">Treated area • sessions vary</span>
+                </div>
+                <span class="ba-chip">Plasma Pen</span>
+              </div>
+
+              <div class="ba-compare" aria-label="Before and after comparison for Patient A">
+                <div class="ba-pane">
+                  <img class="ba-photo" src="resources/before2.png" alt="Before photo — Patient A" loading="lazy" />
+                  <span class="ba-tag">Before</span>
+                </div>
+
+                <div class="ba-pane">
+                  <img class="ba-photo" src="resources/after2.png" alt="After photo — Patient A" loading="lazy" />
+                  <span class="ba-tag">After</span>
+                </div>
+              </div>
+
+              <figcaption class="ba-cap">
+                Tightening + texture improvement. Lighting/angles standardized for comparison.
+              </figcaption>
+            </figure>
+
+            <figure class="ba-card">
+              <div class="ba-head">
+                <div class="ba-person">
+                  <span class="ba-person-name">Patient B</span>
+                  <span class="ba-person-meta">Treated area • sessions vary</span>
+                </div>
+                <span class="ba-chip">Plasma Pen</span>
+              </div>
+
+              <div class="ba-compare" aria-label="Before and after comparison for Patient B">
+                <div class="ba-pane">
+                  <img class="ba-photo" src="resources/before1.png" alt="Before photo — Patient B" loading="lazy" />
+                  <span class="ba-tag">Before</span>
+                </div>
+
+                <div class="ba-pane">
+                  <img class="ba-photo" src="resources/after1.png" alt="After photo — Patient B" loading="lazy" />
+                  <span class="ba-tag">After</span>
+                </div>
+              </div>
+
+              <figcaption class="ba-cap">
+                Smoother, firmer appearance. Results vary by individual.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROVIDERS (ONLY AMOR for Plasma Pen) -->
+      <section class="founders providers" id="providers">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Provider</span>
+            <h2 class="section-title">Expert care, tailored to you.</h2>
+            <div class="green-divider"></div>
+            <p class="section-sub">
+              Plasma Pen is currently offered by one provider at Springbok Spa.
+            </p>
+          </div>
+
+          <div class="founders-grid reveal-stagger">
+
+            <!-- Provider 1 (image LEFT) -->
+            <article class="founder-card">
+              <div class="founder-media">
+                <img src="resources/amor2.jpg" alt="Dr. Amor Kloppers" loading="lazy" />
+              </div>
+
+              <div class="founder-body">
+                <p class="founder-kicker">Family Physician</p>
+                <h3 class="founder-name">Dr. Amor Kloppers</h3>
+
+                <p class="founder-desc">
+                  Dr. Amor Kloppers brings a patient-first, prevention-focused approach to aesthetic medicine.
+                  He emphasizes natural results, safety, and long-term care plans — never rushed, never
+                  one-size-fits-all.
+                </p>
+
+                <div class="founder-actions">
+                  <a class="btn founder-btn founder-btn--solid"
+                    href="https://springbokmedicalspa.janeapp.com/#/discipline/11/treatment/102" target="_blank"
+                    rel="noopener" aria-label="Book Plasma Pen appointment with Dr. Amor Kloppers">
+                    Book Now
+                  </a>
+
+                  <a class="btn founder-btn founder-btn--ghost" href="SpringbokAmorKloppers.html"
+                    aria-label="About Dr. Amor Kloppers">
+                    About
+                  </a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="svc-section svc-section--alt" id="faq">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">FAQ</span>
+            <h2 class="section-title">Questions, answered</h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">Quick answers. Ask us anything at your consult.</p>
+          </div>
+
+          <div class="svc-faq reveal">
+            <details class="svc-faq-item">
+              <summary class="svc-faq-summary">
+                <span class="svc-faq-q">How much does Plasma Pen cost?</span>
+                <span class="svc-faq-icon" aria-hidden="true">
+                  <span class="svc-faq-glyph">+</span>
+                </span>
+              </summary>
+              <div class="svc-faq-body">
+                Pricing starts at $500+ and depends on the area treated. We’ll confirm your plan during your visit.
+              </div>
+            </details>
+
+            <details class="svc-faq-item">
+              <summary class="svc-faq-summary">
+                <span class="svc-faq-q">Is there downtime?</span>
+                <span class="svc-faq-icon" aria-hidden="true">
+                  <span class="svc-faq-glyph">+</span>
+                </span>
+              </summary>
+              <div class="svc-faq-body">
+                Downtime varies by treatment area and intensity. We’ll review healing expectations and aftercare with
+                you.
+              </div>
+            </details>
+
+            <details class="svc-faq-item">
+              <summary class="svc-faq-summary">
+                <span class="svc-faq-q">When will I see results?</span>
+                <span class="svc-faq-icon" aria-hidden="true">
+                  <span class="svc-faq-glyph">+</span>
+                </span>
+              </summary>
+              <div class="svc-faq-body">
+                Some improvement can be seen as the area heals, with continued collagen remodeling over the following
+                weeks.
+              </div>
+            </details>
+
+            <details class="svc-faq-item">
+              <summary class="svc-faq-summary">
+                <span class="svc-faq-q">How do I book?</span>
+                <span class="svc-faq-icon" aria-hidden="true">
+                  <span class="svc-faq-glyph">+</span>
+                </span>
+              </summary>
+              <div class="svc-faq-body">
+                Book online via JaneApp, or email
+                <a href="mailto:springbokmedicalspa@gmail.com">springbokmedicalspa@gmail.com</a> for support.
+              </div>
+            </details>
+          </div>
+
+          <div class="svc-mini-cta reveal" style="margin-top:22px;">
+            <a class="btn btn-outline" href="SpringbokSpa.html">Back to Spa</a>
+            <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank" rel="noopener">
+              Book Now
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER (keep your existing footer markup) -->
+    <footer class="site-footer" aria-label="Site footer">
+      <div class="container footer-inner reveal">
+        <div class="footer-brand">
+          <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
+            <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
+          </a>
+
+          <div class="footer-brand-bottom">
+            <div class="footer-brand-type">
+              <div class="footer-brand-name">SPRINGBOK</div>
+              <div class="footer-brand-sub">MEDICAL CLINIC</div>
+            </div>
+            <div class="footer-social" aria-label="Social links">
+              <a class="social-btn" href="#" aria-label="Instagram">
+                <img class="social-icon" src="resources/instagram-logo.svg" alt="Instagram">
+              </a>
+              <a class="social-btn" href="#" aria-label="Facebook">
+                <img class="social-icon" src="resources/facebook-logo.svg" alt="Facebook">
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h3>Pages</h3>
+            <a href="index.html">Home</a>
+            <a href="SpringbokAbout.html">About Us</a>
+            <a href="SpringbokContact.html">Contact</a>
+          </div>
+
+          <div class="footer-col">
+            <h3>Our Services</h3>
+            <a href="SpringbokClinic.html">Clinic</a>
+            <a href="SpringbokSpa.html">Medical Spa</a>
+            <a href="#">Sleep Clinic</a>
+            <a href="#">Concussion Care</a>
+          </div>
+
+          <div class="footer-col">
+            <h3>Our Team</h3>
+            <a href="SpringbokTeam.html">Meet the Team</a>
+            <a href="#">Physicians</a>
+            <a href="#">Nursing / Support</a>
+          </div>
+        </div>
+
+        <div class="footer-contact">
+          <div class="footer-contact-block">
+            <p class="footer-contact-title">Springbok Medical Clinic</p>
+            <p>
+              147 16th St West, Suite #300<br />
+              North Vancouver, BC<br />
+              V7M 1T3
+            </p>
+            <a class="footer-link" href="#" target="_blank" rel="noopener">View Directions</a>
+          </div>
+
+          <div class="footer-contact-block">
+            <p>
+              <a class="footer-link" href="tel:+17780000000">+1 (778) 000-0000</a>
+            </p>
+            <p>
+              <a class="footer-link" href="mailto:info@springbokclinic.ca">info@springbokclinic.ca</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <p>
+          © <span id="footerYear"></span> Springbok Medical Clinic — All Rights Reserved
+        </p>
+
+        <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">
+          ↑
+        </button>
+      </div>
+    </footer>
+
+    <!-- CONTACT DOCTOR MODAL (styled like contactModal) -->
+    <div class="modal" id="doctorModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close="true"></div>
+
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="doctorModalTitle">
+        <button class="modal-x" type="button" aria-label="Close" data-close="true">✕</button>
+
+        <div class="modal-head">
+          <div class="modal-eyebrow">Contact</div>
+          <h2 class="modal-title" id="doctorModalTitle">Request an appointment</h2>
+          <p class="modal-sub">
+            Fill this out and our team will route you to the right provider or next step.
+          </p>
+        </div>
+
+        <form class="modal-form" id="doctorContactForm">
+          <div class="modal-grid">
+            <label class="field">
+              <span class="field-label">Full Name</span>
+              <input class="field-input" type="text" name="name" placeholder="Your name" autocomplete="name" required />
+            </label>
+
+            <label class="field">
+              <span class="field-label">Phone Number</span>
+              <input class="field-input" type="tel" name="phone" placeholder="(778) 000-0000" autocomplete="tel" />
+            </label>
+
+            <label class="field field-span">
+              <span class="field-label">Email</span>
+              <input class="field-input" type="email" name="email" placeholder="you@email.com" autocomplete="email"
+                required />
+            </label>
+
+            <!-- Doctor / Service (custom dropdown) -->
+            <div class="field select-field field-dd" data-dd="doctor">
+              <span class="field-label">Doctor</span>
+
+              <button class="dd-btn field-input" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span class="dd-value" data-placeholder="Select one">Select one</span>
+              </button>
+
+              <!-- hidden input keeps your form submission + required validation -->
+              <input type="hidden" name="doctor" id="doctorSelect" required />
+
+              <ul class="dd-menu" role="listbox" aria-label="Doctor / Service">
+                <li class="dd-opt" role="option" data-value="Dr. Amor Kloppers">Dr. Amor Kloppers</li>
+                <li class="dd-opt" role="option" data-value="General Inquiry">General Inquiry</li>
+              </ul>
+            </div>
+
+            <!-- Appointment type (custom dropdown) -->
+            <div class="field select-field field-dd" data-dd="appt">
+              <span class="field-label">Appointment type</span>
+
+              <button class="dd-btn field-input" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span class="dd-value" data-placeholder="Select one">Select one</span>
+              </button>
+
+              <input type="hidden" name="apptType" id="apptTypeSelect" required />
+
+              <ul class="dd-menu" role="listbox" aria-label="Appointment type">
+                <li class="dd-opt" role="option" data-value="In-person appointment">In-person appointment</li>
+                <li class="dd-opt" role="option" data-value="Phone call appointment">Phone call appointment</li>
+                <li class="dd-opt" role="option" data-value="Video call appointment">Video call appointment</li>
+                <li class="dd-opt" role="option" data-value="Follow-up appointment">Follow-up appointment</li>
+              </ul>
+            </div>
+
+            <label class="field field-span">
+              <span class="field-label">Subject</span>
+              <input class="field-input" type="text" name="subject" id="subjectInput"
+                placeholder="e.g., Plasma Pen booking request" required />
+            </label>
+
+            <label class="field field-span">
+              <span class="field-label">Message</span>
+              <textarea class="field-input field-textarea" name="message"
+                placeholder="Tell us what you’re looking for and any timing preferences." rows="5" required></textarea>
+            </label>
+          </div>
+
+          <div class="modal-actions">
+            <button class="btn btn-outline" type="button" data-close="true">Cancel</button>
+            <button class="btn btn-accent" type="submit">Send</button>
+          </div>
+
+          <p class="modal-note">
+            If this is urgent, please call 911.
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/mobileMenu.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/contactModal.js"></script>
+    <script src="js/scrollReveal.js"></script>
+    <script src="js/smoothScroll.js"></script>
+    <script src="js/contactDoctorModal.js"></script>
+  </div>
+</body>
+
+</html>

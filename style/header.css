@@ -64,14 +64,30 @@
   transition: background .15s ease, color .15s ease, border-color .15s ease;
 }
 
-.nav-link:hover{
-  background: rgba(255,255,255,.10);
-  color: rgba(255,255,255,.96);
+.nav-link:hover {
+  background: rgba(255, 255, 255, .10);
+  color: rgba(255, 255, 255, .96);
+  border-color: rgba(18, 192, 138, .55);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(18, 192, 138, .28),
+    0 0 0 1px rgba(18, 192, 138, .60),
+    0 0 22px rgba(18, 192, 138, .35);
+
+  transform: translateY(-1px);
 }
 
-.nav-link.is-active{
-  border-color: rgba(255,255,255,.18);
-  background: rgba(255,255,255,.07);
+.nav-link.is-active {
+  background: rgba(255, 255, 255, .12);
+  color: rgba(255, 255, 255, .98);
+  border-color: rgba(18, 192, 138, .72);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(18, 192, 138, .34),
+    0 0 0 1px rgba(18, 192, 138, .78),
+    0 0 28px rgba(18, 192, 138, .42);
+
+  transform: translateY(-1px);
 }
 
 .nav-btn{

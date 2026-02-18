@@ -370,6 +370,46 @@ html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt:hover {
     box-shadow: 0 22px 70px rgba(0, 0, 0, .16);
 }
 
+/* =========================================================
+   Morpheus Options Accordion (reuse Packages accordion look)
+   - uses .pkg-acc styles already in your project
+   ========================================================= */
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-acc-stack {
+    margin-top: 22px;
+    display: grid;
+    gap: 14px;
+}
+
+/* nested accordions: slightly tighter + clearer separation */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-subacc {
+    margin-top: 12px;
+    border-radius: 22px;
+    box-shadow: none;
+    /* let parent keep the big shadow */
+    background: rgba(255, 255, 255, .55);
+}
+
+/* keep nested bodies from feeling cramped */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-acc-body {
+    padding-top: 0;
+}
+
+/* optional: smaller summary padding for nested rows */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-subacc>.pkg-acc-summary {
+    padding: 16px 18px;
+}
+
+/* optional: tighten nested body padding */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-subacc>.pkg-acc-body {
+    padding: 0 18px 18px;
+}
+
+/* make grid breathe inside accordion */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-subacc .svc-options-grid {
+    margin-top: 10px;
+}
+
 /* responsiveness */
 @media (max-width: 1200px) {
     html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-options-grid {
@@ -384,6 +424,179 @@ html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt:hover {
 
     html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt-provider {
         max-width: 52%;
+    }
+}
+
+/* =========================================================
+   OPTIONS — use the SAME accordion system as FAQ
+   (so it works on this page without packages CSS)
+   ========================================================= */
+
+html[data-brand="spa"] .svc-options-acc {
+    margin-top: 18px;
+    display: grid;
+    gap: 12px;
+}
+
+/* outer type accordions: a touch more padding in the body */
+html[data-brand="spa"] .svc-opt-acc>.svc-faq-body {
+    padding: 0 16px 16px;
+}
+
+/* nested accordions: subtle inset + lighter background */
+html[data-brand="spa"] .svc-opt-subacc {
+    margin-top: 12px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, .78);
+    box-shadow: none;
+}
+
+/* make nested accordions feel “inside” */
+html[data-brand="spa"] .svc-opt-acc .svc-opt-subacc {
+    border-color: rgba(18, 18, 18, .08);
+}
+
+/* tighten grid spacing inside accordion bodies */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt-acc .svc-options-grid,
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt-subacc .svc-options-grid {
+    margin-top: 12px;
+    /* override the default 22px */
+}
+
+/* on very small screens, give the accordion rows a bit more breathing room */
+@media (max-width: 520px) {
+    html[data-brand="spa"] .svc-opt-acc>.svc-faq-summary {
+        padding: 16px 14px;
+    }
+
+    html[data-brand="spa"] .svc-opt-subacc>.svc-faq-summary {
+        padding: 14px 14px;
+    }
+}
+
+/* =========================================================
+   MORPHEUS OPTIONS — 4 “packages-style” dropdown rows
+   (pill + title + subtitle + right circle +)
+   ========================================================= */
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-stack {
+    margin-top: 18px;
+    display: grid;
+    gap: 16px;
+}
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd {
+    border-radius: 26px;
+    border: 1px solid rgba(0, 0, 0, .07);
+    background: rgba(255, 255, 255, .62);
+    box-shadow: 0 22px 70px rgba(0, 0, 0, .10);
+    overflow: hidden;
+}
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-sum {
+    list-style: none;
+    cursor: pointer;
+    padding: 22px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-sum::-webkit-details-marker {
+    display: none;
+}
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-left {
+    min-width: 0;
+}
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(214, 163, 107, .28);
+    background: rgba(214, 163, 107, .10);
+    color: rgba(110, 74, 40, .86);
+    font-weight: 750;
+    font-size: .78rem;
+    margin-bottom: 10px;
+}
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-title {
+    margin: 0 0 6px;
+    font-size: 1.35rem;
+    line-height: 1.15;
+    color: rgba(20, 20, 20, .92);
+}
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-sub {
+    margin: 0;
+    color: rgba(20, 20, 20, .60);
+    line-height: 1.6;
+    max-width: 78ch;
+}
+
+/* right icon circle (stays circle) */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    flex: 0 0 46px;
+    display: inline-grid;
+    place-items: center;
+
+    border: 1px solid rgba(0, 0, 0, .10);
+    background: rgba(255, 255, 255, .72);
+    color: rgba(20, 20, 20, .60);
+
+    transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-glyph {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 1;
+    transform-origin: 50% 50%;
+    transition: transform .18s ease, color .18s ease;
+}
+
+/* open: ONLY affect the glyph/icon in THIS details' own summary */
+html[data-brand="spa"][data-page="spa-service-learn-more"] details.morph-dd[open]>.morph-dd-sum .morph-dd-glyph {
+    transform: rotate(45deg);
+    color: rgba(255, 90, 90, .96);
+}
+
+html[data-brand="spa"][data-page="spa-service-learn-more"] details.morph-dd[open]>.morph-dd-sum .morph-dd-icon {
+    border-color: rgba(255, 90, 90, .55);
+    background: rgba(255, 90, 90, .10);
+    box-shadow: 0 0 0 6px rgba(255, 90, 90, .08), 0 10px 26px rgba(255, 90, 90, .20);
+}
+
+/* body spacing like packages */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-body {
+    padding: 0 22px 22px;
+}
+
+/* tighten grid top margin inside dropdown */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-body .svc-options-grid {
+    margin-top: 12px;
+}
+
+/* responsive: summary stacks nicer on small screens */
+@media (max-width: 640px) {
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-sum {
+        padding: 18px 16px;
+    }
+
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-body {
+        padding: 0 16px 16px;
+    }
+
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-title {
+        font-size: 1.2rem;
     }
 }
 
@@ -503,37 +716,99 @@ html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt:hover {
 }
 
 /* =========================
-   BEFORE/AFTER
+   BEFORE/AFTER — 2 people, fixed ratio photos
+   Desktop: 2 cards across
+   Mobile: stack + photos stack
    ========================= */
 
 html[data-brand="spa"] .ba-grid {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 14px;
+    gap: 16px;
     margin-top: 18px;
 }
 
 html[data-brand="spa"] .ba-card {
     grid-column: span 6;
     margin: 0;
-    border-radius: 24px;
+    border-radius: 26px;
     overflow: hidden;
     border: 1px solid var(--svc-line);
-    background: rgba(255, 255, 255, .90);
+    background: rgba(255, 255, 255, .92);
     box-shadow: var(--svc-shadow-soft);
+}
+
+html[data-brand="spa"] .ba-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 16px 12px;
+}
+
+html[data-brand="spa"] .ba-person {
+    min-width: 0;
+    display: grid;
+    gap: 2px;
+}
+
+html[data-brand="spa"] .ba-person-name {
+    font-weight: 850;
+    color: rgba(18, 18, 18, .92);
+    line-height: 1.1;
+}
+
+html[data-brand="spa"] .ba-person-meta {
+    font-size: .88rem;
+    color: rgba(18, 18, 18, .58);
+    line-height: 1.35;
+}
+
+html[data-brand="spa"] .ba-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 10px;
+    border-radius: 999px;
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: rgba(110, 74, 40, .92);
+    background: rgba(214, 163, 107, .14);
+    border: 1px solid rgba(214, 163, 107, .22);
 }
 
 html[data-brand="spa"] .ba-compare {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 220px;
+    border-top: 1px solid rgba(18, 18, 18, .08);
+    border-bottom: 1px solid rgba(18, 18, 18, .08);
 }
 
-html[data-brand="spa"] .ba-img {
+html[data-brand="spa"] .ba-pane {
     position: relative;
-    background-size: cover;
-    background-position: center;
-    min-height: 220px;
+    overflow: hidden;
+    /* fixed size photos across all cards */
+    aspect-ratio: 4 / 3;
+    background: rgba(0, 0, 0, .04);
+}
+
+html[data-brand="spa"] .ba-pane+.ba-pane {
+    border-left: 1px solid rgba(18, 18, 18, .08);
+}
+
+html[data-brand="spa"] .ba-photo {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transform: scale(1.001);
+    transition: transform .25s ease;
+}
+
+html[data-brand="spa"] .ba-card:hover .ba-photo {
+    transform: scale(1.035);
 }
 
 html[data-brand="spa"] .ba-tag {
@@ -544,21 +819,58 @@ html[data-brand="spa"] .ba-tag {
     padding: 8px 10px;
     border-radius: 999px;
     font-size: .78rem;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: .08em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, .92);
-    background: rgba(0, 0, 0, .40);
+    background: rgba(0, 0, 0, .42);
     border: 1px solid rgba(255, 255, 255, .16);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 html[data-brand="spa"] .ba-cap {
-    padding: 14px 16px;
+    padding: 14px 16px 16px;
     color: var(--svc-muted);
-    line-height: 1.55;
+    line-height: 1.6;
 }
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+    html[data-brand="spa"] .ba-card {
+        grid-column: span 12;
+    }
+}
+
+@media (max-width: 640px) {
+
+    /* stack Before then After (tall + readable) */
+    html[data-brand="spa"] .ba-compare {
+        grid-template-columns: 1fr;
+    }
+
+    html[data-brand="spa"] .ba-pane+.ba-pane {
+        border-left: 0;
+        border-top: 1px solid rgba(18, 18, 18, .08);
+    }
+
+    html[data-brand="spa"] .ba-head {
+        padding: 14px 14px 10px;
+    }
+
+    html[data-brand="spa"] .ba-cap {
+        padding: 12px 14px 14px;
+    }
+}
+
+/* Very small phones: keep ratio but avoid “too tall” feeling */
+@media (max-width: 380px) {
+    html[data-brand="spa"] .ba-pane {
+        aspect-ratio: 1 / 1;
+    }
+}
+
+
 
 /* =========================
    FAQ (match Packages accordion behavior)

@@ -355,6 +355,35 @@
 }
 
 /* =========================
+   Service status note — subtle red
+   ========================= */
+
+.staff-svc-note {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 14px;
+}
+
+.staff-svc-note-label {
+  padding: 6px 12px;
+  border-radius: 999px;
+
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+
+  color: rgba(255, 120, 120, .92);
+
+  border: 1px solid rgba(255, 120, 120, .35);
+  background: rgba(255, 120, 120, .08);
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  transition: background .2s ease, border-color .2s ease;
+}
+
+/* =========================
    Testimonials
    ========================= */
 .staff-testimonials {

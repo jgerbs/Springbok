@@ -5,14 +5,22 @@
    - BL/BR positioning no longer overrides TL/TR
    - mobile BL/BR rule no longer forces TL/TR to bottom
    - bullets truly right-align on TR (dot on right)
+   CURRENT:
+   - Mobile uses blurred-image + dark overlay layout
+   - Controls are ONE edge-to-edge bar (no double bubble)
+   ========================================================= */
+
+/* =========================================================
+   SECTION + SHELL
    ========================================================= */
 
 .mission-v2 {
     position: relative;
-    padding: clamp(78px, 7vw, 120px) 0;
+    padding: clamp(78px, 7vw, 78px) 0;
     overflow: hidden;
 }
 
+/* NOTE: glow is disabled at bottom of file in "KILL ALL GLOWS" block */
 .mission-v2::before {
     content: "";
     position: absolute;
@@ -34,13 +42,8 @@
     background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .02));
     box-shadow: var(--shadow-soft);
     isolation: isolate;
-}
 
-/* =========================================================
-   Mission slider — prevent ultra-wide "rectangle" distortion
-   ========================================================= */
-
-.mission-v2-shell {
+    /* prevent ultra-wide "rectangle" distortion */
     max-width: 1600px;
     margin: 0 auto;
 }
@@ -62,6 +65,10 @@
         }
     }
 }
+
+/* =========================================================
+   SLIDER + SLIDES (desktop base)
+   ========================================================= */
 
 .mission-slider {
     position: relative;
@@ -116,9 +123,8 @@
 }
 
 /* =========================================================
-   Corner overlay text (NO panel) + stagger reveal
-   NOTE: this is "base styling" only — positioning is handled
-         by BL/BR/TL/TR blocks below (no global bottom/top)
+   CORNER OVERLAY TEXT (desktop base) + stagger reveal
+   Positioning is handled by BL/BR/TL/TR blocks below.
    ========================================================= */
 
 .mission-content {
@@ -147,7 +153,6 @@
     pointer-events: auto;
 }
 
-/* Title pops first */
 .mission-title {
     margin: 0 0 10px;
     font-size: clamp(1.8rem, 3.2vw, 2.6rem);
@@ -160,7 +165,6 @@
     transform: translateY(10px);
 }
 
-/* Desc + button come in after a short delay */
 .mission-desc,
 .mission-content .btn {
     opacity: 0;
@@ -223,11 +227,9 @@
 }
 
 /* =========================================================
-   Mission text positions — BL / BR (used on other page)
-   IMPORTANT: no global ".mission-content { bottom... }"
+   TEXT POSITIONS — BL / BR
    ========================================================= */
 
-/* BL = bottom-left */
 .mission-item[data-pos="bl"] .mission-content {
     bottom: clamp(70px, 6vw, 96px);
     top: auto;
@@ -236,7 +238,6 @@
     text-align: left;
 }
 
-/* BR = bottom-right */
 .mission-item[data-pos="br"] .mission-content {
     bottom: clamp(70px, 6vw, 96px);
     top: auto;
@@ -245,7 +246,7 @@
     text-align: right;
 }
 
-/* button alignment */
+/* button + paragraph alignment helpers */
 .mission-item[data-pos="br"] .mission-content .btn {
     margin-left: auto;
 }
@@ -254,7 +255,6 @@
     margin-right: auto;
 }
 
-/* text block alignment */
 .mission-item[data-pos="br"] .mission-desc {
     margin-left: auto;
 }
@@ -264,10 +264,9 @@
 }
 
 /* =========================================================
-   Mission text positions — TL / TR (About page)
+   TEXT POSITIONS — TL / TR (About page)
    ========================================================= */
 
-/* TL = top-left */
 .mission-item[data-pos="tl"] .mission-content {
     top: clamp(18px, 3.2vw, 34px);
     bottom: auto;
@@ -276,7 +275,6 @@
     text-align: left;
 }
 
-/* TR = top-right */
 .mission-item[data-pos="tr"] .mission-content {
     top: clamp(18px, 3.2vw, 34px);
     bottom: auto;
@@ -285,7 +283,6 @@
     text-align: right;
 }
 
-/* keep paragraph + list block aligned with the corner */
 .mission-item[data-pos="tr"] .mission-desc,
 .mission-item[data-pos="tr"] .mission-bullets {
     margin-left: auto;
@@ -297,7 +294,7 @@
 }
 
 /* =========================================================
-   Controls row (arrows + timer)
+   CONTROLS ROW (desktop base)
    ========================================================= */
 
 .mission-controls {
@@ -305,7 +302,7 @@
     bottom: 18px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 7;
+    z-index: 20;
 
     display: flex;
     align-items: center;
@@ -329,6 +326,8 @@
     cursor: pointer;
     backdrop-filter: blur(10px);
     transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    position: relative;
+    z-index: 21;
 }
 
 .mission-nav-btn:hover {
@@ -352,6 +351,9 @@
     border: 1px solid rgba(255, 255, 255, .14);
     overflow: hidden;
     backdrop-filter: blur(10px);
+
+    position: relative;
+    z-index: 21;
 }
 
 .mission-timer-bar {
@@ -363,101 +365,7 @@
 }
 
 /* =========================================================
-   Mobile sizing
-   ========================================================= */
-
-@media (max-width: 720px) {
-    .mission-v2-shell {
-        height: clamp(360px, 72vw, 460px);
-        border-radius: var(--radius-lg);
-    }
-
-    .mission-title {
-        font-size: clamp(1.35rem, 6vw, 1.85rem);
-        margin-bottom: 8px;
-    }
-
-    .mission-desc {
-        font-size: .95rem;
-        line-height: 1.55;
-        margin-bottom: 12px;
-    }
-
-    .mission-content .btn {
-        width: auto;
-        justify-content: center;
-    }
-
-    .mission-controls {
-        gap: 10px;
-        width: calc(100% - 28px);
-    }
-
-    .mission-nav-btn {
-        width: 42px;
-        height: 42px;
-        font-size: 26px;
-    }
-
-    .mission-timer {
-        height: 5px;
-        min-width: 84px;
-    }
-}
-
-/* =========================================================
-   Mobile positioning
-   - BL/BR: bottom-left (like your original)
-   - TL/TR: top-left (so About stays top and readable)
-   ========================================================= */
-
-@media (max-width: 720px) {
-
-    /* BL/BR pages: keep bottom-left */
-    .mission-item[data-pos="bl"] .mission-content,
-    .mission-item[data-pos="br"] .mission-content {
-        left: 14px !important;
-        right: auto !important;
-        bottom: 78px !important;
-        top: auto !important;
-        text-align: left !important;
-    }
-
-    .mission-item[data-pos="bl"] .mission-content .btn,
-    .mission-item[data-pos="br"] .mission-content .btn {
-        margin-left: 0 !important;
-    }
-
-    /* TL/TR pages: force top-left on mobile */
-    .mission-item[data-pos="tl"] .mission-content,
-    .mission-item[data-pos="tr"] .mission-content {
-        top: 14px !important;
-        bottom: auto !important;
-        left: 14px !important;
-        right: auto !important;
-        text-align: left !important;
-    }
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-
-    .mission-item,
-    .mission-item::after {
-        transition: none;
-    }
-
-    .mission-title,
-    .mission-desc,
-    .mission-content .btn {
-        animation: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-    }
-}
-
-/* =========================================================
-   Mission storytelling bullets
+   STORYTELLING BULLETS
    ========================================================= */
 
 .mission-bullets {
@@ -492,76 +400,41 @@
     box-shadow: 0 0 0 3px rgba(18, 192, 138, .14);
 }
 
-/* animate bullets in sequence */
 .mission-item.is-active .mission-bullets {
     animation: missionBodyIn .65s ease .75s forwards;
 }
 
-/* =========================================================
-   Bullets — RIGHT aligned slides (TR + BR)
-   Put the dot on the RIGHT, keep everything truly right-aligned
-   ========================================================= */
-
+/* RIGHT-aligned slides (TR + BR): dot on RIGHT */
 .mission-item[data-pos="tr"] .mission-bullets,
 .mission-item[data-pos="br"] .mission-bullets {
     margin-left: auto;
-    /* push whole list block to the right */
     text-align: right;
     justify-items: end;
-    /* grid children align to the right */
 }
 
 .mission-item[data-pos="tr"] .mission-bullets li,
 .mission-item[data-pos="br"] .mission-bullets li {
     justify-content: flex-end;
     flex-direction: row-reverse;
-    /* dot goes to the right */
     text-align: right;
 }
 
-/* spacing between text and the dot (now on the right) */
 .mission-item[data-pos="tr"] .mission-bullets li::before,
 .mission-item[data-pos="br"] .mission-bullets li::before {
     margin-left: 10px;
-    /* space between text and dot */
     margin-right: 0;
 }
 
 /* =========================================================
-   MOBILE @720 (DROP-IN): blurred image behind text + controls
-   - Uses the ACTIVE LI's background-image (no HTML change)
-   - No top image zone
-   - Shell becomes grid: [content] [controls] (no overlap)
-   - No seam: controls sit on same overlay continuation
-   - Bullets: TL/BL left, TR/BR right (dot on right)
+   MOBILE @720 — blurred image behind text + controls
+   - Shell becomes grid: [content] [controls]
+   - Content is normal flow (no corner positioning)
+   - Controls are ONE edge-to-edge bar (no double bubble)
    ========================================================= */
+
 @media (max-width: 720px) {
-/* the black band */
-    .mission-v2-shell::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 92px;
-        /* tweak: 80–110px */
-        background: #000;
-        z-index: 6;
-        /* below controls (z7), above slide */
-        pointer-events: none;
-    }
 
-    /* keep controls above the band */
-    .mission-controls {
-        z-index: 7;
-    }
-
-    .mission-controls {
-        background: #000;
-        padding: 10px 12px;
-        border-radius: 999px;
-    }
-    /* 0) Card becomes 2 rows */
+    /* Card becomes 2 rows */
     .mission-v2-shell {
         display: grid !important;
         grid-template-rows: 1fr auto;
@@ -572,7 +445,6 @@
         position: relative;
         isolation: isolate;
         background: #000;
-        /* keeps bg layers contained */
     }
 
     .mission-slider {
@@ -585,7 +457,7 @@
         margin: 0 !important;
     }
 
-    /* 1) Only active slide participates in layout */
+    /* Only active slide participates in layout */
     .mission-item {
         position: relative !important;
         inset: auto !important;
@@ -597,17 +469,8 @@
     .mission-item.is-active {
         display: block !important;
         pointer-events: auto !important;
-    }
 
-    /* 2) Kill the "top image zone" idea completely */
-    .mission-item::before {
-        content: none !important;
-    }
-
-    /* 3) Create ONE continuous blurred background + dark overlay
-        using the ACTIVE slide itself (so we can read its bg-image) */
-    .mission-item.is-active {
-        /* keep the original image on the LI so ::before can clone it */
+        /* the LI keeps original background for cloning */
         background-position: var(--bg-pos-m, 50% 35%);
         background-size: cover;
     }
@@ -619,7 +482,6 @@
         inset: 0;
         z-index: 0;
 
-        /* IMPORTANT: copy the background-image reliably */
         background-image: inherit;
         background-size: inherit;
         background-position: inherit;
@@ -630,7 +492,7 @@
         opacity: .92;
     }
 
-    /* dark overlay layer (this is what makes it blend to dark bottom) */
+    /* dark overlay layer */
     .mission-item.is-active::after {
         content: "" !important;
         position: absolute;
@@ -646,7 +508,7 @@
                 rgba(0, 0, 0, 1) 100%);
     }
 
-    /* 4) Content becomes normal flow, sits above overlay */
+    /* Content becomes normal flow */
     .mission-content {
         position: relative !important;
         z-index: 2 !important;
@@ -666,6 +528,8 @@
         border: 0 !important;
         text-shadow: none !important;
         text-align: left !important;
+        pointer-events: auto !important;
+        opacity: 1 !important;
     }
 
     .mission-title {
@@ -682,33 +546,55 @@
         max-width: none !important;
     }
 
-    /* 5) Controls are their own row (never overlay text) */
+    /* Controls = edge-to-edge bar (no extra bubble) */
     .mission-controls {
-        grid-row: 2;
+        grid-row: 2 !important;
         position: relative !important;
-        z-index: 3 !important;
+        z-index: 20 !important;
 
         left: auto !important;
         bottom: auto !important;
         transform: none !important;
 
-        width: calc(100% - 28px) !important;
-        margin: 10px auto 14px !important;
+        width: 100% !important;
+        margin: 0 !important;
 
-        /* IMPORTANT: keep controls on same "darkened" vibe without seams */
-        padding: 12px 12px 14px !important;
-        border-radius: 16px;
-        background: rgba(0, 0, 0, .0) !important;
+        padding: 12px 14px !important;
+        border-radius: 0 !important;
+
+        background: linear-gradient(180deg, rgba(0, 0, 0, .55), rgba(0, 0, 0, .82)) !important;
+        border: 0 !important;
+        border-top: 1px solid rgba(255, 255, 255, .10) !important;
+
         backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, .10);
+        -webkit-backdrop-filter: blur(10px);
+
+        gap: 12px !important;
     }
 
     .mission-timer {
         max-width: none !important;
         flex: 1 1 auto !important;
+
+        height: 5px !important;
+        min-width: 84px !important;
+
+        background: rgba(255, 255, 255, .08) !important;
+        border-color: rgba(255, 255, 255, .12) !important;
     }
 
-    /* 6) BULLETS: HARD RESET so nothing "stays right" accidentally */
+    /* Kill all old corner positioning on mobile */
+    .mission-item[data-pos="bl"] .mission-content,
+    .mission-item[data-pos="br"] .mission-content,
+    .mission-item[data-pos="tl"] .mission-content,
+    .mission-item[data-pos="tr"] .mission-content {
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+    }
+
+    /* Bullets: hard reset (always left on mobile) */
     .mission-bullets {
         margin: 0 !important;
         padding: 0 !important;
@@ -721,7 +607,6 @@
 
     .mission-bullets li {
         flex-direction: row !important;
-        /* dot LEFT */
         justify-content: flex-start !important;
         text-align: left !important;
     }
@@ -731,7 +616,6 @@
         margin-right: 0 !important;
     }
 
-    /* hard-kill any right-align behavior from desktop rules */
     .mission-item[data-pos="tr"] .mission-bullets,
     .mission-item[data-pos="br"] .mission-bullets {
         margin-left: 0 !important;
@@ -751,77 +635,37 @@
         margin-left: 0 !important;
         margin-right: 0 !important;
     }
+}
 
-    /* 7) Kill ALL old corner positioning on mobile */
-    .mission-item[data-pos="bl"] .mission-content,
-    .mission-item[data-pos="br"] .mission-content,
-    .mission-item[data-pos="tl"] .mission-content,
-    .mission-item[data-pos="tr"] .mission-content {
-        left: auto !important;
-        right: auto !important;
-        top: auto !important;
-        bottom: auto !important;
+/* =========================================================
+   Reduced motion
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .mission-item,
+    .mission-item::after {
+        transition: none;
     }
 
-    /* 8) Slight sizing for very small devices so controls always fit */
-    .mission-nav-btn {
-        width: 42px !important;
-        height: 42px !important;
-        font-size: 26px !important;
-    }
-
-    .mission-timer {
-        height: 5px !important;
-        min-width: 84px !important;
+    .mission-title,
+    .mission-desc,
+    .mission-content .btn {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
     }
 }
-
-/* Black background behind the controls (desktop + mobile) */
-.mission-v2-shell {
-    position: relative;
-}
-
-
-
-/* 1) Ensure slider/slides stay BELOW the controls + black band */
-.mission-slider,
-.mission-item,
-.mission-item::before,
-.mission-item::after {
-    z-index: 1 !important;
-}
-
-/* 2) Keep the black band above the image, but below controls */
-.mission-v2-shell::after {
-    z-index: 6 !important;
-}
-
-/* 3) Put controls on top */
-.mission-controls {
-    position: absolute;
-    /* keep it out of the slider stacking */
-    z-index: 20 !important;
-    /* top of this component */
-}
-
-/* 4) Make the buttons/timer definitely clickable */
-.mission-nav-btn,
-.mission-timer {
-    position: relative;
-    z-index: 21;
-}
-
 
 /* =========================================================
    FOUNDERS — FINAL (clean)
    - Desktop: image L/R, optional flip on 2nd card
-   - Mobile: still L/R (no stacking), but compact so content fits
-   - Photo: cover (no tiny contain), with subtle 25% letterbox bands
+   - Mobile: stacked at <=635
+   - Photo: cover with subtle letterbox bands
    ========================================================= */
 
 html[data-brand="clinic"] .founders {
     position: relative;
-    padding: clamp(78px, 7vw, 120px) 0;
     overflow: hidden;
 }
 
@@ -843,7 +687,6 @@ html[data-brand="clinic"] .founders-grid {
     gap: clamp(14px, 2.2vw, 20px);
 }
 
-/* Card */
 html[data-brand="clinic"] .founder-card {
     display: grid;
     grid-template-columns: clamp(140px, 18vw, 190px) 1fr;
@@ -873,7 +716,6 @@ html[data-brand="clinic"] .founder-card::before {
     z-index: 0;
 }
 
-/* Flip layout (2nd card) */
 html[data-brand="clinic"] .founder-card--flip {
     grid-template-columns: 1fr clamp(140px, 18vw, 190px);
 }
@@ -886,7 +728,6 @@ html[data-brand="clinic"] .founder-card--flip .founder-body {
     order: 1;
 }
 
-/* Media */
 html[data-brand="clinic"] .founder-media {
     position: relative;
     z-index: 1;
@@ -899,12 +740,9 @@ html[data-brand="clinic"] .founder-media img {
     height: 100%;
     display: block;
     object-fit: cover;
-    /* IMPORTANT: prevents “tiny image” */
     object-position: 50% 22%;
-    /* show face/upper body */
 }
 
-/* 25% total letterbox bands (12.5% top + 12.5% bottom) */
 html[data-brand="clinic"] .founder-media::before,
 html[data-brand="clinic"] .founder-media::after {
     content: "";
@@ -936,18 +774,15 @@ html[data-brand="clinic"] .founder-media::after {
     }
 }
 
-/* Body */
 html[data-brand="clinic"] .founder-body {
     position: relative;
     z-index: 1;
-
     padding: clamp(14px, 2vw, 18px) clamp(14px, 2.2vw, 22px) clamp(14px, 2vw, 18px) 0;
     display: grid;
     align-content: center;
     gap: 10px;
 }
 
-/* if flipped, swap the “0” padding side */
 html[data-brand="clinic"] .founder-card--flip .founder-body {
     padding: clamp(14px, 2vw, 18px) 0 clamp(14px, 2vw, 18px) clamp(14px, 2.2vw, 22px);
 }
@@ -980,7 +815,6 @@ html[data-brand="clinic"] .founder-desc {
     max-width: 70ch;
 }
 
-/* Actions (scoped buttons — won’t touch nav) */
 html[data-brand="clinic"] .founder-actions {
     margin-top: 6px;
     display: flex;
@@ -1020,24 +854,15 @@ html[data-brand="clinic"] .founder-btn--solid:hover {
     box-shadow: 0 18px 36px rgba(0, 0, 0, .30);
 }
 
-/* Optional 2-up on wide screens */
 @media (min-width: 1200px) {
     html[data-brand="clinic"] .founders-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-/* =========================================================
-   FOUNDERS — Mobile (<=720): STACKED layout
-   img
-   text
-   img
-   text
-   + buttons stacked like screenshot
-   ========================================================= */
+/* Mobile founders: stacked <=635 */
 @media (max-width: 635px) {
 
-    /* STACK the card: image on top, text below */
     html[data-brand="clinic"] .founder-card,
     html[data-brand="clinic"] .founder-card--flip {
         grid-template-columns: 1fr !important;
@@ -1047,19 +872,15 @@ html[data-brand="clinic"] .founder-btn--solid:hover {
         align-items: stretch !important;
     }
 
-    /* remove flip ordering on mobile */
     html[data-brand="clinic"] .founder-card--flip .founder-media,
     html[data-brand="clinic"] .founder-card--flip .founder-body {
         order: initial !important;
     }
 
-    /* IMAGE block: keep it big enough to feel premium */
     html[data-brand="clinic"] .founder-media {
         width: 100%;
         min-height: 220px;
-        /* tweak 200–260 */
         max-height: 320px;
-        /* prevents huge portraits */
         overflow: hidden;
         background: rgba(0, 0, 0, .22);
     }
@@ -1072,7 +893,6 @@ html[data-brand="clinic"] .founder-btn--solid:hover {
         object-position: 50% 22%;
     }
 
-    /* stronger top/bottom blur bands for mobile */
     html[data-brand="clinic"] .founder-media::before,
     html[data-brand="clinic"] .founder-media::after {
         height: 8%;
@@ -1080,7 +900,6 @@ html[data-brand="clinic"] .founder-btn--solid:hover {
         -webkit-backdrop-filter: blur(16px) saturate(1.06);
     }
 
-    /* BODY: no side “0 padding” anymore */
     html[data-brand="clinic"] .founder-body {
         padding: 12px 14px 14px !important;
         gap: 8px;
@@ -1088,7 +907,6 @@ html[data-brand="clinic"] .founder-btn--solid:hover {
         border-right: 0 !important;
     }
 
-    /* tighter type for phones (no truncation) */
     html[data-brand="clinic"] .founder-kicker {
         font-size: .72rem;
         letter-spacing: .09em;
@@ -1107,7 +925,6 @@ html[data-brand="clinic"] .founder-btn--solid:hover {
         margin: 0;
     }
 
-    /* BUTTONS: stacked vertically like your screenshot */
     html[data-brand="clinic"] .founder-actions {
         margin-top: 10px;
         display: flex;
@@ -1125,11 +942,7 @@ html[data-brand="clinic"] .founder-btn--solid:hover {
     }
 }
 
-/* =========================================================
-   FOUNDERS — Extra small (<=380): even tighter
-   ========================================================= */
 @media (max-width: 380px) {
-
     html[data-brand="clinic"] .founder-media {
         min-height: 200px;
         max-height: 280px;
@@ -1165,11 +978,7 @@ html[data-brand="clinic"] .founder-btn--solid:hover {
 }
 
 /* =========================================================
-   WHY CHOOSE US — Responsive bubble grid (simple + scalable)
-   Small: 1 column
-   Medium: 2 columns (col 2 offset)
-   Large: 3 columns (col 2 offset; col 1 + 3 aligned)
-   + Large: pull row-2 edge bubbles up into gaps (4th + 6th)
+   WHY CHOOSE US — Responsive bubble grid
    ========================================================= */
 
 html[data-brand="clinic"] .why-bubbles {
@@ -1178,7 +987,6 @@ html[data-brand="clinic"] .why-bubbles {
     overflow: hidden;
 }
 
-/* subtle premium glow */
 html[data-brand="clinic"] .why-bubbles::before {
     content: "";
     position: absolute;
@@ -1196,25 +1004,20 @@ html[data-brand="clinic"] .why-thread {
 
     display: grid;
     grid-template-columns: 1fr;
-    /* SMALL default */
     gap: 14px;
     align-items: start;
 }
 
-/* wrappers */
 html[data-brand="clinic"] .why-row {
     display: block;
     margin-top: 0;
-    /* baseline */
 }
 
-/* Bubble base */
 html[data-brand="clinic"] .why-bubble {
     width: 100%;
     border: 1px solid rgba(255, 255, 255, .12);
     background: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .03));
     border-radius: 18px;
-    /* small = clean card */
     padding: 16px 16px 14px;
 
     backdrop-filter: blur(10px);
@@ -1235,7 +1038,6 @@ html[data-brand="clinic"] .why-bubble::before {
     pointer-events: none;
 }
 
-/* Text */
 html[data-brand="clinic"] .why-badge {
     display: inline-flex;
     align-items: center;
@@ -1271,7 +1073,6 @@ html[data-brand="clinic"] .why-text {
     line-height: 1.65;
 }
 
-/* CTA row */
 html[data-brand="clinic"] .why-actions {
     margin-top: 22px;
     display: flex;
@@ -1279,62 +1080,48 @@ html[data-brand="clinic"] .why-actions {
     flex-wrap: wrap;
 }
 
-/* =========================================================
-   MEDIUM: 2 columns + 2nd column offset (as requested)
-   ========================================================= */
+/* MEDIUM: 2 columns + right column offset */
 @media (min-width: 820px) {
     html[data-brand="clinic"] .why-thread {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: clamp(14px, 2.2vw, 22px);
     }
 
-    /* make bubbles feel more “bubble” on larger sizes */
     html[data-brand="clinic"] .why-bubble {
         border-radius: 28px;
         padding: 18px 18px 16px;
     }
 
-    /* offset ONLY the second column (right column) */
     html[data-brand="clinic"] .why-thread>.why-row:nth-child(even) {
         margin-top: clamp(18px, 2.4vw, 40px);
     }
 }
 
-/* =========================================================
-   LARGE: 3 columns
-   - col 1 + col 3 aligned
-   - col 2 offset down
-   - pull row-2 edges (4th + 6th) up into the gaps
-   ========================================================= */
+/* LARGE: 3 columns + middle column offset + pull edges of row 2 up */
 @media (min-width: 1180px) {
     html[data-brand="clinic"] .why-thread {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: clamp(16px, 2.2vw, 24px);
     }
 
-    /* Reset the 2-col “even item” offset so it doesn’t mess up in 3-col */
     html[data-brand="clinic"] .why-thread>.why-row {
         margin-top: 0;
     }
 
-    /* Offset ONLY items that land in column 2 (2nd item in each row of 3) */
     html[data-brand="clinic"] .why-thread>.why-row:nth-child(3n + 2) {
         margin-top: clamp(18px, 2.4vw, 40px);
     }
 
-    /* NEW: pull the 4th and 6th bubbles upward (row 2 edges) */
     html[data-brand="clinic"] .why-thread>.why-row:nth-child(4),
     html[data-brand="clinic"] .why-thread>.why-row:nth-child(6) {
         margin-top: calc(clamp(18px, 2.4vw, 40px) * -0.55);
     }
 
-    /* Slightly rounder on big screens */
     html[data-brand="clinic"] .why-bubble {
         border-radius: 34px;
     }
 }
 
-/* Extra-small phones */
 @media (max-width: 420px) {
     html[data-brand="clinic"] .why-bubble {
         border-radius: 16px;
@@ -1355,7 +1142,7 @@ html[data-brand="clinic"] .why-bubbles::before {
     display: none !important;
 }
 
-/* optional: remove the little top glow inside founder cards too */
+/* card inner glows */
 html[data-brand="clinic"] .founder-card::before,
 html[data-brand="clinic"] .why-bubble::before {
     content: none !important;
