@@ -130,3 +130,33 @@
   object-fit: cover;
   display: block;
 }
+
+/* =========================================================
+   HERO VIDEO: instant poster paint + smooth fade-in
+   - Background image paints immediately (.hero-media bg)
+   - Video starts transparent and fades in once it can play
+   ========================================================= */
+
+.hero-media {
+  /* already set in your file; keep it */
+  background: url("resources/filler.jpg") center/cover no-repeat;
+}
+
+/* start hidden so fallback image shows instantly */
+.hero-video {
+  opacity: 0;
+  transition: opacity 400ms ease;
+  will-change: opacity;
+}
+
+/* once JS adds .is-playing, fade video in */
+.hero-media.is-playing .hero-video {
+  opacity: 1;
+}
+
+/* if user prefers reduced motion, don't animate fades */
+@media (prefers-reduced-motion: reduce) {
+  .hero-video {
+    transition: none;
+  }
+}

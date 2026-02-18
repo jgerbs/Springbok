@@ -93,21 +93,19 @@
       </a>
 
       <div class="hero-media" aria-hidden="true">
-        <!--
-          ✅ Speed changes:
-          - preload="metadata" (don’t pull the whole file before showing something)
-          - use LOCAL relative URL (keeps it consistent across environments)
-          - poster stays as immediate paint
-          - JS swaps to a small mobile video first (if available), otherwise uses your current file
-        -->
         <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="metadata"
           poster="resources/filler.jpg">
-          <!-- fallback source (desktop / default) -->
+          <!-- Mobile first -->
+          <source src="resources/heroVideos/sample1-hero-540.mp4" type="video/mp4" media="(max-width: 700px)" />
+          <!-- Desktop -->
+          <source src="resources/heroVideos/sample1-hero-720.mp4" type="video/mp4" media="(min-width: 701px)" />
+          <!-- Fallback -->
           <source src="resources/heroVideos/sample1.mp4" type="video/mp4" />
         </video>
-
+      
         <div class="hero-overlay"></div>
       </div>
+
 
       <div class="container hero-content reveal">
         <h1>Springbok Medical</h1>
@@ -729,90 +727,7 @@
   <script src="js/smoothScroll.js" defer></script>
   <script src="js/contactDoctorModal.js" defer></script>
   <script src="js/missionSlider.js" defer></script>
-
-  <script>
-    (function () {
-      const v = document.querySelector(".hero-video");
-      if (!v) return;
-
-      // ✅ If you create smaller encodes, drop them in these paths (same folder).
-      // If they don't exist, it will gracefully fall back to sample1.mp4.
-      const MOBILE_SRC = "resources/heroVideos/sample1-hero-540.mp4";
-      const DESKTOP_SRC = "resources/heroVideos/sample1-hero-720.mp4";
-      const FALLBACK_SRC = "resources/heroVideos/sample1.mp4";
-
-      const isMobile = window.matchMedia("(max-width: 700px)").matches;
-      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-      // If user prefers reduced motion, don't autoplay a background video.
-      if (prefersReducedMotion) {
-        v.pause();
-        v.removeAttribute("autoplay");
-        return;
-      }
-
-      // Swap in a lighter file when available (huge mobile speed win).
-      const pickSrc = async () => {
-        const candidate = isMobile ? MOBILE_SRC : DESKTOP_SRC;
-
-        // Try candidate first; if missing, keep fallback in markup.
-        try {
-          const res = await fetch(candidate, { method: "HEAD" });
-          if (res.ok) {
-            // Replace sources
-            v.innerHTML = "";
-            const s = document.createElement("source");
-            s.src = candidate;
-            s.type = "video/mp4";
-            v.appendChild(s);
-            v.load();
-          } else {
-            // Optional: if you want to force desktop encode on desktop
-            if (!isMobile) {
-              try {
-                const r2 = await fetch(DESKTOP_SRC, { method: "HEAD" });
-                if (r2.ok) {
-                  v.innerHTML = "";
-                  const s2 = document.createElement("source");
-                  s2.src = DESKTOP_SRC;
-                  s2.type = "video/mp4";
-                  v.appendChild(s2);
-                  v.load();
-                }
-              } catch { }
-            }
-          }
-        } catch {
-          // ignore and use fallback
-        }
-      };
-
-      // enforce these at runtime (some browsers are picky)
-      v.muted = true;
-      v.playsInline = true;
-      v.setAttribute("muted", "");
-      v.setAttribute("playsinline", "");
-
-      const tryPlay = async () => {
-        try {
-          await v.play();
-        } catch (err) {
-          const resume = async () => {
-            try { await v.play(); } catch { }
-          };
-          window.addEventListener("touchstart", resume, { once: true, passive: true });
-          window.addEventListener("pointerdown", resume, { once: true });
-          window.addEventListener("click", resume, { once: true });
-        }
-      };
-
-      // Start: try to use a smaller video, then play.
-      pickSrc().finally(() => {
-        tryPlay();
-        v.addEventListener("loadeddata", tryPlay, { once: true });
-      });
-    })();
-  </script>
+  <script src="js/playVideo.js" defer></script>
 
 </body>
 
