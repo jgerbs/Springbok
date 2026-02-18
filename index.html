@@ -6,10 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Springbok Medical Clinic | Home</title>
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
+  <!-- CSS -->
   <link rel="stylesheet" href="style/base.css" />
   <link rel="stylesheet" href="style/footer.css" />
   <link rel="stylesheet" href="style/header.css" />
@@ -20,6 +22,9 @@
   <link rel="stylesheet" href="style/responsive.css" />
   <link rel="stylesheet" href="style/staffWheel.css" />
   <link rel="stylesheet" href="style/practiceModal.css" />
+
+  <!-- Perf: preconnect to GitHub Pages asset host (helps a bit on mobile) -->
+  <link rel="preconnect" href="https://jgerbs.github.io" crossorigin>
 
 </head>
 
@@ -82,17 +87,27 @@
     <section class="hero">
       <!-- LOGO: part of HERO visually, but fixed top-left -->
       <a class="hero-brand reveal" href="index.html" aria-label="Springbok Home">
-        <img src="resources/cliniclogo1.png" alt="Springbok Medical Clinic" class="hero-logo" />
+        <!-- eager because it's visible immediately -->
+        <img src="resources/cliniclogo1.png" alt="Springbok Medical Clinic" class="hero-logo" fetchpriority="high"
+          decoding="async" />
       </a>
 
       <div class="hero-media" aria-hidden="true">
-        <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto"
+        <!--
+          ✅ Speed changes:
+          - preload="metadata" (don’t pull the whole file before showing something)
+          - use LOCAL relative URL (keeps it consistent across environments)
+          - poster stays as immediate paint
+          - JS swaps to a small mobile video first (if available), otherwise uses your current file
+        -->
+        <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="metadata"
           poster="resources/filler.jpg">
-          <source src="https://jgerbs.github.io/Springbok/resources/heroVideos/sample1.mp4" type="video/mp4" />
+          <!-- fallback source (desktop / default) -->
+          <source src="resources/heroVideos/sample1.mp4" type="video/mp4" />
         </video>
+
         <div class="hero-overlay"></div>
       </div>
-
 
       <div class="container hero-content reveal">
         <h1>Springbok Medical</h1>
@@ -199,7 +214,7 @@
           aria-label="Explore the Medical Clinic">
 
           <div class="logo-slab__logo reveal-item">
-            <img src="resources/logo1.png" alt="Springbok Medical Clinic">
+            <img src="resources/logo1.png" alt="Springbok Medical Clinic" loading="lazy" decoding="async">
           </div>
 
           <div class="logo-slab__content logo-slab__content--right">
@@ -234,7 +249,8 @@
           </div>
 
           <div class="logo-slab__logo reveal-item">
-            <img src="resources/spalogo.png" alt="Springbok Medical Spa" class="logo-slab__logo--spa">
+            <img src="resources/spalogo.png" alt="Springbok Medical Spa" class="logo-slab__logo--spa" loading="lazy"
+              decoding="async">
           </div>
         </a>
 
@@ -389,11 +405,9 @@
         </div>
     </section>
 
-
     <!-- TESTIMONIALS (slow rotating wheel) -->
     <section class="testimonials" id="testimonials">
       <div class="container reveal">
-        <!-- Match your other section headers -->
         <div class="section-head">
           <span class="section-eyebrow">Testimonials</span>
           <h2 class="section-title">Real experiences. Clear results.</h2>
@@ -403,19 +417,15 @@
           </p>
         </div>
 
-        <!-- Slow, constant wheel -->
         <div class="t-wheel" aria-label="Testimonials rotating wheel">
           <div class="t-wheel-track" id="tWheelTrack">
-            <!-- Card 1 (Google style) -->
             <article class="t-card">
               <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
-
               <p class="t-text">
                 From check-in to follow-up, everything felt calm and organized. The clinician explained each step
                 clearly and I
                 never felt rushed.
               </p>
-
               <div class="t-personRow">
                 <div class="t-initial" aria-hidden="true">M</div>
                 <div class="t-personMeta">
@@ -427,13 +437,11 @@
 
             <article class="t-card">
               <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
-
               <p class="t-text">
                 Booking was easy, the clinic is spotless, and the appointment started on time. I left with a clear plan
                 and helpful
                 resources.
               </p>
-
               <div class="t-personRow">
                 <div class="t-initial" aria-hidden="true">J</div>
                 <div class="t-personMeta">
@@ -445,13 +453,11 @@
 
             <article class="t-card">
               <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
-
               <p class="t-text">
                 I came in with neck and shoulder pain from desk work. After a few visits, my mobility improved a lot and
                 the home
                 exercises were simple to follow.
               </p>
-
               <div class="t-personRow">
                 <div class="t-initial" aria-hidden="true">S</div>
                 <div class="t-personMeta">
@@ -463,13 +469,11 @@
 
             <article class="t-card">
               <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
-
               <p class="t-text">
                 The practitioner was gentle, thorough, and answered every question without making me feel silly. Really
                 reassuring
                 experience overall.
               </p>
-
               <div class="t-personRow">
                 <div class="t-initial" aria-hidden="true">A</div>
                 <div class="t-personMeta">
@@ -481,13 +485,11 @@
 
             <article class="t-card">
               <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
-
               <p class="t-text">
                 I appreciated how clearly they explained my options and what to expect. The follow-up message afterwards
                 made it
                 easy to stay on track.
               </p>
-
               <div class="t-personRow">
                 <div class="t-initial" aria-hidden="true">E</div>
                 <div class="t-personMeta">
@@ -499,13 +501,11 @@
 
             <article class="t-card">
               <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
-
               <p class="t-text">
                 Warm front desk, modern space, and a very professional team. I left feeling listened to and confident
                 about the next
                 steps.
               </p>
-
               <div class="t-personRow">
                 <div class="t-initial" aria-hidden="true">L</div>
                 <div class="t-personMeta">
@@ -517,13 +517,11 @@
 
             <article class="t-card">
               <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
-
               <p class="t-text">
                 I had ongoing headaches and tension and finally feel like I have a plan that works. The care felt
                 tailored, not
                 generic.
               </p>
-
               <div class="t-personRow">
                 <div class="t-initial" aria-hidden="true">N</div>
                 <div class="t-personMeta">
@@ -535,13 +533,11 @@
 
             <article class="t-card">
               <div class="t-starsTop" aria-label="5 out of 5 stars">★★★★★</div>
-
               <p class="t-text">
                 Great communication and zero pressure. They took time to explain results, timelines, and what I could do
                 at home
                 between visits.
               </p>
-
               <div class="t-personRow">
                 <div class="t-initial" aria-hidden="true">K</div>
                 <div class="t-personMeta">
@@ -550,23 +546,19 @@
                 </div>
               </div>
             </article>
-            <!-- OPTIONAL: add more .t-card items anytime -->
           </div>
         </div>
       </div>
     </section>
-
-
   </main>
 
   <footer class="site-footer" aria-label="Site footer">
     <div class="container footer-inner reveal">
-      <!-- Left: Brand -->
       <div class="footer-brand">
         <div class="footer-brand-top">
           <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
-            <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
-
+            <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" loading="lazy"
+              decoding="async" />
           </a>
         </div>
 
@@ -577,19 +569,17 @@
           </div>
           <div class="footer-social" aria-label="Social links">
             <a class="social-btn" href="#" aria-label="Instagram">
-              <img class="social-icon" src="resources/instagram-logo.svg" alt="Instagram">
+              <img class="social-icon" src="resources/instagram-logo.svg" alt="Instagram" loading="lazy"
+                decoding="async">
             </a>
             <a class="social-btn" href="#" aria-label="Facebook">
-              <img class="social-icon" src="resources/facebook-logo.svg" alt="Facebook">
+              <img class="social-icon" src="resources/facebook-logo.svg" alt="Facebook" loading="lazy" decoding="async">
             </a>
           </div>
-
         </div>
       </div>
 
-      <!-- Middle: Columns -->
       <div class="footer-cols">
-        <!-- Pages -->
         <div class="footer-col">
           <h3>Pages</h3>
           <a href="index.html">Home</a>
@@ -598,7 +588,6 @@
           <a href="SpringbokContact.html">Contact</a>
         </div>
 
-        <!-- Clinic Services (4 main) -->
         <div class="footer-col">
           <h3>Clinic Services</h3>
           <a href="SpringbokClinic.html#family">Family Practice</a>
@@ -607,7 +596,6 @@
           <a href="SpringbokClinic.html#plastics">Plastic Surgery</a>
         </div>
 
-        <!-- Spa Services (concise set) -->
         <div class="footer-col">
           <h3>Spa Services</h3>
           <a href="SpringbokSpa.html">Medical Spa</a>
@@ -616,11 +604,8 @@
           <a href="SpringbokSpa.html#skin">Skin Treatments</a>
           <a href="SpringbokSpa.html#body">Body Treatments</a>
         </div>
-
       </div>
 
-
-      <!-- Right: Contact (unchanged) -->
       <div class="footer-contact">
         <div class="footer-contact-block">
           <p class="footer-contact-title">Springbok Medical Clinic</p>
@@ -679,7 +664,6 @@
               required />
           </label>
 
-          <!-- Doctor / Service (custom dropdown) -->
           <div class="field select-field field-dd" data-dd="doctor">
             <span class="field-label">Doctor</span>
 
@@ -687,7 +671,6 @@
               <span class="dd-value" data-placeholder="Select one">Select one</span>
             </button>
 
-            <!-- hidden input keeps your form submission + required validation -->
             <input type="hidden" name="doctor" id="doctorSelect" required />
 
             <ul class="dd-menu" role="listbox" aria-label="Doctor / Service">
@@ -699,7 +682,6 @@
             </ul>
           </div>
 
-          <!-- Appointment type (custom dropdown) -->
           <div class="field select-field field-dd" data-dd="appt">
             <span class="field-label">Appointment type</span>
 
@@ -709,10 +691,8 @@
 
             <input type="hidden" name="apptType" id="apptTypeSelect" required />
 
-            <!-- JS will populate -->
             <ul class="dd-menu" role="listbox" aria-label="Appointment type"></ul>
           </div>
-
 
           <label class="field field-span">
             <span class="field-label">Subject</span>
@@ -739,15 +719,101 @@
     </div>
   </div>
 
-  <script src="js/prefillFields.js"></script>
-  <script src="js/staffWheel.js"></script>
-  <script src="js/testimonialsWheel.js"></script>
-  <script src="js/mobileMenu.js"></script>
-  <script src="js/footer.js"></script>
-  <script src="js/scrollReveal.js"></script>
-  <script src="js/smoothScroll.js"></script>
-  <script src="js/contactDoctorModal.js"></script>
-  <script src="js/missionSlider.js"></script>
+  <!-- JS -->
+  <script src="js/prefillFields.js" defer></script>
+  <script src="js/staffWheel.js" defer></script>
+  <script src="js/testimonialsWheel.js" defer></script>
+  <script src="js/mobileMenu.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/scrollReveal.js" defer></script>
+  <script src="js/smoothScroll.js" defer></script>
+  <script src="js/contactDoctorModal.js" defer></script>
+  <script src="js/missionSlider.js" defer></script>
+
+  <script>
+    (function () {
+      const v = document.querySelector(".hero-video");
+      if (!v) return;
+
+      // ✅ If you create smaller encodes, drop them in these paths (same folder).
+      // If they don't exist, it will gracefully fall back to sample1.mp4.
+      const MOBILE_SRC = "resources/heroVideos/sample1-hero-540.mp4";
+      const DESKTOP_SRC = "resources/heroVideos/sample1-hero-720.mp4";
+      const FALLBACK_SRC = "resources/heroVideos/sample1.mp4";
+
+      const isMobile = window.matchMedia("(max-width: 700px)").matches;
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      // If user prefers reduced motion, don't autoplay a background video.
+      if (prefersReducedMotion) {
+        v.pause();
+        v.removeAttribute("autoplay");
+        return;
+      }
+
+      // Swap in a lighter file when available (huge mobile speed win).
+      const pickSrc = async () => {
+        const candidate = isMobile ? MOBILE_SRC : DESKTOP_SRC;
+
+        // Try candidate first; if missing, keep fallback in markup.
+        try {
+          const res = await fetch(candidate, { method: "HEAD" });
+          if (res.ok) {
+            // Replace sources
+            v.innerHTML = "";
+            const s = document.createElement("source");
+            s.src = candidate;
+            s.type = "video/mp4";
+            v.appendChild(s);
+            v.load();
+          } else {
+            // Optional: if you want to force desktop encode on desktop
+            if (!isMobile) {
+              try {
+                const r2 = await fetch(DESKTOP_SRC, { method: "HEAD" });
+                if (r2.ok) {
+                  v.innerHTML = "";
+                  const s2 = document.createElement("source");
+                  s2.src = DESKTOP_SRC;
+                  s2.type = "video/mp4";
+                  v.appendChild(s2);
+                  v.load();
+                }
+              } catch { }
+            }
+          }
+        } catch {
+          // ignore and use fallback
+        }
+      };
+
+      // enforce these at runtime (some browsers are picky)
+      v.muted = true;
+      v.playsInline = true;
+      v.setAttribute("muted", "");
+      v.setAttribute("playsinline", "");
+
+      const tryPlay = async () => {
+        try {
+          await v.play();
+        } catch (err) {
+          const resume = async () => {
+            try { await v.play(); } catch { }
+          };
+          window.addEventListener("touchstart", resume, { once: true, passive: true });
+          window.addEventListener("pointerdown", resume, { once: true });
+          window.addEventListener("click", resume, { once: true });
+        }
+      };
+
+      // Start: try to use a smaller video, then play.
+      pickSrc().finally(() => {
+        tryPlay();
+        v.addEventListener("loadeddata", tryPlay, { once: true });
+      });
+    })();
+  </script>
+
 </body>
 
 </html>
