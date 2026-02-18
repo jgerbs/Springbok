@@ -825,61 +825,8 @@
         <script src="js/scrollReveal.js"></script>
         <script src="js/smoothScroll.js"></script>
         <script src="js/contactDoctorModal.js"></script>
+        <script src="js/prefillFields.js"></script>
 
-        <!-- Prefill subject from package buttons -->
-        <script>
-            (function () {
-                document.addEventListener("click", (e) => {
-                    const trigger = e.target.closest("[data-open-doctor-modal]");
-                    if (!trigger) return;
-
-                    const subj = trigger.getAttribute("data-subject");
-                    if (subj) {
-                        const subjectInput = document.getElementById("subjectInput");
-                        if (subjectInput) subjectInput.value = subj;
-                    }
-                });
-            })();
-        </script>
-
-        <script>
-            (function () {
-                function openGroup(group) {
-                    const target = document.querySelector(`details.pkg-acc[data-pkg-group="${group}"]`);
-                    if (!target) return;
-
-                    // Open ONLY the selected one (optional but usually what you want)
-                    document.querySelectorAll("details.pkg-acc").forEach(d => {
-                        if (d !== target) d.removeAttribute("open");
-                    });
-
-                    target.setAttribute("open", "open");
-
-                    // Scroll to it (header offset)
-                    const y = target.getBoundingClientRect().top + window.pageYOffset - 110;
-                    window.scrollTo({ top: y, behavior: "smooth" });
-                }
-
-                window.addEventListener("DOMContentLoaded", () => {
-                    // First choice: localStorage value from preview Book Now
-                    const group = localStorage.getItem("spaPkgOpen");
-                    if (group) {
-                        localStorage.removeItem("spaPkgOpen");
-                        requestAnimationFrame(() => openGroup(group));
-                        return;
-                    }
-
-                    // Fallback: if user lands via hash (like #pkg-ipl), open that details
-                    const hash = window.location.hash;
-                    if (hash) {
-                        const el = document.querySelector(hash);
-                        if (el && el.matches("details.pkg-acc")) {
-                            el.setAttribute("open", "open");
-                        }
-                    }
-                });
-            })();
-        </script>
 
 
 </body>
