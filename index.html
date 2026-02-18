@@ -94,7 +94,7 @@
       </div>
 
       <div class="container hero-content reveal">
-        <h1>Empowering you to look, feel, and live your absolute best.</h1>
+        <h1>Springbok Medical</h1>
         <p>
           Premium, modern care with clear next steps. Explore our clinics, or
           book directly in seconds.
@@ -256,7 +256,7 @@
           <button class="staff-nav staff-prev staff-nav--overlay" type="button" aria-label="Previous staff">‹</button>
 
           <div class="staff-wheel" id="staffWheel" aria-label="Staff carousel (looping)">
-          
+
             <!-- Dr. Amor Kloppers -->
             <a class="service-tile" href="SpringbokAmorKloppers.html" aria-label="Dr. Amor Kloppers — Family Practice">
               <div class="tile-bg" style="background-image: url('resources/amor2.jpg')"></div>
@@ -275,9 +275,10 @@
                 </div>
               </div>
             </a>
-          
+
             <!-- Dr. Francois Erasmus -->
-            <a class="service-tile" href="SpringbokFrancoisErasmus.html" aria-label="Dr. Francois Erasmus — Family Practice">
+            <a class="service-tile" href="SpringbokFrancoisErasmus.html"
+              aria-label="Dr. Francois Erasmus — Family Practice">
               <div class="tile-bg" style="background-image: url('resources/francois.jpg')"></div>
               <div class="tile-shade"></div>
               <div class="tile-inner">
@@ -294,9 +295,10 @@
                 </div>
               </div>
             </a>
-          
+
             <!-- Dr. Janneme Frouws -->
-            <a class="service-tile" href="SpringbokJannemeFrouws.html" aria-label="Dr. Janneme Frouws — Hormone Specialist">
+            <a class="service-tile" href="SpringbokJannemeFrouws.html"
+              aria-label="Dr. Janneme Frouws — Hormone Specialist">
               <div class="tile-bg" style="background-image: url('resources/staff1.jpg')"></div>
               <div class="tile-shade"></div>
               <div class="tile-inner">
@@ -313,9 +315,10 @@
                 </div>
               </div>
             </a>
-          
+
             <!-- Dr. Kacey Kiesman -->
-            <a class="service-tile" href="SpringbokKaceyKiesman.html" aria-label="Dr. Kacey Kiesman — Naturopathic Medicine">
+            <a class="service-tile" href="SpringbokKaceyKiesman.html"
+              aria-label="Dr. Kacey Kiesman — Naturopathic Medicine">
               <div class="tile-bg" style="background-image: url('resources/kacey2.png')"></div>
               <div class="tile-shade"></div>
               <div class="tile-inner">
@@ -332,7 +335,7 @@
                 </div>
               </div>
             </a>
-          
+
             <!-- Support: Reception (link to Contact page) -->
             <a class="service-tile" href="SpringbokContact.html" aria-label="First Last — Reception">
               <div class="tile-bg" style="background-image: url('resources/staff2.jpg')"></div>
@@ -351,7 +354,7 @@
                 </div>
               </div>
             </a>
-          
+
             <!-- Support: Registered Nurse (link to Team page) -->
             <a class="service-tile" href="SpringbokTeam.html" aria-label="First Last — Registered Nurse">
               <div class="tile-bg" style="background-image: url('resources/staff3.jpg')"></div>
@@ -370,7 +373,7 @@
                 </div>
               </div>
             </a>
-          
+
           </div>
 
           <button class="staff-nav staff-next staff-nav--overlay" type="button" aria-label="Next staff">›</button>
@@ -705,13 +708,10 @@
 
             <input type="hidden" name="apptType" id="apptTypeSelect" required />
 
-            <ul class="dd-menu" role="listbox" aria-label="Appointment type">
-              <li class="dd-opt" role="option" data-value="In-person appointment">In-person appointment</li>
-              <li class="dd-opt" role="option" data-value="Phone call appointment">Phone call appointment</li>
-              <li class="dd-opt" role="option" data-value="Video call appointment">Video call appointment</li>
-              <li class="dd-opt" role="option" data-value="Follow-up appointment">Follow-up appointment</li>
-            </ul>
+            <!-- JS will populate -->
+            <ul class="dd-menu" role="listbox" aria-label="Appointment type"></ul>
           </div>
+
 
           <label class="field field-span">
             <span class="field-label">Subject</span>
@@ -738,7 +738,7 @@
     </div>
   </div>
 
-
+  <script src="js/prefillFields.js"></script>
   <script src="js/staffWheel.js"></script>
   <script src="js/testimonialsWheel.js"></script>
   <script src="js/mobileMenu.js"></script>
