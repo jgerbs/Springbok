@@ -11,9 +11,3 @@
   });
 })();
 
-document.addEventListener("DOMContentLoaded", () => {
-  const v = document.querySelector(".hero-video");
-  if (!v) return;
-  const p = v.play();
-  if (p?.catch) p.catch(() => { });
-});
