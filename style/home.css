@@ -1,4 +1,4 @@
-:root{
+:root {
   --edge-pad: 48px;
   --top-pad: 18px;
 }
@@ -7,136 +7,60 @@
    HERO
    ========================= */
 
-/* HERO fills the visible viewport on load (mobile + desktop) */
 .hero {
   position: relative;
 
-  /* fallbacks + modern mobile-safe units */
   min-height: 100vh;
   min-height: 100svh;
-  /* “small viewport” (safe on mobile) */
   min-height: 100dvh;
-  /* dynamic viewport (best on modern browsers) */
 
   display: grid;
   align-items: end;
 
-  /* IMPORTANT: include padding inside the height calculation */
   box-sizing: border-box;
-
-  /* your existing spacing */
   padding: 170px 0 60px;
   overflow: hidden;
 }
 
-/* Logo anchored to hero (scrolls away naturally) */
-.hero-brand{
+/* Logo */
+.hero-brand {
   position: absolute;
   top: var(--top-pad);
   left: var(--edge-pad);
   z-index: 10050;
-  pointer-events: auto;
 }
 
-/* Soft vignette behind logo for contrast */
-.hero-brand::before{
-  content:"";
-  position:absolute;
-  inset:-36px;
-  border-radius:999px;
-  z-index:-1;
+.hero-brand::before {
+  content: "";
+  position: absolute;
+  inset: -36px;
+  border-radius: 999px;
+  z-index: -1;
 
   background:
-    radial-gradient(circle at 45% 35%, rgba(0,0,0,.55) 0%, rgba(0,0,0,.20) 45%, rgba(0,0,0,0) 72%),
-    radial-gradient(circle at 50% 55%, rgba(0,0,0,.30) 0%, rgba(0,0,0,0) 65%);
+    radial-gradient(circle at 45% 35%, rgba(0, 0, 0, .55) 0%, rgba(0, 0, 0, .20) 45%, rgba(0, 0, 0, 0) 72%),
+    radial-gradient(circle at 50% 55%, rgba(0, 0, 0, .30) 0%, rgba(0, 0, 0, 0) 65%);
 
   filter: blur(10px);
   opacity: .95;
-  transform: translateZ(0);
 }
 
-.hero-logo{
+.hero-logo {
   height: clamp(150px, 10vw, 180px);
   width: auto;
-  opacity: .98;
-  filter: drop-shadow(0 14px 32px rgba(0,0,0,.45));
+  filter: drop-shadow(0 14px 32px rgba(0, 0, 0, .45));
 }
 
-/* Media layer */
-.hero-media{
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.hero-video{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: saturate(1.06) contrast(1.06);
-}
-
-.hero-overlay{
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(900px 700px at 18% 12%, rgba(18,192,138,.18), transparent 60%),
-    linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.82) 70%, rgba(0,0,0,.92));
-}
-
-/* Content */
-.hero-content{
-  position: relative;
-  z-index: 2;
-  padding-bottom: 18px;
-}
-
-.hero h1{
-  margin: 0 0 14px;
-  font-size: clamp(2.2rem, 4.2vw, 4.2rem);
-  line-height: 1.05;
-  letter-spacing: -.04em;
-  max-width: 18ch;
-  font-weight: 650;
-}
-
-.hero p{
-  margin: 0 0 22px;
-  color: rgba(255,255,255,.78);
-  line-height: 1.75;
-  font-size: 1.05rem;
-  max-width: 62ch;
-}
-
-.hero-actions{
-  display:flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
+/* =========================
+   MEDIA LAYER
+   ========================= */
 
 .hero-media {
   position: absolute;
   inset: 0;
   z-index: 0;
 
-  /* ✅ fallback when video doesn't paint on mobile */
-  background: url("resources/filler.jpg") center/cover no-repeat;
-}
-
-/* keep video above the fallback bg */
-.hero-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.hero-media {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-
-  /* immediate paint fallback (same as poster) */
+  /* Immediate paint fallback */
   background: url("resources/heroVideos/sample1-poster.jpg") center/cover no-repeat;
 }
 
@@ -145,12 +69,61 @@
   height: 100%;
   object-fit: cover;
   display: block;
+
+  filter: saturate(1.06) contrast(1.06);
 }
 
-/* Shown only if autoplay fails */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background:
+    radial-gradient(900px 700px at 18% 12%, rgba(18, 192, 138, .18), transparent 60%),
+    linear-gradient(180deg, rgba(0, 0, 0, .15), rgba(0, 0, 0, .82) 70%, rgba(0, 0, 0, .92));
+}
+
+/* =========================
+   CONTENT
+   ========================= */
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 18px;
+}
+
+.hero h1 {
+  margin: 0 0 14px;
+  font-size: clamp(2.2rem, 4.2vw, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: -.04em;
+  max-width: 18ch;
+  font-weight: 650;
+}
+
+.hero p {
+  margin: 0 0 22px;
+  color: rgba(255, 255, 255, .78);
+  line-height: 1.75;
+  font-size: 1.05rem;
+  max-width: 62ch;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* =========================
+   TAP BUTTON (if autoplay fails)
+   ========================= */
+
 .hero-video-btn {
   position: absolute;
-  inset: auto auto 24px 24px;
+  bottom: 24px;
+  left: 24px;
   z-index: 3;
 
   padding: 10px 14px;
@@ -161,4 +134,5 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   font: inherit;
+  cursor: pointer;
 }
