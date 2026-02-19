@@ -1,10 +1,9 @@
 /* =========================================================
    Mission Slider — SINGLE SLIDE + TIMER + ARROWS
    Corner text (no dark panel) + stagger reveal
-   FIXED:
-   - BL/BR positioning no longer overrides TL/TR
-   - mobile BL/BR rule no longer forces TL/TR to bottom
-   - bullets truly right-align on TR (dot on right)
+   iOS FIX:
+   - Mobile uses a REAL element (.mission-media) for image row
+     (no pseudo inherit / no CSS var background reliance)
    ========================================================= */
 
 .mission-v2 {
@@ -36,10 +35,7 @@
   isolation: isolate;
 }
 
-/* =========================================================
-   Mission slider — prevent ultra-wide "rectangle" distortion
-   ========================================================= */
-
+/* prevent ultra-wide distortion */
 .mission-v2-shell {
   max-width: 1600px;
   margin: 0 auto;
@@ -72,6 +68,10 @@
   list-style: none;
 }
 
+/* =========================================================
+   Slides
+   ========================================================= */
+
 .mission-item {
   position: absolute;
   inset: 0;
@@ -92,7 +92,7 @@
   pointer-events: auto;
 }
 
-/* readability overlay only on active slide */
+/* ✅ Desktop overlay (full slide) */
 .mission-item::after {
   content: "";
   position: absolute;
@@ -115,10 +115,13 @@
       rgba(0, 0, 0, .44) 100%);
 }
 
+/* mobile image element is hidden on desktop */
+.mission-media {
+  display: none;
+}
+
 /* =========================================================
-   Corner overlay text (NO panel) + stagger reveal
-   NOTE: this is "base styling" only — positioning is handled
-         by BL/BR/TL/TR blocks below (no global bottom/top)
+   Text overlay (desktop)
    ========================================================= */
 
 .mission-content {
@@ -160,7 +163,7 @@
   transform: translateY(10px);
 }
 
-/* Desc + button come in after a short delay */
+/* Desc + button come in after delay */
 .mission-desc,
 .mission-content .btn {
   opacity: 0;
@@ -223,11 +226,10 @@
 }
 
 /* =========================================================
-   Mission text positions — BL / BR (used on other page)
-   IMPORTANT: no global ".mission-content { bottom... }"
+   Positioning — BL / BR / TL / TR
    ========================================================= */
 
-/* BL = bottom-left */
+/* BL */
 .mission-item[data-pos="bl"] .mission-content {
   bottom: clamp(70px, 6vw, 96px);
   top: auto;
@@ -236,7 +238,7 @@
   text-align: left;
 }
 
-/* BR = bottom-right */
+/* BR */
 .mission-item[data-pos="br"] .mission-content {
   bottom: clamp(70px, 6vw, 96px);
   top: auto;
@@ -245,7 +247,6 @@
   text-align: right;
 }
 
-/* button alignment */
 .mission-item[data-pos="br"] .mission-content .btn {
   margin-left: auto;
 }
@@ -254,7 +255,6 @@
   margin-right: auto;
 }
 
-/* text block alignment */
 .mission-item[data-pos="br"] .mission-desc {
   margin-left: auto;
 }
@@ -263,11 +263,7 @@
   margin-right: auto;
 }
 
-/* =========================================================
-   Mission text positions — TL / TR (About page)
-   ========================================================= */
-
-/* TL = top-left */
+/* TL */
 .mission-item[data-pos="tl"] .mission-content {
   top: clamp(18px, 3.2vw, 34px);
   bottom: auto;
@@ -276,7 +272,7 @@
   text-align: left;
 }
 
-/* TR = top-right */
+/* TR */
 .mission-item[data-pos="tr"] .mission-content {
   top: clamp(18px, 3.2vw, 34px);
   bottom: auto;
@@ -285,19 +281,8 @@
   text-align: right;
 }
 
-/* keep paragraph + list block aligned with the corner */
-.mission-item[data-pos="tr"] .mission-desc,
-.mission-item[data-pos="tr"] .mission-bullets {
-  margin-left: auto;
-}
-
-.mission-item[data-pos="tl"] .mission-desc,
-.mission-item[data-pos="tl"] .mission-bullets {
-  margin-right: auto;
-}
-
 /* =========================================================
-   Controls row (arrows + timer)
+   Controls
    ========================================================= */
 
 .mission-controls {
@@ -372,25 +357,11 @@
     border-radius: var(--radius-lg);
   }
 
-  .mission-title {
-    font-size: clamp(1.35rem, 6vw, 1.85rem);
-    margin-bottom: 8px;
-  }
-
-  .mission-desc {
-    font-size: .95rem;
-    line-height: 1.55;
-    margin-bottom: 12px;
-  }
-
-  .mission-content .btn {
-    width: auto;
-    justify-content: center;
-  }
-
   .mission-controls {
     gap: 10px;
     width: calc(100% - 28px);
+    bottom: 12px;
+    z-index: 6;
   }
 
   .mission-nav-btn {
@@ -406,245 +377,89 @@
 }
 
 /* =========================================================
-   Mobile positioning
-   - BL/BR: bottom-left (like your original)
-   - TL/TR: top-left (so About stays top and readable)
+   ✅ MOBILE LAYOUT: [image row] + [text slab]
    ========================================================= */
 
 @media (max-width: 720px) {
 
-  /* BL/BR pages: keep bottom-left */
-  .mission-item[data-pos="bl"] .mission-content,
-  .mission-item[data-pos="br"] .mission-content {
-    left: 14px !important;
-    right: auto !important;
-    bottom: 78px !important;
-    top: auto !important;
-    text-align: left !important;
-  }
-
-  .mission-item[data-pos="bl"] .mission-content .btn,
-  .mission-item[data-pos="br"] .mission-content .btn {
-    margin-left: 0 !important;
-  }
-
-  /* TL/TR pages: force top-left on mobile */
-  .mission-item[data-pos="tl"] .mission-content,
-  .mission-item[data-pos="tr"] .mission-content {
-    top: 14px !important;
-    bottom: auto !important;
-    left: 14px !important;
-    right: auto !important;
-    text-align: left !important;
-  }
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-
-  .mission-item,
-  .mission-item::after {
-    transition: none;
-  }
-
-  .mission-title,
-  .mission-desc,
-  .mission-content .btn {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
-
-/* =========================================================
-   Mission storytelling bullets
-   ========================================================= */
-
-.mission-bullets {
-  margin: 6px 0 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 8px;
-  max-width: 56ch;
-
-  opacity: 0;
-  transform: translateY(10px);
-}
-
-.mission-bullets li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: .98rem;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, .84);
-}
-
-.mission-bullets li::before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-radius: 999px;
-  background: var(--accent);
-  margin-top: .45em;
-  flex: 0 0 7px;
-  box-shadow: 0 0 0 3px rgba(18, 192, 138, .14);
-}
-
-/* animate bullets in sequence */
-.mission-item.is-active .mission-bullets {
-  animation: missionBodyIn .65s ease .75s forwards;
-}
-
-/* =========================================================
-   Bullets — RIGHT aligned slides (TR + BR)
-   Put the dot on the RIGHT, keep everything truly right-aligned
-   ========================================================= */
-
-.mission-item[data-pos="tr"] .mission-bullets,
-.mission-item[data-pos="br"] .mission-bullets {
-  margin-left: auto;
-  /* push whole list block to the right */
-  text-align: right;
-  justify-items: end;
-  /* grid children align to the right */
-}
-
-.mission-item[data-pos="tr"] .mission-bullets li,
-.mission-item[data-pos="br"] .mission-bullets li {
-  justify-content: flex-end;
-  flex-direction: row-reverse;
-  /* dot goes to the right */
-  text-align: right;
-}
-
-/* spacing between text and the dot (now on the right) */
-.mission-item[data-pos="tr"] .mission-bullets li::before,
-.mission-item[data-pos="br"] .mission-bullets li::before {
-  margin-left: 10px;
-  /* space between text and dot */
-  margin-right: 0;
-}
-
-/* =========================================================
-   MOBILE ONLY — force EVERYTHING to TL + prevent overflow
-   Keeps your desktop TR/BR bullet style untouched
-   ========================================================= */
-@media (max-width: 720px) {
-
-  /* Give the text box the full usable width + keep comfy padding */
-  .mission-content {
-    top: 14px !important;
-    left: 14px !important;
-    right: 14px !important;
-    /* allow full width */
-    bottom: auto !important;
-    width: auto !important;
-    max-width: none !important;
-    text-align: left !important;
-  }
-
-  /* Reserve space so text never collides with the controls row */
-  .mission-controls {
-    bottom: 14px;
-  }
-
-  /* Reduce title/desc a touch (not cramped) */
-  .mission-title {
-    font-size: clamp(1.15rem, 6.2vw, 1.55rem);
-    line-height: 1.08;
-    margin-bottom: 8px;
-  }
-
-  .mission-desc {
-    font-size: .92rem;
-    line-height: 1.45;
-    max-width: none;
-    margin-bottom: 10px;
-
-    /* Stops long paragraphs from overflowing into controls */
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 5;
-    /* adjust 4–6 if you want */
-    overflow: hidden;
-  }
-
-  /* Bullets: ALWAYS left on mobile (even if slide is TR/BR) */
-  .mission-bullets {
-    max-width: none;
-    gap: 6px;
-    margin-left: 0 !important;
-    text-align: left !important;
-    justify-items: start !important;
-  }
-
-  .mission-bullets li {
-    font-size: .92rem;
-    line-height: 1.35;
-
-    /* kill the desktop right-align behavior (row-reverse) */
-    flex-direction: row !important;
-    justify-content: flex-start !important;
-    text-align: left !important;
-  }
-
-  /* dot back on the LEFT with normal spacing */
-  .mission-bullets li::before {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-}
-
-@media (max-width: 720px) {
-
-  /* Turn the slide into: [image] + [text slab] */
+  /* turn slide into grid */
   .mission-item {
     display: grid;
-    grid-template-rows: 1fr auto;
-    /* top image, bottom text */
+    grid-template-rows: minmax(0, 1fr) auto;
   }
 
-  /* Top image area */
-  .mission-item::before {
-    content: "";
+  /* hide the desktop full-slide overlay */
+  .mission-item::after {
+    opacity: 0 !important;
+    background: none !important;
+  }
+
+  /* show real media element */
+  .mission-media {
+    display: block;
     grid-row: 1;
+    grid-column: 1;
     width: 100%;
     height: 100%;
-    background-image: inherit;
-    /* uses your inline background-image */
     background-size: cover;
     background-position: var(--bg-pos-m, 50% 35%);
     filter: saturate(1.05);
+    position: relative;
+    z-index: 1;
   }
 
-  /* Keep your readability overlay only over the IMAGE zone */
-  .mission-item::after {
-    grid-row: 1;
+  /* overlay ONLY on the image row */
+  .mission-media::after {
+    content: "";
+    position: absolute;
     inset: 0;
+    opacity: 0;
+    transition: opacity .55s ease;
+    background:
+      linear-gradient(90deg,
+        rgba(0, 0, 0, .55) 0%,
+        rgba(0, 0, 0, .28) 45%,
+        rgba(0, 0, 0, .12) 80%,
+        rgba(0, 0, 0, 0) 100%),
+      linear-gradient(180deg,
+        rgba(0, 0, 0, .10) 0%,
+        rgba(0, 0, 0, .55) 100%);
+    pointer-events: none;
   }
 
-  /* Bottom dark panel */
+  .mission-item.is-active .mission-media::after {
+    opacity: 1;
+  }
+
+  /* slab */
   .mission-content {
-    position: relative !important;
     grid-row: 2;
+    grid-column: 1;
+
+    position: relative !important;
+    z-index: 3;
+
     width: auto !important;
     max-width: none !important;
+
     left: auto !important;
     right: auto !important;
     top: auto !important;
     bottom: auto !important;
+
     padding: 18px 16px 84px;
-    /* extra bottom so it won’t hit the controls */
     text-align: left !important;
-    background: linear-gradient(180deg, rgba(0, 0, 0, .65) 0%, rgba(0, 0, 0, 0.95) 5%, rgba(0, 0, 0, 1) 100%);
+
+    background: linear-gradient(180deg,
+        rgba(0, 0, 0, .70) 0%,
+        rgba(0, 0, 0, .92) 10%,
+        rgba(0, 0, 0, 1) 100%);
+
     text-shadow: none;
-    /* cleaner on a dark panel */
     border-top: 1px solid rgba(255, 255, 255, .10);
   }
 
-  /* If you had mobile rules forcing TL/TR etc, this prevents fights */
+  /* prevent pos variants from fighting the slab */
   .mission-item[data-pos="bl"] .mission-content,
   .mission-item[data-pos="br"] .mission-content,
   .mission-item[data-pos="tl"] .mission-content,
@@ -656,9 +471,39 @@
     text-align: left !important;
   }
 
-  /* Controls stay at bottom of the card */
-  .mission-controls {
-    bottom: 12px;
-    z-index: 5;
+  /* mobile text sizing */
+  .mission-title {
+    font-size: clamp(1.15rem, 6.2vw, 1.55rem);
+    line-height: 1.08;
+    margin: 0 0 8px;
+  }
+
+  .mission-desc {
+    font-size: .92rem;
+    line-height: 1.45;
+    max-width: none;
+    margin: 0 0 10px;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  .mission-item,
+  .mission-media::after {
+    transition: none;
+  }
+
+  .mission-title,
+  .mission-desc,
+  .mission-content .btn {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
