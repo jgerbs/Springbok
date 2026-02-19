@@ -21,8 +21,10 @@
         v.setAttribute("webkit-playsinline", "");
     };
 
-    const isActuallyPlaying = () =>
-        !v.paused && !v.ended && v.readyState >= 2;
+    const isActuallyPlaying = () => !v.paused && !v.ended && v.readyState >= 2;
+
+    // Next play should start at the beginning (poster-aligned)
+    let restartOnNextPlay = false;
 
     let armed = false;
     const opts = { passive: true, capture: true };
@@ -41,6 +43,12 @@
         if (isActuallyPlaying()) return true;
 
         setIOSFlags();
+
+        if (restartOnNextPlay) {
+            try { v.currentTime = 0; } catch { }
+            restartOnNextPlay = false;
+        }
+
         try {
             const p = v.play();
             if (p && typeof p.then === "function") await p;
@@ -51,12 +59,10 @@
     };
 
     const unlock = async () => {
-        // If it's already playing, do nothing (prevents jitter)
         if (isActuallyPlaying()) {
             disarm();
             return;
         }
-
         const ok = await tryPlay();
         if (ok) disarm();
     };
@@ -65,16 +71,21 @@
         if (armed || isActuallyPlaying()) return;
         armed = true;
 
-        // ✅ touchstart covers “scroll-start” on iOS
         window.addEventListener("touchstart", unlock, opts);
         window.addEventListener("pointerdown", unlock, opts);
         window.addEventListener("click", unlock, opts);
         window.addEventListener("keydown", unlock, opts);
     };
 
-    // If the video starts playing in any way, immediately stop listening
+    // If video starts playing, stop listening
     v.addEventListener("playing", disarm, { passive: true });
-    v.addEventListener("timeupdate", disarm, { once: true, passive: true }); // extra safety for iOS
+    v.addEventListener("timeupdate", disarm, { once: true, passive: true });
+
+    const retryPlaySoon = () => {
+        // a couple retries after resize / iOS viewport settle
+        setTimeout(() => tryPlay().then(ok => { if (!ok) armForAnyTouch(); }), 80);
+        setTimeout(() => tryPlay().then(ok => { if (!ok) armForAnyTouch(); }), 220);
+    };
 
     const init = async () => {
         setIOSFlags();
@@ -88,10 +99,7 @@
         const ok = await tryPlay();
         if (!ok) armForAnyTouch();
 
-        const retry = () =>
-            tryPlay().then((played) => {
-                if (!played) armForAnyTouch();
-            });
+        const retry = () => tryPlay().then((played) => { if (!played) armForAnyTouch(); });
 
         v.addEventListener("loadeddata", retry, { once: true });
         v.addEventListener("canplay", retry, { once: true });
@@ -106,27 +114,32 @@
         }
     });
 
+    // ✅ Resize: pause, ensure next play starts at 0, then retry/arm
     window.addEventListener("resize", () => {
         const newSrc = pickSrc();
-        if (!newSrc || v.src === newSrc) return;
 
-        const t = v.currentTime || 0;
-        const wasPlaying = isActuallyPlaying();
+        restartOnNextPlay = true;
 
-        v.src = newSrc;
-        v.load();
+        // If breakpoint changed, swap sources and then restart at 0 + retry
+        if (newSrc && !v.src.includes(newSrc)) {
+            v.pause();
+            v.src = newSrc;
+            v.load();
 
-        v.addEventListener(
-            "loadeddata",
-            async () => {
-                try { v.currentTime = t; } catch { }
-                if (wasPlaying) {
-                    const played = await tryPlay();
-                    if (!played) armForAnyTouch();
-                }
-            },
-            { once: true }
-        );
+            v.addEventListener("loadeddata", () => {
+                // force poster-aligned restart
+                restartOnNextPlay = true;
+                retryPlaySoon();        // try to resume automatically
+                armForAnyTouch();       // and allow any tap to resume if blocked
+            }, { once: true });
+
+            return;
+        }
+
+        // Src didn't change: pause now, then retry + arm so it can resume
+        v.pause();
+        retryPlaySoon();
+        armForAnyTouch();
     });
 
     init();
