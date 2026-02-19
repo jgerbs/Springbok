@@ -451,9 +451,12 @@
     text-align: left !important;
 
     background: linear-gradient(180deg,
-        rgba(0, 0, 0, .70) 0%,
-        rgba(0, 0, 0, .92) 10%,
+        rgba(0, 0, 0, .82) 0%,
+        rgba(0, 0, 0, .97) 0%,
         rgba(0, 0, 0, 1) 100%);
+    box-shadow:
+      0 -12px 28px rgba(0, 0, 0, .55),
+      inset 0 1px 0 rgba(255, 255, 255, .06);
 
     text-shadow: none;
     border-top: 1px solid rgba(255, 255, 255, .10);
@@ -469,6 +472,22 @@
     top: auto !important;
     bottom: auto !important;
     text-align: left !important;
+  }
+
+  .mission-content::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background: linear-gradient(180deg,
+        rgba(0, 0, 0, .88) 0%,
+        rgba(0, 0, 0, .985) 12%,
+        rgba(0, 0, 0, 1) 100%);
+
+    box-shadow:
+      0 -14px 34px rgba(0, 0, 0, .65),
+      inset 0 1px 0 rgba(255, 255, 255, .06);
   }
 
   /* mobile text sizing */
@@ -505,5 +524,49 @@
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+}
+
+/* =========================================================
+   iOS MOBILE FIX: prevent "glitch frame" on slide change
+   - keep the exact same mobile card styling
+   - remove crossfade on mobile (instant swap)
+   ========================================================= */
+@media (max-width: 720px) {
+
+  /* stop the parent slide fade (this causes the weird in-between composite) */
+  .mission-item {
+    transition: none !important;
+  }
+
+  /* also stop the image overlay fade (optional, but removes any lag) */
+  .mission-media::after {
+    transition: none !important;
+  }
+
+  /* keep ONLY the active slide visible (no overlap = no glitch) */
+  .mission-item {
+    opacity: 0 !important;
+  }
+
+  .mission-item.is-active {
+    opacity: 1 !important;
+  }
+
+  /* make sure hidden slides can't be tapped */
+  .mission-item {
+    pointer-events: none !important;
+  }
+
+  .mission-item.is-active {
+    pointer-events: auto !important;
+  }
+
+  /* extra iOS compositing stability */
+  .mission-item,
+  .mission-media,
+  .mission-content {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
 }
