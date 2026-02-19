@@ -116,23 +116,82 @@
   flex-wrap: wrap;
 }
 
-/* =========================
-   TAP BUTTON (if autoplay fails)
-   ========================= */
+/* =========================================================
+   HERO — Responsive (moved from responsive.css)
+   Applies to clinic + staff + spa heroes
+   ========================================================= */
 
-.hero-video-btn {
-  position: absolute;
-  bottom: 24px;
-  left: 24px;
-  z-index: 3;
+@media (max-width: 960px) {
+  .hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
 
-  padding: 10px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, .35);
-  background: rgba(0, 0, 0, .35);
-  color: #fff;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  font: inherit;
-  cursor: pointer;
+    padding: 128px 0 44px;
+    position: relative;
+    isolation: isolate;
+  }
+
+  .hero-brand {
+    top: calc(var(--top-pad) + env(safe-area-inset-top));
+    left: calc(var(--edge-pad) + env(safe-area-inset-left));
+  }
+
+  /* scale down BOTH clinic + spa hero logos on mobile */
+  .hero-logo,
+  .hero-logo--spa {
+    height: clamp(96px, 22vw, 132px);
+  }
+
+  .hero-content {
+    padding-bottom: 10px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.0rem, 7vw, 3.0rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    max-width: 22ch;
+  }
+
+  .hero p {
+    font-size: 1.02rem;
+    line-height: 1.6;
+    max-width: 56ch;
+    margin-bottom: 18px;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  .hero-overlay {
+    background:
+      radial-gradient(700px 520px at 18% 10%, rgba(18, 192, 138, .16), transparent 60%),
+      linear-gradient(180deg, rgba(0, 0, 0, .20), rgba(0, 0, 0, .86) 70%, rgba(0, 0, 0, .94));
+  }
+}
+
+@media (max-width: 420px) {
+  .hero {
+    min-height: 100vh;
+    padding: 118px 0 38px;
+  }
+
+  .hero h1 {
+    font-size: 2.0rem;
+    max-width: 24ch;
+  }
+
+  .hero-logo {
+    height: 92px;
+  }
 }
