@@ -1,13 +1,12 @@
 (() => {
     const v = document.querySelector(".hero-video");
-    const btn = document.querySelector(".hero-video-btn");
     if (!v) return;
 
     // Respect reduced motion
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) {
         v.pause();
-        if (btn) btn.hidden = true;
+        v.removeAttribute("autoplay");
         return;
     }
 
@@ -17,7 +16,6 @@
     };
 
     const setIOSFlags = () => {
-        // iOS autoplay requirements (and a few “extra safe” flags)
         v.muted = true;
         v.defaultMuted = true;
         v.volume = 0;
@@ -28,81 +26,105 @@
         v.setAttribute("webkit-playsinline", "");
     };
 
-    const showTap = () => {
-        if (!btn) return;
-        btn.hidden = false;
-    };
+    let armed = false;
 
-    const hideTap = () => {
-        if (!btn) return;
-        btn.hidden = true;
+    const armForAnyTap = () => {
+        if (armed) return;
+        armed = true;
+
+        const unlock = async () => {
+            setIOSFlags();
+            try {
+                const p = v.play();
+                if (p && typeof p.then === "function") await p;
+                disarm(); // success
+            } catch {
+                // If it still fails, stay armed and keep listening
+            }
+        };
+
+        const disarm = () => {
+            window.removeEventListener("touchstart", unlock, opts);
+            window.removeEventListener("pointerdown", unlock, opts);
+            window.removeEventListener("click", unlock, opts);
+            window.removeEventListener("keydown", unlock, opts);
+            window.removeEventListener("scroll", unlock, scrollOpts);
+        };
+
+        // capture+passive lets us catch the earliest gesture without blocking scroll
+        const opts = { passive: true, capture: true };
+        const scrollOpts = { passive: true, capture: true };
+
+        window.addEventListener("touchstart", unlock, opts);
+        window.addEventListener("pointerdown", unlock, opts);
+        window.addEventListener("click", unlock, opts);
+        window.addEventListener("keydown", unlock, opts);
+        window.addEventListener("scroll", unlock, scrollOpts);
     };
 
     const tryPlay = async () => {
+        setIOSFlags();
         try {
             const p = v.play();
             if (p && typeof p.then === "function") await p;
-            hideTap();
             return true;
         } catch {
-            showTap();
             return false;
         }
     };
 
-    const loadAndPlay = async () => {
+    const init = async () => {
         setIOSFlags();
 
+        // Set src (and keep poster visible instantly via CSS background + poster attribute)
         const src = pickSrc();
-        if (src && v.src !== src) {
+        if (src) {
             v.src = src;
             v.load();
         }
 
-        // Try a few times across different readiness moments
-        await tryPlay();
-        v.addEventListener("loadeddata", () => { tryPlay(); }, { once: true });
-        v.addEventListener("canplay", () => { tryPlay(); }, { once: true });
+        // Try autoplay
+        const ok = await tryPlay();
 
-        // Some iOS cases need a micro-delay after load/paint
-        setTimeout(() => { tryPlay(); }, 150);
-        requestAnimationFrame(() => { tryPlay(); });
+        // If blocked, wait for ANY interaction anywhere
+        if (!ok) armForAnyTap();
+
+        // Retry on readiness events too
+        v.addEventListener("canplay", () => tryPlay().then((played) => { if (!played) armForAnyTap(); }), { once: true });
+        v.addEventListener("loadeddata", () => tryPlay().then((played) => { if (!played) armForAnyTap(); }), { once: true });
+
+        // Small delayed retry for iOS oddities
+        setTimeout(() => {
+            tryPlay().then((played) => { if (!played) armForAnyTap(); });
+        }, 150);
     };
 
-    // Tap-to-play fallback (guaranteed to work everywhere)
-    if (btn) {
-        btn.addEventListener("click", async () => {
-            setIOSFlags();
-            await tryPlay();
-        });
-    }
-
-    // Re-try when returning to the page (iOS often pauses video)
+    // Resume when returning to tab/app
     document.addEventListener("visibilitychange", () => {
-        if (!document.hidden) tryPlay();
+        if (!document.hidden) {
+            tryPlay().then((played) => { if (!played) armForAnyTap(); });
+        }
     });
 
-    // If they rotate / resize across breakpoint, swap source cleanly
-    let lastSrc = null;
-    const onResize = () => {
-        const next = pickSrc();
-        if (next && next !== lastSrc) {
-            lastSrc = next;
+    // If you resize across breakpoint, swap source safely
+    window.addEventListener("resize", () => {
+        const newSrc = pickSrc();
+        if (!newSrc || v.src === newSrc) return;
 
-            const wasPlaying = !v.paused;
-            const t = v.currentTime || 0;
+        const time = v.currentTime || 0;
+        const wasPlaying = !v.paused;
 
-            v.src = next;
-            v.load();
+        v.src = newSrc;
+        v.load();
 
-            v.addEventListener("loadeddata", async () => {
-                try { v.currentTime = t; } catch { }
-                if (wasPlaying) await tryPlay();
-            }, { once: true });
-        }
-    };
-    window.addEventListener("resize", () => { onResize(); });
+        v.addEventListener("loadeddata", async () => {
+            try { v.currentTime = time; } catch { }
+            if (wasPlaying) {
+                const played = await tryPlay();
+                if (!played) armForAnyTap();
+            }
+        }, { once: true });
+    });
 
-    // Kick off
-    loadAndPlay();
+    init();
 })();
