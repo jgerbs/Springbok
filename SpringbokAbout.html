@@ -20,6 +20,9 @@
   <link rel="stylesheet" href="style/practiceModal.css" />
   <link rel="stylesheet" href="style/about.css" />
 
+  <!-- Proload video -->
+  <link rel="preload" as="video" href="resources/heroVideos/about.mp4" type="video/mp4">
+
 </head>
 
 <body>
@@ -84,9 +87,11 @@
       </a>
 
       <div class="hero-media">
-        <video class="hero-video" muted playsinline webkit-playsinline loop preload="metadata"
-          poster="resources/heroVideos/about-poster.jpg" data-src-mobile="resources/heroVideos/about.mp4"
-          data-src-desktop="resources/heroVideos/about.mp4"></video>
+        <video class="hero-video" muted playsinline webkit-playsinline loop preload="auto"
+          poster="resources/heroVideos/about-poster.jpg">
+          <source src="resources/heroVideos/about.mp4" media="(max-width:700px)" type="video/mp4">
+          <source src="resources/heroVideos/about.mp4" type="video/mp4">
+        </video>
 
         <div class="hero-overlay"></div>
       </div>
@@ -605,7 +610,8 @@
       </form>
     </div>
   </div>
-
+  
+  <script src="js/playVideo.js" defer></script>
   <script src="js/prefillFields.js" defer></script>
   <script src="js/mobileMenu.js" defer></script>
   <script src="js/footer.js" defer></script>
@@ -613,8 +619,8 @@
   <script src="js/scrollReveal.js" defer></script>
   <script src="js/smoothScroll.js" defer></script>
   <script src="js/contactDoctorModal.js" defer></script>
-  <script src="js/missionSlider.js"defer></script>
-  <script src="js/playVideo.js" defer></script>
+  <script src="js/missionSlider.js" defer></script>
+
 
 </body>
 
