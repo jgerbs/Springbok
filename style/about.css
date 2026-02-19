@@ -189,7 +189,6 @@
 
     padding: 14px 14px 16px;
     background: linear-gradient(180deg, rgba(0, 0, 0, .70), rgba(0, 0, 0, .95));
-    border-top: 1px solid rgba(255, 255, 255, .10);
 }
 
 .mission-v2--about .mission-controls {
@@ -432,6 +431,7 @@
         z-index: 3;
     }
 }
+
 /* =========================================================
    FOUNDERS — FINAL (clean)
    - Desktop: image L/R, optional flip on 2nd card
