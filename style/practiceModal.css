@@ -467,12 +467,6 @@ html[data-brand="spa"] .modal-note {
     color: rgba(18, 18, 18, .55);
 }
 
-/* OPTIONAL: make spa modal buttons feel on-brand
-   (only if your .btn styles allow it without breaking) */
-html[data-brand="spa"] .modal-actions .btn.btn-accent {
-    /* relies on your spa --accent / --accent2 / --warm vars */
-}
-
 /* Small screens (keep your existing layout rules; just tweak spacing) */
 @media (max-width: 680px) {
     html[data-brand="spa"] .modal-dialog {
