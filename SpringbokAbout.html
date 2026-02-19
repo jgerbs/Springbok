@@ -117,23 +117,22 @@
       </div>
     </section>
 
-    <!-- GOAL / MISSION (Storytelling, text-only) -->
+    <!-- GOAL / MISSION -->
     <section class="mission-v2 mission-v2--about" id="mission">
       <div class="container">
         <div class="mission-v2-shell reveal">
+
           <ul class="mission-slider" data-mission-slider>
 
-            <!-- Slide 1: Mission -->
-            <li class="mission-item is-active" data-pos="tl" style="background-image:url('resources/space5.jpg')">
+            <!-- Slide 1 -->
+            <li class="mission-item is-active" data-pos="tl" style="background-image:url('resources/space.jpg')">
               <div class="mission-content">
                 <h2 class="mission-title">Our Mission</h2>
-
                 <p class="mission-desc">
                   Springbok was built to raise the standard of everyday healthcare.
                   We believe patients deserve clarity, time, and care that feels human —
                   not rushed visits, vague advice, or disconnected follow-ups.
                 </p>
-
                 <ul class="mission-bullets">
                   <li>Clear explanations and structured care plans</li>
                   <li>Continuity from first visit to follow-up</li>
@@ -142,17 +141,15 @@
               </div>
             </li>
 
-            <!-- Slide 2: Preventative Care -->
-            <li class="mission-item" data-pos="tr" style="background-image:url('resources/space1.jpg')">
+            <!-- Slide 2 -->
+            <li class="mission-item" data-pos="br" style="background-image:url('resources/space.jpg')">
               <div class="mission-content">
                 <h2 class="mission-title">Prevention, Not Just Reaction</h2>
-
                 <p class="mission-desc">
                   Most healthcare focuses on treating problems once they appear.
                   Our approach prioritizes prevention — identifying risks early,
                   supporting long-term health, and helping patients stay ahead of issues.
                 </p>
-
                 <ul class="mission-bullets">
                   <li>Proactive screenings and assessments</li>
                   <li>Long-term health planning</li>
@@ -161,17 +158,15 @@
               </div>
             </li>
 
-            <!-- Slide 3: Comfort & Experience -->
-            <li class="mission-item" data-pos="bl" style="background-image:url('resources/space5.jpg')">
+            <!-- Slide 3 -->
+            <li class="mission-item" data-pos="bl" style="background-image:url('resources/space.jpg')">
               <div class="mission-content">
                 <h2 class="mission-title">Care That Feels Comfortable</h2>
-
                 <p class="mission-desc">
                   Healthcare shouldn’t feel stressful.
                   From the moment you arrive, our goal is to create an experience
                   that feels organized, unhurried, and supportive.
                 </p>
-
                 <ul class="mission-bullets">
                   <li>Thoughtful appointment flow</li>
                   <li>Unrushed conversations</li>
@@ -180,17 +175,15 @@
               </div>
             </li>
 
-            <!-- Slide 4: Team-Based Care -->
-            <li class="mission-item" data-pos="br" style="background-image:url('resources/space1.jpg')">
+            <!-- Slide 4 -->
+            <li class="mission-item" data-pos="tr" style="background-image:url('resources/space.jpg')">
               <div class="mission-content">
-                <h2 class="mission-title">A Team, Not Isolated Visits</h2>
-
+                <h2 class="mission-title">A Team Working Together</h2>
                 <p class="mission-desc">
                   Health is complex — and it rarely fits into one specialty.
                   At Springbok, your care is supported by a coordinated team
                   that communicates, collaborates, and stays aligned.
                 </p>
-
                 <ul class="mission-bullets">
                   <li>Primary care and specialists working together</li>
                   <li>Clear internal communication</li>
@@ -199,17 +192,15 @@
               </div>
             </li>
 
-            <!-- Slide 5: One Roof -->
-            <li class="mission-item" data-pos="tl" style="background-image:url('resources/space5.jpg')">
+            <!-- Slide 5 -->
+            <li class="mission-item" data-pos="tl" style="background-image:url('resources/space.jpg')">
               <div class="mission-content">
                 <h2 class="mission-title">Everything Under One Roof</h2>
-
                 <p class="mission-desc">
                   By bringing medical, preventative, and wellness services together,
                   we reduce friction in your care and improve outcomes.
                   You spend less time navigating the system — and more time focusing on your health.
                 </p>
-
                 <ul class="mission-bullets">
                   <li>Integrated clinic and medical spa services</li>
                   <li>Streamlined referrals and follow-ups</li>
@@ -218,20 +209,40 @@
               </div>
             </li>
 
+            <!-- Slide 6 -->
+            <li class="mission-item" data-pos="br" style="background-image:url('resources/space.jpg')">
+              <div class="mission-content">
+                <h2 class="mission-title">Clarity &amp; Empowerment</h2>
+                <p class="mission-desc">
+                  We build care plans that are clear, actionable, and personalized.
+                  Our goal is to empower you with the knowledge and support to make informed decisions about your
+                  health.
+                </p>
+                <ul class="mission-bullets">
+                  <li>Transparent explanations of conditions and options</li>
+                  <li>Structured plans with timelines and next steps</li>
+                  <li>Support that respects your goals and preferences</li>
+                </ul>
+              </div>
+            </li>
+
           </ul>
 
-          <div class="mission-controls" aria-label="Mission controls">
-            <button class="mission-nav-btn mission-prev" aria-label="Previous slide">‹</button>
-
-            <div class="mission-timer" aria-hidden="true">
-              <span class="mission-timer-bar" data-mission-timer></span>
+          <!-- Controls -->
+          <div class="mission-controls-wrap" aria-label="Mission controls">
+            <div class="mission-controls">
+              <button class="mission-nav-btn mission-prev" aria-label="Previous slide">‹</button>
+              <div class="mission-timer" aria-hidden="true">
+                <span class="mission-timer-bar" data-mission-timer></span>
+              </div>
+              <button class="mission-nav-btn mission-next" aria-label="Next slide">›</button>
             </div>
-
-            <button class="mission-nav-btn mission-next" aria-label="Next slide">›</button>
           </div>
+
         </div>
       </div>
     </section>
+
 
 
     <!-- FOUNDERS (updated: Kloppers + Erasmus) -->
@@ -610,7 +621,7 @@
       </form>
     </div>
   </div>
-  
+
   <script src="js/playVideo.js" defer></script>
   <script src="js/prefillFields.js" defer></script>
   <script src="js/mobileMenu.js" defer></script>

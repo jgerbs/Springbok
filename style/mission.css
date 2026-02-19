@@ -158,7 +158,6 @@
   letter-spacing: -.02em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, .98);
-
   opacity: 0;
   transform: translateY(10px);
 }
@@ -194,6 +193,7 @@
   border-color: rgba(255, 255, 255, .34);
   background: rgba(255, 255, 255, .10);
   box-shadow: 0 14px 34px rgba(0, 0, 0, .35);
+  margin: 0 0 14px;
 }
 
 .mission-content .btn:hover {
@@ -223,6 +223,20 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Make right-side paragraph + bullets actually sit to the right */
+.mission-v2--about .mission-item[data-pos="tr"] .mission-desc,
+.mission-v2--about .mission-item[data-pos="br"] .mission-desc,
+.mission-v2--about .mission-item[data-pos="tr"] .mission-bullets,
+.mission-v2--about .mission-item[data-pos="br"] .mission-bullets {
+  margin-left: auto;
+}
+
+/* Optional: keep the right column from getting too wide on big screens */
+.mission-v2--about .mission-content {
+  width: min(42vw, 560px);
+  max-width: 560px;
 }
 
 /* =========================================================
@@ -291,7 +305,6 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 7;
-
   display: flex;
   align-items: center;
   gap: 12px;

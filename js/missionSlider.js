@@ -1,5 +1,8 @@
 (() => {
-    const slider = document.querySelector("[data-mission-slider]");
+    const root = document.querySelector(".mission-v2--about");
+    if (!root) return;
+
+    const slider = root.querySelector("[data-mission-slider]");
     if (!slider) return;
 
     const shell = slider.closest(".mission-v2-shell");
@@ -10,12 +13,14 @@
     const prevBtn = shell.querySelector(".mission-prev");
 
     const items = Array.from(slider.querySelectorAll(".mission-item"));
-    if (!items.length) return;
+    const len = items.length;
+    if (!len) return;
 
     const DURATION = 6000;
+    const mqPair = window.matchMedia("(min-width: 980px)");
 
-    let active = items.findIndex((el) => el.classList.contains("is-active"));
-    if (active < 0) active = 0;
+    let index = items.findIndex(el => el.classList.contains("is-active"));
+    if (index < 0) index = 0;
 
     let rafId = null;
     let lastTs = null;
@@ -29,17 +34,59 @@
         bar.style.width = `${clamped * 100}%`;
     }
 
-    function setActive(idx) {
-        items[active]?.classList.remove("is-active");
-        active = (idx + items.length) % items.length;
-        items[active]?.classList.add("is-active");
-
-        // restart stagger animations reliably
-        void items[active].offsetHeight;
+    function clearStates() {
+        items.forEach(el => {
+            el.classList.remove("is-active");
+            el.classList.remove("is-paired");
+        });
     }
 
-    function next() { setActive(active + 1); }
-    function prev() { setActive(active - 1); }
+    // ✅ KEY: force paired-mode to always start on the left item of the pair (even index)
+    function normalizeIndex(i) {
+        // wrap
+        i = ((i % len) + len) % len;
+
+        // only enforce if we can actually form consistent pairs
+        if (mqPair.matches && len >= 2 && len % 2 === 0) {
+            if (i % 2 === 1) i = i - 1; // snap to even
+        }
+        return i;
+    }
+
+    function applyStates() {
+        clearStates();
+
+        // normalize before applying
+        index = normalizeIndex(index);
+
+        const a = items[index];
+        a.classList.add("is-active");
+
+        if (mqPair.matches && len > 1) {
+            const b = items[index + 1]; // safe because normalizeIndex prevents index == len-1 in even-length lists
+            if (b) b.classList.add("is-paired");
+        }
+
+        // restart any CSS anim hooks you rely on
+        void a.offsetHeight;
+    }
+
+    function setActive(i) {
+        index = normalizeIndex(i);
+        applyStates();
+    }
+
+    function stepSize() {
+        return mqPair.matches ? 2 : 1;
+    }
+
+    function next() {
+        setActive(index + stepSize());
+    }
+
+    function prev() {
+        setActive(index - stepSize());
+    }
 
     function resetTimer() {
         elapsed = 0;
@@ -116,6 +163,13 @@
         resetTimer();
     }, { passive: true });
 
+    // ✅ When crossing breakpoint, snap index to a valid pair-start
+    mqPair.addEventListener("change", () => {
+        index = normalizeIndex(index);
+        applyStates();
+        resetTimer();
+    });
+
     // Reduced motion
     if (window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches) {
         paused = true;
@@ -123,7 +177,8 @@
     }
 
     // Init
-    items.forEach((el, i) => el.classList.toggle("is-active", i === active));
+    index = normalizeIndex(index);
+    applyStates();
     setProgress(0);
     rafId = requestAnimationFrame(tick);
 })();

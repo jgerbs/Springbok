@@ -1,395 +1,173 @@
 /* =========================================================
-   Mission Slider — SINGLE SLIDE + TIMER + ARROWS
-   Corner text (no dark panel) + stagger reveal
-   FIXED:
-   - BL/BR positioning no longer overrides TL/TR
-   - mobile BL/BR rule no longer forces TL/TR to bottom
-   - bullets truly right-align on TR (dot on right)
-   CURRENT:
-   - Mobile uses blurred-image + dark overlay layout
-   - Controls are ONE edge-to-edge bar (no double bubble)
+   ABOUT PAGE — MISSION (page-only)
+   - Default: single content block (normal flow) over blurred bg
+   - Wide (>=980): paired mode = 2 corner text blocks over ONE bg
+   - Controls: full-width dark lower bar (always at bottom)
+   - Stage height floor in paired mode so 2-view never feels cramped
+   Scope: .mission-v2--about only
    ========================================================= */
 
-/* =========================================================
-   SECTION + SHELL
-   ========================================================= */
-
-.mission-v2 {
+.mission-v2--about {
     position: relative;
     padding: clamp(78px, 7vw, 78px) 0;
     overflow: hidden;
+
+    /* knobs */
+    --mission-controls-h: 76px;
+    /* approx: btn+wrap */
+    --mission-bottom-gap: 12px;
+    /* distance above controls for BL/BR */
+    --mission-stage-h: clamp(520px, 58vh, 680px);
+    /* paired-mode stage height floor */
 }
 
-/* NOTE: glow is disabled at bottom of file in "KILL ALL GLOWS" block */
-.mission-v2::before {
-    content: "";
-    position: absolute;
-    inset: -140px -140px auto -140px;
-    height: 520px;
-    background:
-        radial-gradient(900px 520px at 18% 30%, rgba(18, 192, 138, .14), transparent 60%),
-        radial-gradient(800px 520px at 80% 10%, rgba(197, 138, 99, .10), transparent 62%);
-    pointer-events: none;
-}
-
-.mission-v2-shell {
+/* =========================
+   SHELL = card (2 rows)
+   ========================= */
+.mission-v2--about .mission-v2-shell {
     position: relative;
     width: 100%;
-    height: clamp(420px, 52vw, 620px);
+    max-width: 1300px;
+    margin: 0 auto;
+
     border-radius: var(--radius-xl);
     overflow: hidden;
+
     border: 1px solid rgba(255, 255, 255, .12);
-    background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .02));
+    background: #000;
+    /* prevent lighter band */
     box-shadow: var(--shadow-soft);
+
+    display: grid;
+    grid-template-rows: 1fr auto;
+    /* stage + controls */
     isolation: isolate;
-
-    /* prevent ultra-wide "rectangle" distortion */
-    max-width: 1600px;
-    margin: 0 auto;
 }
 
-@supports (aspect-ratio: 1 / 1) {
-    .mission-v2-shell {
-        height: auto;
-        aspect-ratio: 16 / 9;
-        min-height: 420px;
-        max-height: 620px;
-    }
-}
-
-@media (min-width: 1400px) {
-    @supports (aspect-ratio: 1 / 1) {
-        .mission-v2-shell {
-            aspect-ratio: 21 / 9;
-            max-height: 640px;
-        }
-    }
-}
-
-/* =========================================================
-   SLIDER + SLIDES (desktop base)
-   ========================================================= */
-
-.mission-slider {
-    position: relative;
-    width: 100%;
-    height: 100%;
+/* =========================
+   SLIDER (stage)
+   ========================= */
+.mission-v2--about .mission-slider {
+    grid-row: 1;
     margin: 0;
     padding: 0;
     list-style: none;
+
+    position: relative;
+    min-height: 420px;
+    /* base for single view */
 }
 
-.mission-item {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
+/* Slides: only active participates by default */
+.mission-v2--about .mission-item {
+    position: relative;
+    display: none;
+    opacity: 1;
     pointer-events: none;
 
-    background-position: center;
+    background-position: var(--bg-pos-m, 50% 35%);
     background-size: cover;
+    background-repeat: no-repeat;
 
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    will-change: opacity;
-    transition: opacity .55s ease;
+    overflow: hidden;
 }
 
-.mission-item.is-active {
-    opacity: 1;
+.mission-v2--about .mission-item.is-active {
+    display: block;
     pointer-events: auto;
 }
 
-/* readability overlay only on active slide */
-.mission-item::after {
+/* Blur layer (ONLY on active) */
+.mission-v2--about .mission-item.is-active::before {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 0;
+
+    background-image: inherit;
+    background-size: inherit;
+    background-position: inherit;
+    background-repeat: no-repeat;
+
+    filter: blur(16px) saturate(1.12) contrast(1.03);
+    transform: scale(1.10);
+    opacity: .92;
+
     pointer-events: none;
-    opacity: 0;
-    transition: opacity .55s ease;
 }
 
-.mission-item.is-active::after {
-    opacity: 1;
-    background:
-        linear-gradient(90deg,
-            rgba(0, 0, 0, .74) 0%,
-            rgba(0, 0, 0, .46) 40%,
-            rgba(0, 0, 0, .18) 70%,
-            rgba(0, 0, 0, .06) 100%),
-        linear-gradient(180deg,
-            rgba(0, 0, 0, .06) 0%,
-            rgba(0, 0, 0, .44) 100%);
-}
-
-/* =========================================================
-   CORNER OVERLAY TEXT (desktop base) + stagger reveal
-   Positioning is handled by BL/BR/TL/TR blocks below.
-   ========================================================= */
-
-.mission-content {
+/* Dark overlay (ONLY on active) */
+.mission-v2--about .mission-item.is-active::after {
+    content: "";
     position: absolute;
-    z-index: 3;
+    inset: 0;
+    z-index: 1;
 
-    width: min(44vw, 560px);
-    max-width: 560px;
+    background:
+        radial-gradient(120% 80% at 50% 10%, rgba(255, 255, 255, .06), transparent 60%),
+        linear-gradient(180deg,
+            rgba(0, 0, 0, .40) 0%,
+            rgba(0, 0, 0, .78) 58%,
+            rgba(0, 0, 0, 1) 100%);
 
-    padding: 0;
-    background: none;
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
-    backdrop-filter: none;
+    pointer-events: none;
+}
+
+/* =========================
+   CONTENT (default = normal flow panel)
+   ========================= */
+.mission-v2--about .mission-content {
+    position: relative;
+    z-index: 2;
+
+    padding: 20px 18px 22px;
+    margin: 0;
 
     color: rgba(255, 255, 255, .96);
-    text-shadow: 0 10px 26px rgba(0, 0, 0, .70);
-
-    opacity: 0;
-    pointer-events: none;
-}
-
-.mission-item.is-active .mission-content {
-    opacity: 1;
+    text-shadow: none;
     pointer-events: auto;
 }
 
-.mission-title {
+.mission-v2--about .mission-title {
     margin: 0 0 10px;
-    font-size: clamp(1.8rem, 3.2vw, 2.6rem);
-    line-height: 1.05;
-    letter-spacing: -.02em;
+    text-align: center;
     text-transform: uppercase;
+    letter-spacing: -.02em;
+    line-height: 1.08;
+    font-size: clamp(1.35rem, 2.6vw, 2.0rem);
     color: rgba(255, 255, 255, .98);
-
-    opacity: 0;
-    transform: translateY(10px);
 }
 
-.mission-desc,
-.mission-content .btn {
-    opacity: 0;
-    transform: translateY(10px);
-}
-
-.mission-item.is-active .mission-title {
-    animation: missionTitleIn .45s cubic-bezier(.2, .8, .2, 1) .05s forwards;
-}
-
-.mission-item.is-active .mission-desc {
-    animation: missionBodyIn .65s ease .55s forwards;
-}
-
-.mission-item.is-active .mission-content .btn {
-    animation: missionBodyIn .65s ease .70s forwards;
-}
-
-.mission-desc {
+.mission-v2--about .mission-desc {
     margin: 0 0 14px;
-    line-height: 1.65;
-    font-size: 1.02rem;
+    line-height: 1.6;
+    font-size: 1rem;
     color: rgba(255, 255, 255, .86);
-    max-width: 56ch;
+    max-width: 72ch;
 }
 
-.mission-content .btn {
-    border-color: rgba(255, 255, 255, .34);
-    background: rgba(255, 255, 255, .10);
-    box-shadow: 0 14px 34px rgba(0, 0, 0, .35);
-}
-
-.mission-content .btn:hover {
-    border-color: rgba(18, 192, 138, .70);
-    background: rgba(18, 192, 138, .16);
-}
-
-@keyframes missionTitleIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes missionBodyIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* =========================================================
-   TEXT POSITIONS — BL / BR
-   ========================================================= */
-
-.mission-item[data-pos="bl"] .mission-content {
-    bottom: clamp(70px, 6vw, 96px);
-    top: auto;
-    left: clamp(18px, 3.2vw, 40px);
-    right: auto;
-    text-align: left;
-}
-
-.mission-item[data-pos="br"] .mission-content {
-    bottom: clamp(70px, 6vw, 96px);
-    top: auto;
-    left: auto;
-    right: clamp(18px, 3.2vw, 40px);
-    text-align: right;
-}
-
-/* button + paragraph alignment helpers */
-.mission-item[data-pos="br"] .mission-content .btn {
-    margin-left: auto;
-}
-
-.mission-item[data-pos="bl"] .mission-content .btn {
-    margin-right: auto;
-}
-
-.mission-item[data-pos="br"] .mission-desc {
-    margin-left: auto;
-}
-
-.mission-item[data-pos="bl"] .mission-desc {
-    margin-right: auto;
-}
-
-/* =========================================================
-   TEXT POSITIONS — TL / TR (About page)
-   ========================================================= */
-
-.mission-item[data-pos="tl"] .mission-content {
-    top: clamp(18px, 3.2vw, 34px);
-    bottom: auto;
-    left: clamp(18px, 3.2vw, 40px);
-    right: auto;
-    text-align: left;
-}
-
-.mission-item[data-pos="tr"] .mission-content {
-    top: clamp(18px, 3.2vw, 34px);
-    bottom: auto;
-    left: auto;
-    right: clamp(18px, 3.2vw, 40px);
-    text-align: right;
-}
-
-.mission-item[data-pos="tr"] .mission-desc,
-.mission-item[data-pos="tr"] .mission-bullets {
-    margin-left: auto;
-}
-
-.mission-item[data-pos="tl"] .mission-desc,
-.mission-item[data-pos="tl"] .mission-bullets {
-    margin-right: auto;
-}
-
-/* =========================================================
-   CONTROLS ROW (desktop base)
-   ========================================================= */
-
-.mission-controls {
-    position: absolute;
-    bottom: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 20;
-
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    width: min(860px, calc(100% - 28px));
-}
-
-.mission-nav-btn {
-    flex: 0 0 auto;
-    width: 46px;
-    height: 46px;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, .18);
-    background: rgba(255, 255, 255, .10);
-    color: rgba(255, 255, 255, .92);
-    font-size: 28px;
-    line-height: 1;
-    display: grid;
-    place-items: center;
-    cursor: pointer;
-    backdrop-filter: blur(10px);
-    transition: transform .15s ease, background .15s ease, border-color .15s ease;
-    position: relative;
-    z-index: 21;
-}
-
-.mission-nav-btn:hover {
-    transform: translateY(-1px);
-    background: rgba(18, 192, 138, .14);
-    border-color: rgba(18, 192, 138, .55);
-}
-
-.mission-nav-btn:active {
-    transform: translateY(0);
-}
-
-.mission-timer {
-    flex: 1 1 auto;
-    min-width: 96px;
-    max-width: 620px;
-    height: 6px;
-
-    border-radius: 999px;
-    background: rgba(255, 255, 255, .10);
-    border: 1px solid rgba(255, 255, 255, .14);
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-
-    position: relative;
-    z-index: 21;
-}
-
-.mission-timer-bar {
-    display: block;
-    height: 100%;
-    width: 0%;
-    border-radius: 999px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-}
-
-/* =========================================================
-   STORYTELLING BULLETS
-   ========================================================= */
-
-.mission-bullets {
-    margin: 6px 0 0;
+/* Bullets */
+.mission-v2--about .mission-bullets {
+    margin: 0;
     padding: 0;
     list-style: none;
-    display: grid;
-    gap: 8px;
-    max-width: 56ch;
 
-    opacity: 0;
-    transform: translateY(10px);
+    display: grid;
+    gap: 10px;
+    max-width: 72ch;
 }
 
-.mission-bullets li {
+.mission-v2--about .mission-bullets li {
     display: flex;
     align-items: flex-start;
     gap: 10px;
+
     font-size: .98rem;
     line-height: 1.5;
     color: rgba(255, 255, 255, .84);
 }
 
-.mission-bullets li::before {
+.mission-v2--about .mission-bullets li::before {
     content: "";
     width: 7px;
     height: 7px;
@@ -400,263 +178,260 @@
     box-shadow: 0 0 0 3px rgba(18, 192, 138, .14);
 }
 
-.mission-item.is-active .mission-bullets {
-    animation: missionBodyIn .65s ease .75s forwards;
+/* =========================
+   CONTROLS — full-width dark lower bar
+   (always bottom because it's row 2)
+   ========================= */
+.mission-v2--about .mission-controls-wrap {
+    grid-row: 2;
+    width: 100%;
+    margin: 0;
+
+    padding: 14px 14px 16px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, .70), rgba(0, 0, 0, .95));
+    border-top: 1px solid rgba(255, 255, 255, .10);
 }
 
-/* RIGHT-aligned slides (TR + BR): dot on RIGHT */
-.mission-item[data-pos="tr"] .mission-bullets,
-.mission-item[data-pos="br"] .mission-bullets {
-    margin-left: auto;
-    text-align: right;
-    justify-items: end;
+.mission-v2--about .mission-controls {
+    position: static;
+    transform: none;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: 0;
 }
 
-.mission-item[data-pos="tr"] .mission-bullets li,
-.mission-item[data-pos="br"] .mission-bullets li {
-    justify-content: flex-end;
-    flex-direction: row-reverse;
-    text-align: right;
+/* ✅ restore original hover/active feel */
+.mission-v2--about .mission-nav-btn {
+    flex: 0 0 auto;
+    width: 46px;
+    height: 46px;
+    border-radius: 999px;
+
+    border: 1px solid rgba(255, 255, 255, .18);
+    background: rgba(255, 255, 255, .10);
+    color: rgba(255, 255, 255, .92);
+
+    font-size: 28px;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    transition: transform .15s ease, background .15s ease, border-color .15s ease;
 }
 
-.mission-item[data-pos="tr"] .mission-bullets li::before,
-.mission-item[data-pos="br"] .mission-bullets li::before {
-    margin-left: 10px;
-    margin-right: 0;
+.mission-v2--about .mission-nav-btn:hover {
+    transform: translateY(-1px);
+    background: rgba(18, 192, 138, .14);
+    border-color: rgba(18, 192, 138, .55);
 }
 
-/* =========================================================
-   MOBILE @720 — blurred image behind text + controls
-   - Shell becomes grid: [content] [controls]
-   - Content is normal flow (no corner positioning)
-   - Controls are ONE edge-to-edge bar (no double bubble)
-   ========================================================= */
+.mission-v2--about .mission-nav-btn:active {
+    transform: translateY(0);
+}
 
-@media (max-width: 720px) {
+.mission-v2--about .mission-timer {
+    flex: 1 1 auto;
+    min-width: 84px;
+    height: 5px;
 
-    /* Card becomes 2 rows */
-    .mission-v2-shell {
-        display: grid !important;
-        grid-template-rows: 1fr auto;
-        height: auto !important;
-        min-height: 0 !important;
-        aspect-ratio: auto !important;
-        overflow: hidden;
-        position: relative;
-        isolation: isolate;
-        background: #000;
-    }
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255, 255, 255, .12);
+    overflow: hidden;
 
-    .mission-slider {
-        grid-row: 1;
-        height: auto !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.mission-v2--about .mission-timer-bar {
+    display: block;
+    height: 100%;
+    width: 0%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+
+/* Small tweaks */
+@media (max-width: 980px) {
+    .mission-v2--about .mission-slider {
         min-height: 0;
-        position: relative;
-        z-index: 2;
-        padding: 0 !important;
-        margin: 0 !important;
     }
 
-    /* Only active slide participates in layout */
-    .mission-item {
-        position: relative !important;
-        inset: auto !important;
-        display: none !important;
-        opacity: 1 !important;
-        pointer-events: none !important;
+    .mission-v2--about .mission-content {
+        padding: 18px 16px 18px;
     }
 
-    .mission-item.is-active {
-        display: block !important;
-        pointer-events: auto !important;
-
-        /* the LI keeps original background for cloning */
-        background-position: var(--bg-pos-m, 50% 35%);
-        background-size: cover;
+    .mission-v2--about .mission-title {
+        font-size: clamp(1.25rem, 6.2vw, 1.65rem);
     }
 
-    /* blurred image layer */
-    .mission-item.is-active::before {
-        content: "" !important;
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-
-        background-image: inherit;
-        background-size: inherit;
-        background-position: inherit;
-        background-repeat: no-repeat;
-
-        filter: blur(16px) saturate(1.12) contrast(1.03);
-        transform: scale(1.10);
-        opacity: .92;
-    }
-
-    /* dark overlay layer */
-    .mission-item.is-active::after {
-        content: "" !important;
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        opacity: 1 !important;
-
-        background:
-            radial-gradient(120% 80% at 50% 10%, rgba(255, 255, 255, .06), transparent 60%),
-            linear-gradient(180deg,
-                rgba(0, 0, 0, .40) 0%,
-                rgba(0, 0, 0, .78) 58%,
-                rgba(0, 0, 0, 1) 100%);
-    }
-
-    /* Content becomes normal flow */
-    .mission-content {
-        position: relative !important;
-        z-index: 2 !important;
-
-        width: auto !important;
-        max-width: none !important;
-
-        left: auto !important;
-        right: auto !important;
-        top: auto !important;
-        bottom: auto !important;
-
-        padding: 18px 16px 18px !important;
-        margin: 0 !important;
-
-        background: transparent !important;
-        border: 0 !important;
-        text-shadow: none !important;
-        text-align: left !important;
-        pointer-events: auto !important;
-        opacity: 1 !important;
-    }
-
-    .mission-title {
-        text-align: center !important;
-        margin: 0 0 10px !important;
-        font-size: clamp(1.25rem, 6.2vw, 1.65rem) !important;
-        line-height: 1.08 !important;
-    }
-
-    .mission-desc {
-        margin: 0 0 12px !important;
-        font-size: .95rem !important;
-        line-height: 1.55 !important;
-        max-width: none !important;
-    }
-
-    /* Controls = edge-to-edge bar (no extra bubble) */
-    .mission-controls {
-        grid-row: 2 !important;
-        position: relative !important;
-        z-index: 20 !important;
-
-        left: auto !important;
-        bottom: auto !important;
-        transform: none !important;
-
-        width: 100% !important;
-        margin: 0 !important;
-
-        padding: 12px 14px !important;
-        border-radius: 0 !important;
-
-        background: linear-gradient(180deg, rgba(0, 0, 0, .55), rgba(0, 0, 0, .82)) !important;
-        border: 0 !important;
-        border-top: 1px solid rgba(255, 255, 255, .10) !important;
-
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-
-        gap: 12px !important;
-    }
-
-    .mission-timer {
-        max-width: none !important;
-        flex: 1 1 auto !important;
-
-        height: 5px !important;
-        min-width: 84px !important;
-
-        background: rgba(255, 255, 255, .08) !important;
-        border-color: rgba(255, 255, 255, .12) !important;
-    }
-
-    /* Kill all old corner positioning on mobile */
-    .mission-item[data-pos="bl"] .mission-content,
-    .mission-item[data-pos="br"] .mission-content,
-    .mission-item[data-pos="tl"] .mission-content,
-    .mission-item[data-pos="tr"] .mission-content {
-        left: auto !important;
-        right: auto !important;
-        top: auto !important;
-        bottom: auto !important;
-    }
-
-    /* Bullets: hard reset (always left on mobile) */
-    .mission-bullets {
-        margin: 0 !important;
-        padding: 0 !important;
-        max-width: none !important;
-        gap: 8px !important;
-
-        text-align: left !important;
-        justify-items: start !important;
-    }
-
-    .mission-bullets li {
-        flex-direction: row !important;
-        justify-content: flex-start !important;
-        text-align: left !important;
-    }
-
-    .mission-bullets li::before {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
-
-    .mission-item[data-pos="tr"] .mission-bullets,
-    .mission-item[data-pos="br"] .mission-bullets {
-        margin-left: 0 !important;
-        justify-items: start !important;
-        text-align: left !important;
-    }
-
-    .mission-item[data-pos="tr"] .mission-bullets li,
-    .mission-item[data-pos="br"] .mission-bullets li {
-        flex-direction: row !important;
-        justify-content: flex-start !important;
-        text-align: left !important;
-    }
-
-    .mission-item[data-pos="tr"] .mission-bullets li::before,
-    .mission-item[data-pos="br"] .mission-bullets li::before {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
+    .mission-v2--about .mission-desc {
+        font-size: .95rem;
     }
 }
 
-/* =========================================================
-   Reduced motion
-   ========================================================= */
-
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-
-    .mission-item,
-    .mission-item::after {
+    .mission-v2--about .mission-nav-btn {
         transition: none;
     }
-
-    .mission-title,
-    .mission-desc,
-    .mission-content .btn {
-        animation: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-    }
 }
 
+/* =========================================================
+   PAIRED MODE (>=980px)
+   - 2 text blocks over ONE bg
+   - .is-active paints blur/overlay
+   - .is-paired is text-only overlay
+   - Stage has a height floor so 2-view is never cramped
+   ========================================================= */
+
+@media (min-width: 980px) {
+
+    /* give the stage that "premium" height */
+    .mission-v2--about .mission-slider {
+        min-height: var(--mission-stage-h);
+    }
+
+    /* stage-style overlay */
+    .mission-v2--about .mission-item {
+        position: absolute;
+        inset: 0;
+        display: none;
+        pointer-events: none;
+    }
+
+    .mission-v2--about .mission-item.is-active,
+    .mission-v2--about .mission-item.is-paired {
+        display: block;
+        pointer-events: auto;
+    }
+
+    /* make sure the ACTIVE slide owns the height */
+    .mission-v2--about .mission-item.is-active {
+        min-height: var(--mission-stage-h);
+    }
+
+    /* paired slide never paints bg layers */
+    .mission-v2--about .mission-item.is-paired {
+        background-image: none !important;
+    }
+
+    .mission-v2--about .mission-item.is-paired::before,
+    .mission-v2--about .mission-item.is-paired::after {
+        content: none !important;
+        display: none !important;
+    }
+
+    /* content becomes corner overlay */
+    .mission-v2--about .mission-content {
+        position: absolute;
+        z-index: 2;
+
+        width: min(34vw, 460px);
+        max-width: 460px;
+
+        padding: 0;
+        margin: 0;
+
+        text-shadow: 0 10px 26px rgba(0, 0, 0, .70);
+    }
+
+    /* cap line-length so TL/TR never collide */
+    .mission-v2--about .mission-title {
+        text-align: inherit !important;
+        max-width: 22ch;
+        font-size: clamp(1.35rem, 2vw, 2.05rem);
+        line-height: 1.06;
+    }
+
+    .mission-v2--about .mission-desc,
+    .mission-v2--about .mission-bullets {
+        max-width: 46ch;
+    }
+
+    .mission-v2--about .mission-bullets {
+        gap: 9px;
+    }
+
+    .mission-v2--about .mission-bullets li {
+        font-size: .96rem;
+        line-height: 1.45;
+    }
+
+    /* TL/TR/BL/BR positions */
+    .mission-v2--about .mission-item[data-pos="tl"] .mission-content {
+        top: clamp(18px, 3.2vw, 40px);
+        left: clamp(18px, 3.2vw, 60px);
+        right: auto;
+        bottom: auto;
+        text-align: left;
+    }
+
+    .mission-v2--about .mission-item[data-pos="tr"] .mission-content {
+        top: clamp(18px, 3.2vw, 40px);
+        right: clamp(18px, 3.2vw, 60px);
+        left: auto;
+        bottom: auto;
+        text-align: right;
+    }
+
+    /* ✅ BL/BR sit consistently close to controls */
+    .mission-v2--about .mission-item[data-pos="bl"] .mission-content {
+        bottom: calc(var(--mission-controls-h) + var(--mission-bottom-gap) - 40px) !important;
+        left: clamp(18px, 3.2vw, 60px);
+        right: auto;
+        top: auto;
+        text-align: left;
+    }
+
+    .mission-v2--about .mission-item[data-pos="br"] .mission-content {
+        bottom: calc(var(--mission-controls-h) + var(--mission-bottom-gap) - 40px) !important;
+        right: clamp(18px, 3.2vw, 60px);
+        left: auto;
+        top: auto;
+        text-align: right;
+    }
+
+    /* RIGHT-aligned bullets (TR/BR): dot on right */
+    .mission-v2--about .mission-item[data-pos="tr"] .mission-bullets,
+    .mission-v2--about .mission-item[data-pos="br"] .mission-bullets {
+        margin-left: auto;
+        text-align: right;
+        justify-items: end;
+    }
+
+    .mission-v2--about .mission-item[data-pos="tr"] .mission-bullets li,
+    .mission-v2--about .mission-item[data-pos="br"] .mission-bullets li {
+        justify-content: flex-end;
+        flex-direction: row-reverse;
+        text-align: right;
+    }
+
+    .mission-v2--about .mission-item[data-pos="tr"] .mission-bullets li::before,
+    .mission-v2--about .mission-item[data-pos="br"] .mission-bullets li::before {
+        margin-left: 10px;
+        margin-right: 0;
+    }
+
+    /* keep controls above in stacking context */
+    .mission-v2--about .mission-controls-wrap {
+        position: relative;
+        z-index: 3;
+    }
+}
 /* =========================================================
    FOUNDERS — FINAL (clean)
    - Desktop: image L/R, optional flip on 2nd card
@@ -1148,3 +923,4 @@ html[data-brand="clinic"] .why-bubble::before {
     content: none !important;
     display: none !important;
 }
+
