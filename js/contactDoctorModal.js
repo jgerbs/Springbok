@@ -1,3 +1,4 @@
+/* contactDoctorModal.js — Netlify Forms + custom dropdowns + sanitization + real POST (to "/") */
 (() => {
   const modal = document.getElementById("doctorModal");
   if (!modal) return;
@@ -11,16 +12,13 @@
   const doctorHidden = document.getElementById("doctorSelect"); // hidden input
   const apptHidden = document.getElementById("apptTypeSelect"); // hidden input
 
+  // IMPORTANT: must match your form's name + hidden form-name value
+  const NETLIFY_FORM_NAME = form.getAttribute("name") || "doctor-contact";
+
   let lastFocus = null;
 
   // =========================================================
   // Sanitization helpers (safe + simple)
-  // - trims
-  // - normalizes unicode
-  // - removes control chars
-  // - collapses whitespace
-  // - caps length per field
-  // - optionally strips angle brackets to prevent HTML-ish payloads
   // =========================================================
   const LIMITS = {
     name: 80,
@@ -34,52 +32,37 @@
 
   const normalizeString = (s) => {
     if (typeof s !== "string") return "";
-    // NFKC reduces weird unicode lookalikes / odd forms
     let out = s.normalize("NFKC");
-    // remove ASCII control chars incl. DEL
     out = out.replace(/[\u0000-\u001F\u007F]/g, "");
-    // collapse whitespace
     out = out.replace(/\s+/g, " ").trim();
     return out;
   };
 
   const stripAngleBrackets = (s) => s.replace(/[<>]/g, "");
-
   const clampLen = (s, max) => (max ? s.slice(0, max) : s);
 
-  // Field-aware sanitizer
   const sanitizeField = (fieldName, value) => {
     let v = normalizeString(value);
 
-    // basic field-specific handling
     switch (fieldName) {
       case "email":
-        // emails should not have spaces
         v = v.replace(/\s+/g, "");
-        v = clampLen(v, LIMITS.email);
-        return v;
+        return clampLen(v, LIMITS.email);
 
       case "phone":
-        // keep common phone chars; remove everything else
         v = v.replace(/[^\d+().\-\s]/g, "");
-        v = clampLen(v, LIMITS.phone);
-        return v;
+        return clampLen(v, LIMITS.phone);
 
       case "message":
-        // allow new lines (normalizeString collapsed them) -> keep original but still safe
-        // Rebuild message sanitization separately to preserve line breaks.
         v = (typeof value === "string" ? value.normalize("NFKC") : "")
           .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, "") // keep \t \n \r
-          .replace(/[<>]/g, "") // prevent HTML-ish payloads
+          .replace(/[<>]/g, "")
           .trim();
-        v = clampLen(v, LIMITS.message);
-        return v;
+        return clampLen(v, LIMITS.message);
 
       default:
-        // generic text fields
         v = stripAngleBrackets(v);
-        v = clampLen(v, LIMITS[fieldName] || 200);
-        return v;
+        return clampLen(v, LIMITS[fieldName] || 200);
     }
   };
 
@@ -89,26 +72,19 @@
     if (clean !== el.value) el.value = clean;
   };
 
-  // Sanitize all relevant inputs before submit
   const sanitizeForm = () => {
     const fields = form.querySelectorAll("input[name], textarea[name]");
     fields.forEach((el) => sanitizeAndSet(el));
 
-    // Also sanitize hidden dropdown fields by their names
     if (doctorHidden) doctorHidden.value = sanitizeField("doctor", doctorHidden.value);
     if (apptHidden) apptHidden.value = sanitizeField("apptType", apptHidden.value);
   };
 
-  // Live sanitization (lightweight): on blur + paste
-  // (avoid sanitizing on every keypress to keep typing smooth)
   const wireSanitizers = () => {
     const fields = form.querySelectorAll('input[name]:not([type="hidden"]), textarea[name]');
     fields.forEach((el) => {
       el.addEventListener("blur", () => sanitizeAndSet(el));
-      el.addEventListener("paste", () => {
-        // wait for paste to land
-        requestAnimationFrame(() => sanitizeAndSet(el));
-      });
+      el.addEventListener("paste", () => requestAnimationFrame(() => sanitizeAndSet(el)));
     });
   };
   wireSanitizers();
@@ -129,7 +105,6 @@
     const valueEl = dd.querySelector(".dd-value");
     const opts = dd.querySelectorAll(".dd-opt");
 
-    // ✅ sanitize before storing/displaying
     const ddName = hidden?.name || "text";
     const safeVal =
       ddName === "doctor"
@@ -231,19 +206,19 @@
     if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
   });
 
-  // ---------- "Sending..." / "Sent ✓" submit behavior ----------
+  // ---------- Submit behavior (REAL Netlify POST) ----------
   let sending = false;
 
   const setDisabled = (state) => {
-    const sendBtn = form?.querySelector('button[type="submit"]');
-    const cancelBtn = form?.querySelector('button[data-close="true"]');
+    const sendBtn = form.querySelector('button[type="submit"]');
+    const cancelBtn = form.querySelector('button[data-close="true"]');
     const xBtn = modal.querySelector('.modal-x[data-close="true"]');
 
     if (sendBtn) sendBtn.disabled = state;
     if (cancelBtn) cancelBtn.disabled = state;
     if (xBtn) xBtn.disabled = state;
 
-    form?.querySelectorAll("input, textarea, select, button").forEach((el) => {
+    form.querySelectorAll("input, textarea, select, button").forEach((el) => {
       if (el === sendBtn || el === cancelBtn || el === xBtn) return;
       el.disabled = state;
     });
@@ -255,16 +230,13 @@
     e.preventDefault();
     if (sending) return;
 
-    // ✅ sanitize everything right before validation + send
     sanitizeForm();
 
-    // Browser validation
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
 
-    // Hidden dropdowns validation
     if (!doctorHidden?.value || !apptHidden?.value) {
       alert("Please select a Doctor/Service and Appointment type.");
       return;
@@ -279,18 +251,26 @@
     if (sendBtn) sendBtn.textContent = "Sending…";
 
     try {
-      // ✅ Netlify Forms POST (urlencoded)
-      const fd = new FormData(form);
-      const body = new URLSearchParams();
-      for (const [k, v] of fd.entries()) body.append(k, String(v));
+      const formData = new FormData(form);
 
+      // ✅ guarantee Netlify sees the form-name in the POST body
+      formData.set("form-name", NETLIFY_FORM_NAME);
+
+      const body = new URLSearchParams(formData).toString();
+
+      // ✅ IMPORTANT: Netlify Forms AJAX submissions should POST to "/"
       const res = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body.toString(),
+        body,
       });
 
-      if (!res.ok) throw new Error("Netlify form submit failed");
+      if (!res.ok) {
+        // try to read response text for debugging
+        let txt = "";
+        try { txt = await res.text(); } catch (_) { }
+        throw new Error(`Netlify form submit failed (${res.status})${txt ? `: ${txt}` : ""}`);
+      }
 
       if (sendBtn) sendBtn.textContent = "Sent ✓";
 
@@ -305,8 +285,8 @@
       }, 1800);
 
     } catch (err) {
-      console.error(err);
-      alert("Could not send your request. Please try again.");
+      console.error("Form submit error:", err);
+      alert("Could not send your request. Please try again." + (err?.message ? ` (${err.message})` : ""));
       if (sendBtn) sendBtn.textContent = prevText;
       setDisabled(false);
       sending = false;
