@@ -6,10 +6,112 @@
   const closeEls = modal.querySelectorAll('[data-close="true"]');
 
   const form = document.getElementById("doctorContactForm");
+  if (!form) return;
+
   const doctorHidden = document.getElementById("doctorSelect"); // hidden input
   const apptHidden = document.getElementById("apptTypeSelect"); // hidden input
 
   let lastFocus = null;
+
+  // =========================================================
+  // Sanitization helpers (safe + simple)
+  // - trims
+  // - normalizes unicode
+  // - removes control chars
+  // - collapses whitespace
+  // - caps length per field
+  // - optionally strips angle brackets to prevent HTML-ish payloads
+  // =========================================================
+  const LIMITS = {
+    name: 80,
+    phone: 30,
+    email: 254,
+    doctor: 80,
+    apptType: 80,
+    subject: 120,
+    message: 2000
+  };
+
+  const normalizeString = (s) => {
+    if (typeof s !== "string") return "";
+    // NFKC reduces weird unicode lookalikes / odd forms
+    let out = s.normalize("NFKC");
+    // remove ASCII control chars incl. DEL
+    out = out.replace(/[\u0000-\u001F\u007F]/g, "");
+    // collapse whitespace
+    out = out.replace(/\s+/g, " ").trim();
+    return out;
+  };
+
+  const stripAngleBrackets = (s) => s.replace(/[<>]/g, "");
+
+  const clampLen = (s, max) => (max ? s.slice(0, max) : s);
+
+  // Field-aware sanitizer
+  const sanitizeField = (fieldName, value) => {
+    let v = normalizeString(value);
+
+    // basic field-specific handling
+    switch (fieldName) {
+      case "email":
+        // emails should not have spaces
+        v = v.replace(/\s+/g, "");
+        v = clampLen(v, LIMITS.email);
+        return v;
+
+      case "phone":
+        // keep common phone chars; remove everything else
+        v = v.replace(/[^\d+().\-\s]/g, "");
+        v = clampLen(v, LIMITS.phone);
+        return v;
+
+      case "message":
+        // allow new lines (normalizeString collapsed them) -> keep original but still safe
+        // Rebuild message sanitization separately to preserve line breaks.
+        v = (typeof value === "string" ? value.normalize("NFKC") : "")
+          .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, "") // keep \t \n \r
+          .replace(/[<>]/g, "") // prevent HTML-ish payloads
+          .trim();
+        v = clampLen(v, LIMITS.message);
+        return v;
+
+      default:
+        // generic text fields
+        v = stripAngleBrackets(v);
+        v = clampLen(v, LIMITS[fieldName] || 200);
+        return v;
+    }
+  };
+
+  const sanitizeAndSet = (el) => {
+    if (!el || !el.name) return;
+    const clean = sanitizeField(el.name, el.value);
+    if (clean !== el.value) el.value = clean;
+  };
+
+  // Sanitize all relevant inputs before submit
+  const sanitizeForm = () => {
+    const fields = form.querySelectorAll("input[name], textarea[name]");
+    fields.forEach((el) => sanitizeAndSet(el));
+
+    // Also sanitize hidden dropdown fields by their names
+    if (doctorHidden) doctorHidden.value = sanitizeField("doctor", doctorHidden.value);
+    if (apptHidden) apptHidden.value = sanitizeField("apptType", apptHidden.value);
+  };
+
+  // Live sanitization (lightweight): on blur + paste
+  // (avoid sanitizing on every keypress to keep typing smooth)
+  const wireSanitizers = () => {
+    const fields = form.querySelectorAll('input[name]:not([type="hidden"]), textarea[name]');
+    fields.forEach((el) => {
+      el.addEventListener("blur", () => sanitizeAndSet(el));
+      el.addEventListener("paste", () => {
+        // wait for paste to land
+        requestAnimationFrame(() => sanitizeAndSet(el));
+      });
+    });
+  };
+  wireSanitizers();
 
   // ---------- Custom dropdown wiring ----------
   const dropdowns = modal.querySelectorAll(".field-dd[data-dd]");
@@ -27,14 +129,22 @@
     const valueEl = dd.querySelector(".dd-value");
     const opts = dd.querySelectorAll(".dd-opt");
 
-    hidden.value = val;
-    valueEl.textContent = val;
+    // ✅ sanitize before storing/displaying
+    const ddName = hidden?.name || "text";
+    const safeVal =
+      ddName === "doctor"
+        ? sanitizeField("doctor", val)
+        : ddName === "apptType"
+          ? sanitizeField("apptType", val)
+          : sanitizeField("text", val);
+
+    hidden.value = safeVal;
+    valueEl.textContent = safeVal;
 
     opts.forEach((o) =>
       o.setAttribute("aria-selected", o.dataset.value === val ? "true" : "false")
     );
 
-    // Let HTML form validation see it as changed
     hidden.dispatchEvent(new Event("change", { bubbles: true }));
   };
 
@@ -86,10 +196,8 @@
     modal.setAttribute("aria-hidden", "false");
     document.documentElement.style.overflow = "hidden";
 
-    // Force both dropdowns to "Select one" every time
     dropdowns.forEach(resetDropdown);
 
-    // ✅ If this button provided a doctor/service, set it AFTER reset
     if (preselectDoctor) {
       const doctorDD = modal.querySelector('.field-dd[data-dd="doctor"]');
       if (doctorDD) {
@@ -98,7 +206,6 @@
       }
     }
 
-    // Focus first input
     modal.querySelector('input[name="name"]')?.focus();
   };
 
@@ -124,12 +231,10 @@
     if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
   });
 
-
   // ---------- "Sending..." / "Sent ✓" submit behavior ----------
   let sending = false;
 
   const setDisabled = (state) => {
-    // disable submit + cancel + X while sending (prevents double submit + accidental close)
     const sendBtn = form?.querySelector('button[type="submit"]');
     const cancelBtn = form?.querySelector('button[data-close="true"]');
     const xBtn = modal.querySelector('.modal-x[data-close="true"]');
@@ -138,7 +243,6 @@
     if (cancelBtn) cancelBtn.disabled = state;
     if (xBtn) xBtn.disabled = state;
 
-    // also disable inputs to prevent edits during send
     form?.querySelectorAll("input, textarea, select, button").forEach((el) => {
       if (el === sendBtn || el === cancelBtn || el === xBtn) return;
       el.disabled = state;
@@ -147,18 +251,20 @@
     return { sendBtn, cancelBtn, xBtn };
   };
 
-  form?.addEventListener("submit", (e) => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
     if (sending) return;
 
-    // Let built-in validation run (required/format). If invalid, show browser UI.
-    if (form && !form.checkValidity()) {
+    // ✅ sanitize everything right before validation + send
+    sanitizeForm();
+
+    if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
 
-    // Basic required validation for our hidden selects
-    if (!doctorHidden.value || !apptHidden.value) {
+    // ✅ sanitize hidden selects too (already done), then validate
+    if (!doctorHidden?.value || !apptHidden?.value) {
       alert("Please select a Doctor/Service and Appointment type.");
       return;
     }
@@ -168,26 +274,22 @@
     const sendBtn = form.querySelector('button[type="submit"]');
     const prevText = sendBtn ? sendBtn.textContent : "";
 
-    // lock UI
     setDisabled(true);
-
     if (sendBtn) sendBtn.textContent = "Sending…";
 
     // simulate send delay
     setTimeout(() => {
       if (sendBtn) sendBtn.textContent = "Sent ✓";
 
-      // keep "Sent ✓" visible, then close + reset
       setTimeout(() => {
         form.reset();
         dropdowns.forEach(resetDropdown);
         closeModal();
 
-        // restore
         if (sendBtn) sendBtn.textContent = prevText;
         setDisabled(false);
         sending = false;
-      }, 2500); // how long "Sent ✓" stays visible
-    }, 850); // short pause for "Sending…"
+      }, 2500);
+    }, 850);
   });
 })();

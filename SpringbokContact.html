@@ -89,7 +89,7 @@
           <video class="hero-video" muted playsinline webkit-playsinline loop preload="metadata"
             poster="resources/heroVideos/contact-poster.jpg" data-src-mobile="resources/heroVideos/contact.mp4"
             data-src-desktop="resources/heroVideos/contact.mp4"></video>
-        
+
           <div class="hero-overlay"></div>
         </div>
 
@@ -283,7 +283,7 @@
     </div>
   </footer>
 
-  <!-- CONTACT DOCTOR MODAL (styled like contactModal) -->
+  <!-- CONTACT DOCTOR MODAL (Netlify Forms-ready, styled like contactModal) -->
   <div class="modal" id="doctorModal" aria-hidden="true">
     <div class="modal-backdrop" data-close="true"></div>
 
@@ -298,7 +298,21 @@
         </p>
       </div>
 
-      <form class="modal-form" id="doctorContactForm">
+      <!-- Netlify Forms: method + data-netlify + form-name + honeypot -->
+      <form class="modal-form" id="doctorContactForm" name="doctor-contact" method="POST" data-netlify="true"
+        netlify-honeypot="bot-field">
+
+        <!-- required hidden form-name -->
+        <input type="hidden" name="form-name" value="doctor-contact" />
+
+        <!-- honeypot (spam trap) -->
+        <p style="display:none;">
+          <label>
+            Don’t fill this out if you're human:
+            <input name="bot-field" />
+          </label>
+        </p>
+
         <div class="modal-grid">
           <label class="field">
             <span class="field-label">Full Name</span>
@@ -316,7 +330,6 @@
               required />
           </label>
 
-          <!-- Doctor / Service (custom dropdown) -->
           <div class="field select-field field-dd" data-dd="doctor">
             <span class="field-label">Doctor</span>
 
@@ -324,7 +337,6 @@
               <span class="dd-value" data-placeholder="Select one">Select one</span>
             </button>
 
-            <!-- hidden input keeps your form submission + required validation -->
             <input type="hidden" name="doctor" id="doctorSelect" required />
 
             <ul class="dd-menu" role="listbox" aria-label="Doctor / Service">
@@ -336,7 +348,6 @@
             </ul>
           </div>
 
-          <!-- Appointment type (custom dropdown) -->
           <div class="field select-field field-dd" data-dd="appt">
             <span class="field-label">Appointment type</span>
 
@@ -346,10 +357,8 @@
 
             <input type="hidden" name="apptType" id="apptTypeSelect" required />
 
-            <!-- JS will populate -->
             <ul class="dd-menu" role="listbox" aria-label="Appointment type"></ul>
           </div>
-
 
           <label class="field field-span">
             <span class="field-label">Subject</span>
@@ -362,6 +371,7 @@
             <textarea class="field-input field-textarea" name="message"
               placeholder="Tell us what you’re looking for and any timing preferences." rows="5" required></textarea>
           </label>
+
         </div>
 
         <div class="modal-actions">
@@ -370,7 +380,7 @@
         </div>
 
         <p class="modal-note">
-          If this is urgent, please call 911.
+          Please do not include personal health information. For urgent concerns call 911.
         </p>
       </form>
     </div>
