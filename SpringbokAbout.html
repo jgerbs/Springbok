@@ -532,10 +532,10 @@
   <!-- CONTACT DOCTOR MODAL (Netlify Forms-ready, styled like contactModal) -->
   <div class="modal" id="doctorModal" aria-hidden="true">
     <div class="modal-backdrop" data-close="true"></div>
-  
+
     <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="doctorModalTitle">
       <button class="modal-x" type="button" aria-label="Close" data-close="true">✕</button>
-  
+
       <div class="modal-head">
         <div class="modal-eyebrow">Contact</div>
         <h2 class="modal-title" id="doctorModalTitle">Request an appointment</h2>
@@ -543,14 +543,14 @@
           Fill this out and our team will route you to the right provider or next step.
         </p>
       </div>
-  
+
       <!-- Netlify Forms: method + data-netlify + form-name + honeypot -->
       <form class="modal-form" id="doctorContactForm" name="doctor-contact" method="POST" data-netlify="true"
         netlify-honeypot="bot-field">
-  
+
         <!-- required hidden form-name -->
         <input type="hidden" name="form-name" value="doctor-contact" />
-  
+
         <!-- honeypot (spam trap) -->
         <p style="display:none;">
           <label>
@@ -558,33 +558,33 @@
             <input name="bot-field" />
           </label>
         </p>
-  
+
         <div class="modal-grid">
           <label class="field">
             <span class="field-label">Full Name</span>
             <input class="field-input" type="text" name="name" placeholder="Your name" autocomplete="name" required />
           </label>
-  
+
           <label class="field">
             <span class="field-label">Phone Number</span>
             <input class="field-input" type="tel" name="phone" placeholder="(778) 000-0000" autocomplete="tel" />
           </label>
-  
+
           <label class="field field-span">
             <span class="field-label">Email</span>
             <input class="field-input" type="email" name="email" placeholder="you@email.com" autocomplete="email"
               required />
           </label>
-  
+
           <div class="field select-field field-dd" data-dd="doctor">
             <span class="field-label">Doctor</span>
-  
+
             <button class="dd-btn field-input" type="button" aria-haspopup="listbox" aria-expanded="false">
               <span class="dd-value" data-placeholder="Select one">Select one</span>
             </button>
-  
+
             <input type="hidden" name="doctor" id="doctorSelect" required />
-  
+
             <ul class="dd-menu" role="listbox" aria-label="Doctor / Service">
               <li class="dd-opt" role="option" data-value="Dr. Amor Kloppers">Dr. Amor Kloppers</li>
               <li class="dd-opt" role="option" data-value="Dr. Francois Erasmus">Dr. Francois Erasmus</li>
@@ -593,25 +593,25 @@
               <li class="dd-opt" role="option" data-value="General Inquiry">General Inquiry</li>
             </ul>
           </div>
-  
+
           <div class="field select-field field-dd" data-dd="appt">
             <span class="field-label">Appointment type</span>
-  
+
             <button class="dd-btn field-input" type="button" aria-haspopup="listbox" aria-expanded="false">
               <span class="dd-value" data-placeholder="Select one">Select one</span>
             </button>
-  
+
             <input type="hidden" name="apptType" id="apptTypeSelect" required />
-  
+
             <ul class="dd-menu" role="listbox" aria-label="Appointment type"></ul>
           </div>
-  
+
           <label class="field field-span">
             <span class="field-label">Subject</span>
-            <input class="field-input" type="text" name="subject" id="subjectInput"
+            <input class="field-input" type="text" name="requestSubject" id="subjectInput"
               placeholder="e.g., Face Lift, Blood Transfusion, IV Therapy, etc..." required />
           </label>
-  
+
           <label class="field field-span">
             <span class="field-label">Message</span>
             <textarea class="field-input field-textarea" name="message"
@@ -619,12 +619,12 @@
           </label>
 
         </div>
-  
+
         <div class="modal-actions">
           <button class="btn btn-outline" type="button" data-close="true">Cancel</button>
           <button class="btn btn-accent" type="submit">Send</button>
         </div>
-  
+
         <p class="modal-note">
           Please do not include personal health information. For urgent concerns call 911.
         </p>

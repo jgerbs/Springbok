@@ -1,4 +1,6 @@
-/* contactDoctorModal.js — Netlify Forms POST + dropdown modal (stable) + light sanitization */
+/* contactDoctorModal.js — Netlify Forms POST + dropdown modal (stable) + light sanitization
+   NOTE: your “Subject” field is now name="requestSubject" (NOT "subject") so Netlify won’t hijack email subject.
+*/
 (() => {
   const modal = document.getElementById("doctorModal");
   if (!modal) return;
@@ -9,9 +11,9 @@
   const form = document.getElementById("doctorContactForm");
   if (!form) return;
 
-  const doctorHidden = document.getElementById("doctorSelect"); // hidden input
-  const apptHidden = document.getElementById("apptTypeSelect"); // hidden input
-  const summaryHidden = document.getElementById("doctorSummary"); // optional hidden summary
+  const doctorHidden = document.getElementById("doctorSelect");     // hidden input
+  const apptHidden = document.getElementById("apptTypeSelect");     // hidden input
+  const summaryHidden = document.getElementById("doctorSummary");   // <input type="hidden" name="summary" id="doctorSummary" />
 
   const NETLIFY_FORM_NAME = form.getAttribute("name") || "doctor-contact";
 
@@ -30,7 +32,7 @@
     email: 254,
     doctor: 120,
     apptType: 120,
-    subject: 140,
+    requestSubject: 140, // renamed
     message: 2000
   };
 
@@ -58,13 +60,13 @@
     const nameEl = form.querySelector('input[name="name"]');
     const phoneEl = form.querySelector('input[name="phone"]');
     const emailEl = form.querySelector('input[name="email"]');
-    const subjEl = form.querySelector('input[name="subject"]');
+    const subjEl = form.querySelector('input[name="requestSubject"]'); // renamed
     const msgEl = form.querySelector('textarea[name="message"]');
 
     if (nameEl) nameEl.value = cleanText(nameEl.value, LIMITS.name);
     if (phoneEl) phoneEl.value = cleanPhone(phoneEl.value);
     if (emailEl) emailEl.value = cleanEmail(emailEl.value);
-    if (subjEl) subjEl.value = cleanText(subjEl.value, LIMITS.subject);
+    if (subjEl) subjEl.value = cleanText(subjEl.value, LIMITS.requestSubject);
     if (msgEl) msgEl.value = cleanText(msgEl.value, LIMITS.message);
 
     // Hidden dropdowns: sanitize but DO NOT blank valid values
@@ -79,17 +81,30 @@
     const phone = cleanPhone(form.querySelector('input[name="phone"]')?.value || "");
     const doctor = cleanText(doctorHidden?.value || "", LIMITS.doctor);
     const apptType = cleanText(apptHidden?.value || "", LIMITS.apptType);
-    const subject = cleanText(form.querySelector('input[name="subject"]')?.value || "", LIMITS.subject);
+    const reqSubject = cleanText(
+      form.querySelector('input[name="requestSubject"]')?.value || "",
+      LIMITS.requestSubject
+    );
     const message = cleanText(form.querySelector('textarea[name="message"]')?.value || "", LIMITS.message);
 
+    const line = "────────────────────────────";
+
     return [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Phone: ${phone}`,
-      `Doctor/Service: ${doctor}`,
-      `Appointment Type: ${apptType}`,
-      `Subject: ${subject}`,
-      `Message: ${message}`
+      "SPRINGBOK MEDICAL — BOOKING REQUEST",
+      line,
+      `Name:        ${name}`,
+      `Email:       ${email}`,
+      `Phone:       ${phone || "—"}`,
+      `Doctor:      ${doctor}`,
+      `Appt Type:   ${apptType}`,
+      line,
+      `Subject:     ${reqSubject || "—"}`,
+      "",
+      "Message:",
+      message || "—",
+      "",
+      line,
+      `Submitted:   ${new Date().toLocaleString()}`
     ].join("\n");
   };
 
@@ -172,7 +187,9 @@
     if (preselectDoctor) {
       const doctorDD = modal.querySelector('.field-dd[data-dd="doctor"]');
       if (doctorDD) {
-        const opt = doctorDD.querySelector(`.dd-opt[data-value="${CSS.escape(preselectDoctor)}"]`);
+        const opt = doctorDD.querySelector(
+          `.dd-opt[data-value="${CSS.escape(preselectDoctor)}"]`
+        );
         if (opt) setDropdownValue(doctorDD, preselectDoctor);
       }
     }
@@ -214,7 +231,7 @@
     if (cancelBtn) cancelBtn.disabled = state;
     if (xBtn) xBtn.disabled = state;
 
-    // ✅ lock the form without disabling fields (so FormData includes them)
+    // lock the form without disabling fields (so FormData includes them)
     form.classList.toggle("is-sending", state);
 
     return { sendBtn, cancelBtn, xBtn };
@@ -224,22 +241,18 @@
     e.preventDefault();
     if (sending) return;
 
-    // Sanitize values in-place (light)
     sanitizeFormFields();
 
-    // built-in validation
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
 
-    // required hidden selects
-    if (!doctorHidden.value || !apptHidden.value) {
+    if (!doctorHidden?.value || !apptHidden?.value) {
       alert("Please select a Doctor/Service and Appointment type.");
       return;
     }
 
-    // Build summary (so email notification isn’t “empty” / useless)
     if (summaryHidden) summaryHidden.value = buildSummary();
 
     sending = true;
@@ -285,7 +298,7 @@
         if (sendBtn) sendBtn.textContent = prevText;
         setDisabled(false);
         sending = false;
-      }, 1800);
+      }, 1500);
     } catch (err) {
       console.error("Form submit error:", err);
       alert("Could not send your request. Please try again." + (err?.message ? ` (${err.message})` : ""));
