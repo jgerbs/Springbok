@@ -251,19 +251,20 @@
     return { sendBtn, cancelBtn, xBtn };
   };
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (sending) return;
 
     // ✅ sanitize everything right before validation + send
     sanitizeForm();
 
+    // Browser validation
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
 
-    // ✅ sanitize hidden selects too (already done), then validate
+    // Hidden dropdowns validation
     if (!doctorHidden?.value || !apptHidden?.value) {
       alert("Please select a Doctor/Service and Appointment type.");
       return;
@@ -277,8 +278,20 @@
     setDisabled(true);
     if (sendBtn) sendBtn.textContent = "Sending…";
 
-    // simulate send delay
-    setTimeout(() => {
+    try {
+      // ✅ Netlify Forms POST (urlencoded)
+      const fd = new FormData(form);
+      const body = new URLSearchParams();
+      for (const [k, v] of fd.entries()) body.append(k, String(v));
+
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
+      });
+
+      if (!res.ok) throw new Error("Netlify form submit failed");
+
       if (sendBtn) sendBtn.textContent = "Sent ✓";
 
       setTimeout(() => {
@@ -289,7 +302,14 @@
         if (sendBtn) sendBtn.textContent = prevText;
         setDisabled(false);
         sending = false;
-      }, 2500);
-    }, 850);
+      }, 1800);
+
+    } catch (err) {
+      console.error(err);
+      alert("Could not send your request. Please try again.");
+      if (sendBtn) sendBtn.textContent = prevText;
+      setDisabled(false);
+      sending = false;
+    }
   });
 })();
