@@ -214,10 +214,8 @@
     if (cancelBtn) cancelBtn.disabled = state;
     if (xBtn) xBtn.disabled = state;
 
-    form.querySelectorAll("input, textarea, select, button").forEach((el) => {
-      if (el === sendBtn || el === cancelBtn || el === xBtn) return;
-      el.disabled = state;
-    });
+    // ✅ lock the form without disabling fields (so FormData includes them)
+    form.classList.toggle("is-sending", state);
 
     return { sendBtn, cancelBtn, xBtn };
   };
