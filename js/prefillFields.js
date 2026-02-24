@@ -92,6 +92,8 @@
         ],
     };
 
+    const norm = (s) => (s || "").trim().toLowerCase();
+
     function getDD(name) {
         return document.querySelector(`.field-dd[data-dd="${name}"]`);
     }
@@ -105,16 +107,40 @@
         if (hiddenEl) hiddenEl.value = "";
         if (valueSpan) valueSpan.textContent = placeholder;
 
-        // your CSS uses .is-open
         ddEl.classList.remove("is-open");
         const btn = qs(".dd-btn", ddEl);
         if (btn) btn.setAttribute("aria-expanded", "false");
 
-        // clear selected highlight
         ddEl.querySelectorAll(".dd-opt").forEach((li) => li.removeAttribute("aria-selected"));
     }
 
-    function rebuildApptOptionsForDoctor(doctorValue) {
+    function setDropdownValue(ddEl, value) {
+        if (!ddEl) return;
+
+        const hidden = qs('input[type="hidden"]', ddEl);
+        const valueSpan = qs(".dd-value", ddEl);
+
+        // find label from option list
+        const opt = Array.from(ddEl.querySelectorAll(".dd-opt")).find(
+            (li) => norm(li.dataset.value || li.textContent) === norm(value)
+        );
+        const label = opt ? opt.textContent.trim() : value;
+
+        if (hidden) {
+            hidden.value = value;
+            hidden.dispatchEvent(new Event("input", { bubbles: true }));
+            hidden.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+        if (valueSpan) valueSpan.textContent = label;
+
+        ddEl.querySelectorAll(".dd-opt").forEach((li) => {
+            const v = li.dataset.value || li.textContent.trim();
+            if (norm(v) === norm(value)) li.setAttribute("aria-selected", "true");
+            else li.removeAttribute("aria-selected");
+        });
+    }
+
+    function rebuildApptOptionsForDoctor(doctorValue, desiredApptValue = "") {
         const apptDD = getDD("appt");
         if (!apptDD) return;
 
@@ -124,6 +150,10 @@
 
         const list = APPT_OPTIONS[doctorValue] || APPT_OPTIONS["General Inquiry"] || [];
 
+        // If caller didn't provide a desired appt, try preserve whatever is already selected
+        const preserve = desiredApptValue || apptHidden.value || "";
+
+        // rebuild options
         apptMenu.innerHTML = "";
         list.forEach((opt) => {
             const li = document.createElement("li");
@@ -134,27 +164,59 @@
             apptMenu.appendChild(li);
         });
 
-        resetDropdown(apptDD, apptHidden);
+        // After rebuild:
+        // - If preserve exists AND is still valid, keep it selected
+        // - Otherwise reset
+        const stillValid = !!Array.from(apptMenu.querySelectorAll(".dd-opt")).find(
+            (li) => norm(li.dataset.value) === norm(preserve)
+        );
+
+        if (preserve && stillValid) {
+            setDropdownValue(apptDD, preserve);
+        } else {
+            resetDropdown(apptDD, apptHidden);
+        }
     }
 
-    // doctor changed (we dispatch this on doctor option select below)
+    // ============================================================
+    // 3a) On modal open: rebuild appts using doctor + (optional) prefilled appt
+    //      IMPORTANT: do this in CAPTURE so we read attributes early,
+    //      but run the rebuild on next tick to allow contactDoctorModal prefill doctor first.
+    // ============================================================
+    document.addEventListener(
+        "click",
+        (e) => {
+            const trigger = e.target.closest("[data-open-doctor-modal]");
+            if (!trigger) return;
+
+            const desiredDoctor = (trigger.getAttribute("data-doctor") || "").trim();
+            const desiredAppt = (trigger.getAttribute("data-appt") || "").trim();
+
+            // Wait 1 tick so contactDoctorModal can open + set doctorHidden first.
+            setTimeout(() => {
+                const doctorHidden = document.getElementById("doctorSelect");
+                const doctorVal = desiredDoctor || doctorHidden?.value || "General Inquiry";
+                rebuildApptOptionsForDoctor(doctorVal, desiredAppt);
+            }, 0);
+        },
+        true
+    );
+
+    // ============================================================
+    // 3b) When doctor changes: rebuild appt list BUT preserve current selection if possible
+    // ============================================================
     document.addEventListener("doctor:changed", (e) => {
-        rebuildApptOptionsForDoctor(e.detail.doctorValue);
+        const doctorVal = e?.detail?.doctorValue || "General Inquiry";
+        const apptHidden = document.getElementById("apptTypeSelect");
+        rebuildApptOptionsForDoctor(doctorVal, apptHidden?.value || "");
     });
 
-    // rebuild when modal opens (doctor might be prefilled)
-    document.addEventListener("click", (e) => {
-        const trigger = e.target.closest("[data-open-doctor-modal]");
-        if (!trigger) return;
-
-        setTimeout(() => {
-            const doctorHidden = document.getElementById("doctorSelect");
-            rebuildApptOptionsForDoctor(doctorHidden?.value || "General Inquiry");
-        }, 0);
-    });
-
-    // initial safe run
+    // ============================================================
+    // 3c) Initial safe run (only if the modal exists on the page)
+    // ============================================================
     window.addEventListener("DOMContentLoaded", () => {
+        if (!document.getElementById("doctorModal")) return;
+
         const doctorHidden = document.getElementById("doctorSelect");
         rebuildApptOptionsForDoctor(doctorHidden?.value || "General Inquiry");
     });
@@ -162,7 +224,6 @@
     // ============================================================
     // 4) Delegated dropdown selection + selected styling (aria-selected)
     //    - Works for injected appointment options
-    //    - Keeps selected highlighted like your DC CSS
     // ============================================================
     function syncSelected(dd) {
         if (!dd) return;
@@ -172,12 +233,11 @@
 
         dd.querySelectorAll(".dd-opt").forEach((li) => {
             const v = li.dataset.value || li.textContent.trim();
-            if (current && v === current) li.setAttribute("aria-selected", "true");
+            if (current && norm(v) === norm(current)) li.setAttribute("aria-selected", "true");
             else li.removeAttribute("aria-selected");
         });
     }
 
-    // On dropdown open, highlight the current selection
     document.addEventListener(
         "click",
         (e) => {
@@ -187,13 +247,12 @@
             const dd = btn.closest(".field-dd");
             if (!dd) return;
 
-            // contactDoctorModal.js toggles .is-open; wait a tick
+            // allow other scripts to toggle .is-open, then sync highlight
             setTimeout(() => syncSelected(dd), 0);
         },
         true
     );
 
-    // Select option (doctor + appt) with capture so injected options behave the same
     document.addEventListener(
         "click",
         (e) => {
@@ -203,31 +262,16 @@
             const dd = opt.closest(".field-dd");
             if (!dd) return;
 
-            // beat other handlers for consistent close
             e.preventDefault();
             e.stopPropagation();
             if (typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
 
             const value = opt.dataset.value || opt.textContent.trim();
-            const label = opt.textContent.trim();
 
-            // visible label
-            const valueSpan = qs(".dd-value", dd);
-            if (valueSpan) valueSpan.textContent = label;
+            // set value + label + selected
+            setDropdownValue(dd, value);
 
-            // hidden value
-            const hidden = qs('input[type="hidden"]', dd);
-            if (hidden) {
-                hidden.value = value;
-                hidden.dispatchEvent(new Event("input", { bubbles: true }));
-                hidden.dispatchEvent(new Event("change", { bubbles: true }));
-            }
-
-            // selected highlight
-            dd.querySelectorAll(".dd-opt").forEach((li) => li.removeAttribute("aria-selected"));
-            opt.setAttribute("aria-selected", "true");
-
-            // close (your CSS uses .is-open)
+            // close
             dd.classList.remove("is-open");
             const btn = qs(".dd-btn", dd);
             if (btn) btn.setAttribute("aria-expanded", "false");

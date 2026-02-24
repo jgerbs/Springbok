@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en" data-brand="spa" data-page="spa-service-learn-more">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Springbok Medical Clinic | Naturopathic Medicine</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style/base.css" />
+  <link rel="stylesheet" href="style/spa/spa.css" />
+  <link rel="stylesheet" href="style/spa/spaServiceLearnMore.css" />
+
+  <link rel="stylesheet" href="style/responsive.css" />
+  <link rel="stylesheet" href="style/practiceModal.css" />
+  <link rel="stylesheet" href="style/spa/spaTeam.css" />
+</head>
+
+<body>
+  <div class="page-transition" aria-hidden="true">
+
+    <!-- NAV ONLY (always visible, pinned top-right) -->
+    <header class="site-header" aria-label="Site navigation">
+      <div class="header-right">
+        <nav class="nav-pill" aria-label="Main navigation">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="SpringbokAbout.html">About Us</a>
+          <a class="nav-link" href="SpringbokClinic.html">Clinic</a>
+          <a class="nav-link is-active" href="SpringbokSpa.html">Spa</a>
+          <a class="nav-link" href="SpringbokTeam.html">Our Team</a>
+          <a class="nav-link" href="SpringbokContact.html">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="btn btn-accent book-cta" href="#" data-open-doctor-modal data-doctor="General Inquiry">
+            Book Clinic
+          </a>
+
+          <a class="btn btn-accent book-cta" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
+            rel="noopener">
+            Book Spa
+          </a>
+
+          <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open menu" aria-controls="mobilePanel"
+            aria-expanded="false">
+            <span class="burger" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- mobile panel -->
+      <div class="container mobile-panel" id="mobilePanel" aria-hidden="true">
+        <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
+          <nav class="mobile-menu-links" aria-label="Mobile navigation">
+            <a class="mobile-link" href="index.html">Home</a>
+            <a class="mobile-link" href="SpringbokAbout.html">About Us</a>
+            <a class="mobile-link" href="SpringbokClinic.html">Clinic</a>
+            <a class="mobile-link is-active" href="SpringbokSpa.html">Spa</a>
+            <a class="mobile-link" href="SpringbokTeam.html">Our Team</a>
+            <a class="mobile-link" href="SpringbokContact.html">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="svc-lm">
+
+      <!-- HERO -->
+      <section class="hero hero--service">
+        <a class="hero-brand reveal" href="SpringbokClinic.html" aria-label="Springbok Medical Clinic Home">
+          <!-- Reuse spa logo for now; swap to clinic logo if you want -->
+          <img src="resources/spalogo2.png" alt="Springbok Medical Clinic" class="hero-logo hero-logo--spa" />
+        </a>
+
+        <div class="hero-media">
+          <video class="hero-video" muted playsinline webkit-playsinline loop preload="metadata"
+            poster="resources/heroVideos/spa-poster.jpg" data-src-mobile="resources/heroVideos/spa.mp4"
+            data-src-desktop="resources/heroVideos/spa.mp4"></video>
+
+          <div class="hero-overlay"></div>
+        </div>
+
+        <div class="container hero-content reveal">
+          <span class="svc-kicker">Whole-person, evidence-informed care</span>
+          <h1>Naturopathic Medicine</h1>
+          <p>
+            A comprehensive, prevention-focused approach that looks at your symptoms, history, lifestyle, and labs
+            to build a practical plan you can actually follow — with clear next steps and ongoing support.
+          </p>
+
+          <div class="svc-hero-actions">
+            <a class="btn btn-accent" href="#" data-open-doctor-modal data-doctor="Dr. Kacey Kiesman">
+              Book Naturopathic
+            </a>
+            <a class="btn btn-outline book-cta" href="#" data-open-doctor-modal data-doctor="General Inquiry">
+              Send Inquiry
+            </a>
+          </div>
+
+          <div class="svc-quick">
+            <div class="svc-chip"><span class="svc-chip-label">Time</span><span class="svc-chip-val">45–90 min</span>
+            </div>
+            <div class="svc-chip"><span class="svc-chip-label">Format</span><span class="svc-chip-val">In-clinic /
+                virtual</span></div>
+            <div class="svc-chip"><span class="svc-chip-label">Approach</span><span class="svc-chip-val">Root-cause +
+                symptom relief</span></div>
+            <div class="svc-chip"><span class="svc-chip-label">Best for</span><span class="svc-chip-val">Energy,
+                digestion, hormones, stress</span></div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ABOUT -->
+      <section class="svc-section" id="about">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">About</span>
+            <h2 class="section-title">What naturopathic care focuses on</h2>
+            <div class="spa-divider"></div>
+            <p class="section-sub">
+              Naturopathic doctors (NDs) create individualized care plans that blend lifestyle, nutrition,
+              targeted supplementation, and other evidence-informed therapies — with a strong emphasis on education,
+              prevention, and long-term health.
+            </p>
+          </div>
+
+          <div class="svc-about-grid reveal-stagger">
+            <article class="svc-card">
+              <h3>Goals of care</h3>
+              <ul class="svc-list">
+                <li>Understand what’s driving symptoms (patterns, triggers, contributing factors)</li>
+                <li>Build a realistic plan: food, sleep, movement, stress, and targeted supports</li>
+                <li>Use labs when appropriate to guide decisions and track progress</li>
+                <li>Support symptom relief while improving resilience and long-term health</li>
+              </ul>
+            </article>
+
+            <article class="svc-card svc-card--soft">
+              <h3>Common reasons people book</h3>
+              <ul class="svc-list">
+                <li>Fatigue, low energy, burnout, poor sleep</li>
+                <li>Digestive concerns (bloating, reflux, IBS-like symptoms)</li>
+                <li>Hormonal concerns (cycle irregularity, PMS, perimenopause support)</li>
+                <li>Stress, mood, focus, and overall wellbeing</li>
+              </ul>
+            </article>
+
+            <article class="svc-card svc-card--highlight">
+              <h3>How it works</h3>
+              <p class="svc-muted">
+                We start with a deep-dive intake, then build a step-by-step plan based on your goals and what’s most
+                likely to move the needle first. Follow-ups are used to refine, simplify, and keep momentum.
+              </p>
+              <div class="svc-pill-row">
+                <span class="svc-pill">Education-first</span>
+                <span class="svc-pill">Personalized plan</span>
+                <span class="svc-pill">Progress tracking</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="svc-note reveal" role="note">
+            Your plan is always collaborative. We’ll explain the “why,” set priorities, and keep it practical —
+            not overwhelming.
+          </div>
+
+          <div class="svc-mini-cta reveal">
+            <a class="btn btn-outline" href="#providers">See providers</a>
+            <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank" rel="noopener">
+              Book Now
+            </a>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- DETAILS -->
+      <section class="svc-section svc-section--alt" id="details">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Details</span>
+            <h2 class="section-title">What we can support</h2>
+            <div class="spa-divider"></div>
+            <p class="section-sub">A clear overview of focus areas and tools used in naturopathic practice.</p>
+          </div>
+
+          <div class="svc-details-grid reveal-stagger">
+            <article class="svc-detail">
+              <h3>Digestive health</h3>
+              <p>Nutrition strategy, symptom tracking, gut-support protocols, and targeted testing when appropriate.</p>
+            </article>
+
+            <article class="svc-detail">
+              <h3>Stress &amp; sleep</h3>
+              <p>Stress physiology, sleep hygiene, nervous system support, and structured habit building.</p>
+            </article>
+
+            <article class="svc-detail">
+              <h3>Hormone support</h3>
+              <p>Cycle symptoms, perimenopause support, and lifestyle + nutrition strategies for balance.</p>
+            </article>
+
+            <article class="svc-detail">
+              <h3>Metabolic health</h3>
+              <p>Blood sugar stability, weight-support habits, nutrition planning, and sustainable routines.</p>
+            </article>
+
+            <article class="svc-detail">
+              <h3>Labs &amp; referrals</h3>
+              <p>When appropriate, we may recommend labs or coordinate care with your healthcare team.</p>
+            </article>
+
+            <article class="svc-detail">
+              <h3>Therapeutic tools</h3>
+              <p>Food plans, supplements, botanical medicine, lifestyle coaching, and more — selected for you.</p>
+            </article>
+          </div>
+
+          <div class="svc-note reveal" role="note" style="margin-top:18px;">
+            Scope and available services can vary by provider training/certification and your medical history.
+            We’ll confirm what’s appropriate at your appointment.
+          </div>
+        </div>
+      </section>
+
+
+      <!-- OPTIONS (4 dropdowns) -->
+      <section class="svc-section" id="options">
+        <div class="container">
+
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Options</span>
+            <h2 class="section-title">Naturopathic appointment options</h2>
+            <div class="spa-divider"></div>
+            <p class="section-sub">Choose the best starting point — we’ll confirm fit and timing when you book.</p>
+          </div>
+
+          <div class="morph-dd-stack reveal-stagger">
+
+            <!-- 1) INITIAL VISIT -->
+            <details class="morph-dd">
+              <summary class="morph-dd-sum">
+                <div class="morph-dd-left">
+                  <span class="morph-pill">New Patients</span>
+                  <h3 class="morph-dd-title">Comprehensive Initial Visit</h3>
+                  <p class="morph-dd-sub">
+                    Deep-dive intake + first-step plan tailored to your goals. (60–90 min)
+                  </p>
+                </div>
+
+                <span class="morph-dd-icon" aria-hidden="true">
+                  <span class="morph-dd-glyph">+</span>
+                </span>
+              </summary>
+
+              <div class="morph-dd-body">
+                <div class="svc-options-grid" role="list">
+
+                  <article class="svc-opt" role="listitem">
+                    <header class="svc-opt-top">
+                      <h3 class="svc-opt-title">Initial Consultation</h3>
+                      <div class="svc-opt-price">Varies</div>
+                    </header>
+                    <div class="svc-opt-body">
+                      <ul class="svc-opt-points">
+                        <li><strong>Time:</strong> 60–90 minutes</li>
+                        <li><strong>Includes:</strong> History, goals, prioritization, and a practical plan</li>
+                        <li><strong>Good for:</strong> Multiple concerns or “I don’t know where to start”</li>
+                      </ul>
+                    </div>
+                    <footer class="svc-opt-bottom">
+                      <!-- TODO: swap to your JaneApp ND initial booking link -->
+                      <a class="btn btn-accent btn-sm" href="#" data-open-doctor-modal
+                        data-doctor="Dr. Kacey Kiesman">Book</a>
+                      <div class="svc-opt-provider">Offered by Naturopathic Doctor</div>
+                    </footer>
+                  </article>
+
+                  <article class="svc-opt" role="listitem">
+                    <header class="svc-opt-top">
+                      <h3 class="svc-opt-title">Initial + Labs Planning</h3>
+                      <div class="svc-opt-price">Varies</div>
+                    </header>
+                    <div class="svc-opt-body">
+                      <ul class="svc-opt-points">
+                        <li><strong>Time:</strong> 75–90 minutes</li>
+                        <li><strong>Includes:</strong> Initial visit + discussion of lab options (if appropriate)</li>
+                        <li><strong>Good for:</strong> Fatigue, hormones, digestion, metabolic goals</li>
+                      </ul>
+                    </div>
+                    <footer class="svc-opt-bottom">
+                      <!-- TODO: swap to JaneApp ND initial link -->
+                      <a class="btn btn-accent btn-sm" href="#" data-open-doctor-modal
+                        data-doctor="Dr. Kacey Kiesman">Book</a>
+                      <div class="svc-opt-provider">Offered by Naturopathic Doctor</div>
+                    </footer>
+                  </article>
+
+                </div>
+              </div>
+            </details>
+
+            <!-- 2) FOLLOW-UP -->
+            <details class="morph-dd">
+              <summary class="morph-dd-sum">
+                <div class="morph-dd-left">
+                  <span class="morph-pill">Returning</span>
+                  <h3 class="morph-dd-title">Follow-up Visit</h3>
+                  <p class="morph-dd-sub">
+                    Review progress, adjust your plan, and keep it realistic. (30–60 min)
+                  </p>
+                </div>
+
+                <span class="morph-dd-icon" aria-hidden="true">
+                  <span class="morph-dd-glyph">+</span>
+                </span>
+              </summary>
+
+              <div class="morph-dd-body">
+                <div class="svc-options-grid" role="list">
+
+                  <article class="svc-opt" role="listitem">
+                    <header class="svc-opt-top">
+                      <h3 class="svc-opt-title">Standard Follow-up</h3>
+                      <div class="svc-opt-price">Varies</div>
+                    </header>
+                    <div class="svc-opt-body">
+                      <ul class="svc-opt-points">
+                        <li><strong>Time:</strong> 30–45 minutes</li>
+                        <li><strong>Focus:</strong> What’s working, what’s not, next steps</li>
+                        <li><strong>Best for:</strong> Plan refinements and accountability</li>
+                      </ul>
+                    </div>
+                    <footer class="svc-opt-bottom">
+                      <!-- TODO: JaneApp follow-up link -->
+                      <a class="btn btn-accent btn-sm" href="#" data-open-doctor-modal
+                        data-doctor="Dr. Kacey Kiesman">Book</a>
+                      <div class="svc-opt-provider">Offered by Naturopathic Doctor</div>
+                    </footer>
+                  </article>
+
+                  <article class="svc-opt" role="listitem">
+                    <header class="svc-opt-top">
+                      <h3 class="svc-opt-title">Extended Follow-up</h3>
+                      <div class="svc-opt-price">Varies</div>
+                    </header>
+                    <div class="svc-opt-body">
+                      <ul class="svc-opt-points">
+                        <li><strong>Time:</strong> 60 minutes</li>
+                        <li><strong>Focus:</strong> Multiple concerns, deeper troubleshooting</li>
+                        <li><strong>Best for:</strong> Complex cases or major plan rebuild</li>
+                      </ul>
+                    </div>
+                    <footer class="svc-opt-bottom">
+                      <!-- TODO: JaneApp extended follow-up link -->
+                      <a class="btn btn-accent btn-sm" href="#" data-open-doctor-modal
+                        data-doctor="Dr. Kacey Kiesman">Book</a>
+                      <div class="svc-opt-provider">Offered by Naturopathic Doctor</div>
+                    </footer>
+                  </article>
+
+                </div>
+              </div>
+            </details>
+
+            <!-- 3) LAB REVIEW -->
+            <details class="morph-dd">
+              <summary class="morph-dd-sum">
+                <div class="morph-dd-left">
+                  <span class="morph-pill">Focused</span>
+                  <h3 class="morph-dd-title">Lab Review / Results Visit</h3>
+                  <p class="morph-dd-sub">
+                    Understand results clearly and turn them into an action plan. (30–45 min)
+                  </p>
+                </div>
+
+                <span class="morph-dd-icon" aria-hidden="true">
+                  <span class="morph-dd-glyph">+</span>
+                </span>
+              </summary>
+
+              <div class="morph-dd-body">
+                <div class="svc-options-grid" role="list">
+
+                  <article class="svc-opt" role="listitem">
+                    <header class="svc-opt-top">
+                      <h3 class="svc-opt-title">Lab Review</h3>
+                      <div class="svc-opt-price">Varies</div>
+                    </header>
+                    <div class="svc-opt-body">
+                      <ul class="svc-opt-points">
+                        <li><strong>Time:</strong> 30–45 minutes</li>
+                        <li><strong>Includes:</strong> Explanation + what to do next</li>
+                        <li><strong>Good for:</strong> Bloodwork, hormone panels, gut testing (if ordered)</li>
+                      </ul>
+                    </div>
+                    <footer class="svc-opt-bottom">
+                      <!-- TODO: JaneApp lab review link -->
+                      <a class="btn btn-accent btn-sm" href="#" data-open-doctor-modal
+                        data-doctor="Dr. Kacey Kiesman">Book</a>
+                      <div class="svc-opt-provider">Offered by Naturopathic Doctor</div>
+                    </footer>
+                  </article>
+
+                </div>
+              </div>
+            </details>
+
+            <!-- 4) WELLNESS PLAN / PREVENTION -->
+            <details class="morph-dd">
+              <summary class="morph-dd-sum">
+                <div class="morph-dd-left">
+                  <span class="morph-pill">Prevention</span>
+                  <h3 class="morph-dd-title">Wellness Optimization</h3>
+                  <p class="morph-dd-sub">
+                    Prevention-focused plan for energy, longevity habits, and resilience. (45–60 min)
+                  </p>
+                </div>
+
+                <span class="morph-dd-icon" aria-hidden="true">
+                  <span class="morph-dd-glyph">+</span>
+                </span>
+              </summary>
+
+              <div class="morph-dd-body">
+                <div class="svc-options-grid" role="list">
+
+                  <article class="svc-opt" role="listitem">
+                    <header class="svc-opt-top">
+                      <h3 class="svc-opt-title">Lifestyle + Nutrition Strategy</h3>
+                      <div class="svc-opt-price">Varies</div>
+                    </header>
+                    <div class="svc-opt-body">
+                      <ul class="svc-opt-points">
+                        <li><strong>Time:</strong> 45–60 minutes</li>
+                        <li><strong>Focus:</strong> Food plan, habits, sleep, stress structure</li>
+                        <li><strong>Best for:</strong> Feeling “off” but no single symptom dominates</li>
+                      </ul>
+                    </div>
+                    <footer class="svc-opt-bottom">
+                      <!-- TODO: JaneApp wellness link -->
+                      <a class="btn btn-accent btn-sm" href="#" data-open-doctor-modal
+                        data-doctor="Dr. Kacey Kiesman">Book</a>
+                      <div class="svc-opt-provider">Offered by Naturopathic Doctor</div>
+                    </footer>
+                  </article>
+
+                </div>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- WHAT TO EXPECT -->
+      <section class="svc-flow">
+        <div class="container">
+
+          <div class="section-head reveal">
+            <span class="section-eyebrow">What to expect</span>
+            <h2 class="section-title">Your visit, step-by-step</h2>
+            <div class="spa-divider"></div>
+            <p class="section-sub">
+              A clear flow so you know exactly what happens — and what you’ll leave with.
+            </p>
+          </div>
+
+          <div class="svc-flow-steps">
+
+            <!-- STEP 1 -->
+            <div class="svc-step">
+              <img class="svc-step-icon" src="resources/clipboard_LB.svg" alt="">
+              <span class="svc-step-num">STEP 1</span>
+              <h3>Deep-dive intake</h3>
+              <p>
+                We review your symptoms, history, medications/supplements, routines, stress, sleep, and goals.
+              </p>
+            </div>
+
+            <img class="svc-arrow svc-arrow--desktop" src="resources/arrow-right.svg" alt="">
+            <img class="svc-arrow svc-arrow--mobile" src="resources/arrow-down.svg" alt="">
+
+            <!-- STEP 2 -->
+            <div class="svc-step">
+              <img class="svc-step-icon" src="resources/handwash_LB.svg" alt="">
+              <span class="svc-step-num">STEP 2</span>
+              <h3>Prioritize</h3>
+              <p>
+                We pick the most impactful starting point first — so your plan is focused, not overwhelming.
+              </p>
+            </div>
+
+            <img class="svc-arrow svc-arrow--desktop" src="resources/arrow-right.svg" alt="">
+            <img class="svc-arrow svc-arrow--mobile" src="resources/arrow-down.svg" alt="">
+
+            <!-- STEP 3 -->
+            <div class="svc-step">
+              <img class="svc-step-icon" src="resources/syringe_LB.svg" alt="">
+              <span class="svc-step-num">STEP 3</span>
+              <h3>Plan + tools</h3>
+              <p>
+                You’ll get clear next steps: nutrition strategy, habits, targeted supports, and optional lab planning.
+              </p>
+            </div>
+
+            <img class="svc-arrow svc-arrow--desktop" src="resources/arrow-right.svg" alt="">
+            <img class="svc-arrow svc-arrow--mobile" src="resources/arrow-down.svg" alt="">
+
+            <!-- STEP 4 -->
+            <div class="svc-step">
+              <img class="svc-step-icon" src="resources/recovery_LB.svg" alt="">
+              <span class="svc-step-num">STEP 4</span>
+              <h3>Follow-up + refine</h3>
+              <p>
+                Follow-ups keep things realistic: we simplify, troubleshoot, and adjust based on your results.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- PROVIDERS -->
+      <section class="founders providers" id="providers">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">Provider</span>
+            <h2 class="section-title">Whole-person care, tailored to you.</h2>
+            <div class="green-divider"></div>
+            <p class="section-sub">
+              Thoughtful, evidence-informed planning — with clear priorities and realistic steps.
+            </p>
+          </div>
+
+          <div class="founders-grid reveal-stagger">
+
+            <!-- Provider (Kacey) -->
+            <article class="founder-card">
+              <div class="founder-media">
+                <img src="resources/kacey2.png" alt="Dr. Kacey Kiesman" loading="lazy" />
+              </div>
+
+              <div class="founder-body">
+                <p class="founder-kicker">Naturopathic Doctor</p>
+                <h3 class="founder-name">Dr. Kacey Kiesman</h3>
+
+                <p class="founder-desc">
+                  Dr. Kacey Kiesman supports whole-body wellness with a holistic lens.
+                  She blends science-backed tools with lifestyle-first guidance to help you feel your best — inside and
+                  out.
+                </p>
+
+                <div class="founder-actions">
+                  <a class="btn founder-btn founder-btn--solid" href="#" data-open-doctor-modal
+                    data-doctor="Dr. Kacey Kiesman">
+                    Book Now
+                  </a>
+
+                  <a class="btn founder-btn founder-btn--ghost" href="SpringbokKaceyKiesman.html"
+                    aria-label="About Dr. Kacey Kiesman">
+                    About
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Coming Soon -->
+            <article class="founder-card founder-card--flip founder-card--soon"
+              aria-label="Additional providers coming soon">
+              <div class="founder-media founder-media--plus">
+                <span class="founder-plus" aria-hidden="true">+</span>
+              </div>
+
+              <div class="founder-body">
+                <p class="founder-kicker">Coming Soon...</p>
+                <h3 class="founder-name">More Providers</h3>
+
+                <p class="founder-desc">
+                  We’re expanding the team. Check back soon for new specialties and availability.
+                </p>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- FAQ -->
+      <section class="svc-section svc-section--alt" id="faq">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-eyebrow">FAQ</span>
+            <h2 class="section-title">Questions, answered</h2>
+            <div class="section-divider"></div>
+            <p class="section-sub">Quick answers. Ask us anything at your visit.</p>
+          </div>
+
+          <div class="svc-faq reveal">
+
+            <details class="svc-faq-item">
+              <summary class="svc-faq-summary">
+                <span class="svc-faq-q">Do I need a referral?</span>
+                <span class="svc-faq-icon" aria-hidden="true"><span class="svc-faq-glyph">+</span></span>
+              </summary>
+              <div class="svc-faq-body">
+                Usually no. You can book directly. If you have recent lab work or reports, bring them — it helps.
+              </div>
+            </details>
+
+            <details class="svc-faq-item">
+              <summary class="svc-faq-summary">
+                <span class="svc-faq-q">What should I bring to my first appointment?</span>
+                <span class="svc-faq-icon" aria-hidden="true"><span class="svc-faq-glyph">+</span></span>
+              </summary>
+              <div class="svc-faq-body">
+                A list of medications/supplements, any recent lab results, and notes on symptoms/timing.
+                If you track sleep, cycles, or digestion — bring that too.
+              </div>
+            </details>
+
+            <details class="svc-faq-item">
+              <summary class="svc-faq-summary">
+                <span class="svc-faq-q">How soon will I feel improvement?</span>
+                <span class="svc-faq-icon" aria-hidden="true"><span class="svc-faq-glyph">+</span></span>
+              </summary>
+              <div class="svc-faq-body">
+                Some changes can be quick (sleep routines, nutrition structure), while deeper patterns take time.
+                We’ll set clear expectations and track progress together.
+              </div>
+            </details>
+
+            <details class="svc-faq-item">
+              <summary class="svc-faq-summary">
+                <span class="svc-faq-q">Do you order labs or work with my family doctor?</span>
+                <span class="svc-faq-icon" aria-hidden="true"><span class="svc-faq-glyph">+</span></span>
+              </summary>
+              <div class="svc-faq-body">
+                When appropriate, we can recommend labs and coordinate care with your healthcare team.
+                Your safety and continuity of care come first.
+              </div>
+            </details>
+
+            <details class="svc-faq-item">
+              <summary class="svc-faq-summary">
+                <span class="svc-faq-q">Is naturopathic medicine covered by insurance?</span>
+                <span class="svc-faq-icon" aria-hidden="true"><span class="svc-faq-glyph">+</span></span>
+              </summary>
+              <div class="svc-faq-body">
+                Many extended health plans include naturopathic visits. Coverage varies by provider and plan —
+                check your benefits to confirm.
+              </div>
+            </details>
+
+          </div>
+
+          <div class="svc-mini-cta reveal" style="margin-top:22px;">
+            <a class="btn btn-outline" href="SpringbokClinic.html">Back to Clinic</a>
+            <a class="btn btn-accent" href="#" data-open-doctor-modal data-doctor="Dr. Kacey Kiesman">
+              Book Now
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+
+    <!-- FOOTER (keep your existing footer markup) -->
+    <footer class="site-footer" aria-label="Site footer">
+      <div class="container footer-inner reveal">
+        <div class="footer-brand">
+          <a class="footer-brand-stack" href="index.html" aria-label="Springbok Home">
+            <img class="footer-brand-logo" src="resources/logo1.png" alt="Springbok Medical Clinic" />
+          </a>
+
+          <div class="footer-brand-bottom">
+            <div class="footer-brand-type">
+              <div class="footer-brand-name">SPRINGBOK</div>
+              <div class="footer-brand-sub">MEDICAL CLINIC</div>
+            </div>
+            <div class="footer-social" aria-label="Social links">
+              <a class="social-btn" href="#" aria-label="Instagram">
+                <img class="social-icon" src="resources/instagram-logo.svg" alt="Instagram">
+              </a>
+              <a class="social-btn" href="#" aria-label="Facebook">
+                <img class="social-icon" src="resources/facebook-logo.svg" alt="Facebook">
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Middle: Columns -->
+        <div class="footer-cols">
+          <!-- Pages -->
+          <div class="footer-col">
+            <h3>Pages</h3>
+            <a href="index.html">Home</a>
+            <a href="SpringbokAbout.html">About Us</a>
+            <a href="SpringbokTeam.html">Our Team</a>
+            <a href="SpringbokContact.html">Contact</a>
+          </div>
+
+          <!-- Clinic Services (4 main) -->
+          <div class="footer-col">
+            <h3>Clinic Services</h3>
+            <a href="SpringbokClinic.html#family">Family Practice</a>
+            <a href="SpringbokClinic.html#hormone">Hormone Specialist</a>
+            <a href="SpringbokClinic.html#naturopathic">Naturopathic Medicine</a>
+            <a href="SpringbokClinic.html#plastics">Plastic Surgery</a>
+          </div>
+
+          <!-- Spa Services (concise set) -->
+          <div class="footer-col">
+            <h3>Spa Services</h3>
+            <a href="SpringbokSpa.html">Medical Spa</a>
+            <a href="SpringbokSpa.html#injectables">Injectables</a>
+            <a href="SpringbokSpa.html#laser">Laser</a>
+            <a href="SpringbokSpa.html#skin">Skin Treatments</a>
+            <a href="SpringbokSpa.html#body">Body Treatments</a>
+          </div>
+
+        </div>
+
+        <div class="footer-contact">
+          <div class="footer-contact-block">
+            <p class="footer-contact-title">Springbok Medical Clinic</p>
+            <p>
+              147 16th St West, Suite #300<br />
+              North Vancouver, BC<br />
+              V7M 1T3
+            </p>
+            <a class="footer-link" href="#" target="_blank" rel="noopener">View Directions</a>
+          </div>
+
+          <div class="footer-contact-block">
+            <p>
+              <a class="footer-link" href="tel:+17780000000">+1 (778) 000-0000</a>
+            </p>
+            <p>
+              <a class="footer-link" href="mailto:info@springbokclinic.ca">info@springbokclinic.ca</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <p>
+          © <span id="footerYear"></span> Springbok Medical Clinic — All Rights Reserved
+        </p>
+
+        <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">
+          ↑
+        </button>
+      </div>
+    </footer>
+
+    <!-- CONTACT DOCTOR MODAL (Netlify Forms-ready, styled like contactModal) -->
+    <div class="modal" id="doctorModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close="true"></div>
+
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="doctorModalTitle">
+        <button class="modal-x" type="button" aria-label="Close" data-close="true">✕</button>
+
+        <div class="modal-head">
+          <div class="modal-eyebrow">Contact</div>
+          <h2 class="modal-title" id="doctorModalTitle">Request an appointment</h2>
+          <p class="modal-sub">
+            Fill this out and our team will route you to the right provider or next step.
+          </p>
+        </div>
+
+        <!-- Netlify Forms -->
+        <form class="modal-form" id="doctorContactForm" name="doctor-contact" method="POST" data-netlify="true"
+          netlify-honeypot="bot-field">
+
+          <input type="hidden" name="form-name" value="doctor-contact" />
+
+          <p style="display:none;">
+            <label>
+              Don’t fill this out if you're human:
+              <input name="bot-field" />
+            </label>
+          </p>
+
+          <div class="modal-grid">
+            <label class="field">
+              <span class="field-label">Full Name</span>
+              <input class="field-input" type="text" name="name" placeholder="Your name" autocomplete="name" required />
+            </label>
+
+            <label class="field">
+              <span class="field-label">Phone Number</span>
+              <input class="field-input" type="tel" name="phone" placeholder="(778) 000-0000" autocomplete="tel" />
+            </label>
+
+            <label class="field field-span">
+              <span class="field-label">Email</span>
+              <input class="field-input" type="email" name="email" placeholder="you@email.com" autocomplete="email"
+                required />
+            </label>
+
+            <div class="field select-field field-dd" data-dd="doctor">
+              <span class="field-label">Doctor</span>
+
+              <button class="dd-btn field-input" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span class="dd-value" data-placeholder="Select one">Select one</span>
+              </button>
+
+              <input type="hidden" name="doctor" id="doctorSelect" required />
+
+              <ul class="dd-menu" role="listbox" aria-label="Doctor / Service">
+                <li class="dd-opt" role="option" data-value="Dr. Amor Kloppers">Dr. Amor Kloppers</li>
+                <li class="dd-opt" role="option" data-value="Dr. Francois Erasmus">Dr. Francois Erasmus</li>
+                <li class="dd-opt" role="option" data-value="Dr. Janneme Frouws">Dr. Janneme Frouws</li>
+                <li class="dd-opt" role="option" data-value="Dr. Kacey Kiesman">Dr. Kacey Kiesman</li>
+                <li class="dd-opt" role="option" data-value="General Inquiry">General Inquiry</li>
+              </ul>
+            </div>
+
+            <div class="field select-field field-dd" data-dd="appt">
+              <span class="field-label">Appointment type</span>
+
+              <button class="dd-btn field-input" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span class="dd-value" data-placeholder="Select one">Select one</span>
+              </button>
+
+              <input type="hidden" name="apptType" id="apptTypeSelect" required />
+
+              <ul class="dd-menu" role="listbox" aria-label="Appointment type"></ul>
+            </div>
+
+            <label class="field field-span">
+              <span class="field-label">Subject</span>
+              <input class="field-input" type="text" name="requestSubject" id="subjectInput"
+                placeholder="e.g., Fatigue, Gut health, Hormone support, Sleep, Stress, etc..." required />
+            </label>
+
+            <label class="field field-span">
+              <span class="field-label">Message</span>
+              <textarea class="field-input field-textarea" name="message"
+                placeholder="Tell us what you’re looking for and any timing preferences." rows="5" required></textarea>
+            </label>
+
+          </div>
+
+          <div class="modal-actions">
+            <button class="btn btn-outline" type="button" data-close="true">Cancel</button>
+            <button class="btn btn-accent" type="submit">Send</button>
+          </div>
+
+          <p class="modal-note">
+            Please do not include personal health information. For urgent concerns call 911.
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/prefillFields.js" defer></script>
+    <script src="js/mobileMenu.js" defer></script>
+    <script src="js/footer.js" defer></script>
+    <script src="js/contactModal.js" defer></script>
+    <script src="js/scrollReveal.js" defer></script>
+    <script src="js/smoothScroll.js" defer></script>
+    <script src="js/contactDoctorModal.js" defer></script>
+    <script src="js/playVideo.js" defer></script>
+  </div>
+</body>
+
+</html>

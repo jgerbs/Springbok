@@ -1,11 +1,12 @@
-/* contactDoctorModal.js — Netlify Forms POST + dropdown modal (stable) + light sanitization
-   NOTE: your “Subject” field is now name="requestSubject" (NOT "subject") so Netlify won’t hijack email subject.
+/* contactDoctorModal.js — Netlify Forms POST + dropdown modal (stable)
+   - Delegated open handler (works with cloned carousel slides)
+   - Prefills Doctor + Appointment type reliably
+   NOTE: “Subject” field is name="requestSubject" (NOT "subject") so Netlify won’t hijack email subject.
 */
 (() => {
   const modal = document.getElementById("doctorModal");
   if (!modal) return;
 
-  const openBtns = document.querySelectorAll("[data-open-doctor-modal]");
   const closeEls = modal.querySelectorAll('[data-close="true"]');
 
   const form = document.getElementById("doctorContactForm");
@@ -13,18 +14,15 @@
 
   const doctorHidden = document.getElementById("doctorSelect");     // hidden input
   const apptHidden = document.getElementById("apptTypeSelect");     // hidden input
-  const summaryHidden = document.getElementById("doctorSummary");   // <input type="hidden" name="summary" id="doctorSummary" />
+  const summaryHidden = document.getElementById("doctorSummary");   // optional hidden summary
 
   const NETLIFY_FORM_NAME = form.getAttribute("name") || "doctor-contact";
 
   let lastFocus = null;
+  let sending = false;
 
   // =========================================================
   // Light sanitization (won't nuke content)
-  // - trims
-  // - removes control chars
-  // - strips < >
-  // - caps length
   // =========================================================
   const LIMITS = {
     name: 80,
@@ -32,7 +30,7 @@
     email: 254,
     doctor: 120,
     apptType: 120,
-    requestSubject: 140, // renamed
+    requestSubject: 140,
     message: 2000
   };
 
@@ -46,7 +44,7 @@
     // strip angle brackets (avoid HTML-ish payloads)
     out = out.replace(/[<>]/g, "");
 
-    // trim only ends (do NOT collapse internal whitespace)
+    // trim only ends
     out = out.trim();
 
     if (max) out = out.slice(0, max);
@@ -60,7 +58,7 @@
     const nameEl = form.querySelector('input[name="name"]');
     const phoneEl = form.querySelector('input[name="phone"]');
     const emailEl = form.querySelector('input[name="email"]');
-    const subjEl = form.querySelector('input[name="requestSubject"]'); // renamed
+    const subjEl = form.querySelector('input[name="requestSubject"]');
     const msgEl = form.querySelector('textarea[name="message"]');
 
     if (nameEl) nameEl.value = cleanText(nameEl.value, LIMITS.name);
@@ -69,22 +67,17 @@
     if (subjEl) subjEl.value = cleanText(subjEl.value, LIMITS.requestSubject);
     if (msgEl) msgEl.value = cleanText(msgEl.value, LIMITS.message);
 
-    // Hidden dropdowns: sanitize but DO NOT blank valid values
     if (doctorHidden) doctorHidden.value = cleanText(doctorHidden.value, LIMITS.doctor);
     if (apptHidden) apptHidden.value = cleanText(apptHidden.value, LIMITS.apptType);
   };
 
-  // Optional: build a summary so the Netlify notification email is readable
   const buildSummary = () => {
     const name = cleanText(form.querySelector('input[name="name"]')?.value || "", LIMITS.name);
     const email = cleanEmail(form.querySelector('input[name="email"]')?.value || "");
     const phone = cleanPhone(form.querySelector('input[name="phone"]')?.value || "");
     const doctor = cleanText(doctorHidden?.value || "", LIMITS.doctor);
     const apptType = cleanText(apptHidden?.value || "", LIMITS.apptType);
-    const reqSubject = cleanText(
-      form.querySelector('input[name="requestSubject"]')?.value || "",
-      LIMITS.requestSubject
-    );
+    const reqSubject = cleanText(form.querySelector('input[name="requestSubject"]')?.value || "", LIMITS.requestSubject);
     const message = cleanText(form.querySelector('textarea[name="message"]')?.value || "", LIMITS.message);
 
     const line = "────────────────────────────";
@@ -108,14 +101,15 @@
     ].join("\n");
   };
 
-  // ---------- Custom dropdown wiring ----------
+  // =========================================================
+  // Custom dropdown wiring
+  // =========================================================
   const dropdowns = modal.querySelectorAll(".field-dd[data-dd]");
 
   const closeAllDropdowns = () => {
     dropdowns.forEach((dd) => {
       dd.classList.remove("is-open");
-      const btn = dd.querySelector(".dd-btn");
-      btn?.setAttribute("aria-expanded", "false");
+      dd.querySelector(".dd-btn")?.setAttribute("aria-expanded", "false");
     });
   };
 
@@ -124,14 +118,14 @@
     const valueEl = dd.querySelector(".dd-value");
     const opts = dd.querySelectorAll(".dd-opt");
 
-    hidden.value = val;
-    valueEl.textContent = val;
+    if (hidden) hidden.value = val;
+    if (valueEl) valueEl.textContent = val;
 
     opts.forEach((o) =>
-      o.setAttribute("aria-selected", o.dataset.value === val ? "true" : "false")
+      o.setAttribute("aria-selected", (o.dataset.value || "") === val ? "true" : "false")
     );
 
-    hidden.dispatchEvent(new Event("change", { bubbles: true }));
+    hidden?.dispatchEvent(new Event("change", { bubbles: true }));
   };
 
   const resetDropdown = (dd) => {
@@ -139,16 +133,25 @@
     const valueEl = dd.querySelector(".dd-value");
     const opts = dd.querySelectorAll(".dd-opt");
 
-    hidden.value = "";
-    valueEl.textContent = "Select one";
+    if (hidden) hidden.value = "";
+    if (valueEl) valueEl.textContent = "Select one";
     opts.forEach((o) => o.setAttribute("aria-selected", "false"));
+  };
+
+  const matchOptionValue = (dd, desired) => {
+    const normalized = (desired || "").trim().toLowerCase();
+    if (!normalized) return null;
+
+    const opts = Array.from(dd.querySelectorAll(".dd-opt"));
+    const match = opts.find((o) => ((o.dataset.value || "").trim().toLowerCase() === normalized));
+    return match ? match.dataset.value : null;
   };
 
   dropdowns.forEach((dd) => {
     const btn = dd.querySelector(".dd-btn");
     const opts = dd.querySelectorAll(".dd-opt");
 
-    btn.addEventListener("click", (e) => {
+    btn?.addEventListener("click", (e) => {
       e.preventDefault();
       const willOpen = !dd.classList.contains("is-open");
       closeAllDropdowns();
@@ -158,9 +161,9 @@
 
     opts.forEach((o) => {
       o.addEventListener("click", () => {
-        setDropdownValue(dd, o.dataset.value);
+        setDropdownValue(dd, o.dataset.value || "");
         dd.classList.remove("is-open");
-        btn.setAttribute("aria-expanded", "false");
+        btn?.setAttribute("aria-expanded", "false");
       });
     });
   });
@@ -174,25 +177,40 @@
     if (e.key === "Escape") closeAllDropdowns();
   });
 
-  // ---------- Modal open/close ----------
-  const openModal = (preselectDoctor = "") => {
+  // =========================================================
+  // Modal open / close
+  // =========================================================
+  const openModal = (preselectDoctor = "", preselectAppt = "") => {
     lastFocus = document.activeElement;
 
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     document.documentElement.style.overflow = "hidden";
 
+    // reset first
     dropdowns.forEach(resetDropdown);
 
+    // preselect doctor
     if (preselectDoctor) {
       const doctorDD = modal.querySelector('.field-dd[data-dd="doctor"]');
       if (doctorDD) {
-        const opt = doctorDD.querySelector(
-          `.dd-opt[data-value="${CSS.escape(preselectDoctor)}"]`
-        );
-        if (opt) setDropdownValue(doctorDD, preselectDoctor);
+        const val = matchOptionValue(doctorDD, preselectDoctor);
+        if (val) setDropdownValue(doctorDD, val);
       }
     }
+
+    // preselect appointment type
+    if (preselectAppt) {
+      const apptDD = modal.querySelector('.field-dd[data-dd="appt"]');
+      if (apptDD) {
+        const val = matchOptionValue(apptDD, preselectAppt);
+        if (val) setDropdownValue(apptDD, val);
+      }
+    }
+
+    // If you want: force hidden values to be recognized by constraint validation immediately
+    doctorHidden?.dispatchEvent(new Event("input", { bubbles: true }));
+    apptHidden?.dispatchEvent(new Event("input", { bubbles: true }));
 
     modal.querySelector('input[name="name"]')?.focus();
   };
@@ -205,23 +223,37 @@
     lastFocus?.focus?.();
   };
 
-  openBtns.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const preselectDoctor = btn.getAttribute("data-doctor") || "";
-      openModal(preselectDoctor);
-    });
-  });
-
   closeEls.forEach((el) => el.addEventListener("click", closeModal));
 
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
   });
 
-  // ---------- Submit behavior (Netlify POST + UI states) ----------
-  let sending = false;
+  // =========================================================
+  // ONE delegated opener (works even if carousel clones cards)
+  // =========================================================
+  document.addEventListener("click", (e) => {
+    const trigger = e.target.closest("[data-open-doctor-modal]");
+    if (!trigger) return;
 
+    e.preventDefault();
+    e.stopImmediatePropagation();
+
+    const preselectDoctor = (trigger.getAttribute("data-doctor") || "").trim();
+
+    // allow either attribute name (handy if you ever rename)
+    const preselectAppt =
+      (trigger.getAttribute("data-appt") || trigger.getAttribute("data-appttype") || "").trim();
+
+    // Debug if needed:
+    // console.log("open modal from:", { preselectDoctor, preselectAppt });
+
+    openModal(preselectDoctor, preselectAppt);
+  });
+
+  // =========================================================
+  // Submit behavior (Netlify POST + UI states)
+  // =========================================================
   const setDisabled = (state) => {
     const sendBtn = form.querySelector('button[type="submit"]');
     const cancelBtn = form.querySelector('button[data-close="true"]');
@@ -231,10 +263,7 @@
     if (cancelBtn) cancelBtn.disabled = state;
     if (xBtn) xBtn.disabled = state;
 
-    // lock the form without disabling fields (so FormData includes them)
     form.classList.toggle("is-sending", state);
-
-    return { sendBtn, cancelBtn, xBtn };
   };
 
   form.addEventListener("submit", async (e) => {
@@ -269,7 +298,7 @@
       // Guarantee Netlify sees form-name
       fd.set("form-name", NETLIFY_FORM_NAME);
 
-      // Ensure hidden fields are present in fd (belt + suspenders)
+      // Ensure hidden fields are present (belt + suspenders)
       if (doctorHidden) fd.set("doctor", doctorHidden.value);
       if (apptHidden) fd.set("apptType", apptHidden.value);
       if (summaryHidden) fd.set("summary", summaryHidden.value);

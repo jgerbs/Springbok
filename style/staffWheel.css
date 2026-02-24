@@ -479,3 +479,57 @@
             max-height 320ms ease;
     }
 }
+
+/* =========================================================
+   MOBILE — subtle text scale down + lower placement
+   ========================================================= */
+@media (max-width: 900px) {
+
+    /* Lower the entire text block slightly */
+    .staff-wheel .service-tile .tile-inner {
+        bottom: 8px;
+        /* was likely 12px+ */
+    }
+
+    /* Slightly smaller name */
+    .staff-wheel .service-tile .tile-title {
+        font-size: .98rem;
+        /* subtle reduction */
+        line-height: 1.15;
+    }
+
+    /* Smaller role/subtitle */
+    .staff-wheel .service-tile .tile-subtitle,
+    .staff-wheel .service-tile .tile-role {
+        font-size: .82rem;
+        line-height: 1.2;
+    }
+
+    /* Center card description slightly smaller */
+    .staff-wheel .service-tile.is-center .tile-desc {
+        font-size: .88rem;
+        line-height: 1.25;
+        max-height: 120px;
+        /* keeps your animation intact */
+    }
+
+    /* Tighten spacing a bit */
+    .staff-wheel .service-tile .tile-desc {
+        margin-top: 6px;
+    }
+
+    .staff-wheel .service-tile .tile-cta {
+        margin-top: 6px;
+        font-size: .9rem;
+    }
+
+    /* Remove extra bottom padding that lifts text */
+    .staff-wheel .service-tile .tile-bottom {
+        padding-bottom: 0;
+    }
+
+    /* Make sure text hugs the bottom properly */
+    .staff-wheel .service-tile .tile-inner {
+        bottom: 0;
+    }
+}
