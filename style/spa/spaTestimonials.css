@@ -1,158 +1,31 @@
 /* =========================================================
-   spaTestimonials.css — UPDATED responsive sizing (3 mostly visible)
-   Keeps desktop cards at 360px, shrinks down in steps like clinic.
-   IMPORTANT: remove the old "flex-basis: 78vw" rule.
+   spaTestimonials.css
+   Clinic-matched spacing / layout / motion
+   with spa colors + glow
+   Supports:
+   - .is-expanded
+   - .is-locked
+   - hidden .t-textMeasure for JS overflow detection
    ========================================================= */
 
 /* =========================
-   A) TESTIMONIALS (scroll-snap embed)
-   ========================= */
-html[data-brand="spa"] .testimonials {
-  padding: 60px 0 95px;
-}
-
-html[data-brand="spa"] .testimonials-head h2 {
-  margin: 0 0 18px;
-  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
-  letter-spacing: -0.02em;
-  color: rgba(18, 18, 18, .94);
-}
-
-html[data-brand="spa"] .testimonials-shell {
-  border-radius: 26px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, .82);
-  box-shadow: var(--shadow);
-  padding: 18px;
-  overflow: hidden;
-}
-
-html[data-brand="spa"] .t-track {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(320px, 1fr);
-  gap: 18px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 8px;
-}
-
-/* Card base (shared) */
-html[data-brand="spa"] .t-card {
-  scroll-snap-align: start;
-  border-radius: 22px;
-  border: 1px solid rgba(18, 18, 18, .10);
-  background: rgba(255, 255, 255, .88);
-  padding: 18px;
-  min-height: 230px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  transition: transform .18s ease, border-color .18s ease, background .18s ease;
-}
-
-html[data-brand="spa"] .t-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(214, 163, 107, .28);
-  background: rgba(255, 255, 255, .92);
-}
-
-/* Stars centered at top */
-html[data-brand="spa"] .t-starsTop {
-  text-align: center;
-  font-weight: 950;
-  letter-spacing: .22em;
-  color: #d6a36b;
-  margin-top: 2px;
-}
-
-/* Review text */
-html[data-brand="spa"] .t-text {
-  margin: 14px 0 0;
-  color: rgba(18, 18, 18, .72);
-  line-height: 1.65;
-
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* Footer row */
-html[data-brand="spa"] .t-personRow {
-  margin-top: 18px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* Initial avatar */
-html[data-brand="spa"] .t-initial {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  font-weight: 950;
-  letter-spacing: .02em;
-
-  background: rgba(214, 163, 107, .18);
-  border: 1px solid rgba(214, 163, 107, .28);
-  color: rgba(28, 16, 10, .92);
-}
-
-html[data-brand="spa"] .t-personMeta {
-  min-width: 0;
-}
-
-html[data-brand="spa"] .t-name {
-  font-weight: 900;
-  color: rgba(18, 18, 18, .92);
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-html[data-brand="spa"] .t-sub {
-  margin-top: 4px;
-  color: rgba(18, 18, 18, .56);
-  font-size: .92rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* =========================
-   B) TESTIMONIALS “wheel” marquee
+   Testimonials (slow wheel)
    ========================= */
 html[data-brand="spa"] .testimonials {
   position: relative;
-  padding: 70px 0 95px;
+  padding: 80px 0 110px;
   overflow: hidden;
-}
-
-html[data-brand="spa"] .testimonials::before {
-  content: "";
-  position: absolute;
-  inset: -160px -140px auto -140px;
-  height: 520px;
-
-  filter: blur(10px);
-  pointer-events: none;
 }
 
 html[data-brand="spa"] .t-wheel {
   position: relative;
   margin-top: 18px;
   border-radius: 26px;
-  border: 1px solid rgba(18, 18, 18, .10);
-  background: rgba(255, 255, 255, .78);
-  backdrop-filter: blur(16px);
-  box-shadow: var(--shadow);
-  padding: 18px;
+  border: 1px solid rgba(91, 69, 45, .12);
+  background: rgba(255, 252, 248, .72);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 18px 60px rgba(77, 52, 31, .14);
+  padding: 18px 0;
   overflow: hidden;
 }
 
@@ -162,45 +35,268 @@ html[data-brand="spa"] .t-wheel::after {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 110px;
-  z-index: 3;
+  z-index: 2;
   pointer-events: none;
+  width: 120px;
 }
 
 html[data-brand="spa"] .t-wheel::before {
   left: 0;
-  background: linear-gradient(90deg, rgba(251, 250, 248, 1), rgba(251, 250, 248, 0));
+  background: linear-gradient(90deg, rgba(250, 247, 242, .96), rgba(250, 247, 242, 0));
 }
 
 html[data-brand="spa"] .t-wheel::after {
   right: 0;
-  background: linear-gradient(270deg, rgba(251, 250, 248, 1), rgba(251, 250, 248, 0));
+  background: linear-gradient(270deg, rgba(250, 247, 242, .96), rgba(250, 247, 242, 0));
 }
 
 html[data-brand="spa"] .t-wheel-track {
   display: flex;
-  gap: 18px;
   align-items: stretch;
+  gap: 18px;
+  width: max-content;
+  padding: 6px 22px;
   will-change: transform;
-}
-
-/* Desktop default: keep your current size */
-html[data-brand="spa"] .t-wheel-track .t-card {
-  flex: 0 0 360px;
-  min-height: 230px;
-}
-
-/* Pause on hover */
-html[data-brand="spa"] .t-wheel:hover .t-wheel-track {
-  animation-play-state: paused;
+  transform: translate3d(0, 0, 0);
 }
 
 /* =========================
-   Responsive sizing (same idea as clinic)
+   Cards
+   ========================= */
+html[data-brand="spa"] .t-wheel-track .t-card {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+
+  flex: 0 0 360px;
+  min-height: 220px;
+  max-height: 220px;
+  padding: 18px 18px 16px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  border-radius: 18px;
+  border: 1px solid rgba(130, 99, 66, .14);
+  background: rgba(255, 255, 255, .64);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 18px 55px rgba(97, 68, 42, .10);
+
+  transition:
+    transform .30s ease,
+    border-color .30s ease,
+    background .30s ease,
+    box-shadow .30s ease,
+    max-height .52s cubic-bezier(.22, .61, .36, 1);
+}
+
+html[data-brand="spa"] .t-wheel-track .t-card:focus {
+  outline: 2px solid rgba(214, 163, 107, .34);
+  outline-offset: 2px;
+}
+
+/* lifted feel */
+html[data-brand="spa"] .t-wheel-track .t-card:hover,
+html[data-brand="spa"] .t-wheel-track .t-card.is-expanded,
+html[data-brand="spa"] .t-wheel-track .t-card.is-locked {
+  transform: translateY(-4px);
+}
+
+/* expanded / hovered / locked card */
+html[data-brand="spa"] .t-wheel-track .t-card.is-expanded,
+html[data-brand="spa"] .t-wheel-track .t-card.is-locked,
+html[data-brand="spa"] .t-wheel-track .t-card:hover,
+html[data-brand="spa"] .t-wheel-track .t-card:focus-within,
+html[data-brand="spa"] .t-wheel-track .t-card:focus {
+  z-index: 6;
+  max-height: 440px;
+  background: rgba(255, 255, 255, .80);
+  border-color: rgba(214, 163, 107, .50);
+  box-shadow:
+    0 0 0 1px rgba(214, 163, 107, .24),
+    0 0 0 3px rgba(214, 163, 107, .10),
+    0 18px 40px rgba(214, 163, 107, .14),
+    0 24px 70px rgba(90, 60, 34, .16);
+}
+
+/* =========================
+   Card content
+   ========================= */
+html[data-brand="spa"] .t-starsTop {
+  margin-top: 4px;
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: .18em;
+  color: #d6a36b;
+}
+
+html[data-brand="spa"] .t-wheel-track .t-card .t-textWrap {
+  position: relative;
+  margin: 14px 0 0;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  max-height: 4.8em;
+  transition: max-height .52s cubic-bezier(.22, .61, .36, 1);
+}
+
+html[data-brand="spa"] .t-wheel-track .t-card .t-text {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 1rem;
+  color: rgba(52, 37, 24, .82);
+  opacity: .96;
+  transform: translateY(0);
+  transition:
+    opacity .28s ease,
+    transform .36s ease;
+}
+
+/* hidden full-height measuring copy */
+html[data-brand="spa"] .t-wheel-track .t-card .t-textMeasure {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  visibility: hidden;
+  pointer-events: none;
+  width: calc(100% - 36px);
+  line-height: 1.6;
+  font-size: 1rem;
+  white-space: normal;
+  color: rgba(52, 37, 24, .82);
+}
+
+/* collapsed clamp */
+html[data-brand="spa"] .t-wheel-track .t-card:not(.is-expanded):not(.is-locked) .t-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* smaller preview on narrower desktop/tablet */
+@media (max-width: 980px) {
+  html[data-brand="spa"] .t-wheel-track .t-card:not(.is-expanded):not(.is-locked) .t-text {
+    -webkit-line-clamp: 2;
+  }
+
+  html[data-brand="spa"] .t-wheel-track .t-card .t-textWrap {
+    max-height: 3.2em;
+  }
+}
+
+/* expanded */
+html[data-brand="spa"] .t-wheel-track .t-card.is-expanded .t-textWrap,
+html[data-brand="spa"] .t-wheel-track .t-card.is-locked .t-textWrap {
+  max-height: 260px;
+}
+
+html[data-brand="spa"] .t-wheel-track .t-card.is-expanded .t-text,
+html[data-brand="spa"] .t-wheel-track .t-card.is-locked .t-text {
+  opacity: 1;
+  transform: translateY(2px);
+}
+
+/* bottom fade while collapsed */
+html[data-brand="spa"] .t-wheel-track .t-card .t-textWrap::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 34px;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity .28s ease;
+}
+
+/* optional dots only when overflow exists */
+html[data-brand="spa"] .t-wheel-track .t-card.has-overflow:not(.is-expanded):not(.is-locked) .t-textWrap::before {
+  content: "...";
+  position: absolute;
+  right: 0;
+  bottom: 1px;
+  z-index: 2;
+  padding-left: 12px;
+  color: rgba(52, 37, 24, .84);
+  background: linear-gradient(90deg, rgba(250, 247, 242, 0), rgba(250, 247, 242, 1) 42%);
+}
+
+html[data-brand="spa"] .t-wheel-track .t-card.is-expanded .t-textWrap::after,
+html[data-brand="spa"] .t-wheel-track .t-card.is-expanded .t-textWrap::before,
+html[data-brand="spa"] .t-wheel-track .t-card.is-locked .t-textWrap::after,
+html[data-brand="spa"] .t-wheel-track .t-card.is-locked .t-textWrap::before {
+  opacity: 0;
+}
+
+html[data-brand="spa"] .t-wheel-track .t-card .t-personRow {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+}
+
+html[data-brand="spa"] .t-wheel-track .t-card .t-initial {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  letter-spacing: .02em;
+  background: rgba(214, 163, 107, .14);
+  border: 1px solid rgba(214, 163, 107, .24);
+  color: #d6a36b;
+}
+
+html[data-brand="spa"] .t-wheel-track .t-card .t-personMeta {
+  min-width: 0;
+}
+
+html[data-brand="spa"] .t-wheel-track .t-card .t-name {
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: rgba(35, 24, 15, .92);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+html[data-brand="spa"] .t-wheel-track .t-card .t-sub {
+  margin-top: 4px;
+  font-size: .9rem;
+  color: rgba(70, 52, 35, .56);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+html[data-brand="spa"] .t-wheel.is-paused .t-wheel-track .t-card {
+  transition:
+    transform .30s ease,
+    border-color .30s ease,
+    background .30s ease,
+    box-shadow .30s ease,
+    max-height .52s cubic-bezier(.22, .61, .36, 1);
+}
+
+/* =========================
+   Responsive
    ========================= */
 @media (max-width: 1200px) {
   html[data-brand="spa"] .t-wheel-track .t-card {
     flex: 0 0 320px;
+    min-height: 220px;
+    max-height: 220px;
+  }
+
+  html[data-brand="spa"] .t-wheel-track .t-card.is-expanded,
+  html[data-brand="spa"] .t-wheel-track .t-card.is-locked {
+    max-height: 450px;
   }
 
   html[data-brand="spa"] .t-wheel::before,
@@ -212,11 +308,18 @@ html[data-brand="spa"] .t-wheel:hover .t-wheel-track {
 @media (max-width: 980px) {
   html[data-brand="spa"] .t-wheel-track {
     gap: 14px;
+    padding: 6px 16px;
   }
 
   html[data-brand="spa"] .t-wheel-track .t-card {
     flex: 0 0 280px;
     min-height: 210px;
+    max-height: 210px;
+  }
+
+  html[data-brand="spa"] .t-wheel-track .t-card.is-expanded,
+  html[data-brand="spa"] .t-wheel-track .t-card.is-locked {
+    max-height: 430px;
   }
 
   html[data-brand="spa"] .t-wheel::before,
@@ -225,19 +328,51 @@ html[data-brand="spa"] .t-wheel:hover .t-wheel-track {
   }
 }
 
+/* Mobile: always full text */
 @media (max-width: 780px) {
-  html[data-brand="spa"] .t-wheel {
-    padding: 14px;
-    border-radius: 22px;
-  }
-
   html[data-brand="spa"] .t-wheel-track {
     gap: 12px;
+    padding: 6px 14px;
   }
 
   html[data-brand="spa"] .t-wheel-track .t-card {
     flex: 0 0 240px;
-    min-height: 200px;
+    min-height: unset;
+    max-height: none;
+    overflow: visible;
+    justify-content: space-between;
+    transform: none !important;
+  }
+
+  html[data-brand="spa"] .t-wheel-track .t-card .t-textWrap {
+    margin: 14px 0 0;
+    flex: 0 0 auto;
+    min-height: unset;
+    max-height: none;
+    overflow: visible;
+  }
+
+  html[data-brand="spa"] .t-wheel-track .t-card .t-text,
+  html[data-brand="spa"] .t-wheel-track .t-card .t-textMeasure {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  html[data-brand="spa"] .t-wheel-track .t-card .t-text {
+    display: block !important;
+    overflow: visible !important;
+    opacity: 1;
+    transform: none;
+  }
+
+  html[data-brand="spa"] .t-wheel-track .t-card .t-textWrap::after,
+  html[data-brand="spa"] .t-wheel-track .t-card .t-textWrap::before,
+  html[data-brand="spa"] .t-wheel-track .t-card .t-textMeasure {
+    display: none !important;
+  }
+
+  html[data-brand="spa"] .t-wheel-track .t-card .t-personRow {
+    margin-top: 18px;
   }
 
   html[data-brand="spa"] .t-wheel::before,
@@ -246,19 +381,23 @@ html[data-brand="spa"] .t-wheel:hover .t-wheel-track {
   }
 }
 
-/* Extra small phones: shrink harder so 3 are mostly visible */
 @media (max-width: 520px) {
+  html[data-brand="spa"] .testimonials .container {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
   html[data-brand="spa"] .t-wheel {
-    padding: 12px;
+    padding: 8px 0;
   }
 
   html[data-brand="spa"] .t-wheel-track {
     gap: 8px;
+    padding: 4px 8px;
   }
 
   html[data-brand="spa"] .t-wheel-track .t-card {
-    flex: 0 0 150px;
-    min-height: 165px;
+    flex: 0 0 220px;
     padding: 14px;
   }
 
@@ -267,18 +406,19 @@ html[data-brand="spa"] .t-wheel:hover .t-wheel-track {
     letter-spacing: .14em;
   }
 
-  html[data-brand="spa"] .t-text {
+  html[data-brand="spa"] .t-wheel-track .t-card .t-text {
     font-size: .92rem;
-    -webkit-line-clamp: 3;
+    line-height: 1.55;
   }
 
-  html[data-brand="spa"] .t-initial {
+  html[data-brand="spa"] .t-wheel-track .t-card .t-initial {
     width: 36px;
     height: 36px;
+    font-size: .9rem;
   }
 
   html[data-brand="spa"] .t-wheel::before,
   html[data-brand="spa"] .t-wheel::after {
-    width: 18px;
+    width: 14px;
   }
 }
