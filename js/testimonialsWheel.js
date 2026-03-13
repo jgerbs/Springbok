@@ -86,7 +86,6 @@
 
   function lockCard(card) {
     if (!card) return;
-
     if (lockedCard === card) return;
 
     unlockCard();
@@ -210,22 +209,26 @@
     }, CLOSE_DELAY);
   });
 
-  // Click card = lock open and pause
+  // Click / tap card = lock open and pause (desktop + mobile)
   track.addEventListener("click", (e) => {
-    if (mobileOpenMQ.matches) return;
-
     const card = e.target.closest(".t-card");
     if (!card) return;
 
     e.stopPropagation();
     clearTimers();
 
-    if (lockedCard === card) return;
+    // Tap/click same card again = close it
+    if (lockedCard === card) {
+      unlockCard();
+      clearExpandedCards();
+      setPaused(false);
+      return;
+    }
 
     lockCard(card);
   });
 
-  // Click anywhere else = unlock and resume
+  // Click / tap anywhere else = unlock and resume
   document.addEventListener("click", (e) => {
     if (!lockedCard) return;
     if (wheel.contains(e.target)) return;

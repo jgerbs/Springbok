@@ -388,9 +388,9 @@
         text-align: right;
     }
 
-    /* ✅ BL/BR sit consistently close to controls */
+    /* bottom pair lifted, but not floating */
     .mission-v2--about .mission-item[data-pos="bl"] .mission-content {
-        bottom: calc(var(--mission-controls-h) + var(--mission-bottom-gap) - 40px) !important;
+        bottom: calc(var(--mission-controls-h) + var(--mission-bottom-gap) + 12px) !important;
         left: clamp(18px, 3.2vw, 60px);
         right: auto;
         top: auto;
@@ -398,7 +398,7 @@
     }
 
     .mission-v2--about .mission-item[data-pos="br"] .mission-content {
-        bottom: calc(var(--mission-controls-h) + var(--mission-bottom-gap) - 40px) !important;
+        bottom: calc(var(--mission-controls-h) + var(--mission-bottom-gap) + 12px) !important;
         right: clamp(18px, 3.2vw, 60px);
         left: auto;
         top: auto;
@@ -426,8 +426,9 @@
         margin-right: 0;
     }
 
-    /* keep controls above in stacking context */
+    /* lift controls into stage a bit so lower text and bar feel connected */
     .mission-v2--about .mission-controls-wrap {
+        margin-top: -22px;
         position: relative;
         z-index: 3;
     }
@@ -452,7 +453,6 @@
     padding-bottom: 2px;
     /* prevents crop */
 }
-
 /* =========================================================
    FOUNDERS — FINAL (clean)
    - Desktop: image L/R, optional flip on 2nd card
