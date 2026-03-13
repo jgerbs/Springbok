@@ -82,7 +82,7 @@ html[data-brand="spa"] .pkg-hero-media-inner {
     background:
         radial-gradient(1000px 500px at 30% 20%, rgba(214, 163, 107, .18), transparent 58%),
         radial-gradient(900px 500px at 70% 80%, rgba(214, 163, 107, .10), transparent 60%),
-        url("../../resources/iv.jpg") center/cover no-repeat;
+        url("../../resources/spa/spa1.jpg") center/cover no-repeat;
     filter: saturate(.95) contrast(.98);
 }
 
