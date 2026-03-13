@@ -193,3 +193,47 @@
     height: 92px;
   }
 }
+
+/* =========================================================
+   HERO — tablet / mobile
+   ========================================================= */
+
+
+
+@media (max-width: 560px) {
+  .hero {
+    min-height: clamp(720px, 88svh, 900px);
+    padding: 108px 0 28px;
+  }
+
+  .hero-brand {
+    left: 18px;
+  }
+
+  .hero-logo,
+  .hero-logo--spa {
+    height: 88px;
+  }
+
+  .hero-media {
+    background-position: 58% center;
+  }
+
+  .hero-video {
+    object-position: 58% center;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.9rem, 8vw, 2.7rem);
+    max-width: 9ch;
+  }
+
+  .hero p {
+    max-width: 23ch;
+    font-size: 0.98rem;
+  }
+
+  .hero-actions {
+    max-width: 100%;
+  }
+}

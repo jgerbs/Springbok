@@ -453,6 +453,102 @@
     padding-bottom: 2px;
     /* prevents crop */
 }
+
+/* =========================================================
+   ABOUT PAGE — STORY / MISSION
+   Single text bubble, matched to clinic styling
+   ========================================================= */
+
+.about-story {
+    position: relative;
+    padding: 88px 0 100px;
+}
+
+.about-story .section-sub {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-story-grid {
+    display: block;
+    margin-top: 34px;
+}
+
+.about-story-main {
+    max-width: 980px;
+    margin: 0 auto;
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.06),
+            rgba(255, 255, 255, 0.03));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+
+    border-radius: 28px;
+    padding: clamp(24px, 3vw, 38px);
+}
+
+.about-story-main h3 {
+    margin: 0 0 18px;
+    font-size: clamp(1.35rem, 2vw, 1.8rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: #fff;
+}
+
+.about-story-main p {
+    margin: 0 0 16px;
+    color: rgba(255, 255, 255, 0.84);
+    line-height: 1.82;
+    font-size: 1rem;
+}
+
+.about-story-main p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 980px) {
+    .about-story {
+        padding: 76px 0 88px;
+    }
+
+    .about-story-grid {
+        margin-top: 28px;
+    }
+
+    .about-story-main {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 700px) {
+    .about-story {
+        padding: 68px 0 76px;
+    }
+
+    .about-story-grid {
+        margin-top: 24px;
+    }
+
+    .about-story-main {
+        border-radius: 22px;
+        padding: 22px 18px;
+    }
+
+    .about-story-main h3 {
+        font-size: clamp(1.18rem, 5.8vw, 1.45rem);
+        margin-bottom: 14px;
+    }
+
+    .about-story-main p {
+        font-size: 0.96rem;
+        line-height: 1.75;
+    }
+}
+
 /* =========================================================
    FOUNDERS — FINAL (clean)
    - Desktop: image L/R, optional flip on 2nd card

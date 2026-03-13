@@ -84,36 +84,29 @@
     </header>
   </div>
   <main>
-    <!-- HERO (home.css stays in control) -->
+
+    <!-- HERO (About) -->
     <section class="hero">
       <a class="hero-brand reveal" href="index.html" aria-label="Springbok Home">
         <img src="resources/cliniclogo1.png" alt="Springbok Medical Clinic" class="hero-logo" />
       </a>
 
       <div class="hero-media">
-        <video class="hero-video" muted playsinline webkit-playsinline loop preload="metadata"
-          poster="resources/heroVideos/clinic-poster.jpg" data-src-mobile="resources/heroVideos/clinic.mp4"
-          data-src-desktop="resources/heroVideos/clinic.mp4"></video>
+        <video class="hero-video" muted playsinline webkit-playsinline loop preload="auto"
+          poster="resources/content/team.jpg">
+          <source src="resources/content/writing.mp4" media="(max-width:700px)" type="video/mp4">
+          <source src="resources/content/writing.mp4" type="video/mp4">
+        </video>
 
         <div class="hero-overlay"></div>
       </div>
 
       <div class="container hero-content reveal">
         <h1>Springbok Medical Clinic</h1>
-
         <p>
           Explore areas of care available at our clinic. Some specialties are currently accepting new patients.
+
         </p>
-
-        <!-- <div class="hero-pills" aria-label="New patient availability legend">
-            <span class="status-pill status-pill--open" role="status" aria-label="Accepting new patients">
-              Accepting new patients
-            </span>
-            <span class="status-pill status-pill--wait" role="status" aria-label="Waitlist or existing patients">
-              Waitlist / existing patients
-            </span>
-          </div> -->
-
         <div class="hero-actions">
           <a class="btn btn-accent book-cta" href="#" data-open-doctor-modal data-doctor="General Inquiry">
             Book Clinic
@@ -141,12 +134,12 @@
               <h3 class="clinic-title">Full-spectrum primary care</h3>
               <div class="green-divider"></div>
 
-              <p class="clinic-sub">Prevention-focused care, continuity, and clear action plans.</p>
             </div>
 
             <div class="clinic-head-actions">
               <a class="btn btn-accent btn-sm" href="tel:+17780000000">Call front desk</a>
-              <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal data-doctor="General Inquiry" data-appt="Family Practice Inquiry">Send
+              <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal data-doctor="General Inquiry"
+                data-appt="Family Practice Inquiry">Send
                 inquiry</a>
             </div>
           </header>
@@ -166,7 +159,7 @@
 
             <!-- Providers (below) -->
             <div class="clinic-panel clinic-panel--providers">
-              <h4 class="clinic-mini-title">Family physicians</h4>
+              <h4 class="clinic-mini-title">Providers</h4>
 
               <div class="providers-grid" aria-label="Family doctors">
                 <!-- Provider 1 -->
@@ -232,12 +225,12 @@
               <h3 class="clinic-title">Symptom-driven hormone care</h3>
               <div class="green-divider"></div>
 
-              <p class="clinic-sub">Thorough assessment, lab review, and individualized plans (where appropriate).</p>
             </div>
 
             <div class="clinic-head-actions">
               <a class="btn btn-accent btn-sm" href="tel:+17780000000">Call front desk</a>
-              <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal data-doctor="General Inquiry" data-appt="Hormone Inquiry">Send
+              <a class="btn btn-outline btn-sm" href="#" data-open-doctor-modal data-doctor="General Inquiry"
+                data-appt="Hormone Inquiry">Send
                 inquiry</a>
             </div>
           </header>
@@ -298,15 +291,13 @@
               <span class="clinic-eyebrow">Naturopathic Medicine</span>
               <h3 class="clinic-title">Integrative, evidence-informed care</h3>
               <div class="green-divider"></div>
-
-              <p class="clinic-sub">Long-term health support with clear next steps.</p>
             </div>
 
             <div class="clinic-head-actions">
               <a class="btn btn-accent btn-sm"
                 href="https://springbokmedicalspa.janeapp.com/locations/springbok-medical-spa/book" target="_blank"
                 rel="noopener">Book online</a>
-              <a class="btn btn-outline btn-sm" href="SpringbokSpaService1.html">Learn More</a>
+              <a class="btn btn-outline btn-sm" href="SpringbokNaturopathic.html">Learn More</a>
             </div>
           </header>
 

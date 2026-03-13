@@ -24,9 +24,6 @@ html[data-brand="clinic"] .services-tiles::before {
   position: absolute;
   inset: -140px -140px auto -140px;
   height: 520px;
-  background:
-    radial-gradient(900px 520px at 18% 30%, rgba(18, 192, 138, .14), transparent 60%),
-    radial-gradient(800px 520px at 80% 10%, rgba(197, 138, 99, .10), transparent 62%);
   pointer-events: none;
 }
 
