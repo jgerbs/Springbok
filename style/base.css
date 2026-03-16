@@ -441,6 +441,22 @@ html[data-brand="spa"] .btn-accent {
   font-weight: 650;
 }
 
+.section-head {
+  max-width: 100%;
+}
+
+.section-head .section-title {
+  max-width: 100%;
+  
+}
+
+/* Keep titles on one line on wide screens */
+@media (min-width: 1100px) {
+  .section-title {
+    white-space: nowrap;
+  }
+}
+
 .section-divider {
   width: 54px;
   height: 2px;

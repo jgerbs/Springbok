@@ -465,7 +465,6 @@
 }
 
 .about-story .section-sub {
-    max-width: 760px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -476,7 +475,6 @@
 }
 
 .about-story-main {
-    max-width: 980px;
     margin: 0 auto;
 
     border: 1px solid rgba(255, 255, 255, 0.10);

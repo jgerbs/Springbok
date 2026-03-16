@@ -33,7 +33,6 @@
   isolation: isolate;
 }
 
-/* prevent ultra-wide distortion */
 .mission-v2-shell {
   max-width: 1600px;
   margin: 0 auto;

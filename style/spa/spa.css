@@ -74,6 +74,7 @@ html[data-brand="spa"] body::before {
   filter: blur(16px);
   opacity: 1;
 }
+
 /* =========================================================
    3) BUTTON TWEAKS (LIGHT)
    ========================================================= */
@@ -276,9 +277,14 @@ html[data-brand="spa"] .mobile-panel {
    ========================================================= */
 html[data-brand="spa"] .hero {
   position: relative;
+
   min-height: 100vh;
   min-height: 100svh;
   min-height: 100dvh;
+
+  /* keeps spa from collapsing too short on shorter desktop/tablet heights */
+  min-height: clamp(760px, 92vh, 980px);
+
   display: grid;
   align-items: end;
   box-sizing: border-box;
@@ -863,14 +869,35 @@ html[data-brand="spa"] .to-top:hover {
 }
 
 /* =========================================================
-   10) SPA: Mobile hero / header behavior
-   Updated to match smoother clinic mobile changes
+   10) SPA — RESPONSIVE HEADER / HERO
+   Match home hero resizing behavior
+   - keeps spa visuals
+   - uses same resize logic as home
    ========================================================= */
-/* =========================================================
-   SPA HERO — tablet/mobile sizing
-   Match clinic hero resizing behavior
-   ========================================================= */
+
 @media (max-width: 960px) {
+  html[data-brand="spa"] {
+    --edge-pad: 22px;
+    --top-pad: 16px;
+    --spa-logo-left-nudge: 0px;
+  }
+
+  html[data-brand="spa"] .header-right {
+    top: calc(var(--top-pad) + env(safe-area-inset-top));
+    right: calc(var(--edge-pad) + env(safe-area-inset-right));
+    gap: 10px;
+  }
+
+  html[data-brand="spa"] .header-actions {
+    gap: 10px;
+  }
+
+  html[data-brand="spa"] .book-cta {
+    padding: 10px 15px;
+    font-size: 0.95rem;
+    min-height: 42px;
+  }
+
   html[data-brand="spa"] .hero {
     min-height: 100vh;
     min-height: 100svh;
@@ -882,7 +909,8 @@ html[data-brand="spa"] .to-top:hover {
 
   html[data-brand="spa"] .hero-brand {
     top: calc(var(--top-pad) + env(safe-area-inset-top));
-    left: calc(var(--edge-pad) + env(safe-area-inset-left) - var(--spa-logo-left-nudge));
+    left: calc(var(--edge-pad) + env(safe-area-inset-left));
+    z-index: 10060;
   }
 
   html[data-brand="spa"] .hero-logo,
@@ -932,43 +960,50 @@ html[data-brand="spa"] .to-top:hover {
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 420px) {
+  html[data-brand="spa"] {
+    --edge-pad: 14px;
+    --top-pad: 10px;
+  }
+
+  html[data-brand="spa"] .header-right {
+    top: calc(var(--top-pad) + env(safe-area-inset-top));
+    right: calc(var(--edge-pad) + env(safe-area-inset-right));
+    left: 106px;
+    gap: 6px;
+  }
+
+  html[data-brand="spa"] .header-actions {
+    gap: 6px;
+  }
+
+  html[data-brand="spa"] .book-cta {
+    padding: 8px 11px;
+    font-size: 0.84rem;
+    min-height: 36px;
+  }
+
   html[data-brand="spa"] .hero {
-    min-height: clamp(720px, 88svh, 900px);
-    padding: 108px 0 28px;
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
+    padding: 118px 0 38px;
   }
 
+  html[data-brand="spa"] .hero-logo,
   html[data-brand="spa"] .hero-logo--spa {
-    height: 88px;
-  }
-
-  html[data-brand="spa"] .hero-video {
-    object-position: 58% center;
+    height: 92px;
+    width: auto;
   }
 
   html[data-brand="spa"] .hero h1 {
-    font-size: clamp(1.9rem, 8vw, 2.7rem);
-    max-width: 9ch;
+    font-size: 2rem;
+    max-width: 24ch;
   }
 
   html[data-brand="spa"] .hero p {
-    max-width: 23ch;
-    font-size: 0.98rem;
-  }
-
-  html[data-brand="spa"] .hero-actions {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 420px) {
-  html[data-brand="spa"] .hero {
-    min-height: clamp(680px, 84svh, 840px);
-    padding: 104px 0 24px;
-  }
-
-  html[data-brand="spa"] .hero-logo--spa {
-    height: 84px;
+    font-size: 0.94rem;
+    max-width: 21ch;
   }
 
   html[data-brand="spa"] .site-footer {
@@ -976,37 +1011,12 @@ html[data-brand="spa"] .to-top:hover {
   }
 
   html[data-brand="spa"] .footer-col h3 {
-    font-size: .88rem;
+    font-size: 0.88rem;
   }
 
   html[data-brand="spa"] .social-btn {
     width: 40px;
     height: 40px;
-  }
-}
-
-/* =========================
-   SMALL SCREENS (≤700px)
-   Brand stacks nicely
-   ========================= */
-@media (max-width: 700px) {
-  html[data-brand="spa"] .footer-brand {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  html[data-brand="spa"] .footer-brand-logo {
-    width: clamp(180px, 48vw, 240px);
-  }
-
-  html[data-brand="spa"] .footer-brand-type {
-    text-align: left;
-  }
-
-  html[data-brand="spa"] .footer-social {
-    margin-top: 6px;
   }
 }
 
