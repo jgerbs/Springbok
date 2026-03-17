@@ -20,13 +20,15 @@ html[data-brand="spa"] .testimonials {
 html[data-brand="spa"] .t-wheel {
   position: relative;
   margin-top: 18px;
-  border-radius: 26px;
-  border: 1px solid rgba(91, 69, 45, .12);
-  background: rgba(255, 252, 248, .72);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 18px 60px rgba(77, 52, 31, .14);
-  padding: 18px 0;
-  overflow: hidden;
+
+  border-radius: 0;
+  border: 0;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+
+  padding: 0;
+  overflow: visible;
 }
 
 html[data-brand="spa"] .t-wheel::before,
@@ -38,16 +40,6 @@ html[data-brand="spa"] .t-wheel::after {
   z-index: 2;
   pointer-events: none;
   width: 120px;
-}
-
-html[data-brand="spa"] .t-wheel::before {
-  left: 0;
-  background: linear-gradient(90deg, rgba(250, 247, 242, .96), rgba(250, 247, 242, 0));
-}
-
-html[data-brand="spa"] .t-wheel::after {
-  right: 0;
-  background: linear-gradient(270deg, rgba(250, 247, 242, .96), rgba(250, 247, 242, 0));
 }
 
 html[data-brand="spa"] .t-wheel-track {

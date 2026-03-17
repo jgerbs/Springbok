@@ -931,16 +931,18 @@ html[data-brand="clinic"] .why-bubble::before {
 html[data-brand="clinic"] .why-badge {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    /* matches your service tile spacing better */
     margin-bottom: 8px;
 }
 
 html[data-brand="clinic"] .why-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 999px;
-    background: rgba(89, 168, 120, .95);
-    box-shadow: 0 0 0 4px rgba(89, 168, 120, .16);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 6px rgba(18, 192, 138, .10);
+    flex: 0 0 6px;
 }
 
 html[data-brand="clinic"] .why-tag {

@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="style/staff.css" />
   <link rel="stylesheet" href="style/responsive.css" />
   <link rel="stylesheet" href="style/practiceModal.css" />
+  <link rel="stylesheet" href="style/reviews.css" />
 </head>
 
 <body>
@@ -322,18 +323,48 @@
 
         <div class="staff-testimonials reveal-stagger">
           <article class="staff-quote">
-            <p>“Clear, calm, and thorough. I left with a plan that made sense and follow-up steps I understood.”</p>
-            <span>— Patient</span>
+            <div class="staff-quote-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>
+              After years of dealing with negative experiences with other doctors, I finally found one who truly
+              cares about his patients. I am extremely grateful to have found Dr. Kloppers.
+            </p>
+            <div class="staff-quote-person">
+              <div class="staff-quote-initial">S</div>
+              <div class="staff-quote-meta">
+                <div class="staff-quote-name">Sara T.</div>
+                <div class="staff-quote-sub">Google Review</div>
+              </div>
+            </div>
           </article>
 
           <article class="staff-quote">
-            <p>“Professional and kind — everything was explained without feeling rushed.”</p>
-            <span>— Patient</span>
+            <div class="staff-quote-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>
+              Meeting Dr Kloppers renewed our faith in the medical system. There are still doctors out there who
+              truly love what they do and care about their patients.
+            </p>
+            <div class="staff-quote-person">
+              <div class="staff-quote-initial">H</div>
+              <div class="staff-quote-meta">
+                <div class="staff-quote-name">Heaven M.</div>
+                <div class="staff-quote-sub">Google Review</div>
+              </div>
+            </div>
           </article>
 
           <article class="staff-quote">
-            <p>“I appreciated the preventative focus and the way options were laid out clearly.”</p>
-            <span>— Patient</span>
+            <div class="staff-quote-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>
+              Dr Kloppers is such an amazing and caring doctor. He listens attentively, explains everything clearly,
+              and has a wonderful sense of humour.
+            </p>
+            <div class="staff-quote-person">
+              <div class="staff-quote-initial">L</div>
+              <div class="staff-quote-meta">
+                <div class="staff-quote-name">Lynne C.</div>
+                <div class="staff-quote-sub">Google Review</div>
+              </div>
+            </div>
           </article>
         </div>
       </div>
@@ -423,10 +454,10 @@
   <!-- CONTACT DOCTOR MODAL (Netlify Forms-ready, styled like contactModal) -->
   <div class="modal" id="doctorModal" aria-hidden="true">
     <div class="modal-backdrop" data-close="true"></div>
-  
+
     <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="doctorModalTitle">
       <button class="modal-x" type="button" aria-label="Close" data-close="true">✕</button>
-  
+
       <div class="modal-head">
         <div class="modal-eyebrow">Contact</div>
         <h2 class="modal-title" id="doctorModalTitle">Request an appointment</h2>
@@ -434,14 +465,14 @@
           Fill this out and our team will route you to the right provider or next step.
         </p>
       </div>
-  
+
       <!-- Netlify Forms: method + data-netlify + form-name + honeypot -->
       <form class="modal-form" id="doctorContactForm" name="doctor-contact" method="POST" data-netlify="true"
         netlify-honeypot="bot-field">
-  
+
         <!-- required hidden form-name -->
         <input type="hidden" name="form-name" value="doctor-contact" />
-  
+
         <!-- honeypot (spam trap) -->
         <p style="display:none;">
           <label>
@@ -449,33 +480,33 @@
             <input name="bot-field" />
           </label>
         </p>
-  
+
         <div class="modal-grid">
           <label class="field">
             <span class="field-label">Full Name</span>
             <input class="field-input" type="text" name="name" placeholder="Your name" autocomplete="name" required />
           </label>
-  
+
           <label class="field">
             <span class="field-label">Phone Number</span>
             <input class="field-input" type="tel" name="phone" placeholder="(778) 000-0000" autocomplete="tel" />
           </label>
-  
+
           <label class="field field-span">
             <span class="field-label">Email</span>
             <input class="field-input" type="email" name="email" placeholder="you@email.com" autocomplete="email"
               required />
           </label>
-  
+
           <div class="field select-field field-dd" data-dd="doctor">
             <span class="field-label">Doctor</span>
-  
+
             <button class="dd-btn field-input" type="button" aria-haspopup="listbox" aria-expanded="false">
               <span class="dd-value" data-placeholder="Select one">Select one</span>
             </button>
-  
+
             <input type="hidden" name="doctor" id="doctorSelect" required />
-  
+
             <ul class="dd-menu" role="listbox" aria-label="Doctor / Service">
               <li class="dd-opt" role="option" data-value="Dr. Amor Kloppers">Dr. Amor Kloppers</li>
               <li class="dd-opt" role="option" data-value="Dr. Francois Erasmus">Dr. Francois Erasmus</li>
@@ -484,38 +515,38 @@
               <li class="dd-opt" role="option" data-value="General Inquiry">General Inquiry</li>
             </ul>
           </div>
-  
+
           <div class="field select-field field-dd" data-dd="appt">
             <span class="field-label">Appointment type</span>
-  
+
             <button class="dd-btn field-input" type="button" aria-haspopup="listbox" aria-expanded="false">
               <span class="dd-value" data-placeholder="Select one">Select one</span>
             </button>
-  
+
             <input type="hidden" name="apptType" id="apptTypeSelect" required />
-  
+
             <ul class="dd-menu" role="listbox" aria-label="Appointment type"></ul>
           </div>
-  
+
           <label class="field field-span">
             <span class="field-label">Subject</span>
             <input class="field-input" type="text" name="requestSubject" id="subjectInput"
               placeholder="e.g., Face Lift, Blood Transfusion, IV Therapy, etc..." required />
           </label>
-  
+
           <label class="field field-span">
             <span class="field-label">Message</span>
             <textarea class="field-input field-textarea" name="message"
               placeholder="Tell us what you’re looking for and any timing preferences." rows="5" required></textarea>
           </label>
-  
+
         </div>
-  
+
         <div class="modal-actions">
           <button class="btn btn-outline" type="button" data-close="true">Cancel</button>
           <button class="btn btn-accent" type="submit">Send</button>
         </div>
-  
+
         <p class="modal-note">
           Please do not include personal health information. For urgent concerns call 911.
         </p>
