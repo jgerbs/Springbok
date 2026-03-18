@@ -109,30 +109,43 @@
 }
 
 /* -----------------------------
-   NAV BUTTONS (base styles)
+   NAV BUTTONS (match mission style)
 ------------------------------ */
 .staff-nav {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
+    flex: 0 0 auto;
+    width: 46px;
+    height: 46px;
+    border-radius: 999px;
 
-    border: 1px solid rgba(255, 255, 255, .14);
-    background: rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255, 255, 255, .18);
+    background: rgba(255, 255, 255, .10);
     color: rgba(255, 255, 255, .92);
-    font-weight: 900;
+
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 500;
     cursor: pointer;
 
     display: grid;
     place-items: center;
 
-    backdrop-filter: blur(14px);
-    transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    transition:
+        transform .15s ease,
+        background .15s ease,
+        border-color .15s ease;
 }
 
 .staff-nav:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
     background: rgba(18, 192, 138, .14);
-    border-color: rgba(18, 192, 138, .24);
+    border-color: rgba(18, 192, 138, .55);
+}
+
+.staff-nav:active {
+    transform: translateY(0);
 }
 
 /* Overlay arrows (desktop/tablet) */
@@ -152,13 +165,10 @@
 }
 
 .staff-nav--overlay:hover {
-    transform: translateY(-50%) translateY(-2px);
+    transform: translateY(calc(-50% - 1px));
 }
 
-/* ✅ Controls under the wheel (ALWAYS visible)
-   Desktop/tablet: ONLY button, LEFT
-   Mobile: arrows + button row (pinned)
-*/
+/* Bottom controls */
 .staff-wheel-shell .wheel-controls {
     display: flex;
     align-items: center;
@@ -167,6 +177,7 @@
     margin-top: 16px;
 }
 
+/* hide row arrows on desktop/tablet */
 .staff-wheel-shell .wheel-controls .staff-nav--row {
     display: none;
 }
@@ -302,14 +313,11 @@
 @media (max-width: 900px) {
     .staff-wheel {
         height: 350px;
-        /* scaled down */
         touch-action: pan-y;
     }
 
-    /* scale from top if you ever scale cards later */
     .staff-wheel .service-tile {
         width: min(320px, 70vw);
-        /* ✅ skinnier like products */
         transform-origin: top center;
     }
 
@@ -328,7 +336,7 @@
         display: none;
     }
 
-    /* reserve space + pin controls to bottom of the wheel shell */
+    /* reserve space for controls */
     .staff-wheel-shell {
         --controls-h: 56px;
         --controls-gap: 16px;
@@ -351,11 +359,13 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        flex: 0 0 44px;
+        flex: 0 0 42px;
+        width: 42px;
+        height: 42px;
+        font-size: 26px;
         transform: none;
     }
 
-    /* button fills the middle */
     .staff-wheel-shell .wheel-controls .btn {
         flex: 1;
         width: auto;

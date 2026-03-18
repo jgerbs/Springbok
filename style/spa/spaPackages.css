@@ -181,28 +181,43 @@ html[data-brand="spa"] .pkg-actions .btn {
     justify-content: center;
 }
 
-/* NAV BUTTONS (base styles) */
+/* NAV BUTTONS (mission-style, spa light version) */
 html[data-brand="spa"] .pkg-nav {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
+    flex: 0 0 auto;
+    width: 46px;
+    height: 46px;
+    border-radius: 999px;
 
     border: 1px solid rgba(0, 0, 0, .10);
-    background: rgba(255, 255, 255, .70);
+    background: rgba(255, 255, 255, .78);
     color: rgba(0, 0, 0, .72);
-    font-weight: 900;
+
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 500;
     cursor: pointer;
 
-    backdrop-filter: blur(14px);
-    transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    display: grid;
+    place-items: center;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    transition:
+        transform .15s ease,
+        background .15s ease,
+        border-color .15s ease;
 }
 
 html[data-brand="spa"] .pkg-nav:hover {
-    transform: translateY(-2px);
-    background: rgba(214, 163, 107, .20);
-    border-color: rgba(214, 163, 107, .26);
+    transform: translateY(-1px);
+    background: rgba(214, 163, 107, .18);
+    border-color: rgba(214, 163, 107, .38);
 }
 
+html[data-brand="spa"] .pkg-nav:active {
+    transform: translateY(0);
+}
 /* Overlay arrows (desktop/tablet) */
 html[data-brand="spa"] .pkg-nav--overlay {
     position: absolute;

@@ -1,16 +1,16 @@
 /* =========================
-   FOOTER (Springbok)
-   Layout goals:
-   - Desktop: BRAND | PAGES | CLINIC | SPA | ADDRESS (all in one row)
-   - When it starts feeling cramped / tries to “stack”: switch to ONE-COLUMN footer
-   - Never let the address overflow/cut off
+   FOOTER (Springbok) — FULL REWORK
+   Goals:
+   - Full desktop: BRAND | PAGES | CLINIC | SPA | MORE SPA | CONTACT
+   - Wide stacked view: brand stays logo-left/text-right, link columns align evenly
+   - Mobile: stacked cleanly with consistent gutters
+   - Top button stays bottom-right
    ========================= */
 
 .site-footer {
   margin-top: 80px;
   padding: clamp(44px, 5vw, 56px) 0 22px;
   color: rgba(255, 255, 255, .82);
-
   background:
     radial-gradient(1200px 800px at 20% 0%, rgba(18, 192, 138, .18), transparent 55%),
     radial-gradient(900px 700px at 90% 15%, rgba(18, 192, 138, .10), transparent 60%),
@@ -18,95 +18,107 @@
   border-top: 1px solid rgba(255, 255, 255, .10);
 }
 
-/* ====== DESKTOP / FULL VIEW (5 columns) ======
-   We "flatten" .footer-cols with display: contents
-   so the 3 link columns become real grid columns next to brand + contact.
-*/
+/* wider than normal site container, but not edge-to-edge */
+.site-footer .container {
+  width: min(1680px, calc(100vw - 64px));
+  max-width: none;
+}
+
+/* =========================
+   DESKTOP
+   ========================= */
 .footer-inner {
   display: grid;
   grid-template-columns:
-    minmax(220px, 1.15fr)
+    minmax(220px, 1.05fr)
     /* brand */
-    minmax(160px, 1fr)
+    minmax(140px, .78fr)
     /* pages */
-    minmax(190px, 1fr)
+    minmax(190px, .96fr)
     /* clinic */
-    minmax(170px, 1fr)
+    minmax(150px, .88fr)
     /* spa */
-    minmax(260px, 1.15fr);
+    minmax(150px, .88fr)
+    /* more spa */
+    minmax(250px, 1.08fr);
   /* contact */
-  column-gap: clamp(18px, 3vw, 42px);
-  row-gap: clamp(18px, 2.5vw, 28px);
+  column-gap: clamp(22px, 1.9vw, 34px);
+  row-gap: clamp(18px, 2.2vw, 28px);
   align-items: start;
 }
 
-/* Flatten the wrapper so its children become columns 2/3/4 */
 .footer-cols {
   display: contents;
-  position: relative;
-  margin-top: 28px;
-  padding-top: 28px;
 }
 
-.footer-cols::before {
-  content: "";
-  position: absolute;
-  top: -18px;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: rgba(255, 255, 255, .10);
-}
-
-/* Safety: allow grid items to shrink without overflow */
 .footer-brand,
 .footer-col,
 .footer-contact {
   min-width: 0;
 }
 
-/* ===== Brand ===== */
+/* =========================
+   BRAND
+   ========================= */
 .footer-brand {
+  display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  /* keeps column aligned with the other footer columns */
+  gap: 14px;
+}
+
+.footer-brand-top {
+  display: block;
 }
 
 .footer-brand-stack {
   display: flex;
-  /* override inline-flex */
   flex-direction: column;
-  /* stack */
   align-items: flex-start;
   gap: 10px;
+  text-decoration: none;
 }
 
 .footer-brand-logo {
-  width: clamp(110px, 9vw, 170px);
+  width: clamp(140px, 10vw, 190px);
   height: auto;
-  /* let it keep aspect ratio */
   max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 32px rgba(0, 0, 0, .35));
 }
 
-/* center the type under the logo (optional: remove if you want left-aligned) */
+.footer-brand-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .footer-brand-type {
   text-align: left;
-  padding-top: 18px;
 }
 
-.footer-brand-name,
+.footer-brand-name {
+  font-size: clamp(1.02rem, 1vw, 1.12rem);
+  line-height: 1.05;
+  letter-spacing: .06em;
+  font-weight: 800;
+  color: rgba(255, 255, 255, .90);
+}
+
 .footer-brand-sub {
-  white-space: normal;
-  
-  /* allow wrapping if needed */
+  margin-top: 2px;
+  font-size: .84rem;
+  line-height: 1.1;
+  letter-spacing: .24em;
+  font-weight: 700;
+  color: rgba(255, 255, 255, .78);
 }
 
-/* Social */
 .footer-social {
   display: flex;
   gap: 10px;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: 14px;
 }
 
 .social-btn {
@@ -116,27 +128,34 @@
   display: grid;
   place-items: center;
   text-decoration: none;
-
   border: 1px solid rgba(255, 255, 255, .14);
   background: rgba(255, 255, 255, .06);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   color: rgba(255, 255, 255, .86);
-  font-weight: 900;
-
-  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+  transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
 }
 
 .social-btn:hover {
   transform: translateY(-2px);
   background: rgba(18, 192, 138, .16);
   border-color: rgba(18, 192, 138, .26);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, .22);
 }
 
-/* ===== Link Columns ===== */
+.social-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+/* =========================
+   LINK COLUMNS
+   ========================= */
 .footer-col h3 {
   margin: 0 0 12px;
   font-size: .92rem;
+  line-height: 1.2;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, .92);
@@ -144,15 +163,13 @@
 
 .footer-col a {
   display: block;
-  padding: 7px 0;
+  padding: 6px 0;
   text-decoration: none;
   color: rgba(255, 255, 255, .68);
   font-weight: 650;
-
-  /* let long labels wrap nicely */
+  line-height: 1.35;
   white-space: normal;
   overflow-wrap: anywhere;
-
   transition: color .16s ease, transform .16s ease;
 }
 
@@ -161,20 +178,15 @@
   transform: translateX(2px);
 }
 
-/* Add consistent vertical rhythm between sections (helps across viewports) */
-.footer-col+.footer-col {
-  margin-top: 2px;
-}
-
-/* ===== Contact (Address distinct from links) ===== */
+/* =========================
+   CONTACT
+   ========================= */
 .footer-contact {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  text-align: left;
   justify-self: stretch;
-
-  /* visual separation */
+  text-align: left;
   position: relative;
   padding-left: 18px;
 }
@@ -193,9 +205,10 @@
 }
 
 .footer-contact-title {
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   font-weight: 850;
   font-size: .95rem;
+  line-height: 1.25;
   letter-spacing: .08em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, .86);
@@ -203,7 +216,7 @@
 
 .footer-contact p {
   margin: 0;
-  line-height: 1.65;
+  line-height: 1.6;
   font-size: .92rem;
   color: rgba(255, 255, 255, .62);
 }
@@ -214,10 +227,12 @@
   font-weight: 780;
   display: inline-block;
   margin-top: 6px;
+  transition: color .16s ease, transform .16s ease;
 }
 
 .footer-link:hover {
   color: rgba(18, 192, 138, .92);
+  transform: translateX(2px);
 }
 
 .footer-contact-block:last-child .footer-link {
@@ -226,183 +241,90 @@
   color: rgba(255, 255, 255, .88);
 }
 
-/* ===== Bottom bar ===== */
+/* =========================
+   BOTTOM BAR
+   ========================= */
 .footer-bottom {
   margin-top: 28px;
   padding-top: 18px;
   border-top: 1px solid rgba(255, 255, 255, .10);
-
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-
   color: rgba(255, 255, 255, .58);
   font-weight: 650;
 }
 
 .footer-bottom p {
   margin: 0;
+  min-width: 0;
 }
 
-/* Back to top button */
+/* back to top */
 .to-top {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, .14);
-  background: rgba(255, 255, 255, .06);
+  background: rgba(255, 255, 255, .05);
   color: rgba(255, 255, 255, .86);
+  font-size: 1.1rem;
   font-weight: 900;
+  line-height: 1;
+  display: grid;
+  place-items: center;
   cursor: pointer;
+  flex: 0 0 auto;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, .24),
+    inset 0 1px 0 rgba(255, 255, 255, .05);
+  transition:
+    transform .18s ease,
+    background .18s ease,
+    border-color .18s ease,
+    box-shadow .18s ease,
+    color .18s ease;
 }
 
 .to-top:hover {
   transform: translateY(-2px);
-  background: rgba(18, 192, 138, .16);
-  border-color: rgba(18, 192, 138, .26);
+  background: rgba(18, 192, 138, .14);
+  border-color: rgba(18, 192, 138, .28);
+  color: rgba(255, 255, 255, .96);
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, .28),
+    0 0 0 1px rgba(18, 192, 138, .08) inset;
+}
+
+.to-top:active {
+  transform: translateY(0);
+}
+
+.to-top:focus-visible {
+  outline: none;
+  border-color: rgba(18, 192, 138, .42);
+  box-shadow:
+    0 0 0 3px rgba(18, 192, 138, .16),
+    0 10px 26px rgba(0, 0, 0, .24);
 }
 
 /* =========================
-   BREAKPOINT: switch to ONE-COLUMN footer
-   (this prevents the “weird middle stacking / address overflow” view)
+   WIDE 1-COL / STACKED VIEW
+   Keep brand side-by-side
+   Keep middle evenly spaced with a real grid
    ========================= */
-@media (max-width: 1400px) {
+@media (max-width: 1360px) {
+  .site-footer .container {
+    width: min(1680px, calc(100vw - 56px));
+  }
+
   .footer-inner {
     grid-template-columns: 1fr;
+    row-gap: 24px;
   }
-
-  /* stop flattening; make the middle columns a normal stack */
-  .footer-cols {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .footer-brand {
-    gap: 14px;
-  }
-
-  /* remove vertical divider; add breathing room instead */
-  .footer-contact {
-    padding-left: 0;
-    margin-top: 6px;
-  }
-
-  .footer-contact::before {
-    display: none;
-  }
-
-  /* optional: subtle separation for contact in single-column */
-  .footer-contact {
-    padding-top: 14px;
-    border-top: 1px solid rgba(255, 255, 255, .10);
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .footer-cols::before {
-    display: block;
-  }
-
-  .footer-brand {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-areas:
-      "logo socials"
-      "type socials";
-    column-gap: 18px;
-    row-gap: 10px;
-    align-items: start;
-  }
-
-  /* let logo + type place directly into grid areas */
-  .footer-brand-stack {
-    display: contents;
-  }
-
-  .footer-brand-logo {
-    grid-area: logo;
-    width: clamp(96px, 14vw, 140px);
-    height: auto;
-    max-width: 100%;
-  }
-
-  .footer-brand-type {
-    grid-area: type;
-    text-align: left;
-  }
-
-  .footer-social {
-    grid-area: socials;
-    margin-top: 0;
-    /* kill the desktop top spacing */
-    justify-self: start;
-    /* keep it near the logo, not pushed far right */
-    align-self: center;
-  }
-
-  .footer-cols {
-    display: flex;
-    /* instead of contents */
-    flex-wrap: wrap;
-    gap: clamp(18px, 3vw, 42px);
-    align-items: flex-start;
-  }
-}
-
-/* Extra-small: tighten padding a touch */
-@media (max-width: 420px) {
-  .site-footer {
-    padding: 42px 0 20px;
-  }
-
-  .footer-col h3 {
-    font-size: .88rem;
-  }
-
-  .social-btn {
-    width: 40px;
-    height: 40px;
-  }
-}
-
-/* =========================
-   BRAND ONLY – size + spacing refinement
-   ========================= */
-
-/* Desktop: make logo more readable */
-.footer-brand-logo {
-  width: clamp(140px, 10vw, 190px);
-  height: auto;
-  max-width: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 14px 32px rgba(0, 0, 0, .35));
-}
-
-/* Tighten brand vertical rhythm */
-.footer-brand {
-  gap: 12px;
-}
-
-.footer-brand-bottom {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* =========================
-   ONE-COLUMN FOOTER (≤1400px)
-   BRAND LAYOUT ONLY
-   ========================= */
-@media (max-width: 1400px) {
 
   .footer-brand {
     display: grid;
@@ -410,68 +332,238 @@
     grid-template-areas:
       "logo type"
       "logo socials";
-    column-gap: 20px;
+    column-gap: 22px;
     row-gap: 8px;
-    align-items: start;
+    align-items: center;
   }
 
-  /* logo */
   .footer-brand-top {
     grid-area: logo;
   }
 
-  .footer-brand-logo {
-    width: clamp(160px, 18vw, 220px);
+  .footer-brand-bottom {
+    display: contents;
   }
 
-  /* text */
   .footer-brand-type {
     grid-area: type;
-    text-align: left;
+    align-self: end;
+    padding-top: 0;
   }
 
-  .footer-brand-name {
-    font-size: 1.1rem;
-    letter-spacing: .09em;
-  }
-
-  .footer-brand-sub {
-    font-size: .8rem;
-    letter-spacing: .26em;
-  }
-
-  /* socials under text */
   .footer-social {
     grid-area: socials;
-    margin-top: 2px;
     justify-self: start;
     align-self: start;
+    margin-top: 0;
+  }
+
+  .footer-brand-logo {
+    width: clamp(138px, 14vw, 190px);
+  }
+
+  .footer-cols {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: clamp(24px, 3vw, 44px);
+    row-gap: 20px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, .10);
+  }
+
+  .footer-col {
+    min-width: 0;
+  }
+
+  .footer-contact {
+    padding-left: 0;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, .10);
+    gap: 14px;
+  }
+
+  .footer-contact::before {
+    display: none;
+  }
+
+  .footer-bottom {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
 /* =========================
-   SMALL SCREENS
-   BRAND STACKS NICELY
+   TABLET
+   ========================= */
+@media (max-width: 980px) {
+  .site-footer .container {
+    width: min(1680px, calc(100vw - 40px));
+  }
+
+  .site-footer {
+    padding: 42px 0 20px;
+  }
+
+  .footer-cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 28px;
+    row-gap: 24px;
+  }
+
+  .footer-col h3 {
+    font-size: .9rem;
+    margin-bottom: 10px;
+  }
+
+  .footer-col a {
+    padding: 5px 0;
+  }
+
+  .footer-contact-title {
+    font-size: .92rem;
+  }
+
+  .footer-contact p {
+    font-size: .9rem;
+  }
+}
+
+/* =========================
+   MOBILE
    ========================= */
 @media (max-width: 700px) {
+  .site-footer .container {
+    width: min(1680px, calc(100vw - 28px));
+  }
+
+  .footer-inner {
+    row-gap: 22px;
+  }
 
   .footer-brand {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "logo type"
+      "logo socials";
+    column-gap: 16px;
+    row-gap: 8px;
+    align-items: center;
   }
 
   .footer-brand-logo {
-    width: clamp(180px, 48vw, 240px);
+    width: clamp(120px, 34vw, 150px);
   }
 
   .footer-brand-type {
     text-align: left;
   }
 
-  .footer-social {
-    margin-top: 6px;
+  .footer-brand-name {
+    font-size: .98rem;
+  }
+
+  .footer-brand-sub {
+    font-size: .76rem;
+    letter-spacing: .20em;
+  }
+
+  .footer-cols {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .footer-contact {
+    padding-top: 16px;
+  }
+
+  .footer-bottom {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .footer-bottom p {
+    flex: 1 1 auto;
+    padding-right: 12px;
+  }
+
+  .to-top {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    font-size: 1rem;
   }
 }
 
+/* =========================
+   EXTRA SMALL
+   ========================= */
+@media (max-width: 420px) {
+  .site-footer {
+    padding: 40px 0 18px;
+  }
+
+  .site-footer .container {
+    width: min(1680px, calc(100vw - 22px));
+  }
+
+  .footer-brand {
+    column-gap: 14px;
+  }
+
+  .footer-brand-logo {
+    width: clamp(108px, 32vw, 128px);
+  }
+
+  .footer-col h3 {
+    font-size: .86rem;
+  }
+
+  .footer-col a {
+    font-size: .98rem;
+  }
+
+  .social-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .social-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .footer-bottom {
+    margin-top: 24px;
+    padding-top: 16px;
+  }
+}
+
+/* =========================
+   MORE LEFT / RIGHT GUTTER
+   for stacked footer views
+   ========================= */
+
+@media (max-width: 980px) {
+  .site-footer .container {
+    width: min(1680px, calc(100vw - 56px));
+    /* was ~40px */
+  }
+}
+
+@media (max-width: 700px) {
+  .site-footer .container {
+    width: min(1680px, calc(100vw - 48px));
+    /* add more side padding */
+  }
+}
+
+@media (max-width: 420px) {
+  .site-footer .container {
+    width: min(1680px, calc(100vw - 44px));
+    /* keep some margin on very small */
+  }
+}
