@@ -379,46 +379,65 @@ html[data-brand="spa"] .products-tiles .doc-desc {
 }
 
 /* =========================================================
-   MOBILE (<=635): STACKED
+   PRODUCTS — keep L/R layout longer on mobile
    ========================================================= */
 
-@media (max-width: 635px) {
+@media (max-width: 760px) {
     html[data-brand="spa"] .products-tiles .doc-card {
-        grid-template-columns: 1fr !important;
-        grid-template-rows: auto auto !important;
+        grid-template-columns: 116px minmax(0, 1fr) !important;
+        grid-template-rows: 1fr !important;
         gap: 0 !important;
-        border-radius: var(--radius-lg);
+        border-radius: 24px;
         align-items: stretch !important;
+        overflow: hidden;
     }
 
-    /* remove even flip ordering on mobile */
-    html[data-brand="spa"] .products-tiles .doc-card:nth-child(even) .doc-media,
+    html[data-brand="spa"] .products-tiles .doc-card:nth-child(even) {
+        grid-template-columns: minmax(0, 1fr) 116px !important;
+    }
+
+    html[data-brand="spa"] .products-tiles .doc-card:nth-child(even) .doc-media {
+        order: 2 !important;
+    }
+
     html[data-brand="spa"] .products-tiles .doc-card:nth-child(even) .doc-body {
-        order: initial !important;
+        order: 1 !important;
     }
 
     html[data-brand="spa"] .products-tiles .doc-media {
-        width: 100%;
-        min-height: 220px;
-        max-height: 320px;
+        min-height: 100%;
+        height: auto;
+        overflow: hidden;
+    }
+
+    html[data-brand="spa"] .products-tiles .doc-img {
+        object-fit: cover;
+        object-position: var(--pos, 50% 22%);
     }
 
     html[data-brand="spa"] .products-tiles .doc-media::before,
     html[data-brand="spa"] .products-tiles .doc-media::after {
-        height: 8%;
+        height: 13%;
         backdrop-filter: blur(16px) saturate(1.06);
         -webkit-backdrop-filter: blur(16px) saturate(1.06);
     }
 
     html[data-brand="spa"] .products-tiles .doc-body {
-        padding: 12px 14px 14px !important;
-        gap: 8px;
+        min-width: 0;
+        padding: 12px 12px 12px 13px !important;
+        gap: 7px;
+        align-content: center;
+    }
+
+    html[data-brand="spa"] .products-tiles .doc-card:nth-child(even) .doc-body {
+        padding: 12px 13px 12px 12px !important;
     }
 
     html[data-brand="spa"] .products-tiles .doc-topline {
         flex-wrap: wrap;
         justify-content: flex-start;
-        gap: 10px;
+        gap: 8px;
+        margin: 0 0 2px;
     }
 
     html[data-brand="spa"] .products-tiles .doc-chip {
@@ -426,41 +445,89 @@ html[data-brand="spa"] .products-tiles .doc-desc {
         padding: 6px 9px;
     }
 
+    html[data-brand="spa"] .products-tiles .doc-price {
+        font-size: .82rem;
+    }
+
     html[data-brand="spa"] .products-tiles .doc-name {
-        font-size: 1.02rem;
+        margin: 0;
+        font-size: 1rem;
         line-height: 1.12;
     }
 
     html[data-brand="spa"] .products-tiles .doc-desc {
-        font-size: .92rem;
+        margin: 0;
+        font-size: .9rem;
         line-height: 1.42;
+        max-width: none;
     }
 }
 
 /* =========================================================
-   EXTRA SMALL (<=380)
+   PRODUCTS — small phones, still side-by-side
    ========================================================= */
 
-@media (max-width: 380px) {
+@media (max-width: 520px) {
+    html[data-brand="spa"] .products-tiles .doc-card {
+        grid-template-columns: 98px minmax(0, 1fr) !important;
+        border-radius: 22px;
+    }
+
+    html[data-brand="spa"] .products-tiles .doc-card:nth-child(even) {
+        grid-template-columns: minmax(0, 1fr) 98px !important;
+    }
+
+    html[data-brand="spa"] .products-tiles .doc-body {
+        padding: 11px 11px 12px 12px !important;
+        gap: 6px;
+    }
+
+    html[data-brand="spa"] .products-tiles .doc-card:nth-child(even) .doc-body {
+        padding: 11px 12px 12px 11px !important;
+    }
+
+    html[data-brand="spa"] .products-tiles .doc-chip {
+        font-size: .68rem;
+        padding: 5px 8px;
+    }
+
+    html[data-brand="spa"] .products-tiles .doc-price {
+        font-size: .78rem;
+    }
+
+    html[data-brand="spa"] .products-tiles .doc-name {
+        font-size: .95rem;
+    }
+
+    html[data-brand="spa"] .products-tiles .doc-desc {
+        font-size: .84rem;
+        line-height: 1.34;
+    }
+}
+
+/* =========================================================
+   PRODUCTS — only stack when truly necessary
+   ========================================================= */
+
+@media (max-width: 360px) {
+    html[data-brand="spa"] .products-tiles .doc-card {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto auto !important;
+    }
+
+    html[data-brand="spa"] .products-tiles .doc-card:nth-child(even) .doc-media,
+    html[data-brand="spa"] .products-tiles .doc-card:nth-child(even) .doc-body {
+        order: initial !important;
+    }
+
     html[data-brand="spa"] .products-tiles .doc-media {
-        min-height: 200px;
-        max-height: 280px;
+        min-height: 190px;
+        max-height: 240px;
     }
 
     html[data-brand="spa"] .products-tiles .doc-body {
         padding: 10px 12px 12px !important;
-        gap: 7px;
     }
-
-    html[data-brand="spa"] .products-tiles .doc-desc {
-        font-size: .88rem;
-        line-height: 1.36;
-    }
-}
-
-/* Force hidden cards to actually disappear */
-html[data-brand="spa"] .products-tiles .doc-card[hidden] {
-    display: none !important;
 }
 
 /* =========================================================

@@ -665,3 +665,143 @@ html[data-brand="spa"][data-spa-page="packages"] .pkg-note p {
         text-align: center;
     }
 }
+
+/* =========================================================
+   PACKAGES PAGE — luxury spa layering
+   ========================================================= */
+
+html[data-brand="spa"][data-spa-page="packages"] .morph-dd {
+    background:
+        linear-gradient(180deg,
+            rgba(255, 252, 248, 0.94),
+            rgba(249, 243, 235, 0.90));
+    border: 1px solid rgba(205, 173, 132, 0.18);
+    box-shadow:
+        0 18px 48px rgba(85, 58, 24, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+/* nested dropdown shell */
+
+html[data-brand="spa"][data-spa-page="packages"] .morph-dd .morph-dd {
+    background:
+        linear-gradient(180deg,
+            rgba(255, 250, 244, 0.78),
+            rgba(246, 238, 228, 0.68));
+    border: 1px solid rgba(205, 173, 132, 0.14);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.55),
+        0 10px 24px rgba(85, 58, 24, 0.03);
+}
+
+/* =========================================================
+   PACKAGE CARDS — ALL use gold border like top one
+   ========================================================= */
+
+html[data-brand="spa"][data-spa-page="packages"] .pkg-item {
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(191, 146, 90, .45);
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, .92),
+            rgba(252, 248, 242, .86));
+
+    box-shadow:
+        0 14px 32px rgba(120, 84, 42, .12),
+        0 0 0 1px rgba(214, 163, 107, .22),
+        0 0 16px rgba(214, 163, 107, .10);
+
+}
+
+/* hover */
+
+html[data-brand="spa"][data-spa-page="packages"] .pkg-item:hover {
+
+    border-color: rgba(191, 146, 90, .60);
+
+    box-shadow:
+        0 18px 40px rgba(120, 84, 42, .16),
+        0 0 0 1px rgba(214, 163, 107, .32),
+        0 0 22px rgba(214, 163, 107, .14);
+}
+
+/* feature card same look */
+
+html[data-brand="spa"][data-spa-page="packages"] .pkg-item--feature {
+    border: 1px solid rgba(191, 146, 90, .55);
+}
+
+/* =========================================================
+   NOTE BLOCK
+   ========================================================= */
+
+html[data-brand="spa"][data-spa-page="packages"] .pkg-note {
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 239, 0.82),
+            rgba(246, 236, 223, 0.74));
+
+    border: 1px solid rgba(205, 173, 132, 0.14);
+
+    color: rgba(88, 67, 42, 0.78);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+/* =========================================================
+   TEXT COLORS
+   ========================================================= */
+
+html[data-brand="spa"][data-spa-page="packages"] .morph-dd-title,
+html[data-brand="spa"][data-spa-page="packages"] .pkg-item-top h4 {
+    color: rgba(39, 30, 22, 0.92);
+}
+
+html[data-brand="spa"][data-spa-page="packages"] .morph-dd-sub {
+    color: rgba(95, 74, 48, 0.68);
+}
+
+html[data-brand="spa"][data-spa-page="packages"] .pkg-small {
+    color: rgba(88, 69, 46, 0.76);
+}
+
+/* =========================================================
+   PILLS / PRICE / CHIPS
+   ========================================================= */
+
+html[data-brand="spa"][data-spa-page="packages"] .morph-pill,
+html[data-brand="spa"][data-spa-page="packages"] .pkg-chip {
+
+    background: rgba(214, 163, 107, 0.10);
+    border-color: rgba(185, 133, 79, 0.30);
+    color: rgba(125, 88, 49, 0.88);
+
+}
+
+html[data-brand="spa"][data-spa-page="packages"] .pkg-price {
+
+    background: rgba(214, 163, 107, 0.16);
+    border-color: rgba(185, 133, 79, 0.32);
+    color: rgba(50, 38, 24, 0.90);
+
+}
+
+/* =========================================================
+   OPEN ICON
+   ========================================================= */
+
+html[data-brand="spa"][data-spa-page="packages"] details.morph-dd[open]>.morph-dd-sum .morph-dd-icon {
+    border-color: rgba(230, 155, 155, .42);
+    background: rgba(255, 236, 236, .72);
+    box-shadow:
+        0 0 0 5px rgba(255, 170, 170, .10),
+        0 10px 24px rgba(220, 120, 120, .10);
+}
+
+html[data-brand="spa"][data-spa-page="packages"] details.morph-dd[open]>.morph-dd-sum .morph-dd-glyph {
+    color: rgba(220, 106, 106, .88);
+}

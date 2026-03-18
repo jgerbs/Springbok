@@ -299,18 +299,183 @@ html[data-brand="clinic"] .doc-media--plus .doc-plus {
    MOBILE (<=720): STACKED layout (match founders)
    ========================================================= */
 
-@media (max-width: 635px) {
+/* =========================================================
+   MOBILE / TABLET NARROW — keep L/R layout longer
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  html[data-brand="clinic"] .team-tiles .doc-card,
+  html[data-brand="clinic"] .services-tiles .doc-card {
+    grid-template-columns: 116px minmax(0, 1fr) !important;
+    grid-template-rows: 1fr !important;
+    gap: 0 !important;
+    border-radius: 24px;
+    align-items: stretch !important;
+    overflow: hidden;
+  }
+
+  html[data-brand="clinic"] .team-tiles .doc-card:nth-child(even),
+  html[data-brand="clinic"] .services-tiles .doc-card:nth-child(even) {
+    grid-template-columns: minmax(0, 1fr) 116px !important;
+  }
+
+  html[data-brand="clinic"] .team-tiles .doc-card:nth-child(even) .doc-media,
+  html[data-brand="clinic"] .services-tiles .doc-card:nth-child(even) .doc-media {
+    order: 2 !important;
+  }
+
+  html[data-brand="clinic"] .team-tiles .doc-card:nth-child(even) .doc-body,
+  html[data-brand="clinic"] .services-tiles .doc-card:nth-child(even) .doc-body {
+    order: 1 !important;
+  }
+
+  html[data-brand="clinic"] .team-tiles .doc-media,
+  html[data-brand="clinic"] .services-tiles .doc-media {
+    min-height: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+
+  html[data-brand="clinic"] .team-tiles .doc-img,
+  html[data-brand="clinic"] .services-tiles .doc-img {
+    object-fit: cover;
+    object-position: var(--pos, 50% 18%);
+  }
+
+  html[data-brand="clinic"] .team-tiles .doc-media::before,
+  html[data-brand="clinic"] .team-tiles .doc-media::after,
+  html[data-brand="clinic"] .services-tiles .doc-media::before,
+  html[data-brand="clinic"] .services-tiles .doc-media::after {
+    height: 13%;
+    backdrop-filter: blur(16px) saturate(1.06);
+    -webkit-backdrop-filter: blur(16px) saturate(1.06);
+  }
+
+  html[data-brand="clinic"] .team-tiles .doc-body,
+  html[data-brand="clinic"] .services-tiles .doc-body {
+    min-width: 0;
+    padding: 12px 12px 12px 13px !important;
+    gap: 7px;
+    align-content: center;
+  }
+
+  html[data-brand="clinic"] .team-tiles .doc-card:nth-child(even) .doc-body,
+  html[data-brand="clinic"] .services-tiles .doc-card:nth-child(even) .doc-body {
+    padding: 12px 13px 12px 12px !important;
+  }
+
+  html[data-brand="clinic"] .doc-topline {
+    font-size: .74rem;
+    letter-spacing: .09em;
+    gap: 8px;
+    margin: 0 0 2px;
+  }
+
+  html[data-brand="clinic"] .doc-dot {
+    width: 6px;
+    height: 6px;
+    box-shadow: 0 0 0 3px rgba(18, 192, 138, 0.12);
+  }
+
+  html[data-brand="clinic"] .doc-name {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.12;
+  }
+
+  html[data-brand="clinic"] .doc-desc {
+    margin: 0;
+    font-size: .9rem;
+    line-height: 1.42;
+    max-width: none;
+  }
+
+  html[data-brand="clinic"] .doc-actions {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+  }
+
+  html[data-brand="clinic"] .doc-actions .btn {
+    width: auto;
+    min-width: 0;
+    min-height: 38px;
+    padding: 9px 12px;
+    font-size: .86rem;
+    justify-content: center;
+  }
+}
+
+/* =========================================================
+   SMALL PHONES — still side-by-side, just tighter
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+  html[data-brand="clinic"] .team-tiles .doc-card,
+  html[data-brand="clinic"] .services-tiles .doc-card {
+    grid-template-columns: 98px minmax(0, 1fr) !important;
+    border-radius: 22px;
+  }
+
+  html[data-brand="clinic"] .team-tiles .doc-card:nth-child(even),
+  html[data-brand="clinic"] .services-tiles .doc-card:nth-child(even) {
+    grid-template-columns: minmax(0, 1fr) 98px !important;
+  }
+
+  html[data-brand="clinic"] .team-tiles .doc-body,
+  html[data-brand="clinic"] .services-tiles .doc-body {
+    padding: 11px 11px 12px 12px !important;
+    gap: 6px;
+  }
+
+  html[data-brand="clinic"] .team-tiles .doc-card:nth-child(even) .doc-body,
+  html[data-brand="clinic"] .services-tiles .doc-card:nth-child(even) .doc-body {
+    padding: 11px 12px 12px 11px !important;
+  }
+
+  html[data-brand="clinic"] .doc-topline {
+    font-size: .68rem;
+    letter-spacing: .085em;
+  }
+
+  html[data-brand="clinic"] .doc-name {
+    font-size: .95rem;
+  }
+
+  html[data-brand="clinic"] .doc-desc {
+    font-size: .84rem;
+    line-height: 1.34;
+  }
+
+  html[data-brand="clinic"] .doc-actions {
+    gap: 7px;
+    margin-top: 7px;
+  }
+
+  html[data-brand="clinic"] .doc-actions .btn {
+    min-height: 34px;
+    padding: 7px 10px;
+    font-size: .8rem;
+  }
+}
+
+/* =========================================================
+   VERY SMALL — only stack when truly necessary
+   ========================================================= */
+
+@media (max-width: 360px) {
 
   html[data-brand="clinic"] .team-tiles .doc-card,
   html[data-brand="clinic"] .services-tiles .doc-card {
     grid-template-columns: 1fr !important;
     grid-template-rows: auto auto !important;
-    gap: 0 !important;
-    border-radius: var(--radius-lg);
-    align-items: stretch !important;
   }
 
-  /* remove even flip ordering on mobile */
   html[data-brand="clinic"] .team-tiles .doc-card:nth-child(even) .doc-media,
   html[data-brand="clinic"] .team-tiles .doc-card:nth-child(even) .doc-body,
   html[data-brand="clinic"] .services-tiles .doc-card:nth-child(even) .doc-media,
@@ -320,92 +485,70 @@ html[data-brand="clinic"] .doc-media--plus .doc-plus {
 
   html[data-brand="clinic"] .team-tiles .doc-media,
   html[data-brand="clinic"] .services-tiles .doc-media {
-    width: 100%;
-    min-height: 220px;
-    max-height: 320px;
-    overflow: hidden;
-    background: rgba(0, 0, 0, .22);
-  }
-
-  html[data-brand="clinic"] .team-tiles .doc-media::before,
-  html[data-brand="clinic"] .team-tiles .doc-media::after,
-  html[data-brand="clinic"] .services-tiles .doc-media::before,
-  html[data-brand="clinic"] .services-tiles .doc-media::after {
-    height: 8%;
-    backdrop-filter: blur(16px) saturate(1.06);
-    -webkit-backdrop-filter: blur(16px) saturate(1.06);
-  }
-
-  html[data-brand="clinic"] .team-tiles .doc-body,
-  html[data-brand="clinic"] .services-tiles .doc-body {
-    padding: 12px 14px 14px !important;
-    gap: 8px;
-  }
-
-  html[data-brand="clinic"] .doc-topline {
-    font-size: .72rem;
-    letter-spacing: .09em;
-    margin: 0;
-  }
-
-  html[data-brand="clinic"] .doc-name {
-    font-size: 1.02rem;
-    line-height: 1.12;
-    margin: 0;
-  }
-
-  html[data-brand="clinic"] .doc-desc {
-    font-size: .92rem;
-    line-height: 1.42;
-    margin: 0;
-  }
-
-  html[data-brand="clinic"] .doc-actions {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: stretch;
-  }
-
-  html[data-brand="clinic"] .doc-actions .btn {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-/* =========================================================
-   EXTRA SMALL (<=380)
-   ========================================================= */
-
-@media (max-width: 380px) {
-
-  html[data-brand="clinic"] .team-tiles .doc-media,
-  html[data-brand="clinic"] .services-tiles .doc-media {
-    min-height: 200px;
-    max-height: 280px;
+    min-height: 190px;
+    max-height: 240px;
   }
 
   html[data-brand="clinic"] .team-tiles .doc-body,
   html[data-brand="clinic"] .services-tiles .doc-body {
     padding: 10px 12px 12px !important;
-    gap: 7px;
-  }
-
-  html[data-brand="clinic"] .doc-topline {
-    font-size: .70rem;
-  }
-
-  html[data-brand="clinic"] .doc-name {
-    font-size: .98rem;
-  }
-
-  html[data-brand="clinic"] .doc-desc {
-    font-size: .88rem;
-    line-height: 1.36;
   }
 
   html[data-brand="clinic"] .doc-actions {
-    gap: 9px;
+    flex-direction: column;
+    align-items: stretch;
   }
+
+  html[data-brand="clinic"] .doc-actions .btn {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   TEAM buttons — tighter spacing
+   ========================================================= */
+
+html[data-brand="clinic"] .team-tiles .doc-actions,
+html[data-brand="clinic"] .services-tiles .doc-actions {
+  margin-top: 4px;
+  gap: 8px;
+}
+
+/* smaller buttons */
+html[data-brand="clinic"] .team-tiles .doc-actions .btn,
+html[data-brand="clinic"] .services-tiles .doc-actions .btn {
+  min-height: 34px;
+  padding: 7px 12px;
+  font-size: .84rem;
+  border-radius: 999px;
+}
+
+/* even tighter on small screens */
+@media (max-width: 760px) {
+
+  html[data-brand="clinic"] .team-tiles .doc-actions,
+  html[data-brand="clinic"] .services-tiles .doc-actions {
+    margin-top: 6px;
+    gap: 6px;
+  }
+
+  html[data-brand="clinic"] .team-tiles .doc-actions .btn,
+  html[data-brand="clinic"] .services-tiles .doc-actions .btn {
+    min-height: 32px;
+    padding: 6px 10px;
+    font-size: .8rem;
+  }
+
+}
+
+/* very small phones */
+@media (max-width: 520px) {
+
+  html[data-brand="clinic"] .team-tiles .doc-actions .btn,
+  html[data-brand="clinic"] .services-tiles .doc-actions .btn {
+    min-height: 30px;
+    padding: 5px 5px;
+    font-size: .78rem;
+  }
+
 }

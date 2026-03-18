@@ -744,22 +744,173 @@ html[data-brand="clinic"] .founder-btn--solid:hover {
     box-shadow: 0 18px 36px rgba(0, 0, 0, .30);
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1250px) {
     html[data-brand="clinic"] .founders-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
 /* Mobile founders: stacked <=635 */
-@media (max-width: 635px) {
+/* =========================================================
+   FOUNDERS — keep L/R layout longer on mobile
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+    html[data-brand="clinic"] .founder-card,
+    html[data-brand="clinic"] .founder-card--flip {
+        grid-template-columns: 116px minmax(0, 1fr) !important;
+        grid-template-rows: 1fr !important;
+        gap: 0 !important;
+        border-radius: 24px;
+        align-items: stretch !important;
+        overflow: hidden;
+    }
+
+    html[data-brand="clinic"] .founder-card--flip {
+        grid-template-columns: minmax(0, 1fr) 116px !important;
+    }
+
+    html[data-brand="clinic"] .founder-card--flip .founder-media {
+        order: 2 !important;
+    }
+
+    html[data-brand="clinic"] .founder-card--flip .founder-body {
+        order: 1 !important;
+    }
+
+    html[data-brand="clinic"] .founder-media {
+        min-height: 100%;
+        height: auto;
+        overflow: hidden;
+        background: rgba(0, 0, 0, .22);
+    }
+
+    html[data-brand="clinic"] .founder-media img {
+        object-fit: cover;
+        object-position: 50% 18%;
+    }
+
+    html[data-brand="clinic"] .founder-media::before,
+    html[data-brand="clinic"] .founder-media::after {
+        height: 13%;
+        backdrop-filter: blur(16px) saturate(1.06);
+        -webkit-backdrop-filter: blur(16px) saturate(1.06);
+    }
+
+    html[data-brand="clinic"] .founder-body {
+        min-width: 0;
+        padding: 12px 12px 12px 13px !important;
+        gap: 7px;
+        align-content: center;
+        border-left: 0 !important;
+        border-right: 0 !important;
+    }
+
+    html[data-brand="clinic"] .founder-card--flip .founder-body {
+        padding: 12px 13px 12px 12px !important;
+    }
+
+    html[data-brand="clinic"] .founder-kicker {
+        font-size: .74rem;
+        letter-spacing: .09em;
+        margin: 0 0 2px;
+    }
+
+    html[data-brand="clinic"] .founder-name {
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.12;
+    }
+
+    html[data-brand="clinic"] .founder-desc {
+        margin: 0;
+        font-size: .9rem;
+        line-height: 1.42;
+        max-width: none;
+    }
+
+    html[data-brand="clinic"] .founder-actions {
+        margin-top: 6px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: 6px;
+        align-items: center;
+    }
+
+    html[data-brand="clinic"] .founder-btn {
+        width: auto;
+        min-width: 0;
+        min-height: 32px;
+        padding: 6px 10px;
+        font-size: .8rem;
+        border-radius: 999px;
+        justify-content: center;
+    }
+}
+
+/* =========================================================
+   FOUNDERS — small phones, still side-by-side
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+    html[data-brand="clinic"] .founder-card,
+    html[data-brand="clinic"] .founder-card--flip {
+        grid-template-columns: 98px minmax(0, 1fr) !important;
+        border-radius: 22px;
+    }
+
+    html[data-brand="clinic"] .founder-card--flip {
+        grid-template-columns: minmax(0, 1fr) 98px !important;
+    }
+
+    html[data-brand="clinic"] .founder-body {
+        padding: 11px 11px 12px 12px !important;
+        gap: 6px;
+    }
+
+    html[data-brand="clinic"] .founder-card--flip .founder-body {
+        padding: 11px 12px 12px 11px !important;
+    }
+
+    html[data-brand="clinic"] .founder-kicker {
+        font-size: .68rem;
+        letter-spacing: .085em;
+    }
+
+    html[data-brand="clinic"] .founder-name {
+        font-size: .95rem;
+    }
+
+    html[data-brand="clinic"] .founder-desc {
+        font-size: .84rem;
+        line-height: 1.34;
+    }
+
+    html[data-brand="clinic"] .founder-actions {
+        gap: 6px;
+        margin-top: 6px;
+    }
+
+    html[data-brand="clinic"] .founder-btn {
+        min-height: 30px;
+        padding: 5px 5px;
+        font-size: .78rem;
+    }
+}
+
+/* =========================================================
+   FOUNDERS — only stack when truly necessary
+   ========================================================= */
+
+@media (max-width: 360px) {
 
     html[data-brand="clinic"] .founder-card,
     html[data-brand="clinic"] .founder-card--flip {
         grid-template-columns: 1fr !important;
         grid-template-rows: auto auto !important;
-        gap: 0 !important;
-        border-radius: var(--radius-lg);
-        align-items: stretch !important;
     }
 
     html[data-brand="clinic"] .founder-card--flip .founder-media,
@@ -768,102 +919,21 @@ html[data-brand="clinic"] .founder-btn--solid:hover {
     }
 
     html[data-brand="clinic"] .founder-media {
-        width: 100%;
-        min-height: 220px;
-        max-height: 320px;
-        overflow: hidden;
-        background: rgba(0, 0, 0, .22);
-    }
-
-    html[data-brand="clinic"] .founder-media img {
-        width: 100%;
-        height: 100%;
-        display: block;
-        object-fit: cover;
-        object-position: 50% 22%;
-    }
-
-    html[data-brand="clinic"] .founder-media::before,
-    html[data-brand="clinic"] .founder-media::after {
-        height: 8%;
-        backdrop-filter: blur(16px) saturate(1.06);
-        -webkit-backdrop-filter: blur(16px) saturate(1.06);
+        min-height: 190px;
+        max-height: 240px;
     }
 
     html[data-brand="clinic"] .founder-body {
-        padding: 12px 14px 14px !important;
-        gap: 8px;
-        border-left: 0 !important;
-        border-right: 0 !important;
-    }
-
-    html[data-brand="clinic"] .founder-kicker {
-        font-size: .72rem;
-        letter-spacing: .09em;
-        margin: 0;
-    }
-
-    html[data-brand="clinic"] .founder-name {
-        font-size: 1.02rem;
-        line-height: 1.12;
-        margin: 0;
-    }
-
-    html[data-brand="clinic"] .founder-desc {
-        font-size: .92rem;
-        line-height: 1.42;
-        margin: 0;
+        padding: 10px 12px 12px !important;
     }
 
     html[data-brand="clinic"] .founder-actions {
-        margin-top: 10px;
-        display: flex;
         flex-direction: column;
-        gap: 10px;
         align-items: stretch;
     }
 
     html[data-brand="clinic"] .founder-btn {
         width: 100%;
-        justify-content: center;
-        padding: 10px 14px;
-        min-height: 42px;
-        font-size: .92rem;
-    }
-}
-
-@media (max-width: 380px) {
-    html[data-brand="clinic"] .founder-media {
-        min-height: 200px;
-        max-height: 280px;
-    }
-
-    html[data-brand="clinic"] .founder-body {
-        padding: 10px 12px 12px !important;
-        gap: 7px;
-    }
-
-    html[data-brand="clinic"] .founder-kicker {
-        font-size: .70rem;
-    }
-
-    html[data-brand="clinic"] .founder-name {
-        font-size: .98rem;
-    }
-
-    html[data-brand="clinic"] .founder-desc {
-        font-size: .88rem;
-        line-height: 1.36;
-    }
-
-    html[data-brand="clinic"] .founder-actions {
-        gap: 9px;
-    }
-
-    html[data-brand="clinic"] .founder-btn {
-        padding: 9px 12px;
-        min-height: 40px;
-        font-size: .90rem;
     }
 }
 
