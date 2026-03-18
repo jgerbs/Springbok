@@ -800,16 +800,17 @@ html[data-brand="spa"] .to-top:focus-visible {
    8) SMALL UTILITIES
    ========================================================= */
 .spa-divider {
-  width: 33%;
+  width: 33vw;
+  max-width: 480px;
   height: 2px;
   margin: 18px 0 22px;
   border-radius: 2px;
+
   background: linear-gradient(90deg,
       rgba(214, 163, 107, 0.95),
       rgba(214, 163, 107, 0.35),
       transparent);
 }
-
 
 /* =========================================================
    9) RESPONSIVE — HEADER / HERO
@@ -942,7 +943,7 @@ html[data-brand="spa"] .to-top:focus-visible {
 
   html[data-brand="spa"] .hero p {
     font-size: 0.94rem;
-    max-width: 21ch;
+    max-width: min(34ch, 100%);
   }
 }
 

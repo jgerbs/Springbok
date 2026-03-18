@@ -562,12 +562,17 @@ html[data-brand="spa"] .section-sub {
 }
 
 .green-divider {
-  width: 33%;
+  width: 33vw;
+  max-width: 480px;
+
   height: 2px;
   margin: 18px 0 22px;
   border-radius: 2px;
 
-  background: linear-gradient(90deg, var(--accent), transparent);
+  background: linear-gradient(90deg,
+      var(--accent),
+      rgba(18, 192, 138, .4),
+      transparent);
 }
 
 /* =========================================================
