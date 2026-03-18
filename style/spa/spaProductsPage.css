@@ -554,3 +554,7 @@ html[data-brand="spa"][data-spa-page="products"] .products-tiles .doc-card.is-re
         transition: none;
     }
 }
+
+html[data-brand="spa"] .products-tiles .doc-card[hidden] {
+    display: none !important;
+}
