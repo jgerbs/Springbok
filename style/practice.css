@@ -239,6 +239,8 @@ html[data-brand="clinic"] .status-pill {
     color: rgba(255, 255, 255, .82);
     vertical-align: middle;
     border: 1px solid rgba(255, 255, 255, .10);
+    margin-top: 6px;
+    white-space: nowrap;
 }
 
 html[data-brand="clinic"] .status-pill::before {
@@ -643,48 +645,6 @@ html[data-brand="clinic"] .clinic .provider-actions {
     }
 }
 
-/* Phone: provider cards become stacked (image on top) */
-@media (max-width: 635px) {
-
-    html[data-brand="clinic"] .clinic .provider-card,
-    html[data-brand="clinic"] .clinic .provider-card--flip {
-        grid-template-columns: 1fr !important;
-        grid-template-rows: auto auto !important;
-        gap: 0 !important;
-        border-radius: var(--radius-lg);
-    }
-
-    html[data-brand="clinic"] .clinic .provider-media {
-        min-height: 220px;
-        max-height: 320px;
-    }
-
-    html[data-brand="clinic"] .clinic .provider-media::before,
-    html[data-brand="clinic"] .clinic .provider-media::after {
-        height: 8%;
-        backdrop-filter: blur(16px) saturate(1.06);
-        -webkit-backdrop-filter: blur(16px) saturate(1.06);
-    }
-
-    html[data-brand="clinic"] .clinic .provider-body {
-        padding: 12px 14px 14px !important;
-        gap: 8px;
-    }
-
-    html[data-brand="clinic"] .clinic .provider-actions {
-        margin-top: 10px;
-    }
-
-    /* even flipped cards should be image first on mobile */
-    html[data-brand="clinic"] .clinic .provider-card--flip .provider-media {
-        order: 1 !important;
-    }
-
-    html[data-brand="clinic"] .clinic .provider-card--flip .provider-body {
-        order: 2 !important;
-    }
-}
-
 /* =========================================================
    FIX: remove the "double bubble"
    Keep bullets panel boxed, but make providers wrapper invisible
@@ -715,3 +675,185 @@ html[data-brand="clinic"] .clinic .provider-card {
     box-shadow: 0 14px 38px rgba(0, 0, 0, .30);
 }
 
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+/* Make split go stacked earlier */
+@media (max-width: 1210px) {
+    html[data-brand="clinic"] .clinic .clinic-layout--split {
+        grid-template-columns: 1fr;
+    }
+
+    html[data-brand="clinic"] .clinic .providers-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
+   MOBILE / TABLET NARROW — keep provider cards L/R longer
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+    html[data-brand="clinic"] .clinic .provider-card {
+        grid-template-columns: 116px minmax(0, 1fr) !important;
+        grid-template-rows: 1fr !important;
+        gap: 0 !important;
+        border-radius: 24px;
+        align-items: stretch !important;
+        overflow: hidden;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-card--flip {
+        grid-template-columns: minmax(0, 1fr) 116px !important;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-card--flip .provider-media {
+        order: 2 !important;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-card--flip .provider-body {
+        order: 1 !important;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-media {
+        min-height: 100%;
+        height: auto;
+        overflow: hidden;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-media img {
+        object-fit: cover;
+        object-position: 50% 18%;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-media::before,
+    html[data-brand="clinic"] .clinic .provider-media::after {
+        height: 13%;
+        backdrop-filter: blur(16px) saturate(1.06);
+        -webkit-backdrop-filter: blur(16px) saturate(1.06);
+    }
+
+    html[data-brand="clinic"] .clinic .provider-body {
+        min-width: 0;
+        padding: 12px 12px 12px 13px !important;
+        gap: 7px;
+        align-content: center;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-card--flip .provider-body {
+        padding: 12px 13px 12px 12px !important;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-kicker {
+        font-size: .74rem;
+        letter-spacing: .09em;
+        margin: 0 0 2px;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-name {
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.12;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-actions {
+        margin-top: 8px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: 8px;
+        align-items: center;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-actions .btn {
+        width: auto;
+        min-width: 0;
+        min-height: 38px;
+        padding: 9px 12px;
+        font-size: .86rem;
+        justify-content: center;
+    }
+}
+
+/* =========================================================
+   SMALL PHONES — still side-by-side, just tighter
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+    html[data-brand="clinic"] .clinic .provider-card {
+        grid-template-columns: 98px minmax(0, 1fr) !important;
+        border-radius: 22px;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-card--flip {
+        grid-template-columns: minmax(0, 1fr) 98px !important;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-body {
+        padding: 11px 11px 12px 12px !important;
+        gap: 6px;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-card--flip .provider-body {
+        padding: 11px 12px 12px 11px !important;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-kicker {
+        font-size: .68rem;
+        letter-spacing: .085em;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-name {
+        font-size: .95rem;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-actions {
+        gap: 7px;
+        margin-top: 7px;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-actions .btn {
+        min-height: 34px;
+        padding: 7px 10px;
+        font-size: .8rem;
+    }
+}
+
+/* =========================================================
+   VERY SMALL — only stack when truly necessary
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    html[data-brand="clinic"] .clinic .provider-card,
+    html[data-brand="clinic"] .clinic .provider-card--flip {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto auto !important;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-card--flip .provider-media,
+    html[data-brand="clinic"] .clinic .provider-card--flip .provider-body {
+        order: initial !important;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-media {
+        min-height: 190px;
+        max-height: 240px;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-body {
+        padding: 10px 12px 12px !important;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    html[data-brand="clinic"] .clinic .provider-actions .btn {
+        width: 100%;
+    }
+}
