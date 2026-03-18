@@ -9,16 +9,30 @@
   // Duplicate once for seamless looping
   cards.forEach((card) => track.appendChild(card.cloneNode(true)));
 
-  let x = 0;
-  let speed = 0.35;
-  let paused = false;
-  let wrapW = 0;
-
   const wheel = track.parentElement;
   if (!wheel) return;
 
   const desktopHoverMQ = window.matchMedia("(hover: hover) and (pointer: fine)");
   const mobileOpenMQ = window.matchMedia("(max-width: 780px)");
+  const coarsePointerMQ = window.matchMedia("(pointer: coarse)");
+
+  let x = 0;
+  let wrapW = 0;
+  let paused = false;
+
+  // idle spin remains slightly faster on touch devices
+  let idleSpeed = coarsePointerMQ.matches ? -0.55 : -0.35;
+
+  // current motion velocity
+  let velocity = idleSpeed;
+
+  // drag state
+  let isPointerDown = false;
+  let pointerMoved = false;
+  let startX = 0;
+  let lastX = 0;
+  let lastT = 0;
+  let activePointerId = null;
 
   let openTimer = null;
   let closeTimer = null;
@@ -27,6 +41,14 @@
 
   const OPEN_DELAY = 110;
   const CLOSE_DELAY = 220;
+
+  // tuning
+  const DRAG_MULTIPLIER = 1.0;
+  const RELEASE_MULTIPLIER = 1.0;
+  const FRICTION = 0.972;
+  const RETURN_PULL = 0.014;
+  const MOVE_THRESHOLD = 8;
+  const MAX_VELOCITY = 6.2;
 
   const originalWidth = () => {
     const half = track.children.length / 2;
@@ -39,6 +61,17 @@
     }
     return w;
   };
+
+  function normalizeX() {
+    if (!wrapW) return;
+    while (x <= -wrapW) x += wrapW;
+    while (x > 0) x -= wrapW;
+  }
+
+  function applyTransform() {
+    normalizeX();
+    track.style.transform = `translate3d(${x}px,0,0)`;
+  }
 
   function setPaused(state) {
     paused = state;
@@ -98,7 +131,7 @@
   }
 
   function scheduleOpen(card) {
-    if (lockedCard) return;
+    if (lockedCard || isPointerDown || pointerMoved) return;
     clearTimers();
     openTimer = setTimeout(() => {
       expandCard(card);
@@ -106,7 +139,7 @@
   }
 
   function scheduleClose(card) {
-    if (lockedCard) return;
+    if (lockedCard || isPointerDown) return;
     clearTimers();
     closeTimer = setTimeout(() => {
       collapseCard(card);
@@ -136,10 +169,16 @@
     });
   }
 
-  const measure = () => {
+  function measure() {
     wrapW = originalWidth();
+    idleSpeed = coarsePointerMQ.matches ? -0.55 : -0.35;
+
+    // if we're basically idle, sync velocity to new idle speed
+    if (Math.abs(velocity) < 1) velocity = idleSpeed;
+
     detectOverflow();
-  };
+    applyTransform();
+  }
 
   measure();
   window.addEventListener("resize", measure);
@@ -149,11 +188,11 @@
   });
 
   wheel.addEventListener("mouseenter", () => {
-    if (!mobileOpenMQ.matches) setPaused(true);
+    if (!mobileOpenMQ.matches && !isPointerDown) setPaused(true);
   });
 
   wheel.addEventListener("mouseleave", () => {
-    if (mobileOpenMQ.matches || lockedCard) return;
+    if (mobileOpenMQ.matches || lockedCard || isPointerDown) return;
 
     clearTimers();
     closeTimer = setTimeout(() => {
@@ -163,7 +202,7 @@
   });
 
   track.addEventListener("mouseover", (e) => {
-    if (!desktopHoverMQ.matches || mobileOpenMQ.matches || lockedCard) return;
+    if (!desktopHoverMQ.matches || mobileOpenMQ.matches || lockedCard || isPointerDown) return;
 
     const card = e.target.closest(".t-card");
     if (!card) return;
@@ -178,7 +217,7 @@
   });
 
   track.addEventListener("mouseout", (e) => {
-    if (!desktopHoverMQ.matches || mobileOpenMQ.matches || lockedCard) return;
+    if (!desktopHoverMQ.matches || mobileOpenMQ.matches || lockedCard || isPointerDown) return;
 
     const card = e.target.closest(".t-card");
     if (!card) return;
@@ -190,7 +229,7 @@
   });
 
   track.addEventListener("focusin", (e) => {
-    if (mobileOpenMQ.matches || lockedCard) return;
+    if (mobileOpenMQ.matches || lockedCard || isPointerDown) return;
 
     const card = e.target.closest(".t-card");
     if (!card) return;
@@ -200,7 +239,7 @@
   });
 
   track.addEventListener("focusout", () => {
-    if (mobileOpenMQ.matches || lockedCard) return;
+    if (mobileOpenMQ.matches || lockedCard || isPointerDown) return;
 
     clearTimers();
     closeTimer = setTimeout(() => {
@@ -209,26 +248,109 @@
     }, CLOSE_DELAY);
   });
 
-  // Click / tap card = lock open and pause (desktop + mobile)
+  // -------------------------
+  // drag / swipe on all views
+  // -------------------------
+  function onPointerDown(e) {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+
+    isPointerDown = true;
+    pointerMoved = false;
+    activePointerId = e.pointerId;
+    startX = e.clientX;
+    lastX = e.clientX;
+    lastT = performance.now();
+
+    clearTimers();
+
+    try {
+      wheel.setPointerCapture?.(e.pointerId);
+    } catch { }
+
+    // stop hover weirdness while dragging
+    if (!lockedCard) {
+      clearExpandedCards();
+      setPaused(false);
+    }
+  }
+
+  function onPointerMove(e) {
+    if (!isPointerDown) return;
+    if (activePointerId !== null && e.pointerId !== activePointerId) return;
+
+    const now = performance.now();
+    const dx = e.clientX - lastX;
+    const totalDx = e.clientX - startX;
+    const dt = Math.max(now - lastT, 1);
+
+    if (Math.abs(totalDx) > MOVE_THRESHOLD) {
+      pointerMoved = true;
+    }
+
+    x += dx * DRAG_MULTIPLIER;
+    applyTransform();
+
+    velocity = Math.max(
+      -MAX_VELOCITY,
+      Math.min(MAX_VELOCITY, (dx / dt) * 16 * RELEASE_MULTIPLIER)
+    );
+
+    lastX = e.clientX;
+    lastT = now;
+  }
+
+  function endPointerDrag(e) {
+    if (!isPointerDown) return;
+    if (activePointerId !== null && e.pointerId !== activePointerId) return;
+
+    isPointerDown = false;
+
+    try {
+      wheel.releasePointerCapture?.(e.pointerId);
+    } catch { }
+
+    activePointerId = null;
+
+    // reset drag flag a tick later so click suppression still works
+    if (pointerMoved) {
+      setTimeout(() => {
+        pointerMoved = false;
+      }, 0);
+    }
+  }
+
+  wheel.addEventListener("pointerdown", onPointerDown);
+  wheel.addEventListener("pointermove", onPointerMove);
+  wheel.addEventListener("pointerup", endPointerDrag);
+  wheel.addEventListener("pointercancel", endPointerDrag);
+  wheel.addEventListener("lostpointercapture", () => {
+    isPointerDown = false;
+    activePointerId = null;
+  });
+
+  // Click / tap card = lock open and pause
   track.addEventListener("click", (e) => {
     const card = e.target.closest(".t-card");
     if (!card) return;
 
+    // ignore clicks created by dragging
+    if (pointerMoved) return;
+
     e.stopPropagation();
     clearTimers();
 
-    // Tap/click same card again = close it
     if (lockedCard === card) {
       unlockCard();
       clearExpandedCards();
       setPaused(false);
+      velocity = idleSpeed;
       return;
     }
 
     lockCard(card);
   });
 
-  // Click / tap anywhere else = unlock and resume
+  // Tap/click outside = unlock and resume
   document.addEventListener("click", (e) => {
     if (!lockedCard) return;
     if (wheel.contains(e.target)) return;
@@ -237,14 +359,20 @@
     unlockCard();
     clearExpandedCards();
     setPaused(false);
+    velocity = idleSpeed;
   });
 
   function tick() {
     if (!paused) {
-      x -= speed;
-      if (Math.abs(x) >= wrapW) x = 0;
-      track.style.transform = `translate3d(${x}px,0,0)`;
+      if (!isPointerDown) {
+        velocity *= FRICTION;
+        velocity += (idleSpeed - velocity) * RETURN_PULL;
+
+        x += velocity;
+        applyTransform();
+      }
     }
+
     requestAnimationFrame(tick);
   }
 
