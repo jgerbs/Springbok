@@ -938,160 +938,6 @@ html[data-brand="clinic"] .founder-btn--solid:hover {
 }
 
 /* =========================================================
-   WHY CHOOSE US — Responsive bubble grid
-   ========================================================= */
-
-html[data-brand="clinic"] .why-bubbles {
-    position: relative;
-    padding: clamp(78px, 7vw, 120px) 0;
-    overflow: hidden;
-}
-
-html[data-brand="clinic"] .why-bubbles::before {
-    content: "";
-    position: absolute;
-    inset: -140px -140px auto -140px;
-    height: 520px;
-    background:
-        radial-gradient(900px 520px at 18% 30%, rgba(89, 168, 120, .14), transparent 60%),
-        radial-gradient(800px 520px at 80% 10%, rgba(89, 168, 120, .10), transparent 62%);
-    pointer-events: none;
-}
-
-html[data-brand="clinic"] .why-thread {
-    margin-top: 18px;
-    position: relative;
-
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
-    align-items: start;
-}
-
-html[data-brand="clinic"] .why-row {
-    display: block;
-    margin-top: 0;
-}
-
-html[data-brand="clinic"] .why-bubble {
-    width: 100%;
-    border: 1px solid rgba(255, 255, 255, .12);
-    background: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .03));
-    border-radius: 18px;
-    padding: 16px 16px 14px;
-
-    backdrop-filter: blur(10px);
-    box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
-
-    position: relative;
-    overflow: hidden;
-}
-
-html[data-brand="clinic"] .why-bubble::before {
-    content: "";
-    position: absolute;
-    inset: -90px -90px auto -90px;
-    height: 190px;
-    background:
-        radial-gradient(170px 120px at 18% 35%, rgba(89, 168, 120, .18), transparent 65%),
-        radial-gradient(200px 140px at 82% 20%, rgba(255, 255, 255, .08), transparent 70%);
-    pointer-events: none;
-}
-
-html[data-brand="clinic"] .why-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    /* matches your service tile spacing better */
-    margin-bottom: 8px;
-}
-
-html[data-brand="clinic"] .why-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 0 6px rgba(18, 192, 138, .10);
-    flex: 0 0 6px;
-}
-
-html[data-brand="clinic"] .why-tag {
-    font-size: .86rem;
-    letter-spacing: .10em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, .82);
-    font-weight: 700;
-}
-
-html[data-brand="clinic"] .why-title {
-    margin: 0 0 6px;
-    font-size: 1.12rem;
-    letter-spacing: .01em;
-}
-
-html[data-brand="clinic"] .why-text {
-    margin: 0;
-    color: rgba(255, 255, 255, .78);
-    line-height: 1.65;
-}
-
-html[data-brand="clinic"] .why-actions {
-    margin-top: 22px;
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-/* MEDIUM: 2 columns + right column offset */
-@media (min-width: 820px) {
-    html[data-brand="clinic"] .why-thread {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: clamp(14px, 2.2vw, 22px);
-    }
-
-    html[data-brand="clinic"] .why-bubble {
-        border-radius: 28px;
-        padding: 18px 18px 16px;
-    }
-
-    html[data-brand="clinic"] .why-thread>.why-row:nth-child(even) {
-        margin-top: clamp(18px, 2.4vw, 40px);
-    }
-}
-
-/* LARGE: 3 columns + middle column offset + pull edges of row 2 up */
-@media (min-width: 1180px) {
-    html[data-brand="clinic"] .why-thread {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: clamp(16px, 2.2vw, 24px);
-    }
-
-    html[data-brand="clinic"] .why-thread>.why-row {
-        margin-top: 0;
-    }
-
-    html[data-brand="clinic"] .why-thread>.why-row:nth-child(3n + 2) {
-        margin-top: clamp(18px, 2.4vw, 40px);
-    }
-
-    html[data-brand="clinic"] .why-thread>.why-row:nth-child(4),
-    html[data-brand="clinic"] .why-thread>.why-row:nth-child(6) {
-        margin-top: calc(clamp(18px, 2.4vw, 40px) * -0.55);
-    }
-
-    html[data-brand="clinic"] .why-bubble {
-        border-radius: 34px;
-    }
-}
-
-@media (max-width: 420px) {
-    html[data-brand="clinic"] .why-bubble {
-        border-radius: 16px;
-        padding: 14px 14px 12px;
-    }
-}
-
-/* =========================================================
    GLOBAL: KILL ALL "GLOW" BACKGROUNDS
    (section halos + card halos)
    ========================================================= */
@@ -1109,4 +955,235 @@ html[data-brand="clinic"] .founder-card::before,
 html[data-brand="clinic"] .why-bubble::before {
     content: none !important;
     display: none !important;
+}
+
+/* =========================================================
+   WHY V3 — clean balanced clinic grid
+   - Same design language across desktop/tablet/mobile
+   - No sticky column
+   - No staggered transforms
+   - Calm, premium, readable
+   ========================================================= */
+
+html[data-brand="clinic"] .why-v3 {
+    position: relative;
+    padding: clamp(82px, 8vw, 122px) 0;
+    overflow: hidden;
+}
+
+html[data-brand="clinic"] .why-v3-head {
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+html[data-brand="clinic"] .why-v3-eyebrow {
+    display: inline-block;
+    margin: 0 0 14px;
+    font-size: .88rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+html[data-brand="clinic"] .why-v3-title {
+    margin: 0 auto 16px;
+    max-width: 12ch;
+    font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+    line-height: .96;
+    letter-spacing: -.04em;
+    color: rgba(255, 255, 255, .98);
+}
+
+html[data-brand="clinic"] .why-v3-lead {
+    margin: 0 auto;
+    max-width: 62ch;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, .74);
+}
+
+html[data-brand="clinic"] .why-v3-head .green-divider {
+    margin: 22px auto 0;
+}
+
+html[data-brand="clinic"] .why-v3-grid {
+    margin-top: clamp(28px, 3vw, 38px);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(16px, 2vw, 22px);
+    align-items: start;
+}
+
+html[data-brand="clinic"] .why-v3-card {
+    position: relative;
+    display: block;
+    padding: clamp(18px, 2vw, 22px);
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, .10);
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, .055) 0%,
+            rgba(255, 255, 255, .028) 100%);
+    box-shadow:
+        0 18px 46px rgba(0, 0, 0, .24),
+        inset 0 1px 0 rgba(255, 255, 255, .05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    overflow: hidden;
+}
+
+html[data-brand="clinic"] .why-v3-card::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(18, 192, 138, .55), transparent 75%);
+    opacity: .42;
+}
+
+html[data-brand="clinic"] .why-v3-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(18, 192, 138, .22);
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, .065) 0%,
+            rgba(255, 255, 255, .03) 100%);
+}
+
+html[data-brand="clinic"] .why-v3-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 12px;
+    font-size: .72rem;
+    line-height: 1;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: rgba(255, 255, 255, .78);
+}
+
+html[data-brand="clinic"] .why-v3-card h3 {
+    margin: 0 0 10px;
+    max-width: 15ch;
+    font-size: clamp(1.2rem, 1.55vw, 1.65rem);
+    line-height: 1.08;
+    letter-spacing: -.03em;
+    color: rgba(255, 255, 255, .96);
+}
+
+html[data-brand="clinic"] .why-v3-card p {
+    margin: 0;
+    max-width: 34ch;
+    font-size: .98rem;
+    line-height: 1.62;
+    color: rgba(255, 255, 255, .72);
+}
+
+html[data-brand="clinic"] .why-v3-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    flex: 0 0 auto;
+    background: var(--accent);
+    box-shadow: 0 0 0 6px rgba(18, 192, 138, .10);
+}
+
+html[data-brand="clinic"] .why-v3-actions {
+    margin-top: clamp(22px, 3vw, 34px);
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1080px) {
+    html[data-brand="clinic"] .why-v3-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    html[data-brand="clinic"] .why-v3-title {
+        max-width: 13ch;
+    }
+
+    html[data-brand="clinic"] .why-v3-card h3,
+    html[data-brand="clinic"] .why-v3-card p {
+        max-width: none;
+    }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 720px) {
+    html[data-brand="clinic"] .why-v3 {
+        padding: 68px 0 82px;
+    }
+
+    html[data-brand="clinic"] .why-v3-head {
+        text-align: left;
+        max-width: none;
+    }
+
+    html[data-brand="clinic"] .why-v3-title {
+        margin: 0 0 14px;
+        max-width: 10ch;
+        font-size: clamp(2rem, 11vw, 3rem);
+    }
+
+    html[data-brand="clinic"] .why-v3-lead {
+        margin: 0;
+        max-width: none;
+        font-size: .98rem;
+        line-height: 1.65;
+    }
+
+    html[data-brand="clinic"] .why-v3-head .green-divider {
+        margin: 18px 0 0;
+    }
+
+    html[data-brand="clinic"] .why-v3-grid {
+        margin-top: 24px;
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    html[data-brand="clinic"] .why-v3-card {
+        padding: 18px 16px 18px;
+        border-radius: 24px;
+    }
+
+    html[data-brand="clinic"] .why-v3-kicker {
+        margin-bottom: 12px;
+        font-size: .69rem;
+    }
+
+    html[data-brand="clinic"] .why-v3-card h3 {
+        max-width: 14ch;
+        margin-bottom: 10px;
+        font-size: clamp(1.18rem, 6vw, 1.45rem);
+        line-height: 1.08;
+    }
+
+    html[data-brand="clinic"] .why-v3-card p {
+        max-width: none;
+        font-size: .96rem;
+        line-height: 1.58;
+    }
+
+    html[data-brand="clinic"] .why-v3-actions {
+        justify-content: flex-start;
+        gap: 10px;
+        margin-top: 22px;
+    }
 }

@@ -365,224 +365,166 @@
 }
 
 /* =========================================================
-   Mobile sizing
+   MOBILE — keep desktop-style full-image slide
+   Scale it down instead of switching to black split card
    ========================================================= */
-
 @media (max-width: 720px) {
+
+  .mission-v2 {
+    padding: clamp(56px, 8vw, 72px) 0;
+  }
+
+  .mission-v2-shell {
+    height: clamp(300px, 78vw, 420px);
+    min-height: 300px;
+    max-height: 420px;
+    border-radius: 26px;
+  }
+
+  @supports (aspect-ratio: 1 / 1) {
+    .mission-v2-shell {
+      aspect-ratio: 1 / 1.08;
+      min-height: 300px;
+      max-height: 420px;
+    }
+  }
+
+  /* keep each slide as a full background slide */
+  .mission-item {
+    display: block;
+    background-size: cover;
+    background-position: center;
+    transition: opacity .45s ease;
+  }
+
+  /* hide the separate mobile image row entirely */
+  .mission-media {
+    display: none !important;
+  }
+
+  /* restore the desktop overlay, but tuned for mobile */
+  .mission-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 1 !important;
+    background:
+      linear-gradient(180deg,
+        rgba(0, 0, 0, .16) 0%,
+        rgba(0, 0, 0, .22) 28%,
+        rgba(0, 0, 0, .56) 68%,
+        rgba(0, 0, 0, .88) 100%),
+      linear-gradient(90deg,
+        rgba(0, 0, 0, .56) 0%,
+        rgba(0, 0, 0, .22) 42%,
+        rgba(0, 0, 0, .10) 100%);
+    transition: opacity .45s ease;
+    pointer-events: none;
+  }
+
+  /* keep content over the image, near bottom-left */
+  .mission-content {
+    position: absolute !important;
+    z-index: 3;
+
+    left: 16px !important;
+    right: 16px !important;
+    top: auto !important;
+    bottom: 64px !important;
+
+    width: auto !important;
+    max-width: 92% !important;
+
+    padding: 0 !important;
+    background: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    text-align: left !important;
+    text-shadow: 0 8px 22px rgba(0, 0, 0, .58);
+  }
+
+  .mission-item[data-pos="bl"] .mission-desc,
+  .mission-item[data-pos="br"] .mission-desc,
+  .mission-item[data-pos="tl"] .mission-desc,
+  .mission-item[data-pos="tr"] .mission-desc {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: left !important;
+  }
+
+  .mission-item[data-pos="bl"] .mission-content .btn,
+  .mission-item[data-pos="br"] .mission-content .btn,
+  .mission-item[data-pos="tl"] .mission-content .btn,
+  .mission-item[data-pos="tr"] .mission-content .btn {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* force all pos variants to same mobile placement */
+  .mission-item[data-pos="bl"] .mission-content,
+  .mission-item[data-pos="br"] .mission-content,
+  .mission-item[data-pos="tl"] .mission-content,
+  .mission-item[data-pos="tr"] .mission-content {
+    left: 16px !important;
+    right: 16px !important;
+    top: auto !important;
+    bottom: 64px !important;
+    text-align: left !important;
+  }
+
+  .mission-title {
+    font-size: clamp(1.55rem, 6vw, 2rem);
+    line-height: 1.02;
+    margin: 0 0 8px;
+    letter-spacing: -.02em;
+  }
+
+  .mission-desc {
+    font-size: .97rem;
+    line-height: 1.45;
+    max-width: 32ch;
+    margin: 0 0 12px;
+    color: rgba(255, 255, 255, .88);
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    overflow: hidden;
+  }
+
+  .mission-content .btn {
+    margin: 0;
+    padding: 11px 18px;
+    font-size: .96rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .12);
+    border-color: rgba(255, 255, 255, .34);
+  }
+
+  /* controls stay overlayed at bottom */
   .mission-controls {
     left: 0;
     right: 0;
     bottom: 0;
     width: 100%;
     gap: 8px;
-    padding: 8px 10px 10px;
+    padding: 10px 12px 12px;
     box-sizing: border-box;
+    z-index: 7;
   }
 
   .mission-nav-btn {
     width: 42px;
     height: 42px;
-    font-size: 26px;
+    font-size: 24px;
+    background: rgba(255, 255, 255, .10);
+    border: 1px solid rgba(255, 255, 255, .16);
   }
 
   .mission-timer {
-    min-width: 0;
     height: 5px;
-  }
-}
-
-/* =========================================================
-   ✅ MOBILE LAYOUT: [image row] + [text slab]
-   ========================================================= */
-
-@media (max-width: 720px) {
-
-  /* turn slide into grid */
-  .mission-item {
-    display: grid;
-    grid-template-rows: minmax(0, 1fr) auto;
-  }
-
-  /* hide the desktop full-slide overlay */
-  .mission-item::after {
-    opacity: 0 !important;
-    background: none !important;
-  }
-
-  /* show real media element */
-  .mission-media {
-    display: block;
-    grid-row: 1;
-    grid-column: 1;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: var(--bg-pos-m, 50% 35%);
-    filter: saturate(1.05);
-    position: relative;
-    z-index: 1;
-  }
-
-  /* overlay ONLY on the image row */
-  .mission-media::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity .55s ease;
-    background:
-      linear-gradient(90deg,
-        rgba(0, 0, 0, .55) 0%,
-        rgba(0, 0, 0, .28) 45%,
-        rgba(0, 0, 0, .12) 80%,
-        rgba(0, 0, 0, 0) 100%),
-      linear-gradient(180deg,
-        rgba(0, 0, 0, .10) 0%,
-        rgba(0, 0, 0, .55) 100%);
-    pointer-events: none;
-  }
-
-  .mission-item.is-active .mission-media::after {
-    opacity: 1;
-  }
-
-  /* slab */
-  .mission-content {
-    grid-row: 2;
-    grid-column: 1;
-
-    position: relative !important;
-    z-index: 3;
-
-    width: auto !important;
-    max-width: none !important;
-
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-    bottom: auto !important;
-
-    padding: 18px 16px 84px;
-    text-align: left !important;
-
-    background: linear-gradient(180deg,
-        rgba(0, 0, 0, .82) 0%,
-        rgba(0, 0, 0, .97) 0%,
-        rgba(0, 0, 0, 1) 100%);
-    box-shadow:
-      0 -12px 28px rgba(0, 0, 0, .55),
-      inset 0 1px 0 rgba(255, 255, 255, .06);
-
-    text-shadow: none;
-    border-top: 1px solid rgba(255, 255, 255, .10);
-  }
-
-  /* prevent pos variants from fighting the slab */
-  .mission-item[data-pos="bl"] .mission-content,
-  .mission-item[data-pos="br"] .mission-content,
-  .mission-item[data-pos="tl"] .mission-content,
-  .mission-item[data-pos="tr"] .mission-content {
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-    bottom: auto !important;
-    text-align: left !important;
-  }
-
-  .mission-content::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-
-    background: linear-gradient(180deg,
-        rgba(0, 0, 0, .88) 0%,
-        rgba(0, 0, 0, .985) 12%,
-        rgba(0, 0, 0, 1) 100%);
-
-    box-shadow:
-      0 -14px 34px rgba(0, 0, 0, .65),
-      inset 0 1px 0 rgba(255, 255, 255, .06);
-  }
-
-  /* mobile text sizing */
-  .mission-title {
-    font-size: clamp(1.15rem, 6.2vw, 1.55rem);
-    line-height: 1.08;
-    margin: 0 0 8px;
-  }
-
-  .mission-desc {
-    font-size: .92rem;
-    line-height: 1.45;
-    max-width: none;
-    margin: 0 0 10px;
-
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 5;
-    line-clamp: 5;
-    overflow: hidden;
-  }
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-
-  .mission-item,
-  .mission-media::after {
-    transition: none;
-  }
-
-  .mission-title,
-  .mission-desc,
-  .mission-content .btn {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
-
-/* =========================================================
-   iOS MOBILE FIX: prevent "glitch frame" on slide change
-   - keep the exact same mobile card styling
-   - remove crossfade on mobile (instant swap)
-   ========================================================= */
-@media (max-width: 720px) {
-
-  /* stop the parent slide fade (this causes the weird in-between composite) */
-  .mission-item {
-    transition: none !important;
-  }
-
-  /* also stop the image overlay fade (optional, but removes any lag) */
-  .mission-media::after {
-    transition: none !important;
-  }
-
-  /* keep ONLY the active slide visible (no overlap = no glitch) */
-  .mission-item {
-    opacity: 0 !important;
-  }
-
-  .mission-item.is-active {
-    opacity: 1 !important;
-  }
-
-  /* make sure hidden slides can't be tapped */
-  .mission-item {
-    pointer-events: none !important;
-  }
-
-  .mission-item.is-active {
-    pointer-events: auto !important;
-  }
-
-  /* extra iOS compositing stability */
-  .mission-item,
-  .mission-media,
-  .mission-content {
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
+    min-width: 0;
   }
 }

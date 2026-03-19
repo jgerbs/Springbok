@@ -444,42 +444,85 @@ html[data-brand="spa"][data-spa-page="services"] .services-actions .btn.btn-acce
 
 /* =========================================================
    10) CTA STRIP
+   - match clinic proportions + title behavior
+   ========================================================= */
+/* =========================================================
+   CTA STRIP — SPA services, clinic-style layout
    ========================================================= */
 
 html[data-brand="spa"][data-spa-page="services"] .clinic-cta {
-    padding: clamp(70px, 6vw, 110px) 0;
+    padding: 24px 0 40px;
 }
 
 html[data-brand="spa"][data-spa-page="services"] .clinic-cta-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 22px;
-
-    padding: clamp(20px, 3vw, 28px);
+    gap: 18px;
+    padding: 22px;
     border-radius: var(--radius-xl);
 
-    border: 1px solid rgba(255, 255, 255, .12);
-    background: rgba(255, 255, 255, .04);
+    background:
+        radial-gradient(900px 420px at 15% 10%, rgba(214, 163, 107, .14), transparent 60%),
+        rgba(214, 163, 107, .08);
+
+    border: 1px solid rgba(185, 133, 79, .18);
     box-shadow: var(--shadow-soft);
 }
 
-html[data-brand="spa"][data-spa-page="services"] .clinic-cta h2 {
+html[data-brand="spa"][data-spa-page="services"] .clinic-cta-inner h2 {
     margin: 0 0 8px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    color: rgba(32, 24, 18, .94);
 }
 
-html[data-brand="spa"][data-spa-page="services"] .clinic-cta p {
+html[data-brand="spa"][data-spa-page="services"] .clinic-cta-inner p {
     margin: 0;
-    color: rgba(0, 0, 0, .72);
-    max-width: 60ch;
+    color: rgba(58, 46, 34, .78);
+    max-width: 70ch;
+    line-height: 1.55;
 }
 
 html[data-brand="spa"][data-spa-page="services"] .clinic-cta-actions {
     display: flex;
     gap: 12px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    align-items: center;
 }
 
+html[data-brand="spa"][data-spa-page="services"] .clinic-cta-actions .btn {
+    flex: 0 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+}
+
+@media (max-width: 981px) {
+    html[data-brand="spa"][data-spa-page="services"] .clinic-cta-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 620px) {
+    html[data-brand="spa"][data-spa-page="services"] .clinic-cta-actions {
+        flex-wrap: nowrap;
+        gap: 8px;
+    }
+
+    html[data-brand="spa"][data-spa-page="services"] .clinic-cta-actions .btn {
+        padding: 6px 10px;
+        font-size: .78rem;
+        border-radius: 999px;
+        white-space: nowrap;
+    }
+
+    html[data-brand="spa"][data-spa-page="services"] .clinic-cta-actions .btn-outline {
+        padding: 6px 9px;
+    }
+}
 
 /* =========================================================
    SERVICES GRID WRAP

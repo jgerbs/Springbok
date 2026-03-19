@@ -64,7 +64,25 @@ html[data-brand="spa"] .pkg-hero-actions {
     margin-top: 18px;
     display: flex;
     gap: 12px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+}
+
+html[data-brand="spa"] .pkg-hero-actions>.btn {
+    flex: 1 1 0;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    padding-inline: clamp(10px, 2vw, 16px);
+    min-height: clamp(42px, 4vw, 48px);
+    font-size: clamp(0.78rem, 1.8vw, 0.95rem);
+    letter-spacing: 0;
 }
 
 html[data-brand="spa"] .pkg-hero-media {
