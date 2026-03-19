@@ -356,7 +356,14 @@ html[data-brand="clinic"] .clinic-cta-inner p {
 html[data-brand="clinic"] .clinic-cta-actions {
     display: flex;
     gap: 12px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+html[data-brand="clinic"] .clinic-cta-actions .btn {
+    flex: 0 1 auto;
+    min-width: 0;
+    white-space: nowrap;
 }
 
 /* ---------------------------------------------------------
