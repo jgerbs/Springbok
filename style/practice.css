@@ -1,11 +1,18 @@
-/* =========================
-   practice.css — Clinic page sections only
-   (Hero stays controlled by home.css)
-   ========================= */
+/* =========================================================
+   practice.css — CLINIC PAGE SECTIONS ONLY
+   Notes:
+   - Hero base stays controlled by home.css
+   - This file intentionally keeps some earlier/base rules
+     that are later refined by more specific .clinic-scoped
+     rules farther down the file.
+   - Do not move later .clinic-scoped overrides above the
+     earlier base rules unless you also re-check the cascade.
+   ========================================================= */
 
-/* ---------------------------------------------------------
-   HERO additions (minimal, safe)
-   --------------------------------------------------------- */
+
+/* =========================================================
+   1) HERO ADDITIONS (minimal / safe)
+   ========================================================= */
 
 .hero-eyebrow {
     display: inline-block;
@@ -29,9 +36,10 @@
     user-select: none;
 }
 
-/* ---------------------------------------------------------
-   Clinic wrapper + layout
-   --------------------------------------------------------- */
+
+/* =========================================================
+   2) CLINIC PAGE WRAPPER + SECTION FRAME
+   ========================================================= */
 
 html[data-brand="clinic"] .clinic {
     padding: 78px 0 40px;
@@ -48,7 +56,11 @@ html[data-brand="clinic"] .clinic-divider {
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .10), transparent);
 }
 
-/* section header row */
+
+/* =========================================================
+   3) SECTION HEADER ROW
+   ========================================================= */
+
 html[data-brand="clinic"] .clinic-head {
     display: flex;
     align-items: flex-start;
@@ -68,17 +80,23 @@ html[data-brand="clinic"] .clinic-head-actions {
     align-items: center;
 }
 
-/* two-panel body (default desktop/tablet wide) */
+
+/* =========================================================
+   4) LEGACY / BASE TWO-PANEL BODY
+   Kept because some clinic layouts may still rely on this.
+   Later .clinic-layout rules are the main active system.
+   ========================================================= */
+
 html[data-brand="clinic"] .clinic-body {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 18px;
 }
 
-/* ---------------------------------------------------------
-   Typography (single source of truth)
-   Matches the feel of your other pages
-   --------------------------------------------------------- */
+
+/* =========================================================
+   5) TYPOGRAPHY
+   ========================================================= */
 
 html[data-brand="clinic"] .clinic-eyebrow {
     display: inline-block;
@@ -141,9 +159,18 @@ html[data-brand="clinic"] .status-note {
     line-height: 1.5;
 }
 
-/* ---------------------------------------------------------
-   Panels
-   --------------------------------------------------------- */
+html[data-brand="clinic"] .fineprint {
+    margin: 12px 0 0;
+    color: rgba(255, 255, 255, .65);
+    font-size: .92rem;
+}
+
+
+/* =========================================================
+   6) BASE PANEL STYLE
+   Kept intentionally. Later .clinic .clinic-panel block
+   refines the active clinic panels with glow/background.
+   ========================================================= */
 
 html[data-brand="clinic"] .clinic-panel {
     border-radius: var(--radius-xl);
@@ -152,9 +179,11 @@ html[data-brand="clinic"] .clinic-panel {
     box-shadow: var(--shadow-soft);
 }
 
-/* ---------------------------------------------------------
-   Doctor grid + cards
-   --------------------------------------------------------- */
+
+/* =========================================================
+   7) LEGACY DOC GRID / DOC CARDS
+   Kept in case this pattern is reused elsewhere.
+   ========================================================= */
 
 html[data-brand="clinic"] .doc-grid {
     display: grid;
@@ -167,7 +196,6 @@ html[data-brand="clinic"] .doc-grid--single {
     grid-template-columns: 1fr;
 }
 
-/* Doctor card becomes a “soft tile” with a hairline, not a hard box */
 html[data-brand="clinic"] .doc-card {
     border-radius: 22px;
     overflow: hidden;
@@ -190,7 +218,6 @@ html[data-brand="clinic"] .doc-img {
     display: block;
 }
 
-/* subtle fade so image blends into body (reduces “two rectangles” feeling) */
 html[data-brand="clinic"] .doc-card .doc-img {
     mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
@@ -223,9 +250,10 @@ html[data-brand="clinic"] .doc-body .btn {
     justify-self: start;
 }
 
-/* ---------------------------------------------------------
-   Status pills + note bars
-   --------------------------------------------------------- */
+
+/* =========================================================
+   8) STATUS PILLS + NOTE BARS
+   ========================================================= */
 
 html[data-brand="clinic"] .status-pill {
     display: inline-flex;
@@ -272,7 +300,6 @@ html[data-brand="clinic"] .status-pill--wait::before {
     background: rgba(255, 255, 255, .35);
 }
 
-/* status note bars */
 html[data-brand="clinic"] .status-note {
     margin: 14px 0 0;
     padding: 10px 12px;
@@ -290,16 +317,11 @@ html[data-brand="clinic"] .status-note--wait {
     background: rgba(255, 255, 255, .06);
 }
 
-html[data-brand="clinic"] .fineprint {
-    margin: 12px 0 0;
-    color: rgba(255, 255, 255, .65);
-    font-size: .92rem;
-}
 
-/* ---------------------------------------------------------
-   Staff/provider panel: remove outer “card outline”
-   (keeps the common panel boxed; provider feels embedded)
-   --------------------------------------------------------- */
+/* =========================================================
+   9) LEGACY SOFT PANEL WRAPPER
+   Kept intentionally; may be used by older card patterns.
+   ========================================================= */
 
 html[data-brand="clinic"] .clinic-panel.clinic-panel--soft {
     position: relative;
@@ -318,9 +340,10 @@ html[data-brand="clinic"] .clinic-panel.clinic-panel--soft::before {
     opacity: .9;
 }
 
-/* ---------------------------------------------------------
-   CTA strip
-   --------------------------------------------------------- */
+
+/* =========================================================
+   10) CTA STRIP
+   ========================================================= */
 
 html[data-brand="clinic"] .clinic-cta {
     padding: 24px 0 86px;
@@ -366,26 +389,21 @@ html[data-brand="clinic"] .clinic-cta-actions .btn {
     white-space: nowrap;
 }
 
-/* ---------------------------------------------------------
-   Alternate layout: flip columns for sections that opt-in
-   (only when you're actually in 2-col mode)
-   --------------------------------------------------------- */
+
+/* =========================================================
+   11) DESKTOP-ONLY LEGACY BODY FLIPS
+   Kept for older .clinic-body sections.
+   ========================================================= */
 
 @media (min-width: 1251px) {
     html[data-brand="clinic"] .clinic-section--flip .clinic-body> :first-child {
         order: 2;
-        /* boxed info goes right */
     }
 
     html[data-brand="clinic"] .clinic-section--flip .clinic-body> :last-child {
         order: 1;
-        /* provider/staff goes left */
     }
 }
-
-/* ---------------------------------------------------------
-   Family Practice: make doctors panel 2/3 (desktop only)
-   --------------------------------------------------------- */
 
 @media (min-width: 1251px) {
     html[data-brand="clinic"] #family .clinic-body {
@@ -393,11 +411,12 @@ html[data-brand="clinic"] .clinic-cta-actions .btn {
     }
 }
 
-/* ---------------------------------------------------------
-   Responsive
-   --------------------------------------------------------- */
 
-/* ≤ 1250px: stack panels + stack doc cards */
+/* =========================================================
+   12) LEGACY RESPONSIVE (doc grid / base body)
+   Kept intentionally.
+   ========================================================= */
+
 @media (max-width: 1250px) {
     html[data-brand="clinic"] .clinic-head {
         flex-direction: column;
@@ -417,7 +436,6 @@ html[data-brand="clinic"] .clinic-cta-actions .btn {
     }
 }
 
-/* ≤ 981px: small tweaks only */
 @media (max-width: 981px) {
     html[data-brand="clinic"] .doc-grid--single .doc-img {
         height: 240px;
@@ -429,21 +447,20 @@ html[data-brand="clinic"] .clinic-cta-actions .btn {
     }
 }
 
-/* ≤ 620px: optional extra tightening (kept from your earlier version) */
 @media (max-width: 620px) {
     html[data-brand="clinic"] .doc-grid--single .doc-img {
         height: 240px;
     }
 }
 
-/* ---------------------------------------------------------
-   Small-screen button tightening (prevent stacking)
-   ONLY inside the clinic page content areas (NOT header/nav)
-   --------------------------------------------------------- */
+
+/* =========================================================
+   13) SMALL-SCREEN BUTTON TIGHTENING
+   Only inside clinic content areas, not header/nav.
+   ========================================================= */
 
 @media (max-width: 620px) {
 
-    /* keep action rows on one line */
     html[data-brand="clinic"] .clinic-head-actions,
     html[data-brand="clinic"] .doc-actions,
     html[data-brand="clinic"] .clinic-cta-actions {
@@ -451,7 +468,6 @@ html[data-brand="clinic"] .clinic-cta-actions .btn {
         gap: 8px;
     }
 
-    /* shrink ONLY the buttons inside those action rows */
     html[data-brand="clinic"] .clinic-head-actions .btn,
     html[data-brand="clinic"] .doc-actions .btn,
     html[data-brand="clinic"] .clinic-cta-actions .btn {
@@ -461,7 +477,6 @@ html[data-brand="clinic"] .clinic-cta-actions .btn {
         white-space: nowrap;
     }
 
-    /* outline buttons can be a hair tighter (scoped too) */
     html[data-brand="clinic"] .clinic-head-actions .btn-outline,
     html[data-brand="clinic"] .doc-actions .btn-outline,
     html[data-brand="clinic"] .clinic-cta-actions .btn-outline {
@@ -469,12 +484,12 @@ html[data-brand="clinic"] .clinic-cta-actions .btn {
     }
 }
 
+
 /* =========================================================
-   CLINIC PAGE — Provider card layout (founder-card style)
-   - Keeps your clinic-head + actions + bullets
-   - 1-provider sections: bullets LEFT, provider RIGHT
-   - 2-provider sections: bullets TOP, providers BELOW
-   Scoped to html[data-brand="clinic"] .clinic
+   14) ACTIVE CLINIC SERVICE LAYOUT SYSTEM
+   - 1-provider sections: bullets left, provider right
+   - 2-provider sections: bullets top, providers below
+   Scoped to: html[data-brand="clinic"] .clinic
    ========================================================= */
 
 html[data-brand="clinic"] .clinic .clinic-layout {
@@ -483,18 +498,22 @@ html[data-brand="clinic"] .clinic .clinic-layout {
     gap: clamp(14px, 2.2vw, 18px);
 }
 
-/* 1 provider: 2 columns (bullets left, provider right) */
 html[data-brand="clinic"] .clinic .clinic-layout--split {
     grid-template-columns: 1.05fr .95fr;
     align-items: start;
 }
 
-/* 2 providers: bullets top then providers below */
 html[data-brand="clinic"] .clinic .clinic-layout--stack {
     grid-template-columns: 1fr;
 }
 
-/* Panels keep your existing “clinic-panel” vibe but cleaner */
+
+/* =========================================================
+   15) ACTIVE CLINIC PANELS
+   This later block intentionally overrides the earlier base
+   .clinic-panel definition with the current glow treatment.
+   ========================================================= */
+
 html[data-brand="clinic"] .clinic .clinic-panel {
     position: relative;
     isolation: isolate;
@@ -508,7 +527,6 @@ html[data-brand="clinic"] .clinic .clinic-panel {
     overflow: hidden;
 }
 
-/* Panel padding */
 html[data-brand="clinic"] .clinic .clinic-panel--bullets {
     padding: clamp(16px, 2.2vw, 22px);
 }
@@ -517,7 +535,11 @@ html[data-brand="clinic"] .clinic .clinic-panel--providers {
     padding: clamp(16px, 2.2vw, 22px);
 }
 
-/* Providers grid (2-up when available) */
+
+/* =========================================================
+   16) PROVIDERS GRID
+   ========================================================= */
+
 html[data-brand="clinic"] .clinic .providers-grid {
     margin-top: 12px;
     display: grid;
@@ -525,13 +547,13 @@ html[data-brand="clinic"] .clinic .providers-grid {
     gap: clamp(12px, 2vw, 16px);
 }
 
-/* Single provider card just sits nicely */
 html[data-brand="clinic"] .clinic .provider-card--single {
     margin-top: 12px;
 }
 
+
 /* =========================================================
-   PROVIDER CARD (founder-card vibe)
+   17) ACTIVE PROVIDER CARD SYSTEM
    ========================================================= */
 
 html[data-brand="clinic"] .clinic .provider-card {
@@ -565,7 +587,11 @@ html[data-brand="clinic"] .clinic .provider-card--flip .provider-body {
     order: 1;
 }
 
-/* Media */
+
+/* =========================================================
+   18) PROVIDER MEDIA
+   ========================================================= */
+
 html[data-brand="clinic"] .clinic .provider-media {
     position: relative;
     overflow: hidden;
@@ -580,7 +606,6 @@ html[data-brand="clinic"] .clinic .provider-media img {
     object-position: 50% 22%;
 }
 
-/* subtle letterbox bands (like your founders) */
 html[data-brand="clinic"] .clinic .provider-media::before,
 html[data-brand="clinic"] .clinic .provider-media::after {
     content: "";
@@ -604,7 +629,11 @@ html[data-brand="clinic"] .clinic .provider-media::after {
     background: linear-gradient(0deg, rgba(0, 0, 0, .34), rgba(0, 0, 0, .10));
 }
 
-/* Body */
+
+/* =========================================================
+   19) PROVIDER BODY
+   ========================================================= */
+
 html[data-brand="clinic"] .clinic .provider-body {
     padding: clamp(14px, 2vw, 18px) clamp(14px, 2.2vw, 20px) clamp(14px, 2vw, 18px) 0;
     display: grid;
@@ -632,7 +661,6 @@ html[data-brand="clinic"] .clinic .provider-name {
     color: rgba(255, 255, 255, .92);
 }
 
-/* Actions: scoped so nav buttons never get hit */
 html[data-brand="clinic"] .clinic .provider-actions {
     margin-top: 6px;
     display: flex;
@@ -641,27 +669,13 @@ html[data-brand="clinic"] .clinic .provider-actions {
     align-items: center;
 }
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
-/* Make split go stacked earlier */
-@media (max-width: 1210px) {
-    html[data-brand="clinic"] .clinic .clinic-layout--split {
-        grid-template-columns: 1fr;
-    }
-
-    html[data-brand="clinic"] .clinic .providers-grid {
-        grid-template-columns: 1fr;
-    }
-}
 
 /* =========================================================
-   FIX: remove the "double bubble"
-   Keep bullets panel boxed, but make providers wrapper invisible
+   20) PROVIDERS WRAPPER CLEANUP
+   Keep bullets panel boxed, but make the providers wrapper
+   itself invisible so only actual cards read as cards.
    ========================================================= */
 
-/* Only affect the providers wrapper panel */
 html[data-brand="clinic"] .clinic .clinic-panel--providers {
     background: transparent !important;
     border: 0 !important;
@@ -670,7 +684,6 @@ html[data-brand="clinic"] .clinic .clinic-panel--providers {
     overflow: visible !important;
 }
 
-/* Give the title + fineprint a little breathing room without re-adding a card */
 html[data-brand="clinic"] .clinic .clinic-panel--providers .clinic-mini-title {
     margin: 0 0 12px;
     padding: 0 2px;
@@ -681,16 +694,16 @@ html[data-brand="clinic"] .clinic .clinic-panel--providers .fineprint {
     padding: 0 2px;
 }
 
-/* Optional: if you still feel it’s “too puffy”, soften card shadow slightly */
+/* kept as explicit final card shadow line */
 html[data-brand="clinic"] .clinic .provider-card {
     box-shadow: 0 14px 38px rgba(0, 0, 0, .30);
 }
 
+
 /* =========================================================
-   RESPONSIVE
+   21) ACTIVE LAYOUT RESPONSIVE
    ========================================================= */
 
-/* Make split go stacked earlier */
 @media (max-width: 1210px) {
     html[data-brand="clinic"] .clinic .clinic-layout--split {
         grid-template-columns: 1fr;
@@ -701,8 +714,10 @@ html[data-brand="clinic"] .clinic .provider-card {
     }
 }
 
+
 /* =========================================================
-   MOBILE / TABLET NARROW — keep provider cards L/R longer
+   22) PROVIDER CARDS — TABLET / NARROW
+   Keep side-by-side longer.
    ========================================================= */
 
 @media (max-width: 760px) {
@@ -788,8 +803,9 @@ html[data-brand="clinic"] .clinic .provider-card {
     }
 }
 
+
 /* =========================================================
-   SMALL PHONES — still side-by-side, just tighter
+   23) PROVIDER CARDS — SMALL PHONES
    ========================================================= */
 
 @media (max-width: 520px) {
@@ -833,8 +849,10 @@ html[data-brand="clinic"] .clinic .provider-card {
     }
 }
 
+
 /* =========================================================
-   VERY SMALL — only stack when truly necessary
+   24) PROVIDER CARDS — VERY SMALL
+   Only stack when truly necessary.
    ========================================================= */
 
 @media (max-width: 360px) {
@@ -869,8 +887,9 @@ html[data-brand="clinic"] .clinic .provider-card {
     }
 }
 
+
 /* =========================================================
-   MOBILE — tighten bullet text so lines fit better
+   25) BULLET TEXT TIGHTENING
    ========================================================= */
 
 @media (max-width: 620px) {
@@ -896,4 +915,3 @@ html[data-brand="clinic"] .clinic .provider-card {
         gap: 6px;
     }
 }
-

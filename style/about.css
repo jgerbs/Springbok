@@ -210,8 +210,9 @@ html[data-brand="clinic"] .why-kicker {
 
 html[data-brand="clinic"] .why-active {
     display: grid;
-    grid-template-rows: auto auto 1fr;
+    grid-template-rows: auto auto minmax(0, 1fr);
     align-content: start;
+    min-height: 0;
 }
 
 html[data-brand="clinic"] .why-active-count {
@@ -233,22 +234,23 @@ html[data-brand="clinic"] .why-count-divider {
 }
 
 html[data-brand="clinic"] .why-active-title {
-    margin: 0 0 8px;
-    font-size: clamp(1.18rem, 1.6vw, 1.52rem);
-    line-height: 1.08;
+    margin: 0 0 10px;
+    font-size: clamp(1.28rem, 1.7vw, 1.9rem);
+    line-height: 1.05;
     letter-spacing: -.03em;
     color: rgba(255, 255, 255, .98);
     min-height: 0;
-    max-width: 20ch;
-    text-wrap: balance;
+    max-width: 26ch;
+    text-wrap: normal;
+    white-space: normal;
 }
 
 html[data-brand="clinic"] .why-active-text {
     margin: 0;
-    max-width: 42ch;
+    max-width: 52ch;
     color: rgba(255, 255, 255, .76);
     line-height: 1.68;
-    font-size: .94rem;
+    font-size: .96rem;
     min-height: 0;
 }
 
@@ -438,15 +440,15 @@ body.why-scroll-locked {
     }
 
     html[data-brand="clinic"] .why-active-title {
-        font-size: clamp(1.08rem, 1.45vw, 1.34rem);
-        max-width: 18ch;
+        font-size: clamp(1.14rem, 1.6vw, 1.5rem);
         margin-bottom: 8px;
+        max-width: 22ch;
     }
 
     html[data-brand="clinic"] .why-active-text {
-        font-size: .92rem;
-        max-width: 36ch;
+        font-size: .93rem;
         line-height: 1.65;
+        max-width: 31ch;
     }
 
     html[data-brand="clinic"] .why-progress {
@@ -1268,16 +1270,16 @@ html[data-brand="clinic"] .why-bubble::before {
     }
 
     html[data-brand="clinic"] .why-active-title {
-        margin: 0 0 7px;
-        font-size: .98rem;
+        margin: 0 0 8px;
+        font-size: clamp(.98rem, 3.7vw, 1.18rem);
         line-height: 1.08;
-        max-width: 12ch;
+        max-width: 17ch;
     }
 
     html[data-brand="clinic"] .why-active-text {
         font-size: .82rem;
-        line-height: 1.48;
-        max-width: 22ch;
+        line-height: 1.5;
+        max-width: 27ch;
     }
 
     html[data-brand="clinic"] .why-progress {
@@ -1416,6 +1418,7 @@ html[data-brand="clinic"] .why-bubble::before {
         line-height: 1.42;
     }
 }
+
 @media (max-width: 390px) {
     html[data-brand="clinic"] .why-grid {
         grid-template-columns: minmax(0, 1fr) minmax(0, .98fr);
@@ -1594,16 +1597,16 @@ html[data-brand="clinic"] .why-bubble::before {
     }
 
     html[data-brand="clinic"] .why-active-title {
-        margin-bottom: 6px;
-        font-size: .9rem;
+        margin-bottom: 8px;
+        font-size: clamp(.98rem, 3.7vw, 1.18rem);
         line-height: 1.08;
-        max-width: 12ch;
+        max-width: 17ch;
     }
 
     html[data-brand="clinic"] .why-active-text {
-        font-size: .75rem;
-        line-height: 1.42;
-        max-width: 24ch;
+        font-size: .82rem;
+        line-height: 1.5;
+        max-width: 27ch;
     }
 
     html[data-brand="clinic"] .why-progress {
@@ -1675,14 +1678,14 @@ html[data-brand="clinic"] .why-bubble::before {
     }
 
     html[data-brand="clinic"] .why-active-title {
-        font-size: .84rem;
-        max-width: 11ch;
+        font-size: .94rem;
+        max-width: 15ch;
     }
 
     html[data-brand="clinic"] .why-active-text {
-        font-size: .71rem;
-        line-height: 1.36;
-        max-width: 21ch;
+        font-size: .78rem;
+        line-height: 1.42;
+        max-width: 24ch;
     }
 
     html[data-brand="clinic"] .why-rail-actions {
@@ -1708,13 +1711,14 @@ html[data-brand="clinic"] .why-bubble::before {
     }
 
     html[data-brand="clinic"] .why-active-title {
-        font-size: .8rem;
-        max-width: 10ch;
+        font-size: .88rem;
+        max-width: 14ch;
     }
 
     html[data-brand="clinic"] .why-active-text {
-        font-size: .68rem;
-        max-width: 19ch;
+        font-size: .74rem;
+        line-height: 1.4;
+        max-width: 22ch;
     }
 
     html[data-brand="clinic"] .why-rail-actions .btn {
@@ -1849,3 +1853,68 @@ html[data-brand="clinic"] .why-rail-actions a.btn {
     }
 }
 
+/* =========================================================
+   WHY ACTION LABEL SWAP
+   ========================================================= */
+
+html[data-brand="clinic"] .why-btn-label--mobile {
+    display: none;
+}
+
+html[data-brand="clinic"] .why-btn-label--desktop {
+    display: inline;
+}
+
+@media (max-width: 900px) {
+    html[data-brand="clinic"] .why-btn-label--desktop {
+        display: none;
+    }
+
+    html[data-brand="clinic"] .why-btn-label--mobile {
+        display: inline;
+    }
+}
+
+/* =========================================================
+   WHY ACTIONS — EVEN MOBILE BUTTON SPACING
+   ========================================================= */
+
+html[data-brand="clinic"] .why-rail-actions {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+    align-items: stretch;
+}
+
+html[data-brand="clinic"] .why-rail-actions .btn,
+html[data-brand="clinic"] .why-rail-actions a.btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 34px !important;
+    height: 34px !important;
+    padding: 0 8px !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    border-radius: 999px !important;
+    box-sizing: border-box !important;
+}
+
+@media (max-width: 390px) {
+    html[data-brand="clinic"] .why-rail-actions {
+        gap: 5px !important;
+    }
+
+    html[data-brand="clinic"] .why-rail-actions .btn,
+    html[data-brand="clinic"] .why-rail-actions a.btn {
+        min-height: 32px !important;
+        height: 32px !important;
+        padding: 0 6px !important;
+    }
+}

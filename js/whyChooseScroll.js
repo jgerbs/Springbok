@@ -66,10 +66,16 @@
         return 120;
     }
 
+    function getPreLockBuffer() {
+        if (window.innerWidth <= 520) return 36;
+        if (window.innerWidth <= 900) return 28;
+        return 0;
+    }
+
     function getBlockScrollY() {
         return Math.max(
             0,
-            founders.offsetTop - window.innerHeight + getFoundersRevealGap()
+            founders.offsetTop - window.innerHeight + getFoundersRevealGap() - getPreLockBuffer()
         );
     }
 
@@ -86,9 +92,14 @@
 
     function forceToBlockPoint() {
         const y = getBlockScrollY();
-        if (Math.abs(window.scrollY - y) > 1) {
-            window.scrollTo(0, y);
-        }
+
+        if (Math.abs(window.scrollY - y) <= 1) return;
+
+        window.scrollTo({
+            top: y,
+            left: 0,
+            behavior: "auto"
+        });
     }
 
     function setLocked(locked) {
@@ -293,6 +304,11 @@
         touchHasCommitted = false;
         touchGestureStartY = e.touches[0].clientY;
         touchLastY = touchGestureStartY;
+
+        if (inInteractiveMode() && !whySequenceComplete() && window.scrollY >= getBlockScrollY() - 20) {
+            forceToBlockPoint();
+            setLocked(true);
+        }
     }
 
     function onTouchMove(e) {
@@ -335,7 +351,7 @@
             return;
         }
 
-        if (shouldHardBlockDownwardScroll()) {
+        if (!whySequenceComplete() && window.scrollY >= getBlockScrollY() - 1) {
             forceToBlockPoint();
             setLocked(true);
         }
@@ -389,7 +405,7 @@
     window.addEventListener("resize", onResize);
     window.addEventListener("touchend", onTouchEnd, { passive: true });
     window.addEventListener("touchcancel", onTouchEnd, { passive: true });
-    
+
     updateCopy(activeIndex);
     paint(displayProgress);
 })();
