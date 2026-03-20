@@ -1,5 +1,6 @@
 /* =========================================================
    ABOUT PAGE — STORY / MISSION
+   Base mission card + responsive text scaling
    ========================================================= */
 
 .about-story {
@@ -16,7 +17,7 @@
     position: relative;
     margin: 0 auto;
     border-radius: 30px;
-    padding: clamp(24px, 2.8vw, 38px);
+    padding: clamp(22px, 2.6vw, 38px);
     border: 1px solid rgba(255, 255, 255, 0.10);
     background:
         radial-gradient(120% 140% at 0% 0%, rgba(18, 192, 138, 0.10), transparent 40%),
@@ -43,31 +44,28 @@
     margin: 0 0 18px;
     padding-bottom: 14px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
-    font-size: 0.74rem;
+    font-size: clamp(0.68rem, 0.22vw + 0.66rem, 0.74rem);
     line-height: 1;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     font-weight: 600;
-
     color: rgba(255, 255, 255, 0.58);
-    /* softer */
 }
 
 .about-story-copy {
     width: 100%;
     max-width: none;
     column-count: 2;
-    column-gap: clamp(34px, 4.5vw, 88px);
+    column-gap: clamp(28px, 4vw, 88px);
     column-fill: balance;
 }
 
 .about-story-copy p {
-    margin: 0 0 18px;
+    margin: 0 0 clamp(14px, 1.4vw, 18px);
     break-inside: avoid;
     color: rgba(255, 255, 255, 0.82);
-    font-size: clamp(1rem, 1.03vw, 1.06rem);
-    line-height: 1.9;
+    font-size: clamp(0.94rem, 0.22vw + 0.9rem, 1.06rem);
+    line-height: clamp(1.68, 1.55 + 0.22vw, 1.9);
     letter-spacing: -0.01em;
     max-width: none;
 }
@@ -76,7 +74,6 @@
     margin-bottom: 0;
 }
 
-/* wider screens: use more of the card */
 @media (min-width: 1400px) {
     .about-story-main {
         padding: 34px 36px 38px;
@@ -88,7 +85,23 @@
 
     .about-story-copy p {
         font-size: clamp(1.02rem, .9vw, 1.12rem);
-        line-height: 1.95;
+        line-height: 1.92;
+    }
+}
+
+@media (max-width: 1180px) {
+    .about-story-main {
+        padding: 24px 22px 26px;
+        border-radius: 28px;
+    }
+
+    .about-story-copy {
+        column-gap: clamp(22px, 3vw, 40px);
+    }
+
+    .about-story-copy p {
+        font-size: clamp(0.92rem, 0.3vw + 0.84rem, 1rem);
+        line-height: 1.74;
     }
 }
 
@@ -101,13 +114,19 @@
         margin-top: 26px;
     }
 
+    .about-story-main {
+        padding: 22px 20px 24px;
+    }
+
     .about-story-copy {
         column-count: 1;
         column-gap: 0;
     }
 
     .about-story-copy p {
-        line-height: 1.82;
+        font-size: 0.96rem;
+        line-height: 1.74;
+        margin-bottom: 16px;
     }
 }
 
@@ -128,18 +147,33 @@
     .about-story-label {
         margin-bottom: 14px;
         padding-bottom: 12px;
-        font-size: 0.72rem;
+        font-size: 0.7rem;
     }
 
     .about-story-copy p {
-        font-size: 0.96rem;
-        line-height: 1.76;
+        font-size: 0.93rem;
+        line-height: 1.68;
         margin-bottom: 15px;
     }
 }
 
+@media (max-width: 520px) {
+    .about-story-main {
+        border-radius: 22px;
+        padding: 18px 14px;
+    }
+
+    .about-story-copy p {
+        font-size: 0.9rem;
+        line-height: 1.62;
+        margin-bottom: 14px;
+    }
+}
+
+
 /* =========================================================
-   WHY CHOOSE US — DESKTOP / TABLET SPLIT
+   WHY CHOOSE US — BASE LAYOUT
+   Desktop / tablet split and cards
    ========================================================= */
 
 html[data-brand="clinic"] .why-cinematic {
@@ -165,7 +199,6 @@ html[data-brand="clinic"] .why-head {
     margin: 0 0 clamp(10px, 1.5vw, 14px);
 }
 
-/* FULL VIEW: much closer to 50 / 50 */
 html[data-brand="clinic"] .why-grid {
     display: grid;
     grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
@@ -182,11 +215,9 @@ html[data-brand="clinic"] .why-rail {
 html[data-brand="clinic"] .why-rail-inner {
     height: min(420px, calc(100vh - var(--header-h, 82px) - 290px));
     min-height: 315px;
-
     display: grid;
     grid-template-rows: auto 1fr auto;
     align-items: stretch;
-
     border-radius: 30px;
     padding: clamp(20px, 1.9vw, 24px);
     border: 1px solid rgba(255, 255, 255, .12);
@@ -222,7 +253,6 @@ html[data-brand="clinic"] .why-active-count {
     margin-bottom: 16px;
     padding-bottom: 12px;
     border-bottom: 1px solid rgba(255, 255, 255, .08);
-
     font-size: clamp(1.22rem, 1.9vw, 1.65rem);
     font-weight: 700;
     line-height: 1;
@@ -252,30 +282,6 @@ html[data-brand="clinic"] .why-active-text {
     line-height: 1.68;
     font-size: .96rem;
     min-height: 0;
-}
-
-html[data-brand="clinic"] .why-progress {
-    margin: 0 0 10px;
-    width: 100%;
-    height: 6px;
-    border-radius: 999px;
-    overflow: hidden;
-    background: rgba(255, 255, 255, .08);
-    border: 1px solid rgba(255, 255, 255, .08);
-}
-
-html[data-brand="clinic"] .why-dots {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 14px;
-}
-
-html[data-brand="clinic"] .why-rail-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: auto;
 }
 
 html[data-brand="clinic"] .why-progress {
@@ -320,12 +326,6 @@ html[data-brand="clinic"] .why-dot-btn.is-active {
     box-shadow: 0 0 0 6px rgba(18, 192, 138, .14);
 }
 
-html[data-brand="clinic"] .why-rail-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-}
-
 html[data-brand="clinic"] .why-stack {
     position: relative;
     height: min(500px, calc(100vh - var(--header-h, 82px) - 235px));
@@ -341,11 +341,9 @@ html[data-brand="clinic"] .why-panel {
     position: absolute;
     width: 100%;
     min-height: clamp(260px, 27vw, 320px);
-
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-
     padding: clamp(24px, 2.5vw, 34px);
     border-radius: 30px;
     border: 1px solid rgba(255, 255, 255, .10);
@@ -355,7 +353,6 @@ html[data-brand="clinic"] .why-panel {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 24px 70px rgba(0, 0, 0, .22);
-
     opacity: 0;
     transform: translate3d(0, 44px, 0) scale(.985);
     transform-origin: center center;
@@ -363,7 +360,6 @@ html[data-brand="clinic"] .why-panel {
     will-change: transform, opacity;
     pointer-events: none;
 }
-
 
 html[data-brand="clinic"] .why-panel-num {
     position: absolute;
@@ -408,9 +404,13 @@ body.why-scroll-locked {
     overscroll-behavior: none;
 }
 
-@media (max-width: 1180px) {
 
-    /* smaller overall pinned section */
+/* =========================================================
+   WHY CHOOSE US — RESPONSIVE LAYOUT
+   1180 / 900 / 520 / 390 breakpoints
+   ========================================================= */
+
+@media (max-width: 1180px) {
     html[data-brand="clinic"] .why-scroll-shell {
         height: clamp(650px, 124vh, 650px) !important;
         min-height: clamp(650px, 124vh, 650px) !important;
@@ -421,7 +421,6 @@ body.why-scroll-locked {
         gap: 18px;
     }
 
-    /* LEFT + RIGHT heights tightened */
     html[data-brand="clinic"] .why-rail-inner {
         height: min(390px, calc(100vh - var(--header-h, 82px) - 270px));
         min-height: 300px;
@@ -433,7 +432,6 @@ body.why-scroll-locked {
         min-height: 340px;
     }
 
-    /* LEFT TEXT AREA tighter */
     html[data-brand="clinic"] .why-active-count {
         margin-bottom: 14px;
         padding-bottom: 10px;
@@ -459,7 +457,6 @@ body.why-scroll-locked {
         margin-bottom: 12px;
     }
 
-    /* RIGHT PANEL tighter */
     html[data-brand="clinic"] .why-panel {
         min-height: clamp(250px, 30vw, 300px);
         padding: 20px 18px;
@@ -474,757 +471,15 @@ body.why-scroll-locked {
         font-size: .93rem;
         line-height: 1.65;
     }
-
 }
-
-
-/* =========================================================
-   FOUNDERS
-   ========================================================= */
-
-html[data-brand="clinic"] .founders {
-    position: relative;
-    overflow: hidden;
-    padding: clamp(12px, 2vw, 20px) 0 clamp(88px, 8vw, 112px);
-}
-
-html[data-brand="clinic"] .founders-grid {
-    margin-top: clamp(22px, 2.8vw, 30px);
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: clamp(14px, 2.2vw, 20px);
-}
-
-html[data-brand="clinic"] .founder-card {
-    display: grid;
-    grid-template-columns: clamp(140px, 18vw, 190px) 1fr;
-    gap: clamp(14px, 2.2vw, 18px);
-    align-items: stretch;
-
-    border-radius: var(--radius-xl);
-    border: 1px solid rgba(255, 255, 255, .12);
-    background: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .03));
-    box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-
-    position: relative;
-    isolation: isolate;
-}
-
-html[data-brand="clinic"] .founder-card--flip {
-    grid-template-columns: 1fr clamp(140px, 18vw, 190px);
-}
-
-html[data-brand="clinic"] .founder-card--flip .founder-media {
-    order: 2;
-}
-
-html[data-brand="clinic"] .founder-card--flip .founder-body {
-    order: 1;
-}
-
-html[data-brand="clinic"] .founder-media {
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-    background: rgba(0, 0, 0, .22);
-}
-
-html[data-brand="clinic"] .founder-media img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: 50% 22%;
-}
-
-html[data-brand="clinic"] .founder-media::before,
-html[data-brand="clinic"] .founder-media::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 12.5%;
-    z-index: 2;
-    pointer-events: none;
-    backdrop-filter: blur(12px) saturate(1.05);
-    -webkit-backdrop-filter: blur(12px) saturate(1.05);
-}
-
-html[data-brand="clinic"] .founder-media::before {
-    top: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, .38), rgba(0, 0, 0, .12));
-}
-
-html[data-brand="clinic"] .founder-media::after {
-    bottom: 0;
-    background: linear-gradient(0deg, rgba(0, 0, 0, .42), rgba(0, 0, 0, .14));
-}
-
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-
-    html[data-brand="clinic"] .founder-media::before,
-    html[data-brand="clinic"] .founder-media::after {
-        background: rgba(0, 0, 0, .18);
-    }
-}
-
-html[data-brand="clinic"] .founder-body {
-    position: relative;
-    z-index: 1;
-    padding: clamp(14px, 2vw, 18px) clamp(14px, 2.2vw, 22px) clamp(14px, 2vw, 18px) 0;
-    display: grid;
-    align-content: center;
-    gap: 10px;
-}
-
-html[data-brand="clinic"] .founder-card--flip .founder-body {
-    padding: clamp(14px, 2vw, 18px) 0 clamp(14px, 2vw, 18px) clamp(14px, 2.2vw, 22px);
-}
-
-html[data-brand="clinic"] .founder-kicker {
-    margin: 0 0 4px;
-    font-size: .86rem;
-    letter-spacing: .10em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, .78);
-    font-weight: 700;
-}
-
-html[data-brand="clinic"] .founder-name {
-    margin: 0;
-    font-size: clamp(1.15rem, 1.7vw, 1.4rem);
-    letter-spacing: .01em;
-}
-
-html[data-brand="clinic"] .founder-desc {
-    margin: 0;
-    color: rgba(255, 255, 255, .74);
-    line-height: 1.65;
-    max-width: 70ch;
-}
-
-html[data-brand="clinic"] .founder-actions {
-    margin-top: 6px;
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-html[data-brand="clinic"] .founder-btn {
-    padding: 10px 16px;
-    border-radius: 999px;
-    font-weight: 700;
-    white-space: nowrap;
-    min-height: 42px;
-}
-
-html[data-brand="clinic"] .founder-btn--ghost {
-    background: rgba(255, 255, 255, .06);
-    border: 1px solid rgba(255, 255, 255, .18);
-    color: rgba(255, 255, 255, .92);
-}
-
-html[data-brand="clinic"] .founder-btn--ghost:hover {
-    background: rgba(255, 255, 255, .10);
-    border-color: rgba(255, 255, 255, .28);
-}
-
-html[data-brand="clinic"] .founder-btn--solid {
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    border: 1px solid rgba(255, 255, 255, .10);
-    color: rgba(0, 0, 0, .88);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, .25);
-}
-
-html[data-brand="clinic"] .founder-btn--solid:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 18px 36px rgba(0, 0, 0, .30);
-}
-
-@media (min-width: 1250px) {
-    html[data-brand="clinic"] .founders-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 760px) {
-    html[data-brand="clinic"] .founders {
-        padding: 4px 0 76px;
-    }
-
-    html[data-brand="clinic"] .founder-card,
-    html[data-brand="clinic"] .founder-card--flip {
-        grid-template-columns: 116px minmax(0, 1fr) !important;
-        grid-template-rows: 1fr !important;
-        gap: 0 !important;
-        border-radius: 24px;
-        align-items: stretch !important;
-        overflow: hidden;
-    }
-
-    html[data-brand="clinic"] .founder-card--flip {
-        grid-template-columns: minmax(0, 1fr) 116px !important;
-    }
-
-    html[data-brand="clinic"] .founder-card--flip .founder-media {
-        order: 2 !important;
-    }
-
-    html[data-brand="clinic"] .founder-card--flip .founder-body {
-        order: 1 !important;
-    }
-
-    html[data-brand="clinic"] .founder-media {
-        min-height: 100%;
-        height: auto;
-        overflow: hidden;
-        background: rgba(0, 0, 0, .22);
-    }
-
-    html[data-brand="clinic"] .founder-media img {
-        object-fit: cover;
-        object-position: 50% 18%;
-    }
-
-    html[data-brand="clinic"] .founder-media::before,
-    html[data-brand="clinic"] .founder-media::after {
-        height: 13%;
-        backdrop-filter: blur(16px) saturate(1.06);
-        -webkit-backdrop-filter: blur(16px) saturate(1.06);
-    }
-
-    html[data-brand="clinic"] .founder-body {
-        min-width: 0;
-        padding: 12px 12px 12px 13px !important;
-        gap: 7px;
-        align-content: center;
-        border-left: 0 !important;
-        border-right: 0 !important;
-    }
-
-    html[data-brand="clinic"] .founder-card--flip .founder-body {
-        padding: 12px 13px 12px 12px !important;
-    }
-
-    html[data-brand="clinic"] .founder-kicker {
-        font-size: .74rem;
-        letter-spacing: .09em;
-        margin: 0 0 2px;
-    }
-
-    html[data-brand="clinic"] .founder-name {
-        margin: 0;
-        font-size: 1rem;
-        line-height: 1.12;
-    }
-
-    html[data-brand="clinic"] .founder-desc {
-        margin: 0;
-        font-size: .9rem;
-        line-height: 1.42;
-        max-width: none;
-    }
-
-    html[data-brand="clinic"] .founder-actions {
-        margin-top: 6px;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        gap: 6px;
-        align-items: center;
-    }
-
-    html[data-brand="clinic"] .founder-btn {
-        width: auto;
-        min-width: 0;
-        min-height: 32px;
-        padding: 6px 10px;
-        font-size: .8rem;
-        border-radius: 999px;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 520px) {
-    html[data-brand="clinic"] .founders {
-        padding: 0 0 68px;
-    }
-
-    html[data-brand="clinic"] .founder-card,
-    html[data-brand="clinic"] .founder-card--flip {
-        grid-template-columns: 98px minmax(0, 1fr) !important;
-        border-radius: 22px;
-    }
-
-    html[data-brand="clinic"] .founder-card--flip {
-        grid-template-columns: minmax(0, 1fr) 98px !important;
-    }
-
-    html[data-brand="clinic"] .founder-body {
-        padding: 11px 11px 12px 12px !important;
-        gap: 6px;
-    }
-
-    html[data-brand="clinic"] .founder-card--flip .founder-body {
-        padding: 11px 12px 12px 11px !important;
-    }
-
-    html[data-brand="clinic"] .founder-kicker {
-        font-size: .68rem;
-        letter-spacing: .085em;
-    }
-
-    html[data-brand="clinic"] .founder-name {
-        font-size: .95rem;
-    }
-
-    html[data-brand="clinic"] .founder-desc {
-        font-size: .84rem;
-        line-height: 1.34;
-    }
-
-    html[data-brand="clinic"] .founder-actions {
-        gap: 6px;
-        margin-top: 6px;
-    }
-
-    html[data-brand="clinic"] .founder-btn {
-        min-height: 30px;
-        padding: 5px 8px;
-        font-size: .78rem;
-    }
-}
-
-@media (max-width: 360px) {
-
-    html[data-brand="clinic"] .founder-card,
-    html[data-brand="clinic"] .founder-card--flip {
-        grid-template-columns: 1fr !important;
-        grid-template-rows: auto auto !important;
-    }
-
-    html[data-brand="clinic"] .founder-card--flip .founder-media,
-    html[data-brand="clinic"] .founder-card--flip .founder-body {
-        order: initial !important;
-    }
-
-    html[data-brand="clinic"] .founder-media {
-        min-height: 190px;
-        max-height: 240px;
-    }
-
-    html[data-brand="clinic"] .founder-body {
-        padding: 10px 12px 12px !important;
-    }
-
-    html[data-brand="clinic"] .founder-actions {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    html[data-brand="clinic"] .founder-btn {
-        width: 100%;
-    }
-}
-
-
-/* =========================================================
-   GLOBAL: KILL EXTRA GLOWS
-   ========================================================= */
-
-.mission-v2::before,
-html[data-brand="clinic"] .founders::before,
-html[data-brand="clinic"] .why-bubbles::before {
-    content: none !important;
-    display: none !important;
-}
-
-html[data-brand="clinic"] .founder-card::before,
-html[data-brand="clinic"] .why-bubble::before {
-    content: none !important;
-    display: none !important;
-}
-
-
-
-/* =========================================================
-   FOUNDERS
-   ========================================================= */
-
-html[data-brand="clinic"] .founders {
-    position: relative;
-    overflow: hidden;
-    padding: clamp(12px, 2vw, 20px) 0 clamp(88px, 8vw, 112px);
-}
-
-html[data-brand="clinic"] .founders-grid {
-    margin-top: clamp(22px, 2.8vw, 30px);
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: clamp(14px, 2.2vw, 20px);
-}
-
-html[data-brand="clinic"] .founder-card {
-    display: grid;
-    grid-template-columns: clamp(140px, 18vw, 190px) 1fr;
-    gap: clamp(14px, 2.2vw, 18px);
-    align-items: stretch;
-
-    border-radius: var(--radius-xl);
-    border: 1px solid rgba(255, 255, 255, .12);
-    background: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .03));
-    box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-
-    position: relative;
-    isolation: isolate;
-}
-
-html[data-brand="clinic"] .founder-card--flip {
-    grid-template-columns: 1fr clamp(140px, 18vw, 190px);
-}
-
-html[data-brand="clinic"] .founder-card--flip .founder-media {
-    order: 2;
-}
-
-html[data-brand="clinic"] .founder-card--flip .founder-body {
-    order: 1;
-}
-
-html[data-brand="clinic"] .founder-media {
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-    background: rgba(0, 0, 0, .22);
-}
-
-html[data-brand="clinic"] .founder-media img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: 50% 22%;
-}
-
-html[data-brand="clinic"] .founder-media::before,
-html[data-brand="clinic"] .founder-media::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 12.5%;
-    z-index: 2;
-    pointer-events: none;
-    backdrop-filter: blur(12px) saturate(1.05);
-    -webkit-backdrop-filter: blur(12px) saturate(1.05);
-}
-
-html[data-brand="clinic"] .founder-media::before {
-    top: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, .38), rgba(0, 0, 0, .12));
-}
-
-html[data-brand="clinic"] .founder-media::after {
-    bottom: 0;
-    background: linear-gradient(0deg, rgba(0, 0, 0, .42), rgba(0, 0, 0, .14));
-}
-
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-
-    html[data-brand="clinic"] .founder-media::before,
-    html[data-brand="clinic"] .founder-media::after {
-        background: rgba(0, 0, 0, .18);
-    }
-}
-
-html[data-brand="clinic"] .founder-body {
-    position: relative;
-    z-index: 1;
-    padding: clamp(14px, 2vw, 18px) clamp(14px, 2.2vw, 22px) clamp(14px, 2vw, 18px) 0;
-    display: grid;
-    align-content: center;
-    gap: 10px;
-}
-
-html[data-brand="clinic"] .founder-card--flip .founder-body {
-    padding: clamp(14px, 2vw, 18px) 0 clamp(14px, 2vw, 18px) clamp(14px, 2.2vw, 22px);
-}
-
-html[data-brand="clinic"] .founder-kicker {
-    margin: 0 0 4px;
-    font-size: .86rem;
-    letter-spacing: .10em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, .78);
-    font-weight: 700;
-}
-
-html[data-brand="clinic"] .founder-name {
-    margin: 0;
-    font-size: clamp(1.15rem, 1.7vw, 1.4rem);
-    letter-spacing: .01em;
-}
-
-html[data-brand="clinic"] .founder-desc {
-    margin: 0;
-    color: rgba(255, 255, 255, .74);
-    line-height: 1.65;
-    max-width: 70ch;
-}
-
-html[data-brand="clinic"] .founder-actions {
-    margin-top: 6px;
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-html[data-brand="clinic"] .founder-btn {
-    padding: 10px 16px;
-    border-radius: 999px;
-    font-weight: 700;
-    white-space: nowrap;
-    min-height: 42px;
-}
-
-html[data-brand="clinic"] .founder-btn--ghost {
-    background: rgba(255, 255, 255, .06);
-    border: 1px solid rgba(255, 255, 255, .18);
-    color: rgba(255, 255, 255, .92);
-}
-
-html[data-brand="clinic"] .founder-btn--ghost:hover {
-    background: rgba(255, 255, 255, .10);
-    border-color: rgba(255, 255, 255, .28);
-}
-
-html[data-brand="clinic"] .founder-btn--solid {
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    border: 1px solid rgba(255, 255, 255, .10);
-    color: rgba(0, 0, 0, .88);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, .25);
-}
-
-html[data-brand="clinic"] .founder-btn--solid:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 18px 36px rgba(0, 0, 0, .30);
-}
-
-@media (min-width: 1250px) {
-    html[data-brand="clinic"] .founders-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 760px) {
-    html[data-brand="clinic"] .founders {
-        padding: 4px 0 76px;
-    }
-
-    html[data-brand="clinic"] .founder-card,
-    html[data-brand="clinic"] .founder-card--flip {
-        grid-template-columns: 116px minmax(0, 1fr) !important;
-        grid-template-rows: 1fr !important;
-        gap: 0 !important;
-        border-radius: 24px;
-        align-items: stretch !important;
-        overflow: hidden;
-    }
-
-    html[data-brand="clinic"] .founder-card--flip {
-        grid-template-columns: minmax(0, 1fr) 116px !important;
-    }
-
-    html[data-brand="clinic"] .founder-card--flip .founder-media {
-        order: 2 !important;
-    }
-
-    html[data-brand="clinic"] .founder-card--flip .founder-body {
-        order: 1 !important;
-    }
-
-    html[data-brand="clinic"] .founder-media {
-        min-height: 100%;
-        height: auto;
-        overflow: hidden;
-        background: rgba(0, 0, 0, .22);
-    }
-
-    html[data-brand="clinic"] .founder-media img {
-        object-fit: cover;
-        object-position: 50% 18%;
-    }
-
-    html[data-brand="clinic"] .founder-media::before,
-    html[data-brand="clinic"] .founder-media::after {
-        height: 13%;
-        backdrop-filter: blur(16px) saturate(1.06);
-        -webkit-backdrop-filter: blur(16px) saturate(1.06);
-    }
-
-    html[data-brand="clinic"] .founder-body {
-        min-width: 0;
-        padding: 12px 12px 12px 13px !important;
-        gap: 7px;
-        align-content: center;
-        border-left: 0 !important;
-        border-right: 0 !important;
-    }
-
-    html[data-brand="clinic"] .founder-card--flip .founder-body {
-        padding: 12px 13px 12px 12px !important;
-    }
-
-    html[data-brand="clinic"] .founder-kicker {
-        font-size: .74rem;
-        letter-spacing: .09em;
-        margin: 0 0 2px;
-    }
-
-    html[data-brand="clinic"] .founder-name {
-        margin: 0;
-        font-size: 1rem;
-        line-height: 1.12;
-    }
-
-    html[data-brand="clinic"] .founder-desc {
-        margin: 0;
-        font-size: .9rem;
-        line-height: 1.42;
-        max-width: none;
-    }
-
-    html[data-brand="clinic"] .founder-actions {
-        margin-top: 6px;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        gap: 6px;
-        align-items: center;
-    }
-
-    html[data-brand="clinic"] .founder-btn {
-        width: auto;
-        min-width: 0;
-        min-height: 32px;
-        padding: 6px 10px;
-        font-size: .8rem;
-        border-radius: 999px;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 520px) {
-    html[data-brand="clinic"] .founders {
-        padding: 0 0 68px;
-    }
-
-    html[data-brand="clinic"] .founder-card,
-    html[data-brand="clinic"] .founder-card--flip {
-        grid-template-columns: 98px minmax(0, 1fr) !important;
-        border-radius: 22px;
-    }
-
-    html[data-brand="clinic"] .founder-card--flip {
-        grid-template-columns: minmax(0, 1fr) 98px !important;
-    }
-
-    html[data-brand="clinic"] .founder-body {
-        padding: 11px 11px 12px 12px !important;
-        gap: 6px;
-    }
-
-    html[data-brand="clinic"] .founder-card--flip .founder-body {
-        padding: 11px 12px 12px 11px !important;
-    }
-
-    html[data-brand="clinic"] .founder-kicker {
-        font-size: .68rem;
-        letter-spacing: .085em;
-    }
-
-    html[data-brand="clinic"] .founder-name {
-        font-size: .95rem;
-    }
-
-    html[data-brand="clinic"] .founder-desc {
-        font-size: .84rem;
-        line-height: 1.34;
-    }
-
-    html[data-brand="clinic"] .founder-actions {
-        gap: 6px;
-        margin-top: 6px;
-    }
-
-    html[data-brand="clinic"] .founder-btn {
-        min-height: 30px;
-        padding: 5px 8px;
-        font-size: .78rem;
-    }
-}
-
-@media (max-width: 360px) {
-
-    html[data-brand="clinic"] .founder-card,
-    html[data-brand="clinic"] .founder-card--flip {
-        grid-template-columns: 1fr !important;
-        grid-template-rows: auto auto !important;
-    }
-
-    html[data-brand="clinic"] .founder-card--flip .founder-media,
-    html[data-brand="clinic"] .founder-card--flip .founder-body {
-        order: initial !important;
-    }
-
-    html[data-brand="clinic"] .founder-media {
-        min-height: 190px;
-        max-height: 240px;
-    }
-
-    html[data-brand="clinic"] .founder-body {
-        padding: 10px 12px 12px !important;
-    }
-
-    html[data-brand="clinic"] .founder-actions {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    html[data-brand="clinic"] .founder-btn {
-        width: 100%;
-    }
-}
-
-/* =========================================================
-   GLOBAL: KILL EXTRA GLOWS
-   ========================================================= */
-
-.mission-v2::before,
-html[data-brand="clinic"] .founders::before,
-html[data-brand="clinic"] .why-bubbles::before {
-    content: none !important;
-    display: none !important;
-}
-
-html[data-brand="clinic"] .founder-card::before,
-html[data-brand="clinic"] .why-bubble::before {
-    content: none !important;
-    display: none !important;
-}
-
 
 @media (max-width: 900px) {
     html[data-brand="clinic"] .why-cinematic {
-        padding: 14px 0 46px;
+        padding: clamp(22px, 3vw, 34px) 0 clamp(70px, 7vw, 96px);
+    }
+
+    html[data-brand="clinic"] .founders {
+        padding: clamp(12px, 2vw, 20px) 0 clamp(88px, 8vw, 112px) !important;
     }
 
     html[data-brand="clinic"] .why-scroll-shell {
@@ -1243,8 +498,8 @@ html[data-brand="clinic"] .why-bubble::before {
     }
 
     html[data-brand="clinic"] .why-grid {
-        grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
-        gap: 12px;
+        grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr);
+        gap: 10px;
         height: calc(100svh - var(--header-h, 82px) - 26px);
         align-items: start;
     }
@@ -1252,20 +507,20 @@ html[data-brand="clinic"] .why-bubble::before {
     html[data-brand="clinic"] .why-rail-inner {
         height: min(360px, calc(100svh - var(--header-h, 82px) - 240px));
         min-height: 290px;
-        padding: 16px 14px;
+        padding: 14px 12px;
         border-radius: 22px;
     }
 
     html[data-brand="clinic"] .why-kicker {
-        margin: 0 0 10px;
-        font-size: .66rem;
-        letter-spacing: .16em;
+        margin-bottom: 8px;
+        font-size: .62rem;
+        letter-spacing: .14em;
     }
 
     html[data-brand="clinic"] .why-active-count {
-        margin-bottom: 10px;
-        padding-bottom: 8px;
-        font-size: 1rem;
+        margin-bottom: 8px;
+        padding-bottom: 7px;
+        font-size: .94rem;
         gap: 6px;
     }
 
@@ -1283,32 +538,22 @@ html[data-brand="clinic"] .why-bubble::before {
     }
 
     html[data-brand="clinic"] .why-progress {
-        margin: 14px 0 12px;
-        height: 5px;
+        margin: 10px 0 10px;
+        height: 4px;
     }
 
     html[data-brand="clinic"] .why-dots {
-        gap: 7px;
-        margin-bottom: 12px;
+        gap: 6px;
+        margin-bottom: 10px;
     }
 
     html[data-brand="clinic"] .why-dot-btn {
-        width: 9px;
-        height: 9px;
+        width: 8px;
+        height: 8px;
     }
 
     html[data-brand="clinic"] .why-dot-btn.is-active {
-        box-shadow: 0 0 0 4px rgba(18, 192, 138, .14);
-    }
-
-    html[data-brand="clinic"] .why-rail-actions {
-        gap: 8px;
-    }
-
-    html[data-brand="clinic"] .why-rail-actions .btn {
-        min-height: 36px;
-        padding: 8px 12px;
-        font-size: .82rem;
+        box-shadow: 0 0 0 3px rgba(18, 192, 138, .14);
     }
 
     html[data-brand="clinic"] .why-stack {
@@ -1351,49 +596,44 @@ html[data-brand="clinic"] .why-bubble::before {
 
 @media (max-width: 520px) {
     html[data-brand="clinic"] .why-cinematic {
-        padding: 10px 0 38px;
+        padding: clamp(22px, 3vw, 34px) 0 clamp(70px, 7vw, 96px);
+    }
+
+    html[data-brand="clinic"] .founders {
+        padding: clamp(12px, 2vw, 20px) 0 clamp(88px, 8vw, 112px) !important;
     }
 
     html[data-brand="clinic"] .why-scroll-shell {
-        height: 600px !important;
-        min-height: 600px !important;
+        height: 585px !important;
+        min-height: 585px !important;
     }
 
     html[data-brand="clinic"] .why-grid {
-        gap: 10px;
-        grid-template-columns: minmax(0, .98fr) minmax(0, 1.02fr);
+        grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+        gap: 8px;
     }
 
     html[data-brand="clinic"] .why-rail-inner {
-        height: min(340px, calc(100svh - var(--header-h, 82px) - 226px));
-        min-height: 272px;
-        padding: 14px 12px;
-        border-radius: 20px;
+        height: min(330px, calc(100svh - var(--header-h, 82px) - 218px));
+        min-height: 264px;
+        padding: 12px 10px;
+        border-radius: 18px;
+        grid-template-rows: auto 1fr auto;
     }
 
     html[data-brand="clinic"] .why-active-title {
-        font-size: .92rem;
-        max-width: 11ch;
+        font-size: .94rem;
+        max-width: 15ch;
     }
 
     html[data-brand="clinic"] .why-active-text {
         font-size: .78rem;
         line-height: 1.42;
-        max-width: 20ch;
+        max-width: 24ch;
     }
 
-    html[data-brand="clinic"] .why-rail-actions {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 7px;
-    }
-
-    html[data-brand="clinic"] .why-rail-actions .btn {
-        width: 100%;
-        justify-content: center;
-        min-height: 34px;
-        padding: 7px 10px;
-        font-size: .78rem;
+    html[data-brand="clinic"] .why-dots {
+        margin-bottom: 10px;
     }
 
     html[data-brand="clinic"] .why-stack {
@@ -1421,22 +661,23 @@ html[data-brand="clinic"] .why-bubble::before {
 
 @media (max-width: 390px) {
     html[data-brand="clinic"] .why-grid {
-        grid-template-columns: minmax(0, 1fr) minmax(0, .98fr);
-        gap: 8px;
+        grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr);
+        gap: 7px;
     }
 
     html[data-brand="clinic"] .why-rail-inner {
-        padding: 12px 10px;
+        padding: 11px 9px;
     }
 
     html[data-brand="clinic"] .why-active-title {
         font-size: .88rem;
-        max-width: 10ch;
+        max-width: 14ch;
     }
 
     html[data-brand="clinic"] .why-active-text {
         font-size: .74rem;
-        max-width: 18ch;
+        line-height: 1.4;
+        max-width: 22ch;
     }
 
     html[data-brand="clinic"] .why-panel {
@@ -1470,266 +711,43 @@ html[data-brand="clinic"] .why-bubble::before {
     }
 }
 
-/* =========================================================
-   WHY / FOUNDERS — MOBILE FIXES ONLY
-   ========================================================= */
-
-@media (max-width: 900px) {
-
-    /* keep same bottom spacing before founders as larger views */
-    html[data-brand="clinic"] .why-cinematic {
-        padding: clamp(22px, 3vw, 34px) 0 clamp(70px, 7vw, 96px);
-    }
-
-    html[data-brand="clinic"] .founders {
-        padding: clamp(12px, 2vw, 20px) 0 clamp(88px, 8vw, 112px) !important;
-    }
-
-    /* buttons stay inside frame */
-    html[data-brand="clinic"] .why-rail-actions {
-        display: flex;
-        flex-wrap: nowrap;
-        gap: 8px;
-        align-items: center;
-        width: 100%;
-        min-width: 0;
-    }
-
-    html[data-brand="clinic"] .why-rail-actions .btn {
-        flex: 1 1 0;
-        min-width: 0;
-        width: auto;
-        padding: 8px 10px;
-        min-height: 36px;
-        font-size: .78rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 520px) {
-
-    /* keep same section spacing on smaller phones too */
-    html[data-brand="clinic"] .why-cinematic {
-        padding: clamp(22px, 3vw, 34px) 0 clamp(70px, 7vw, 96px);
-    }
-
-    html[data-brand="clinic"] .founders {
-        padding: clamp(12px, 2vw, 20px) 0 clamp(88px, 8vw, 112px) !important;
-    }
-
-    /* do NOT stack these */
-    html[data-brand="clinic"] .why-rail-actions {
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        gap: 6px;
-    }
-
-    html[data-brand="clinic"] .why-rail-actions .btn {
-        flex: 1 1 0;
-        width: auto !important;
-        min-width: 0;
-        min-height: 34px;
-        padding: 7px 8px;
-        font-size: .72rem;
-        letter-spacing: 0;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        border-radius: 999px;
-    }
-
-    /* tiny bit more room for buttons inside the left card */
-    html[data-brand="clinic"] .why-rail-inner {
-        grid-template-rows: auto 1fr auto;
-    }
-
-    html[data-brand="clinic"] .why-dots {
-        margin-bottom: 10px;
-    }
-}
-
-@media (max-width: 390px) {
-    html[data-brand="clinic"] .why-rail-actions {
-        gap: 5px;
-    }
-
-    html[data-brand="clinic"] .why-rail-actions .btn {
-        padding: 7px 6px;
-        font-size: .68rem;
-    }
-}
 
 /* =========================================================
-   WHY / FOUNDERS — MOBILE TIGHT FIX
+   WHY ACTIONS — FINAL BUTTON SYSTEM
+   Final winning rules: 2 buttons, never stack, even spacing
    ========================================================= */
 
-@media (max-width: 900px) {
-    html[data-brand="clinic"] .why-cinematic {
-        padding: clamp(22px, 3vw, 34px) 0 clamp(70px, 7vw, 96px);
-    }
-
-    html[data-brand="clinic"] .founders {
-        padding: clamp(12px, 2vw, 20px) 0 clamp(88px, 8vw, 112px) !important;
-    }
-
-    html[data-brand="clinic"] .why-grid {
-        grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr);
-        gap: 10px;
-    }
-
-    html[data-brand="clinic"] .why-rail-inner {
-        padding: 14px 12px;
-    }
-
-    html[data-brand="clinic"] .why-kicker {
-        margin-bottom: 8px;
-        font-size: .62rem;
-        letter-spacing: .14em;
-    }
-
-    html[data-brand="clinic"] .why-active-count {
-        margin-bottom: 8px;
-        padding-bottom: 7px;
-        font-size: .94rem;
-    }
-
-    html[data-brand="clinic"] .why-active-title {
-        margin-bottom: 8px;
-        font-size: clamp(.98rem, 3.7vw, 1.18rem);
-        line-height: 1.08;
-        max-width: 17ch;
-    }
-
-    html[data-brand="clinic"] .why-active-text {
-        font-size: .82rem;
-        line-height: 1.5;
-        max-width: 27ch;
-    }
-
-    html[data-brand="clinic"] .why-progress {
-        margin: 10px 0 10px;
-        height: 4px;
-    }
-
-    html[data-brand="clinic"] .why-dots {
-        gap: 6px;
-        margin-bottom: 10px;
-    }
-
-    html[data-brand="clinic"] .why-dot-btn {
-        width: 8px;
-        height: 8px;
-    }
-
-    html[data-brand="clinic"] .why-dot-btn.is-active {
-        box-shadow: 0 0 0 3px rgba(18, 192, 138, .14);
-    }
-
-    html[data-brand="clinic"] .why-rail-actions {
-        display: grid !important;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        gap: 6px;
-        margin-top: 2px;
-        width: 100%;
-    }
-
-    html[data-brand="clinic"] .why-rail-actions .btn {
-        min-width: 0;
-        width: 100%;
-        min-height: 32px;
-        padding: 6px 6px;
-        font-size: .68rem;
-        line-height: 1.1;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        justify-content: center;
-        border-radius: 999px;
-    }
+html[data-brand="clinic"] .why-rail-actions {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+    width: 100%;
+    align-items: stretch;
 }
 
-@media (max-width: 520px) {
-    html[data-brand="clinic"] .why-cinematic {
-        padding: clamp(22px, 3vw, 34px) 0 clamp(70px, 7vw, 96px);
-    }
-
-    html[data-brand="clinic"] .founders {
-        padding: clamp(12px, 2vw, 20px) 0 clamp(88px, 8vw, 112px) !important;
-    }
-
-    html[data-brand="clinic"] .why-grid {
-        grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
-        gap: 8px;
-    }
-
-    html[data-brand="clinic"] .why-scroll-shell {
-        height: 585px !important;
-        min-height: 585px !important;
-    }
-
-    html[data-brand="clinic"] .why-rail-inner {
-        height: min(330px, calc(100svh - var(--header-h, 82px) - 218px));
-        min-height: 264px;
-        padding: 12px 10px;
-        border-radius: 18px;
-    }
-
-    html[data-brand="clinic"] .why-active-title {
-        font-size: .94rem;
-        max-width: 15ch;
-    }
-
-    html[data-brand="clinic"] .why-active-text {
-        font-size: .78rem;
-        line-height: 1.42;
-        max-width: 24ch;
-    }
-
-    html[data-brand="clinic"] .why-rail-actions {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
-        gap: 5px;
-    }
-
-    html[data-brand="clinic"] .why-rail-actions .btn {
-        min-height: 30px;
-        padding: 5px 4px;
-        font-size: .62rem;
-    }
+html[data-brand="clinic"] .why-rail-actions .btn,
+html[data-brand="clinic"] .why-rail-actions a.btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    flex: none !important;
+    min-height: 34px !important;
+    height: 34px !important;
+    padding: 0 8px !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    border-radius: 999px !important;
+    box-sizing: border-box !important;
+    font-size: .78rem !important;
+    letter-spacing: 0 !important;
 }
-
-@media (max-width: 390px) {
-    html[data-brand="clinic"] .why-grid {
-        grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr);
-        gap: 7px;
-    }
-
-    html[data-brand="clinic"] .why-rail-inner {
-        padding: 11px 9px;
-    }
-
-    html[data-brand="clinic"] .why-active-title {
-        font-size: .88rem;
-        max-width: 14ch;
-    }
-
-    html[data-brand="clinic"] .why-active-text {
-        font-size: .74rem;
-        line-height: 1.4;
-        max-width: 22ch;
-    }
-
-    html[data-brand="clinic"] .why-rail-actions .btn {
-        font-size: .58rem;
-        padding: 5px 3px;
-    }
-}
-
-/* =========================================================
-   WHY ACTIONS — HARD MOBILE LOCK TO 2 BUTTONS
-   ========================================================= */
 
 @media (max-width: 900px) {
     html[data-brand="clinic"] .why-rail-actions {
@@ -1740,6 +758,7 @@ html[data-brand="clinic"] .why-bubble::before {
         width: 100%;
         gap: 6px !important;
         align-items: stretch;
+        margin-top: 2px;
     }
 
     html[data-brand="clinic"] .why-rail-actions .btn,
@@ -1749,19 +768,16 @@ html[data-brand="clinic"] .why-bubble::before {
         min-width: 0 !important;
         max-width: 100% !important;
         flex: none !important;
-
         align-items: center;
         justify-content: center;
         text-align: center;
-
-        min-height: 32px;
-        padding: 6px 8px !important;
+        min-height: 32px !important;
+        height: 32px !important;
+        padding: 0 8px !important;
         border-radius: 999px;
-
         font-size: clamp(.6rem, 1.8vw, .74rem) !important;
         line-height: 1.05 !important;
         letter-spacing: 0 !important;
-
         white-space: nowrap !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
@@ -1776,85 +792,31 @@ html[data-brand="clinic"] .why-bubble::before {
 
     html[data-brand="clinic"] .why-rail-actions .btn,
     html[data-brand="clinic"] .why-rail-actions a.btn {
-        min-height: 30px;
-        padding: 5px 6px !important;
+        min-height: 30px !important;
+        height: 30px !important;
+        padding: 0 6px !important;
         font-size: clamp(.55rem, 2.8vw, .66rem) !important;
     }
 }
 
 @media (max-width: 390px) {
+    html[data-brand="clinic"] .why-rail-actions {
+        gap: 5px !important;
+    }
 
     html[data-brand="clinic"] .why-rail-actions .btn,
     html[data-brand="clinic"] .why-rail-actions a.btn {
-        min-height: 28px;
-        padding: 5px 4px !important;
+        min-height: 32px !important;
+        height: 32px !important;
+        padding: 0 6px !important;
         font-size: .58rem !important;
     }
 }
 
-/* =========================================================
-   WHY ACTION BUTTONS — NEVER STACK
-   ========================================================= */
-
-html[data-brand="clinic"] .why-rail-actions {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 8px !important;
-    width: 100%;
-    align-items: stretch;
-}
-
-html[data-brand="clinic"] .why-rail-actions .btn,
-html[data-brand="clinic"] .why-rail-actions a.btn {
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    flex: none !important;
-
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-
-    min-height: 36px;
-    padding: 8px 10px !important;
-    border-radius: 999px;
-
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-
-    text-align: center;
-    font-size: .78rem !important;
-    line-height: 1 !important;
-    letter-spacing: 0 !important;
-}
-
-@media (max-width: 520px) {
-    html[data-brand="clinic"] .why-rail-actions {
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 6px !important;
-    }
-
-    html[data-brand="clinic"] .why-rail-actions .btn,
-    html[data-brand="clinic"] .why-rail-actions a.btn {
-        min-height: 34px;
-        padding: 7px 8px !important;
-        font-size: .7rem !important;
-    }
-}
-
-@media (max-width: 390px) {
-
-    html[data-brand="clinic"] .why-rail-actions .btn,
-    html[data-brand="clinic"] .why-rail-actions a.btn {
-        min-height: 32px;
-        padding: 6px 6px !important;
-        font-size: .64rem !important;
-    }
-}
 
 /* =========================================================
    WHY ACTION LABEL SWAP
+   Desktop vs mobile button text
    ========================================================= */
 
 html[data-brand="clinic"] .why-btn-label--mobile {
@@ -1875,46 +837,373 @@ html[data-brand="clinic"] .why-btn-label--desktop {
     }
 }
 
+
 /* =========================================================
-   WHY ACTIONS — EVEN MOBILE BUTTON SPACING
+   FOUNDERS
+   Final single copy
    ========================================================= */
 
-html[data-brand="clinic"] .why-rail-actions {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 6px !important;
+html[data-brand="clinic"] .founders {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(12px, 2vw, 20px) 0 clamp(88px, 8vw, 112px);
+}
+
+html[data-brand="clinic"] .founders-grid {
+    margin-top: clamp(22px, 2.8vw, 30px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(14px, 2.2vw, 20px);
+}
+
+html[data-brand="clinic"] .founder-card {
+    display: grid;
+    grid-template-columns: clamp(140px, 18vw, 190px) 1fr;
+    gap: clamp(14px, 2.2vw, 18px);
     align-items: stretch;
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255, 255, 255, .12);
+    background: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .03));
+    box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: relative;
+    isolation: isolate;
 }
 
-html[data-brand="clinic"] .why-rail-actions .btn,
-html[data-brand="clinic"] .why-rail-actions a.btn {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    min-height: 34px !important;
-    height: 34px !important;
-    padding: 0 8px !important;
-    margin: 0 !important;
-    line-height: 1 !important;
-    text-align: center !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    border-radius: 999px !important;
-    box-sizing: border-box !important;
+html[data-brand="clinic"] .founder-card--flip {
+    grid-template-columns: 1fr clamp(140px, 18vw, 190px);
 }
 
-@media (max-width: 390px) {
-    html[data-brand="clinic"] .why-rail-actions {
-        gap: 5px !important;
+html[data-brand="clinic"] .founder-card--flip .founder-media {
+    order: 2;
+}
+
+html[data-brand="clinic"] .founder-card--flip .founder-body {
+    order: 1;
+}
+
+html[data-brand="clinic"] .founder-media {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    background: rgba(0, 0, 0, .22);
+}
+
+html[data-brand="clinic"] .founder-media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: 50% 22%;
+}
+
+html[data-brand="clinic"] .founder-media::before,
+html[data-brand="clinic"] .founder-media::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 12.5%;
+    z-index: 2;
+    pointer-events: none;
+    backdrop-filter: blur(12px) saturate(1.05);
+    -webkit-backdrop-filter: blur(12px) saturate(1.05);
+}
+
+html[data-brand="clinic"] .founder-media::before {
+    top: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, .38), rgba(0, 0, 0, .12));
+}
+
+html[data-brand="clinic"] .founder-media::after {
+    bottom: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, .42), rgba(0, 0, 0, .14));
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+
+    html[data-brand="clinic"] .founder-media::before,
+    html[data-brand="clinic"] .founder-media::after {
+        background: rgba(0, 0, 0, .18);
+    }
+}
+
+html[data-brand="clinic"] .founder-body {
+    position: relative;
+    z-index: 1;
+    padding: clamp(14px, 2vw, 18px) clamp(14px, 2.2vw, 22px) clamp(14px, 2vw, 18px) 0;
+    display: grid;
+    align-content: center;
+    gap: 10px;
+}
+
+html[data-brand="clinic"] .founder-card--flip .founder-body {
+    padding: clamp(14px, 2vw, 18px) 0 clamp(14px, 2vw, 18px) clamp(14px, 2.2vw, 22px);
+}
+
+html[data-brand="clinic"] .founder-kicker {
+    margin: 0 0 4px;
+    font-size: .86rem;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .78);
+    font-weight: 700;
+}
+
+html[data-brand="clinic"] .founder-name {
+    margin: 0;
+    font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+    letter-spacing: .01em;
+}
+
+html[data-brand="clinic"] .founder-desc {
+    margin: 0;
+    color: rgba(255, 255, 255, .74);
+    line-height: 1.65;
+    max-width: 70ch;
+}
+
+html[data-brand="clinic"] .founder-actions {
+    margin-top: 6px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+html[data-brand="clinic"] .founder-btn {
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-weight: 700;
+    white-space: nowrap;
+    min-height: 42px;
+}
+
+html[data-brand="clinic"] .founder-btn--ghost {
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid rgba(255, 255, 255, .18);
+    color: rgba(255, 255, 255, .92);
+}
+
+html[data-brand="clinic"] .founder-btn--ghost:hover {
+    background: rgba(255, 255, 255, .10);
+    border-color: rgba(255, 255, 255, .28);
+}
+
+html[data-brand="clinic"] .founder-btn--solid {
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border: 1px solid rgba(255, 255, 255, .10);
+    color: rgba(0, 0, 0, .88);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, .25);
+}
+
+html[data-brand="clinic"] .founder-btn--solid:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, .30);
+}
+
+@media (min-width: 1250px) {
+    html[data-brand="clinic"] .founders-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    html[data-brand="clinic"] .founders {
+        padding: 4px 0 76px;
     }
 
-    html[data-brand="clinic"] .why-rail-actions .btn,
-    html[data-brand="clinic"] .why-rail-actions a.btn {
-        min-height: 32px !important;
-        height: 32px !important;
-        padding: 0 6px !important;
+    html[data-brand="clinic"] .founder-card,
+    html[data-brand="clinic"] .founder-card--flip {
+        grid-template-columns: 116px minmax(0, 1fr) !important;
+        grid-template-rows: 1fr !important;
+        gap: 0 !important;
+        border-radius: 24px;
+        align-items: stretch !important;
+        overflow: hidden;
     }
+
+    html[data-brand="clinic"] .founder-card--flip {
+        grid-template-columns: minmax(0, 1fr) 116px !important;
+    }
+
+    html[data-brand="clinic"] .founder-card--flip .founder-media {
+        order: 2 !important;
+    }
+
+    html[data-brand="clinic"] .founder-card--flip .founder-body {
+        order: 1 !important;
+    }
+
+    html[data-brand="clinic"] .founder-media {
+        min-height: 100%;
+        height: auto;
+        overflow: hidden;
+        background: rgba(0, 0, 0, .22);
+    }
+
+    html[data-brand="clinic"] .founder-media img {
+        object-fit: cover;
+        object-position: 50% 18%;
+    }
+
+    html[data-brand="clinic"] .founder-media::before,
+    html[data-brand="clinic"] .founder-media::after {
+        height: 13%;
+        backdrop-filter: blur(16px) saturate(1.06);
+        -webkit-backdrop-filter: blur(16px) saturate(1.06);
+    }
+
+    html[data-brand="clinic"] .founder-body {
+        min-width: 0;
+        padding: 12px 12px 12px 13px !important;
+        gap: 7px;
+        align-content: center;
+        border-left: 0 !important;
+        border-right: 0 !important;
+    }
+
+    html[data-brand="clinic"] .founder-card--flip .founder-body {
+        padding: 12px 13px 12px 12px !important;
+    }
+
+    html[data-brand="clinic"] .founder-kicker {
+        font-size: .74rem;
+        letter-spacing: .09em;
+        margin: 0 0 2px;
+    }
+
+    html[data-brand="clinic"] .founder-name {
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.12;
+    }
+
+    html[data-brand="clinic"] .founder-desc {
+        margin: 0;
+        font-size: .9rem;
+        line-height: 1.42;
+        max-width: none;
+    }
+
+    html[data-brand="clinic"] .founder-actions {
+        margin-top: 6px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: 6px;
+        align-items: center;
+    }
+
+    html[data-brand="clinic"] .founder-btn {
+        width: auto;
+        min-width: 0;
+        min-height: 32px;
+        padding: 6px 10px;
+        font-size: .8rem;
+        border-radius: 999px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 520px) {
+    html[data-brand="clinic"] .founders {
+        padding: 0 0 68px;
+    }
+
+    html[data-brand="clinic"] .founder-card,
+    html[data-brand="clinic"] .founder-card--flip {
+        grid-template-columns: 98px minmax(0, 1fr) !important;
+        border-radius: 22px;
+    }
+
+    html[data-brand="clinic"] .founder-card--flip {
+        grid-template-columns: minmax(0, 1fr) 98px !important;
+    }
+
+    html[data-brand="clinic"] .founder-body {
+        padding: 11px 11px 12px 12px !important;
+        gap: 6px;
+    }
+
+    html[data-brand="clinic"] .founder-card--flip .founder-body {
+        padding: 11px 12px 12px 11px !important;
+    }
+
+    html[data-brand="clinic"] .founder-kicker {
+        font-size: .68rem;
+        letter-spacing: .085em;
+    }
+
+    html[data-brand="clinic"] .founder-name {
+        font-size: .95rem;
+    }
+
+    html[data-brand="clinic"] .founder-desc {
+        font-size: .84rem;
+        line-height: 1.34;
+    }
+
+    html[data-brand="clinic"] .founder-actions {
+        gap: 6px;
+        margin-top: 6px;
+    }
+
+    html[data-brand="clinic"] .founder-btn {
+        min-height: 30px;
+        padding: 5px 8px;
+        font-size: .78rem;
+    }
+}
+
+@media (max-width: 360px) {
+
+    html[data-brand="clinic"] .founder-card,
+    html[data-brand="clinic"] .founder-card--flip {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto auto !important;
+    }
+
+    html[data-brand="clinic"] .founder-card--flip .founder-media,
+    html[data-brand="clinic"] .founder-card--flip .founder-body {
+        order: initial !important;
+    }
+
+    html[data-brand="clinic"] .founder-media {
+        min-height: 190px;
+        max-height: 240px;
+    }
+
+    html[data-brand="clinic"] .founder-body {
+        padding: 10px 12px 12px !important;
+    }
+
+    html[data-brand="clinic"] .founder-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    html[data-brand="clinic"] .founder-btn {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   GLOBAL: KILL EXTRA GLOWS
+   ========================================================= */
+
+.mission-v2::before,
+html[data-brand="clinic"] .founders::before,
+html[data-brand="clinic"] .why-bubbles::before {
+    content: none !important;
+    display: none !important;
+}
+
+html[data-brand="clinic"] .founder-card::before,
+html[data-brand="clinic"] .why-bubble::before {
+    content: none !important;
+    display: none !important;
 }
