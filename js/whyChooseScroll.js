@@ -1,7 +1,7 @@
-// js/whyChooseScroll.js
 (() => {
     const shell = document.querySelector("[data-why-scroll]");
-    if (!shell) return;
+    const founders = document.querySelector(".founders");
+    if (!shell || !founders) return;
 
     const panels = Array.from(shell.querySelectorAll(".why-panel"));
     const jumpButtons = Array.from(shell.querySelectorAll("[data-why-jump]"));
@@ -17,15 +17,19 @@
 
     let activeIndex = 0;
     let displayProgress = 0;
-    let targetProgress = 0;
 
     let isLocked = false;
+    let isAnimating = false;
     let rafId = null;
     let touchStartY = 0;
 
-    let stepCooldown = false;
-    let isAnimating = false;
-    let travelDirection = 1; // 1 = moving forward/down, -1 = moving backward/up
+    let tweenFrom = 0;
+    let tweenTo = 0;
+    let tweenStart = 0;
+    let tweenDuration = 430;
+
+    let wheelBuffer = 0;
+    const wheelThreshold = 42;
 
     const panelData = panels.map((panel, index) => ({
         title: panel.querySelector(".why-panel-tag")?.textContent?.trim() || `Item ${index + 1}`,
@@ -40,22 +44,55 @@
         return 1 - Math.pow(1 - t, 3);
     }
 
-    function getHeaderOffset() {
-        const raw = getComputedStyle(document.documentElement).getPropertyValue("--header-h");
-        return parseFloat(raw) || 82;
+    function easeInOutCubic(t) {
+        return t < 0.5
+            ? 4 * t * t * t
+            : 1 - Math.pow(-2 * t + 2, 3) / 2;
     }
 
-    function getLockTop() {
-        return getHeaderOffset() + 24;
+    function inInteractiveMode() {
+        return true;
     }
 
-    function inDesktopMode() {
-        return window.innerWidth > 1080;
+    function getFoundersRevealGap() {
+        // how much of founders may be allowed to approach before blocking
+        // bigger = founders stays further below the screen
+        if (window.innerWidth <= 1180) return 120;
+        return 120;
+    }
+
+    function getBlockScrollY() {
+        return Math.max(
+            0,
+            founders.offsetTop - window.innerHeight + getFoundersRevealGap()
+        );
+    }
+
+    function whySequenceComplete() {
+        return activeIndex >= maxIndex;
+    }
+
+    function shouldHardBlockDownwardScroll() {
+        if (!inInteractiveMode()) return false;
+        if (whySequenceComplete()) return false;
+
+        return window.scrollY >= getBlockScrollY() - 2;
+    }
+
+    function forceToBlockPoint() {
+        const y = getBlockScrollY();
+        if (Math.abs(window.scrollY - y) > 1) {
+            window.scrollTo(0, y);
+        }
     }
 
     function setLocked(locked) {
         isLocked = locked;
         document.body.classList.toggle("why-scroll-locked", locked);
+
+        if (!locked) {
+            wheelBuffer = 0;
+        }
     }
 
     function updateCopy(index) {
@@ -72,34 +109,57 @@
     }
 
     function paint(progress) {
+        const dir = tweenTo >= tweenFrom ? 1 : -1;
+
         panels.forEach((panel, i) => {
             const delta = progress - i;
+            const distance = Math.abs(delta);
 
             let y = 0;
             let opacity = 0;
             let scale = 1;
+            const z = 20 - Math.round(distance * 10);
 
-            const distance = Math.abs(delta);
-            let z = Math.round((panels.length - distance) * 100);
-
-            if (delta <= -1) {
-                y = 160;
-                opacity = 0;
-                scale = 0.95;
-            } else if (delta < 0) {
-                const t = easeOutCubic(1 + delta);
-                y = 160 - (160 * t);
-                opacity = 0.18 + (0.82 * t);
-                scale = 0.95 + (0.05 * t);
-            } else if (delta < 1) {
-                const t = easeOutCubic(delta);
-                y = -(130 * t);
-                opacity = 1 - t;
-                scale = 1 - (0.03 * t);
+            if (dir === 1) {
+                if (delta <= -1) {
+                    y = 44;
+                    opacity = 0;
+                    scale = 0.985;
+                } else if (delta < 0) {
+                    const t = easeOutCubic(1 + delta);
+                    y = 44 - (44 * t);
+                    opacity = 0.18 + (0.82 * t);
+                    scale = 0.985 + (0.015 * t);
+                } else if (delta < 1) {
+                    const t = easeOutCubic(delta);
+                    y = -(28 * t);
+                    opacity = 1 - t;
+                    scale = 1 - (0.012 * t);
+                } else {
+                    y = -28;
+                    opacity = 0;
+                    scale = 0.988;
+                }
             } else {
-                y = -130;
-                opacity = 0;
-                scale = 0.97;
+                if (delta >= 1) {
+                    y = -44;
+                    opacity = 0;
+                    scale = 0.985;
+                } else if (delta > 0) {
+                    const t = easeOutCubic(1 - delta);
+                    y = -44 + (44 * t);
+                    opacity = 0.18 + (0.82 * t);
+                    scale = 0.985 + (0.015 * t);
+                } else if (delta > -1) {
+                    const t = easeOutCubic(-delta);
+                    y = 28 * t;
+                    opacity = 1 - t;
+                    scale = 1 - (0.012 * t);
+                } else {
+                    y = 28;
+                    opacity = 0;
+                    scale = 0.988;
+                }
             }
 
             panel.style.transform = `translate3d(0, ${y}px, 0) scale(${scale})`;
@@ -109,118 +169,116 @@
         });
     }
 
-    function animateToTarget() {
-        const diff = targetProgress - displayProgress;
+    function animateTween(now) {
+        const elapsed = now - tweenStart;
+        const t = clamp(elapsed / tweenDuration, 0, 1);
+        const eased = easeInOutCubic(t);
 
-        if (Math.abs(diff) < 0.001) {
-            displayProgress = targetProgress;
-            paint(displayProgress);
-            rafId = null;
-            isAnimating = false;
+        displayProgress = tweenFrom + (tweenTo - tweenFrom) * eased;
+        paint(displayProgress);
+
+        if (t < 1) {
+            rafId = requestAnimationFrame(animateTween);
             return;
         }
 
-        isAnimating = true;
-
-        // slower + smoother than your current 0.14
-        displayProgress += diff * 0.09;
+        displayProgress = tweenTo;
         paint(displayProgress);
-        rafId = requestAnimationFrame(animateToTarget);
+        rafId = null;
+        isAnimating = false;
     }
 
-    function startAnimation() {
-        if (rafId) return;
-        rafId = requestAnimationFrame(animateToTarget);
+    function startTween(toIndex, duration = 430) {
+        if (rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+        }
+
+        tweenFrom = displayProgress;
+        tweenTo = toIndex;
+        tweenStart = performance.now();
+        tweenDuration = duration;
+
+        isAnimating = true;
+        rafId = requestAnimationFrame(animateTween);
     }
 
-    function snapTo(index) {
+    function snapTo(index, duration = 430) {
         const next = clamp(index, 0, maxIndex);
         if (next === activeIndex) return;
 
-        travelDirection = next > activeIndex ? 1 : -1;
         activeIndex = next;
-        targetProgress = next;
         updateCopy(activeIndex);
-        startAnimation();
+        startTween(next, duration);
     }
 
-    function getZoneState() {
-        const rect = shell.getBoundingClientRect();
-        const lockTop = getLockTop();
-
-        return {
-            rect,
-            isAtLockLine: rect.top <= lockTop && rect.bottom > window.innerHeight * 0.55,
-            enteredFromTop: rect.top <= lockTop,
-            stillVisible: rect.bottom > lockTop + 120
-        };
-    }
-
-    function shouldCapture(directionDown) {
-        if (!inDesktopMode()) return false;
-
-        const zone = getZoneState();
-        if (!zone.isAtLockLine) return false;
-
-        if (directionDown) {
-            return activeIndex < maxIndex;
+    function stepDown() {
+        if (isAnimating) return;
+        if (activeIndex < maxIndex) {
+            snapTo(activeIndex + 1, activeIndex === 0 ? 520 : 430);
+            return;
         }
-
-        return activeIndex > 0;
+        setLocked(false);
     }
 
-    function releaseIfDone(directionDown) {
-        if (directionDown && activeIndex >= maxIndex) {
-            setLocked(false);
-            return true;
-        }
+    function stepUp() {
+        if (isAnimating) return;
 
-        if (!directionDown && activeIndex <= 0) {
-            setLocked(false);
-            return true;
-        }
-
-        return false;
-    }
-
-    function engageCooldown(ms = 420) {
-        stepCooldown = true;
-        setTimeout(() => {
-            stepCooldown = false;
-        }, ms);
-    }
-
-    function handleStep(directionDown, preventDefault) {
-        if (!inDesktopMode()) return;
-
-        if (!isLocked) {
-            if (!shouldCapture(directionDown)) return;
-            setLocked(true);
-        }
-
-        if (!isLocked) return;
-
-        // allow natural exit at ends
-        if (releaseIfDone(directionDown)) {
+        if (activeIndex > 0) {
+            snapTo(activeIndex - 1, 430);
             return;
         }
 
-        preventDefault();
+        // at panel 1, allow user to leave upward
+        setLocked(false);
+    }
 
-        if (stepCooldown || isAnimating) return;
+    function lockIfNeededForDownwardTravel() {
+        if (!shouldHardBlockDownwardScroll()) return false;
 
-        if (directionDown) {
-            snapTo(activeIndex + 1);
-        } else {
-            snapTo(activeIndex - 1);
+        forceToBlockPoint();
+        setLocked(true);
+        return true;
+    }
+
+    function handleDirectionalInput(directionDown, preventDefault) {
+        if (!inInteractiveMode()) return;
+
+        if (!isLocked && directionDown) {
+            const blocked = lockIfNeededForDownwardTravel();
+            if (!blocked) return;
         }
 
-        engageCooldown();
+        if (!isLocked && !directionDown) return;
+
+        preventDefault();
+
+        if (directionDown) {
+            forceToBlockPoint();
+            stepDown();
+        } else {
+            stepUp();
+        }
     }
 
     function onWheel(e) {
-        if (Math.abs(e.deltaY) < 8) return;
-        handleStep(e.deltaY > 0, () => e.preventDefault());
+        if (!inInteractiveMode()) return;
+        if (Math.abs(e.deltaY) < 4) return;
+
+        const directionDown = e.deltaY > 0;
+
+        if (!isLocked && !directionDown) return;
+        if (!isLocked && directionDown && !shouldHardBlockDownwardScroll()) return;
+
+        e.preventDefault();
+        wheelBuffer += e.deltaY;
+
+        if (Math.abs(wheelBuffer) < wheelThreshold) return;
+
+        const stepDirectionDown = wheelBuffer > 0;
+        wheelBuffer = 0;
+
+        handleDirectionalInput(stepDirectionDown, () => { });
     }
 
     function onTouchStart(e) {
@@ -229,21 +287,45 @@
     }
 
     function onTouchMove(e) {
-        if (!inDesktopMode()) return;
         if (!e.touches?.length) return;
 
         const currentY = e.touches[0].clientY;
         const deltaY = touchStartY - currentY;
 
-        if (Math.abs(deltaY) < 24) return;
+        if (Math.abs(deltaY) < 16) return;
 
-        handleStep(deltaY > 0, () => e.preventDefault());
+        const directionDown = deltaY > 0;
+
+        if (!isLocked && !directionDown) {
+            touchStartY = currentY;
+            return;
+        }
+
+        if (!isLocked && directionDown && !shouldHardBlockDownwardScroll()) {
+            touchStartY = currentY;
+            return;
+        }
+
+        handleDirectionalInput(directionDown, () => e.preventDefault());
         touchStartY = currentY;
     }
 
-    function onResize() {
-        if (!inDesktopMode()) {
+    function onScroll() {
+        if (!inInteractiveMode()) {
             setLocked(false);
+            return;
+        }
+
+        if (shouldHardBlockDownwardScroll()) {
+            forceToBlockPoint();
+            setLocked(true);
+        }
+    }
+
+    function onResize() {
+        if (!inInteractiveMode()) {
+            setLocked(false);
+
             panels.forEach((panel) => {
                 panel.style.transform = "";
                 panel.style.opacity = "";
@@ -253,16 +335,23 @@
             return;
         }
 
-        targetProgress = activeIndex;
+        if (isLocked) {
+            forceToBlockPoint();
+        }
+
         displayProgress = activeIndex;
+        tweenFrom = activeIndex;
+        tweenTo = activeIndex;
         paint(displayProgress);
     }
 
     function jumpTo(index) {
-        snapTo(index);
+        snapTo(index, 360);
 
-        if (activeIndex > 0 && activeIndex < maxIndex && shouldCapture(true)) {
-            setLocked(true);
+        if (index < maxIndex && inInteractiveMode()) {
+            const shouldLock = window.scrollY >= getBlockScrollY() - 2;
+            setLocked(shouldLock);
+            if (shouldLock) forceToBlockPoint();
         } else {
             setLocked(false);
         }
@@ -277,6 +366,7 @@
     window.addEventListener("wheel", onWheel, { passive: false });
     window.addEventListener("touchstart", onTouchStart, { passive: true });
     window.addEventListener("touchmove", onTouchMove, { passive: false });
+    window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
 
     updateCopy(activeIndex);

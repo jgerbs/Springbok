@@ -496,9 +496,14 @@ html[data-brand="clinic"] .clinic .clinic-layout--stack {
 
 /* Panels keep your existing “clinic-panel” vibe but cleaner */
 html[data-brand="clinic"] .clinic .clinic-panel {
+    position: relative;
+    isolation: isolate;
     border-radius: var(--radius-xl);
     border: 1px solid rgba(255, 255, 255, .08);
-    background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .03));
+    background:
+        radial-gradient(78% 120% at 100% 0%, rgba(18, 192, 138, .14), transparent 42%),
+        linear-gradient(90deg, rgba(255, 255, 255, .03), rgba(255, 170, 120, .03) 100%),
+        linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .03));
     box-shadow: var(--shadow-soft);
     overflow: hidden;
 }
@@ -539,10 +544,11 @@ html[data-brand="clinic"] .clinic .provider-card {
     border: 1px solid rgba(255, 255, 255, .10);
 
     background:
-        radial-gradient(600px 240px at 14% 18%, rgba(18, 192, 138, .12), transparent 60%),
-        linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .03));
+        radial-gradient(78% 120% at 100% 0%, rgba(18, 192, 138, .16), transparent 42%),
+        linear-gradient(90deg, rgba(255, 255, 255, .03), rgba(255, 170, 120, .035) 100%),
+        linear-gradient(180deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .028));
 
-    box-shadow: 0 18px 50px rgba(0, 0, 0, .35);
+    box-shadow: 0 14px 38px rgba(0, 0, 0, .30);
     overflow: hidden;
     position: relative;
     isolation: isolate;
@@ -635,6 +641,18 @@ html[data-brand="clinic"] .clinic .provider-actions {
     gap: 10px;
     flex-wrap: wrap;
     align-items: center;
+}
+
+/* =========================================
+   Flip glow for reversed provider cards
+   (image on right → glow top left)
+   ========================================= */
+
+html[data-brand="clinic"] .clinic .provider-card--flip {
+    background:
+        radial-gradient(78% 120% at 0% 0%, rgba(18, 192, 138, .16), transparent 42%),
+        linear-gradient(90deg, rgba(255, 255, 255, .03), rgba(255, 170, 120, .035) 100%),
+        linear-gradient(180deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .028));
 }
 
 /* =========================================================
@@ -892,3 +910,4 @@ html[data-brand="clinic"] .clinic .provider-card {
         gap: 6px;
     }
 }
+
