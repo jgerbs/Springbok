@@ -518,7 +518,7 @@ html[data-brand="clinic"] .clinic .clinic-panel {
     position: relative;
     isolation: isolate;
     border-radius: var(--radius-xl);
-    border: 1px solid rgba(255, 255, 255, .08);
+    border: 1px solid rgba(18, 192, 138, .28);
     background:
         radial-gradient(78% 120% at 100% 0%, rgba(18, 192, 138, .14), transparent 42%),
         linear-gradient(90deg, rgba(255, 255, 255, .03), rgba(255, 170, 120, .03) 100%),
@@ -562,7 +562,7 @@ html[data-brand="clinic"] .clinic .provider-card {
     gap: clamp(14px, 2vw, 18px);
     align-items: stretch;
     border-radius: var(--radius-xl);
-    border: 1px solid rgba(255, 255, 255, .10);
+    border: 1px solid rgba(18, 192, 138, .28);
     background:
         radial-gradient(58% 92% at 88% 0%, rgba(18, 192, 138, .20), transparent 38%),
         linear-gradient(180deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .028));

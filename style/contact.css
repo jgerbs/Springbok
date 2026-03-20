@@ -44,7 +44,7 @@
 /* Left: info card */
 .contact-card {
   border-radius: 26px;
-  border: 1px solid rgba(255, 255, 255, .10);
+  border: 1px solid rgba(18, 192, 138, .28);
   background: rgba(12, 14, 16, .55);
   backdrop-filter: blur(14px);
   box-shadow: 0 18px 60px rgba(0, 0, 0, .35);

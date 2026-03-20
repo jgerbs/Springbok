@@ -1,19 +1,24 @@
 /* =========================================================
    spaProducts.css — Products preview wheel (Spa home page)
-   MATCHES PACKAGES BEHAVIOR + CONTROLS:
+   MATCHES FINAL PACKAGES CARD STYLE:
+   - same gold border
+   - same corner glow treatment
+   - same center-card emphasis
    - overlay arrows on desktop/tablet
    - bottom row arrows + "View all products" on mobile
-   - solid cards (no see-through)
-   - center clear, edges softened via DIM overlay (NO blur)
-   - ultra-wide 5: 3 crisp (no overlap) + 2 ghosted behind
+   - solid cards
+   - center clear, edges softened with dim overlay
+   - ultra-wide 5: 3 crisp + 2 ghosted behind
    ========================================================= */
 
-/* Section wrapper */
+/* =========================
+   SECTION WRAPPER
+   ========================= */
+
 html[data-brand="spa"] .spa-products {
-    padding: 0px 0 110px;
+    padding: 0 0 110px;
     position: relative;
     overflow-x: clip;
-    /* prevent page-level horizontal scroll */
 }
 
 @supports not (overflow: clip) {
@@ -28,9 +33,14 @@ html[data-brand="spa"] .spa-products::before {
     inset: -140px -120px auto -120px;
     height: 360px;
     pointer-events: none;
+    z-index: 0;
 }
 
-/* Shell (no frame) */
+
+/* =========================
+   SHELL
+   ========================= */
+
 html[data-brand="spa"] .prod-wheel-shell {
     position: relative;
     border: 0;
@@ -46,14 +56,22 @@ html[data-brand="spa"] .prod-wheel-shell {
     }
 }
 
-/* Stage (wheel mode) */
+
+/* =========================
+   STAGE
+   ========================= */
+
 html[data-brand="spa"] .prod-wheel {
     position: relative;
     height: 440px;
     touch-action: pan-y;
 }
 
-/* Card base (wheel mode) */
+
+/* =========================
+   CARD BASE
+   ========================= */
+
 html[data-brand="spa"] .prod-card {
     position: absolute;
     top: 0;
@@ -66,48 +84,86 @@ html[data-brand="spa"] .prod-card {
 
     border-radius: 22px;
     overflow: hidden;
-    border: 1px solid rgba(0, 0, 0, .06);
+    border: 1px solid rgba(191, 146, 90, .40);
 
     background:
-        radial-gradient(1200px 700px at 20% 0%, rgba(214, 163, 107, .14), transparent 55%),
-        #fff;
+        linear-gradient(180deg, rgba(255, 253, 250, .96), rgba(250, 245, 238, .92));
 
-    box-shadow: 0 18px 55px rgba(0, 0, 0, .12);
+    box-shadow:
+        0 18px 55px rgba(97, 68, 42, .10),
+        0 0 0 1px rgba(214, 163, 107, .18),
+        0 0 20px rgba(214, 163, 107, .10),
+        inset 0 1px 0 rgba(255, 255, 255, .76);
+
     color: rgba(0, 0, 0, .86);
     padding: 22px;
 
-    /* ✅ buttons can pin to bottom */
     display: flex;
     flex-direction: column;
 
     transition:
         transform 520ms cubic-bezier(.2, .9, .2, 1),
-        filter 520ms cubic-bezier(.2, .9, .2, 1);
+        filter 520ms cubic-bezier(.2, .9, .2, 1),
+        box-shadow .28s ease,
+        border-color .28s ease;
 }
 
-/* dim overlay (does NOT create transparency like opacity does) */
+/* same corner glow system as packages */
+html[data-brand="spa"] .prod-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+
+    background:
+        radial-gradient(62% 54% at 100% 0%,
+            rgba(214, 163, 107, .24),
+            rgba(214, 163, 107, .12) 24%,
+            rgba(214, 163, 107, 0) 58%),
+
+        radial-gradient(44% 38% at 0% 100%,
+            rgba(214, 163, 107, .16),
+            rgba(214, 163, 107, .08) 28%,
+            rgba(214, 163, 107, 0) 62%),
+
+        linear-gradient(180deg,
+            rgba(255, 255, 255, .18),
+            rgba(255, 255, 255, 0) 26%);
+}
+
+/* dim overlay for side cards */
 html[data-brand="spa"] .prod-card::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, .22);
+    background: rgba(255, 255, 255, .20);
     opacity: 0;
     pointer-events: none;
     transition: opacity 420ms ease;
 }
 
-/* Default 3-up: center clear, edges softened (NO BLUR) */
+
+/* =========================
+   DEFAULT 3-UP
+   ========================= */
+
 html[data-brand="spa"] .prod-card.is-center {
     pointer-events: auto;
     transform: translateX(-50%) scale(1);
     filter: none;
     z-index: 3;
+
+    box-shadow:
+        0 22px 62px rgba(97, 68, 42, .12),
+        0 0 0 1px rgba(214, 163, 107, .20),
+        0 0 26px rgba(214, 163, 107, .12),
+        inset 0 1px 0 rgba(255, 255, 255, .82);
 }
 
 html[data-brand="spa"] .prod-card.is-left {
     pointer-events: auto;
     transform: translateX(calc(-50% - 360px)) scale(.95);
-    /* ✅ removed blur; keep subtle “soften” via slight tone + overlay */
     filter: saturate(.92) contrast(.97) brightness(.985);
     z-index: 2;
 }
@@ -119,7 +175,6 @@ html[data-brand="spa"] .prod-card.is-left::after {
 html[data-brand="spa"] .prod-card.is-right {
     pointer-events: auto;
     transform: translateX(calc(-50% + 360px)) scale(.95);
-    /* ✅ removed blur */
     filter: saturate(.92) contrast(.97) brightness(.985);
     z-index: 2;
 }
@@ -128,7 +183,7 @@ html[data-brand="spa"] .prod-card.is-right::after {
     opacity: 1;
 }
 
-/* Far cards OFF by default */
+/* far cards off by default */
 html[data-brand="spa"] .prod-card.is-far-left,
 html[data-brand="spa"] .prod-card.is-far-right {
     opacity: 0;
@@ -143,14 +198,19 @@ html[data-brand="spa"] .prod-card.is-off {
     pointer-events: none;
 }
 
-/* Media */
+
+/* =========================
+   MEDIA
+   ========================= */
+
 html[data-brand="spa"] .prod-media {
     width: 100%;
     height: 200px;
     border-radius: 18px;
     overflow: hidden;
-    border: 1px solid rgba(0, 0, 0, .06);
-    background: rgba(255, 255, 255, .55);
+    border: 1px solid rgba(191, 146, 90, .20);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, .72), rgba(248, 242, 234, .62));
     margin-bottom: 14px;
 }
 
@@ -161,12 +221,16 @@ html[data-brand="spa"] .prod-media img {
     display: block;
 }
 
-/* Top row */
+
+/* =========================
+   TOP ROW
+   ========================= */
+
 html[data-brand="spa"] .prod-card-top {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 12px;
+    justify-content: flex-start;
+    gap: 10px;
     margin-bottom: 10px;
 }
 
@@ -189,7 +253,17 @@ html[data-brand="spa"] .prod-price {
     color: rgba(0, 0, 0, .62);
 }
 
-/* Text */
+html[data-brand="spa"] .prod-providers {
+    font-weight: 650;
+    font-size: .9rem;
+    color: rgba(0, 0, 0, .62);
+}
+
+
+/* =========================
+   TEXT
+   ========================= */
+
 html[data-brand="spa"] .prod-title {
     margin: 6px 0 8px;
     font-size: 1.45rem;
@@ -203,7 +277,11 @@ html[data-brand="spa"] .prod-desc {
     max-width: 70ch;
 }
 
-/* Actions (pinned to bottom) */
+
+/* =========================
+   ACTIONS
+   ========================= */
+
 html[data-brand="spa"] .prod-actions {
     margin-top: auto;
     display: flex;
@@ -211,31 +289,49 @@ html[data-brand="spa"] .prod-actions {
     flex-wrap: wrap;
 }
 
-/* -----------------------------
-   NAV BUTTONS (shared style like packages)
------------------------------- */
+
+/* =========================
+   NAV BUTTONS
+   ========================= */
+
 html[data-brand="spa"] .prod-nav {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
+    flex: 0 0 auto;
+    width: 46px;
+    height: 46px;
+    border-radius: 999px;
 
     border: 1px solid rgba(0, 0, 0, .10);
-    background: rgba(255, 255, 255, .70);
+    background: rgba(255, 255, 255, .78);
     color: rgba(0, 0, 0, .72);
-    font-weight: 900;
+
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 500;
     cursor: pointer;
 
-    backdrop-filter: blur(14px);
-    transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    display: grid;
+    place-items: center;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    transition:
+        transform .15s ease,
+        background .15s ease,
+        border-color .15s ease;
 }
 
 html[data-brand="spa"] .prod-nav:hover {
-    transform: translateY(-2px);
-    background: rgba(214, 163, 107, .20);
-    border-color: rgba(214, 163, 107, .26);
+    transform: translateY(-1px);
+    background: rgba(214, 163, 107, .18);
+    border-color: rgba(214, 163, 107, .38);
 }
 
-/* Overlay arrows (desktop/tablet) */
+html[data-brand="spa"] .prod-nav:active {
+    transform: translateY(0);
+}
+
+/* overlay arrows */
 html[data-brand="spa"] .prod-nav--overlay {
     position: absolute;
     top: 50%;
@@ -251,10 +347,15 @@ html[data-brand="spa"] .prod-nav--overlay.prod-next {
     right: 14px;
 }
 
-/* ✅ CONTROLS UNDER THE WHEEL (ALWAYS VISIBLE)
-   Desktop/tablet: ONLY the button, aligned LEFT
-   Mobile: arrows + button row (pinned under cards)
-*/
+html[data-brand="spa"] .prod-nav--overlay:hover {
+    transform: translateY(-50%);
+}
+
+
+/* =========================
+   CONTROLS UNDER THE WHEEL
+   ========================= */
+
 html[data-brand="spa"] .prod-controls {
     display: flex;
     align-items: center;
@@ -273,9 +374,11 @@ html[data-brand="spa"] .prod-controls .btn {
     text-align: center;
 }
 
+
 /* ---------------------------------
    ULTRA-WIDE: 5 cards
 ---------------------------------- */
+
 @media (min-width: 2000px) {
     html[data-brand="spa"] .prod-card.is-left {
         transform: translateX(calc(-50% - 560px)) scale(.98);
@@ -300,7 +403,6 @@ html[data-brand="spa"] .prod-controls .btn {
         opacity: .28;
         pointer-events: auto;
         z-index: 1;
-        /* ✅ removed blur; keep ghost via overlay + mild tone */
         filter: saturate(.88) contrast(.95) brightness(.97);
     }
 
@@ -319,9 +421,11 @@ html[data-brand="spa"] .prod-controls .btn {
     }
 }
 
+
 /* ---------------------------------
-   MID: tighten spacing slightly
+   MID
 ---------------------------------- */
+
 @media (max-width: 1280px) {
     html[data-brand="spa"] .prod-card.is-left {
         transform: translateX(calc(-50% - 320px)) scale(.955);
@@ -332,9 +436,11 @@ html[data-brand="spa"] .prod-controls .btn {
     }
 }
 
+
 /* ---------------------------------
    TABLET / SMALL DESKTOP
 ---------------------------------- */
+
 @media (max-width: 1050px) {
     html[data-brand="spa"] .prod-wheel {
         height: 400px;
@@ -350,14 +456,12 @@ html[data-brand="spa"] .prod-controls .btn {
         opacity: .55;
         transform: translateX(calc(-50% - 255px)) scale(.94);
         filter: saturate(.92) contrast(.97) brightness(.985);
-        /* ✅ no blur */
     }
 
     html[data-brand="spa"] .prod-card.is-right {
         opacity: .55;
         transform: translateX(calc(-50% + 255px)) scale(.94);
         filter: saturate(.92) contrast(.97) brightness(.985);
-        /* ✅ no blur */
     }
 
     html[data-brand="spa"] .prod-title {
@@ -377,26 +481,25 @@ html[data-brand="spa"] .prod-controls .btn {
     }
 }
 
+
 /* ---------------------------------
    SMALL VIEW (≤ 900px)
 ---------------------------------- */
+
 @media (max-width: 900px) {
     html[data-brand="spa"] .spa-products {
         padding: 70px 0 70px;
     }
 
-    /* scale from top */
     html[data-brand="spa"] .prod-card {
         transform-origin: top center;
     }
 
-    /* keep your breathing room */
     html[data-brand="spa"] .prod-wheel {
         height: 400px;
         touch-action: pan-y;
     }
 
-    /* skinnier */
     html[data-brand="spa"] .prod-card {
         width: min(300px, 78vw);
         padding: 16px 16px 18px;
@@ -411,14 +514,12 @@ html[data-brand="spa"] .prod-controls .btn {
         transform: translateX(calc(-50% - 165px)) scale(.75);
         opacity: .55;
         filter: saturate(.92) contrast(.97) brightness(.985);
-        /* ✅ no blur */
     }
 
     html[data-brand="spa"] .prod-card.is-right {
         transform: translateX(calc(-50% + 165px)) scale(.75);
         opacity: .55;
         filter: saturate(.92) contrast(.97) brightness(.985);
-        /* ✅ no blur */
     }
 
     html[data-brand="spa"] .prod-title {
@@ -432,12 +533,10 @@ html[data-brand="spa"] .prod-controls .btn {
         line-height: 1.55;
     }
 
-    /* hide overlay arrows */
     html[data-brand="spa"] .prod-nav--overlay {
         display: none;
     }
 
-    /* reserve space + pin controls to bottom of the wheel shell */
     html[data-brand="spa"] .prod-wheel-shell {
         padding-bottom: calc(var(--controls-h) + var(--controls-gap));
     }
@@ -472,18 +571,3 @@ html[data-brand="spa"] .prod-controls .btn {
         padding: 70px 0 90px;
     }
 }
-
-html[data-brand="spa"] .prod-card-top {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    /* was space-between */
-    gap: 10px;
-}
-
-html[data-brand="spa"] .prod-providers {
-    font-weight: 650;
-    font-size: .9rem;
-    color: rgba(0, 0, 0, .62);
-}
-

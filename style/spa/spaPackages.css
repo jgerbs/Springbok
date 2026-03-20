@@ -13,6 +13,11 @@ html[data-brand="spa"] .spa-packages::before {
     inset: -140px -120px auto -120px;
     height: 360px;
     pointer-events: none;
+    z-index: 0;
+
+    background:
+        radial-gradient(700px 260px at 18% 0%, rgba(214, 163, 107, .16), transparent 58%),
+        radial-gradient(560px 220px at 82% 8%, rgba(214, 163, 107, .10), transparent 62%);
 }
 
 /* Shell (no frame) */
@@ -45,31 +50,60 @@ html[data-brand="spa"] .pkg-card {
 
     border-radius: 22px;
     overflow: hidden;
-    border: 1px solid rgba(0, 0, 0, .06);
+    border: 1px solid rgba(191, 146, 90, .40);
 
     background:
-        radial-gradient(1200px 700px at 20% 0%, rgba(214, 163, 107, .14), transparent 55%),
-        #fff;
+        linear-gradient(180deg, rgba(255, 253, 250, .96), rgba(250, 245, 238, .92));
 
-    box-shadow: 0 18px 55px rgba(0, 0, 0, .12);
+    box-shadow:
+        0 18px 55px rgba(97, 68, 42, .10),
+        0 0 0 1px rgba(214, 163, 107, .18),
+        0 0 20px rgba(214, 163, 107, .10),
+        inset 0 1px 0 rgba(255, 255, 255, .76);
+
     color: rgba(0, 0, 0, .86);
     padding: 22px;
 
-    /* ✅ KEY FIX: make card a flex column so actions can pin to bottom */
     display: flex;
     flex-direction: column;
 
     transition:
         transform 520ms cubic-bezier(.2, .9, .2, 1),
-        filter 520ms cubic-bezier(.2, .9, .2, 1);
+        filter 520ms cubic-bezier(.2, .9, .2, 1),
+        box-shadow .28s ease,
+        border-color .28s ease;
 }
 
-/* Dim overlay (not opacity on the whole card) */
+/* corner glows */
+html[data-brand="spa"] .pkg-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+
+    background:
+        radial-gradient(62% 54% at 100% 0%,
+            rgba(214, 163, 107, .24),
+            rgba(214, 163, 107, .12) 24%,
+            rgba(214, 163, 107, 0) 58%),
+
+        radial-gradient(44% 38% at 0% 100%,
+            rgba(214, 163, 107, .16),
+            rgba(214, 163, 107, .08) 28%,
+            rgba(214, 163, 107, 0) 62%),
+
+        linear-gradient(180deg,
+            rgba(255, 255, 255, .18),
+            rgba(255, 255, 255, 0) 26%);
+}
+
+/* dim layer for side cards only */
 html[data-brand="spa"] .pkg-card::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, .22);
+    background: rgba(255, 255, 255, .20);
     opacity: 0;
     pointer-events: none;
     transition: opacity 420ms ease;
@@ -81,6 +115,12 @@ html[data-brand="spa"] .pkg-card.is-center {
     transform: translateX(-50%) scale(1);
     filter: none;
     z-index: 3;
+
+    box-shadow:
+        0 22px 62px rgba(97, 68, 42, .12),
+        0 0 0 1px rgba(214, 163, 107, .20),
+        0 0 26px rgba(214, 163, 107, .12),
+        inset 0 1px 0 rgba(255, 255, 255, .82);
 }
 
 html[data-brand="spa"] .pkg-card.is-left {
