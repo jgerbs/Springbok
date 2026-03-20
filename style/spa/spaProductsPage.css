@@ -200,17 +200,36 @@ html[data-brand="spa"] .products-tiles .doc-card {
     align-items: stretch;
 
     border-radius: var(--radius-xl);
-    border: 1px solid rgba(20, 20, 20, .10);
-    background: linear-gradient(180deg, rgba(255, 255, 255, .86), rgba(255, 255, 255, .70));
-    box-shadow: 0 18px 50px rgba(0, 0, 0, .10);
+
+    /* spa gold border like pkg-card */
+    border: 1px solid rgba(191, 146, 90, .40);
+
+    /* same glass background as wheel */
+    background:
+        linear-gradient(180deg,
+            rgba(255, 253, 250, .96),
+            rgba(250, 245, 238, .92));
+
+    /* same glow stack as pkg-card */
+    box-shadow:
+        0 18px 55px rgba(97, 68, 42, .10),
+        0 0 0 1px rgba(214, 163, 107, .18),
+        0 0 20px rgba(214, 163, 107, .10),
+        inset 0 1px 0 rgba(255, 255, 255, .76);
+
     overflow: hidden;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 
     position: relative;
     isolation: isolate;
     padding: 0;
-    transition: transform .18s ease, box-shadow .18s ease;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    transition:
+        transform .18s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
 }
 
 html[data-brand="spa"] .products-tiles .doc-card::before {

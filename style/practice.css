@@ -151,6 +151,7 @@ html[data-brand="clinic"] .clinic-bullets li+li {
     margin-top: 0;
 }
 
+
 html[data-brand="clinic"] .fineprint,
 html[data-brand="clinic"] .status-note {
     margin-top: 12px;
@@ -165,6 +166,39 @@ html[data-brand="clinic"] .fineprint {
     font-size: .92rem;
 }
 
+/* =========================================================
+   5.5) Scale down bullets (match provider sizing)
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+    html[data-brand="clinic"] .clinic-bullets {
+        font-size: .88rem;
+        line-height: 1.48;
+        gap: 8px;
+    }
+
+}
+
+@media (max-width: 520px) {
+
+    html[data-brand="clinic"] .clinic-bullets {
+        font-size: .82rem;
+        line-height: 1.40;
+        gap: 7px;
+    }
+
+}
+
+@media (max-width: 390px) {
+
+    html[data-brand="clinic"] .clinic-bullets {
+        font-size: .76rem;
+        line-height: 1.34;
+        gap: 6px;
+    }
+
+}
 
 /* =========================================================
    6) BASE PANEL STYLE
