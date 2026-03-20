@@ -539,24 +539,22 @@ html[data-brand="clinic"] .clinic .provider-card {
     grid-template-columns: clamp(150px, 18vw, 200px) 1fr;
     gap: clamp(14px, 2vw, 18px);
     align-items: stretch;
-
     border-radius: var(--radius-xl);
     border: 1px solid rgba(255, 255, 255, .10);
-
     background:
-        radial-gradient(78% 120% at 100% 0%, rgba(18, 192, 138, .16), transparent 42%),
-        linear-gradient(90deg, rgba(255, 255, 255, .03), rgba(255, 170, 120, .035) 100%),
+        radial-gradient(58% 92% at 88% 0%, rgba(18, 192, 138, .20), transparent 38%),
         linear-gradient(180deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .028));
-
     box-shadow: 0 14px 38px rgba(0, 0, 0, .30);
     overflow: hidden;
     position: relative;
     isolation: isolate;
 }
 
-/* Flip (image on right) */
 html[data-brand="clinic"] .clinic .provider-card--flip {
     grid-template-columns: 1fr clamp(150px, 18vw, 200px);
+    background:
+        radial-gradient(62% 96% at 14% 0%, rgba(18, 192, 138, .23), transparent 38%),
+        linear-gradient(180deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .028));
 }
 
 html[data-brand="clinic"] .clinic .provider-card--flip .provider-media {
@@ -641,18 +639,6 @@ html[data-brand="clinic"] .clinic .provider-actions {
     gap: 10px;
     flex-wrap: wrap;
     align-items: center;
-}
-
-/* =========================================
-   Flip glow for reversed provider cards
-   (image on right → glow top left)
-   ========================================= */
-
-html[data-brand="clinic"] .clinic .provider-card--flip {
-    background:
-        radial-gradient(78% 120% at 0% 0%, rgba(18, 192, 138, .16), transparent 42%),
-        linear-gradient(90deg, rgba(255, 255, 255, .03), rgba(255, 170, 120, .035) 100%),
-        linear-gradient(180deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .028));
 }
 
 /* =========================================================

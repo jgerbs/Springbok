@@ -31,6 +31,11 @@
     let wheelBuffer = 0;
     const wheelThreshold = 42;
 
+    let touchGestureActive = false;
+    let touchHasCommitted = false;
+    let touchGestureStartY = 0;
+    let touchLastY = 0;
+
     const panelData = panels.map((panel, index) => ({
         title: panel.querySelector(".why-panel-tag")?.textContent?.trim() || `Item ${index + 1}`,
         text: panel.querySelector(".why-panel-text")?.textContent?.trim() || ""
@@ -283,31 +288,45 @@
 
     function onTouchStart(e) {
         if (!e.touches?.length) return;
-        touchStartY = e.touches[0].clientY;
+
+        touchGestureActive = true;
+        touchHasCommitted = false;
+        touchGestureStartY = e.touches[0].clientY;
+        touchLastY = touchGestureStartY;
     }
 
     function onTouchMove(e) {
         if (!e.touches?.length) return;
 
         const currentY = e.touches[0].clientY;
-        const deltaY = touchStartY - currentY;
+        const totalDeltaY = touchGestureStartY - currentY;
+        const directionDown = totalDeltaY > 0;
 
-        if (Math.abs(deltaY) < 16) return;
+        touchLastY = currentY;
 
-        const directionDown = deltaY > 0;
+        if (!inInteractiveMode()) return;
 
-        if (!isLocked && !directionDown) {
-            touchStartY = currentY;
-            return;
+        // if we're in the blocked zone or already locked, stop native page motion
+        if (isLocked || (directionDown && shouldHardBlockDownwardScroll())) {
+            e.preventDefault();
         }
 
-        if (!isLocked && directionDown && !shouldHardBlockDownwardScroll()) {
-            touchStartY = currentY;
-            return;
-        }
+        // one card max per finger-down gesture
+        if (touchHasCommitted) return;
 
+        const swipeThreshold = 36;
+        if (Math.abs(totalDeltaY) < swipeThreshold) return;
+
+        if (!isLocked && !directionDown) return;
+        if (!isLocked && directionDown && !shouldHardBlockDownwardScroll()) return;
+
+        touchHasCommitted = true;
         handleDirectionalInput(directionDown, () => e.preventDefault());
-        touchStartY = currentY;
+    }
+
+    function onTouchEnd() {
+        touchGestureActive = false;
+        touchHasCommitted = false;
     }
 
     function onScroll() {
@@ -368,7 +387,9 @@
     window.addEventListener("touchmove", onTouchMove, { passive: false });
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
-
+    window.addEventListener("touchend", onTouchEnd, { passive: true });
+    window.addEventListener("touchcancel", onTouchEnd, { passive: true });
+    
     updateCopy(activeIndex);
     paint(displayProgress);
 })();
