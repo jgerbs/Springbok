@@ -662,10 +662,37 @@ html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-body .svc-o
 }
 
 .svc-step-icon {
-    width: 80px;
-    height: 150px;
-    margin-bottom: 14px;
-    opacity: .85;
+    width: 110px;
+    height: 110px;
+    margin-bottom: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            rgba(214,163,107,.28),
+            rgba(214,163,107,.12) 40%,
+            rgba(214,163,107,0) 70%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.95),
+            rgba(252,248,242,.90)
+        );
+
+    border: 1px solid rgba(191,146,90,.35);
+
+    box-shadow:
+        0 10px 24px rgba(120,84,42,.12),
+        0 0 0 1px rgba(214,163,107,.12),
+        0 0 18px rgba(214,163,107,.10);
+
+    opacity: 1;
 }
 
 .svc-step-num {
