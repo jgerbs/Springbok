@@ -152,12 +152,48 @@ html[data-brand="clinic"] .services-tiles .doc-media {
   position: relative;
   z-index: 1;
   overflow: hidden;
-  background: rgba(255, 255, 255, .02);
 
   width: auto;
   aspect-ratio: auto;
   border-radius: 0;
   border: 0;
+
+  background:
+    radial-gradient(120% 120% at 20% 18%, rgba(18, 192, 138, .10), transparent 52%),
+    linear-gradient(180deg, rgba(12, 14, 16, .96), rgba(6, 8, 10, .98));
+}
+
+/* subtle internal glow / polish on image side */
+html[data-brand="clinic"] .team-tiles .doc-media::before,
+html[data-brand="clinic"] .services-tiles .doc-media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+
+  background:
+    radial-gradient(90% 70% at 18% 10%, rgba(18, 192, 138, .12), transparent 46%),
+    linear-gradient(180deg, rgba(255, 255, 255, .05), transparent 24%);
+}
+
+/* cinematic top / bottom shading */
+html[data-brand="clinic"] .team-tiles .doc-media::after,
+html[data-brand="clinic"] .services-tiles .doc-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+
+  background:
+    linear-gradient(180deg,
+      rgba(0, 0, 0, .26) 0%,
+      rgba(0, 0, 0, .08) 12%,
+      rgba(0, 0, 0, 0) 24%,
+      rgba(0, 0, 0, 0) 76%,
+      rgba(0, 0, 0, .10) 88%,
+      rgba(0, 0, 0, .28) 100%);
 }
 
 html[data-brand="clinic"] .team-tiles .doc-img,
@@ -167,34 +203,34 @@ html[data-brand="clinic"] .services-tiles .doc-img {
   display: block;
   object-fit: cover;
   object-position: var(--pos, 50% 22%);
-  transform: none;
-  transition: none;
+  transform: scale(1.01);
+  transition: transform .28s ease;
 }
 
-/* soft top / bottom image shading */
-html[data-brand="clinic"] .team-tiles .doc-media::before,
-html[data-brand="clinic"] .team-tiles .doc-media::after,
-html[data-brand="clinic"] .services-tiles .doc-media::before,
-html[data-brand="clinic"] .services-tiles .doc-media::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 11%;
-  z-index: 2;
-  pointer-events: none;
+/* tiny hover movement */
+html[data-brand="clinic"] .team-tiles .doc-card:hover .doc-img,
+html[data-brand="clinic"] .services-tiles .doc-card:hover .doc-img {
+  transform: scale(1.04);
 }
 
-html[data-brand="clinic"] .team-tiles .doc-media::before,
-html[data-brand="clinic"] .services-tiles .doc-media::before {
-  top: 0;
-  background: linear-gradient(180deg, rgba(10, 10, 10, .18), transparent);
+/* divider glow where image meets text */
+html[data-brand="clinic"] .team-tiles .doc-media-edge,
+html[data-brand="clinic"] .services-tiles .doc-media-edge {
+  display: none;
 }
 
-html[data-brand="clinic"] .team-tiles .doc-media::after,
-html[data-brand="clinic"] .services-tiles .doc-media::after {
-  bottom: 0;
-  background: linear-gradient(0deg, rgba(10, 10, 10, .22), transparent);
+html[data-brand="clinic"] .team-tiles .doc-media,
+html[data-brand="clinic"] .services-tiles .doc-media {
+  box-shadow:
+    inset -1px 0 0 rgba(255, 255, 255, .04),
+    inset -10px 0 18px rgba(0, 0, 0, .12);
+}
+
+html[data-brand="clinic"] .team-tiles .doc-card:nth-child(even) .doc-media,
+html[data-brand="clinic"] .services-tiles .doc-card:nth-child(even) .doc-media {
+  box-shadow:
+    inset 1px 0 0 rgba(255, 255, 255, .04),
+    inset 10px 0 18px rgba(0, 0, 0, .12);
 }
 
 
