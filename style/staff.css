@@ -1,24 +1,27 @@
 /* =========================================================
    staff.css — Staff subpages (clinic default)
-   New layout:
-   - ONE combined staff card (profile + bio + 2 focus tabs)
-   - Quick booking section
-   - Scalable services list (any count)
-   - Testimonials section
-   Uses tokens from base.css
+   Updated to match clinic service-card language from practice.css
+
+   Adds:
+   - clinic green border + glow system
+   - unified premium card treatment across the full page
+   - stronger depth for profile / quick links / services / testimonials
+   - keeps existing HTML structure intact
    ========================================================= */
 
-/* Page spacing */
-.staff-profile {
+/* =========================
+   Page spacing
+   ========================= */
+
+html[data-brand="clinic"] .staff-profile {
   padding: 46px 0 26px;
 }
 
-.staff-section {
+html[data-brand="clinic"] .staff-section {
   padding: 76px 0;
 }
 
-/* Section header spacing */
-.staff-section .section-head {
+html[data-brand="clinic"] .staff-section .section-head {
   max-width: 78ch;
   margin-bottom: 22px;
 }
@@ -26,206 +29,226 @@
 /* =========================
    Layout blocks
    ========================= */
-.staff-profile-grid {
+
+html[data-brand="clinic"] .staff-profile-grid,
+html[data-brand="clinic"] .staff-quick {
   display: grid;
   gap: 18px;
 }
 
-.staff-card {
+/* shared clinic card language */
+html[data-brand="clinic"] .staff-card,
+html[data-brand="clinic"] .staff-quote {
+  position: relative;
+  isolation: isolate;
   border-radius: var(--radius-xl);
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.06);
-  box-shadow: var(--shadow-soft);
   overflow: hidden;
 }
 
-.staff-card--profile {
+/* unified glow shell for all main cards */
+html[data-brand="clinic"] .staff-card::before,
+html[data-brand="clinic"] .staff-quote::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    radial-gradient(78% 120% at 100% 0%, rgba(18, 192, 138, .14), transparent 42%),
+    linear-gradient(90deg, rgba(255, 255, 255, .03), rgba(255, 170, 120, .03) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .03));
+  z-index: 0;
+}
+
+html[data-brand="clinic"] .staff-card::after,
+html[data-brand="clinic"] .staff-quote::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .04),
+    0 14px 38px rgba(0, 0, 0, .30);
+  z-index: 0;
+}
+
+html[data-brand="clinic"] .staff-card>*,
+html[data-brand="clinic"] .staff-quote>* {
+  position: relative;
+  z-index: 1;
+}
+
+html[data-brand="clinic"] .staff-card {
+  border: 1px solid rgba(18, 192, 138, .28);
+  box-shadow: 0 14px 38px rgba(0, 0, 0, .30);
+  background: transparent;
+}
+
+html[data-brand="clinic"] .staff-card--profile {
   padding: 22px;
 }
 
+/* subtle hover for service / quick / testimonial cards only */
+html[data-brand="clinic"] .staff-svc,
+html[data-brand="clinic"] .staff-quote,
+html[data-brand="clinic"] .staff-quick .staff-card {
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease;
+}
+
+html[data-brand="clinic"] .staff-svc:hover,
+html[data-brand="clinic"] .staff-quote:hover,
+html[data-brand="clinic"] .staff-quick .staff-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(18, 192, 138, .38);
+  box-shadow: 0 18px 46px rgba(0, 0, 0, .34);
+}
+
 /* =========================
-   Profile header (avatar + identity)
+   Profile header
    ========================= */
-.staff-profile-top {
+
+html[data-brand="clinic"] .staff-profile-top {
   display: grid;
   grid-template-columns: 112px 1fr;
   gap: 18px;
   align-items: center;
 }
 
-.staff-avatar {
+html[data-brand="clinic"] .staff-avatar {
   width: 112px;
   height: 112px;
-  border-radius: var(--radius-xl);
+  border-radius: 24px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(18, 192, 138, .24);
+  background:
+    radial-gradient(70% 90% at 85% 0%, rgba(18, 192, 138, .18), transparent 42%),
+    rgba(255, 255, 255, .04);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .05),
+    0 10px 26px rgba(0, 0, 0, .24);
 }
 
-.staff-avatar img {
+html[data-brand="clinic"] .staff-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 20%;
   display: block;
 }
 
-.staff-role {
+html[data-brand="clinic"] .staff-role {
   display: inline-block;
+  margin-bottom: 10px;
+  font-size: 0.82rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 900;
-  font-size: 0.82rem;
   color: rgba(18, 192, 138, .92);
-  margin-bottom: 10px;
 }
 
-.staff-name {
+html[data-brand="clinic"] .staff-name {
   margin: 0 0 10px;
   letter-spacing: -0.03em;
   line-height: 1.06;
   color: var(--text);
 }
 
-.staff-tagline {
+html[data-brand="clinic"] .staff-tagline {
   margin: 0 0 14px;
   color: rgba(255, 255, 255, .74);
   line-height: 1.75;
   max-width: 72ch;
 }
 
-.staff-actions {
+html[data-brand="clinic"] .staff-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-/* Meta row (NOW ONLY 2 items) */
-.staff-meta {
+/* =========================
+   Meta row
+   ========================= */
+
+html[data-brand="clinic"] .staff-meta {
   margin-top: 18px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
 
-.staff-meta-item {
-  border-radius: var(--radius-md);
+html[data-brand="clinic"] .staff-meta-item {
+  border-radius: 18px;
   padding: 12px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(18, 192, 138, .18);
+  background:
+    radial-gradient(90% 140% at 100% 0%, rgba(18, 192, 138, .11), transparent 44%),
+    rgba(0, 0, 0, .16);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .03);
 }
 
-.staff-meta-k {
+html[data-brand="clinic"] .staff-meta-k {
   display: block;
+  margin-bottom: 6px;
   font-size: 0.78rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 900;
   color: rgba(255, 255, 255, .60);
-  margin-bottom: 6px;
 }
 
-.staff-meta-v {
+html[data-brand="clinic"] .staff-meta-v {
   display: block;
   font-weight: 750;
   color: rgba(255, 255, 255, .90);
 }
 
-/* Divider inside main card */
-.staff-divider {
+/* =========================
+   Dividers / bio
+   ========================= */
+
+html[data-brand="clinic"] .staff-divider {
   margin: 18px 0;
   height: 1px;
-  background: rgba(255, 255, 255, 0.10);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .10), transparent);
 }
 
-/* =========================
-   Bio block inside card
-   ========================= */
-.staff-bio {
+html[data-brand="clinic"] .staff-bio {
   display: grid;
   gap: 10px;
   max-width: 85ch;
 }
 
-.staff-bio p {
+html[data-brand="clinic"] .staff-bio p {
   margin: 0;
   color: rgba(255, 255, 255, .74);
   line-height: 1.75;
 }
 
 /* =========================
-   Focus tabs (CSS-only)
+   Focus area
    ========================= */
-.staff-tabs {
-  margin-top: 16px;
+
+html[data-brand="clinic"] .staff-focus {
+  border-radius: 22px;
+  border: 1px solid rgba(18, 192, 138, .16);
+  background:
+    radial-gradient(80% 130% at 100% 0%, rgba(18, 192, 138, .10), transparent 42%),
+    rgba(0, 0, 0, .14);
+  padding: 16px 16px 18px;
 }
 
-.staff-tabs input[type="radio"] {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.staff-tab-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.staff-tab {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(0, 0, 0, 0.14);
-  color: rgba(255, 255, 255, .84);
-  font-weight: 850;
-  cursor: pointer;
-  user-select: none;
-  transition: transform .18s ease, border-color .18s ease, background .18s ease;
-}
-
-.staff-tab:hover {
-  transform: translateY(-1px);
-  border-color: rgba(18, 192, 138, 0.26);
-  background: rgba(18, 192, 138, 0.08);
-}
-
-.staff-panels {
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  background: rgba(0, 0, 0, 0.14);
-  padding: 14px 14px;
-}
-
-.staff-panel {
-  display: none;
-}
-
-#focusA:checked~.staff-tabs .staff-panels .staff-panel--a {
-  display: block;
-}
-
-#focusB:checked~.staff-tabs .staff-panels .staff-panel--b {
-  display: block;
-}
-
-/* active tab styling */
-#focusA:checked~.staff-tabs .staff-tab-bar label[for="focusA"],
-#focusB:checked~.staff-tabs .staff-tab-bar label[for="focusB"] {
-  border-color: rgba(18, 192, 138, 0.30);
-  background: rgba(18, 192, 138, 0.12);
-}
-
-.staff-mini-title {
+html[data-brand="clinic"] .staff-mini-title {
   margin: 0 0 10px;
   letter-spacing: -0.02em;
   color: rgba(255, 255, 255, .92);
 }
 
-.staff-bullets {
+html[data-brand="clinic"] .staff-bullets {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -233,14 +256,14 @@
   gap: 10px;
 }
 
-.staff-bullets li {
+html[data-brand="clinic"] .staff-bullets li {
   position: relative;
   padding-left: 18px;
   color: rgba(255, 255, 255, .74);
   line-height: 1.65;
 }
 
-.staff-bullets li::before {
+html[data-brand="clinic"] .staff-bullets li::before {
   content: "";
   position: absolute;
   left: 0;
@@ -255,166 +278,159 @@
 /* =========================
    Quick booking section
    ========================= */
-.staff-quick {
-  display: grid;
-  gap: 14px;
-}
 
-.staff-quick .staff-card {
+html[data-brand="clinic"] .staff-quick .staff-card {
   padding: 18px;
 }
 
-.staff-quick h3 {
+html[data-brand="clinic"] .staff-quick h3 {
   margin: 0 0 8px;
   letter-spacing: -0.02em;
   color: var(--text);
 }
 
-.staff-muted {
+html[data-brand="clinic"] .staff-muted {
   margin: 0 0 14px;
   color: rgba(255, 255, 255, .70);
   line-height: 1.75;
 }
 
-.staff-quick-links {
+html[data-brand="clinic"] .staff-quick-links {
   display: grid;
   gap: 10px;
   margin-top: 8px;
 }
 
-.staff-link {
+html[data-brand="clinic"] .staff-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
 
   padding: 12px 14px;
-  border-radius: var(--radius-xl);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  background: rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  border: 1px solid rgba(18, 192, 138, .18);
+  background:
+    radial-gradient(90% 140% at 100% 0%, rgba(18, 192, 138, .10), transparent 44%),
+    rgba(255, 255, 255, .03);
 
   text-decoration: none;
   color: rgba(255, 255, 255, .86);
-  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .03);
+
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    background .18s ease,
+    box-shadow .18s ease;
 }
 
-.staff-link span {
+html[data-brand="clinic"] .staff-link span {
   font-weight: 900;
   opacity: 0.9;
 }
 
-.staff-link:hover {
+html[data-brand="clinic"] .staff-link:hover {
   transform: translateY(-2px);
-  border-color: rgba(18, 192, 138, 0.28);
-  background: rgba(18, 192, 138, 0.10);
+  border-color: rgba(18, 192, 138, .28);
+  background:
+    radial-gradient(90% 140% at 100% 0%, rgba(18, 192, 138, .14), transparent 44%),
+    rgba(18, 192, 138, .08);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .22);
 }
 
-.staff-note {
+html[data-brand="clinic"] .staff-note {
   margin-top: 14px;
   padding: 12px 14px;
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  background: rgba(0, 0, 0, 0.14);
+  border-radius: 18px;
+  border: 1px solid rgba(18, 192, 138, .16);
+  background:
+    radial-gradient(85% 120% at 100% 0%, rgba(18, 192, 138, .09), transparent 44%),
+    rgba(0, 0, 0, .14);
   color: rgba(255, 255, 255, .76);
 }
 
-.staff-note a {
+html[data-brand="clinic"] .staff-note a {
   color: rgba(255, 255, 255, .92);
   font-weight: 850;
 }
 
 /* =========================
-   Scalable service list (any count)
+   Services
    ========================= */
-.staff-services-list {
+
+html[data-brand="clinic"] .staff-services-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 16px;
 }
 
-.staff-svc {
+html[data-brand="clinic"] .staff-svc {
   padding: 18px;
 }
 
-.staff-svc h3 {
+html[data-brand="clinic"] .staff-svc h3 {
   margin: 0 0 10px;
   letter-spacing: -0.02em;
   color: rgba(255, 255, 255, .92);
 }
 
-.staff-svc p {
+html[data-brand="clinic"] .staff-svc p {
   margin: 0 0 14px;
   color: rgba(255, 255, 255, .70);
   line-height: 1.75;
 }
 
-.staff-svc-actions {
+html[data-brand="clinic"] .staff-svc-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-/* =========================
-   Service status note — subtle red
-   ========================= */
-
-.staff-svc-note {
+html[data-brand="clinic"] .staff-svc-note {
   display: inline-flex;
   align-items: center;
   margin: 0 0 14px;
 }
 
-.staff-svc-note-label {
+html[data-brand="clinic"] .staff-svc-note-label {
   padding: 6px 12px;
   border-radius: 999px;
-
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: .04em;
-
   color: rgba(255, 120, 120, .92);
-
   border: 1px solid rgba(255, 120, 120, .35);
   background: rgba(255, 120, 120, .08);
-
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-
   transition: background .2s ease, border-color .2s ease;
 }
+
 
 /* =========================
    Testimonials
    ========================= */
-.staff-testimonials {
+
+html[data-brand="clinic"] .staff-testimonials {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 18px;
   align-items: stretch;
 }
 
-.staff-quote {
-  position: relative;
-  overflow: hidden;
-
+html[data-brand="clinic"] .staff-quote {
   min-height: 220px;
   padding: 22px 20px 18px;
-
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.28);
-
-  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  border: 1px solid rgba(18, 192, 138, .22);
+  background: transparent;
 }
 
-.staff-quote-stars {
+html[data-brand="clinic"] .staff-quote-stars {
   margin-top: 2px;
   margin-bottom: 16px;
   text-align: center;
@@ -423,7 +439,7 @@
   color: #f5c56b;
 }
 
-.staff-quote p {
+html[data-brand="clinic"] .staff-quote p {
   margin: 0;
   flex: 1 1 auto;
   color: rgba(255, 255, 255, 0.90);
@@ -431,7 +447,7 @@
   font-size: 1rem;
 }
 
-.staff-quote-person {
+html[data-brand="clinic"] .staff-quote-person {
   margin-top: 18px;
   display: flex;
   align-items: center;
@@ -439,7 +455,7 @@
   flex: 0 0 auto;
 }
 
-.staff-quote-initial {
+html[data-brand="clinic"] .staff-quote-initial {
   width: 44px;
   height: 44px;
   border-radius: 999px;
@@ -450,13 +466,14 @@
   color: rgba(255, 255, 255, 0.92);
   background: rgba(18, 192, 138, 0.14);
   border: 1px solid rgba(18, 192, 138, 0.24);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .03);
 }
 
-.staff-quote-meta {
+html[data-brand="clinic"] .staff-quote-meta {
   min-width: 0;
 }
 
-.staff-quote-name {
+html[data-brand="clinic"] .staff-quote-name {
   font-weight: 700;
   line-height: 1.2;
   color: rgba(255, 255, 255, 0.92);
@@ -465,7 +482,7 @@
   text-overflow: ellipsis;
 }
 
-.staff-quote-sub {
+html[data-brand="clinic"] .staff-quote-sub {
   margin-top: 4px;
   font-size: 0.92rem;
   color: rgba(255, 255, 255, 0.62);
@@ -475,16 +492,17 @@
 }
 
 /* =========================
-   Sticky book bar (optional, keep)
+   Sticky book bar
    ========================= */
-.staff-bookbar {
+
+html[data-brand="clinic"] .staff-bookbar {
   position: sticky;
   bottom: 14px;
   z-index: 50;
   padding: 0 0 14px;
 }
 
-.staff-bookbar-inner {
+html[data-brand="clinic"] .staff-bookbar-inner {
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, .14);
   background: rgba(10, 10, 10, .42);
@@ -499,24 +517,24 @@
   padding: 12px 14px;
 }
 
-.staff-bookbar-left {
+html[data-brand="clinic"] .staff-bookbar-left {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.staff-bookbar-name {
+html[data-brand="clinic"] .staff-bookbar-name {
   font-weight: 900;
   letter-spacing: -0.02em;
   color: rgba(255, 255, 255, .92);
 }
 
-.staff-bookbar-sub {
+html[data-brand="clinic"] .staff-bookbar-sub {
   color: rgba(255, 255, 255, .62);
   font-size: 0.92rem;
 }
 
-.staff-bookbar-actions {
+html[data-brand="clinic"] .staff-bookbar-actions {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -527,8 +545,787 @@
    ========================= */
 
 @media (max-width: 900px) {
-  .staff-testimonials {
+  html[data-brand="clinic"] .staff-testimonials {
     grid-template-columns: 1fr;
   }
 }
 
+@media (max-width: 760px) {
+  html[data-brand="clinic"] .staff-profile-top {
+    grid-template-columns: 96px 1fr;
+    gap: 14px;
+    align-items: center;
+  }
+
+  html[data-brand="clinic"] .staff-avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 20px;
+  }
+
+  html[data-brand="clinic"] .staff-card--profile,
+  html[data-brand="clinic"] .staff-quick .staff-card,
+  html[data-brand="clinic"] .staff-svc,
+  html[data-brand="clinic"] .staff-quote {
+    padding: 16px;
+  }
+
+  html[data-brand="clinic"] .staff-meta {
+    grid-template-columns: 1fr;
+  }
+
+  html[data-brand="clinic"] .staff-services-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  html[data-brand="clinic"] .staff-profile {
+    padding-top: 34px;
+  }
+
+  html[data-brand="clinic"] .staff-section {
+    padding: 62px 0;
+  }
+
+  html[data-brand="clinic"] .staff-link {
+    padding: 11px 12px;
+    border-radius: 18px;
+  }
+
+  html[data-brand="clinic"] .staff-quote {
+    min-height: 0;
+  }
+}
+
+
+
+/* =========================================================
+   STAFF PROFILE CARD — compact/fill layout across all views
+   Goal:
+   - keep avatar + heading row compact
+   - let bio use the middle open space
+   - keep Focus / New Clients side-by-side on mobile
+   - scale down typography/padding instead of stacking early
+   ========================================================= */
+
+/* main card spacing */
+html[data-brand="clinic"] .staff-card--profile {
+  padding: clamp(18px, 2vw, 24px);
+}
+
+/* compact top row */
+html[data-brand="clinic"] .staff-profile-top {
+  display: grid;
+  grid-template-columns: clamp(82px, 10vw, 112px) minmax(0, 1fr);
+  gap: clamp(12px, 1.8vw, 18px);
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+/* avatar stays stable */
+html[data-brand="clinic"] .staff-avatar {
+  width: clamp(82px, 10vw, 112px);
+  height: clamp(82px, 10vw, 112px);
+  border-radius: clamp(18px, 2vw, 24px);
+  overflow: hidden;
+  border: 1px solid rgba(18, 192, 138, .24);
+  background:
+    radial-gradient(70% 90% at 85% 0%, rgba(18, 192, 138, .18), transparent 42%),
+    rgba(255, 255, 255, .04);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .05),
+    0 10px 26px rgba(0, 0, 0, .24);
+  flex: 0 0 auto;
+}
+
+html[data-brand="clinic"] .staff-avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 50% 18%;
+}
+
+/* text beside image can fully shrink/fill */
+html[data-brand="clinic"] .staff-ident {
+  min-width: 0;
+}
+
+html[data-brand="clinic"] .staff-role {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-size: clamp(.68rem, 1.2vw, .82rem);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: rgba(18, 192, 138, .92);
+}
+
+html[data-brand="clinic"] .staff-name {
+  margin: 0 0 8px;
+  letter-spacing: -0.03em;
+  line-height: 1.04;
+  font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+  color: var(--text);
+}
+
+html[data-brand="clinic"] .staff-tagline {
+  margin: 0;
+  max-width: none;
+  color: rgba(255, 255, 255, .74);
+  line-height: 1.58;
+  font-size: clamp(.95rem, 1.35vw, 1.06rem);
+}
+
+/* keep the two meta cards side by side almost always */
+html[data-brand="clinic"] .staff-meta {
+  margin-top: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+html[data-brand="clinic"] .staff-meta-item {
+  border-radius: 18px;
+  padding: 12px 12px;
+  border: 1px solid rgba(18, 192, 138, .18);
+  background:
+    radial-gradient(90% 140% at 100% 0%, rgba(18, 192, 138, .11), transparent 44%),
+    rgba(0, 0, 0, .16);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .03);
+  min-width: 0;
+}
+
+html[data-brand="clinic"] .staff-meta-k {
+  display: block;
+  margin-bottom: 6px;
+  font-size: clamp(.66rem, 1vw, .78rem);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: rgba(255, 255, 255, .60);
+}
+
+html[data-brand="clinic"] .staff-meta-v {
+  display: block;
+  font-weight: 750;
+  font-size: clamp(.98rem, 1.2vw, 1.05rem);
+  line-height: 1.25;
+  color: rgba(255, 255, 255, .90);
+}
+
+/* tighten divider rhythm a bit */
+html[data-brand="clinic"] .staff-divider {
+  margin: 16px 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .10), transparent);
+}
+
+/* BIO = the flexible middle chunk */
+html[data-brand="clinic"] .staff-bio {
+  display: grid;
+  gap: 10px;
+  max-width: none;
+}
+
+html[data-brand="clinic"] .staff-bio p {
+  margin: 0;
+  color: rgba(255, 255, 255, .74);
+  line-height: 1.72;
+  font-size: clamp(1rem, 1.25vw, 1.08rem);
+}
+
+/* focus block */
+html[data-brand="clinic"] .staff-focus {
+  border-radius: 22px;
+  border: 1px solid rgba(18, 192, 138, .16);
+  background:
+    radial-gradient(80% 130% at 100% 0%, rgba(18, 192, 138, .10), transparent 42%),
+    rgba(0, 0, 0, .14);
+  padding: clamp(14px, 1.7vw, 18px);
+}
+
+html[data-brand="clinic"] .staff-mini-title {
+  margin: 0 0 10px;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.02rem, 1.5vw, 1.18rem);
+  color: rgba(255, 255, 255, .92);
+}
+
+html[data-brand="clinic"] .staff-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+html[data-brand="clinic"] .staff-bullets li {
+  position: relative;
+  padding-left: 18px;
+  color: rgba(255, 255, 255, .74);
+  line-height: 1.55;
+  font-size: clamp(.94rem, 1.12vw, 1rem);
+}
+
+html[data-brand="clinic"] .staff-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .62em;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(18, 192, 138, .88);
+  box-shadow: 0 0 0 4px rgba(18, 192, 138, .14);
+}
+
+/* =========================================================
+   Tablet
+   ========================================================= */
+@media (max-width: 760px) {
+  html[data-brand="clinic"] .staff-card--profile {
+    padding: 16px;
+  }
+
+  html[data-brand="clinic"] .staff-profile-top {
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  html[data-brand="clinic"] .staff-avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 18px;
+  }
+
+  html[data-brand="clinic"] .staff-avatar img {
+    object-position: 50% 18%;
+  }
+
+  html[data-brand="clinic"] .staff-role {
+    font-size: .66rem;
+    letter-spacing: .12em;
+    margin-bottom: 6px;
+  }
+
+  html[data-brand="clinic"] .staff-name {
+    font-size: 1.55rem;
+    margin-bottom: 6px;
+  }
+
+  html[data-brand="clinic"] .staff-tagline {
+    font-size: .95rem;
+    line-height: 1.45;
+  }
+
+  html[data-brand="clinic"] .staff-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  html[data-brand="clinic"] .staff-meta-item {
+    padding: 10px 10px 11px;
+    border-radius: 16px;
+  }
+
+  html[data-brand="clinic"] .staff-meta-k {
+    font-size: .62rem;
+    margin-bottom: 5px;
+  }
+
+  html[data-brand="clinic"] .staff-meta-v {
+    font-size: .92rem;
+  }
+
+  html[data-brand="clinic"] .staff-divider {
+    margin: 14px 0;
+  }
+
+  html[data-brand="clinic"] .staff-bio p {
+    font-size: .96rem;
+    line-height: 1.62;
+  }
+
+  html[data-brand="clinic"] .staff-focus {
+    padding: 14px;
+    border-radius: 18px;
+  }
+
+  html[data-brand="clinic"] .staff-mini-title {
+    font-size: 1rem;
+  }
+
+  html[data-brand="clinic"] .staff-bullets {
+    gap: 8px;
+  }
+
+  html[data-brand="clinic"] .staff-bullets li {
+    font-size: .92rem;
+    line-height: 1.48;
+  }
+}
+
+/* =========================================================
+   Small phones
+   Keep image + name row intact
+   Keep Focus / New Clients in 2 columns
+   ========================================================= */
+@media (max-width: 520px) {
+  html[data-brand="clinic"] .staff-profile {
+    padding-top: 34px;
+  }
+
+  html[data-brand="clinic"] .staff-section {
+    padding: 62px 0;
+  }
+
+  html[data-brand="clinic"] .staff-card--profile {
+    padding: 14px;
+  }
+
+  html[data-brand="clinic"] .staff-profile-top {
+    grid-template-columns: 74px minmax(0, 1fr);
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  html[data-brand="clinic"] .staff-avatar {
+    width: 74px;
+    height: 74px;
+    border-radius: 16px;
+  }
+
+  html[data-brand="clinic"] .staff-avatar img {
+    object-position: 50% 17%;
+  }
+
+  html[data-brand="clinic"] .staff-role {
+    font-size: .58rem;
+    letter-spacing: .11em;
+    margin-bottom: 4px;
+  }
+
+  html[data-brand="clinic"] .staff-name {
+    font-size: 1.28rem;
+    line-height: 1.02;
+    margin-bottom: 5px;
+  }
+
+  html[data-brand="clinic"] .staff-tagline {
+    font-size: .84rem;
+    line-height: 1.38;
+  }
+
+  html[data-brand="clinic"] .staff-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  html[data-brand="clinic"] .staff-meta-item {
+    padding: 9px 9px 10px;
+    border-radius: 14px;
+  }
+
+  html[data-brand="clinic"] .staff-meta-k {
+    font-size: .56rem;
+    letter-spacing: .11em;
+    margin-bottom: 4px;
+  }
+
+  html[data-brand="clinic"] .staff-meta-v {
+    font-size: .84rem;
+    line-height: 1.22;
+  }
+
+  html[data-brand="clinic"] .staff-divider {
+    margin: 12px 0;
+  }
+
+  html[data-brand="clinic"] .staff-bio {
+    gap: 8px;
+  }
+
+  html[data-brand="clinic"] .staff-bio p {
+    font-size: .88rem;
+    line-height: 1.5;
+  }
+
+  html[data-brand="clinic"] .staff-focus {
+    padding: 12px 12px 13px;
+    border-radius: 16px;
+  }
+
+  html[data-brand="clinic"] .staff-mini-title {
+    margin-bottom: 8px;
+    font-size: .96rem;
+  }
+
+  html[data-brand="clinic"] .staff-bullets {
+    gap: 7px;
+  }
+
+  html[data-brand="clinic"] .staff-bullets li {
+    padding-left: 16px;
+    font-size: .85rem;
+    line-height: 1.42;
+  }
+
+  html[data-brand="clinic"] .staff-bullets li::before {
+    width: 7px;
+    height: 7px;
+    box-shadow: 0 0 0 3px rgba(18, 192, 138, .14);
+  }
+
+  html[data-brand="clinic"] .staff-link {
+    padding: 11px 12px;
+    border-radius: 18px;
+  }
+
+  html[data-brand="clinic"] .staff-quote {
+    min-height: 0;
+  }
+}
+
+/* =========================================================
+   Very small devices
+   Still keep 2 meta cards if possible
+   Only collapse when truly necessary
+   ========================================================= */
+@media (max-width: 380px) {
+  html[data-brand="clinic"] .staff-profile-top {
+    grid-template-columns: 66px minmax(0, 1fr);
+    gap: 9px;
+  }
+
+  html[data-brand="clinic"] .staff-avatar {
+    width: 66px;
+    height: 66px;
+    border-radius: 14px;
+  }
+
+  html[data-brand="clinic"] .staff-role {
+    font-size: .54rem;
+  }
+
+  html[data-brand="clinic"] .staff-name {
+    font-size: 1.14rem;
+  }
+
+  html[data-brand="clinic"] .staff-tagline {
+    font-size: .78rem;
+    line-height: 1.34;
+  }
+
+  html[data-brand="clinic"] .staff-meta-item {
+    padding: 8px 8px 9px;
+  }
+
+  html[data-brand="clinic"] .staff-meta-k {
+    font-size: .52rem;
+  }
+
+  html[data-brand="clinic"] .staff-meta-v {
+    font-size: .78rem;
+  }
+
+  html[data-brand="clinic"] .staff-bio p {
+    font-size: .82rem;
+    line-height: 1.44;
+  }
+
+  html[data-brand="clinic"] .staff-bullets li {
+    font-size: .8rem;
+  }
+}
+
+/* =========================================================
+   QUICK BOOKING + SERVICES — tighter type scale
+   Matches the more compact profile-card feel
+   ========================================================= */
+
+html[data-brand="clinic"] .staff-quick h3,
+html[data-brand="clinic"] .staff-svc h3 {
+  font-size: clamp(1.02rem, 1.45vw, 1.18rem);
+  line-height: 1.18;
+}
+
+html[data-brand="clinic"] .staff-muted,
+html[data-brand="clinic"] .staff-svc p {
+  font-size: clamp(.92rem, 1.08vw, .98rem);
+  line-height: 1.58;
+}
+
+html[data-brand="clinic"] .staff-link {
+  font-size: clamp(.92rem, 1.02vw, .97rem);
+  line-height: 1.3;
+}
+
+html[data-brand="clinic"] .staff-link span {
+  font-size: .96em;
+}
+
+html[data-brand="clinic"] .staff-note {
+  font-size: clamp(.86rem, .96vw, .92rem);
+  line-height: 1.48;
+}
+
+html[data-brand="clinic"] .staff-svc-note-label {
+  font-size: clamp(.66rem, .78vw, .74rem);
+  letter-spacing: .035em;
+}
+
+/* optional: slightly tighter service cards */
+html[data-brand="clinic"] .staff-quick .staff-card,
+html[data-brand="clinic"] .staff-svc {
+  padding: clamp(14px, 1.5vw, 18px);
+}
+
+/* =========================
+   tablet
+   ========================= */
+@media (max-width: 760px) {
+
+  html[data-brand="clinic"] .staff-quick h3,
+  html[data-brand="clinic"] .staff-svc h3 {
+    font-size: 1rem;
+  }
+
+  html[data-brand="clinic"] .staff-muted,
+  html[data-brand="clinic"] .staff-svc p {
+    font-size: .9rem;
+    line-height: 1.5;
+  }
+
+  html[data-brand="clinic"] .staff-link {
+    font-size: .9rem;
+    line-height: 1.24;
+  }
+
+  html[data-brand="clinic"] .staff-note {
+    font-size: .84rem;
+    line-height: 1.42;
+  }
+
+  html[data-brand="clinic"] .staff-svc-note-label {
+    font-size: .64rem;
+  }
+}
+
+/* =========================
+   small phones
+   ========================= */
+@media (max-width: 520px) {
+
+  html[data-brand="clinic"] .staff-quick .staff-card,
+  html[data-brand="clinic"] .staff-svc {
+    padding: 14px;
+  }
+
+  html[data-brand="clinic"] .staff-quick h3,
+  html[data-brand="clinic"] .staff-svc h3 {
+    font-size: .94rem;
+    line-height: 1.16;
+    margin-bottom: 8px;
+  }
+
+  html[data-brand="clinic"] .staff-muted,
+  html[data-brand="clinic"] .staff-svc p {
+    font-size: .84rem;
+    line-height: 1.42;
+    margin-bottom: 12px;
+  }
+
+  html[data-brand="clinic"] .staff-link {
+    font-size: .83rem;
+    line-height: 1.2;
+    padding: 10px 11px;
+  }
+
+  html[data-brand="clinic"] .staff-note {
+    font-size: .78rem;
+    line-height: 1.38;
+    padding: 10px 11px;
+  }
+
+  html[data-brand="clinic"] .staff-svc-note {
+    margin-bottom: 10px;
+  }
+
+  html[data-brand="clinic"] .staff-svc-note-label {
+    font-size: .58rem;
+    padding: 5px 10px;
+  }
+
+  html[data-brand="clinic"] .staff-svc-actions {
+    gap: 8px;
+  }
+}
+
+/* =========================
+   very small
+   ========================= */
+@media (max-width: 380px) {
+
+  html[data-brand="clinic"] .staff-quick h3,
+  html[data-brand="clinic"] .staff-svc h3 {
+    font-size: .9rem;
+  }
+
+  html[data-brand="clinic"] .staff-muted,
+  html[data-brand="clinic"] .staff-svc p,
+  html[data-brand="clinic"] .staff-link {
+    font-size: .78rem;
+  }
+
+  html[data-brand="clinic"] .staff-note {
+    font-size: .74rem;
+  }
+
+  html[data-brand="clinic"] .staff-svc-note-label {
+    font-size: .54rem;
+  }
+}
+
+/* =========================================================
+   TESTIMONIALS — tighter scale to match profile/services
+   ========================================================= */
+
+html[data-brand="clinic"] .staff-quote {
+  padding: clamp(16px, 1.7vw, 22px) clamp(14px, 1.6vw, 20px) clamp(14px, 1.6vw, 18px);
+  min-height: 0;
+}
+
+html[data-brand="clinic"] .staff-quote-stars {
+  font-size: clamp(.86rem, 1vw, .95rem);
+  letter-spacing: .14em;
+  margin-bottom: 12px;
+}
+
+html[data-brand="clinic"] .staff-quote p {
+  font-size: clamp(.92rem, 1.1vw, 1rem);
+  line-height: 1.58;
+  color: rgba(255, 255, 255, .88);
+}
+
+html[data-brand="clinic"] .staff-quote-person {
+  margin-top: 14px;
+  gap: 10px;
+}
+
+html[data-brand="clinic"] .staff-quote-initial {
+  width: clamp(34px, 3vw, 42px);
+  height: clamp(34px, 3vw, 42px);
+  font-size: clamp(.82rem, 1vw, .92rem);
+}
+
+html[data-brand="clinic"] .staff-quote-name {
+  font-size: clamp(.92rem, 1.05vw, .98rem);
+}
+
+html[data-brand="clinic"] .staff-quote-sub {
+  font-size: clamp(.82rem, .95vw, .9rem);
+}
+
+
+/* =========================
+   tablet
+   ========================= */
+
+@media (max-width: 760px) {
+
+  html[data-brand="clinic"] .staff-quote {
+    padding: 14px 14px 14px;
+  }
+
+  html[data-brand="clinic"] .staff-quote-stars {
+    font-size: .82rem;
+    margin-bottom: 10px;
+  }
+
+  html[data-brand="clinic"] .staff-quote p {
+    font-size: .9rem;
+    line-height: 1.5;
+  }
+
+  html[data-brand="clinic"] .staff-quote-initial {
+    width: 34px;
+    height: 34px;
+    font-size: .8rem;
+  }
+
+  html[data-brand="clinic"] .staff-quote-name {
+    font-size: .9rem;
+  }
+
+  html[data-brand="clinic"] .staff-quote-sub {
+    font-size: .82rem;
+  }
+
+}
+
+
+/* =========================
+   small phones
+   ========================= */
+
+@media (max-width: 520px) {
+
+  html[data-brand="clinic"] .staff-quote {
+    padding: 12px 12px 12px;
+  }
+
+  html[data-brand="clinic"] .staff-quote-stars {
+    font-size: .78rem;
+    margin-bottom: 8px;
+  }
+
+  html[data-brand="clinic"] .staff-quote p {
+    font-size: .84rem;
+    line-height: 1.46;
+  }
+
+  html[data-brand="clinic"] .staff-quote-person {
+    margin-top: 10px;
+    gap: 8px;
+  }
+
+  html[data-brand="clinic"] .staff-quote-initial {
+    width: 30px;
+    height: 30px;
+    font-size: .74rem;
+  }
+
+  html[data-brand="clinic"] .staff-quote-name {
+    font-size: .84rem;
+  }
+
+  html[data-brand="clinic"] .staff-quote-sub {
+    font-size: .76rem;
+  }
+
+}
+
+
+/* =========================
+   very small
+   ========================= */
+
+@media (max-width: 380px) {
+
+  html[data-brand="clinic"] .staff-quote p {
+    font-size: .8rem;
+  }
+
+  html[data-brand="clinic"] .staff-quote-name {
+    font-size: .8rem;
+  }
+
+  html[data-brand="clinic"] .staff-quote-sub {
+    font-size: .72rem;
+  }
+
+}
