@@ -11,7 +11,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- CSS -->
   <!-- CSS needed immediately -->
   <link rel="stylesheet" href="style/base.css" />
   <link rel="stylesheet" href="style/header.css" />
@@ -35,9 +34,8 @@
     <link rel="stylesheet" href="style/practiceModal.css" />
   </noscript>
 
-  <!-- Perf: preconnect to GitHub Pages asset host (helps a bit on mobile) -->
+  <!-- Perf: preconnect to GitHub Pages asset host -->
   <link rel="preconnect" href="https://jgerbs.github.io" crossorigin>
-
 </head>
 
 <body>
@@ -106,18 +104,17 @@
 
       <div class="hero-media">
         <picture class="hero-poster">
-          <source media="(max-width: 768px)" srcset="resources/content/springbok2-mobile.webp">
+          <source media="(max-width: 768px)" srcset="resources/content/springbok2.webp">
           <img src="resources/content/springbok2.webp" alt="" class="hero-poster-img" width="1600" height="900"
             fetchpriority="high" decoding="async">
         </picture>
-
-        <video class="hero-video" muted playsinline loop preload="none" poster="resources/content/springbok2.webp">
-          <source src="resources/content/springbok2.mp4" type="video/mp4">
-        </video>
-
+      
+        <video class="hero-video" muted playsinline webkit-playsinline loop preload="none"
+          poster="resources/content/springbok2.webp" data-video-mobile="resources/content/springbok2.mp4"
+          data-video-desktop="resources/content/springbok2.mp4"></video>
+      
         <div class="hero-overlay"></div>
       </div>
-
 
 
       <div class="container hero-content reveal">

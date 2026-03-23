@@ -80,14 +80,19 @@
                     <img src="resources/spalogo2.png" alt="Springbok Medical Spa" class="hero-logo hero-logo--spa" />
                 </a>
 
-                <div class="hero-media">
-                    <video class="hero-video" muted playsinline webkit-playsinline loop preload="metadata"
-                        poster="resources/heroVideos/products-poster.jpg"
-                        data-src-mobile="resources/heroVideos/products.mp4"
-                        data-src-desktop="resources/heroVideos/products.mp4"></video>
-
-                    <div class="hero-overlay"></div>
-                </div>
+                    <div class="hero-media">
+                        <picture class="hero-poster">
+                            <source media="(max-width: 768px)" srcset="resources/content/springbok2.webp">
+                            <img src="resources/content/springbok2.webp" alt="" class="hero-poster-img" width="1600" height="900"
+                                fetchpriority="high" decoding="async">
+                        </picture>
+                    
+                        <video class="hero-video" muted playsinline webkit-playsinline loop preload="none"
+                            poster="resources/content/springbok2.webp" data-video-mobile="resources/content/springbok2.mp4"
+                            data-video-desktop="resources/content/springbok2.mp4"></video>
+                    
+                        <div class="hero-overlay"></div>
+                    </div>
 
                 <div class="container hero-content reveal">
                     <h1>Springbok Medical Spa Products</h1>

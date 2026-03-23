@@ -87,12 +87,15 @@
       </a>
 
       <div class="hero-media">
-        <video class="hero-video" muted playsinline webkit-playsinline loop preload="auto"
-          poster="resources/content/team.jpg">
-          <source src="resources/heroVideos/.mp4" media="(max-width:700px)" type="video/mp4">
-          <source src="resources/content/teamvid.mp4" type="video/mp4">
-        </video>
-
+        <picture class="hero-poster">
+          <source media="(max-width: 768px)" srcset="resources/content/writing.webp">
+          <img src="resources/content/writing.webp" alt="" class="hero-poster-img" width="1600" height="900"
+            fetchpriority="high" decoding="async">
+        </picture>
+      
+        <video class="hero-video" muted playsinline webkit-playsinline loop preload="none"
+          poster="resources/content/writing.webp" data-video-mobile="resources/content/writing.mp4"data-video-desktop="resources/content/writing.mp4"></video>
+      
         <div class="hero-overlay"></div>
       </div>
 

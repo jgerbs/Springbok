@@ -347,12 +347,10 @@ html[data-brand="spa"] .mobile-panel {
    ========================================================= */
 html[data-brand="spa"] .hero {
   position: relative;
-
   min-height: 100vh;
   min-height: 100svh;
   min-height: 100dvh;
   min-height: clamp(760px, 92vh, 980px);
-
   display: grid;
   align-items: end;
   box-sizing: border-box;
@@ -372,13 +370,11 @@ html[data-brand="spa"] .hero-brand::before {
   content: "";
   position: absolute;
   inset: -36px;
-  border-radius: 999px;
   z-index: -1;
-
+  border-radius: 999px;
   background:
     radial-gradient(circle at 45% 35%, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.06) 45%, rgba(0, 0, 0, 0) 72%),
     radial-gradient(circle at 50% 55%, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0) 65%);
-
   filter: blur(10px);
   opacity: 0.9;
   transform: translateZ(0);
@@ -398,22 +394,37 @@ html[data-brand="spa"] .hero-media {
   position: absolute;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
+  background: #0b0d0d;
 }
 
-html[data-brand="spa"] .hero-video {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: center center;
-  filter: saturate(1.02) contrast(1.02);
-}
-
+html[data-brand="spa"] .hero-poster,
+html[data-brand="spa"] .hero-video,
 html[data-brand="spa"] .hero-overlay {
   position: absolute;
   inset: 0;
-  z-index: 1;
+}
 
+html[data-brand="spa"] .hero-poster,
+html[data-brand="spa"] .hero-video {
+  z-index: 0;
+}
+
+html[data-brand="spa"] .hero-poster-img,
+html[data-brand="spa"] .hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.02) contrast(1.02);
+}
+
+html[data-brand="spa"] .hero-video {
+  object-position: center center;
+}
+
+html[data-brand="spa"] .hero-overlay {
+  z-index: 1;
   background:
     radial-gradient(900px 700px at 18% 12%, rgba(214, 163, 107, 0.18), transparent 60%),
     linear-gradient(180deg,
@@ -454,7 +465,6 @@ html[data-brand="spa"] .hero-actions {
   gap: 12px;
   flex-wrap: wrap;
 }
-
 
 /* =========================================================
    6) SPA SUBNAV
@@ -946,7 +956,6 @@ html[data-brand="spa"] .to-top:focus-visible {
     max-width: min(34ch, 100%);
   }
 }
-
 
 /* =========================================================
    10) RESPONSIVE — FOOTER
