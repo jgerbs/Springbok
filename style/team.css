@@ -50,7 +50,7 @@ html[data-brand="clinic"] .services-tiles .doc-grid {
   align-items: stretch;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1230px) {
 
   html[data-brand="clinic"] .team-tiles .doc-grid,
   html[data-brand="clinic"] .services-tiles .doc-grid {
