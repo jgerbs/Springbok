@@ -3,8 +3,8 @@
    ========================= */
 
 .services-tiles {
-  padding: 90px 0 120px;
   position: relative;
+  padding: 90px 0 120px;
 }
 
 .services-tiles::before {
@@ -12,21 +12,23 @@
   position: absolute;
   inset: -140px -120px auto -120px;
   height: 360px;
-
   pointer-events: none;
 }
 
-/* Section header */
+/* =========================
+   SECTION HEADER
+   ========================= */
+
 .section-head {
-  margin-bottom: 36px;
   max-width: 780px;
+  margin-bottom: 36px;
 }
 
 .section-eyebrow {
   display: inline-block;
   margin-bottom: 12px;
-  font-size: .85rem;
-  letter-spacing: .18em;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
   font-weight: 750;
@@ -34,27 +36,27 @@
 
 .section-title {
   margin: 0 0 16px;
-  font-size: clamp(2.0rem, 3.2vw, 3.0rem);
+  font-size: clamp(2rem, 3.2vw, 3rem);
   line-height: 1.12;
-  letter-spacing: -.02em;
+  letter-spacing: -0.02em;
 }
 
 .section-divider {
   width: 72px;
   height: 2px;
-  background: linear-gradient(90deg, var(--accent), transparent);
-  border-radius: 2px;
   margin: 16px 0 18px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
 }
 
 .section-sub {
-  color: rgba(255, 255, 255, .74);
-  line-height: 1.75;
   max-width: 62ch;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.74);
 }
 
 /* =========================
-   TILES GRID (presets)
+   TILES GRID
    ========================= */
 
 .tiles-grid {
@@ -62,50 +64,33 @@
   gap: 22px;
 }
 
-/* Preset: 3 across (3,6,9...) */
 .tiles-grid.grid-3 {
   grid-template-columns: repeat(3, 1fr);
 }
 
-/* Preset: 2 across (2,4,6,8...) */
 .tiles-grid.grid-2 {
   grid-template-columns: repeat(2, 1fr);
 }
 
-/* Preset: stacked (1 column always) */
 .tiles-grid.grid-1 {
   grid-template-columns: 1fr;
 }
 
-/* Responsive: collapse everything to 1 column */
-@media (max-width: 1100px) {
+/* =========================
+   SERVICE TILE
+   ========================= */
 
-  .tiles-grid.grid-3,
-  .tiles-grid.grid-2,
-  .tiles-grid.grid-1 {
-    grid-template-columns: 1fr;
-  }
-
-  .service-tile {
-    height: 420px;
-  }
-}
-
-
-/* Tile */
 .service-tile {
   position: relative;
   height: 520px;
   border-radius: 26px;
   overflow: hidden;
   isolation: isolate;
-
   background: #000;
   box-shadow: var(--shadow-soft);
-
   transition:
-    transform .35s cubic-bezier(.2, .8, .2, 1),
-    box-shadow .35s ease;
+    transform 0.35s cubic-bezier(.2, .8, .2, 1),
+    box-shadow 0.35s ease;
 }
 
 .service-tile:hover {
@@ -120,7 +105,7 @@
   background-size: cover;
   background-position: center;
   transform: scale(1.05);
-  transition: transform .6s ease;
+  transition: transform 0.6s ease;
 }
 
 .service-tile:hover .tile-bg {
@@ -131,22 +116,21 @@
 .tile-shade {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg,
-      rgba(0, 0, 0, .15),
-      rgba(0, 0, 0, .85) 70%);
   z-index: 1;
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.85) 70%);
 }
 
 /* Content */
 .tile-inner {
   position: relative;
   z-index: 2;
-  height: 100%;
-  padding: 22px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
+  padding: 22px;
 }
 
 /* Top tag */
@@ -164,15 +148,15 @@
 }
 
 .tile-tag {
-  font-size: .85rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, .9);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Bottom content */
 .tile-bottom {
   transform: translateY(26px);
-  transition: transform .35s ease;
+  transition: transform 0.35s ease;
 }
 
 .service-tile:hover .tile-bottom {
@@ -187,16 +171,15 @@
 
 .tile-desc {
   margin: 0;
-  font-size: .95rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, .72);
-
   max-height: 0;
-  opacity: 0;
   overflow: hidden;
+  opacity: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
   transition:
-    opacity .3s ease,
-    max-height .35s ease;
+    opacity 0.3s ease,
+    max-height 0.35s ease;
 }
 
 .service-tile:hover .tile-desc {
@@ -214,7 +197,7 @@
 }
 
 .tile-arrow {
-  transition: transform .25s ease;
+  transition: transform 0.25s ease;
 }
 
 .service-tile:hover .tile-arrow {
@@ -222,162 +205,115 @@
 }
 
 /* =========================
-   RESPONSIVE
+   TILE CORNER LOGO
    ========================= */
-
-@media (max-width: 1100px) {
-  .tiles-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .service-tile {
-    height: 420px;
-  }
-}
-
-/* ===== Service tile corner logo (responsive + stable) ===== */
-
-.service-tile {
-  position: relative;
-}
-
-/* ensure positioning context */
 
 .service-tile .tile-corner {
   position: absolute;
-  z-index: 3;
-  pointer-events: none;
-
-  /* stable corner anchor */
   top: clamp(16px, 2vw, 28px);
   right: clamp(16px, 2vw, 28px);
-
-  /* logo box size (this is what you tweak) */
-  width: clamp(180px, 7vw, 200px);
-  height: clamp(72px, 7vw, 180px);
-
+  z-index: 3;
   display: grid;
   place-items: center;
-
-  /* optional: nudge it slightly inward/down to match your screenshot */
+  width: clamp(180px, 7vw, 200px);
+  height: clamp(72px, 7vw, 180px);
+  pointer-events: none;
   transform: translate(50px, -20px);
 }
 
 .service-tile .tile-corner-logo {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  display: block;
-  opacity: .96;
-  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, .45));
+  opacity: 0.96;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.45));
 }
 
-/* Spa logo: scale up inside the same box (keeps position identical) */
 .service-tile.tile--spa .tile-corner-logo {
   transform: scale(1.12);
   transform-origin: center;
 }
 
-
-/* =========================================================
-   SERVICES — BIG LOGO SLABS (matches your drawing)
-   ========================================================= */
+/* =========================
+   SERVICES — BIG LOGO SLABS
+   ========================= */
 
 .services-logo-slab {
   padding: 44px 0 110px;
 }
 
-/* Row slab */
 .logo-slab {
   position: relative;
   display: grid;
   grid-template-columns: 56% 44%;
   min-height: clamp(240px, 20vw, 310px);
+  margin-bottom: 22px;
   border-radius: 28px;
   overflow: hidden;
   isolation: isolate;
   text-decoration: none;
   color: inherit;
-  margin-bottom: 22px;
-
-  border: 1px solid rgba(18, 192, 138, .28);
-
-  background:
-    rgba(255, 255, 255, .02);
-
-  box-shadow:
-    0 22px 60px rgba(0, 0, 0, .28);
-
+  border: 1px solid rgba(18, 192, 138, 0.28);
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.28);
   transition:
-    transform .35s cubic-bezier(.2, .8, .2, 1),
-    box-shadow .35s ease,
-    border-color .25s ease;
+    transform 0.35s cubic-bezier(.2, .8, .2, 1),
+    box-shadow 0.35s ease,
+    border-color 0.25s ease;
 }
 
 .logo-slab:hover {
   transform: translateY(-6px);
-
-  border-color: rgba(18, 192, 138, .48);
-
+  border-color: rgba(18, 192, 138, 0.48);
   box-shadow:
-    0 30px 80px rgba(0, 0, 0, .38),
-    0 0 0 1px rgba(18, 192, 138, .12),
-    0 0 30px rgba(18, 192, 138, .18);
+    0 30px 80px rgba(0, 0, 0, 0.38),
+    0 0 0 1px rgba(18, 192, 138, 0.12),
+    0 0 30px rgba(18, 192, 138, 0.18);
 }
 
-/* Swap columns for row 2 */
 .logo-slab--logo-right {
   grid-template-columns: 44% 56%;
 }
 
-/* --- BIG LOGO SIDE --- */
+/* Logo side */
 .logo-slab__logo {
   position: relative;
   display: grid;
   place-items: center;
   padding: clamp(18px, 2.5vw, 42px);
-
-  /* subtle glow + depth behind the logo side */
   background:
-    radial-gradient(900px 520px at 30% 35%, rgba(18, 192, 138, .18), transparent 62%),
-    radial-gradient(900px 520px at 70% 15%, rgba(197, 138, 99, .10), transparent 65%),
-    linear-gradient(180deg, rgba(0, 0, 0, .35), rgba(0, 0, 0, .65));
+    radial-gradient(900px 520px at 30% 35%, rgba(18, 192, 138, 0.18), transparent 62%),
+    radial-gradient(900px 520px at 70% 15%, rgba(197, 138, 99, 0.10), transparent 65%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.65));
 }
 
-/* Make the logo BIG like your sketch */
 .logo-slab__logo img {
+  display: block;
   width: min(520px, 92%);
   height: auto;
   object-fit: contain;
-  display: block;
-  opacity: .98;
-
-  /* makes it feel “hero” */
-  filter: drop-shadow(0 22px 60px rgba(0, 0, 0, .70));
+  opacity: 0.98;
+  filter: drop-shadow(0 22px 60px rgba(0, 0, 0, 0.70));
 }
 
-/* Spa mark slightly larger */
 .logo-slab__logo--spa {
   transform: scale(1.06);
   transform-origin: center;
 }
 
-/* --- CONTENT SIDE --- */
+/* Content side */
 .logo-slab__content {
   position: relative;
   z-index: 2;
-  padding: clamp(22px, 2.8vw, 44px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 12px;
-
-  /* clean readable layer */
-  background:
-    linear-gradient(180deg, rgba(0, 0, 0, .35), rgba(0, 0, 0, .55));
+  padding: clamp(22px, 2.8vw, 44px);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55));
 }
 
-/* Align exactly like your drawing */
 .logo-slab__content--right {
   text-align: right;
   align-items: flex-end;
@@ -388,30 +324,29 @@
   align-items: flex-start;
 }
 
-/* Title */
 .logo-slab__title {
   margin: 0;
-  font-size: clamp(2.0rem, 2.8vw, 2.8rem);
+  font-size: clamp(2rem, 2.8vw, 2.8rem);
   line-height: 1.08;
-  letter-spacing: -.02em;
+  letter-spacing: -0.02em;
 }
 
 /* Bullets */
 .logo-slab__bullets {
-  list-style: none;
-  margin: 0;
-  padding: 0;
   display: grid;
   gap: 10px;
   width: min(58ch, 100%);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .logo-slab__bullets li {
   position: relative;
-  color: rgba(255, 255, 255, .78);
-  line-height: 1.65;
-  font-size: 1.02rem;
   padding-left: 18px;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .logo-slab__content--right .logo-slab__bullets li {
@@ -422,13 +357,13 @@
 .logo-slab__bullets li::before {
   content: "";
   position: absolute;
+  top: 0.72em;
   left: 0;
-  top: .72em;
   width: 6px;
   height: 6px;
   border-radius: 999px;
   background: var(--accent);
-  box-shadow: 0 0 0 6px rgba(18, 192, 138, .10);
+  box-shadow: 0 0 0 6px rgba(18, 192, 138, 0.10);
 }
 
 .logo-slab__content--right .logo-slab__bullets li::before {
@@ -447,48 +382,139 @@
 }
 
 .logo-slab__cta span {
-  transition: transform .25s ease;
+  transition: transform 0.25s ease;
 }
 
 .logo-slab:hover .logo-slab__cta span {
   transform: translateX(3px);
 }
 
-/* Optional: make row 2 glow feel “spa” warmer */
+/* =========================
+   SPA LOGO SLAB
+   ========================= */
+
+.logo-slab--spa {
+  position: relative;
+  isolation: isolate;
+  border-color: rgba(191, 146, 90, 0.40);
+  background: linear-gradient(180deg, rgba(255, 253, 250, 0.96), rgba(250, 245, 238, 0.92));
+  box-shadow:
+    0 20px 55px rgba(80, 50, 25, 0.12),
+    0 0 0 1px rgba(214, 163, 107, 0.22),
+    0 0 28px rgba(214, 163, 107, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+.logo-slab--spa::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(380px 220px at 0% 0%, rgba(214, 163, 107, 0.22), transparent 70%),
+    radial-gradient(420px 260px at 100% 100%, rgba(214, 163, 107, 0.18), transparent 75%),
+    radial-gradient(300px 200px at 100% 0%, rgba(255, 230, 190, 0.12), transparent 70%);
+}
+
+.logo-slab--spa:hover {
+  border-color: rgba(191, 146, 90, 0.65);
+  box-shadow:
+    0 32px 90px rgba(90, 60, 34, 0.22),
+    0 0 0 1px rgba(214, 163, 107, 0.32),
+    0 0 42px rgba(214, 163, 107, 0.32),
+    0 0 80px rgba(214, 163, 107, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
 .logo-slab--spa .logo-slab__logo {
   background:
-    radial-gradient(900px 520px at 70% 35%, rgba(197, 138, 99, .18), transparent 62%),
-    radial-gradient(900px 520px at 30% 15%, rgba(18, 192, 138, .10), transparent 65%),
-    linear-gradient(180deg, rgba(0, 0, 0, .35), rgba(0, 0, 0, .65));
+    radial-gradient(900px 520px at 70% 35%, rgba(214, 163, 107, 0.22), transparent 62%),
+    radial-gradient(900px 520px at 30% 15%, rgba(255, 232, 196, 0.18), transparent 65%),
+    linear-gradient(180deg, rgba(60, 46, 30, 0.36), rgba(24, 18, 12, 0.58));
+}
+
+.logo-slab--spa .logo-slab__content {
+  background: linear-gradient(180deg, rgba(255, 253, 250, 0.96), rgba(250, 245, 238, 0.92));
+}
+
+.logo-slab--spa .logo-slab__content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(62% 54% at 100% 0%,
+      rgba(214, 163, 107, 0.24),
+      rgba(214, 163, 107, 0.12) 24%,
+      rgba(214, 163, 107, 0) 58%),
+    radial-gradient(44% 38% at 0% 100%,
+      rgba(214, 163, 107, 0.16),
+      rgba(214, 163, 107, 0.08) 28%,
+      rgba(214, 163, 107, 0) 62%),
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0) 26%);
+}
+
+.logo-slab--spa .logo-slab__title {
+  color: rgba(39, 30, 22, 0.94);
+}
+
+.logo-slab--spa .logo-slab__bullets li {
+  color: rgba(88, 69, 46, 0.82);
+}
+
+.logo-slab--spa .logo-slab__bullets li::before {
+  background: rgba(214, 163, 107, 0.92);
+  box-shadow: 0 0 0 6px rgba(214, 163, 107, 0.12);
+}
+
+.logo-slab--spa .logo-slab__cta {
+  color: rgba(125, 88, 49, 0.96);
+}
+
+.logo-slab--spa .logo-slab__content--right .logo-slab__bullets li::before {
+  left: auto;
+  right: 0;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 1100px) {
+
+  .tiles-grid,
+  .tiles-grid.grid-3,
+  .tiles-grid.grid-2,
+  .tiles-grid.grid-1 {
+    grid-template-columns: 1fr;
+  }
+
+  .service-tile {
+    height: 420px;
+  }
 }
 
 @media (max-width: 980px) {
 
-  /* Force stacked layout */
   .logo-slab,
   .logo-slab--logo-right {
     grid-template-columns: 1fr;
   }
 
-  /* Default order: logo first, content second */
-  .logo-slab__logo {
-    order: 1;
-  }
-
-  .logo-slab__content {
-    order: 2;
-  }
-
-  /* FIX: Spa slab — logo ABOVE text (same as clinic) */
+  .logo-slab__logo,
   .logo-slab--logo-right .logo-slab__logo {
     order: 1;
   }
 
+  .logo-slab__content,
   .logo-slab--logo-right .logo-slab__content {
     order: 2;
   }
 
-  /* Reset alignment so text reads naturally on mobile */
   .logo-slab__content--right {
     text-align: left;
     align-items: flex-start;
@@ -503,134 +529,4 @@
     right: auto;
     left: 0;
   }
-}
-
-/* =========================================================
-   SPA LOGO SLAB — white / gold spa styling
-   ========================================================= */
-
-.logo-slab--spa {
-  border-color: rgba(191, 146, 90, .40);
-
-  background:
-    linear-gradient(180deg, rgba(255, 253, 250, .96), rgba(250, 245, 238, .92));
-
-  box-shadow:
-    0 18px 55px rgba(97, 68, 42, .10),
-    0 0 0 1px rgba(214, 163, 107, .18),
-    0 0 20px rgba(214, 163, 107, .10),
-    inset 0 1px 0 rgba(255, 255, 255, .76);
-}
-
-.logo-slab--spa:hover {
-  border-color: rgba(191, 146, 90, .55);
-
-  box-shadow:
-    0 30px 80px rgba(90, 60, 34, .16),
-    0 0 0 1px rgba(214, 163, 107, .22),
-    0 0 28px rgba(214, 163, 107, .14),
-    inset 0 1px 0 rgba(255, 255, 255, .82);
-}
-
-/* logo side */
-.logo-slab--spa .logo-slab__logo {
-  background:
-    radial-gradient(900px 520px at 70% 35%, rgba(214, 163, 107, .22), transparent 62%),
-    radial-gradient(900px 520px at 30% 15%, rgba(255, 232, 196, .18), transparent 65%),
-    linear-gradient(180deg, rgba(60, 46, 30, .36), rgba(24, 18, 12, .58));
-}
-
-/* content side */
-.logo-slab--spa .logo-slab__content {
-  background:
-    linear-gradient(180deg, rgba(255, 253, 250, .96), rgba(250, 245, 238, .92));
-}
-
-/* text */
-.logo-slab--spa .logo-slab__title {
-  color: rgba(39, 30, 22, .94);
-}
-
-.logo-slab--spa .logo-slab__bullets li {
-  color: rgba(88, 69, 46, .82);
-}
-
-.logo-slab--spa .logo-slab__bullets li::before {
-  background: rgba(214, 163, 107, .92);
-  box-shadow: 0 0 0 6px rgba(214, 163, 107, .12);
-}
-
-/* CTA */
-.logo-slab--spa .logo-slab__cta {
-  color: rgba(125, 88, 49, .96);
-}
-
-/* right-aligned spa bullets keep same gold bullet */
-.logo-slab--spa .logo-slab__content--right .logo-slab__bullets li::before {
-  left: auto;
-  right: 0;
-}
-
-/* =========================================================
-   SPA SLAB — corner glow like spa cards
-   ========================================================= */
-
-.logo-slab--spa::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-
-  background:
-    radial-gradient(380px 220px at 0% 0%, rgba(214, 163, 107, .22), transparent 70%),
-    radial-gradient(420px 260px at 100% 100%, rgba(214, 163, 107, .18), transparent 75%),
-    radial-gradient(300px 200px at 100% 0%, rgba(255, 230, 190, .12), transparent 70%);
-}
-
-.logo-slab--spa {
-  position: relative;
-  isolation: isolate;
-
-  box-shadow:
-    0 20px 55px rgba(80, 50, 25, .12),
-    0 0 0 1px rgba(214, 163, 107, .22),
-    0 0 28px rgba(214, 163, 107, .14),
-    inset 0 1px 0 rgba(255, 255, 255, .75);
-}
-
-.logo-slab--spa:hover {
-  border-color: rgba(191, 146, 90, .65);
-
-  box-shadow:
-    0 32px 90px rgba(90, 60, 34, .22),
-    0 0 0 1px rgba(214, 163, 107, .32),
-    0 0 42px rgba(214, 163, 107, .32),
-    0 0 80px rgba(214, 163, 107, .14),
-    inset 0 1px 0 rgba(255, 255, 255, .85);
-}
-
-/* spa card corner glow (same as packages) */
-
-.logo-slab--spa .logo-slab__content::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-
-  background:
-    radial-gradient(62% 54% at 100% 0%,
-      rgba(214, 163, 107, .24),
-      rgba(214, 163, 107, .12) 24%,
-      rgba(214, 163, 107, 0) 58%),
-
-    radial-gradient(44% 38% at 0% 100%,
-      rgba(214, 163, 107, .16),
-      rgba(214, 163, 107, .08) 28%,
-      rgba(214, 163, 107, 0) 62%),
-
-    linear-gradient(180deg,
-      rgba(255, 255, 255, .18),
-      rgba(255, 255, 255, 0) 26%);
 }

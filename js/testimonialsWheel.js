@@ -16,14 +16,28 @@
   const mobileOpenMQ = window.matchMedia("(max-width: 780px)");
   const coarsePointerMQ = window.matchMedia("(pointer: coarse)");
 
+  function getIdleSpeed() {
+    const isSmall = window.innerWidth <= 780;
+    const isCoarse = coarsePointerMQ.matches;
+
+    // real phone / touch device on small view
+    if (isSmall && isCoarse) return -0.82;
+
+    // narrow desktop window
+    if (isSmall && !isCoarse) return -0.45;
+
+    // larger touch device / tablet / touch laptop
+    if (!isSmall && isCoarse) return -0.68;
+
+    // desktop
+    return -0.72;
+  }
+
   let x = 0;
   let wrapW = 0;
   let paused = false;
 
-  // idle spin remains slightly faster on touch devices
-  let idleSpeed = coarsePointerMQ.matches ? -0.55 : -0.35;
-
-  // current motion velocity
+  let idleSpeed = getIdleSpeed();
   let velocity = idleSpeed;
 
   // drag state
@@ -46,7 +60,7 @@
   const DRAG_MULTIPLIER = 1.0;
   const RELEASE_MULTIPLIER = 1.0;
   const FRICTION = 0.972;
-  const RETURN_PULL = 0.014;
+  const RETURN_PULL = 0.018;
   const MOVE_THRESHOLD = 8;
   const MAX_VELOCITY = 6.2;
 
@@ -171,7 +185,7 @@
 
   function measure() {
     wrapW = originalWidth();
-    idleSpeed = coarsePointerMQ.matches ? -0.55 : -0.35;
+    idleSpeed = getIdleSpeed();
 
     // if we're basically idle, sync velocity to new idle speed
     if (Math.abs(velocity) < 1) velocity = idleSpeed;
@@ -363,14 +377,12 @@
   });
 
   function tick() {
-    if (!paused) {
-      if (!isPointerDown) {
-        velocity *= FRICTION;
-        velocity += (idleSpeed - velocity) * RETURN_PULL;
+    if (!paused && !isPointerDown) {
+      velocity *= FRICTION;
+      velocity += (idleSpeed - velocity) * RETURN_PULL;
 
-        x += velocity;
-        applyTransform();
-      }
+      x += velocity;
+      applyTransform();
     }
 
     requestAnimationFrame(tick);

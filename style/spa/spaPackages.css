@@ -50,16 +50,18 @@ html[data-brand="spa"] .pkg-card {
 
     border-radius: 22px;
     overflow: hidden;
-    border: 1px solid rgba(191, 146, 90, .40);
+    border: 1px solid rgba(198, 145, 72, .42);
+
+    box-shadow:
+        0 18px 55px rgba(97, 68, 42, .10),
+        0 0 0 1px rgba(212, 162, 92, .20),
+        0 0 28px rgba(212, 162, 92, .12),
+        inset 0 1px 0 rgba(255, 255, 255, .76);
 
     background:
         linear-gradient(180deg, rgba(255, 253, 250, .96), rgba(250, 245, 238, .92));
 
-    box-shadow:
-        0 18px 55px rgba(97, 68, 42, .10),
-        0 0 0 1px rgba(214, 163, 107, .18),
-        0 0 20px rgba(214, 163, 107, .10),
-        inset 0 1px 0 rgba(255, 255, 255, .76);
+
 
     color: rgba(0, 0, 0, .86);
     padding: 22px;
@@ -74,28 +76,31 @@ html[data-brand="spa"] .pkg-card {
         border-color .28s ease;
 }
 
-/* corner glows */
 html[data-brand="spa"] .pkg-card::before {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
     z-index: 0;
+    border-radius: inherit;
 
     background:
-        radial-gradient(62% 54% at 100% 0%,
-            rgba(214, 163, 107, .24),
-            rgba(214, 163, 107, .12) 24%,
-            rgba(214, 163, 107, 0) 58%),
-
-        radial-gradient(44% 38% at 0% 100%,
-            rgba(214, 163, 107, .16),
-            rgba(214, 163, 107, .08) 28%,
-            rgba(214, 163, 107, 0) 62%),
-
+        radial-gradient(62% 52% at 100% 0%,
+            rgba(191, 136, 62, .40) 0%,
+            rgba(212, 162, 92, .28) 18%,
+            rgba(227, 188, 124, .16) 34%,
+            rgba(227, 188, 124, .08) 50%,
+            rgba(227, 188, 124, 0) 70%),
+        radial-gradient(52% 44% at 0% 100%,
+            rgba(186, 129, 54, .30) 0%,
+            rgba(207, 152, 81, .18) 20%,
+            rgba(224, 182, 116, .10) 36%,
+            rgba(224, 182, 116, .04) 52%,
+            rgba(224, 182, 116, 0) 72%),
         linear-gradient(180deg,
-            rgba(255, 255, 255, .18),
-            rgba(255, 255, 255, 0) 26%);
+            rgba(255, 255, 255, .12) 0%,
+            rgba(255, 255, 255, .03) 16%,
+            rgba(255, 255, 255, 0) 30%);
 }
 
 /* dim layer for side cards only */
@@ -118,9 +123,9 @@ html[data-brand="spa"] .pkg-card.is-center {
 
     box-shadow:
         0 22px 62px rgba(97, 68, 42, .12),
-        0 0 0 1px rgba(214, 163, 107, .20),
-        0 0 26px rgba(214, 163, 107, .12),
-        inset 0 1px 0 rgba(255, 255, 255, .82);
+        0 0 0 1px rgba(212, 162, 92, .24),
+        0 0 36px rgba(212, 162, 92, .16),
+        inset 0 1px 0 rgba(255, 255, 255, .84);
 }
 
 html[data-brand="spa"] .pkg-card.is-left {
@@ -258,6 +263,7 @@ html[data-brand="spa"] .pkg-nav:hover {
 html[data-brand="spa"] .pkg-nav:active {
     transform: translateY(0);
 }
+
 /* Overlay arrows (desktop/tablet) */
 html[data-brand="spa"] .pkg-nav--overlay {
     position: absolute;
@@ -493,4 +499,3 @@ html[data-brand="spa"] .wheel-controls .btn {
 html[data-brand="spa"] .pkg-nav--overlay:hover {
     transform: translateY(-50%);
 }
-

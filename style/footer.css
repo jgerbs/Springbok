@@ -1,21 +1,21 @@
 /* =========================
-   FOOTER (Springbok) — FULL REWORK
-   Goals:
-   - Full desktop: BRAND | PAGES | CLINIC | SPA | MORE SPA | CONTACT
-   - Wide stacked view: brand stays logo-left/text-right, link columns align evenly
-   - Mobile: stacked cleanly with consistent gutters
-   - Top button stays bottom-right
+   FOOTER (Springbok) — CLEANED
+   Layout:
+   - Desktop: BRAND | PAGES | CLINIC | SPA | MORE SPA | CONTACT
+   - <=1360px: stacked layout with brand side-by-side + evenly spaced link grid
+   - Tablet: 2-column links
+   - Mobile: 1-column links
    ========================= */
 
 .site-footer {
   margin-top: 80px;
   padding: clamp(44px, 5vw, 56px) 0 22px;
-  color: rgba(255, 255, 255, .82);
+  color: rgba(255, 255, 255, 0.82);
   background:
-    radial-gradient(1200px 800px at 20% 0%, rgba(18, 192, 138, .18), transparent 55%),
-    radial-gradient(900px 700px at 90% 15%, rgba(18, 192, 138, .10), transparent 60%),
-    linear-gradient(180deg, rgba(2, 6, 8, .92), rgba(2, 6, 8, .98));
-  border-top: 1px solid rgba(255, 255, 255, .10);
+    radial-gradient(1200px 800px at 20% 0%, rgba(18, 192, 138, 0.18), transparent 55%),
+    radial-gradient(900px 700px at 90% 15%, rgba(18, 192, 138, 0.10), transparent 60%),
+    linear-gradient(180deg, rgba(2, 6, 8, 0.92), rgba(2, 6, 8, 0.98));
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
 }
 
 /* wider than normal site container, but not edge-to-edge */
@@ -27,21 +27,11 @@
 /* =========================
    DESKTOP
    ========================= */
+
 .footer-inner {
   display: grid;
   grid-template-columns:
-    minmax(220px, 1.05fr)
-    /* brand */
-    minmax(140px, .78fr)
-    /* pages */
-    minmax(190px, .96fr)
-    /* clinic */
-    minmax(150px, .88fr)
-    /* spa */
-    minmax(150px, .88fr)
-    /* more spa */
-    minmax(250px, 1.08fr);
-  /* contact */
+    minmax(220px, 1.05fr) minmax(140px, 0.78fr) minmax(190px, 0.96fr) minmax(150px, 0.88fr) minmax(150px, 0.88fr) minmax(250px, 1.08fr);
   column-gap: clamp(22px, 1.9vw, 34px);
   row-gap: clamp(18px, 2.2vw, 28px);
   align-items: start;
@@ -60,6 +50,7 @@
 /* =========================
    BRAND
    ========================= */
+
 .footer-brand {
   display: flex;
   flex-direction: column;
@@ -84,7 +75,7 @@
   height: auto;
   max-width: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 14px 32px rgba(0, 0, 0, .35));
+  filter: drop-shadow(0 14px 32px rgba(0, 0, 0, 0.35));
 }
 
 .footer-brand-bottom {
@@ -100,18 +91,18 @@
 .footer-brand-name {
   font-size: clamp(1.02rem, 1vw, 1.12rem);
   line-height: 1.05;
-  letter-spacing: .06em;
+  letter-spacing: 0.06em;
   font-weight: 800;
-  color: rgba(255, 255, 255, .90);
+  color: rgba(255, 255, 255, 0.90);
 }
 
 .footer-brand-sub {
   margin-top: 2px;
-  font-size: .84rem;
+  font-size: 0.84rem;
   line-height: 1.1;
-  letter-spacing: .24em;
+  letter-spacing: 0.24em;
   font-weight: 700;
-  color: rgba(255, 255, 255, .78);
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .footer-social {
@@ -128,19 +119,23 @@
   display: grid;
   place-items: center;
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, .14);
-  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  color: rgba(255, 255, 255, .86);
-  transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
+  color: rgba(255, 255, 255, 0.86);
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
 }
 
 .social-btn:hover {
   transform: translateY(-2px);
-  background: rgba(18, 192, 138, .16);
-  border-color: rgba(18, 192, 138, .26);
-  box-shadow: 0 12px 26px rgba(0, 0, 0, .22);
+  background: rgba(18, 192, 138, 0.16);
+  border-color: rgba(18, 192, 138, 0.26);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22);
 }
 
 .social-icon {
@@ -152,107 +147,108 @@
 /* =========================
    LINK COLUMNS
    ========================= */
+
 .footer-col h3 {
   margin: 0 0 12px;
-  font-size: .92rem;
+  font-size: 0.92rem;
   line-height: 1.2;
-  letter-spacing: .12em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, .92);
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .footer-col a {
   display: block;
   padding: 6px 0;
   text-decoration: none;
-  color: rgba(255, 255, 255, .68);
+  color: rgba(255, 255, 255, 0.68);
   font-weight: 650;
   line-height: 1.35;
   white-space: normal;
   overflow-wrap: anywhere;
-  transition: color .16s ease, transform .16s ease;
+  transition: color 0.16s ease, transform 0.16s ease;
 }
 
 .footer-col a:hover {
-  color: rgba(18, 192, 138, .92);
+  color: rgba(18, 192, 138, 0.92);
   transform: translateX(2px);
 }
 
 /* =========================
    CONTACT
    ========================= */
+
 .footer-contact {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 16px;
   justify-self: stretch;
   text-align: left;
-  position: relative;
   padding-left: 18px;
 }
 
 .footer-contact::before {
   content: "";
   position: absolute;
-  left: 0;
-  top: 4px;
-  bottom: 4px;
+  inset: 4px auto 4px 0;
   width: 1px;
   background: linear-gradient(180deg,
       transparent,
-      rgba(255, 255, 255, .18),
+      rgba(255, 255, 255, 0.18),
       transparent);
 }
 
 .footer-contact-title {
   margin: 0 0 8px;
   font-weight: 850;
-  font-size: .95rem;
+  font-size: 0.95rem;
   line-height: 1.25;
-  letter-spacing: .08em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, .86);
+  color: rgba(255, 255, 255, 0.86);
 }
 
 .footer-contact p {
   margin: 0;
+  font-size: 0.92rem;
   line-height: 1.6;
-  font-size: .92rem;
-  color: rgba(255, 255, 255, .62);
+  color: rgba(255, 255, 255, 0.62);
 }
 
 .footer-link {
-  color: rgba(255, 255, 255, .84);
-  text-decoration: none;
-  font-weight: 780;
   display: inline-block;
   margin-top: 6px;
-  transition: color .16s ease, transform .16s ease;
+  color: rgba(255, 255, 255, 0.84);
+  text-decoration: none;
+  font-weight: 780;
+  transition: color 0.16s ease, transform 0.16s ease;
 }
 
 .footer-link:hover {
-  color: rgba(18, 192, 138, .92);
+  color: rgba(18, 192, 138, 0.92);
   transform: translateX(2px);
 }
 
 .footer-contact-block:last-child .footer-link {
   margin-top: 0;
-  font-size: .96rem;
-  color: rgba(255, 255, 255, .88);
+  font-size: 0.96rem;
+  color: rgba(255, 255, 255, 0.88);
 }
 
 /* =========================
    BOTTOM BAR
    ========================= */
+
 .footer-bottom {
   margin-top: 28px;
   padding-top: 18px;
-  border-top: 1px solid rgba(255, 255, 255, .10);
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  color: rgba(255, 255, 255, .58);
+  color: rgba(255, 255, 255, 0.58);
   font-weight: 650;
 }
 
@@ -266,9 +262,9 @@
   width: 52px;
   height: 52px;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, .14);
-  background: rgba(255, 255, 255, .05);
-  color: rgba(255, 255, 255, .86);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.86);
   font-size: 1.1rem;
   font-weight: 900;
   line-height: 1;
@@ -279,24 +275,24 @@
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   box-shadow:
-    0 10px 26px rgba(0, 0, 0, .24),
-    inset 0 1px 0 rgba(255, 255, 255, .05);
+    0 10px 26px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
   transition:
-    transform .18s ease,
-    background .18s ease,
-    border-color .18s ease,
-    box-shadow .18s ease,
-    color .18s ease;
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    color 0.18s ease;
 }
 
 .to-top:hover {
   transform: translateY(-2px);
-  background: rgba(18, 192, 138, .14);
-  border-color: rgba(18, 192, 138, .28);
-  color: rgba(255, 255, 255, .96);
+  background: rgba(18, 192, 138, 0.14);
+  border-color: rgba(18, 192, 138, 0.28);
+  color: rgba(255, 255, 255, 0.96);
   box-shadow:
-    0 14px 32px rgba(0, 0, 0, .28),
-    0 0 0 1px rgba(18, 192, 138, .08) inset;
+    0 14px 32px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(18, 192, 138, 0.08) inset;
 }
 
 .to-top:active {
@@ -305,17 +301,16 @@
 
 .to-top:focus-visible {
   outline: none;
-  border-color: rgba(18, 192, 138, .42);
+  border-color: rgba(18, 192, 138, 0.42);
   box-shadow:
-    0 0 0 3px rgba(18, 192, 138, .16),
-    0 10px 26px rgba(0, 0, 0, .24);
+    0 0 0 3px rgba(18, 192, 138, 0.16),
+    0 10px 26px rgba(0, 0, 0, 0.24);
 }
 
 /* =========================
-   WIDE 1-COL / STACKED VIEW
-   Keep brand side-by-side
-   Keep middle evenly spaced with a real grid
+   STACKED / WIDE TABLET
    ========================= */
+
 @media (max-width: 1360px) {
   .site-footer .container {
     width: min(1680px, calc(100vw - 56px));
@@ -348,14 +343,12 @@
   .footer-brand-type {
     grid-area: type;
     align-self: end;
-    padding-top: 0;
   }
 
   .footer-social {
     grid-area: socials;
     justify-self: start;
     align-self: start;
-    margin-top: 0;
   }
 
   .footer-brand-logo {
@@ -368,41 +361,32 @@
     column-gap: clamp(24px, 3vw, 44px);
     row-gap: 20px;
     padding-top: 22px;
-    border-top: 1px solid rgba(255, 255, 255, .10);
-  }
-
-  .footer-col {
-    min-width: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
   }
 
   .footer-contact {
     padding-left: 0;
     padding-top: 18px;
-    border-top: 1px solid rgba(255, 255, 255, .10);
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
     gap: 14px;
   }
 
   .footer-contact::before {
     display: none;
   }
-
-  .footer-bottom {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
 }
 
 /* =========================
    TABLET
    ========================= */
-@media (max-width: 980px) {
-  .site-footer .container {
-    width: min(1680px, calc(100vw - 40px));
-  }
 
+@media (max-width: 980px) {
   .site-footer {
     padding: 42px 0 20px;
+  }
+
+  .site-footer .container {
+    width: min(1680px, calc(100vw - 56px));
   }
 
   .footer-cols {
@@ -412,8 +396,8 @@
   }
 
   .footer-col h3 {
-    font-size: .9rem;
     margin-bottom: 10px;
+    font-size: 0.9rem;
   }
 
   .footer-col a {
@@ -421,20 +405,21 @@
   }
 
   .footer-contact-title {
-    font-size: .92rem;
+    font-size: 0.92rem;
   }
 
   .footer-contact p {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
 }
 
 /* =========================
    MOBILE
    ========================= */
+
 @media (max-width: 700px) {
   .site-footer .container {
-    width: min(1680px, calc(100vw - 28px));
+    width: min(1680px, calc(100vw - 48px));
   }
 
   .footer-inner {
@@ -442,31 +427,20 @@
   }
 
   .footer-brand {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-areas:
-      "logo type"
-      "logo socials";
     column-gap: 16px;
-    row-gap: 8px;
-    align-items: center;
   }
 
   .footer-brand-logo {
     width: clamp(120px, 34vw, 150px);
   }
 
-  .footer-brand-type {
-    text-align: left;
-  }
-
   .footer-brand-name {
-    font-size: .98rem;
+    font-size: 0.98rem;
   }
 
   .footer-brand-sub {
-    font-size: .76rem;
-    letter-spacing: .20em;
+    font-size: 0.76rem;
+    letter-spacing: 0.20em;
   }
 
   .footer-cols {
@@ -479,9 +453,7 @@
   }
 
   .footer-bottom {
-    flex-direction: row;
     align-items: flex-end;
-    justify-content: space-between;
     gap: 14px;
   }
 
@@ -501,13 +473,14 @@
 /* =========================
    EXTRA SMALL
    ========================= */
+
 @media (max-width: 420px) {
   .site-footer {
     padding: 40px 0 18px;
   }
 
   .site-footer .container {
-    width: min(1680px, calc(100vw - 22px));
+    width: min(1680px, calc(100vw - 44px));
   }
 
   .footer-brand {
@@ -519,11 +492,11 @@
   }
 
   .footer-col h3 {
-    font-size: .86rem;
+    font-size: 0.86rem;
   }
 
   .footer-col a {
-    font-size: .98rem;
+    font-size: 0.98rem;
   }
 
   .social-btn {
@@ -539,31 +512,5 @@
   .footer-bottom {
     margin-top: 24px;
     padding-top: 16px;
-  }
-}
-
-/* =========================
-   MORE LEFT / RIGHT GUTTER
-   for stacked footer views
-   ========================= */
-
-@media (max-width: 980px) {
-  .site-footer .container {
-    width: min(1680px, calc(100vw - 56px));
-    /* was ~40px */
-  }
-}
-
-@media (max-width: 700px) {
-  .site-footer .container {
-    width: min(1680px, calc(100vw - 48px));
-    /* add more side padding */
-  }
-}
-
-@media (max-width: 420px) {
-  .site-footer .container {
-    width: min(1680px, calc(100vw - 44px));
-    /* keep some margin on very small */
   }
 }

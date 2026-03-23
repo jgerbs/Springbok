@@ -9,14 +9,7 @@
 
 .hero {
   position: relative;
-
-  min-height: 100vh;
-  min-height: 100svh;
-  min-height: 100dvh;
-
-  /* keeps spa from collapsing too short on shorter desktop/tablet heights */
   min-height: clamp(760px, 92vh, 980px);
-
   display: grid;
   align-items: end;
   box-sizing: border-box;
@@ -36,20 +29,18 @@
   content: "";
   position: absolute;
   inset: -36px;
-  border-radius: 999px;
   z-index: -1;
-
+  border-radius: 999px;
   background:
     radial-gradient(circle at 45% 35%, rgba(0, 0, 0, .55) 0%, rgba(0, 0, 0, .20) 45%, rgba(0, 0, 0, 0) 72%),
     radial-gradient(circle at 50% 55%, rgba(0, 0, 0, .30) 0%, rgba(0, 0, 0, 0) 65%);
-
   filter: blur(10px);
   opacity: .95;
 }
 
 .hero-logo {
-  height: clamp(150px, 10vw, 180px);
   width: auto;
+  height: clamp(150px, 10vw, 180px);
   filter: drop-shadow(0 14px 32px rgba(0, 0, 0, .45));
 }
 
@@ -61,17 +52,14 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-
-  /* Immediate paint fallback */
-  background: url("resources/heroVideos/sample1-poster.jpg") center/cover no-repeat;
+  background: url("resources/heroVideos/sample1-poster.jpg") center / cover no-repeat;
 }
 
 .hero-video {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-
   filter: saturate(1.06) contrast(1.06);
 }
 
@@ -79,7 +67,6 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-
   background:
     radial-gradient(900px 700px at 18% 12%, rgba(18, 192, 138, .18), transparent 60%),
     linear-gradient(180deg, rgba(0, 0, 0, .15), rgba(0, 0, 0, .82) 70%, rgba(0, 0, 0, .92));
@@ -97,38 +84,34 @@
 
 .hero h1 {
   margin: 0 0 14px;
+  max-width: 18ch;
   font-size: clamp(2.2rem, 4.2vw, 4.2rem);
   line-height: 1.05;
   letter-spacing: -.04em;
-  max-width: 18ch;
   font-weight: 650;
 }
 
 .hero p {
   margin: 0 0 22px;
-  color: rgba(255, 255, 255, .78);
-  line-height: 1.75;
-  font-size: 1.05rem;
   max-width: 62ch;
+  color: rgba(255, 255, 255, .78);
+  font-size: 1.05rem;
+  line-height: 1.75;
 }
 
 .hero-actions {
   display: flex;
-  gap: 12px;
   flex-wrap: wrap;
+  gap: 12px;
 }
 
-/* =========================================================
-   HERO — Responsive (moved from responsive.css)
-   Applies to clinic + staff + spa heroes
-   ========================================================= */
+/* =========================
+   RESPONSIVE
+   ========================= */
 
 @media (max-width: 960px) {
   .hero {
-    min-height: 100vh;
-    
     padding: 128px 0 44px;
-    position: relative;
     isolation: isolate;
   }
 
@@ -137,7 +120,6 @@
     left: calc(var(--edge-pad) + env(safe-area-inset-left));
   }
 
-  /* scale down BOTH clinic + spa hero logos on mobile */
   .hero-logo,
   .hero-logo--spa {
     height: clamp(96px, 22vw, 132px);
@@ -148,17 +130,17 @@
   }
 
   .hero h1 {
-    font-size: clamp(2.0rem, 7vw, 3.0rem);
-    line-height: 1.08;
-    letter-spacing: -0.03em;
     max-width: 22ch;
+    font-size: clamp(2rem, 7vw, 3rem);
+    line-height: 1.08;
+    letter-spacing: -.03em;
   }
 
   .hero p {
+    margin-bottom: 18px;
+    max-width: 56ch;
     font-size: 1.02rem;
     line-height: 1.6;
-    max-width: 56ch;
-    margin-bottom: 18px;
   }
 
   .hero-actions {
@@ -169,8 +151,8 @@
 
   .hero-actions .btn {
     width: 100%;
-    justify-content: center;
     min-height: 44px;
+    justify-content: center;
   }
 
   .hero-overlay {
@@ -182,18 +164,15 @@
 
 @media (max-width: 420px) {
   .hero {
-    min-height: 100vh;
     padding: 118px 0 38px;
   }
 
   .hero h1 {
-    font-size: 2.0rem;
     max-width: 24ch;
+    font-size: 2rem;
   }
 
   .hero-logo {
     height: 92px;
   }
 }
-
-

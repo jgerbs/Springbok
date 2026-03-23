@@ -10,15 +10,13 @@
 .t-wheel {
   position: relative;
   margin-top: 18px;
-
-  border-radius: 0;
+  padding: 0;
+  overflow: visible;
   border: 0;
+  border-radius: 0;
   background: transparent;
   backdrop-filter: none;
   box-shadow: none;
-
-  padding: 0;
-  overflow: visible;
 }
 
 .t-wheel::before,
@@ -28,8 +26,8 @@
   top: 0;
   bottom: 0;
   z-index: 2;
-  pointer-events: none;
   width: 120px;
+  pointer-events: none;
 }
 
 .t-wheel-track {
@@ -48,67 +46,50 @@
 .t-wheel-track .t-card {
   position: relative;
   z-index: 1;
-  overflow: hidden;
-
+  display: flex;
   flex: 0 0 360px;
+  flex-direction: column;
+  justify-content: flex-start;
   min-height: 220px;
   max-height: 220px;
   padding: 18px 18px 16px;
+  overflow: hidden;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, .12);
-  background: rgba(255, 255, 255, .06);
+  background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(12px);
-  box-shadow: 0 18px 55px rgba(0, 0, 0, .28);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.28);
 
   transition:
-    transform .30s ease,
-    border-color .30s ease,
-    background .30s ease,
-    box-shadow .30s ease,
-    max-height .52s cubic-bezier(.22, .61, .36, 1);
-}
-
-.t-wheel-track .t-card.is-expanded {
-  z-index: 5;
-  max-height: 440px;
-  transform: translateY(-4px);
-  background: rgba(255, 255, 255, .09);
-  border-color: rgba(255, 255, 255, .20);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, .34);
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    max-height 0.52s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .t-wheel-track .t-card:focus {
-  outline: 2px solid rgba(18, 192, 138, .42);
+  outline: 2px solid rgba(18, 192, 138, 0.42);
   outline-offset: 2px;
 }
 
-/* lifted feel */
+/* lifted / expanded / interactive states */
 .t-wheel-track .t-card:hover,
-.t-wheel-track .t-card.is-expanded,
-.t-wheel-track .t-card.is-locked {
-  transform: translateY(-4px);
-}
-
-/* expanded / hovered / locked card */
 .t-wheel-track .t-card.is-expanded,
 .t-wheel-track .t-card.is-locked,
-.t-wheel-track .t-card:hover,
-.t-wheel-track .t-card:focus-within,
-.t-wheel-track .t-card:focus {
+.t-wheel-track .t-card:focus,
+.t-wheel-track .t-card:focus-within {
   z-index: 6;
   max-height: 440px;
-  background: rgba(255, 255, 255, .09);
-  border-color: rgba(18, 192, 138, .42);
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(18, 192, 138, 0.42);
   box-shadow:
-    0 0 0 1px rgba(18, 192, 138, .22),
-    0 0 0 3px rgba(18, 192, 138, .08),
-    0 18px 40px rgba(18, 192, 138, .12),
-    0 24px 70px rgba(0, 0, 0, .34);
+    0 0 0 1px rgba(18, 192, 138, 0.22),
+    0 0 0 3px rgba(18, 192, 138, 0.08),
+    0 18px 40px rgba(18, 192, 138, 0.12),
+    0 24px 70px rgba(0, 0, 0, 0.34);
 }
 
 /* =========================
@@ -118,51 +99,51 @@
   margin-top: 4px;
   text-align: center;
   font-size: 1.05rem;
-  letter-spacing: .18em;
+  letter-spacing: 0.18em;
   color: #f5c56b;
 }
 
 .t-wheel-track .t-card .t-textWrap {
   position: relative;
-  margin: 14px 0 0;
   flex: 1 1 auto;
   min-height: 0;
+  margin: 14px 0 0;
   overflow: hidden;
   max-height: 4.8em;
-  transition: max-height .52s cubic-bezier(.22, .61, .36, 1);
+  transition: max-height 0.52s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .t-wheel-track .t-card .t-text {
   margin: 0;
-  line-height: 1.6;
   font-size: 1rem;
-  color: rgba(255, 255, 255, .92);
-  opacity: .94;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.92);
+  opacity: 0.94;
   transform: translateY(0);
   transition:
-    opacity .28s ease,
-    transform .36s ease;
+    opacity 0.28s ease,
+    transform 0.36s ease;
 }
 
 /* hidden full-height measuring copy */
 .t-wheel-track .t-card .t-textMeasure {
   position: absolute;
-  left: -9999px;
   top: 0;
+  left: -9999px;
+  width: calc(100% - 36px);
   visibility: hidden;
   pointer-events: none;
-  width: calc(100% - 36px);
-  line-height: 1.6;
   font-size: 1rem;
+  line-height: 1.6;
   white-space: normal;
 }
 
 /* collapsed clamp */
 .t-wheel-track .t-card:not(.is-expanded) .t-text {
   display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
   overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 /* expanded */
@@ -183,9 +164,9 @@
   right: 0;
   bottom: 0;
   height: 34px;
-  pointer-events: none;
   opacity: 1;
-  transition: opacity .28s ease;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
 }
 
 /* optional dots only when overflow exists */
@@ -196,34 +177,36 @@
   bottom: 1px;
   z-index: 2;
   padding-left: 12px;
-  color: rgba(255, 255, 255, .92);
-  background: linear-gradient(90deg, rgba(20, 24, 28, 0), rgba(20, 24, 28, .98) 42%);
+  color: rgba(255, 255, 255, 0.92);
+  background: linear-gradient(90deg,
+      rgba(20, 24, 28, 0),
+      rgba(20, 24, 28, 0.98) 42%);
 }
 
-.t-wheel-track .t-card.is-expanded .t-textWrap::after,
-.t-wheel-track .t-card.is-expanded .t-textWrap::before {
+.t-wheel-track .t-card.is-expanded .t-textWrap::before,
+.t-wheel-track .t-card.is-expanded .t-textWrap::after {
   opacity: 0;
 }
 
 .t-wheel-track .t-card .t-personRow {
-  margin-top: 16px;
   display: flex;
   align-items: center;
   gap: 12px;
   flex: 0 0 auto;
+  margin-top: 16px;
 }
 
 .t-wheel-track .t-card .t-initial {
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
   display: grid;
   place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(18, 192, 138, 0.24);
+  border-radius: 999px;
+  background: rgba(18, 192, 138, 0.14);
+  color: rgba(255, 255, 255, 0.92);
   font-weight: 700;
-  letter-spacing: .02em;
-  background: rgba(18, 192, 138, .14);
-  border: 1px solid rgba(18, 192, 138, .24);
-  color: rgba(255, 255, 255, .92);
+  letter-spacing: 0.02em;
 }
 
 .t-wheel-track .t-card .t-personMeta {
@@ -231,30 +214,21 @@
 }
 
 .t-wheel-track .t-card .t-name {
-  font-weight: 650;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  white-space: nowrap;
   overflow: hidden;
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 .t-wheel-track .t-card .t-sub {
   margin-top: 4px;
-  font-size: .9rem;
-  color: rgba(255, 255, 255, .62);
-  white-space: nowrap;
   overflow: hidden;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.62);
+  white-space: nowrap;
   text-overflow: ellipsis;
-}
-
-.t-wheel.is-paused .t-wheel-track .t-card {
-  transition:
-    transform .30s ease,
-    border-color .30s ease,
-    background .30s ease,
-    box-shadow .30s ease,
-    max-height .52s cubic-bezier(.22, .61, .36, 1);
 }
 
 /* =========================
@@ -262,9 +236,7 @@
    ========================= */
 @media (max-width: 1200px) {
   .t-wheel-track .t-card {
-    flex: 0 0 320px;
-    min-height: 220px;
-    max-height: 220px;
+    flex-basis: 320px;
   }
 
   .t-wheel-track .t-card.is-expanded {
@@ -284,7 +256,7 @@
   }
 
   .t-wheel-track .t-card {
-    flex: 0 0 280px;
+    flex-basis: 280px;
     min-height: 210px;
     max-height: 210px;
   }
@@ -307,7 +279,7 @@
   }
 
   .t-wheel-track .t-card {
-    flex: 0 0 240px;
+    flex-basis: 240px;
     min-height: unset;
     max-height: none;
     overflow: visible;
@@ -316,17 +288,10 @@
   }
 
   .t-wheel-track .t-card .t-textWrap {
-    margin: 14px 0 0;
     flex: 0 0 auto;
     min-height: unset;
     max-height: none;
     overflow: visible;
-  }
-
-  .t-wheel-track .t-card .t-text,
-  .t-wheel-track .t-card .t-textMeasure {
-    font-size: 1rem;
-    line-height: 1.6;
   }
 
   .t-wheel-track .t-card .t-text {
@@ -336,8 +301,8 @@
     transform: none;
   }
 
-  .t-wheel-track .t-card .t-textWrap::after,
   .t-wheel-track .t-card .t-textWrap::before,
+  .t-wheel-track .t-card .t-textWrap::after,
   .t-wheel-track .t-card .t-textMeasure {
     display: none !important;
   }
@@ -358,41 +323,30 @@
     padding-right: 0;
   }
 
-  .t-wheel {
-    margin-top: 18px;
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    backdrop-filter: none;
-    box-shadow: none;
-    overflow: visible;
-  }
-
   .t-wheel-track {
     gap: 8px;
     padding: 4px 8px;
   }
 
   .t-wheel-track .t-card {
-    flex: 0 0 220px;
+    flex-basis: 220px;
     padding: 14px;
   }
 
   .t-starsTop {
-    font-size: .95rem;
-    letter-spacing: .14em;
+    font-size: 0.95rem;
+    letter-spacing: 0.14em;
   }
 
   .t-wheel-track .t-card .t-text {
-    font-size: .92rem;
+    font-size: 0.92rem;
     line-height: 1.55;
   }
 
   .t-wheel-track .t-card .t-initial {
     width: 36px;
     height: 36px;
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
 
   .t-wheel::before,
