@@ -1,14 +1,26 @@
 (() => {
     const video = document.querySelector(".hero-video");
-    if (!video) return;
+    const heroMedia = document.querySelector(".hero-media");
+    const heroImg = document.querySelector(".hero-poster-img");
+
+    if (!video && !heroImg) return;
 
     const mobileMQ = window.matchMedia("(max-width: 960px)");
     const reduceMotionMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    const mobileSrc = video.dataset.videoMobile;
-    const desktopSrc = video.dataset.videoDesktop;
+    const mobileSrc = video?.dataset.videoMobile || "";
+    const desktopSrc = video?.dataset.videoDesktop || "";
 
     let activeSrc = "";
+
+    function syncHeroBlurBackground() {
+        if (!heroMedia || !heroImg) return;
+
+        const src = heroImg.currentSrc || heroImg.src;
+        if (!src) return;
+
+        heroMedia.style.setProperty("--hero-blur-bg", `url("${src}")`);
+    }
 
     function wantedSrc() {
         if (reduceMotionMQ.matches) return "";
@@ -16,6 +28,7 @@
     }
 
     function stopVideo() {
+        if (!video) return;
         video.pause();
         video.removeAttribute("src");
         video.load();
@@ -23,6 +36,10 @@
     }
 
     async function startVideo() {
+        syncHeroBlurBackground();
+
+        if (!video) return;
+
         const src = wantedSrc();
         if (!src) {
             stopVideo();
@@ -50,16 +67,24 @@
     }
 
     function onChange() {
+        syncHeroBlurBackground();
         startVideo();
     }
 
     document.addEventListener("visibilitychange", () => {
         if (document.hidden) {
-            video.pause();
+            if (video) video.pause();
         } else {
             startVideo();
         }
     });
+
+    window.addEventListener("load", syncHeroBlurBackground);
+    window.addEventListener("resize", syncHeroBlurBackground);
+
+    if (heroImg) {
+        heroImg.addEventListener("load", syncHeroBlurBackground);
+    }
 
     if (mobileMQ.addEventListener) {
         mobileMQ.addEventListener("change", onChange);
@@ -69,5 +94,6 @@
         reduceMotionMQ.addListener(onChange);
     }
 
+    syncHeroBlurBackground();
     startVideo();
 })();
