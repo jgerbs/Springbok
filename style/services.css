@@ -246,8 +246,8 @@
 .logo-slab {
   position: relative;
   display: grid;
-  grid-template-columns: 56% 44%;
-  min-height: clamp(240px, 20vw, 310px);
+  grid-template-columns: 1fr 1fr;
+  min-height: clamp(280px, 32vw, 430px);
   margin-bottom: 22px;
   border-radius: 28px;
   overflow: hidden;
@@ -273,7 +273,7 @@
 }
 
 .logo-slab--logo-right {
-  grid-template-columns: 44% 56%;
+  grid-template-columns: 1fr 1fr;
 }
 
 /* Logo side */
@@ -281,7 +281,8 @@
   position: relative;
   display: grid;
   place-items: center;
-  padding: clamp(18px, 2.5vw, 42px);
+  padding: clamp(28px, 3.2vw, 48px);
+  min-height: clamp(260px, 30vw, 420px);
   background:
     radial-gradient(900px 520px at 30% 35%, rgba(18, 192, 138, 0.18), transparent 62%),
     radial-gradient(900px 520px at 70% 15%, rgba(197, 138, 99, 0.10), transparent 65%),
@@ -290,16 +291,27 @@
 
 .logo-slab__logo img {
   display: block;
-  width: min(520px, 92%);
+  width: min(88%, 520px);
+  max-width: 520px;
+  max-height: clamp(220px, 24vw, 360px);
   height: auto;
   object-fit: contain;
+  object-position: center;
   opacity: 0.98;
   filter: drop-shadow(0 22px 60px rgba(0, 0, 0, 0.70));
 }
 
+/* make both brand logos occupy the same visual box */
+.logo-slab__logo--clinic img,
+.logo-slab__logo--spa img {
+  width: min(88%, 520px);
+  max-width: 520px;
+  max-height: clamp(220px, 24vw, 360px);
+}
+
+/* remove old spa overscaling */
 .logo-slab__logo--spa {
-  transform: scale(1.06);
-  transform-origin: center;
+  transform: none;
 }
 
 /* Content side */
@@ -310,7 +322,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 12px;
-  padding: clamp(22px, 2.8vw, 44px);
+  padding: clamp(24px, 2.8vw, 44px);
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55));
 }
 
@@ -508,6 +520,7 @@
   .logo-slab__logo,
   .logo-slab--logo-right .logo-slab__logo {
     order: 1;
+    min-height: clamp(240px, 52vw, 360px);
   }
 
   .logo-slab__content,
@@ -528,5 +541,12 @@
   .logo-slab__content--right .logo-slab__bullets li::before {
     right: auto;
     left: 0;
+  }
+
+  .logo-slab__logo img,
+  .logo-slab__logo--clinic img,
+  .logo-slab__logo--spa img {
+    width: min(84%, 460px);
+    max-height: clamp(200px, 46vw, 300px);
   }
 }
