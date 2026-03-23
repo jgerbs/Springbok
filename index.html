@@ -12,16 +12,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- CSS -->
+  <!-- CSS needed immediately -->
   <link rel="stylesheet" href="style/base.css" />
-  <link rel="stylesheet" href="style/footer.css" />
   <link rel="stylesheet" href="style/header.css" />
   <link rel="stylesheet" href="style/hero.css" />
-  <link rel="stylesheet" href="style/reviews.css" />
-  <link rel="stylesheet" href="style/mission.css" />
-  <link rel="stylesheet" href="style/services.css" />
   <link rel="stylesheet" href="style/responsive.css" />
-  <link rel="stylesheet" href="style/staffWheel.css" />
-  <link rel="stylesheet" href="style/practiceModal.css" />
+
+  <!-- CSS loaded after first paint -->
+  <link rel="preload" href="style/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="style/reviews.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="style/mission.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="style/services.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="style/staffWheel.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="style/practiceModal.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <noscript>
+    <link rel="stylesheet" href="style/footer.css" />
+    <link rel="stylesheet" href="style/reviews.css" />
+    <link rel="stylesheet" href="style/mission.css" />
+    <link rel="stylesheet" href="style/services.css" />
+    <link rel="stylesheet" href="style/staffWheel.css" />
+    <link rel="stylesheet" href="style/practiceModal.css" />
+  </noscript>
 
   <!-- Perf: preconnect to GitHub Pages asset host (helps a bit on mobile) -->
   <link rel="preconnect" href="https://jgerbs.github.io" crossorigin>
@@ -93,9 +105,15 @@
       </a>
 
       <div class="hero-media">
-        <video class="hero-video" muted playsinline webkit-playsinline loop preload="metadata"
-          poster="resources/content/springbok2.webp" data-src-mobile="resources/content/springbok2.mp4"
-          data-src-desktop="resources/content/springbok2.mp4"></video>
+        <picture class="hero-poster">
+          <source media="(max-width: 768px)" srcset="resources/content/springbok2-mobile.webp">
+          <img src="resources/content/springbok2.webp" alt="" class="hero-poster-img" width="1600" height="900"
+            fetchpriority="high" decoding="async">
+        </picture>
+
+        <video class="hero-video" muted playsinline loop preload="none" poster="resources/content/springbok2.webp">
+          <source src="resources/content/springbok2.mp4" type="video/mp4">
+        </video>
 
         <div class="hero-overlay"></div>
       </div>
@@ -666,7 +684,8 @@
             <div class="footer-brand-sub">MEDICAL CLINIC</div>
           </div>
           <div class="footer-social" aria-label="Social links">
-            <a class="social-btn" target="_blank" rel="noopener" href="https://www.instagram.com/springbokmedicalspa" aria-label="Instagram">
+            <a class="social-btn" target="_blank" rel="noopener" href="https://www.instagram.com/springbokmedicalspa"
+              aria-label="Instagram">
               <img class="social-icon" src="resources/instagram-logo.svg" alt="Instagram" loading="lazy"
                 decoding="async">
             </a>
