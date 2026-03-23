@@ -1,9 +1,10 @@
 /* =========================================================
    Mission Slider — SINGLE SLIDE + TIMER + ARROWS
    Corner text (no dark panel) + stagger reveal
-   iOS FIX:
-   - Mobile uses a REAL element (.mission-media) for image row
-     (no pseudo inherit / no CSS var background reliance)
+   Desktop:
+   - blurred background clone behind sharp contained image
+   Mobile:
+   - keeps cover-image treatment for stronger fill
    ========================================================= */
 
 .mission-v2 {
@@ -72,6 +73,7 @@
   pointer-events: none;
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   will-change: opacity;
@@ -83,11 +85,28 @@
   pointer-events: auto;
 }
 
-/* Desktop overlay */
+/* blurred background clone (desktop) */
+.mission-item::before {
+  content: "";
+  position: absolute;
+  inset: -24px;
+  z-index: 0;
+  background-image: inherit;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(22px) saturate(1.04) brightness(.82);
+  transform: scale(1.08);
+  opacity: .95;
+  pointer-events: none;
+}
+
+/* overlay sits above media */
 .mission-item::after {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 2;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.55s ease;
@@ -106,9 +125,16 @@
       rgba(0, 0, 0, 0.44) 100%);
 }
 
-/* hidden on desktop */
+/* sharp foreground image layer */
 .mission-media {
-  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  background-image: inherit;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 /* =========================================================
@@ -338,22 +364,48 @@
   }
 
   .mission-v2-shell {
-    height: clamp(300px, 78vw, 420px);
-    min-height: 300px;
-    max-height: 420px;
+    height: clamp(340px, 96vw, 460px);
+    min-height: 340px;
+    max-height: 460px;
     border-radius: 26px;
   }
 
   @supports (aspect-ratio: 1 / 1) {
     .mission-v2-shell {
-      aspect-ratio: 1 / 1.08;
-      min-height: 300px;
-      max-height: 420px;
+      aspect-ratio: 1 / 1.12;
+      min-height: 340px;
+      max-height: 460px;
     }
   }
 
+  .mission-item {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  /* keep a softer blurred fill behind the real image */
+  .mission-item::before {
+    display: block;
+    inset: -18px;
+    background-image: inherit;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(18px) saturate(1.02) brightness(.72);
+    transform: scale(1.06);
+    opacity: .92;
+  }
+
+  /* show the real image on mobile too, but let it fit fully */
   .mission-media {
-    display: none !important;
+    display: block !important;
+    inset: 0;
+    background-image: inherit;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 1;
   }
 
   .mission-item::after {
@@ -361,13 +413,13 @@
     background:
       linear-gradient(180deg,
         rgba(0, 0, 0, 0.16) 0%,
-        rgba(0, 0, 0, 0.22) 28%,
-        rgba(0, 0, 0, 0.56) 68%,
-        rgba(0, 0, 0, 0.88) 100%),
+        rgba(0, 0, 0, 0.18) 24%,
+        rgba(0, 0, 0, 0.44) 58%,
+        rgba(0, 0, 0, 0.84) 100%),
       linear-gradient(90deg,
-        rgba(0, 0, 0, 0.56) 0%,
-        rgba(0, 0, 0, 0.22) 42%,
-        rgba(0, 0, 0, 0.1) 100%);
+        rgba(0, 0, 0, 0.44) 0%,
+        rgba(0, 0, 0, 0.18) 42%,
+        rgba(0, 0, 0, 0.08) 100%);
   }
 
   .mission-content,
@@ -382,7 +434,7 @@
     top: auto !important;
     bottom: 64px !important;
     width: auto !important;
-    max-width: 92% !important;
+    max-width: none !important;
     padding: 0 !important;
     text-align: left !important;
     text-shadow: 0 8px 22px rgba(0, 0, 0, 0.58);
@@ -407,17 +459,18 @@
 
   .mission-title {
     margin: 0 0 8px;
-    font-size: clamp(1.55rem, 6vw, 2rem);
+    max-width: 15ch;
+    font-size: clamp(1.5rem, 6vw, 1.95rem);
     line-height: 1.02;
     letter-spacing: -0.02em;
   }
 
   .mission-desc {
     margin: 0 0 12px;
-    max-width: 32ch;
-    font-size: 0.97rem;
+    max-width: 34ch;
+    font-size: 0.95rem;
     line-height: 1.45;
-    color: rgba(255, 255, 255, 0.88);
+    color: rgba(255, 255, 255, 0.9);
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
@@ -436,6 +489,7 @@
 
   .mission-controls {
     gap: 8px;
+    padding: 10px 12px 12px;
   }
 
   .mission-nav-btn {

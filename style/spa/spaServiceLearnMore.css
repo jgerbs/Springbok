@@ -341,10 +341,16 @@ html[data-brand="spa"] .svc-detail p {
 
 html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-options-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    align-items: stretch;
     gap: 16px;
     margin-top: 22px;
+    align-items: stretch;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* direct two-card layouts (Botox / Filler / Microneedling / Plasma etc.) */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-options-grid--duo {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
 }
 
 html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt {
@@ -456,7 +462,6 @@ html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt--feature {
     border-color: rgba(191, 146, 90, .55);
 }
 
-
 /* =========================================================
    07) GENERIC OPTIONS ACCORDION HELPERS
    ========================================================= */
@@ -486,7 +491,6 @@ html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt-acc .svc-opt
 html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt-subacc .svc-options-grid {
     margin-top: 12px;
 }
-
 
 /* =========================================================
    08) MORPHEUS DROPDOWN ROWS
@@ -606,8 +610,186 @@ html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-body {
     padding: 0 22px 22px;
 }
 
+/* cards inside dropdowns */
 html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-body .svc-options-grid {
     margin-top: 12px;
+    display: grid;
+    gap: 18px;
+    align-items: stretch;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+/* make cards fill their grid cells inside dropdowns */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-body .svc-opt {
+    min-height: 250px;
+    width: 100%;
+}
+
+/* if a row only has one card, keep it readable instead of tiny */
+html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-body .svc-options-grid>.svc-opt:only-child {
+    max-width: 520px;
+}
+
+/* =========================================================
+   13) RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-options-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-options-grid--duo {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 1024px) {
+    html[data-brand="spa"] .svc-quick {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    html[data-brand="spa"] .svc-card {
+        grid-column: span 6;
+    }
+
+    html[data-brand="spa"] .svc-detail {
+        grid-column: span 6;
+    }
+
+    html[data-brand="spa"] .ba-card {
+        grid-column: span 12;
+    }
+}
+
+@media (max-width: 1010px) {
+    .svc-flow-steps {
+        flex-direction: column;
+        align-items: center;
+        gap: 26px;
+    }
+
+    .svc-step {
+        max-width: 420px;
+    }
+
+    .svc-arrow--desktop {
+        display: none;
+    }
+
+    .svc-arrow--mobile {
+        display: block;
+    }
+}
+
+@media (max-width: 900px) {
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-body .svc-options-grid {
+        grid-template-columns: 1fr;
+    }
+
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-body .svc-opt {
+        min-height: 0;
+    }
+
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-body .svc-options-grid>.svc-opt:only-child {
+        max-width: none;
+    }
+}
+
+@media (max-width: 700px) {
+
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-options-grid,
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-options-grid--duo {
+        grid-template-columns: 1fr;
+    }
+
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt-provider {
+        max-width: 52%;
+    }
+}
+
+@media (max-width: 640px) {
+    html[data-brand="spa"] .svc-hero {
+        padding: 110px 0 46px;
+    }
+
+    html[data-brand="spa"] .svc-hero-actions {
+        gap: 10px;
+    }
+
+    html[data-brand="spa"] .svc-chip {
+        padding: 11px;
+        border-radius: 14px;
+    }
+
+    html[data-brand="spa"] .svc-card,
+    html[data-brand="spa"] .svc-detail {
+        grid-column: span 12;
+    }
+
+    html[data-brand="spa"] .ba-compare {
+        grid-template-columns: 1fr;
+    }
+
+    html[data-brand="spa"] .ba-pane+.ba-pane {
+        border-left: 0;
+        border-top: 1px solid rgba(18, 18, 18, .08);
+    }
+
+    html[data-brand="spa"] .ba-head {
+        padding: 14px 14px 10px;
+    }
+
+    html[data-brand="spa"] .ba-cap {
+        padding: 12px 14px 14px;
+    }
+
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-sum {
+        padding: 18px 16px;
+    }
+
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-body {
+        padding: 0 16px 16px;
+    }
+
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-title {
+        font-size: 1.2rem;
+    }
+
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt {
+        padding: 15px;
+        border-radius: 20px;
+        min-height: 0;
+    }
+
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt-top {
+        gap: 8px;
+    }
+
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt-title {
+        font-size: 1.04rem;
+    }
+
+    html[data-brand="spa"][data-page="spa-service-learn-more"] .svc-opt-price {
+        padding: 7px 10px;
+        font-size: .88rem;
+    }
+}
+
+@media (max-width: 520px) {
+    html[data-brand="spa"] .svc-opt-acc>.svc-faq-summary {
+        padding: 16px 14px;
+    }
+
+    html[data-brand="spa"] .svc-opt-subacc>.svc-faq-summary {
+        padding: 14px 14px;
+    }
+}
+
+@media (max-width: 380px) {
+    html[data-brand="spa"] .ba-pane {
+        aspect-ratio: 1 / 1;
+    }
 }
 
 

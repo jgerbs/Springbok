@@ -4,20 +4,75 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Springbok Medical Clinic | Home</title>
+
+  <!-- prevent theme flash -->
+  <script>
+    (function () {
+      try {
+        var brand = document.documentElement.getAttribute("data-brand");
+        if (!brand) {
+          document.documentElement.setAttribute("data-brand", "clinic");
+        }
+      } catch (e) { }
+    })();
+  </script>
+
+  <!-- Primary SEO -->
+  <title>Springbok Medical | Kelowna, B.C.</title>
+  <meta name="description"
+    content="Springbok Medical Clinic in Kelowna, BC offers family practice, hormone support, naturopathic medicine, and medical spa treatments including Botox, filler, laser hair removal, IPL, Morpheus8, PRP, and IV therapy." />
+  <meta name="keywords"
+    content="Springbok Medical Clinic, Kelowna medical clinic, Kelowna family doctor, hormone therapy Kelowna, naturopath Kelowna, medical spa Kelowna, Botox Kelowna, filler Kelowna, laser hair removal Kelowna, Morpheus8 Kelowna, IPL Kelowna, IV therapy Kelowna" />
+  <meta name="author" content="Springbok Medical Clinic" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="theme-color" content="#0d1f18" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://springbokmedical.com/index.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Springbok Medical Clinic | Kelowna Family Practice, Hormone Care & Medical Spa" />
+  <meta property="og:description"
+    content="Family medicine, hormone support, naturopathic care, and physician-led medical spa treatments in Kelowna, BC." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://springbokmedical.com/index.html" />
+  <meta property="og:image" content="https://springbokmedical.com/resources/content/springbok2.webp" />
+  <meta property="og:site_name" content="Springbok Medical Clinic" />
+  <meta property="og:locale" content="en_CA" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Springbok Medical Clinic | Kelowna Medical Clinic & Spa" />
+  <meta name="twitter:description"
+    content="Kelowna family practice, hormone support, naturopathic care, and medical spa services including injectables, laser, skin rejuvenation, and IV therapy." />
+  <meta name="twitter:image" content="https://springbokmedical.com/resources/content/springbok2.webp" />
+
+  <!-- Local SEO -->
+  <meta name="geo.region" content="CA-BC" />
+  <meta name="geo.placename" content="Kelowna" />
+  <meta name="geo.position" content="49.8880;-119.4960" />
+  <meta name="ICBM" content="49.8880, -119.4960" />
+
+  <!-- Icons -->
+  <link rel="icon" href="resources/content/cliniclogo1.webp" />
+  <link rel="apple-touch-icon" href="resources/content/cliniclogo1.webp" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- CSS needed immediately -->
+  <!-- Perf -->
+  <link rel="preconnect" href="https://jgerbs.github.io" crossorigin>
+  <link rel="preload" as="image" href="resources/content/springbok2.webp" fetchpriority="high" />
+
+  <!-- CSS critical -->
   <link rel="stylesheet" href="style/base.css" />
   <link rel="stylesheet" href="style/header.css" />
   <link rel="stylesheet" href="style/hero.css" />
   <link rel="stylesheet" href="style/responsive.css" />
 
-  <!-- CSS loaded after first paint -->
+  <!-- CSS deferred -->
   <link rel="preload" href="style/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="style/reviews.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="style/mission.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -34,8 +89,78 @@
     <link rel="stylesheet" href="style/practiceModal.css" />
   </noscript>
 
-  <!-- Perf: preconnect to GitHub Pages asset host -->
-  <link rel="preconnect" href="https://jgerbs.github.io" crossorigin>
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "Springbok Medical Clinic",
+    "url": "https://springbokmedical.com/index.html",
+    "image": "https://springbokmedical.com/resources/content/springbok2.webp",
+    "telephone": "+1-778-940-9811",
+    "email": "contact@springbokmedical.com",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "590 McKay Ave #200",
+      "addressLocality": "Kelowna",
+      "addressRegion": "BC",
+      "postalCode": "V1Y 5A8",
+      "addressCountry": "CA"
+    },
+    "areaServed": "Kelowna, BC",
+    "medicalSpecialty": [
+      "Family Practice",
+      "Hormone Therapy",
+      "Naturopathic Medicine",
+      "Medical Spa"
+    ],
+    "sameAs": [
+      "https://www.instagram.com/springbokmedicalspa"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Springbok Medical Clinic",
+    "url": "https://springbokmedical.com/"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Springbok Medical Clinic",
+    "url": "https://springbokmedical.com/",
+    "logo": "https://springbokmedical.com/resources/content/cliniclogo1.webp",
+    "image": "https://springbokmedical.com/resources/content/springbok2.webp",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-778-940-9811",
+      "contactType": "customer service",
+      "areaServed": "CA"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://springbokmedical.com/index.html"
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -57,27 +182,23 @@
             Book Clinic
           </a>
 
-          <!-- Book Spa goes to Jane -->
           <a class="btn btn-accent book-cta" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
             rel="noopener">
             Book Spa
           </a>
 
-          <!--show only when mobile view is enabled -->
           <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open menu" aria-controls="mobilePanel"
             aria-expanded="false">
             <span class="burger" aria-hidden="true">
               <span></span><span></span><span></span>
             </span>
           </button>
-
         </div>
       </div>
 
       <!-- mobile panel -->
       <div class="container mobile-panel" id="mobilePanel" aria-hidden="true">
         <div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile menu">
-
           <nav class="mobile-menu-links" aria-label="Mobile navigation">
             <a class="mobile-link is-active" href="index.html">Home</a>
             <a class="mobile-link" href="About.html">About Us</a>
@@ -86,18 +207,14 @@
             <a class="mobile-link" href="Team.html">Our Team</a>
             <a class="mobile-link" href="Contact.html">Contact</a>
           </nav>
-
         </div>
       </div>
-
     </header>
   </div>
 
   <main>
     <section class="hero">
-      <!-- LOGO: part of HERO visually, but fixed top-left -->
       <a class="hero-brand reveal" href="index.html" aria-label="Springbok Home">
-        <!-- eager because it's visible immediately -->
         <img src="resources/content/cliniclogo1.webp" alt="Springbok Medical Clinic" class="hero-logo"
           fetchpriority="high" decoding="async" />
       </a>
@@ -105,8 +222,9 @@
       <div class="hero-media">
         <picture class="hero-poster">
           <source media="(max-width: 768px)" srcset="resources/content/springbok2.webp">
-          <img src="resources/content/springbok2.webp" alt="" class="hero-poster-img" width="1600" height="900"
-            fetchpriority="high" decoding="async">
+          <img src="resources/content/springbok2.webp"
+            alt="Springbok Medical Clinic and Medical Spa in Kelowna, British Columbia" class="hero-poster-img"
+            width="1600" height="900" fetchpriority="high" decoding="async">
         </picture>
 
         <video class="hero-video" muted playsinline webkit-playsinline loop preload="none"
@@ -116,19 +234,16 @@
         <div class="hero-overlay"></div>
       </div>
 
-
       <div class="container hero-content reveal">
-        <h1>Springbok Medical</h1>
+        <h1>Springbok Medical Clinic</h1>
         <p>
-          Explore our clinic and spa services, meet our team, and connect with care designed to support both health and
-          confidence.
+          Physician-led care in Kelowna with family practice, hormone support, naturopathic medicine, and medical spa
+          treatments designed to support both health and confidence.
         </p>
         <div class="hero-actions">
           <a class="btn btn-accent book-cta" href="#" data-open-doctor-modal data-doctor="General Inquiry">
             Book Clinic
           </a>
-
-          <!-- Book Spa goes to Jane -->
           <a class="btn btn-accent book-cta" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
             rel="noopener">
             Book Spa
@@ -143,11 +258,10 @@
         <div class="mission-v2-shell reveal">
           <ul class="mission-slider" data-mission-slider>
 
-            <!-- Slide 1 -->
             <li class="mission-item is-active" data-pos="bl"
-              style="background-image:url('resources/content/team_vertical.webp')">
+              style="background-image:url('resources/content/team2.jpg')">
               <div class="mission-media" aria-hidden="true"
-                style="background-image:url('resources/content/team_vertical.webp')">
+                style="background-image:url('resources/content/team2.jpg')">
               </div>
               <div class="mission-content">
                 <h2 class="mission-title">ABOUT US</h2>
@@ -159,7 +273,6 @@
               </div>
             </li>
 
-            <!-- Slide 2 -->
             <li class="mission-item" data-pos="br" style="background-image:url('resources/content/family.webp')">
               <div class="mission-media" aria-hidden="true"
                 style="background-image:url('resources/content/family.webp')">
@@ -174,7 +287,6 @@
               </div>
             </li>
 
-            <!-- Slide 3 -->
             <li class="mission-item" data-pos="bl" style="background-image:url('resources/content/hormones.webp')">
               <div class="mission-media" aria-hidden="true"
                 style="background-image:url('resources/content/hormones.webp')">
@@ -189,13 +301,12 @@
               </div>
             </li>
 
-            <!-- Slide 4 -->
             <li class="mission-item" data-pos="br"
               style="background-image:url('resources/content/naturopathPills.webp')">
               <div class="mission-media" aria-hidden="true"
                 style="background-image:url('resources/content/naturopathPills.webp')"></div>
               <div class="mission-content">
-                <h2 class="mission-title">NATUROPATH MEDICINE</h2>
+                <h2 class="mission-title">NATUROPATHIC MEDICINE</h2>
                 <p class="mission-desc">
                   Integrative care that looks deeper at the root causes of symptoms while supporting whole-person
                   wellbeing.
@@ -204,7 +315,6 @@
               </div>
             </li>
 
-            <!-- Slide 5 -->
             <li class="mission-item" data-pos="bl" style="background-image:url('resources/heroVideos/spa-poster.jpg')">
               <div class="mission-media" aria-hidden="true"
                 style="background-image:url('resources/heroVideos/spa-poster.jpg')"></div>
@@ -233,14 +343,11 @@
       </div>
     </section>
 
-
     <section class="services-logo-slab" id="services">
       <div class="container">
 
-        <!-- Clinic -->
         <a class="logo-slab logo-slab--clinic logo-slab--logo-left reveal reveal-slab" href="Clinic.html"
           aria-label="Explore the Medical Clinic">
-
           <div class="logo-slab__logo reveal-item">
             <img src="resources/content/cliniclogo1.webp" alt="Springbok Medical Clinic" loading="lazy"
               decoding="async">
@@ -260,10 +367,8 @@
           </div>
         </a>
 
-        <!-- Spa -->
         <a class="logo-slab logo-slab--spa logo-slab--logo-right reveal reveal-slab" href="Spa.html"
           aria-label="Explore the Medical Spa">
-
           <div class="logo-slab__content logo-slab__content--left">
             <h2 class="logo-slab__title reveal-item">Medical Spa</h2>
 
@@ -299,7 +404,6 @@
 
           <div class="staff-wheel" id="staffWheel" aria-label="Staff carousel (looping)">
 
-            <!-- Dr. Amor Kloppers -->
             <a class="service-tile" href="DrAmorKloppers.html" aria-label="Dr. Amor Kloppers — Family Practice">
               <div class="tile-bg" style="background-image: url('resources/content/amor.webp')"></div>
               <div class="tile-shade"></div>
@@ -318,7 +422,6 @@
               </div>
             </a>
 
-            <!-- Dr. Francois Erasmus -->
             <a class="service-tile" href="DrFrancoisErasmus.html" aria-label="Dr. Francois Erasmus — Family Practice">
               <div class="tile-bg" style="background-image: url('resources/content/francois.webp')"></div>
               <div class="tile-shade"></div>
@@ -337,7 +440,6 @@
               </div>
             </a>
 
-            <!-- Dr. Kacey Kiesman -->
             <a class="service-tile" href="DrKaceyKiesman.html" aria-label="Dr. Kacey Kiesman — Naturopathic Medicine">
               <div class="tile-bg" style="background-image: url('resources/content/kacey2.webp')"></div>
               <div class="tile-shade"></div>
@@ -356,7 +458,6 @@
               </div>
             </a>
 
-            <!-- Support: Reception (link to Contact page) -->
             <a class="service-tile" href="Contact.html" aria-label="Lorena Fuhrmann — Reception">
               <div class="tile-bg" style="background-image: url('resources/staff6.jpg')"></div>
               <div class="tile-shade"></div>
@@ -375,31 +476,10 @@
               </div>
             </a>
 
-            <!-- Support: Registered Nurse (link to Team page) -->
-            <!-- <a class="service-tile" href="Team.html" aria-label="First Last — Registered Nurse">
-              <div class="tile-bg" style="background-image: url('resources/staff3.jpg')"></div>
-              <div class="tile-shade"></div>
-              <div class="tile-inner">
-                <div class="tile-top">
-                  <span class="tile-dot"></span>
-                  <span class="tile-tag">Registered Nurse</span>
-                </div>
-                <div class="tile-bottom">
-                  <h3>First Last</h3>
-                  <p class="tile-desc">
-                    Coordinating bookings and follow-ups so your next step is always straightforward.
-                  </p>
-                  <span class="tile-cta">View Team <span class="tile-arrow">→</span></span>
-                </div>
-              </div>
-            </a> -->
-
             <a class="service-tile service-tile--coming" href="Team.html" aria-label="New Providers Coming Soon">
-
               <div class="tile-bg tile-bg--empty"></div>
               <div class="tile-shade"></div>
 
-              <!-- Centered Plus -->
               <div class="tile-plus-wrap">
                 <span class="tile-plus" aria-hidden="true">+</span>
               </div>
@@ -421,9 +501,6 @@
               </div>
             </a>
 
-
-
-            <!-- Dr. Janneme Frouws -->
             <a class="service-tile" href="DrJannemeFrouws.html" aria-label="Dr. Janneme Frouws — Hormone Specialist">
               <div class="tile-bg" style="background-image: url('resources/content/janneme.webp')"></div>
               <div class="tile-shade"></div>
@@ -443,24 +520,19 @@
             </a>
           </div>
 
-
-
           <button class="staff-nav staff-next staff-nav--overlay" type="button" aria-label="Next staff">›</button>
 
           <div class="wheel-controls">
             <button class="staff-nav staff-prev staff-nav--row" type="button" aria-label="Previous staff">‹</button>
-
             <a class="btn btn-outline" href="Team.html">View Full Team</a>
-
             <button class="staff-nav staff-next staff-nav--row" type="button" aria-label="Next staff">›</button>
           </div>
         </div>
+      </div>
     </section>
 
-    <!-- TESTIMONIALS (slow rotating wheel) -->
     <section class="testimonials" id="testimonials">
       <div class="container reveal">
-
         <div class="section-head">
           <span class="section-eyebrow">Testimonials</span>
           <h2 class="section-title">Trusted care, in patients’ own words.</h2>
@@ -629,8 +701,7 @@
               <div class="t-textWrap">
                 <p class="t-text">
                   Amazing clinic with the most compassionate and knowledgeable doctors and staff. Could not have asked
-                  to
-                  find a better clinic.
+                  to find a better clinic.
                 </p>
               </div>
               <div class="t-personRow">
@@ -661,7 +732,6 @@
 
           </div>
         </div>
-
       </div>
     </section>
   </main>
@@ -748,12 +818,10 @@
 
     <div class="container footer-bottom">
       <p>© <span id="footerYear"></span> Springbok Medical Clinic — All Rights Reserved</p>
-
       <button class="to-top" type="button" aria-label="Back to top" id="toTopBtn">^</button>
     </div>
   </footer>
 
-  <!-- CONTACT DOCTOR MODAL (Netlify Forms-ready, styled like contactModal) -->
   <div class="modal" id="doctorModal" aria-hidden="true">
     <div class="modal-backdrop" data-close="true"></div>
 
@@ -768,14 +836,11 @@
         </p>
       </div>
 
-      <!-- Netlify Forms: method + data-netlify + form-name + honeypot -->
       <form class="modal-form" id="doctorContactForm" name="doctor-contact" method="POST" data-netlify="true"
         netlify-honeypot="bot-field">
 
-        <!-- required hidden form-name -->
         <input type="hidden" name="form-name" value="doctor-contact" />
 
-        <!-- honeypot (spam trap) -->
         <p style="display:none;">
           <label>
             Don’t fill this out if you're human:
@@ -807,7 +872,6 @@
               <span class="dd-value" data-placeholder="Select one">Select one</span>
             </button>
 
-            <!-- keep your hidden input, Netlify will capture it -->
             <input type="hidden" name="doctor" id="doctorSelect" required />
 
             <ul class="dd-menu" role="listbox" aria-label="Doctor / Service">
@@ -826,7 +890,6 @@
               <span class="dd-value" data-placeholder="Select one">Select one</span>
             </button>
 
-            <!-- keep your hidden input, Netlify will capture it -->
             <input type="hidden" name="apptType" id="apptTypeSelect" required />
 
             <ul class="dd-menu" role="listbox" aria-label="Appointment type"></ul>
@@ -835,7 +898,7 @@
           <label class="field field-span">
             <span class="field-label">Subject</span>
             <input class="field-input" type="text" name="requestSubject" id="subjectInput"
-              placeholder="e.g., Face Lift, Blood Transfusion, IV Therapy, etc..." required />
+              placeholder="e.g., Family Practice, Hormone Support, Botox, Laser, IV Therapy, etc..." required />
           </label>
 
           <label class="field field-span">
@@ -843,7 +906,6 @@
             <textarea class="field-input field-textarea" name="message"
               placeholder="Tell us what you’re looking for and any timing preferences." rows="5" required></textarea>
           </label>
-
         </div>
 
         <div class="modal-actions">
@@ -858,7 +920,6 @@
     </div>
   </div>
 
-
   <!-- JS -->
   <script src="js/prefillFields.js" defer></script>
   <script src="js/staffWheel.js" defer></script>
@@ -870,7 +931,6 @@
   <script src="js/contactDoctorModal.js" defer></script>
   <script src="js/missionSlider.js" defer></script>
   <script src="js/playVideo.js" defer></script>
-
 </body>
 
 </html>
