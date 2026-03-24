@@ -695,12 +695,20 @@ html[data-brand="clinic"] .clinic .provider-name {
     color: rgba(255, 255, 255, .92);
 }
 
+/* updated: never stack provider action buttons */
 html[data-brand="clinic"] .clinic .provider-actions {
     margin-top: 6px;
     display: flex;
     gap: 10px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
+    min-width: 0;
+}
+
+html[data-brand="clinic"] .clinic .provider-actions .btn {
+    flex: 0 1 auto;
+    min-width: 0;
+    white-space: nowrap;
 }
 
 
@@ -821,10 +829,11 @@ html[data-brand="clinic"] .clinic .provider-card {
     html[data-brand="clinic"] .clinic .provider-actions {
         margin-top: 8px;
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         flex-direction: row;
         gap: 8px;
         align-items: center;
+        min-width: 0;
     }
 
     html[data-brand="clinic"] .clinic .provider-actions .btn {
@@ -834,6 +843,8 @@ html[data-brand="clinic"] .clinic .provider-card {
         padding: 9px 12px;
         font-size: .86rem;
         justify-content: center;
+        white-space: nowrap;
+        flex: 0 1 auto;
     }
 }
 
@@ -874,19 +885,24 @@ html[data-brand="clinic"] .clinic .provider-card {
     html[data-brand="clinic"] .clinic .provider-actions {
         gap: 7px;
         margin-top: 7px;
+        flex-wrap: nowrap;
+        flex-direction: row;
     }
 
     html[data-brand="clinic"] .clinic .provider-actions .btn {
         min-height: 34px;
         padding: 7px 10px;
         font-size: .8rem;
+        white-space: nowrap;
+        flex: 0 1 auto;
     }
 }
 
 
 /* =========================================================
    24) PROVIDER CARDS — VERY SMALL
-   Only stack when truly necessary.
+   Only stack card layout when truly necessary.
+   Buttons still stay in one row.
    ========================================================= */
 
 @media (max-width: 360px) {
@@ -912,12 +928,18 @@ html[data-brand="clinic"] .clinic .provider-card {
     }
 
     html[data-brand="clinic"] .clinic .provider-actions {
-        flex-direction: column;
-        align-items: stretch;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 6px;
     }
 
     html[data-brand="clinic"] .clinic .provider-actions .btn {
-        width: 100%;
+        width: auto;
+        flex: 0 1 auto;
+        white-space: nowrap;
+        padding: 7px 9px;
+        font-size: .76rem;
     }
 }
 
