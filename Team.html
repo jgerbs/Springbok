@@ -4,20 +4,198 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Springbok Medical Clinic | Home</title>
 
+  <!-- Primary SEO -->
+  <title>Medical Team Kelowna | Family Doctors, Hormone & Naturopathic Care | Springbok Medical</title>
+  <meta name="description"
+    content="Meet the Springbok Medical team in Kelowna, including family physicians, hormone care, and naturopathic medicine providers dedicated to thoughtful, reliable, patient-centered care." />
+  <meta name="keywords"
+    content="medical team Kelowna, doctors Kelowna, family doctor Kelowna, hormone specialist Kelowna, naturopathic doctor Kelowna, Springbok Medical team, Dr Amor Kloppers, Dr Francois Erasmus, Dr Janneme Frouws, Dr Kacey Kiesman" />
+  <meta name="author" content="Springbok Medical" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="theme-color" content="#0f2a22" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://springbokmedical.com/Team.html" />
+
+  <!-- Favicon / Tab Logo -->
+  <link rel="icon" type="image/webp" href="resources/content/cliniclogo1.webp" />
+  <link rel="apple-touch-icon" href="resources/content/cliniclogo1.webp" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Medical Team Kelowna | Springbok Medical" />
+  <meta property="og:description"
+    content="Meet the physicians and support staff behind Springbok Medical in Kelowna, including family practice, hormone care, and naturopathic medicine providers." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://springbokmedical.com/Team.html" />
+  <meta property="og:image" content="https://springbokmedical.com/resources/content/team.webp" />
+  <meta property="og:site_name" content="Springbok Medical" />
+  <meta property="og:locale" content="en_CA" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Medical Team Kelowna | Springbok Medical" />
+  <meta name="twitter:description"
+    content="Get to know the doctors and support staff at Springbok Medical in Kelowna." />
+  <meta name="twitter:image" content="https://springbokmedical.com/resources/content/team.webp" />
+
+  <!-- Local SEO -->
+  <meta name="geo.region" content="CA-BC" />
+  <meta name="geo.placename" content="Kelowna" />
+  <meta name="geo.position" content="49.8880;-119.4960" />
+  <meta name="ICBM" content="49.8880, -119.4960" />
+
+  <!-- Fonts / perf -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://jgerbs.github.io" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
+  <!-- Hero preload -->
+  <link rel="preload" as="image" href="resources/content/team.webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="resources/content/team_vertical.webp" />
+
+  <!-- Critical CSS -->
   <link rel="stylesheet" href="style/base.css" />
-  <link rel="stylesheet" href="style/footer.css" />
   <link rel="stylesheet" href="style/header.css" />
   <link rel="stylesheet" href="style/hero.css" />
   <link rel="stylesheet" href="style/team.css" />
   <link rel="stylesheet" href="style/responsive.css" />
-  <link rel="stylesheet" href="style/practiceModal.css" />
 
+  <!-- Deferred CSS -->
+  <link rel="preload" href="style/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="style/practiceModal.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <noscript>
+    <link rel="stylesheet" href="style/footer.css" />
+    <link rel="stylesheet" href="style/practiceModal.css" />
+  </noscript>
+
+  <!-- Structured Data: Medical Business -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    "name": "Springbok Medical",
+    "url": "https://springbokmedical.com/Team.html",
+    "image": "https://springbokmedical.com/resources/content/cliniclogo1.webp",
+    "telephone": "+1-778-940-9811",
+    "email": "contact@springbokmedical.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "590 McKay Ave #200",
+      "addressLocality": "Kelowna",
+      "addressRegion": "BC",
+      "postalCode": "V1Y 5A8",
+      "addressCountry": "CA"
+    },
+    "areaServed": "Kelowna, BC",
+    "medicalSpecialty": [
+      "Family Practice",
+      "Hormone Health",
+      "Naturopathic Medicine"
+    ],
+    "sameAs": [
+      "https://www.instagram.com/springbokmedicalspa"
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: Website -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Springbok Medical",
+    "url": "https://springbokmedical.com/index.html"
+  }
+  </script>
+
+  <!-- Structured Data: Team Page -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Springbok Medical Team",
+    "url": "https://springbokmedical.com/Team.html",
+    "description": "Meet the doctors and support staff at Springbok Medical in Kelowna."
+  }
+  </script>
+
+  <!-- Structured Data: Physicians -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Physician",
+        "name": "Dr. Amor Kloppers",
+        "jobTitle": "Family Physician",
+        "worksFor": {
+          "@type": "MedicalClinic",
+          "name": "Springbok Medical"
+        },
+        "url": "https://springbokmedical.com/DrAmorKloppers.html",
+        "image": "https://springbokmedical.com/resources/content/amor.webp"
+      },
+      {
+        "@type": "Physician",
+        "name": "Dr. Francois Erasmus",
+        "jobTitle": "Family Physician",
+        "worksFor": {
+          "@type": "MedicalClinic",
+          "name": "Springbok Medical"
+        },
+        "url": "https://springbokmedical.com/DrFrancoisErasmus.html",
+        "image": "https://springbokmedical.com/resources/content/francois.webp"
+      },
+      {
+        "@type": "Physician",
+        "name": "Dr. Janneme Frouws",
+        "jobTitle": "Hormone Specialist",
+        "worksFor": {
+          "@type": "MedicalClinic",
+          "name": "Springbok Medical"
+        },
+        "url": "https://springbokmedical.com/DrJannemeFrouws.html",
+        "image": "https://springbokmedical.com/resources/content/janneme.webp"
+      },
+      {
+        "@type": "Physician",
+        "name": "Dr. Kacey Kiesman",
+        "jobTitle": "Naturopathic Doctor",
+        "worksFor": {
+          "@type": "MedicalClinic",
+          "name": "Springbok Medical"
+        },
+        "url": "https://springbokmedical.com/DrKaceyKiesman.html",
+        "image": "https://springbokmedical.com/resources/content/kacey2.webp"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: Breadcrumb -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://springbokmedical.com/index.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Team",
+        "item": "https://springbokmedical.com/Team.html"
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -78,14 +256,15 @@
       <section class="hero">
         <!-- LOGO: part of HERO visually, but fixed top-left -->
         <a class="hero-brand reveal" href="index.html" aria-label="Springbok Home">
-          <img src="resources/content/cliniclogo1.webp" alt="Springbok Medical Clinic" class="hero-logo" />
+          <img src="resources/content/cliniclogo1.webp" alt="Springbok Medical Clinic" class="hero-logo"
+            fetchpriority="high" decoding="async" />
         </a>
 
         <div class="hero-media">
           <picture class="hero-poster" style="--hero-img:url('resources/content/team.webp')">
             <source media="(max-width: 768px)" srcset="resources/content/team_vertical.webp">
-            <img src="resources/content/team.webp" alt="" class="hero-poster-img" width="1600" height="900"
-              fetchpriority="high" decoding="async">
+            <img src="resources/content/team.webp" alt="Springbok Medical team in Kelowna" class="hero-poster-img"
+              width="1600" height="900" fetchpriority="high" decoding="async">
           </picture>
 
           <div class="hero-overlay"></div>
@@ -272,7 +451,7 @@
             <!-- Receptionist 1 -->
             <article class="doc-card doc-card--support">
               <div class="doc-media" style="--pos: 50% 20%;">
-                <img class="doc-img" src="resources/staff6.jpg" alt="Reception Team Member" loading="lazy" />
+                <img class="doc-img" src="resources/staff6.jpg" alt="Lorena Fuhrmann" loading="lazy" />
               </div>
 
               <div class="doc-body">
@@ -511,7 +690,8 @@
             <label class="field field-span">
               <span class="field-label">Subject</span>
               <input class="field-input" type="text" name="requestSubject" id="subjectInput"
-                placeholder="e.g., Face Lift, Blood Transfusion, IV Therapy, etc..." required />
+                placeholder="e.g., Family practice, hormone support, naturopathic medicine, team inquiry, etc..."
+                required />
             </label>
 
             <label class="field field-span">
