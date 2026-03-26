@@ -271,7 +271,7 @@ html[data-brand="spa"] .svc-about-grid .svc-card:first-child {
 /* tablet layout:
    row 1 = first 2 cards
    row 2 = "How it works" spans full width */
-@media (max-width: 1024px) {
+@media (max-width: 1400px) {
     html[data-brand="spa"] .svc-about-grid>.svc-card {
         grid-column: span 6;
     }
@@ -1406,5 +1406,136 @@ html[data-brand="spa"] .btn.btn-sm {
 @media (max-width: 380px) {
     html[data-brand="spa"] .ba-pane {
         aspect-ratio: 1 / 1;
+    }
+}
+
+/* =========================================================
+   FLOW SECTION — BETTER MID VIEW + SMALLER MOBILE STACK
+   ========================================================= */
+
+/* medium screens:
+   keep horizontal, but give each step room so text wraps naturally */
+@media (max-width: 1280px) and (min-width: 1025px) {
+    .svc-flow-steps {
+        justify-content: center;
+        gap: 22px;
+    }
+
+    .svc-step {
+        flex: 1 1 0;
+        min-width: 0;
+        max-width: 240px;
+    }
+
+    .svc-step-icon {
+        width: 68px;
+        height: 110px;
+        margin-bottom: 12px;
+    }
+
+    .svc-step h3 {
+        margin: 0 0 8px;
+        font-size: 1.02rem;
+    }
+
+    .svc-step p {
+        max-width: 19ch;
+        margin-inline: auto;
+        font-size: .92rem;
+        line-height: 1.55;
+        text-wrap: balance;
+    }
+
+    .svc-arrow {
+        width: 22px;
+        height: 22px;
+        opacity: .42;
+        align-self: center;
+        flex: 0 0 22px;
+    }
+}
+
+/* switch to vertical stack a little earlier so the "crammed" range disappears */
+@media (max-width: 1024px) {
+
+    .svc-flow-steps {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    .svc-step {
+        width: 100%;
+        max-width: 560px;
+        /* was ~400 */
+        padding: 0;
+    }
+
+    .svc-step p {
+        max-width: 46ch;
+        /* allow real paragraph width */
+        margin-inline: auto;
+    }
+
+    .svc-step-icon {
+        width: 60px;
+        height: 80px;
+        margin: 0 auto 10px;
+    }
+
+    .svc-arrow--desktop {
+        display: none;
+    }
+
+    .svc-arrow--mobile {
+        display: block;
+        width: 16px;
+        height: 16px;
+        margin: 12px auto 16px;
+        opacity: .35;
+    }
+
+}
+
+/* phones: scale the vertical version down more */
+@media (max-width: 640px) {
+    .svc-flow {
+        padding: 42px 0 48px;
+    }
+
+    .svc-flow-head {
+        margin-bottom: 24px;
+    }
+
+    .svc-step {
+        max-width: 300px;
+    }
+
+    .svc-step-icon {
+        width: 42px;
+        height: 42px;
+        margin-bottom: 10px;
+    }
+
+    .svc-step-num {
+        margin-bottom: 3px;
+        font-size: .61rem;
+    }
+
+    .svc-step h3 {
+        margin-bottom: 7px;
+        font-size: .96rem;
+    }
+
+    .svc-step p {
+        max-width: 27ch;
+        font-size: .84rem;
+        line-height: 1.52;
+    }
+
+    .svc-arrow--mobile {
+        width: 12px;
+        height: 12px;
+        margin: 10px auto 12px;
     }
 }
