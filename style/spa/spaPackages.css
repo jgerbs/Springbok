@@ -15,9 +15,6 @@ html[data-brand="spa"] .spa-packages::before {
     pointer-events: none;
     z-index: 0;
 
-    background:
-        radial-gradient(700px 260px at 18% 0%, rgba(214, 163, 107, .16), transparent 58%),
-        radial-gradient(560px 220px at 82% 8%, rgba(214, 163, 107, .10), transparent 62%);
 }
 
 /* Shell (no frame) */
