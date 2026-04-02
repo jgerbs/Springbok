@@ -1,6 +1,13 @@
 :root {
   --edge-pad: 48px;
   --top-pad: 18px;
+
+  /* shared media controls */
+  --hero-desktop-focus: center center;
+  --hero-mobile-focus: center center;
+
+  /* switch to vertical/mobile media earlier */
+  --hero-video-switch: 980px;
 }
 
 /* =========================
@@ -10,11 +17,13 @@
 .hero {
   position: relative;
   min-height: clamp(760px, 92vh, 980px);
+  min-height: clamp(760px, 92svh, 980px);
   display: grid;
   align-items: end;
   box-sizing: border-box;
   padding: 170px 0 60px;
   overflow: hidden;
+  isolation: isolate;
 }
 
 /* Logo */
@@ -72,14 +81,15 @@
 .hero-video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: var(--hero-mobile-focus, center center);
   display: block;
   filter: saturate(1.06) contrast(1.06);
 }
 
-.hero-poster-img {
-  display: block;
+/* default crop behavior */
+.hero-poster-img,
+.hero-video {
+  object-fit: cover;
+  object-position: var(--hero-mobile-focus);
 }
 
 .hero-overlay {
@@ -123,13 +133,86 @@
 }
 
 /* =========================
+   IMAGE HERO ONLY
+   framed / blurred contain style
+   ========================= */
+
+.hero--image .hero-media::before {
+  content: "";
+  position: absolute;
+  inset: -24px;
+  z-index: 0;
+  background: var(--hero-blur-bg, var(--hero-img, none)) center center / cover no-repeat;
+  filter: blur(22px) saturate(1.04) brightness(.82);
+  transform: scale(1.08);
+  opacity: .95;
+}
+
+.hero--image .hero-poster,
+.hero--image .hero-video {
+  z-index: 1;
+}
+
+.hero--image .hero-poster-img {
+  object-fit: contain;
+  object-position: center center;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+.hero--image .hero-overlay {
+  z-index: 2;
+  background:
+    radial-gradient(900px 700px at 18% 12%, rgba(18, 192, 138, .18), transparent 60%),
+    linear-gradient(180deg, rgba(0, 0, 0, .12), rgba(0, 0, 0, .74) 68%, rgba(0, 0, 0, .90));
+}
+
+.hero--image .hero-content,
+.hero--image .hero-brand {
+  z-index: 3;
+}
+
+/* =========================
+   VIDEO HERO ONLY
+   poster behaves exactly like video
+   ========================= */
+
+.hero--video .hero-poster,
+.hero--video .hero-video {
+  z-index: 0;
+}
+
+.hero--video .hero-poster-img,
+.hero--video .hero-video {
+  object-fit: cover;
+}
+
+.hero--video .hero-overlay {
+  z-index: 1;
+}
+
+.hero--video .hero-content,
+.hero--video .hero-brand {
+  z-index: 2;
+}
+
+/* desktop focus for wider screens */
+@media (min-width: 981px) {
+
+  .hero-poster-img,
+  .hero-video {
+    object-position: var(--hero-desktop-focus, center center);
+  }
+}
+
+/* =========================
    RESPONSIVE
    ========================= */
 
 @media (max-width: 960px) {
   .hero {
     padding: 128px 0 44px;
-    isolation: isolate;
   }
 
   .hero-brand {
@@ -194,44 +277,19 @@
   }
 }
 
+/* full-height desktop feel */
 @media (min-width: 768px) {
   .hero {
     min-height: 100svh;
   }
+}
 
-  .hero-media::before {
-    content: "";
-    position: absolute;
-    inset: -24px;
-    z-index: 0;
-    background: var(--hero-blur-bg, none) center center / cover no-repeat;
-    filter: blur(22px) saturate(1.04) brightness(.82);
-    transform: scale(1.08);
-    opacity: .95;
-  }
+/* switch to portrait/mobile treatment sooner */
+@media (max-width: 980px),
+(max-aspect-ratio: 11/10) {
 
-  .hero-poster,
-  .hero-video {
-    z-index: 1;
-  }
-
-  .hero-poster-img {
-    object-fit: contain;
-    object-position: center center;
-    background: transparent;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-overlay {
-    z-index: 2;
-    background:
-      radial-gradient(900px 700px at 18% 12%, rgba(18, 192, 138, .18), transparent 60%),
-      linear-gradient(180deg, rgba(0, 0, 0, .12), rgba(0, 0, 0, .74) 68%, rgba(0, 0, 0, .90));
-  }
-
-  .hero-content,
-  .hero-brand {
-    z-index: 3;
+  .hero--video .hero-poster-img,
+  .hero--video .hero-video {
+    object-position: var(--hero-mobile-focus, center center);
   }
 }

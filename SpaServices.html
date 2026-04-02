@@ -242,7 +242,7 @@
 
         <main>
             <!-- HERO -->
-            <section class="hero">
+            <section class="hero hero--video">
                 <a class="hero-brand reveal" href="Spa.html" aria-label="Springbok Medical Spa Home">
                     <img src="resources/content/spalogo2.webp" alt="Springbok Medical Spa"
                         class="hero-logo hero-logo--spa" fetchpriority="high" decoding="async" />
@@ -250,15 +250,16 @@
 
                 <div class="hero-media">
                     <picture class="hero-poster">
-                        <source media="(max-width: 768px)" srcset="resources/content/spa/room2.webp">
+                        <source media="(max-width: 980px)" srcset="resources/content/spa/room_mobile.webp">
                         <img src="resources/content/spa/room2.webp"
                             alt="Medical spa services at Springbok Medical Spa in Kelowna" class="hero-poster-img"
                             width="1600" height="900" fetchpriority="high" decoding="async">
                     </picture>
 
                     <video class="hero-video" muted playsinline webkit-playsinline loop preload="none"
-                        poster="resources/content/spa/room2.mp4" data-video-mobile="resources/content/spa/room2.mp4"
-                        data-video-desktop="resources/content/spa/room2.mp4"></video>
+                        poster="resources/content/spa/room2.webp" data-video-mobile="resources/content/spa/room_mobile.mp4"
+                        data-video-desktop="resources/content/spa/room2.mp4">
+                    </video>
 
                     <div class="hero-overlay"></div>
                 </div>
@@ -269,26 +270,23 @@
                         Physician-led treatments with clear plans and natural results.
                         Explore services, or book directly in seconds.
                     </p>
+
                     <div class="hero-actions spa-subnav">
                         <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
                             rel="noopener">
                             Book Now
                         </a>
-
                         <a class="btn btn-outline spa-subnav-link spa-subnav-services is-active"
                             href="SpaServices.html">
                             Services
                         </a>
-
                         <a class="btn btn-outline spa-subnav-link spa-subnav-packages" href="SpaPackages.html">
                             Packages
                         </a>
-
                         <a class="btn btn-outline spa-subnav-link spa-subnav-products" href="SpaProducts.html">
                             Products
                         </a>
                     </div>
-
                 </div>
             </section>
 
@@ -374,7 +372,7 @@
 
                             <div class="prod-actions">
                                 <a class="btn btn-outline" href="Botox.html">Learn more</a>
-                                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/#/botox"
+                                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/#/discipline/1/treatment/1"
                                     target="_blank" rel="noopener">Book now</a>
                             </div>
                         </article>
@@ -397,7 +395,7 @@
 
                             <div class="prod-actions">
                                 <a class="btn btn-outline" href="Filler.html">Learn more</a>
-                                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/#/filler"
+                                <a class="btn btn-accent" href="https://springbokmedicalspa.janeapp.com/#/discipline/7/treatment/2"
                                     target="_blank" rel="noopener">Book now</a>
                             </div>
                         </article>
@@ -547,8 +545,7 @@
                         <!-- 11) Naturopathic Medicine -->
                         <article class="prod-card" id="svc-naturopathic">
                             <div class="prod-media">
-                                <img src="resources/spa/naturopath.webp" alt="Naturopathic Medicine"
-                                    loading="lazy">
+                                <img src="resources/spa/naturopath.webp" alt="Naturopathic Medicine" loading="lazy">
                             </div>
 
                             <div class="prod-card-top">

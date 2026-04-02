@@ -307,23 +307,59 @@ html[data-brand="clinic"] .why-dots {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    align-items: center;
     margin-bottom: 24px;
 }
 
 html[data-brand="clinic"] .why-dot-btn {
-    width: 11px;
-    height: 11px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
     border-radius: 999px;
-    border: 0;
+    border: 1px solid rgba(255, 255, 255, .14);
     padding: 0;
     cursor: pointer;
-    background: rgba(255, 255, 255, .22);
-    transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+    background: rgba(255, 255, 255, .05);
+    color: rgba(255, 255, 255, .68);
+    font-size: .82rem;
+    font-weight: 700;
+    line-height: 1;
+    transition:
+        transform .18s ease,
+        background .18s ease,
+        border-color .18s ease,
+        color .18s ease,
+        box-shadow .18s ease;
+}
+
+html[data-brand="clinic"] .why-dot-btn span {
+    display: block;
+    transform: translateY(.5px);
+}
+
+html[data-brand="clinic"] .why-dot-btn:hover {
+    transform: translateY(-1px);
+    border-color: rgba(18, 192, 138, .36);
+    background: rgba(18, 192, 138, .10);
+    color: rgba(255, 255, 255, .90);
 }
 
 html[data-brand="clinic"] .why-dot-btn.is-active {
-    background: var(--accent);
-    box-shadow: 0 0 0 6px rgba(18, 192, 138, .14);
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-color: rgba(18, 192, 138, .60);
+    color: rgba(0, 0, 0, .88);
+    box-shadow:
+        0 0 0 4px rgba(18, 192, 138, .14),
+        0 8px 18px rgba(18, 192, 138, .18);
+}
+
+html[data-brand="clinic"] .why-dot-btn:focus-visible {
+    outline: none;
+    box-shadow:
+        0 0 0 3px rgba(255, 255, 255, .12),
+        0 0 0 6px rgba(18, 192, 138, .22);
 }
 
 html[data-brand="clinic"] .why-stack {
@@ -543,17 +579,20 @@ body.why-scroll-locked {
     }
 
     html[data-brand="clinic"] .why-dots {
-        gap: 6px;
+        gap: 7px;
         margin-bottom: 10px;
     }
 
     html[data-brand="clinic"] .why-dot-btn {
-        width: 8px;
-        height: 8px;
+        width: 24px;
+        height: 24px;
+        font-size: .68rem;
     }
 
     html[data-brand="clinic"] .why-dot-btn.is-active {
-        box-shadow: 0 0 0 3px rgba(18, 192, 138, .14);
+        box-shadow:
+            0 0 0 3px rgba(18, 192, 138, .14),
+            0 6px 14px rgba(18, 192, 138, .16);
     }
 
     html[data-brand="clinic"] .why-stack {
@@ -634,6 +673,12 @@ body.why-scroll-locked {
 
     html[data-brand="clinic"] .why-dots {
         margin-bottom: 10px;
+    }
+
+    html[data-brand="clinic"] .why-dot-btn {
+        width: 22px;
+        height: 22px;
+        font-size: .64rem;
     }
 
     html[data-brand="clinic"] .why-stack {
