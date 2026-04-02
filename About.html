@@ -192,25 +192,28 @@
   </div>
 
   <main>
-    <!-- HERO (About) -->
-    <section class="hero">
-      <a class="hero-brand reveal" href="index.html" aria-label="Springbok Home">
-        <img src="resources/content/cliniclogo1.webp" alt="Springbok Medical Clinic logo" class="hero-logo"
-          decoding="async" fetchpriority="high" />
+
+    <!-- HERO -->
+    <section class="hero hero--video">
+      <a class="hero-brand reveal" href="index.html" aria-label="Springbok Medical Clinic Home">
+        <img src="resources/content/cliniclogo1.webp" alt="Springbok Medical Clinic" class="hero-logo hero-logo--spa"
+          fetchpriority="high" decoding="async" />
       </a>
 
       <div class="hero-media">
         <picture class="hero-poster">
-          <source media="(max-width: 768px)" srcset="resources/content/writing.webp">
-          <img src="resources/content/writing.webp" alt="" class="hero-poster-img" width="1600" height="900"
-            fetchpriority="high" decoding="async">
+          <source media="(max-width: 980px)" srcset="resources/content/spa/room_mobile.webp">
+          <img src="resources/content/spa/room2.webp" alt="Medical spa services at Springbok Medical Spa in Kelowna"
+            class="hero-poster-img" width="1600" height="900" fetchpriority="high" decoding="async">
         </picture>
 
         <video class="hero-video" muted playsinline webkit-playsinline loop preload="none"
-          poster="resources/content/writing.webp" data-video-mobile="resources/content/writing.mp4"
-          data-video-desktop="resources/content/writing.mp4" aria-hidden="true"></video>
+          poster="resources/content/writing.webp" data-video-mobile="resources/content/writing_mobile.mp4"
+          data-video-desktop="resources/content/writing.mp4">
+        </video>
 
         <div class="hero-overlay"></div>
+
       </div>
 
       <div class="container hero-content reveal">
@@ -234,6 +237,7 @@
       </div>
     </section>
 
+
     <!-- OUR MISSION / STORY -->
     <section class="about-story" id="mission">
       <div class="container">
@@ -249,28 +253,31 @@
 
             <div class="about-story-copy">
               <p>
-                Springbok was founded with a simple belief: healthcare should feel more personal,
-                more thoughtful, and more connected. Too often, patients are left navigating rushed
-                appointments, unclear answers, and care that feels fragmented from one visit to the next.
+                Springbok was founded out of a desire to create a more connected kind of care. Too often, patients are left
+                moving between providers, repeating the same story, and trying to make sense of care that feels rushed or
+                fragmented. The vision was to build a clinic where people could access thoughtful, well-rounded support in one
+                place, with a team that works together rather than in isolation.
               </p>
-
+            
               <p>
-                The vision behind Springbok was to build something different — a clinic where people feel heard,
-                supported, and confident in the care they receive. From the beginning, the goal has been to create
-                an environment that combines medical professionalism with a calm, welcoming experience, so patients
-                can access care that is both clinically strong and genuinely human.
+                A big part of that vision was bringing together a broader range of expertise under one roof. With medical doctors,
+                a naturopath, hormone-focused care, wellness services, and aesthetic treatments, Springbok was designed to offer
+                patients more complete support without always sending them elsewhere for the next piece of the puzzle. The goal was
+                not simply to offer more services, but to make care feel more cohesive and easier to navigate.
               </p>
-
+            
               <p>
-                Rather than focusing only on short-term concerns, Springbok was created to support long-term wellness.
-                That means taking time to understand each patient’s needs, identifying concerns early, and building
-                care plans that are clear, proactive, and tailored to the individual.
+                Springbok was also built on the belief that patients deserve to understand their care. People should not feel like
+                they have to blindly trust recommendations without context or clarity. Taking time to explain options, answer
+                questions, and make sure patients feel informed is an important part of how care is approached here, because better
+                understanding leads to better decisions and greater confidence moving forward.
               </p>
-
+            
               <p>
-                Today, that mission continues to guide everything we do. Springbok exists to make healthcare feel more
-                organized, more comfortable, and more empowering — with a team and a space designed to support patients
-                at every stage of their care journey.
+                At its core, Springbok was founded because we genuinely care about helping people. The goal has always been to
+                create a clinic that feels professional and modern, while still being personal, respectful, and grounded in real
+                relationships. More than anything, Springbok was built to be a place where patients feel supported not just
+                medically, but as people.
               </p>
             </div>
           </article>
@@ -303,7 +310,7 @@
                   <h3 class="why-active-title" id="whyActiveTitle">Experienced doctors</h3>
 
                   <p class="why-active-text" id="whyActiveText">
-                    Physician-led care grounded in experience, careful assessment, and clear clinical judgment.
+                    Family physicians, naturopathic care, and hormone support in one connected clinic.
                   </p>
                 </div>
 
@@ -344,67 +351,83 @@
             </aside>
 
             <div class="why-stack" aria-label="Reasons to choose Springbok Medical Clinic">
-              <article class="why-panel" data-why-index="0">
+              <article class="why-panel" data-why-index="0" data-why-left-title="A broader care team"
+                data-why-left-text="Medical doctors, a naturopath, and hormone-focused care working together in one clinic.">
                 <div class="why-panel-num">01</div>
-                <p class="why-panel-tag">Experienced doctors</p>
-                <h3 class="why-panel-title">Care led by experienced physicians.</h3>
+                <p class="why-panel-tag">A broader care team</p>
+                <h3 class="why-panel-title">More perspectives on your care.</h3>
                 <p class="why-panel-text">
-                  Springbok is built around physician-led care that values thoughtful assessment,
-                  sound clinical judgment, and treatment plans shaped by real patient needs rather
-                  than rushed, one-size-fits-all visits.
+                  Springbok brings together experienced family physicians, a naturopath, and hormone-focused care within
+                  a single
+                  clinic. This integrated structure allows patients to benefit from a broader clinical perspective
+                  without the need
+                  to coordinate care across multiple locations.
                 </p>
               </article>
 
-              <article class="why-panel" data-why-index="1">
+              <article class="why-panel" data-why-index="1" data-why-left-title="Collaborative care"
+                data-why-left-text="Your care is supported by a team that collaborates and consults when appropriate.">
                 <div class="why-panel-num">02</div>
-                <p class="why-panel-tag">Advanced treatments</p>
-                <h3 class="why-panel-title">Modern care supported by current treatment options.</h3>
+                <p class="why-panel-tag">Collaborative care</p>
+                <h3 class="why-panel-title">Care that works together.</h3>
                 <p class="why-panel-text">
-                  From everyday primary care to modern wellness and aesthetic services, Springbok
-                  brings together up-to-date treatments and a forward-looking approach in one
-                  organized, professional setting.
+                  Providers at Springbok work within a collaborative environment, consulting one another when
+                  appropriate to support
+                  well-informed clinical decisions. This approach helps ensure care plans are thoughtful, coordinated,
+                  and aligned
+                  with each patient’s needs.
                 </p>
               </article>
 
-              <article class="why-panel" data-why-index="2">
+              <article class="why-panel" data-why-index="2" data-why-left-title="Clear, informed care"
+                data-why-left-text="We take the time to explain options so you can understand your care with confidence.">
                 <div class="why-panel-num">03</div>
-                <p class="why-panel-tag">Personalized care</p>
-                <h3 class="why-panel-title">Plans tailored to the person, not just the problem.</h3>
+                <p class="why-panel-tag">Clear, informed care</p>
+                <h3 class="why-panel-title">You understand your care.</h3>
                 <p class="why-panel-text">
-                  We focus on understanding your history, concerns, and goals so care feels connected
-                  over time. That means clearer guidance, stronger continuity, and treatment that
-                  reflects your individual needs.
+                  Patients are guided through their options with clear explanations and open discussion. The focus is on
+                  ensuring
+                  you understand your care, so decisions feel informed, appropriate, and aligned with your goals.
                 </p>
               </article>
 
-              <article class="why-panel" data-why-index="3">
+              <article class="why-panel" data-why-index="3" data-why-left-title="Clinic + wellness"
+                data-why-left-text="Medical care, wellness, and aesthetic services offered within one professional setting.">
                 <div class="why-panel-num">04</div>
-                <p class="why-panel-tag">Fast appointments</p>
-                <h3 class="why-panel-title">A smoother, more efficient appointment experience.</h3>
+                <p class="why-panel-tag">Clinic + wellness</p>
+                <h3 class="why-panel-title">More than just primary care.</h3>
                 <p class="why-panel-text">
-                  Simple booking, streamlined intake, and an organized workflow help reduce friction
-                  before and during your visit, making care feel easier to access and easier to trust.
+                  In addition to family medicine and hormone care, Springbok offers a range of wellness and aesthetic
+                  services. This
+                  allows patients to access both medical and supportive treatments within a single, coordinated clinical
+                  environment.
                 </p>
               </article>
 
-              <article class="why-panel" data-why-index="4">
+              <article class="why-panel" data-why-index="4" data-why-left-title="Connected care network"
+                data-why-left-text="Access to trusted partners and specialists when additional care is required.">
                 <div class="why-panel-num">05</div>
-                <p class="why-panel-tag">Trusted locally</p>
-                <h3 class="why-panel-title">A clinic people can feel confident returning to.</h3>
+                <p class="why-panel-tag">Connected care network</p>
+                <h3 class="why-panel-title">Support beyond the clinic.</h3>
                 <p class="why-panel-text">
-                  Springbok was created to build long-term relationships through dependable care,
-                  strong communication, and a patient experience that feels respectful, calm, and
-                  consistently professional.
+                  Through established relationships with trusted partners, including specialists such as plastic
+                  surgeons and
+                  concussion clinics, patients can be guided toward appropriate additional care in a more streamlined
+                  and supported
+                  manner when needed.
                 </p>
               </article>
 
-              <article class="why-panel" data-why-index="5">
+              <article class="why-panel" data-why-index="5" data-why-left-title="Care that feels personal"
+                data-why-left-text="A patient-focused approach grounded in genuine care and long-term relationships.">
                 <div class="why-panel-num">06</div>
-                <p class="why-panel-tag">Comfortable clinic</p>
-                <h3 class="why-panel-title">A clean, calm environment designed to feel better.</h3>
+                <p class="why-panel-tag">Care that feels personal</p>
+                <h3 class="why-panel-title">Built around genuinely caring.</h3>
                 <p class="why-panel-text">
-                  The space is intentionally modern, welcoming, and uncluttered so visits feel less
-                  stressful and more supportive from the moment patients walk through the door.
+                  Springbok was built on a commitment to patient-focused care. This approach emphasizes respect,
+                  continuity, and
+                  meaningful relationships, creating an experience that feels supportive, attentive, and grounded in
+                  genuine care.
                 </p>
               </article>
             </div>
@@ -510,9 +533,9 @@
                 decoding="async">
             </a>
 
-            <a class="social-btn" href="#" aria-label="Facebook">
+            <!-- <a class="social-btn" href="#" aria-label="Facebook">
               <img class="social-icon" src="resources/facebook-logo.svg" alt="Facebook" loading="lazy" decoding="async">
-            </a>
+            </a> -->
           </div>
         </div>
       </div>

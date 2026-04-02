@@ -37,8 +37,13 @@
     let touchLastY = 0;
 
     const panelData = panels.map((panel, index) => ({
-        title: panel.querySelector(".why-panel-tag")?.textContent?.trim() || `Item ${index + 1}`,
-        text: panel.querySelector(".why-panel-text")?.textContent?.trim() || ""
+        title:
+            panel.dataset.whyLeftTitle?.trim() ||
+            panel.querySelector(".why-panel-tag")?.textContent?.trim() ||
+            `Item ${index + 1}`,
+        text:
+            panel.dataset.whyLeftText?.trim() ||
+            ""
     }));
 
     function clamp(value, min, max) {

@@ -350,9 +350,6 @@ html[data-brand="clinic"] .why-dot-btn.is-active {
     background: linear-gradient(135deg, var(--accent), var(--accent2));
     border-color: rgba(18, 192, 138, .60);
     color: rgba(0, 0, 0, .88);
-    box-shadow:
-        0 0 0 4px rgba(18, 192, 138, .14),
-        0 8px 18px rgba(18, 192, 138, .18);
 }
 
 html[data-brand="clinic"] .why-dot-btn:focus-visible {
@@ -589,11 +586,6 @@ body.why-scroll-locked {
         font-size: .68rem;
     }
 
-    html[data-brand="clinic"] .why-dot-btn.is-active {
-        box-shadow:
-            0 0 0 3px rgba(18, 192, 138, .14),
-            0 6px 14px rgba(18, 192, 138, .16);
-    }
 
     html[data-brand="clinic"] .why-stack {
         height: min(390px, calc(100svh - var(--header-h, 82px) - 195px));
@@ -881,6 +873,212 @@ html[data-brand="clinic"] .why-btn-label--desktop {
         display: inline;
     }
 }
+
+/* =========================================================
+   WHY CHOOSE US — LEFT RAIL MOBILE FIX ONLY
+   Keeps right panel untouched
+   ========================================================= */
+
+html[data-brand="clinic"] .why-rail-inner {
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    overflow: hidden;
+}
+
+html[data-brand="clinic"] .why-active {
+    min-height: 0;
+    overflow: hidden;
+}
+
+html[data-brand="clinic"] .why-dots {
+    display: flex;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+html[data-brand="clinic"] .why-dot-btn {
+    flex: 0 0 auto;
+}
+
+/* ---------- tablet / mobile ---------- */
+@media (max-width: 900px) {
+    html[data-brand="clinic"] .why-rail-inner {
+        grid-template-rows: auto minmax(0, 1fr) auto;
+        overflow: hidden;
+    }
+
+    html[data-brand="clinic"] .why-active {
+        overflow: hidden;
+    }
+
+    html[data-brand="clinic"] .why-active-text {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
+        line-clamp: 5;
+    }
+
+    html[data-brand="clinic"] .why-dots {
+        flex-wrap: nowrap !important;
+        gap: 6px;
+        margin-bottom: 10px;
+    }
+
+    html[data-brand="clinic"] .why-dot-btn {
+        flex: 0 0 auto;
+        width: 22px;
+        height: 22px;
+        font-size: .62rem;
+    }
+}
+
+/* ---------- small mobile ---------- */
+@media (max-width: 520px) {
+    html[data-brand="clinic"] .why-rail-inner {
+        grid-template-rows: auto minmax(0, 1fr) auto;
+    }
+
+    html[data-brand="clinic"] .why-active-text {
+        font-size: .78rem;
+        line-height: 1.42;
+        max-width: 24ch;
+        -webkit-line-clamp: 4;
+        line-clamp: 4;
+    }
+
+    html[data-brand="clinic"] .why-dots {
+        flex-wrap: nowrap !important;
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+
+    html[data-brand="clinic"] .why-dot-btn {
+        width: 20px;
+        height: 20px;
+        font-size: .56rem;
+    }
+}
+
+/* ---------- very small mobile ---------- */
+@media (max-width: 390px) {
+    html[data-brand="clinic"] .why-active-text {
+        font-size: .74rem;
+        line-height: 1.4;
+        max-width: 22ch;
+        -webkit-line-clamp: 4;
+        line-clamp: 4;
+    }
+
+    html[data-brand="clinic"] .why-dots {
+        flex-wrap: nowrap !important;
+        gap: 4px;
+    }
+
+    html[data-brand="clinic"] .why-dot-btn {
+        width: 19px;
+        height: 19px;
+        font-size: .52rem;
+    }
+}
+
+/* =========================================================
+   WHY RIGHT PANEL — MOBILE OVERFLOW FIX
+   No truncation, no overflow
+   ========================================================= */
+
+@media (max-width: 900px) {
+    html[data-brand="clinic"] .why-panel {
+        display: grid;
+        grid-template-rows: auto auto auto;
+        align-content: start;
+        justify-content: stretch;
+        padding: 14px 12px 12px;
+        overflow: hidden;
+    }
+
+    html[data-brand="clinic"] .why-panel-tag {
+        margin: 0 0 6px;
+        max-width: calc(100% - 46px);
+    }
+
+    html[data-brand="clinic"] .why-panel-title {
+        margin: 0 0 8px;
+        max-width: calc(100% - 46px);
+        font-size: clamp(.92rem, 3.2vw, 1.08rem);
+        line-height: 1.04;
+        text-wrap: pretty;
+    }
+
+    html[data-brand="clinic"] .why-panel-text {
+        margin: 0;
+        max-width: 100%;
+        font-size: .77rem;
+        line-height: 1.38;
+        overflow-wrap: anywhere;
+        word-break: normal;
+    }
+
+    html[data-brand="clinic"] .why-panel-num {
+        top: 8px;
+        right: 10px;
+        font-size: clamp(1.15rem, 5vw, 1.9rem);
+        line-height: .9;
+    }
+}
+
+@media (max-width: 520px) {
+    html[data-brand="clinic"] .why-panel {
+        padding: 12px 10px 10px;
+    }
+
+    html[data-brand="clinic"] .why-panel-tag {
+        margin: 0 0 5px;
+        font-size: .6rem;
+        letter-spacing: .13em;
+        max-width: calc(100% - 36px);
+    }
+
+    html[data-brand="clinic"] .why-panel-title {
+        margin: 0 0 7px;
+        font-size: .88rem;
+        line-height: 1.02;
+        max-width: calc(100% - 36px);
+    }
+
+    html[data-brand="clinic"] .why-panel-text {
+        font-size: .72rem;
+        line-height: 1.32;
+    }
+
+}
+
+@media (max-width: 390px) {
+    html[data-brand="clinic"] .why-panel {
+        padding: 11px 9px 9px;
+    }
+
+    html[data-brand="clinic"] .why-panel-tag {
+        font-size: .56rem;
+        max-width: calc(100% - 32px);
+    }
+
+    html[data-brand="clinic"] .why-panel-title {
+        font-size: .82rem;
+        max-width: calc(100% - 32px);
+    }
+
+    html[data-brand="clinic"] .why-panel-text {
+        font-size: .68rem;
+        line-height: 1.28;
+    }
+
+    html[data-brand="clinic"] .why-panel-num {
+        font-size: .9rem;
+    }
+}
+
 
 
 /* =========================================================

@@ -767,12 +767,10 @@ html[data-brand="spa"] .ba-grid {
     align-items: start;
 }
 
-/* center a single card nicely */
 html[data-brand="spa"] .ba-grid--single .ba-card {
-    grid-column: 4 / span 6;
+    grid-column: 3 / span 8;
 }
 
-/* default card */
 html[data-brand="spa"] .ba-card {
     grid-column: span 6;
     margin: 0;
@@ -844,9 +842,7 @@ html[data-brand="spa"] .ba-chip {
     flex-shrink: 0;
 }
 
-/* -------------------------
-   compare card
-   ------------------------- */
+/* compare card */
 html[data-brand="spa"] .ba-compare {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -880,9 +876,7 @@ html[data-brand="spa"] .ba-card:hover .ba-photo {
     transform: scale(1.02);
 }
 
-/* -------------------------
-   video card
-   ------------------------- */
+/* video card */
 html[data-brand="spa"] .ba-card--video {
     grid-column: span 6;
 }
@@ -944,57 +938,58 @@ html[data-brand="spa"] .ba-cap {
     line-height: 1.6;
 }
 
-/* single-card layouts: wider than normal, but not full width */
-html[data-brand="spa"] .ba-grid--single .ba-card {
-    grid-column: 3 / span 8;
-}
-
-/* make solo media feel a touch more premium */
+/* solo cards */
 html[data-brand="spa"] .ba-grid--single .ba-pane,
 html[data-brand="spa"] .ba-grid--single .ba-video-wrap {
     aspect-ratio: 16 / 10;
 }
 
-/* large tablet / small laptop */
+/* mixed row */
+html[data-brand="spa"] .ba-grid--mixed {
+    align-items: stretch;
+    --ba-mixed-media-h: clamp(280px, 30vw, 380px);
+}
+
+html[data-brand="spa"] .ba-grid--mixed .ba-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+html[data-brand="spa"] .ba-grid--mixed .ba-video-wrap,
+html[data-brand="spa"] .ba-grid--mixed .ba-pane {
+    aspect-ratio: auto;
+    height: var(--ba-mixed-media-h);
+}
+
+html[data-brand="spa"] .ba-grid--mixed .ba-compare {
+    align-items: stretch;
+}
+
+html[data-brand="spa"] .ba-grid--mixed .ba-cap {
+    min-height: 88px;
+}
+
+/* responsive */
 @media (max-width: 1100px) {
     html[data-brand="spa"] .ba-grid--single .ba-card {
         grid-column: 2 / span 10;
     }
 }
 
-/* tablet */
 @media (max-width: 960px) {
+
+    html[data-brand="spa"] .ba-card,
+    html[data-brand="spa"] .ba-card--video,
     html[data-brand="spa"] .ba-grid--single .ba-card {
         grid-column: span 12;
+        width: min(100%, 620px);
+        margin-inline: auto;
     }
 
     html[data-brand="spa"] .ba-grid--single .ba-pane,
     html[data-brand="spa"] .ba-grid--single .ba-video-wrap {
         aspect-ratio: 4 / 3;
-    }
-}
-
-/* mobile */
-@media (max-width: 640px) {
-
-    html[data-brand="spa"] .ba-grid--single .ba-pane,
-    html[data-brand="spa"] .ba-grid--single .ba-video-wrap {
-        aspect-ratio: 4 / 5;
-    }
-}
-
-/* -------------------------
-   responsive
-   ------------------------- */
-@media (max-width: 960px) {
-
-    html[data-brand="spa"] .ba-card,
-    html[data-brand="spa"] .ba-card--video {
-        grid-column: span 12;
-    }
-
-    html[data-brand="spa"] .ba-grid--single .ba-card {
-        grid-column: span 12;
     }
 }
 
@@ -1003,26 +998,44 @@ html[data-brand="spa"] .ba-grid--single .ba-video-wrap {
         gap: 14px;
     }
 
+    html[data-brand="spa"] .ba-card,
+    html[data-brand="spa"] .ba-card--video,
+    html[data-brand="spa"] .ba-grid--single .ba-card {
+        width: min(100%, 460px);
+        margin-inline: auto;
+        border-radius: 22px;
+    }
+
     html[data-brand="spa"] .ba-head {
         flex-direction: column;
         align-items: flex-start;
         padding: 14px 14px 10px;
+        gap: 10px;
     }
 
+    /* IMPORTANT: always keep before/after left-right */
     html[data-brand="spa"] .ba-compare {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     html[data-brand="spa"] .ba-pane {
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 1 / 1.08;
     }
 
     html[data-brand="spa"] .ba-pane+.ba-pane {
-        border-left: 0;
-        border-top: 1px solid rgba(18, 18, 18, .08);
+        border-left: 1px solid rgba(18, 18, 18, .08);
+        border-top: 0;
     }
 
     html[data-brand="spa"] .ba-video-wrap {
+        aspect-ratio: 4 / 5;
+    }
+
+    html[data-brand="spa"] .ba-grid--single .ba-pane {
+        aspect-ratio: 1 / 1.08;
+    }
+
+    html[data-brand="spa"] .ba-grid--single .ba-video-wrap {
         aspect-ratio: 4 / 5;
     }
 
@@ -1039,34 +1052,7 @@ html[data-brand="spa"] .ba-grid--single .ba-video-wrap {
     }
 }
 
-/* mixed row: 1 video card + 1 compare card must match exactly */
-html[data-brand="spa"] .ba-grid--mixed {
-    align-items: stretch;
-    --ba-mixed-media-h: clamp(280px, 30vw, 380px);
-}
 
-html[data-brand="spa"] .ba-grid--mixed .ba-card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-/* force SAME media height for both cards in the mixed row */
-html[data-brand="spa"] .ba-grid--mixed .ba-video-wrap,
-html[data-brand="spa"] .ba-grid--mixed .ba-pane {
-    aspect-ratio: auto;
-    height: var(--ba-mixed-media-h);
-}
-
-/* compare wrapper should not add its own height logic */
-html[data-brand="spa"] .ba-grid--mixed .ba-compare {
-    align-items: stretch;
-}
-
-/* optional: keep caption area visually even */
-html[data-brand="spa"] .ba-grid--mixed .ba-cap {
-    min-height: 88px;
-}
 
 /* =========================================================
    11) FAQ
@@ -1236,19 +1222,6 @@ html[data-brand="spa"] .btn.btn-sm {
     }
 }
 
-@media (max-width: 960px) {
-
-    html[data-brand="spa"] .ba-grid--single .ba-card,
-    html[data-brand="spa"] .ba-card,
-    html[data-brand="spa"] .ba-card--video {
-        grid-column: span 12;
-    }
-
-    html[data-brand="spa"] .ba-grid--single .ba-pane,
-    html[data-brand="spa"] .ba-grid--single .ba-video-wrap {
-        aspect-ratio: 4 / 3;
-    }
-}
 
 @media (max-width: 900px) {
     html[data-brand="spa"][data-page="spa-service-learn-more"] .morph-dd-body .svc-options-grid {
@@ -1403,11 +1376,7 @@ html[data-brand="spa"] .btn.btn-sm {
     }
 }
 
-@media (max-width: 380px) {
-    html[data-brand="spa"] .ba-pane {
-        aspect-ratio: 1 / 1;
-    }
-}
+
 
 /* =========================================================
    FLOW SECTION — BETTER MID VIEW + SMALLER MOBILE STACK
