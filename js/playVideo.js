@@ -1,119 +1,116 @@
 (() => {
-    const heroes = document.querySelectorAll(".hero");
+    const video = document.querySelector(".hero-video");
+    const heroMedia = document.querySelector(".hero-media");
+    const heroImg = document.querySelector(".hero-poster-img");
 
-    if (!heroes.length) return;
-
-    const mobileMQ = window.matchMedia("(max-width: 960px)");
-    const reduceMotionMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-    function setupHero(hero) {
-        const video = hero.querySelector(".hero-video");
-        const heroMedia = hero.querySelector(".hero-media");
-        const heroImg = hero.querySelector(".hero-poster-img");
-
-        if (!video && !heroImg) return;
-
-        const mobileSrc = video?.dataset.videoMobile || "";
-        const desktopSrc = video?.dataset.videoDesktop || "";
-
-        let activeSrc = "";
-
-        function syncHeroBlurBackground() {
-            if (!heroMedia || !heroImg) return;
-
-            const src = heroImg.currentSrc || heroImg.src;
-            if (!src) return;
-
-            heroMedia.style.setProperty("--hero-blur-bg", `url("${src}")`);
-        }
-
-        function wantedSrc() {
-            if (reduceMotionMQ.matches) return "";
-            return mobileMQ.matches ? mobileSrc : desktopSrc;
-        }
-
-        function stopVideo() {
-            if (!video) return;
-            video.pause();
-            video.removeAttribute("src");
-            video.load();
-            activeSrc = "";
-        }
-
-        async function startVideo() {
-            syncHeroBlurBackground();
-
-            if (!video) return;
-
-            const src = wantedSrc();
-            if (!src) {
-                stopVideo();
-                return;
-            }
-
-            if (activeSrc !== src) {
-                video.pause();
-                video.src = src;
-                video.load();
-                activeSrc = src;
-            }
-
-            video.muted = true;
-            video.defaultMuted = true;
-            video.autoplay = true;
-            video.loop = true;
-            video.playsInline = true;
-
-            video.setAttribute("muted", "");
-            video.setAttribute("autoplay", "");
-            video.setAttribute("loop", "");
-            video.setAttribute("playsinline", "");
-            video.setAttribute("webkit-playsinline", "");
-
-            try {
-                const playPromise = video.play();
-                if (playPromise && typeof playPromise.then === "function") {
-                    await playPromise;
-                }
-            } catch (err) {
-                // poster remains visible if autoplay is blocked or loading fails
-                console.warn("Hero video could not autoplay:", err);
-            }
-        }
-
-        function onChange() {
-            syncHeroBlurBackground();
-            startVideo();
-        }
-
-        document.addEventListener("visibilitychange", () => {
-            if (!video) return;
-
-            if (document.hidden) {
-                video.pause();
-            } else {
-                startVideo();
-            }
-        });
-
-        window.addEventListener("load", startVideo);
-        window.addEventListener("resize", syncHeroBlurBackground);
-
-        if (heroImg) {
-            heroImg.addEventListener("load", syncHeroBlurBackground);
-        }
-
-        if (mobileMQ.addEventListener) {
-            mobileMQ.addEventListener("change", onChange);
-            reduceMotionMQ.addEventListener("change", onChange);
-        } else {
-            mobileMQ.addListener(onChange);
-            reduceMotionMQ.addListener(onChange);
-        }
-
+    // Image-only hero — just sync the blur bg and exit
+    if (!video) {
         syncHeroBlurBackground();
-        startVideo();
+        if (heroImg) heroImg.addEventListener("load", syncHeroBlurBackground);
+        return;
     }
 
-    heroes.forEach(setupHero);
+    const mobileMQ = window.matchMedia("(max-width: 980px)");
+    const reduceMotionMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const mobileSrc = video.dataset.videoMobile || "";
+    const desktopSrc = video.dataset.videoDesktop || "";
+    let activeSrc = "";
+    let playAttempted = false;
+
+    // ── Fix 1: use a real template literal ──────────────────────────
+    function syncHeroBlurBackground() {
+        if (!heroMedia || !heroImg) return;
+        const src = heroImg.currentSrc || heroImg.src;
+        if (!src) return;
+        heroMedia.style.setProperty("--hero-blur-bg", `url("${src}")`);
+    }
+
+    function wantedSrc() {
+        if (reduceMotionMQ.matches) return "";
+        return mobileMQ.matches ? mobileSrc : desktopSrc;
+    }
+
+    function stopVideo() {
+        video.pause();
+        video.removeAttribute("src");
+        video.load();
+        activeSrc = "";
+        playAttempted = false;
+    }
+
+    // ── Fix 2: preload="metadata" + load before play ─────────────────
+    async function startVideo() {
+        syncHeroBlurBackground();
+
+        const src = wantedSrc();
+        if (!src) { stopVideo(); return; }
+
+        if (activeSrc !== src) {
+            video.pause();
+            video.src = src;
+            // Ensure attributes are set every time (some mobile browsers reset them)
+            video.muted = true;
+            video.defaultMuted = true;
+            video.playsInline = true;
+            video.setAttribute("muted", "");
+            video.setAttribute("playsinline", "");
+            video.setAttribute("webkit-playsinline", "");
+            video.load();
+            activeSrc = src;
+            playAttempted = false;
+        }
+
+        if (playAttempted) return;
+        playAttempted = true;
+
+        try {
+            await video.play();
+        } catch (err) {
+            // Poster remains visible — non-fatal on restrictive browsers
+            console.warn("Hero video autoplay blocked:", err.message);
+        }
+    }
+
+    // ── Fix 3: IntersectionObserver fires play the moment hero is visible ──
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    startVideo();
+                } else {
+                    if (video && !video.paused) video.pause();
+                }
+            });
+        },
+        { threshold: 0.01 }
+    );
+    observer.observe(video.closest(".hero") || video);
+
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            video.pause();
+        } else {
+            playAttempted = false; // allow retry
+            startVideo();
+        }
+    });
+
+    mobileMQ.addEventListener
+        ? mobileMQ.addEventListener("change", () => { activeSrc = ""; playAttempted = false; startVideo(); })
+        : mobileMQ.addListener(() => { activeSrc = ""; playAttempted = false; startVideo(); });
+
+    reduceMotionMQ.addEventListener
+        ? reduceMotionMQ.addEventListener("change", () => { activeSrc = ""; playAttempted = false; startVideo(); })
+        : reduceMotionMQ.addListener(() => { activeSrc = ""; playAttempted = false; startVideo(); });
+
+    if (heroImg) heroImg.addEventListener("load", syncHeroBlurBackground);
+    window.addEventListener("resize", syncHeroBlurBackground);
+
+    // ── Fix 4: don't wait for full page load — start as soon as DOM is ready ──
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", startVideo);
+    } else {
+        startVideo();
+    }
 })();
