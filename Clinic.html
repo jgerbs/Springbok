@@ -224,32 +224,43 @@
 
   <main>
     <!-- HERO -->
-    <section class="hero hero--image">
+    <section class="hero">
       <a class="hero-brand reveal" href="index.html" aria-label="Springbok Home">
-        <img src="resources/content/cliniclogo1.webp" alt="Springbok Medical Clinic" class="hero-logo" fetchpriority="high"
-          decoding="async" />
+        <img src="resources/content/cliniclogo1.webp" alt="Springbok Medical Clinic logo" class="hero-logo"
+          decoding="async" fetchpriority="high" />
       </a>
-    
+
       <div class="hero-media">
-        <picture class="hero-poster" style="--hero-img: url('resources/content/team2.webp')">
-          <source media="(max-width: 980px)" srcset="resources/content/team_vertical.webp">
-          <img src="resources/content/team2.webp" alt="Springbok Medical team in Kelowna" class="hero-poster-img"
-            width="1600" height="900" fetchpriority="high" decoding="async">
+        <picture class="hero-poster">
+          <source media="(max-width: 768px)" srcset="resources/content/stethescope.webp">
+          <img src="resources/content/stethescope.webp" alt="" class="hero-poster-img" width="1600" height="900"
+            fetchpriority="high" decoding="async">
         </picture>
+
+        <video class="hero-video" muted playsinline webkit-playsinline loop preload="none"
+          poster="resources/content/stethescope.webp" data-video-mobile="resources/content/stethescope.mp4"
+          data-video-desktop="resources/content/stethescope.mp4" aria-hidden="true"></video>
+
         <div class="hero-overlay"></div>
       </div>
-    
+
       <div class="container hero-content reveal">
-        <h1>Springbok Team</h1>
+        <h1>Springbok Medical Clinic</h1>
         <p>
-          Meet the physicians and support staff dedicated to delivering thoughtful and
-          reliable patient care at Springbok Medical Clinic.
+          Our clinic offers full-spectrum primary care, hormone-focused medicine,
+          and naturopathic support. See providers currently accepting new patients.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-accent book-cta" href="#" data-open-doctor-modal data-doctor="General Inquiry">Book Clinic</a>
+          <a class="btn btn-accent book-cta" href="#" data-open-doctor-modal data-doctor="General Inquiry">
+            Book Clinic
+          </a>
+
           <a class="btn btn-accent book-cta" href="https://springbokmedicalspa.janeapp.com/" target="_blank"
-            rel="noopener">Book Spa</a>
-          <a class="btn btn-outline" href="About.html">Learn More</a>
+            rel="noopener external" aria-label="Book spa appointment">
+            Book Spa
+          </a>
+
+          <a class="btn btn-outline" href="SpaServices.html">Spa Services</a>
         </div>
       </div>
     </section>

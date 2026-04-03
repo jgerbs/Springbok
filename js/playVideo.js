@@ -3,26 +3,22 @@
     const heroMedia = document.querySelector(".hero-media");
     const heroImg = document.querySelector(".hero-poster-img");
 
-    // Image-only hero — just sync the blur bg and exit
-    if (!video) {
-        syncHeroBlurBackground();
-        if (heroImg) heroImg.addEventListener("load", syncHeroBlurBackground);
-        return;
-    }
+    if (!video && !heroImg) return;
 
-    const mobileMQ = window.matchMedia("(max-width: 980px)");
+    const mobileMQ = window.matchMedia("(max-width: 960px)");
     const reduceMotionMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    const mobileSrc = video.dataset.videoMobile || "";
-    const desktopSrc = video.dataset.videoDesktop || "";
-    let activeSrc = "";
-    let playAttempted = false;
+    const mobileSrc = video?.dataset.videoMobile || "";
+    const desktopSrc = video?.dataset.videoDesktop || "";
 
-    // ── Fix 1: use a real template literal ──────────────────────────
+    let activeSrc = "";
+
     function syncHeroBlurBackground() {
         if (!heroMedia || !heroImg) return;
+
         const src = heroImg.currentSrc || heroImg.src;
         if (!src) return;
+
         heroMedia.style.setProperty("--hero-blur-bg", `url("${src}")`);
     }
 
@@ -32,85 +28,72 @@
     }
 
     function stopVideo() {
+        if (!video) return;
         video.pause();
         video.removeAttribute("src");
         video.load();
         activeSrc = "";
-        playAttempted = false;
     }
 
-    // ── Fix 2: preload="metadata" + load before play ─────────────────
     async function startVideo() {
         syncHeroBlurBackground();
 
+        if (!video) return;
+
         const src = wantedSrc();
-        if (!src) { stopVideo(); return; }
+        if (!src) {
+            stopVideo();
+            return;
+        }
 
         if (activeSrc !== src) {
             video.pause();
             video.src = src;
-            // Ensure attributes are set every time (some mobile browsers reset them)
+            video.load();
+            activeSrc = src;
+        }
+
+        try {
             video.muted = true;
             video.defaultMuted = true;
             video.playsInline = true;
             video.setAttribute("muted", "");
             video.setAttribute("playsinline", "");
             video.setAttribute("webkit-playsinline", "");
-            video.load();
-            activeSrc = src;
-            playAttempted = false;
-        }
-
-        if (playAttempted) return;
-        playAttempted = true;
-
-        try {
             await video.play();
-        } catch (err) {
-            // Poster remains visible — non-fatal on restrictive browsers
-            console.warn("Hero video autoplay blocked:", err.message);
+        } catch {
+            // poster stays visible
         }
     }
 
-    // ── Fix 3: IntersectionObserver fires play the moment hero is visible ──
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    startVideo();
-                } else {
-                    if (video && !video.paused) video.pause();
-                }
-            });
-        },
-        { threshold: 0.01 }
-    );
-    observer.observe(video.closest(".hero") || video);
+    function onChange() {
+        syncHeroBlurBackground();
+        startVideo();
+    }
 
     document.addEventListener("visibilitychange", () => {
         if (document.hidden) {
-            video.pause();
+            if (video) video.pause();
         } else {
-            playAttempted = false; // allow retry
             startVideo();
         }
     });
 
-    mobileMQ.addEventListener
-        ? mobileMQ.addEventListener("change", () => { activeSrc = ""; playAttempted = false; startVideo(); })
-        : mobileMQ.addListener(() => { activeSrc = ""; playAttempted = false; startVideo(); });
-
-    reduceMotionMQ.addEventListener
-        ? reduceMotionMQ.addEventListener("change", () => { activeSrc = ""; playAttempted = false; startVideo(); })
-        : reduceMotionMQ.addListener(() => { activeSrc = ""; playAttempted = false; startVideo(); });
-
-    if (heroImg) heroImg.addEventListener("load", syncHeroBlurBackground);
+    window.addEventListener("load", syncHeroBlurBackground);
     window.addEventListener("resize", syncHeroBlurBackground);
 
-    // ── Fix 4: don't wait for full page load — start as soon as DOM is ready ──
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", startVideo);
-    } else {
-        startVideo();
+    if (heroImg) {
+        heroImg.addEventListener("load", syncHeroBlurBackground);
     }
+
+    if (mobileMQ.addEventListener) {
+        mobileMQ.addEventListener("change", onChange);
+        reduceMotionMQ.addEventListener("change", onChange);
+    } else {
+        mobileMQ.addListener(onChange);
+        reduceMotionMQ.addListener(onChange);
+    }
+
+    syncHeroBlurBackground();
+    startVideo();
 })();
