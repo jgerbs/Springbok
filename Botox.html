@@ -299,9 +299,10 @@
               fetchpriority="high" decoding="async">
           </picture>
 
-          <video class="hero-video" muted playsinline webkit-playsinline loop preload="none"
-            poster="resources/spa/botox.webp" data-video-mobile="resources/spa/botox.mp4"
-            data-video-desktop="resources/spa/botox.mp4" aria-hidden="true"></video>
+          <video class="hero-video" muted playsinline webkit-playsinline loop preload="metadata"
+            poster="resources/spa/botox.webp" aria-hidden="true">
+            <source src="resources/spa/botox.mp4" type="video/mp4">
+          </video>
 
           <div class="hero-overlay"></div>
         </div>

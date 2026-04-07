@@ -234,9 +234,10 @@
               width="1600" height="900" fetchpriority="high" decoding="async">
           </picture>
 
-          <video class="hero-video" muted playsinline webkit-playsinline loop preload="none"
-            poster="resources/content/candles2.webp" data-video-mobile="resources/content/candles2.mp4"
-            data-video-desktop="resources/content/candles2.mp4"></video>
+          <video class="hero-video" muted playsinline webkit-playsinline loop preload="metadata"
+            poster="resources/content/candles2.webp">
+            <source src="resources/content/candles2.mp4" type="video/mp4">
+          </video>
 
           <div class="hero-overlay"></div>
         </div>

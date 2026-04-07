@@ -233,9 +233,10 @@
               fetchpriority="high" decoding="async">
           </picture>
 
-          <video class="hero-video" muted playsinline webkit-playsinline loop preload="none"
-            poster="resources/content/building.webp" data-video-mobile="resources/content/building.mp4"
-            data-video-desktop="resources/content/building.mp4" aria-hidden="true"></video>
+          <video class="hero-video" muted playsinline webkit-playsinline loop preload="metadata"
+            poster="resources/content/building.webp" aria-hidden="true">
+            <source src="resources/content/building.mp4" type="video/mp4">
+          </video>
 
           <div class="hero-overlay"></div>
         </div>

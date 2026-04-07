@@ -568,7 +568,7 @@ html[data-brand="spa"] .hero--video .hero-brand {
    RESPONSIVE
    ========================= */
 
-@media (max-width: 960px) {
+@media (max-width: 980px) {
   html[data-brand="spa"] .hero {
     padding: 128px 0 44px;
   }

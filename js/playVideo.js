@@ -1,103 +1,34 @@
 (() => {
     const video = document.querySelector(".hero-video");
-    const heroMedia = document.querySelector(".hero-media");
     const heroImg = document.querySelector(".hero-poster-img");
+    const heroMedia = document.querySelector(".hero-media");
 
     if (!video && !heroImg) return;
 
-    const mobileMQ = window.matchMedia("(max-width: 980px)");
-    const reduceMotionMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-    const mobileSrc = video?.dataset.videoMobile || "";
-    const desktopSrc = video?.dataset.videoDesktop || "";
-
-    let activeSrc = "";
-
-    function syncHeroBlurBackground() {
+    function syncBlur() {
         if (!heroMedia || !heroImg) return;
-
         const src = heroImg.currentSrc || heroImg.src;
-        if (!src) return;
-
-        heroMedia.style.setProperty("--hero-blur-bg", `url("${src}")`);
+        if (src) heroMedia.style.setProperty("--hero-blur-bg", `url("${src}")`);
     }
 
-    function wantedSrc() {
-        if (reduceMotionMQ.matches) return "";
-        return mobileMQ.matches ? mobileSrc : desktopSrc;
-    }
-
-    function stopVideo() {
+    function tryPlay() {
         if (!video) return;
-        video.pause();
-        video.removeAttribute("src");
-        video.load();
-        activeSrc = "";
-    }
-
-    async function startVideo() {
-        syncHeroBlurBackground();
-
-        if (!video) return;
-
-        const src = wantedSrc();
-        if (!src) {
-            stopVideo();
-            return;
-        }
-
-        if (activeSrc !== src) {
-            video.pause();
-            // Set attributes BEFORE load() — iOS Safari requires this order
-            video.muted = true;
-            video.defaultMuted = true;
-            video.playsInline = true;
-            video.setAttribute("muted", "");
-            video.setAttribute("playsinline", "");
-            video.setAttribute("webkit-playsinline", "");
-            video.src = src;
-            video.load();
-            activeSrc = src;
-        }
-
-        try {
-            await video.play();
-        } catch {
-            // play() was rejected (e.g. Low Power Mode); retry once canplay fires
-            video.addEventListener("canplay", () => {
-                video.play().catch(() => {});
-            }, { once: true });
-        }
-    }
-
-    function onChange() {
-        syncHeroBlurBackground();
-        startVideo();
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        video.play().catch(() => {});
     }
 
     document.addEventListener("visibilitychange", () => {
-        if (document.hidden) {
-            if (video) video.pause();
-        } else {
-            startVideo();
-        }
+        if (!video) return;
+        document.hidden ? video.pause() : tryPlay();
     });
 
-    window.addEventListener("load", syncHeroBlurBackground);
-    window.addEventListener("resize", syncHeroBlurBackground);
+    syncBlur();
+    if (heroImg) heroImg.addEventListener("load", syncBlur);
+    window.addEventListener("resize", syncBlur);
 
-    if (heroImg) {
-        heroImg.addEventListener("load", syncHeroBlurBackground);
-    }
-
-    if (mobileMQ.addEventListener) {
-        mobileMQ.addEventListener("change", onChange);
-        reduceMotionMQ.addEventListener("change", onChange);
+    if (video.readyState >= 3) {
+        tryPlay();
     } else {
-        mobileMQ.addListener(onChange);
-        reduceMotionMQ.addListener(onChange);
+        video.addEventListener("canplay", tryPlay, { once: true });
     }
-
-    syncHeroBlurBackground();
-    startVideo();
 })();
