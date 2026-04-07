@@ -5,7 +5,7 @@
 
     if (!video && !heroImg) return;
 
-    const mobileMQ = window.matchMedia("(max-width: 960px)");
+    const mobileMQ = window.matchMedia("(max-width: 980px)");
     const reduceMotionMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     const mobileSrc = video?.dataset.videoMobile || "";
