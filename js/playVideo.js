@@ -1,19 +1,21 @@
 (() => {
-    const video = document.querySelector(".hero-video");
-    const heroMedia = document.querySelector(".hero-media");
-    const heroImg = document.querySelector(".hero-poster-img");
-
-    if (!video && !heroImg) return;
-
-    const mobileMQ = window.matchMedia("(max-width: 980px)");
     const reduceMotionMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const mobileMQ = window.matchMedia("(max-width: 980px)");
 
-    const mobileSrc = video?.dataset.videoMobile || "";
-    const desktopSrc = video?.dataset.videoDesktop || "";
+    const heroes = [...document.querySelectorAll(".hero")];
 
-    let activeSrc = "";
+    if (!heroes.length) return;
 
-    function syncHeroBlurBackground() {
+    function getWantedSrc(video) {
+        if (reduceMotionMQ.matches) return "";
+        return mobileMQ.matches
+            ? (video.dataset.videoMobile || "")
+            : (video.dataset.videoDesktop || "");
+    }
+
+    function syncHeroBlurBackground(hero) {
+        const heroMedia = hero.querySelector(".hero-media");
+        const heroImg = hero.querySelector(".hero-poster-img");
         if (!heroMedia || !heroImg) return;
 
         const src = heroImg.currentSrc || heroImg.src;
@@ -22,78 +24,118 @@
         heroMedia.style.setProperty("--hero-blur-bg", `url("${src}")`);
     }
 
-    function wantedSrc() {
-        if (reduceMotionMQ.matches) return "";
-        return mobileMQ.matches ? mobileSrc : desktopSrc;
-    }
-
-    function stopVideo() {
-        if (!video) return;
+    function stopVideo(video) {
         video.pause();
         video.removeAttribute("src");
         video.load();
-        activeSrc = "";
+        video.dataset.activeSrc = "";
     }
 
-    async function startVideo() {
-        syncHeroBlurBackground();
-
+    async function startVideo(hero) {
+        const video = hero.querySelector(".hero-video");
         if (!video) return;
 
-        const src = wantedSrc();
+        syncHeroBlurBackground(hero);
+
+        const src = getWantedSrc(video);
         if (!src) {
-            stopVideo();
+            stopVideo(video);
             return;
         }
 
-        if (activeSrc !== src) {
+        if (video.dataset.activeSrc !== src) {
             video.pause();
             video.src = src;
             video.load();
-            activeSrc = src;
+            video.dataset.activeSrc = src;
         }
 
-        try {
-            video.muted = true;
-            video.defaultMuted = true;
-            video.playsInline = true;
-            video.setAttribute("muted", "");
-            video.setAttribute("playsinline", "");
-            video.setAttribute("webkit-playsinline", "");
-            await video.play();
-        } catch {
-            // poster stays visible
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.setAttribute("muted", "");
+        video.setAttribute("autoplay", "");
+        video.setAttribute("playsinline", "");
+        video.setAttribute("webkit-playsinline", "");
+
+        const tryPlay = async () => {
+            try {
+                await video.play();
+            } catch {
+                // poster remains as fallback
+            }
+        };
+
+        if (video.readyState >= 2) {
+            await tryPlay();
+        } else {
+            const onReady = async () => {
+                video.removeEventListener("loadeddata", onReady);
+                video.removeEventListener("canplay", onReady);
+                await tryPlay();
+            };
+
+            video.addEventListener("loadeddata", onReady, { once: true });
+            video.addEventListener("canplay", onReady, { once: true });
         }
     }
 
-    function onChange() {
-        syncHeroBlurBackground();
-        startVideo();
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            const hero = entry.target;
+            const video = hero.querySelector(".hero-video");
+            if (!video) return;
+
+            if (entry.isIntersecting) {
+                startVideo(hero);
+            } else {
+                video.pause();
+            }
+        });
+    }, {
+        rootMargin: "200px 0px",
+        threshold: 0.01
+    });
+
+    heroes.forEach((hero) => {
+        syncHeroBlurBackground(hero);
+
+        const heroImg = hero.querySelector(".hero-poster-img");
+        if (heroImg) {
+            heroImg.addEventListener("load", () => syncHeroBlurBackground(hero));
+        }
+
+        io.observe(hero);
+    });
+
+    function refreshAll() {
+        heroes.forEach((hero) => {
+            syncHeroBlurBackground(hero);
+            const rect = hero.getBoundingClientRect();
+            const inView = rect.bottom > -200 && rect.top < window.innerHeight + 200;
+            if (inView) startVideo(hero);
+        });
     }
 
     document.addEventListener("visibilitychange", () => {
         if (document.hidden) {
-            if (video) video.pause();
+            heroes.forEach((hero) => {
+                const video = hero.querySelector(".hero-video");
+                if (video) video.pause();
+            });
         } else {
-            startVideo();
+            refreshAll();
         }
     });
 
-    window.addEventListener("load", syncHeroBlurBackground);
-    window.addEventListener("resize", syncHeroBlurBackground);
-
-    if (heroImg) {
-        heroImg.addEventListener("load", syncHeroBlurBackground);
-    }
+    window.addEventListener("load", refreshAll);
+    window.addEventListener("resize", refreshAll);
 
     if (mobileMQ.addEventListener) {
-        mobileMQ.addEventListener("change", onChange);
-        reduceMotionMQ.addEventListener("change", onChange);
+        mobileMQ.addEventListener("change", refreshAll);
+        reduceMotionMQ.addEventListener("change", refreshAll);
     } else {
-        mobileMQ.addListener(onChange);
-        reduceMotionMQ.addListener(onChange);
+        mobileMQ.addListener(refreshAll);
+        reduceMotionMQ.addListener(refreshAll);
     }
-
-    syncHeroBlurBackground();
-    startVideo();
 })();
