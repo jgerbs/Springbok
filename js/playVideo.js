@@ -1,21 +1,19 @@
 (() => {
-    const reduceMotionMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const video = document.querySelector(".hero-video");
+    const heroMedia = document.querySelector(".hero-media");
+    const heroImg = document.querySelector(".hero-poster-img");
+
+    if (!video && !heroImg) return;
+
     const mobileMQ = window.matchMedia("(max-width: 980px)");
+    const reduceMotionMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    const heroes = [...document.querySelectorAll(".hero")];
+    const mobileSrc = video?.dataset.videoMobile || "";
+    const desktopSrc = video?.dataset.videoDesktop || "";
 
-    if (!heroes.length) return;
+    let activeSrc = "";
 
-    function getWantedSrc(video) {
-        if (reduceMotionMQ.matches) return "";
-        return mobileMQ.matches
-            ? (video.dataset.videoMobile || "")
-            : (video.dataset.videoDesktop || "");
-    }
-
-    function syncHeroBlurBackground(hero) {
-        const heroMedia = hero.querySelector(".hero-media");
-        const heroImg = hero.querySelector(".hero-poster-img");
+    function syncHeroBlurBackground() {
         if (!heroMedia || !heroImg) return;
 
         const src = heroImg.currentSrc || heroImg.src;
@@ -24,118 +22,82 @@
         heroMedia.style.setProperty("--hero-blur-bg", `url("${src}")`);
     }
 
-    function stopVideo(video) {
+    function wantedSrc() {
+        if (reduceMotionMQ.matches) return "";
+        return mobileMQ.matches ? mobileSrc : desktopSrc;
+    }
+
+    function stopVideo() {
+        if (!video) return;
         video.pause();
         video.removeAttribute("src");
         video.load();
-        video.dataset.activeSrc = "";
+        activeSrc = "";
     }
 
-    async function startVideo(hero) {
-        const video = hero.querySelector(".hero-video");
+    async function startVideo() {
+        syncHeroBlurBackground();
+
         if (!video) return;
 
-        syncHeroBlurBackground(hero);
-
-        const src = getWantedSrc(video);
+        const src = wantedSrc();
         if (!src) {
-            stopVideo(video);
+            stopVideo();
             return;
         }
 
-        if (video.dataset.activeSrc !== src) {
+        if (activeSrc !== src) {
             video.pause();
+            // Set attributes BEFORE load() — iOS Safari requires this order
+            video.muted = true;
+            video.defaultMuted = true;
+            video.playsInline = true;
+            video.setAttribute("muted", "");
+            video.setAttribute("playsinline", "");
+            video.setAttribute("webkit-playsinline", "");
             video.src = src;
             video.load();
-            video.dataset.activeSrc = src;
+            activeSrc = src;
         }
 
-        video.muted = true;
-        video.defaultMuted = true;
-        video.playsInline = true;
-        video.setAttribute("muted", "");
-        video.setAttribute("autoplay", "");
-        video.setAttribute("playsinline", "");
-        video.setAttribute("webkit-playsinline", "");
-
-        const tryPlay = async () => {
-            try {
-                await video.play();
-            } catch {
-                // poster remains as fallback
-            }
-        };
-
-        if (video.readyState >= 2) {
-            await tryPlay();
-        } else {
-            const onReady = async () => {
-                video.removeEventListener("loadeddata", onReady);
-                video.removeEventListener("canplay", onReady);
-                await tryPlay();
-            };
-
-            video.addEventListener("loadeddata", onReady, { once: true });
-            video.addEventListener("canplay", onReady, { once: true });
+        try {
+            await video.play();
+        } catch {
+            // play() was rejected (e.g. Low Power Mode); retry once canplay fires
+            video.addEventListener("canplay", () => {
+                video.play().catch(() => {});
+            }, { once: true });
         }
     }
 
-    const io = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            const hero = entry.target;
-            const video = hero.querySelector(".hero-video");
-            if (!video) return;
-
-            if (entry.isIntersecting) {
-                startVideo(hero);
-            } else {
-                video.pause();
-            }
-        });
-    }, {
-        rootMargin: "200px 0px",
-        threshold: 0.01
-    });
-
-    heroes.forEach((hero) => {
-        syncHeroBlurBackground(hero);
-
-        const heroImg = hero.querySelector(".hero-poster-img");
-        if (heroImg) {
-            heroImg.addEventListener("load", () => syncHeroBlurBackground(hero));
-        }
-
-        io.observe(hero);
-    });
-
-    function refreshAll() {
-        heroes.forEach((hero) => {
-            syncHeroBlurBackground(hero);
-            const rect = hero.getBoundingClientRect();
-            const inView = rect.bottom > -200 && rect.top < window.innerHeight + 200;
-            if (inView) startVideo(hero);
-        });
+    function onChange() {
+        syncHeroBlurBackground();
+        startVideo();
     }
 
     document.addEventListener("visibilitychange", () => {
         if (document.hidden) {
-            heroes.forEach((hero) => {
-                const video = hero.querySelector(".hero-video");
-                if (video) video.pause();
-            });
+            if (video) video.pause();
         } else {
-            refreshAll();
+            startVideo();
         }
     });
 
-    window.addEventListener("load", refreshAll);
-    window.addEventListener("resize", refreshAll);
+    window.addEventListener("load", syncHeroBlurBackground);
+    window.addEventListener("resize", syncHeroBlurBackground);
+
+    if (heroImg) {
+        heroImg.addEventListener("load", syncHeroBlurBackground);
+    }
 
     if (mobileMQ.addEventListener) {
-        mobileMQ.addEventListener("change", refreshAll);
-        reduceMotionMQ.addEventListener("change", refreshAll);
+        mobileMQ.addEventListener("change", onChange);
+        reduceMotionMQ.addEventListener("change", onChange);
     } else {
-        mobileMQ.addListener(refreshAll);
-        reduceMotionMQ.addListener(refreshAll);
+        mobileMQ.addListener(onChange);
+        reduceMotionMQ.addListener(onChange);
     }
+
+    syncHeroBlurBackground();
+    startVideo();
 })();
