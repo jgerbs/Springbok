@@ -1517,7 +1517,7 @@ html[data-brand="clinic"] .founder-btn--solid:hover {
    Only stack when necessary
    ========================= */
 
-@media (max-width: 360px) {
+@media (max-width: 380px) {
 
     html[data-brand="clinic"] .founder-card,
     html[data-brand="clinic"] .founder-card--flip {
@@ -1581,4 +1581,43 @@ html[data-brand="clinic"] .why-bubbles::before {
 html[data-brand="clinic"] .why-bubble::before {
     content: none !important;
     display: none !important;
+}
+
+@media (max-width: 900px) {
+    html[data-brand="clinic"] .why-dots {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 5px;
+        width: 100%;
+        margin-bottom: 10px;
+        overflow: visible;
+    }
+
+    html[data-brand="clinic"] .why-dot-btn {
+        width: 100%;
+        min-width: 0;
+        aspect-ratio: 1 / 1;
+        height: auto;
+        font-size: .62rem;
+    }
+}
+
+@media (max-width: 520px) {
+    html[data-brand="clinic"] .why-dots {
+        gap: 4px;
+    }
+
+    html[data-brand="clinic"] .why-dot-btn {
+        font-size: .56rem;
+    }
+}
+
+@media (max-width: 390px) {
+    html[data-brand="clinic"] .why-dots {
+        gap: 3px;
+    }
+
+    html[data-brand="clinic"] .why-dot-btn {
+        font-size: .5rem;
+    }
 }

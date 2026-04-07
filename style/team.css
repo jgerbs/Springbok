@@ -604,6 +604,46 @@ html[data-brand="clinic"] .doc-card--comingsoon .doc-desc {
   }
 }
 
+/* =========================================================
+   VERY SMALL MOBILE BUTTON FIX
+   Keep team buttons on one line without overflow
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+  html[data-brand="spa"] .team-tiles .doc-actions,
+  html[data-brand="spa"] .services-tiles .doc-actions,
+  html[data-brand="clinic"] .team-tiles .doc-actions,
+  html[data-brand="clinic"] .services-tiles .doc-actions {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 5px;
+    width: 100%;
+  }
+
+  /* smaller first button */
+  html[data-brand="spa"] .team-tiles .doc-actions .btn:first-child,
+  html[data-brand="spa"] .services-tiles .doc-actions .btn:first-child,
+  html[data-brand="clinic"] .team-tiles .doc-actions .btn:first-child,
+  html[data-brand="clinic"] .services-tiles .doc-actions .btn:first-child {
+    flex: 0 0 auto;
+    padding: 5px 8px;
+    font-size: 0.72rem;
+  }
+
+  /* let Send inquiry take the remaining room */
+  html[data-brand="spa"] .team-tiles .doc-actions .btn:last-child,
+  html[data-brand="spa"] .services-tiles .doc-actions .btn:last-child,
+  html[data-brand="clinic"] .team-tiles .doc-actions .btn:last-child,
+  html[data-brand="clinic"] .services-tiles .doc-actions .btn:last-child {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 5px 8px;
+    font-size: 0.72rem;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
 
 /* =========================================================
    GLOBAL: KILL EXTRA SECTION GLOWS
@@ -614,3 +654,4 @@ html[data-brand="clinic"] .services-tiles::before {
   content: none !important;
   display: none !important;
 }
+

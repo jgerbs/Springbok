@@ -57,6 +57,6 @@
 
   // If resizing to desktop, close menu
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 860 && isOpen()) closeMenu();
+    if (window.innerWidth > 960 && isOpen()) closeMenu();
   });
 })();
