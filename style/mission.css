@@ -402,7 +402,7 @@
     display: block !important;
     inset: 0;
     background-image: inherit;
-    background-position: center center;
+    background-position: center 0%;
     background-repeat: no-repeat;
     background-size: contain;
     z-index: 1;
